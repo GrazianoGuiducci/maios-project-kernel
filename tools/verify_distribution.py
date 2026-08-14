@@ -35,7 +35,7 @@ def main() -> int:
         "LICENSE",
         "THIRD_PARTY_NOTICES.md",
         "README.md",
-        "README.en.md",
+        "README.it.md",
     )
     for relative in required_root:
         if not (ROOT / relative).is_file():
