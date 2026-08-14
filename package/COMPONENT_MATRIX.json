@@ -1,0 +1,57 @@
+{
+  "schema": "maios.self-configuring-components.v1",
+  "components": [
+    {
+      "id": "project_kernel",
+      "source": "RepoKernel generated output",
+      "state": "generated_and_packaged",
+      "entry": ".repokernel/entity/BOOTSTRAP.md"
+    },
+    {
+      "id": "project_meta_faculty",
+      "source": "RepoKernel generated output with MAIOS product bridge",
+      "state": "generated_composed_and_packaged_not_host_attested",
+      "entry": ".repokernel/meta/PROJECT_META_FACULTY.json",
+      "host_entry": "skills/operate-maios-project-kernel/SKILL.md"
+    },
+    {
+      "id": "startup_interview",
+      "source": "MAIOS package supplement",
+      "state": "packaged",
+      "entry": "skills/maios-setup-interviewer/SKILL.md"
+    },
+    {
+      "id": "operating_kernel",
+      "source": "MAIOS package supplement",
+      "state": "packaged",
+      "entry": "kernel/MAIOS_START_KERNEL.md"
+    },
+    {
+      "id": "project_faculty_router",
+      "source": "MAIOS package supplement",
+      "state": "packaged",
+      "entry": "skills/maios-project-faculty-router/SKILL.md"
+    },
+    {
+      "id": "project_evolution_loop",
+      "source": "MAIOS package supplement composed under the generated Project Meta-Faculty",
+      "state": "packaged_not_host_attested",
+      "state_role": "typed_contract_not_second_state_owner",
+      "entry": "kernel/PROJECT_EVOLUTION_CONTRACT.json"
+    },
+    {
+      "id": "host_adapters",
+      "source": "MAIOS package supplement",
+      "state": "pending_host_open",
+      "state_role": "delivery_baseline",
+      "entry": "HOST_ADAPTERS.json"
+    },
+    {
+      "id": "project_configuration",
+      "source": "startup interview",
+      "state": "pending",
+      "state_role": "operative_state",
+      "entry": "setup/CONFIGURATION_STATE.json"
+    }
+  ]
+}

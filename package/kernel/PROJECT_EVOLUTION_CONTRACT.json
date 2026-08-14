@@ -1,0 +1,146 @@
+{
+  "schema": "maios.project-evolution-contract.v1",
+  "version": "1.0.0",
+  "state_owner": "setup/CONFIGURATION_STATE.json",
+  "human_projection": "project/CURRENT_STATE.md",
+  "semantic_owner": ".repokernel/meta/PROJECT_META_FACULTY.json",
+  "effect_authority_default": "none",
+  "kernel_planes": [
+    {
+      "id": "system_kernel",
+      "role": "Host runtime, tools and system capabilities observed in the actual environment",
+      "non_implication": "Requested or named capability is not installed or active capability"
+    },
+    {
+      "id": "project_kernel",
+      "role": "RepoKernel-generated semantic identity, continuity and meta-faculty of this project",
+      "non_implication": "Generated contract is not host discovery or external authority"
+    },
+    {
+      "id": "package_kernel",
+      "role": "MAIOS decoder, state bridge, crystallization and host-entry composition",
+      "non_implication": "Product composition does not replace the generated Project Kernel"
+    },
+    {
+      "id": "competence_kernel",
+      "role": "Source-bound operating faculty for a situated project capability or task",
+      "non_implication": "A candidate file is not an accepted, discovered or maintained competence"
+    }
+  ],
+  "boot_capsule": {
+    "state_path": "evolution.boot_capsule",
+    "required_fields": [
+      "active_surface",
+      "living_intent",
+      "source_of_truth",
+      "current_next",
+      "boundary",
+      "capability_matrix"
+    ],
+    "capability_matrix_fields": [
+      "available_now",
+      "assumed_but_unverified",
+      "environment_dependent",
+      "future_possible",
+      "hard_boundaries",
+      "reversible_preparations"
+    ]
+  },
+  "crystallization": {
+    "state_path": "evolution.last_crystallization",
+    "triggers": [
+      "work_unit_closed",
+      "accepted_correction_changes_future_behavior",
+      "source_promoted_or_deprecated",
+      "boundary_or_current_next_changed",
+      "interruption_or_reentry_risk"
+    ],
+    "preserve": [
+      "what_changed",
+      "why_it_matters",
+      "source_refs",
+      "owner_review",
+      "boundary",
+      "residue_not_to_follow",
+      "next_reentry"
+    ],
+    "exclude": [
+      "ordinary_chat",
+      "duplicate_summary",
+      "raw_private_material",
+      "credentials",
+      "unreviewed_inference_as_fact"
+    ]
+  },
+  "delta_contract": {
+    "state_path": "evolution.pending_deltas",
+    "required_fields": [
+      "id",
+      "kind",
+      "status",
+      "statement",
+      "source_refs",
+      "owner",
+      "proof",
+      "recheck_condition",
+      "effect_authority"
+    ],
+    "statuses": [
+      "candidate",
+      "accepted",
+      "rejected",
+      "superseded"
+    ],
+    "acceptance_rule": "Only the project owner or the named capability owner can accept a delta; the producing assistant cannot self-approve it",
+    "retention_rule": "Keep only a delta that changes future behavior, proof, recovery or reentry"
+  },
+  "delta_kinds": [
+    {
+      "id": "project_state",
+      "use_when": "One-case accepted fact, decision, responsibility or current movement changes",
+      "target": "setup/CONFIGURATION_STATE.json and project/CURRENT_STATE.md projection"
+    },
+    {
+      "id": "memory_delta",
+      "use_when": "A reviewed correction changes future reentry, recovery or source interpretation",
+      "target": "evolution.last_crystallization and accepted_delta_refs"
+    },
+    {
+      "id": "competence_delta",
+      "use_when": "Repeated situated ability changes how an existing project competence behaves",
+      "target": "reviewed competence version and its evidence"
+    },
+    {
+      "id": "skill_candidate",
+      "use_when": "A repeatable bounded method with trigger, inputs, output and falsifiable test is missing after composition",
+      "target": "skills/<name>/SKILL.md after owner review"
+    },
+    {
+      "id": "function_candidate",
+      "use_when": "A stable deterministic transformation should be executable and tested independently",
+      "target": "project-native code or function contract after owner review"
+    },
+    {
+      "id": "meta_evolution_candidate",
+      "use_when": "A source-bound invariant changes how multiple faculties are recognized, composed, validated or evolved",
+      "target": "project-local candidate first; every wider projection requires its own owner gate"
+    }
+  ],
+  "work_cycle": [
+    "boot_from_state",
+    "orient_through_project_meta_faculty",
+    "compose_task_faculties",
+    "produce_and_inspect_result",
+    "classify_learning_granularity",
+    "obtain_owner_review_for_candidates",
+    "crystallize_only_reusable_delta",
+    "update_human_reentry_projection"
+  ],
+  "completion": [
+    "result inspected against living intent",
+    "facts hypotheses and unknowns remain distinct",
+    "learning is placed at the smallest truthful delta kind",
+    "candidate acceptance and effect authority are not inferred",
+    "fresh reentry can recover the reviewed movement without transcript dependence"
+  ]
+}

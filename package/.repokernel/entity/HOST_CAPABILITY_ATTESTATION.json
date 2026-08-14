@@ -1,0 +1,69 @@
+{
+  "capabilities": [
+    {
+      "declared_installation_state": "not_present",
+      "delivery_mode": "reference",
+      "id": "faculty-router",
+      "observed_state": "unverified",
+      "required": true
+    },
+    {
+      "declared_installation_state": "not_present",
+      "delivery_mode": "reference",
+      "id": "source-integrity-interference-guard",
+      "observed_state": "unverified",
+      "required": true
+    },
+    {
+      "declared_installation_state": "not_present",
+      "delivery_mode": "reference",
+      "id": "seed-freshness-protocol",
+      "observed_state": "unverified",
+      "required": true
+    }
+  ],
+  "entity_profile_sha256": "343115cdb0788ee8d6764809cbdda1c7e11602519f9ccfe0199d6bfac05fc2bb",
+  "evidence": [],
+  "faculty_palette": [
+    {
+      "id": "faculty-router",
+      "implementation_state": "referenced",
+      "observed_state": "unverified"
+    },
+    {
+      "id": "client-setup-orchestration",
+      "implementation_state": "contract_only",
+      "observed_state": "unverified"
+    },
+    {
+      "id": "source-integrity-interference-guard",
+      "implementation_state": "contract_only",
+      "observed_state": "unverified"
+    },
+    {
+      "id": "meta-skill-routing",
+      "implementation_state": "contract_only",
+      "observed_state": "unverified"
+    }
+  ],
+  "global_writes": [],
+  "host": {
+    "id": "unbound",
+    "runtime": "unverified"
+  },
+  "host_requirements": [
+    {
+      "binding": "discover_at_activation",
+      "capability": "Discover project-local skills and repository instructions.",
+      "id": "skill-discovery",
+      "kind": "runtime",
+      "observed_state": "unverified",
+      "required": true
+    }
+  ],
+  "next_safe_action": "inspect the selected host and replace only observed_state values supported by evidence",
+  "schema": "repokernel.host-capability-attestation.v1",
+  "status": "pending_host_inspection",
+  "target_writes": [],
+  "unexpected_global_write": false
+}

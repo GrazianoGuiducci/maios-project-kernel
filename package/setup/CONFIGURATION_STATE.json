@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.3",
+  "setup_status": "pending",
+  "checkpoint": {
+    "updated_at": null,
+    "summary": "",
+    "answered_topics": []
+  },
+  "context": {
+    "point_of_view": null,
+    "organization_or_activity": null,
+    "concrete_case": null
+  },
+  "situated_configuration": {
+    "epistemic_field": {
+      "facts": [],
+      "hypotheses": [],
+      "unknowns": [
+        {
+          "id": "project_context",
+          "statement": "Contesto e punto di vista del progetto da ricostruire",
+          "source_refs": [],
+          "recheck_condition": "prima restituzione della persona o nuove fonti di progetto"
+        },
+        {
+          "id": "work_and_first_result",
+          "statement": "Attivita reale e primo risultato utile da definire",
+          "source_refs": [],
+          "recheck_condition": "prima proposta correggibile dell'assistente"
+        },
+        {
+          "id": "people_and_review",
+          "statement": "Utilizzatori, responsabilita e revisore da identificare",
+          "source_refs": [],
+          "recheck_condition": "quando il primo risultato diventa osservabile"
+        },
+        {
+          "id": "sources_and_environment",
+          "statement": "Fonti, dati, strumenti, vincoli e capacita dell'host da verificare",
+          "source_refs": [],
+          "recheck_condition": "osservazione dei file e dell'ambiente reale"
+        }
+      ],
+      "retained_unknown": []
+    },
+    "possibility_horizon": {
+      "status": "pending_orientation",
+      "candidates": [],
+      "candidate_required_fields": [
+        "statement",
+        "rationale",
+        "state",
+        "source_refs",
+        "smallest_proof",
+        "invalidator",
+        "recheck_condition"
+      ]
+    },
+    "selected_direction": {
+      "statement": null,
+      "rationale": null,
+      "source_refs": [],
+      "owner_review": "pending"
+    },
+    "system_person_work_directions": {
+      "system": null,
+      "person": null,
+      "work": null
+    },
+    "product_or_service_hypothesis": {
+      "statement": null,
+      "need_addressed": null,
+      "beneficiary_or_user": null,
+      "value_mechanism": null,
+      "smallest_deliverable": null,
+      "source_refs": [],
+      "assumptions": [],
+      "owner_review": "pending"
+    },
+    "first_proof": {
+      "statement": null,
+      "falsifiable_test": null,
+      "reviewer": null,
+      "result": "unverified"
+    },
+    "effect_authority": "none"
+  },
+  "evolution": {
+    "contract": "kernel/PROJECT_EVOLUTION_CONTRACT.json",
+    "boot_capsule": {
+      "active_surface": "initial_project_configuration",
+      "living_intent": "Definire con la persona il primo risultato utile del progetto",
+      "source_of_truth": [
+        "setup/CONFIGURATION_STATE.json",
+        "project/CURRENT_STATE.md",
+        ".repokernel/meta/PROJECT_META_FACULTY.json"
+      ],
+      "current_next": "Osservare il progetto e avviare l'intervista adattiva",
+      "boundary": "Configurazione locale del nuovo progetto; effetti esterni separati",
+      "capability_matrix": {
+        "available_now": [
+          "Project Kernel e contratti MAIOS presenti nella cartella"
+        ],
+        "assumed_but_unverified": [
+          "discovery automatica delle skill da parte dell'host",
+          "lettura e scrittura dei file da parte dell'host"
+        ],
+        "environment_dependent": [
+          "strumenti, provider, rete, servizi e agenti delegati"
+        ],
+        "future_possible": [],
+        "hard_boundaries": [
+          "nessun effetto esterno senza autorita sullo specifico effetto"
+        ],
+        "reversible_preparations": [
+          "intervista, proposte, file locali candidati e prove senza effetti esterni"
+        ]
+      }
+    },
+    "last_crystallization": null,
+    "pending_deltas": [],
+    "accepted_delta_refs": []
+  },
+  "first_result": {
+    "description": null,
+    "success_criteria": [],
+    "reviewer": null
+  },
+  "people_and_delivery": {
+    "users": [],
+    "maintainers": [],
+    "human_responsibilities": []
+  },
+  "environment": {
+    "tools": [],
+    "data_and_sources": [],
+    "constraints": []
+  },
+  "capabilities": {
+    "selected": [],
+    "candidates": []
+  },
+  "current_next": "Avviare l'intervista di configurazione",
+  "open_questions": []
+}

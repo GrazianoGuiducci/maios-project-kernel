@@ -1,0 +1,29 @@
+name: Verify distribution
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate public boundary
+        run: python tools/verify_distribution.py
+      - name: Build release twice
+        run: |
+          python tools/build_release.py
+          first="$(find dist -maxdepth 1 -name '*.zip' -print -quit)"
+          cp "$first" /tmp/first.zip
+          python tools/build_release.py
+          second="$(find dist -maxdepth 1 -name '*.zip' -print -quit)"
+          cmp /tmp/first.zip "$second"

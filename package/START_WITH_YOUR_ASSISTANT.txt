@@ -1,0 +1,9 @@
+Ho inserito nella cartella il Pacchetto Setup AI autoconfigurante.
+
+Leggi AGENTS.md e START_HERE.md, entra nel Project Kernel con operate-maios-project-kernel, poi orientati attraverso project/CURRENT_STATE.md, setup/CONFIGURATION_STATE.json e kernel/MAIOS_START_KERNEL.md.
+
+Prima di farmi domande, dimmi in poche righe cosa esiste già nel progetto, quale primo risultato concreto potrebbe essere utile e quale informazione manca per non partire nella direzione sbagliata. Poi usa la skill maios-setup-interviewer e chiedimi soltanto ciò che cambia davvero il progetto.
+
+Usa maios-project-faculty-router per comporre le capacità necessarie prima di crearne una nuova.
+
+Quando il contesto è sufficiente, aggiorna lo stato, il brief e il punto di ripresa; componi le competenze necessarie e proponi il primo movimento verificabile. Non trattare il pacchetto come prova che strumenti, dati o competenze siano già attivi.

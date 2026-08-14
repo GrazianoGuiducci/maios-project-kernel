@@ -1,0 +1,71 @@
+{
+  "product": "MAIOS Self-Configuring Setup Package",
+  "version": "1.3.0",
+  "language": "it",
+  "generated_by": "RepoKernel",
+  "contains_repokernel_source": false,
+  "configuration_mode": "deferred_startup_interview",
+  "target_mode": "new_repository",
+  "existing_repository_installation": "not_supported_in_this_release",
+  "entrypoint": "START_HERE.md",
+  "setup_state": "pending",
+  "delivery_state": "packaged",
+  "host_activation_state": "pending_host_open",
+  "integrity": {
+    "entity_profile_binding": {
+      "algorithm": "sha256",
+      "serialization": "canonical_json_utf8_sorted_compact",
+      "binding_paths": [
+        ".repokernel/entity/CAPABILITY_BINDING_PLAN.json",
+        ".repokernel/entity/HOST_CAPABILITY_ATTESTATION.json"
+      ],
+      "raw_file_hash_source": "PACKAGE_INVENTORY.json"
+    }
+  },
+  "state_semantics": {
+    "this_manifest": "immutable_delivery_baseline",
+    "operative_setup_state": "setup/CONFIGURATION_STATE.json",
+    "operative_project_state": "project/CURRENT_STATE.md",
+    "project_evolution_contract": "kernel/PROJECT_EVOLUTION_CONTRACT.json",
+    "host_evidence": "receipts/host-activation/"
+  },
+  "package_inventory": "PACKAGE_INVENTORY.json",
+  "host_adapters": "HOST_ADAPTERS.json",
+  "files": [
+    "START_HERE.md",
+    "START_WITH_YOUR_ASSISTANT.txt",
+    "kernel/MAIOS_START_KERNEL.md",
+    "kernel/AXIOMATIC_RESULTANT_KERNEL.md",
+    "kernel/PROJECT_EVOLUTION_CONTRACT.json",
+    "meta-competences/ORIENT_AND_EVOLVE.md",
+    "assistant/STARTUP_INTERVIEW.md",
+    "setup/STARTUP_INTERVIEW.md",
+    "setup/MAIOS_SETUP_CONTRACT.md",
+    "setup/CONFIGURATION_STATE.json",
+    "project/CURRENT_STATE.md",
+    "project/PROJECT_BRIEF.md",
+    "skills/maios-setup-interviewer/SKILL.md",
+    "skills/maios-project-faculty-router/SKILL.md",
+    "skills/operate-maios-project-kernel/SKILL.md",
+    "CODEX_SETUP.md",
+    "CLAUDE.md",
+    "OPENCODE_SETUP.md",
+    "HERMES_SETUP.md",
+    "HOST_ADAPTERS.json",
+    "COMPONENT_MATRIX.json",
+    "PACKAGE_INVENTORY.json",
+    ".agents/skills/maios-setup-interviewer/SKILL.md",
+    ".claude/skills/maios-setup-interviewer/SKILL.md",
+    ".opencode/skills/maios-setup-interviewer/SKILL.md",
+    ".agents/skills/operate-maios-project-kernel/SKILL.md",
+    ".claude/skills/operate-maios-project-kernel/SKILL.md",
+    ".opencode/skills/operate-maios-project-kernel/SKILL.md",
+    ".agents/skills/maios-project-faculty-router/SKILL.md",
+    ".claude/skills/maios-project-faculty-router/SKILL.md",
+    ".opencode/skills/maios-project-faculty-router/SKILL.md",
+    "receipts/host-activation/chatgpt_codex.json",
+    "receipts/host-activation/claude_code.json",
+    "receipts/host-activation/opencode.json",
+    "receipts/host-activation/hermes.json"
+  ]
+}

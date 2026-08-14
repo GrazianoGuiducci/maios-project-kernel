@@ -1,0 +1,135 @@
+{
+  "bulk_install": false,
+  "capabilities": [
+    {
+      "activation": "skill",
+      "delivery_mode": "reference",
+      "id": "faculty-router",
+      "installation_state": "not_present",
+      "maturity": "candidate",
+      "required": true,
+      "requires": [],
+      "side_effect_class": "reasoning_only",
+      "source_path": "plugins/d-nd-core/skills/faculty-router",
+      "source_ref": "dnd-seed-capabilities",
+      "source_type": "skill",
+      "state": "accepted"
+    },
+    {
+      "activation": "skill",
+      "delivery_mode": "reference",
+      "id": "source-integrity-interference-guard",
+      "installation_state": "not_present",
+      "maturity": "candidate",
+      "required": true,
+      "requires": [],
+      "side_effect_class": "reasoning_only",
+      "source_path": "plugins/d-nd-core/skills/source-integrity-interference-guard",
+      "source_ref": "dnd-seed-capabilities",
+      "source_type": "skill",
+      "state": "accepted"
+    },
+    {
+      "activation": "manual",
+      "delivery_mode": "reference",
+      "id": "seed-freshness-protocol",
+      "installation_state": "not_present",
+      "maturity": "candidate",
+      "required": true,
+      "requires": [],
+      "side_effect_class": "reasoning_only",
+      "source_path": "docs/seed_freshness_protocol.md",
+      "source_ref": "dnd-seed-capabilities",
+      "source_type": "doc",
+      "state": "requested_for_review"
+    }
+  ],
+  "catalogs": [
+    {
+      "adoption": "pinned",
+      "freshness": "current",
+      "id": "dnd-seed-capabilities",
+      "registry_path": "capabilities/registry.json",
+      "revision": "4af0beaf482b881ba2b844a698ee9062ca7da17f",
+      "sha256": "402d90290a91f6bfbf73f59c600a76eb9ce0ad4c00889a5a2869065e079d319c",
+      "source_ref": "dnd-seed-capability-registry"
+    },
+    {
+      "adoption": "pinned",
+      "freshness": "current",
+      "id": "dnd-seed-faculties",
+      "registry_path": "plugins/d-nd-core/skills/faculty-router/references/faculty-registry.json",
+      "revision": "4af0beaf482b881ba2b844a698ee9062ca7da17f",
+      "sha256": "2ff586bf92bca897f98409310ca8571fe43c9be4505003b15952181fc0d46afe",
+      "source_ref": "dnd-seed-faculty-registry"
+    }
+  ],
+  "entity_profile_sha256": "343115cdb0788ee8d6764809cbdda1c7e11602519f9ccfe0199d6bfac05fc2bb",
+  "faculty_palette": {
+    "primary": {
+      "effect_class": "reasoning_only",
+      "id": "client-setup-orchestration",
+      "implementation_state": "contract_only",
+      "invocation": "model-invoked",
+      "portability": "portable_method",
+      "public_function": "Convert an ambiguous project request into a transferable setup packet.",
+      "result_contract": "A setup packet with context, sources, requested result, artifacts, gates and handoff receipt.",
+      "source_ref": "dnd-seed-faculties",
+      "state": "accepted"
+    },
+    "router": {
+      "effect_class": "reasoning_only",
+      "id": "faculty-router",
+      "implementation_state": "referenced",
+      "invocation": "router",
+      "portability": "portable_method",
+      "public_function": "Route one primary faculty and bounded support from reviewed public contracts.",
+      "result_contract": "One selected primary faculty, bounded support, explicit gate and receipt.",
+      "source_ref": "dnd-seed-capabilities",
+      "state": "accepted"
+    },
+    "selection_model": "one_primary_plus_bounded_support",
+    "support": [
+      {
+        "effect_class": "reasoning_only",
+        "id": "source-integrity-interference-guard",
+        "implementation_state": "contract_only",
+        "invocation": "model-invoked",
+        "portability": "portable_method",
+        "public_function": "Preserve exact source and expose instruction-layer interference.",
+        "result_contract": "A source-bound interference assessment and owner-gated cleanup proposal.",
+        "source_ref": "dnd-seed-faculties",
+        "state": "accepted"
+      },
+      {
+        "effect_class": "reasoning_only",
+        "id": "meta-skill-routing",
+        "implementation_state": "contract_only",
+        "invocation": "model-invoked",
+        "portability": "adapted_contract",
+        "public_function": "Architect and route faculties, capabilities and receipts.",
+        "result_contract": "A faculty architecture with entity, role, relation, mutation, gate and receipt.",
+        "source_ref": "dnd-seed-faculties",
+        "state": "requested_for_review"
+      }
+    ]
+  },
+  "host_requirements": [
+    {
+      "binding": "discover_at_activation",
+      "capability": "Discover project-local skills and repository instructions.",
+      "id": "skill-discovery",
+      "kind": "runtime",
+      "required": true
+    }
+  ],
+  "install_policy": "host_adapter_review_required",
+  "next_safe_action": "verify catalog hashes, inspect the real host and resolve only the capabilities needed for the first bounded result",
+  "receipt_requirements": [
+    "completed setup state",
+    "reviewed first result",
+    "updated project reentry"
+  ],
+  "schema": "repokernel.capability-binding-plan.v1",
+  "status": "configured_not_bound"
+}

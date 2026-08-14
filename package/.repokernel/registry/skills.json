@@ -1,0 +1,30 @@
+{
+  "schema": "repokernel.skill-registry.v2",
+  "skills": [
+    {
+      "evidence": [
+        ".repokernel/state/CURRENT_STATE.md",
+        ".repokernel/skills/maios-self-configuring-project-semantic-kernel/SKILL.md",
+        ".repokernel/meta/PROJECT_META_FACULTY.json",
+        ".repokernel/entity/BOOTSTRAP.md"
+      ],
+      "id": "maios-self-configuring-project-semantic-kernel",
+      "path": ".repokernel/skills/maios-self-configuring-project-semantic-kernel/SKILL.md",
+      "promotion_target": null,
+      "risk": "low",
+      "side_effect_class": "reasoning_only",
+      "state": "candidate",
+      "supersedes": [],
+      "version": "generated"
+    }
+  ],
+  "states": [
+    "draft",
+    "candidate",
+    "accepted",
+    "promoted",
+    "private",
+    "residue"
+  ],
+  "version": "generated-from-seed"
+}

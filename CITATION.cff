@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If this project supports your work, cite this repository and its exact release."
+title: "MAIOS Project Kernel"
+type: software
+version: 1.3.0
+date-released: 2026-08-14
+authors:
+  - family-names: "Guiducci"
+    given-names: "Graziano"
+repository-code: "https://github.com/GrazianoGuiducci/maios-project-kernel"
+url: "https://maios.it/setup-ai.html"
+license: MIT
+keywords:
+  - agentic AI
+  - Project Kernel
+  - AI workspace
+  - self-configuring AI
+  - Codex
+  - Claude Code
+  - OpenCode

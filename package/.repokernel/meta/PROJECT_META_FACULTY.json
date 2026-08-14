@@ -1,0 +1,194 @@
+{
+  "effect_authority": "none",
+  "extension_rule": "A source-bound material relation outside the current families remains retained_unknown or becomes a reviewed project-local extension; the current profile is not a cognitive ceiling.",
+  "function_families": [
+    {
+      "effect_authority": "none",
+      "entry_section": "Operating Context Protocol",
+      "id": "self-location-and-reentry",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Recover acting context, state provider, active surface, owner, intent and current movement.",
+      "result": "SituatedContext"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Situated Orientation And Possibility Protocol",
+      "id": "source-integrity-and-epistemic-calibration",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Keep claims linked to sources, evidence, uncertainty, freshness, invalidators and recheck conditions.",
+      "result": "EpistemicField"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Situated Orientation And Possibility Protocol",
+      "id": "open-horizon-and-level-shift",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Keep relevant latent relations present and change level when the apparent option set is reductive.",
+      "result": "PossibilityField"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Situated Orientation And Possibility Protocol",
+      "id": "cognitive-aperture-and-limit-classification",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Separate identity invariants, verified limits, effect gates and owner choices from limits introduced by the current framing.",
+      "result": "ApertureDelta"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Source-Bound Difference Protocol",
+      "id": "representation-adequacy-and-non-collapse",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Preserve a material relation when the current schema or vocabulary would distort it.",
+      "result": "RepresentationDisposition"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Project Learning Protocol",
+      "id": "faculty-discovery-composition-and-gap",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Compose available faculties before creating a source-bound local competence candidate for a remaining material gap.",
+      "result": "FacultyComposition"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Learning Granularity Protocol",
+      "id": "competence-evolution-and-granularity",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Place learning at project state, memory, competence, skill, function or meta-invariant level and keep review, version and recheck.",
+      "result": "CompetenceDeltaCandidate"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Resultant And Self-Improvement Evaluation",
+      "id": "resultant-and-consequence-evaluation",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Inspect the actual useful result and resulting states instead of equating artifacts or passing checks with success.",
+      "result": "ResultantEvaluation"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Routine And Noise Protocol",
+      "id": "memory-crystallization-and-causal-continuity",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Preserve only reviewed deltas that change future behavior, proof, recovery or reentry, including decision-changing reasons when needed.",
+      "result": "MemoryDelta"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Recovery And Side-Effect Protocol",
+      "id": "effect-authority-and-recovery",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Classify an exact material effect, verify its owner and gate, and retain validation, receipt and recovery without narrowing cognition.",
+      "result": "EffectDecision"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Project Meta-Faculty Routing",
+      "id": "host-and-capability-reality",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Keep requested, generated, packaged, installed, discovered, active and maintained states distinct.",
+      "result": "CapabilityAttestation"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Delegation And Coordination Protocol",
+      "id": "delegation-coordination-and-supervision",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Transfer the needed resultant and boundaries while leaving interpretation to the receiving competence; route material events without hidden authority.",
+      "result": "CoordinationPacket"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Metaskill Propagation Protocol",
+      "id": "invariant-portability-and-distribution",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Separate a reusable invariant from each owner-native incarnation and gate every material projection independently.",
+      "result": "PortabilityRoute"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Resultant And Self-Improvement Evaluation",
+      "id": "self-improvement-and-independent-evaluation",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Compare accepted baseline and candidate behavior; do not let a candidate approve or promote itself.",
+      "result": "ImprovementComparison"
+    },
+    {
+      "effect_authority": "none",
+      "entry_section": "Routine And Noise Protocol",
+      "id": "operational-attention-and-routine-distillation",
+      "portable_logic_state": "embedded_contract",
+      "purpose": "Keep active attention bounded by the present decision and turn repeated work into a reviewable routine only when useful.",
+      "result": "OperationalDelta"
+    }
+  ],
+  "host_dependent_capabilities": [
+    {
+      "id": "project_file_read",
+      "observed_state": "unverified"
+    },
+    {
+      "id": "project_file_write",
+      "observed_state": "unverified"
+    },
+    {
+      "id": "host_skill_discovery",
+      "observed_state": "unverified"
+    },
+    {
+      "id": "tool_execution",
+      "observed_state": "unverified"
+    },
+    {
+      "id": "network_access",
+      "observed_state": "unverified"
+    },
+    {
+      "id": "external_service_access",
+      "observed_state": "unverified"
+    },
+    {
+      "id": "parallel_or_delegated_agents",
+      "observed_state": "unverified"
+    },
+    {
+      "id": "scheduled_or_background_execution",
+      "observed_state": "unverified"
+    }
+  ],
+  "id": "maios-self-configuring-project-meta-faculty",
+  "invocation": {
+    "entry": ".repokernel/skills/maios-self-configuring-project-semantic-kernel/SKILL.md",
+    "result": "ProjectMetaContext",
+    "triggers": [
+      "first_contact_or_reentry",
+      "unfamiliar_or_ambiguous_work",
+      "material_assumption_or_representation_limit",
+      "faculty_or_competence_gap",
+      "material_effect",
+      "result_or_self_improvement_review",
+      "delegation_or_cross-context_handoff"
+    ]
+  },
+  "non_implications": [
+    "embedded logic is not host discovery",
+    "host discovery is not behavioral activation",
+    "a capability reference is not an installed implementation",
+    "cognitive reach does not grant effect authority",
+    "self-observation does not grant self-approval"
+  ],
+  "open_world": true,
+  "project": "MAIOS Self-Configuring Project",
+  "schema": "repokernel.project-meta-faculty.v1",
+  "status": "embedded_contract_not_host_attested",
+  "verification": [
+    "fresh entry reconstructs intent, evidence, unknowns, faculties and owner",
+    "a framing limit is corrected when it changes the resultant",
+    "an unavailable host capability remains unverified rather than impossible",
+    "a real competence gap produces a falsifiable candidate after composition",
+    "an actual result is compared with the requested result before success",
+    "a later entry resumes from reviewed state without transcript dependence"
+  ],
+  "version": "generated-from-compiler"
+}

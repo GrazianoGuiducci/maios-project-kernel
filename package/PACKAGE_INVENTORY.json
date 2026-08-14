@@ -1,0 +1,275 @@
+{
+  "$schema": "https://maios.it/schemas/package-inventory-v1.json",
+  "product": "MAIOS Self-Configuring Project",
+  "delivery_state": "packaged",
+  "state_role": "immutable_delivery_inventory",
+  "operative_state_source": "setup/CONFIGURATION_STATE.json",
+  "inventory_scope": "all_payload_files_except_self",
+  "excluded_paths": [
+    "PACKAGE_INVENTORY.json"
+  ],
+  "inventoried_file_count": 52,
+  "archive_file_count": 53,
+  "files": [
+    {
+      "path": ".agents/skills/maios-project-faculty-router/SKILL.md",
+      "bytes": 2655,
+      "sha256": "a63d7b37ccdcfa80bae2df6c4c04d18f0258d8c6f31030153f5b1a3212dbda0e"
+    },
+    {
+      "path": ".agents/skills/maios-setup-interviewer/SKILL.md",
+      "bytes": 449,
+      "sha256": "2f78e57fbe7b097e39287ac5c3c4607b64d915b381f042842cb9fd99e5233d9d"
+    },
+    {
+      "path": ".agents/skills/operate-maios-project-kernel/SKILL.md",
+      "bytes": 2889,
+      "sha256": "8845c5efc4d2f6a7cac0733429d3ed25cb974f70ace96312d80cbba14863db47"
+    },
+    {
+      "path": ".claude/skills/maios-project-faculty-router/SKILL.md",
+      "bytes": 2655,
+      "sha256": "a63d7b37ccdcfa80bae2df6c4c04d18f0258d8c6f31030153f5b1a3212dbda0e"
+    },
+    {
+      "path": ".claude/skills/maios-setup-interviewer/SKILL.md",
+      "bytes": 398,
+      "sha256": "dc8fb9741d13a12fb02156d9fd24b5da952768f04cbc92a5da397efd66fcb591"
+    },
+    {
+      "path": ".claude/skills/operate-maios-project-kernel/SKILL.md",
+      "bytes": 2889,
+      "sha256": "8845c5efc4d2f6a7cac0733429d3ed25cb974f70ace96312d80cbba14863db47"
+    },
+    {
+      "path": ".opencode/skills/maios-project-faculty-router/SKILL.md",
+      "bytes": 2655,
+      "sha256": "a63d7b37ccdcfa80bae2df6c4c04d18f0258d8c6f31030153f5b1a3212dbda0e"
+    },
+    {
+      "path": ".opencode/skills/maios-setup-interviewer/SKILL.md",
+      "bytes": 395,
+      "sha256": "2bac872af939e3f8d3a1bf06679f49601cd787ed63d6656b9a1341054dc64239"
+    },
+    {
+      "path": ".opencode/skills/operate-maios-project-kernel/SKILL.md",
+      "bytes": 2889,
+      "sha256": "8845c5efc4d2f6a7cac0733429d3ed25cb974f70ace96312d80cbba14863db47"
+    },
+    {
+      "path": ".repokernel/clarity/README.md",
+      "bytes": 745,
+      "sha256": "7221c6ab0a178c778aa2d4cff22f41cc4698cc7ae9bf224995849b178230809b"
+    },
+    {
+      "path": ".repokernel/deltas/README.md",
+      "bytes": 604,
+      "sha256": "21b8d0e69d0b2d0f9d73fd813924a9e246bc2d999c510acd3b3ba109f4afe1e8"
+    },
+    {
+      "path": ".repokernel/entity/BOOTSTRAP.md",
+      "bytes": 4649,
+      "sha256": "1055ba20dc3d84dd95441dde5c2495c0d82879b65c623da1fbed7c8e9de26f14"
+    },
+    {
+      "path": ".repokernel/entity/CAPABILITY_BINDING_PLAN.json",
+      "bytes": 5073,
+      "sha256": "29e47e03655cfcfcc84a996e253112e52760904bc5913b1159ae042626609db8"
+    },
+    {
+      "path": ".repokernel/entity/ENTITY_PROFILE.json",
+      "bytes": 5242,
+      "sha256": "e04991dc27f0c0a5799ccc4288168405cc099f72dd87744631c3480cf0d08325"
+    },
+    {
+      "path": ".repokernel/entity/HOST_CAPABILITY_ATTESTATION.json",
+      "bytes": 1955,
+      "sha256": "0fe6434eba6db8eb5baf4110fd41e3edf88393eb6d57be19b9c8013fae6f1ceb"
+    },
+    {
+      "path": ".repokernel/evidence/README.md",
+      "bytes": 163,
+      "sha256": "f6aedf2bfe62abebc3d34c63d6a65a095f0a15755d5c2de63a818da2a1437a69"
+    },
+    {
+      "path": ".repokernel/manifest.json",
+      "bytes": 69,
+      "sha256": "e2e0353476f198e042d41164acce4fd430347f267cf9cb8932aa5e95f1c77d59"
+    },
+    {
+      "path": ".repokernel/meta/PROJECT_META_FACULTY.json",
+      "bytes": 8239,
+      "sha256": "fdb5c8964484d0408e32a3dacea92a3ddfd936bacd9a046cb7f8545b4e7150cd"
+    },
+    {
+      "path": ".repokernel/operations/README.md",
+      "bytes": 1013,
+      "sha256": "3d6fb6ab078b1c093a35308eae0b2fbf5c50e01baf10b4602291ba3113f5235c"
+    },
+    {
+      "path": ".repokernel/packets/FIRST_PACKET.md",
+      "bytes": 1046,
+      "sha256": "e84fd0e5f40c5ec706907108505059db7a8d08c98115e110587a0f24eef86b0f"
+    },
+    {
+      "path": ".repokernel/registry/skills.json",
+      "bytes": 814,
+      "sha256": "c298ec32a8a99403fb5ab1a9cea61e4fe645c6331c006f033ce46008087dae31"
+    },
+    {
+      "path": ".repokernel/skills/maios-self-configuring-project-semantic-kernel/SKILL.md",
+      "bytes": 11431,
+      "sha256": "586ff7bd7f1a99d760eb64fa54e354a6d8602804d21b79013fe9e9812e78a214"
+    },
+    {
+      "path": ".repokernel/sources/SOURCE_ATLAS.md",
+      "bytes": 340,
+      "sha256": "99dcc490f1e62906b61ccd2b5265d74ad436e6baf0f110155933b6abf0db4232"
+    },
+    {
+      "path": ".repokernel/state/CURRENT_STATE.md",
+      "bytes": 1271,
+      "sha256": "ebc18a2161c9961b1a27760393f3d847e60b0aa713353b6bf11b85bbd2c775cd"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 2885,
+      "sha256": "d16c020ff1ded03c81d15aff64ca992987c040d113eb75567666f106cf33d085"
+    },
+    {
+      "path": "assistant/STARTUP_INTERVIEW.md",
+      "bytes": 1340,
+      "sha256": "05d641a3b63f2013230550ccc2a95b55ea92c1916b90cbe4246e557b635b1d42"
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 548,
+      "sha256": "b60aa33c58040990eccd590077c297a3fec7a3f638f63a1a0f251b928bd8ec81"
+    },
+    {
+      "path": "CODEX_SETUP.md",
+      "bytes": 792,
+      "sha256": "b1af3a94fa1806aa4b87238194ae3307747df1661a4803ff69282d70f56b918a"
+    },
+    {
+      "path": "COMPONENT_MATRIX.json",
+      "bytes": 1801,
+      "sha256": "e78a44cdc58ca0f1b9851bdf5b90a4a19733f722fa4e4d9f4a252dc0642f9701"
+    },
+    {
+      "path": "HERMES_SETUP.md",
+      "bytes": 542,
+      "sha256": "c8aa31caa713e5be464e2585ec9769529f01dc71176c8d8b0441d654eb0cf9cf"
+    },
+    {
+      "path": "HOST_ADAPTERS.json",
+      "bytes": 1860,
+      "sha256": "0574090d0ebf8aa81c80b88ba77a44ef2c7f315d42262b7b379d8d507c47bfd2"
+    },
+    {
+      "path": "kernel/AXIOMATIC_RESULTANT_KERNEL.md",
+      "bytes": 1047,
+      "sha256": "87be1dbc5e09dde04a8ea78d1fce03b089deddf94a8e12162c37c555f4398d04"
+    },
+    {
+      "path": "kernel/MAIOS_START_KERNEL.md",
+      "bytes": 4439,
+      "sha256": "ca8ab9b79fb1fc78998c3623c605377bb2211fb1d3cc2bd1d3d8cd3248ef8347"
+    },
+    {
+      "path": "kernel/PROJECT_EVOLUTION_CONTRACT.json",
+      "bytes": 4996,
+      "sha256": "052efecabc80c6af930279521ca2c81a248f743068dbf941044751626d124053"
+    },
+    {
+      "path": "MANIFEST.json",
+      "bytes": 2748,
+      "sha256": "8b1fda760fb2652c42007f758e53fe592f8c57931d9e879d2421031b036a64d8"
+    },
+    {
+      "path": "meta-competences/ORIENT_AND_EVOLVE.md",
+      "bytes": 1838,
+      "sha256": "701cd8ee40fd294d16a232aebc9874f5557004e3ad900709e4905596954e2552"
+    },
+    {
+      "path": "OPENCODE_SETUP.md",
+      "bytes": 489,
+      "sha256": "46989d022c7b970e03b32d4727729cec7cfc53d7b93bf366f1bf531b4a6aa1fc"
+    },
+    {
+      "path": "project/CURRENT_STATE.md",
+      "bytes": 1529,
+      "sha256": "963c4e539659bfc8623ec58f65b56f3e8129a8d963745d4b706cf4a56f1ae36b"
+    },
+    {
+      "path": "project/PROJECT_BRIEF.md",
+      "bytes": 1227,
+      "sha256": "cea98a5934fd8852f23d7ac92800d7699ae12464c20cf6fe1235a51742d9f218"
+    },
+    {
+      "path": "README.md",
+      "bytes": 549,
+      "sha256": "ad6d6878d4dd32aebc1fef1ecc56ba7eea60203540802d32a81734a8722d628a"
+    },
+    {
+      "path": "receipts/host-activation/chatgpt_codex.json",
+      "bytes": 247,
+      "sha256": "78b3df02b545cac1d7ff63b88837fd76222b2820adb7a87442e1961ed8ee19e4"
+    },
+    {
+      "path": "receipts/host-activation/claude_code.json",
+      "bytes": 245,
+      "sha256": "bc901b5deb857a2ca7f159b1538186613a701fb1cc7bffcabe4ecf231b1a87a0"
+    },
+    {
+      "path": "receipts/host-activation/hermes.json",
+      "bytes": 251,
+      "sha256": "615f687cbb1b20b91cfeba1cf8f6915c2489d375ae83d3992e59a8dbdce68d99"
+    },
+    {
+      "path": "receipts/host-activation/opencode.json",
+      "bytes": 242,
+      "sha256": "f5ed385fc730e934e6108f53f2e773d37eb6f2f79e6a29dfe8530e52cf29dce0"
+    },
+    {
+      "path": "setup/CONFIGURATION_STATE.json",
+      "bytes": 4278,
+      "sha256": "b187ea1367596826835cfb70e9e8198509a1a9cc0ccc3c96062938a7f174a1da"
+    },
+    {
+      "path": "setup/MAIOS_SETUP_CONTRACT.md",
+      "bytes": 7084,
+      "sha256": "2baf909922b38e25c30d27b9ce4636bae956233cc2fc9c84849d12da97bb5c9d"
+    },
+    {
+      "path": "setup/STARTUP_INTERVIEW.md",
+      "bytes": 7762,
+      "sha256": "1896ee9c28a5908571aec00d8e6f067057541f31be44d7b9759e399318aab6fe"
+    },
+    {
+      "path": "skills/maios-project-faculty-router/SKILL.md",
+      "bytes": 2655,
+      "sha256": "a63d7b37ccdcfa80bae2df6c4c04d18f0258d8c6f31030153f5b1a3212dbda0e"
+    },
+    {
+      "path": "skills/maios-setup-interviewer/SKILL.md",
+      "bytes": 4719,
+      "sha256": "14ca0f07fa67147ba8853a850bec88276fcc418c549d81526f133dfa9db62a19"
+    },
+    {
+      "path": "skills/operate-maios-project-kernel/SKILL.md",
+      "bytes": 2889,
+      "sha256": "8845c5efc4d2f6a7cac0733429d3ed25cb974f70ace96312d80cbba14863db47"
+    },
+    {
+      "path": "START_HERE.md",
+      "bytes": 3007,
+      "sha256": "3aff884760e6e6adff362c2f2d8898d0ae90513b23c72bb83fad3885a47ec6f0"
+    },
+    {
+      "path": "START_WITH_YOUR_ASSISTANT.txt",
+      "bytes": 923,
+      "sha256": "10dc71fcc538ed950567a8e25a730e64059304d7f86407fed60a651208fda044"
+    }
+  ]
+}
