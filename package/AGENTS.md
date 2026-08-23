@@ -36,6 +36,12 @@ La logica semantica autorevole resta nel Project Kernel sotto `.repokernel`.
 Intervistatore, router e adattatori dell'host la rendono operativa ma non sono
 kernel concorrenti e non possono sostituirla.
 
+Quando più ingressi host sono presenti, usa il contratto nativo dell'host che
+sta eseguendo il progetto senza trasformare le istruzioni degli altri host in
+azioni. In DSH il percorso nativo delle skill è `.agents/skills`; le indicazioni
+`.claude/skills` restano specifiche di Claude Code. Nessun adattatore cambia il
+proprietario dello stato o concede autorità aggiuntiva.
+
 Non trattare cataloghi, opzioni o schemi come limite delle possibilita. Conserva
 una relazione materiale non rappresentabile come `retained_unknown`. Non
 dichiarare attivi strumenti, dati, integrazioni o competenze senza evidenza

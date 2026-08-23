@@ -9,10 +9,12 @@ primo risultato utile.
 
 1. Crea una cartella nuova e vuota con il nome del progetto.
 2. Estrai tutto il contenuto dello ZIP dentro quella cartella.
-3. In Codex scegli **Apri cartella** e seleziona la cartella appena creata.
+3. Apri la cartella appena creata nell'host scelto. Per DSH segui
+   `DSH_SETUP.md`; per Codex segui `CODEX_SETUP.md`; per gli altri host usa la
+   relativa guida indicata in `HOST_ADAPTERS.json`.
 4. Scrivi: `Leggi START_HERE.md e iniziamo la configurazione.`
 
-Codex osserva la cartella, ti restituisce ciò che ha compreso e comincia con
+L'assistente osserva la cartella, ti restituisce ciò che ha compreso e comincia con
 la sola domanda che serve per orientare il progetto. Se non sai ancora cosa
 costruire, descrivi semplicemente il lavoro, il problema o il risultato che ti
 interessa: sarà l'assistente a proporre un primo punto di partenza correggibile.
@@ -29,7 +31,9 @@ esistente: l'integrazione in un progetto esistente richiede un percorso di
 merge separato.
 
 Le istruzioni specifiche per Codex sono in `CODEX_SETUP.md`. Sono presenti
-anche ingressi equivalenti per Claude Code, OpenCode e Hermes. Se un assistente
+anche ingressi equivalenti per Claude Code, OpenCode, Hermes e DeepSeek Harness
+(`DSH_SETUP.md`). In DSH la cartella estratta deve essere il project root
+effettivo, non una sottocartella di un repository padre. Se un assistente
 non legge automaticamente la cartella, incolla il testo di
 `START_WITH_YOUR_ASSISTANT.txt`.
 

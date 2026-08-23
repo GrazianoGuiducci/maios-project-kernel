@@ -6,13 +6,13 @@ The public repository imports the exact published package archive from:
 
 ```text
 source owner: MAIOS product source
-source state: committed release snapshot
-source revision: 7bbc167e4953c133adc1cecb056c88f93f263643
-package version: 1.4.0
-source archive SHA-256: 6989862fe521d58958588079f7af5e97e276bf976e31714193aceab52ea68234
+source state: committed local release candidate; publication pending
+source revision: d5599a6442c4cfdfb6ac50be252305b955ee8ff9
+package version: 1.5.0
+source archive SHA-256: 720480a7e4d56b4c182c10705ce0de6786a593666a4433ba1c07c582cbb1e9d5
 ```
 
-The imported payload contains 64 files and matches the committed source archive
+The imported payload contains 66 files and matches the prepared source archive
 member-for-member and byte-for-byte. It excludes uncommitted workspace files.
 The bounded compiler inputs used during generation are retained outside the
 installable payload as `docs/source-manifest.json` and
@@ -37,4 +37,4 @@ same SHA-256.
 
 Because the GitHub release asset adds `LICENSE` and
 `THIRD_PARTY_NOTICES.md`, its checksum is intentionally different from the
-64-member source archive checksum above.
+66-member source archive checksum above.

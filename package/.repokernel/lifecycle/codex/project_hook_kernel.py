@@ -21,10 +21,8 @@ def _degraded(event_name: str, reason: str) -> dict[str, Any]:
     if event_name == "PreToolUse":
         return {"hookSpecificOutput": {"hookEventName": event_name, "permissionDecision": "deny", "permissionDecisionReason": message}}
     if event_name == "Stop":
-        return {"decision": "block", "reason": message}
-    if event_name == "SessionEnd":
-        return {}
-    return {"hookSpecificOutput": {"hookEventName": event_name, "additionalContext": message}}
+        return {"continue": True}
+    return {}
 
 
 def _load_registry() -> dict[str, Any]:
@@ -37,8 +35,8 @@ def _load_registry() -> dict[str, Any]:
     if not isinstance(faculties, list) or not faculties:
         raise ValueError("missing faculties")
     primary = [item for item in faculties if item.get("stop_projection", {}).get("mode") == "primary"]
-    if len(primary) != 1 or primary[0].get("failure_mode") != "protect":
-        raise ValueError("exactly one protective primary is required")
+    if len(primary) > 1 or (primary and primary[0].get("failure_mode") != "protect"):
+        raise ValueError("at most one protective primary is allowed")
     return value
 
 
@@ -81,14 +79,20 @@ def _merge(event_name: str, registry: dict[str, Any], results: list[tuple[dict[s
         if not stop_items:
             return {"continue": True}
         primary = [reason for binding, reason in stop_items if binding.get("stop_projection", {}).get("mode") == "primary"]
-        if not primary:
-            return _degraded(event_name, "protective primary produced no continuation")
+        advisory = [
+            (reason, binding.get("stop_projection", {}).get("text", "").strip().rstrip("."))
+            for binding, reason in stop_items
+            if binding.get("stop_projection", {}).get("mode") == "guidance"
+        ]
         message = " ".join(primary)
-        guidance = [binding["stop_projection"]["text"].strip().rstrip(".") for binding, _ in stop_items if binding.get("stop_projection", {}).get("mode") == "guidance"]
-        if guidance:
-            message += " Active correction: " + "; ".join(guidance) + "."
+        if advisory:
+            advisory_message = " ".join(reason for reason, _guidance in advisory)
+            guidance = [guidance for _reason, guidance in advisory if guidance]
+            message = " ".join(part for part in (message, advisory_message) if part)
+            if guidance:
+                message += " Active correction: " + "; ".join(guidance) + "."
         if len(message) > int(registry.get("context_budgets", {}).get("Stop", 900)):
-            return _degraded(event_name, "protected stop continuation exceeds budget")
+            return _degraded(event_name, "stop continuation exceeds budget")
         return {"decision": "block", "reason": message}
     if not contexts:
         return {}

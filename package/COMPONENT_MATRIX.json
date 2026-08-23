@@ -47,6 +47,14 @@
       "entry": "HOST_ADAPTERS.json"
     },
     {
+      "id": "dsh_host_adapter",
+      "source": "MAIOS package supplement derived from the DSH owner-native contract; host behavior pending",
+      "state": "packaged_host_activation_pending",
+      "state_role": "external_host_projection_not_kernel_owner",
+      "entry": "DSH_SETUP.md",
+      "receipt": "receipts/host-activation/dsh.json"
+    },
+    {
       "id": "project_configuration",
       "source": "startup interview",
       "state": "pending",

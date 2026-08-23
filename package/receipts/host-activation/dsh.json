@@ -1,0 +1,22 @@
+{
+  "host": "dsh",
+  "status": "pending_host_open",
+  "verified_baseline": "0.1.1-rc.1",
+  "evidence_required": [
+    "extracted directory is the effective DSH project root",
+    "AGENTS.md instructions discovered",
+    "three MAIOS skills discovered from .agents/skills",
+    "Project Kernel exercised in an observable result",
+    "fresh session resumes from project state"
+  ],
+  "evidence_states": {
+    "packaged": "verified_by_package_inventory",
+    "opened": "unverified",
+    "instructions_discovered": "unverified",
+    "skills_discovered": "unverified",
+    "kernel_composed": "unverified",
+    "exercised": "unverified",
+    "maintained": "unverified"
+  },
+  "update_when": "a fresh DSH project session demonstrates each promoted condition separately"
+}

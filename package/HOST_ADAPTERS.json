@@ -41,6 +41,25 @@
       "skill": "skills/maios-setup-interviewer/SKILL.md",
       "faculty_skill": "skills/maios-project-faculty-router/SKILL.md",
       "receipt": "receipts/host-activation/hermes.json"
+    },
+    {
+      "id": "dsh",
+      "label": "DeepSeek Harness (DSH)",
+      "entry": "AGENTS.md",
+      "guide": "DSH_SETUP.md",
+      "project_meta_skill": ".agents/skills/operate-maios-project-kernel/SKILL.md",
+      "skill": ".agents/skills/maios-setup-interviewer/SKILL.md",
+      "faculty_skill": ".agents/skills/maios-project-faculty-router/SKILL.md",
+      "receipt": "receipts/host-activation/dsh.json",
+      "native_contract": {
+        "instruction_candidates": ["AGENTS.md", "CLAUDE.md"],
+        "skill_root": ".agents/skills",
+        "project_root_requirement": "extracted_directory_is_effective_dsh_project_root",
+        "compatible_presets": ["standard", "code", "cordis"],
+        "unsupported_for_skill_discovery": ["minimal"],
+        "requires_global_configuration": false,
+        "requires_projection_plugin": false
+      }
     }
   ]
 }

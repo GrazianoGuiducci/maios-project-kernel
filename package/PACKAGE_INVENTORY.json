@@ -8,8 +8,8 @@
   "excluded_paths": [
     "PACKAGE_INVENTORY.json"
   ],
-  "inventoried_file_count": 63,
-  "archive_file_count": 64,
+  "inventoried_file_count": 65,
+  "archive_file_count": 66,
   "files": [
     {
       "path": ".agents/skills/maios-project-faculty-router/SKILL.md",
@@ -18,8 +18,8 @@
     },
     {
       "path": ".agents/skills/maios-setup-interviewer/SKILL.md",
-      "bytes": 449,
-      "sha256": "2f78e57fbe7b097e39287ac5c3c4607b64d915b381f042842cb9fd99e5233d9d"
+      "bytes": 455,
+      "sha256": "0d36e6e8b594a05d7eeaf48d55e1fee697e3cc28c3ee5b1452f92bb93f7eeb77"
     },
     {
       "path": ".agents/skills/operate-maios-project-kernel/SKILL.md",
@@ -103,8 +103,8 @@
     },
     {
       "path": ".repokernel/lifecycle/codex/faculties/source_bound_resultant.py",
-      "bytes": 5747,
-      "sha256": "f9e5355d565d4eba704c1f81b61d882437ac7d1b7f828f896f23b2e9803e10a8"
+      "bytes": 3403,
+      "sha256": "80f9a5a206bd448dfe3e44e8475b8daf8da94f300046eab701a90e91cabb874a"
     },
     {
       "path": ".repokernel/lifecycle/codex/hooks.json",
@@ -113,13 +113,13 @@
     },
     {
       "path": ".repokernel/lifecycle/codex/project_hook_faculties.v1.json",
-      "bytes": 1543,
-      "sha256": "8abb1e750c38b2c0fff55178606cb0806e5a735bc59e63668f4d24e46a1e9d9a"
+      "bytes": 1465,
+      "sha256": "272a2195de7b9ec19f19fbad2a0535ed77d71895806c559bfa6d3b3054e1f8e3"
     },
     {
       "path": ".repokernel/lifecycle/codex/project_hook_kernel.py",
-      "bytes": 6884,
-      "sha256": "2f153823372e4f686df13ca2953fcffee870feea4e4487a6885f6950ed5cb23a"
+      "bytes": 6971,
+      "sha256": "ddb47b3fe1c310a5bccb85993692fc8a4478e6748d8944ae1c4a78a27f9e8e17"
     },
     {
       "path": ".repokernel/lifecycle/INSTALL.md",
@@ -139,7 +139,7 @@
     {
       "path": ".repokernel/lifecycle/MANIFEST.json",
       "bytes": 2624,
-      "sha256": "207f7a62ead7da0c9281a22232989bc2ca705248748b2e5ef37e2393aa7faf31"
+      "sha256": "9282aa554a7668945e52e6c0c39fdb340922d7134467dcfb1edb2d9393c54450"
     },
     {
       "path": ".repokernel/lifecycle/PROFILE.json",
@@ -188,8 +188,8 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 2885,
-      "sha256": "d16c020ff1ded03c81d15aff64ca992987c040d113eb75567666f106cf33d085"
+      "bytes": 3262,
+      "sha256": "fc7cf4641bec026ada50769e70425d44e248e7a9e15010af115ae8562fc48b32"
     },
     {
       "path": "assistant/STARTUP_INTERVIEW.md",
@@ -198,8 +198,8 @@
     },
     {
       "path": "CLAUDE.md",
-      "bytes": 548,
-      "sha256": "b60aa33c58040990eccd590077c297a3fec7a3f638f63a1a0f251b928bd8ec81"
+      "bytes": 775,
+      "sha256": "957c29f66dc27fb610e27978e94f9d8ca0a592db8c71062712e86ae6d38bd085"
     },
     {
       "path": "CODEX_SETUP.md",
@@ -208,8 +208,13 @@
     },
     {
       "path": "COMPONENT_MATRIX.json",
-      "bytes": 1801,
-      "sha256": "e78a44cdc58ca0f1b9851bdf5b90a4a19733f722fa4e4d9f4a252dc0642f9701"
+      "bytes": 2156,
+      "sha256": "d6352a8db08eae2051d0c0b1b32fde273e1ec81ab8fd25e0df028b155672e3c8"
+    },
+    {
+      "path": "DSH_SETUP.md",
+      "bytes": 2574,
+      "sha256": "956c4ea1c4421a83d3cebd1bfe9176ba0ed255390c005acd33cc7184482fea91"
     },
     {
       "path": "HERMES_SETUP.md",
@@ -218,8 +223,8 @@
     },
     {
       "path": "HOST_ADAPTERS.json",
-      "bytes": 1860,
-      "sha256": "0574090d0ebf8aa81c80b88ba77a44ef2c7f315d42262b7b379d8d507c47bfd2"
+      "bytes": 2711,
+      "sha256": "f04750bd6263661f5278538045a19d81304c2c0873df7ed2379c0fe009102287"
     },
     {
       "path": "kernel/AXIOMATIC_RESULTANT_KERNEL.md",
@@ -238,8 +243,8 @@
     },
     {
       "path": "MANIFEST.json",
-      "bytes": 3282,
-      "sha256": "f151912711e701d207407971151754a96ac28ab777317107b355fb8361df9295"
+      "bytes": 3343,
+      "sha256": "71edf5632850b98280cb1e68a49d864f5eb1b8bacbb948bd9b126dcf69ab919d"
     },
     {
       "path": "meta-competences/ORIENT_AND_EVOLVE.md",
@@ -275,6 +280,11 @@
       "path": "receipts/host-activation/claude_code.json",
       "bytes": 245,
       "sha256": "bc901b5deb857a2ca7f159b1538186613a701fb1cc7bffcabe4ecf231b1a87a0"
+    },
+    {
+      "path": "receipts/host-activation/dsh.json",
+      "bytes": 766,
+      "sha256": "d68fec8728aca0b05abe93a40f9513913d0c83bb71659158aede49992cad8fd4"
     },
     {
       "path": "receipts/host-activation/hermes.json",
@@ -318,8 +328,8 @@
     },
     {
       "path": "START_HERE.md",
-      "bytes": 3722,
-      "sha256": "25e2cbaf5e202fbf736a8b90d40236a78c526b43ba7dc4b64ecd80924c7dd8b5"
+      "bytes": 3998,
+      "sha256": "2ca7b8a1814c5bd06a72bf7148d3427586fff1279061d5c436663e7490b2c8b6"
     },
     {
       "path": "START_WITH_YOUR_ASSISTANT.txt",

@@ -1,5 +1,9 @@
 # Ingresso Claude Code
 
+Questa proiezione e i percorsi `.claude/skills` si applicano quando l'host
+effettivo è Claude Code. Altri host che leggono questo file devono continuare
+dal contratto condiviso `AGENTS.md` e usare il proprio percorso nativo.
+
 Leggi `AGENTS.md` e `START_HERE.md`. La skill di configurazione è disponibile
 in `.claude/skills/maios-setup-interviewer/SKILL.md`.
 L'ingresso alla meta-facolta del Project Kernel e

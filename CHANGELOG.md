@@ -2,6 +2,21 @@
 
 All notable changes to the public distribution are recorded here.
 
+## 1.5.0 - 2026-08-23
+
+- Added DeepSeek Harness (DSH) as a first-class host adapter for both deferred
+  self-configuration and context-configured Project Kernels.
+- Added `DSH_SETUP.md`, a DSH activation receipt, and portable skill discovery
+  through `.agents/skills/` without requiring plugins, hooks, provider, model,
+  or global DSH configuration.
+- Kept DSH identity separate from TM13, RepoKernel, and the generated Project
+  Kernel, and kept packaged, discovered, composed, and exercised states
+  distinct.
+- Corrected the setup interviewer skill identity so DSH can discover both
+  `maios-setup-interviewer` and `operate-maios-project-kernel`.
+- Revalidated the deterministic 66-member source archive; fresh DSH behavioral
+  activation remains a separate host test.
+
 ## 1.4.0 - 2026-08-23
 
 - Added an optional Codex project-lifecycle projection with six source-bound

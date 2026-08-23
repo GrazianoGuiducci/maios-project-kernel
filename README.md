@@ -55,7 +55,8 @@ evolve without losing the reasons behind decisions.
 - a meta-faculty that selects and composes relevant capabilities;
 - an evolution contract that distinguishes case memory, competence, skill,
   function, and meta-evolution;
-- entries and guides for Codex, Claude Code, OpenCode, and Hermes;
+- entries and guides for Codex, Claude Code, OpenCode, Hermes, and DeepSeek
+  Harness (DSH);
 - an optional, conflict-aware Codex lifecycle projection, packaged but not
   installed or activated;
 - initial receipts that distinguish included assets from capabilities actually
@@ -67,12 +68,12 @@ claims.
 
 ## Recent evolution
 
-Version `1.4.0` adds an optional Codex lifecycle projection with preflight,
-conflict refusal, explicit installation, a receipt, and bounded removal. The
-Project Kernel remains complete without hooks, and the projection is not
-active until it has been installed by the project owner and verified in a
-fresh host session. The `1.3.0` series composed the Project Kernel, project
-meta-faculty, and typed evolution contract into the package.
+Version `1.5.0` adds a host-native DSH projection: the extracted folder is the
+DSH project root, `AGENTS.md` is the entry, and portable skills remain under
+`.agents/skills/`. No DSH plugin, provider, model, hook, or global configuration
+is required. The DSH adapter is packaged but still requires a fresh-host test
+before behavioral activation is claimed. The optional Codex lifecycle
+projection introduced in `1.4.0` remains independently opt-in.
 
 See [`CHANGELOG.md`](CHANGELOG.md) for the complete, evidence-based history.
 
@@ -120,8 +121,9 @@ SHA-256 checksum. Release provenance is documented in
 
 ## Current status
 
-- Package version: `1.4.0`
+- Package version: `1.5.0`
 - Optional Codex lifecycle projection: packaged, not installed
+- DSH host adapter: packaged; fresh-host behavior not yet attested
 - Mode: deferred configuration through a startup interview
 - Target: new folder / new repository
 - Existing-repository installation: not supported in this release

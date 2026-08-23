@@ -56,7 +56,8 @@ decisioni.
 - una meta-facoltà che seleziona e compone le capacità pertinenti;
 - un contratto evolutivo che distingue memoria di caso, competenza, skill,
   funzione e meta-evoluzione;
-- ingressi e guide per Codex, Claude Code, OpenCode e Hermes;
+- ingressi e guide per Codex, Claude Code, OpenCode, Hermes e DeepSeek
+  Harness (DSH);
 - una proiezione lifecycle opzionale per Codex, con controllo dei conflitti,
   inclusa ma non installata né attivata;
 - ricevute iniziali che distinguono ciò che è incluso da ciò che è stato
@@ -68,13 +69,13 @@ versione dell'host. Le condizioni correnti sono descritte in
 
 ## Evoluzione recente
 
-La versione `1.4.0` aggiunge una proiezione lifecycle opzionale per Codex con
-controllo preliminare, rifiuto dei conflitti, installazione esplicita, ricevuta
-e rimozione circoscritta. Il Project Kernel resta completo senza hook; la
-proiezione non è attiva finché il proprietario del progetto non la installa e
-la verifica in una nuova sessione dell'host. La serie `1.3.0` aveva composto
-nel pacchetto il Project Kernel, la meta-facoltà di progetto e il contratto
-evolutivo tipizzato.
+La versione `1.5.0` aggiunge una proiezione nativa per DSH: la cartella estratta
+è il project root DSH, `AGENTS.md` è l'ingresso e le skill portabili restano in
+`.agents/skills/`. Non richiede plugin, provider, modello, hook o configurazione
+globale DSH. L'adattatore è incluso, ma una prova su un host DSH appena avviato
+resta necessaria prima di dichiararne l'attivazione comportamentale. La
+proiezione lifecycle Codex introdotta nella versione `1.4.0` rimane opzionale e
+indipendente.
 
 La cronologia completa e verificabile è in [`CHANGELOG.md`](CHANGELOG.md).
 
@@ -125,8 +126,9 @@ SHA-256. La provenienza della release è documentata in
 
 ## Stato del progetto
 
-- Versione del pacchetto: `1.4.0`
+- Versione del pacchetto: `1.5.0`
 - Proiezione lifecycle opzionale per Codex: inclusa, non installata
+- Adattatore host DSH: incluso; comportamento su host nuovo non ancora attestato
 - Modalità: configurazione differita tramite intervista iniziale
 - Target: nuova cartella / nuovo repository
 - Installazione in repository esistenti: non supportata in questa release

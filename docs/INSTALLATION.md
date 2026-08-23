@@ -12,7 +12,7 @@
 On PowerShell, a downloaded archive can be checked with:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 .\maios-project-kernel-setup-v1.4.0.zip
+Get-FileHash -Algorithm SHA256 .\maios-project-kernel-setup-v1.5.0.zip
 ```
 
 ## Cloning this repository
@@ -31,9 +31,9 @@ produce a reviewable plan before mutation.
 
 ## Optional Codex lifecycle projection
 
-The Project Kernel works without hooks. Version `1.4.0` also packages an
-optional Codex projection. From the accepted project root, inspect it before
-any write:
+The Project Kernel works without hooks. Version `1.5.0` also packages the
+optional Codex projection introduced in `1.4.0`. From the accepted project
+root, inspect it before any write:
 
 ```powershell
 python .repokernel/lifecycle/install.py --project-root . --check

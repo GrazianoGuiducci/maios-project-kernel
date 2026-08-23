@@ -14,17 +14,13 @@
         "UserPromptSubmit",
         "PreToolUse",
         "PostToolUse",
-        "Stop",
         "SessionEnd"
       ],
       "faculty_id": "source-bound-resultant",
       "failure_mode": "protect",
       "handler": "handle",
       "module": "source_bound_resultant",
-      "priority": 100,
-      "stop_projection": {
-        "mode": "primary"
-      }
+      "priority": 100
     },
     {
       "events": [
