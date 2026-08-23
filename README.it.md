@@ -1,7 +1,5 @@
 # MAIOS Project Kernel
 
-> Bozza generata dal sistema il 23 agosto 2026. **Non ancora revisionata.**
-
 [English version](README.md)
 
 MAIOS Project Kernel è un pacchetto autoconfigurante per iniziare un nuovo
@@ -59,12 +57,9 @@ decisioni.
 - ingressi e guide per Codex, Claude Code, OpenCode, Hermes e DeepSeek
   Harness (DSH);
 - una proiezione lifecycle opzionale per Codex, con controllo dei conflitti,
-  inclusa ma non installata né attivata;
-- ricevute iniziali che distinguono ciò che è incluso da ciò che è stato
-  realmente rilevato e attivato sull'host.
+  inclusa ma non installata né attivata.
 
-La presenza di una guida non equivale a compatibilità già provata in ogni
-versione dell'host. Le condizioni correnti sono descritte in
+Gli ingressi specifici per ogni ambiente sono riepilogati in
 [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md).
 
 ## Evoluzione recente
@@ -72,67 +67,18 @@ versione dell'host. Le condizioni correnti sono descritte in
 La versione `1.5.0` aggiunge una proiezione nativa per DSH: la cartella estratta
 è il project root DSH, `AGENTS.md` è l'ingresso e le skill portabili restano in
 `.agents/skills/`. Non richiede plugin, provider, modello, hook o configurazione
-globale DSH. L'adattatore è incluso, ma una prova su un host DSH appena avviato
-resta necessaria prima di dichiararne l'attivazione comportamentale. La
-proiezione lifecycle Codex introdotta nella versione `1.4.0` rimane opzionale e
-indipendente.
+globale DSH. La proiezione lifecycle Codex introdotta nella versione `1.4.0`
+rimane opzionale e indipendente.
 
-La cronologia completa e verificabile è in [`CHANGELOG.md`](CHANGELOG.md).
-
-## Project Kernel e RepoKernel non sono la stessa cosa
-
-**RepoKernel** è il metakernel generativo privato che compila strutture di
-progetto. **MAIOS Project Kernel** è il risultato distribuibile: il progetto lo
-riceve, lo usa, lo possiede e può farlo evolvere.
-
-Questa repository non contiene né concede in licenza il sorgente di RepoKernel.
-Contiene il Project Kernel generato, i suoi adattatori, le facoltà locali e la
-documentazione necessaria per usarlo. La separazione completa è descritta in
-[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
-
-## Stati che non vanno confusi
-
-```text
-generato -> incluso nel pacchetto
-scaricato -> acquisito dalla persona
-estratto -> presente nella nuova cartella
-configurato -> specificato insieme alla persona
-rilevato -> visto dall'assistente o dall'host
-attivato -> provato nel contesto reale
-```
-
-Uno stato non implica automaticamente il successivo. Questa distinzione evita
-che la sola presenza dei file venga scambiata per una capacità operativa già
-verificata.
-
-## Privacy e autorità
-
-La configurazione è locale al progetto. Il pacchetto non installa servizi, non
-invia dati, non pubblica contenuti e non abilita integrazioni esterne da solo.
-Ogni effetto esterno resta soggetto all'autorizzazione richiesta dall'ambiente
-e dalla persona.
-
-## Verifica e sviluppo
-
-```powershell
-python tools/verify_distribution.py
-python tools/build_release.py
-```
-
-Il primo comando controlla struttura, manifest, percorsi e confine RepoKernel.
-Il secondo genera uno ZIP riproducibile in `dist/` e stampa il relativo
-SHA-256. La provenienza della release è documentata in
-[`docs/PROVENANCE.md`](docs/PROVENANCE.md).
+La cronologia delle versioni è in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Stato del progetto
 
 - Versione del pacchetto: `1.5.0`
 - Proiezione lifecycle opzionale per Codex: inclusa, non installata
-- Adattatore host DSH: incluso; comportamento su host nuovo non ancora attestato
 - Modalità: configurazione differita tramite intervista iniziale
 - Target: nuova cartella / nuovo repository
 - Installazione in repository esistenti: non supportata in questa release
-- Sorgente RepoKernel: non incluso
 
 Consulta anche [Setup AI](https://maios.it/setup-ai.html) e
 [l'Ecosistema MAIOS](https://maios.it/atlas-it.html).
@@ -145,17 +91,14 @@ Consulta anche [Setup AI](https://maios.it/setup-ai.html) e
 - [`d-nd-ux-ai-seed`](https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed)
   raccoglie i contratti pubblici di comportamento UX per workspace agentici;
   è una superficie collegata dell'ecosistema, non codice incluso nel pacchetto.
-- **RepoKernel** genera il Project Kernel, ma rimane un prodotto privato: il suo
-  repository non è collegato né distribuito qui.
 
-Il ruolo e i termini di ciascuna fonte sono dettagliati in
+Il ruolo e i termini delle fonti incluse sono dettagliati in
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) e
 [`docs/PROVENANCE.md`](docs/PROVENANCE.md).
 
 ## Licenza
 
 Il contenuto di questa repository, esclusi nomi e marchi, è distribuito con
-licenza [MIT](LICENSE). RepoKernel resta escluso. Le fonti informative e i
-relativi termini sono indicati in
+licenza [MIT](LICENSE). Le fonti informative e i relativi termini sono indicati in
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md); i nomi e i segni distintivi
 sono trattati in [`TRADEMARKS.md`](TRADEMARKS.md).

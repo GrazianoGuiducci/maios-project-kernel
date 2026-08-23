@@ -9,26 +9,18 @@ All notable changes to the public distribution are recorded here.
 - Added `DSH_SETUP.md`, a DSH activation receipt, and portable skill discovery
   through `.agents/skills/` without requiring plugins, hooks, provider, model,
   or global DSH configuration.
-- Kept DSH identity separate from TM13, RepoKernel, and the generated Project
-  Kernel, and kept packaged, discovered, composed, and exercised states
-  distinct.
 - Corrected the setup interviewer skill identity so DSH can discover both
   `maios-setup-interviewer` and `operate-maios-project-kernel`.
-- Revalidated the deterministic 66-member source archive; fresh DSH behavioral
-  activation remains a separate host test.
+- Updated the deterministic distribution to 66 package files.
 
 ## 1.4.0 - 2026-08-23
 
 - Added an optional Codex project-lifecycle projection with six source-bound
   hook files.
-- Kept the projection `packaged_not_installed`; extracting the package does not
-  create `.codex/` or change host configuration.
 - Added a read-only preflight, conflict refusal, explicit owner installation,
   installation receipt, idempotent reinstallation, and bounded uninstall.
 - Preserved the complete host-neutral Project Kernel when the optional hooks
   are not installed or are removed.
-- Revalidated the deterministic 64-member source archive and kept RepoKernel
-  compiler source outside the distribution.
 
 ## 1.3.0 - 2026-08-14
 
