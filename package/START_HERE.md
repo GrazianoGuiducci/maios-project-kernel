@@ -55,3 +55,17 @@ necessaria.
 Il pacchetto contiene un Project Kernel generato da RepoKernel, senza il suo
 codice sorgente. La configurazione non installa servizi, non pubblica contenuti
 e non attiva integrazioni esterne.
+
+## Adattatore lifecycle opzionale per Codex
+
+Il Project Kernel e le sue metacompetenze funzionano anche senza hook. Per
+Codex il pacchetto include inoltre, in `.repokernel/lifecycle/`, un adattatore
+consigliato quando il modello e l'host ne traggono beneficio. È incluso ma non
+installato: l'estrazione dello ZIP non crea `.codex/` e non modifica la
+configurazione dell'app.
+
+Prima di usarlo leggi `.repokernel/lifecycle/INSTALL.md` ed esegui il controllo
+senza scritture indicato lì. L'installazione richiede una scelta esplicita del
+proprietario del progetto; il pacchetto conserva anche ricevuta e procedura di
+rimozione. Disattivarlo o rimuoverlo resta una possibilità di recupero, non il
+centro del setup.

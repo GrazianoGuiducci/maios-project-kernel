@@ -1,0 +1,60 @@
+{
+  "activation_claim": "not_installed_until_owner_install_and_fresh_host_behavioral_receipt",
+  "conflict_policy": "refuse_non_identical_existing_files_or_parent_paths",
+  "execution_policy": "explicit_target_owner_install_only",
+  "host_projections": [
+    "codex-project-hooks"
+  ],
+  "neutral_contract": ".repokernel/lifecycle/PROFILE.json",
+  "profile_id": "source-bound-project-lifecycle.v1",
+  "projection_policy": {
+    "package_state": "packaged_not_installed",
+    "recommendation": "recommended_when_supported_and_behaviorally_useful",
+    "selection_basis": "explicit_host_selection_plus_model_or_host_need"
+  },
+  "projections": [
+    {
+      "host_projection": "codex-project-hooks",
+      "sha256": "881804e28da1ca4de1e227e9f7148300286bf33771343f397ba1d29542a368d4",
+      "source": ".repokernel/lifecycle/codex/faculties/open_horizon.py",
+      "target": ".codex/hooks/faculties/open_horizon.py"
+    },
+    {
+      "host_projection": "codex-project-hooks",
+      "sha256": "ce53c2ac988a4252c9433f0adc5a0d4261e1bfd43ce16ce87b6057cdd11933d6",
+      "source": ".repokernel/lifecycle/codex/faculties/result_movement.py",
+      "target": ".codex/hooks/faculties/result_movement.py"
+    },
+    {
+      "host_projection": "codex-project-hooks",
+      "sha256": "f9e5355d565d4eba704c1f81b61d882437ac7d1b7f828f896f23b2e9803e10a8",
+      "source": ".repokernel/lifecycle/codex/faculties/source_bound_resultant.py",
+      "target": ".codex/hooks/faculties/source_bound_resultant.py"
+    },
+    {
+      "host_projection": "codex-project-hooks",
+      "sha256": "e59edc1416ab1123ad759ad8295a582c4c3cb6a145b2227492438e88b1283a7d",
+      "source": ".repokernel/lifecycle/codex/hooks.json",
+      "target": ".codex/hooks.json"
+    },
+    {
+      "host_projection": "codex-project-hooks",
+      "sha256": "8abb1e750c38b2c0fff55178606cb0806e5a735bc59e63668f4d24e46a1e9d9a",
+      "source": ".repokernel/lifecycle/codex/project_hook_faculties.v1.json",
+      "target": ".codex/hooks/project_hook_faculties.v1.json"
+    },
+    {
+      "host_projection": "codex-project-hooks",
+      "sha256": "2f153823372e4f686df13ca2953fcffee870feea4e4487a6885f6950ed5cb23a",
+      "source": ".repokernel/lifecycle/codex/project_hook_kernel.py",
+      "target": ".codex/hooks/project_hook_kernel.py"
+    }
+  ],
+  "recovery": {
+    "disable_command": "python .repokernel/lifecycle/install.py --project-root . --uninstall",
+    "disable_supported": true
+  },
+  "rollback_policy": "remove_only_receipted_unchanged_created_files_and_empty_directories",
+  "schema": "repokernel.project-lifecycle-bundle.v1",
+  "status": "generated_not_installed"
+}

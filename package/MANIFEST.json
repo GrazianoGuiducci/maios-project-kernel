@@ -1,6 +1,6 @@
 {
   "product": "MAIOS Self-Configuring Setup Package",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "language": "it",
   "generated_by": "RepoKernel",
   "contains_repokernel_source": false,
@@ -11,6 +11,14 @@
   "setup_state": "pending",
   "delivery_state": "packaged",
   "host_activation_state": "pending_host_open",
+  "project_lifecycle": {
+    "status": "packaged_optional_host_projection",
+    "root": ".repokernel/lifecycle",
+    "host_projections": ["codex-project-hooks"],
+    "package_state": "packaged_not_installed",
+    "activation_status": "not_installed",
+    "project_kernel_remains_complete_without_hooks": true
+  },
   "integrity": {
     "entity_profile_binding": {
       "algorithm": "sha256",
@@ -66,6 +74,11 @@
     "receipts/host-activation/chatgpt_codex.json",
     "receipts/host-activation/claude_code.json",
     "receipts/host-activation/opencode.json",
-    "receipts/host-activation/hermes.json"
+    "receipts/host-activation/hermes.json",
+    ".repokernel/lifecycle/MANIFEST.json",
+    ".repokernel/lifecycle/PROFILE.json",
+    ".repokernel/lifecycle/INSTALL.md",
+    ".repokernel/lifecycle/install.py",
+    ".repokernel/lifecycle/INSTALLATION_RECEIPT.json"
   ]
 }

@@ -64,7 +64,7 @@
       "source_ref": "dnd-seed-faculty-registry"
     }
   ],
-  "entity_profile_sha256": "343115cdb0788ee8d6764809cbdda1c7e11602519f9ccfe0199d6bfac05fc2bb",
+  "entity_profile_sha256": "c0aa2fb8c8d23d1ec7e74303943c13a203b834f7c5cd0bc21eafcae4f82d183a",
   "faculty_palette": {
     "primary": {
       "effect_class": "reasoning_only",
@@ -124,7 +124,18 @@
     }
   ],
   "install_policy": "host_adapter_review_required",
-  "next_safe_action": "verify catalog hashes, inspect the real host and resolve only the capabilities needed for the first bounded result",
+  "next_safe_action": "verify catalog hashes, inspect the real host, review the selected lifecycle projection and resolve only the capabilities needed for the first bounded result",
+  "project_lifecycle": {
+    "activation_evidence": "fresh_host_behavioral_receipt_required",
+    "host_projections": [
+      "codex-project-hooks"
+    ],
+    "installer": ".repokernel/lifecycle/install.py",
+    "manifest": ".repokernel/lifecycle/MANIFEST.json",
+    "profile_id": "source-bound-project-lifecycle.v1",
+    "receipt": ".repokernel/lifecycle/INSTALLATION_RECEIPT.json",
+    "status": "generated_not_installed"
+  },
   "receipt_requirements": [
     "completed setup state",
     "reviewed first result",

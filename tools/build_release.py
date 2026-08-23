@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "package"
 DIST = ROOT / "dist"
-FIXED_TIMESTAMP = (2026, 8, 14, 0, 0, 0)
+FIXED_TIMESTAMP = (2026, 8, 23, 0, 0, 0)
 
 
 def main() -> int:

@@ -1,0 +1,35 @@
+{
+  "activation_status": "not_installed",
+  "effect_authority": "none",
+  "host_projections": [
+    "codex-project-hooks"
+  ],
+  "neutral_events": [
+    "session_start",
+    "operator_input",
+    "before_material_effect",
+    "after_material_effect",
+    "result_close",
+    "session_end"
+  ],
+  "owner": "generated target project",
+  "profile_id": "source-bound-project-lifecycle.v1",
+  "projection_policy": {
+    "model_dependence": "benefit_may_vary_by_model_and_host_behavior",
+    "package_state": "packaged_not_installed",
+    "recommendation": "recommended_when_supported_and_behaviorally_useful"
+  },
+  "purpose": "Preserve source continuity, effect boundaries, result readback and reentry across project lifecycle events.",
+  "recovery": {
+    "owner_can_disable": true
+  },
+  "relations": [
+    "operator_source",
+    "verified_evidence",
+    "model_inference",
+    "reusable_competence_delta",
+    "retained_unknown",
+    "produced_form"
+  ],
+  "schema": "repokernel.project-lifecycle-profile.v1"
+}

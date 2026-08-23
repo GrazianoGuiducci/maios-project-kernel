@@ -1,6 +1,6 @@
 # MAIOS Project Kernel
 
-> Bozza generata dal sistema il 14 agosto 2026. **Non ancora revisionata.**
+> Bozza generata dal sistema il 23 agosto 2026. **Non ancora revisionata.**
 
 [English version](README.md)
 
@@ -57,6 +57,8 @@ decisioni.
 - un contratto evolutivo che distingue memoria di caso, competenza, skill,
   funzione e meta-evoluzione;
 - ingressi e guide per Codex, Claude Code, OpenCode e Hermes;
+- una proiezione lifecycle opzionale per Codex, con controllo dei conflitti,
+  inclusa ma non installata né attivata;
 - ricevute iniziali che distinguono ciò che è incluso da ciò che è stato
   realmente rilevato e attivato sull'host.
 
@@ -66,11 +68,13 @@ versione dell'host. Le condizioni correnti sono descritte in
 
 ## Evoluzione recente
 
-La serie `1.3.0` ha composto il Project Kernel nel pacchetto, introdotto la
-meta-facoltà di progetto e il contratto evolutivo tipizzato, collegato il
-bisogno iniziale alla prima prova utile e reso progressivo il caricamento del
-contesto. Le versioni `1.2.x` avevano consolidato integrità, orientamento per
-utenti non tecnici e continuità operativa sugli host.
+La versione `1.4.0` aggiunge una proiezione lifecycle opzionale per Codex con
+controllo preliminare, rifiuto dei conflitti, installazione esplicita, ricevuta
+e rimozione circoscritta. Il Project Kernel resta completo senza hook; la
+proiezione non è attiva finché il proprietario del progetto non la installa e
+la verifica in una nuova sessione dell'host. La serie `1.3.0` aveva composto
+nel pacchetto il Project Kernel, la meta-facoltà di progetto e il contratto
+evolutivo tipizzato.
 
 La cronologia completa e verificabile è in [`CHANGELOG.md`](CHANGELOG.md).
 
@@ -121,7 +125,8 @@ SHA-256. La provenienza della release è documentata in
 
 ## Stato del progetto
 
-- Versione del pacchetto: `1.3.0`
+- Versione del pacchetto: `1.4.0`
+- Proiezione lifecycle opzionale per Codex: inclusa, non installata
 - Modalità: configurazione differita tramite intervista iniziale
 - Target: nuova cartella / nuovo repository
 - Installazione in repository esistenti: non supportata in questa release

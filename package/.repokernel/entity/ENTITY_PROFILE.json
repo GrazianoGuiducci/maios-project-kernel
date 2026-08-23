@@ -109,6 +109,12 @@
       "required": true
     }
   ],
+  "project_lifecycle": {
+    "host_projections": [
+      "codex-project-hooks"
+    ],
+    "schema": "repokernel.project-lifecycle-selection.v1"
+  },
   "requested_bundle_ids": [
     "context-continuity",
     "learning-evolution",

@@ -31,6 +31,35 @@ def main() -> int:
     if manifest.get("entrypoint") != "START_HERE.md":
         fail("unexpected entrypoint")
 
+    lifecycle = manifest.get("project_lifecycle")
+    expected_lifecycle = {
+        "status": "packaged_optional_host_projection",
+        "root": ".repokernel/lifecycle",
+        "host_projections": ["codex-project-hooks"],
+        "package_state": "packaged_not_installed",
+        "activation_status": "not_installed",
+        "project_kernel_remains_complete_without_hooks": True,
+    }
+    if lifecycle != expected_lifecycle:
+        fail("unexpected optional project lifecycle contract")
+
+    required_lifecycle_files = (
+        ".repokernel/lifecycle/MANIFEST.json",
+        ".repokernel/lifecycle/PROFILE.json",
+        ".repokernel/lifecycle/INSTALL.md",
+        ".repokernel/lifecycle/install.py",
+        ".repokernel/lifecycle/INSTALLATION_RECEIPT.json",
+        ".repokernel/lifecycle/codex/hooks.json",
+        ".repokernel/lifecycle/codex/project_hook_faculties.v1.json",
+        ".repokernel/lifecycle/codex/project_hook_kernel.py",
+        ".repokernel/lifecycle/codex/faculties/open_horizon.py",
+        ".repokernel/lifecycle/codex/faculties/result_movement.py",
+        ".repokernel/lifecycle/codex/faculties/source_bound_resultant.py",
+    )
+    for relative in required_lifecycle_files:
+        if not (PACKAGE / Path(*PurePosixPath(relative).parts)).is_file():
+            fail(f"required lifecycle file is missing: {relative}")
+
     required_root = (
         "LICENSE",
         "THIRD_PARTY_NOTICES.md",

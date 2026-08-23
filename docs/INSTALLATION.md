@@ -12,7 +12,7 @@
 On PowerShell, a downloaded archive can be checked with:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 .\maios-project-kernel-setup-v1.3.0.zip
+Get-FileHash -Algorithm SHA256 .\maios-project-kernel-setup-v1.4.0.zip
 ```
 
 ## Cloning this repository
@@ -28,3 +28,29 @@ Do not copy this release over an existing repository. Existing projects can
 already have instructions, skills, state, authority boundaries, or names that
 collide with the package. A future merge mode must inspect those conditions and
 produce a reviewable plan before mutation.
+
+## Optional Codex lifecycle projection
+
+The Project Kernel works without hooks. Version `1.4.0` also packages an
+optional Codex projection. From the accepted project root, inspect it before
+any write:
+
+```powershell
+python .repokernel/lifecycle/install.py --project-root . --check
+```
+
+Install it only after the project owner selects that effect:
+
+```powershell
+python .repokernel/lifecycle/install.py --project-root . --install
+```
+
+The installer refuses non-identical conflicts, records what it creates, and
+supports bounded removal:
+
+```powershell
+python .repokernel/lifecycle/install.py --project-root . --uninstall
+```
+
+An installation receipt proves installation only. A fresh Codex session and a
+real mutation/readback cycle are still required before claiming activation.

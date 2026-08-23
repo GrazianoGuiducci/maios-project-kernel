@@ -8,8 +8,8 @@
   "excluded_paths": [
     "PACKAGE_INVENTORY.json"
   ],
-  "inventoried_file_count": 52,
-  "archive_file_count": 53,
+  "inventoried_file_count": 63,
+  "archive_file_count": 64,
   "files": [
     {
       "path": ".agents/skills/maios-project-faculty-router/SKILL.md",
@@ -73,23 +73,78 @@
     },
     {
       "path": ".repokernel/entity/CAPABILITY_BINDING_PLAN.json",
-      "bytes": 5073,
-      "sha256": "29e47e03655cfcfcc84a996e253112e52760904bc5913b1159ae042626609db8"
+      "bytes": 5544,
+      "sha256": "9a40ab677b81078a45bd90d421886cd72b7a17615d508da7ae33f74e344ef1a5"
     },
     {
       "path": ".repokernel/entity/ENTITY_PROFILE.json",
-      "bytes": 5242,
-      "sha256": "e04991dc27f0c0a5799ccc4288168405cc099f72dd87744631c3480cf0d08325"
+      "bytes": 5391,
+      "sha256": "14f0abda8eb0e28d2f6bb8056fbe520a705fca4dde592a65e482f8ff2bd396c0"
     },
     {
       "path": ".repokernel/entity/HOST_CAPABILITY_ATTESTATION.json",
-      "bytes": 1955,
-      "sha256": "0fe6434eba6db8eb5baf4110fd41e3edf88393eb6d57be19b9c8013fae6f1ceb"
+      "bytes": 2232,
+      "sha256": "4709057e6db5ad60339fe49482cd96df45853025b6a32798aedeb4174f6cd0c0"
     },
     {
       "path": ".repokernel/evidence/README.md",
       "bytes": 163,
       "sha256": "f6aedf2bfe62abebc3d34c63d6a65a095f0a15755d5c2de63a818da2a1437a69"
+    },
+    {
+      "path": ".repokernel/lifecycle/codex/faculties/open_horizon.py",
+      "bytes": 959,
+      "sha256": "881804e28da1ca4de1e227e9f7148300286bf33771343f397ba1d29542a368d4"
+    },
+    {
+      "path": ".repokernel/lifecycle/codex/faculties/result_movement.py",
+      "bytes": 1010,
+      "sha256": "ce53c2ac988a4252c9433f0adc5a0d4261e1bfd43ce16ce87b6057cdd11933d6"
+    },
+    {
+      "path": ".repokernel/lifecycle/codex/faculties/source_bound_resultant.py",
+      "bytes": 5747,
+      "sha256": "f9e5355d565d4eba704c1f81b61d882437ac7d1b7f828f896f23b2e9803e10a8"
+    },
+    {
+      "path": ".repokernel/lifecycle/codex/hooks.json",
+      "bytes": 2539,
+      "sha256": "e59edc1416ab1123ad759ad8295a582c4c3cb6a145b2227492438e88b1283a7d"
+    },
+    {
+      "path": ".repokernel/lifecycle/codex/project_hook_faculties.v1.json",
+      "bytes": 1543,
+      "sha256": "8abb1e750c38b2c0fff55178606cb0806e5a735bc59e63668f4d24e46a1e9d9a"
+    },
+    {
+      "path": ".repokernel/lifecycle/codex/project_hook_kernel.py",
+      "bytes": 6884,
+      "sha256": "2f153823372e4f686df13ca2953fcffee870feea4e4487a6885f6950ed5cb23a"
+    },
+    {
+      "path": ".repokernel/lifecycle/INSTALL.md",
+      "bytes": 2263,
+      "sha256": "4b2d8129e7eda9013b0f0a68856cd337dd1fde0dc0b9dd63388cb876205ece0c"
+    },
+    {
+      "path": ".repokernel/lifecycle/install.py",
+      "bytes": 10222,
+      "sha256": "bd09a09cd3849ec70d0106457158c1b23531e75086f9ec9b487d385c16cb5855"
+    },
+    {
+      "path": ".repokernel/lifecycle/INSTALLATION_RECEIPT.json",
+      "bytes": 390,
+      "sha256": "a44c109e993475075e6d6980e5afd613c08683d31fc7692fe46834064977a874"
+    },
+    {
+      "path": ".repokernel/lifecycle/MANIFEST.json",
+      "bytes": 2624,
+      "sha256": "207f7a62ead7da0c9281a22232989bc2ca705248748b2e5ef37e2393aa7faf31"
+    },
+    {
+      "path": ".repokernel/lifecycle/PROFILE.json",
+      "bytes": 1010,
+      "sha256": "7959eb53b2142838a9812efb1b5d31cb1c3094ea20a38edb4604d26f06938087"
     },
     {
       "path": ".repokernel/manifest.json",
@@ -118,8 +173,8 @@
     },
     {
       "path": ".repokernel/skills/maios-self-configuring-project-semantic-kernel/SKILL.md",
-      "bytes": 11431,
-      "sha256": "586ff7bd7f1a99d760eb64fa54e354a6d8602804d21b79013fe9e9812e78a214"
+      "bytes": 11612,
+      "sha256": "1239376a774bbda0d1cebf5db84925ce03cf67824475f334cfb4e467cb0e1a55"
     },
     {
       "path": ".repokernel/sources/SOURCE_ATLAS.md",
@@ -148,8 +203,8 @@
     },
     {
       "path": "CODEX_SETUP.md",
-      "bytes": 792,
-      "sha256": "b1af3a94fa1806aa4b87238194ae3307747df1661a4803ff69282d70f56b918a"
+      "bytes": 1084,
+      "sha256": "93b442d5085bbeeb6be110fb295405de792f2443466d4690d094d0383e34eab5"
     },
     {
       "path": "COMPONENT_MATRIX.json",
@@ -183,8 +238,8 @@
     },
     {
       "path": "MANIFEST.json",
-      "bytes": 2748,
-      "sha256": "8b1fda760fb2652c42007f758e53fe592f8c57931d9e879d2421031b036a64d8"
+      "bytes": 3282,
+      "sha256": "f151912711e701d207407971151754a96ac28ab777317107b355fb8361df9295"
     },
     {
       "path": "meta-competences/ORIENT_AND_EVOLVE.md",
@@ -263,8 +318,8 @@
     },
     {
       "path": "START_HERE.md",
-      "bytes": 3007,
-      "sha256": "3aff884760e6e6adff362c2f2d8898d0ae90513b23c72bb83fad3885a47ec6f0"
+      "bytes": 3722,
+      "sha256": "25e2cbaf5e202fbf736a8b90d40236a78c526b43ba7dc4b64ecd80924c7dd8b5"
     },
     {
       "path": "START_WITH_YOUR_ASSISTANT.txt",

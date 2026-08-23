@@ -1,0 +1,13 @@
+{
+  "activation_status": "not_installed",
+  "conflicts": [],
+  "created": [],
+  "created_directories": [],
+  "host_projections": [
+    "codex-project-hooks"
+  ],
+  "left_unchanged_identical": [],
+  "next_safe_action": "run the installer check from an accepted Project Kernel root",
+  "schema": "repokernel.project-lifecycle-installation-receipt.v1",
+  "status": "generated_not_installed"
+}

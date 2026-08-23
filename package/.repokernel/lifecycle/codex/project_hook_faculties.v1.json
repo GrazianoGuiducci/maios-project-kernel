@@ -1,0 +1,61 @@
+{
+  "binding_registry_is_not_capability_ceiling": true,
+  "context_budgets": {
+    "PostToolUse": 650,
+    "PreToolUse": 650,
+    "SessionStart": 650,
+    "Stop": 900,
+    "UserPromptSubmit": 650
+  },
+  "faculties": [
+    {
+      "events": [
+        "SessionStart",
+        "UserPromptSubmit",
+        "PreToolUse",
+        "PostToolUse",
+        "Stop",
+        "SessionEnd"
+      ],
+      "faculty_id": "source-bound-resultant",
+      "failure_mode": "protect",
+      "handler": "handle",
+      "module": "source_bound_resultant",
+      "priority": 100,
+      "stop_projection": {
+        "mode": "primary"
+      }
+    },
+    {
+      "events": [
+        "Stop"
+      ],
+      "faculty_id": "result-movement",
+      "failure_mode": "isolate",
+      "handler": "handle",
+      "module": "result_movement",
+      "priority": 60,
+      "stop_projection": {
+        "mode": "guidance",
+        "text": "state why this result was selected, what was produced, and the next movement"
+      }
+    },
+    {
+      "events": [
+        "Stop"
+      ],
+      "faculty_id": "open-horizon",
+      "failure_mode": "isolate",
+      "handler": "handle",
+      "module": "open_horizon",
+      "priority": 40,
+      "stop_projection": {
+        "mode": "guidance",
+        "text": "remove limits introduced by the response unless source, evidence, authority, or the operator requires them"
+      }
+    }
+  ],
+  "kernel_id": "project-lifecycle-competence-kernel",
+  "owner": "generated target project",
+  "schema": "repokernel.project-hook-faculty-registry.v1"
+}
