@@ -6,7 +6,7 @@ The public repository imports the exact published package archive from:
 
 ```text
 source owner: MAIOS product source
-source state: committed local release candidate; publication pending
+source state: published on maios_it main
 source revision: 9ef21c4622687ae6749644e7d996174b09ac7a43
 package version: 1.6.0
 source archive SHA-256: fc2c366a49cdbf662201c1fb4c80877bafabc932eaf0788a699a948681aa1982
