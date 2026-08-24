@@ -60,6 +60,14 @@ Il pacchetto contiene un Project Kernel generato da RepoKernel, senza il suo
 codice sorgente. La configurazione non installa servizi, non pubblica contenuti
 e non attiva integrazioni esterne.
 
+## Provenienza e termini
+
+`LICENSE` contiene i termini di questa distribuzione.
+`THIRD_PARTY_NOTICES.md` distingue le fonti informative dai file consegnati e
+`source-manifest.json` conserva revisioni e checksum delle fonti usate per la
+generazione. Questi documenti descrivono il pacchetto; non concedono licenze sul
+codice sorgente separato di RepoKernel.
+
 ## Adattatore lifecycle opzionale per Codex
 
 Il Project Kernel e le sue metacompetenze funzionano anche senza hook. Per

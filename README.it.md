@@ -64,17 +64,17 @@ Gli ingressi specifici per ogni ambiente sono riepilogati in
 
 ## Evoluzione recente
 
-La versione `1.5.0` aggiunge una proiezione nativa per DSH: la cartella estratta
-è il project root DSH, `AGENTS.md` è l'ingresso e le skill portabili restano in
-`.agents/skills/`. Non richiede plugin, provider, modello, hook o configurazione
-globale DSH. La proiezione lifecycle Codex introdotta nella versione `1.4.0`
-rimane opzionale e indipendente.
+La versione `1.6.0` distingue il potenziale della competenza, la rilevanza
+emergente, l'uso realizzato e il miglioramento verificato. Aggiunge inoltre un
+ciclo aziendale supervisionato e reversibile e rende licenza, notice e
+provenienza direttamente ispezionabili nel pacchetto. L'attivazione dell'host
+e la proiezione lifecycle opzionale per Codex restano separate dall'estrazione.
 
 La cronologia delle versioni è in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Stato del progetto
 
-- Versione del pacchetto: `1.5.0`
+- Versione del pacchetto: `1.6.0`
 - Proiezione lifecycle opzionale per Codex: inclusa, non installata
 - Modalità: configurazione differita tramite intervista iniziale
 - Target: nuova cartella / nuovo repository

@@ -63,17 +63,17 @@ Host-specific entry points are summarized in
 
 ## Recent evolution
 
-Version `1.5.0` adds a host-native DSH projection: the extracted folder is the
-DSH project root, `AGENTS.md` is the entry, and portable skills remain under
-`.agents/skills/`. No DSH plugin, provider, model, hook, or global configuration
-is required. The optional Codex lifecycle projection introduced in `1.4.0`
-remains independently opt-in.
+Version `1.6.0` distinguishes competence potential, emergent relevance,
+realized use, and verified improvement. It also adds a supervised, reversible
+enterprise learning cycle and makes license, third-party notices, and source
+provenance directly inspectable inside the package. Host activation and the
+optional Codex lifecycle projection remain separate from extraction.
 
 See [`CHANGELOG.md`](CHANGELOG.md) for the version history.
 
 ## Current status
 
-- Package version: `1.5.0`
+- Package version: `1.6.0`
 - Optional Codex lifecycle projection: packaged, not installed
 - Mode: deferred configuration through a startup interview
 - Target: new folder / new repository

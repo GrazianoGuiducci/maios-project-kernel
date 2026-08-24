@@ -29,6 +29,17 @@ Project Entity, fonti, binding, router e contratto evolutivo soltanto quando
 cambiano risultato, provenienza, autorita, capacita o memoria revisionata. Una
 reentry di sola lettura parte dall'artefatto autonomo indicato.
 
+## Campo delle competenze
+
+La presenza di una competenza amplia il campo `potential` prima che venga
+usata. Una relazione `emergent` puo diventare pertinente anche dopo una
+composizione inattesa; diventa `realized` quando la competenza agisce nel caso
+e `verified` soltanto quando il cambiamento osservato supera la prova prevista.
+Una competenza non esercitata non e `no_change`: resta potenziale, senza
+implicare attivazione, caricamento eager o autorita. Questa logica opera anche
+senza hook; gli hook possono sostenere discovery e continuita, ma non sono la
+fonte della competenza.
+
 ## Se la configurazione è pending
 
 1. Leggi `project/CURRENT_STATE.md`, `setup/CONFIGURATION_STATE.json`, il brief

@@ -19,11 +19,18 @@ non diventa un secondo kernel o proprietario dello stato.
 3. seleziona una facolta primaria e soltanto i supporti che cambiano il
    risultato;
 4. componi prima le facolta presenti;
-5. se resta un divario materiale, descrivilo attraverso comportamento mancante
+5. lascia che una composizione inattesa esponga una relazione `emergent` senza
+   precomputare l'intero catalogo delle competenze;
+6. se resta un divario materiale, descrivilo attraverso comportamento mancante
    e prova falsificabile.
 
 Una facolta nominata, referenziata o presente come contratto non e operativa se
 l'host non puo scoprirla e usarla.
+
+Tratta una facolta disponibile ma non esercitata come `potential`, non come
+`no_change`. Chiamala `realized` quando ha agito nel caso e `verified` soltanto
+quando il suo delta supera la prova dichiarata. Il router mantiene questa
+distinzione anche senza hook.
 
 ## Creare O Evolvere Una Competenza Locale
 

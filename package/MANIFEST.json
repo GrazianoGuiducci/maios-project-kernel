@@ -1,6 +1,6 @@
 {
   "product": "MAIOS Self-Configuring Setup Package",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "language": "it",
   "generated_by": "RepoKernel",
   "contains_repokernel_source": false,
@@ -40,6 +40,9 @@
   "package_inventory": "PACKAGE_INVENTORY.json",
   "host_adapters": "HOST_ADAPTERS.json",
   "files": [
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "source-manifest.json",
     "START_HERE.md",
     "START_WITH_YOUR_ASSISTANT.txt",
     "kernel/MAIOS_START_KERNEL.md",

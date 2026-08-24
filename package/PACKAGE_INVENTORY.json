@@ -8,13 +8,13 @@
   "excluded_paths": [
     "PACKAGE_INVENTORY.json"
   ],
-  "inventoried_file_count": 65,
-  "archive_file_count": 66,
+  "inventoried_file_count": 68,
+  "archive_file_count": 69,
   "files": [
     {
       "path": ".agents/skills/maios-project-faculty-router/SKILL.md",
-      "bytes": 2655,
-      "sha256": "a63d7b37ccdcfa80bae2df6c4c04d18f0258d8c6f31030153f5b1a3212dbda0e"
+      "bytes": 3047,
+      "sha256": "e195ded9c0067dfe863995a1dbaa1206b35a834613895731117fad3c87dc1834"
     },
     {
       "path": ".agents/skills/maios-setup-interviewer/SKILL.md",
@@ -28,8 +28,8 @@
     },
     {
       "path": ".claude/skills/maios-project-faculty-router/SKILL.md",
-      "bytes": 2655,
-      "sha256": "a63d7b37ccdcfa80bae2df6c4c04d18f0258d8c6f31030153f5b1a3212dbda0e"
+      "bytes": 3047,
+      "sha256": "e195ded9c0067dfe863995a1dbaa1206b35a834613895731117fad3c87dc1834"
     },
     {
       "path": ".claude/skills/maios-setup-interviewer/SKILL.md",
@@ -43,8 +43,8 @@
     },
     {
       "path": ".opencode/skills/maios-project-faculty-router/SKILL.md",
-      "bytes": 2655,
-      "sha256": "a63d7b37ccdcfa80bae2df6c4c04d18f0258d8c6f31030153f5b1a3212dbda0e"
+      "bytes": 3047,
+      "sha256": "e195ded9c0067dfe863995a1dbaa1206b35a834613895731117fad3c87dc1834"
     },
     {
       "path": ".opencode/skills/maios-setup-interviewer/SKILL.md",
@@ -233,8 +233,8 @@
     },
     {
       "path": "kernel/MAIOS_START_KERNEL.md",
-      "bytes": 4439,
-      "sha256": "ca8ab9b79fb1fc78998c3623c605377bb2211fb1d3cc2bd1d3d8cd3248ef8347"
+      "bytes": 5026,
+      "sha256": "7d0e92f14d3c795111a47fefea7216c9bbcc083a115706d4410c8b1661052ddc"
     },
     {
       "path": "kernel/PROJECT_EVOLUTION_CONTRACT.json",
@@ -242,14 +242,19 @@
       "sha256": "052efecabc80c6af930279521ca2c81a248f743068dbf941044751626d124053"
     },
     {
+      "path": "LICENSE",
+      "bytes": 1074,
+      "sha256": "a8da72c4929df6cd9498a7f2f3900a280dd2898097c4a17a5cbf84c4996fc1cd"
+    },
+    {
       "path": "MANIFEST.json",
-      "bytes": 3343,
-      "sha256": "71edf5632850b98280cb1e68a49d864f5eb1b8bacbb948bd9b126dcf69ab919d"
+      "bytes": 3416,
+      "sha256": "b46e2ec9604a850b062a3c670dc3df23d321b7fe4d26e18a74157de15aa3969f"
     },
     {
       "path": "meta-competences/ORIENT_AND_EVOLVE.md",
-      "bytes": 1838,
-      "sha256": "701cd8ee40fd294d16a232aebc9874f5557004e3ad900709e4905596954e2552"
+      "bytes": 2423,
+      "sha256": "7a007ba96594ea3b295444429531c807a994afa041f10a2acca22ed654b4537b"
     },
     {
       "path": "OPENCODE_SETUP.md",
@@ -308,13 +313,13 @@
     },
     {
       "path": "setup/STARTUP_INTERVIEW.md",
-      "bytes": 7762,
-      "sha256": "1896ee9c28a5908571aec00d8e6f067057541f31be44d7b9759e399318aab6fe"
+      "bytes": 8435,
+      "sha256": "c2d12191346f116c2f914ad0eff4eefbac0cce0e03272fa8d9b7345a7c4ea996"
     },
     {
       "path": "skills/maios-project-faculty-router/SKILL.md",
-      "bytes": 2655,
-      "sha256": "a63d7b37ccdcfa80bae2df6c4c04d18f0258d8c6f31030153f5b1a3212dbda0e"
+      "bytes": 3047,
+      "sha256": "e195ded9c0067dfe863995a1dbaa1206b35a834613895731117fad3c87dc1834"
     },
     {
       "path": "skills/maios-setup-interviewer/SKILL.md",
@@ -327,14 +332,24 @@
       "sha256": "8845c5efc4d2f6a7cac0733429d3ed25cb974f70ace96312d80cbba14863db47"
     },
     {
+      "path": "source-manifest.json",
+      "bytes": 1565,
+      "sha256": "2bb2621b5d1f7d26dc21cce993d66c8ae013124b3a8780c373b3bc7c1f77130e"
+    },
+    {
       "path": "START_HERE.md",
-      "bytes": 3998,
-      "sha256": "2ca7b8a1814c5bd06a72bf7148d3427586fff1279061d5c436663e7490b2c8b6"
+      "bytes": 4356,
+      "sha256": "ee50ab34fb86ae23ff9ee618e3c490b62b18199fc127eb2794c68dfafeec99f1"
     },
     {
       "path": "START_WITH_YOUR_ASSISTANT.txt",
       "bytes": 923,
       "sha256": "10dc71fcc538ed950567a8e25a730e64059304d7f86407fed60a651208fda044"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1625,
+      "sha256": "92d89f43de8f49a131c8cabbdd31c1f1e8b7e86d8abfccc3e311320f6c161cc8"
     }
   ]
 }

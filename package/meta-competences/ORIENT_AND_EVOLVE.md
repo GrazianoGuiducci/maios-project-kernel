@@ -31,6 +31,19 @@ Una correzione sul singolo caso resta nel caso. Una regola riutilizzabile può
 evolvere una competenza soltanto quando cambia il comportamento e supera la sua
 prova. Conserva rejected e superseded senza renderli istruzioni attive.
 
+Mantieni distinti quattro stati del campo:
+
+- `potential`: la competenza e disponibile ma non ancora esercitata;
+- `emergent`: una relazione viva, anche da una composizione inattesa, ne rende
+  pertinente il contributo;
+- `realized`: la competenza agisce e produce una differenza osservabile;
+- `verified`: quella differenza supera una prova owner-native e conserva il
+  proprio invalidatore.
+
+La competenza non esercitata non e `no_change` e non viene promossa o scartata
+per assenza di prova. Solo un delta realizzato, verificato e revisionato puo
+diventare apprendimento durevole.
+
 ## Granularita e cristallizzazione
 
 Leggi `kernel/PROJECT_EVOLUTION_CONTRACT.json` prima di rendere durevole un

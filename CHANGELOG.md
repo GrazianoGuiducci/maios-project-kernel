@@ -2,6 +2,17 @@
 
 All notable changes to the public distribution are recorded here.
 
+## 1.6.0 - 2026-08-24
+
+- Distinguished `potential`, `emergent`, `realized`, and `verified` competence
+  states without making lifecycle hooks mandatory.
+- Added a supervised, reversible enterprise learning cycle with representative
+  cases, a baseline, edge-case tests, and owner review of net impact.
+- Included `LICENSE`, `THIRD_PARTY_NOTICES.md`, and `source-manifest.json`
+  directly in the 69-file package payload.
+- Preserved deterministic generation, the complete Project Kernel, and the
+  boundary between package presence, host activation, and external effects.
+
 ## 1.5.0 - 2026-08-23
 
 - Added DeepSeek Harness (DSH) as a first-class host adapter for both deferred

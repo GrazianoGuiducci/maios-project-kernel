@@ -74,6 +74,16 @@ Individua cosa deve cambiare nel lavoro reale e proponi un primo risultato
 osservabile. Evita obiettivi generici, cataloghi di funzioni e soluzioni scelte
 prima di conoscere il caso.
 
+Quando il contesto riguarda un'attivita aziendale, ricava il primo ciclo di
+apprendimento da casi rappresentativi del lavoro reale. Confronta esempi in cui
+il lavoro riesce o fallisce, chiarisci frequenza, costo e rischio del problema
+e identifica l'owner della decisione a rischio. Proponi un intervento minimo reversibile,
+registra una baseline e provalo su casi normali, difficili e limite. Inizia con
+uso supervisionato; misura tempo, qualita, errori, costo e
+rischio, quindi valuta l'impatto netto con l'owner prima di integrare il delta
+nel progetto. Il report orienta la revisione: non rende automaticamente valida
+la soluzione ne autorizza un'estensione dell'uso.
+
 ### Persone e realizzazione
 
 Chiarisci chi usera il risultato, chi puo configurarlo o mantenerlo, chi lo
