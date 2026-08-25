@@ -2,7 +2,7 @@
 
 All notable changes to the public distribution are recorded here.
 
-## 2.0.0 - unreleased
+## 2.0.0 - 2026-08-25
 
 - Made the repository the sole living implementation source and made
   `package/` plus the ZIP deterministic generated projections.

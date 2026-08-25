@@ -8,8 +8,13 @@ sources, forms an early correctable result, composes only the faculties that
 change the present movement, and preserves reviewed learning and reentry in the
 project itself.
 
-Version `2.0.0` is currently an unreleased local candidate. No release, host
-activation, or public runtime claim follows from the source tree or tests.
+Version `2.0.0` is published on the repository's `main` branch. Its exact
+self-installing archive is also available from
+[maios.it](https://maios.it/downloads/maios-project-kernel-setup-v2.0.0.zip)
+with a published [SHA-256 checksum](https://maios.it/downloads/maios-project-kernel-setup-v2.0.0.zip.sha256).
+No GitHub tag or Release has been created, and source publication does not
+claim host activation, semantic results, maintained reentry, or public runtime
+operation.
 
 ## What changed in 2.0.0
 

@@ -11,9 +11,9 @@ product preserves the useful functional field and the MAIOS configurator,
 composes the logic made material by each circumstance, and now couples the
 reviewed terminal resultant back to canonical state, evolution, and reentry.
 
-The selected source base is authenticated `origin/main` at
-`f6bb1387eb8cb95b4b6ba8d8ada7bf11aff7d7ac`. This isolated worktree is the only
-write owner for the reconstruction.
+The reconstructed living source is published on authenticated `origin/main` at
+`b59153e2ac4306c488e6e53b50fe5b706642deed`. This isolated worktree remains the
+only write owner for bounded source corrections.
 
 ## Architecture and observed result
 
@@ -56,8 +56,9 @@ retention/revision and self-approval refusal, plus reviewed host claim
 dependencies. The new operating relation additionally passes focused tests for
 terminal admission, project-state/reentry coupling, causal staleness refusal,
 evidence-free self-improvement refusal, and fresh-process archive execution.
-The previous fifteen-fixture count has not been replayed as a release claim in
-this movement. Native host
+The complete 17-test owner suite was replayed after publication-state
+reconciliation on 2026-08-25 and passes without changing the generated archive.
+Native host
 discovery for hosts other than Hermes, state reading, semantic use and
 maintained reentry remain separate unverified states until exercised on a
 fresh supported host. Hermes native project-local skill discovery is verified
@@ -88,12 +89,20 @@ Hermes profile.
 - `templates/` and `release/PROJECTION.json`
 - `tools/` and `tests/`; generated `package/` is evidence, not an owner
 
-## Boundary
+## Publication and boundary
 
-Local source, focused tests, generated package/archive, isolated fixtures, and the previously recorded
-offline Hermes native-discovery observation only. No
-Form-package inspection, commit, push, tag, release, site change, host-global
-configuration, hook installation, provider call, or runtime activation.
+The living source is published on `maios-project-kernel` main. The exact
+versioned archive is projected on maios.it by `maios_it` commit
+`bdf9a3e091f43e5cee4ea274df5b633d18fecbe7`: 63843 bytes, SHA-256
+`36199f204f88afa3720ded2b0a900dc0b7a0555191d7033be1baae7fa62cea10`.
+Setup AI, Components and the Codex guide now expose the real installation path
+and the broader operating-Kernel direction.
+
+No GitHub tag or Release, Form-package inspection, host-global configuration,
+hook installation, provider call, physical-system connection, service
+activation or direct runtime mutation is included. Package publication proves
+the distributed bytes and public projection, not host discovery beyond the
+recorded Hermes observation, semantic results or maintained reentry.
 
 ## Residue not to follow
 
@@ -114,6 +123,6 @@ hard_boundaries: no hidden global writes and no external effect authority
 reversible_preparations: source edits, deterministic builds, temp installations
 ```
 
-current_next: hand off the complete manual 2.0.0 package for operator review, then select RepoKernel as a distinct owner surface before any later comparison with the Form-generated package
-first_safe_action: use `dist/BUILD_RECEIPT.json` for exact artifact identity; do not reopen Hermes or a broad host matrix unless a later event specifically needs that evidence
+current_next: operator visual review of the public Setup AI, Components and Codex-guide surfaces, then select RepoKernel as a distinct owner surface before any later comparison with the Form-generated package
+first_safe_action: use `dist/BUILD_RECEIPT.json` or the matching public ZIP checksum for exact artifact identity; do not reopen Hermes or a broad host matrix unless a later event specifically needs that evidence
 validation_needed: no validation blocks the manual package; real semantic-result quality, maintained reentry, RepoKernel integration, and Form comparison remain distinct event-bound future proofs
