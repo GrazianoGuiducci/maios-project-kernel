@@ -72,6 +72,15 @@ class BuilderTests(DistributionFixture):
             (staging / "generated.txt").write_text("generated\n", encoding="utf-8")
             self.assertEqual(builder.source_tree_digest(root), before)
 
+    def test_source_identity_is_independent_of_checkout_line_endings(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "source.txt"
+            source.write_bytes(b"first\nsecond\n")
+            lf_digest = builder.source_tree_digest(root)
+            source.write_bytes(b"first\r\nsecond\r\n")
+            self.assertEqual(builder.source_tree_digest(root), lf_digest)
+
 
 class InstallerTests(DistributionFixture):
     def test_inventory_refuses_untracked_extraction_residue(self) -> None:

@@ -62,7 +62,12 @@ reconciliation on 2026-08-25 and passes without changing the generated archive.
 The first projection-drift CI gate then exposed host-dependent `Path` ordering:
 Windows and Linux produced different inventory order and source-tree identity.
 Builder and installer enumeration now use canonical POSIX relative paths, and
-the owner test requires canonical inventory order before publication.
+the owner test requires canonical inventory order before publication. Its
+first rerun isolated a second checkout representation difference: text files
+outside the delivered projection could retain Windows line endings locally.
+Source-tree identity now canonicalizes text line endings while preserving
+binary bytes, so one living source has the same identity across supported
+checkout platforms without excluding those files from provenance.
 Native host
 discovery for hosts other than Hermes, state reading, semantic use and
 maintained reentry remain separate unverified states until exercised on a

@@ -36,6 +36,14 @@ def digest_file(path: Path) -> str:
     return digest_bytes(path.read_bytes())
 
 
+def source_identity_bytes(path: Path) -> bytes:
+    """Return checkout-independent bytes for the source-tree identity."""
+    data = path.read_bytes()
+    if b"\x00" in data:
+        return data
+    return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
 def read_json(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -93,14 +101,16 @@ def source_tree_files(root: Path) -> list[Path]:
 
 
 def source_tree_digest(root: Path) -> str:
-    rows = [
-        {
-            "path": path.relative_to(root).as_posix(),
-            "sha256": digest_file(path),
-            "bytes": path.stat().st_size,
-        }
-        for path in source_tree_files(root)
-    ]
+    rows = []
+    for path in source_tree_files(root):
+        data = source_identity_bytes(path)
+        rows.append(
+            {
+                "path": path.relative_to(root).as_posix(),
+                "sha256": digest_bytes(data),
+                "bytes": len(data),
+            }
+        )
     return digest_bytes(canonical_bytes(rows))
 
 
