@@ -16,7 +16,10 @@ being included, discovered, configured, and actually active.
 Run the local validation before opening a pull request:
 
 ```powershell
-python tools/verify_distribution.py
+$env:PYTHONDONTWRITEBYTECODE='1'
+python -B -m unittest discover -s tests -v
+python -B tools/build_release.py
+python -B tools/verify_distribution.py
 ```
 
 By submitting a contribution, you agree that it may be distributed under the

@@ -1,0 +1,60 @@
+{
+  "schema": "maios.host-adapters.v2",
+  "semantic_owner": "skills/maios-project-system/SKILL.md",
+  "rule": "Adapters project the one semantic owner into a host-native discovery path; they are not distinct faculties or activation proof.",
+  "adapters": [
+    {
+      "id": "generic",
+      "projections": []
+    },
+    {
+      "id": "codex",
+      "projections": [
+        {
+          "source": "skills/maios-project-system/SKILL.md",
+          "destination": ".agents/skills/maios-project-system/SKILL.md"
+        }
+      ]
+    },
+    {
+      "id": "claude",
+      "projections": [
+        {
+          "source": "skills/maios-project-system/SKILL.md",
+          "destination": ".claude/skills/maios-project-system/SKILL.md"
+        }
+      ]
+    },
+    {
+      "id": "opencode",
+      "projections": [
+        {
+          "source": "skills/maios-project-system/SKILL.md",
+          "destination": ".opencode/skills/maios-project-system/SKILL.md"
+        }
+      ]
+    },
+    {
+      "id": "hermes",
+      "projections": [
+        {
+          "source": "skills/maios-project-system/SKILL.md",
+          "destination": ".hermes/skills/maios-project-system/SKILL.md"
+        },
+        {
+          "source": "skills/maios-project-system/adapters/hermes.gitignore",
+          "destination": ".hermes/.gitignore"
+        }
+      ]
+    },
+    {
+      "id": "dsh",
+      "projections": [
+        {
+          "source": "skills/maios-project-system/SKILL.md",
+          "destination": ".agents/skills/maios-project-system/SKILL.md"
+        }
+      ]
+    }
+  ]
+}

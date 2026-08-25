@@ -1,0 +1,91 @@
+{
+  "schema": "maios.configuration-state.v2",
+  "source_role": "configuration_template",
+  "state_owner": "setup/CONFIGURATION_STATE.json",
+  "setup_status": "pending",
+  "checkpoint": {
+    "sequence": 0,
+    "updated_at": null,
+    "summary": null
+  },
+  "operator_relation": {
+    "intent_source": null,
+    "current_intent": null,
+    "point_of_view": null,
+    "direction_status": "pending",
+    "selected_directions": []
+  },
+  "present_field": {
+    "facts": [],
+    "evidence": [],
+    "inferences": [],
+    "hypotheses": [],
+    "contradictions": [],
+    "unknowns": [
+      {
+        "id": "target_relation",
+        "statement": "The target work, problem, or desired change has not yet been situated.",
+        "source_refs": [],
+        "reentry_condition": "first substantive operator contribution or project source"
+      },
+      {
+        "id": "host_reality",
+        "statement": "Host capabilities are installed but not yet behaviorally attested.",
+        "source_refs": [".maios/state/HOST_STATE.json"],
+        "reentry_condition": "fresh host observation"
+      }
+    ],
+    "retained_unknowns": []
+  },
+  "possibility_field": {
+    "status": "open_pending_orientation",
+    "candidates": [],
+    "opened": [],
+    "preserved": [],
+    "constrained": [],
+    "eliminated": []
+  },
+  "result": {
+    "requested": null,
+    "current": null,
+    "beneficiary": null,
+    "value_mechanism": null,
+    "smallest_deliverable": null,
+    "owner_review": "pending"
+  },
+  "first_proof": {
+    "statement": null,
+    "falsifiable_test": null,
+    "reviewer": null,
+    "result": "unverified"
+  },
+  "faculty_composition": {
+    "circumstance_relations": ["first_contact", "configuration_pending"],
+    "selected": [],
+    "emergent_extensions": [],
+    "last_readback": null
+  },
+  "people_and_environment": {
+    "users": [],
+    "reviewers": [],
+    "human_responsibilities": [],
+    "sources": [],
+    "tools": [],
+    "constraints": []
+  },
+  "data_boundary": {
+    "classification": "project_local_default",
+    "provider_consent": "none",
+    "private_fields": [],
+    "allowed_external_projection": []
+  },
+  "effect_authority": "none",
+  "evolution": {
+    "contract": ".maios/kernel/EVOLUTION_CONTRACT.json",
+    "last_crystallization": null,
+    "accepted_delta_refs": [],
+    "self_improvement_assessment_refs": [],
+    "superseded_relations": []
+  },
+  "current_next": "Use the present operator relation and project sources to produce the first correctable useful result."
+}

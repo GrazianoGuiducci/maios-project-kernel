@@ -1,89 +1,47 @@
 {
-  "product": "MAIOS Self-Configuring Setup Package",
-  "version": "1.6.0",
-  "language": "it",
-  "generated_by": "RepoKernel",
+  "competence_cultivation": {
+    "behavioral_proof_separate": true,
+    "producer_self_approval": false,
+    "protocol": "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
+    "state_owner": "payload/.maios/competences/INDEX.json"
+  },
+  "contains_form_state": false,
+  "contains_lifecycle_hooks": false,
+  "contains_private_topology": false,
   "contains_repokernel_source": false,
-  "configuration_mode": "deferred_startup_interview",
-  "target_mode": "new_repository",
-  "existing_repository_installation": "not_supported_in_this_release",
-  "entrypoint": "START_HERE.md",
-  "setup_state": "pending",
-  "delivery_state": "packaged",
-  "host_activation_state": "pending_host_open",
-  "project_lifecycle": {
-    "status": "packaged_optional_host_projection",
-    "root": ".repokernel/lifecycle",
-    "host_projections": ["codex-project-hooks"],
-    "package_state": "packaged_not_installed",
-    "activation_status": "not_installed",
-    "project_kernel_remains_complete_without_hooks": true
+  "distribution_file_count": 40,
+  "entrypoint": "install.py",
+  "global_writes": [],
+  "host_adapters": [
+    "generic",
+    "codex",
+    "claude",
+    "opencode",
+    "hermes",
+    "dsh"
+  ],
+  "payload_file_count": 32,
+  "product": "MAIOS Project Kernel",
+  "project_entrypoint": "payload/START_HERE.md",
+  "schema": "maios.project-kernel-distribution.v2",
+  "self_installation": {
+    "conflict_refusal": true,
+    "exact_plan_apply": true,
+    "global_writes": [],
+    "idempotency": true,
+    "preview_required": true,
+    "recovery": "remove_only_unchanged_installer_owned_bytes"
   },
-  "integrity": {
-    "entity_profile_binding": {
-      "algorithm": "sha256",
-      "serialization": "canonical_json_utf8_sorted_compact",
-      "binding_paths": [
-        ".repokernel/entity/CAPABILITY_BINDING_PLAN.json",
-        ".repokernel/entity/HOST_CAPABILITY_ATTESTATION.json"
-      ],
-      "raw_file_hash_source": "PACKAGE_INVENTORY.json"
-    }
+  "source_identity": {
+    "owner": "maios-project-kernel repository",
+    "projection_sha256": "3392dc779ebb17b706801ae78134907414cd2114296135c54ed737946a258287",
+    "revision_claim": "content_addressed_source_tree",
+    "source_manifest_sha256": "4e158141a72a6680de4d5563015f70807b6864dabc6b6e2ce7ecf5b5f32fbd1c",
+    "tree_sha256": "16f02319e028f78b76062b0c121e86ae1a548a61a153fd6a709cd5c69719e6d9"
   },
-  "state_semantics": {
-    "this_manifest": "immutable_delivery_baseline",
-    "operative_setup_state": "setup/CONFIGURATION_STATE.json",
-    "operative_project_state": "project/CURRENT_STATE.md",
-    "project_evolution_contract": "kernel/PROJECT_EVOLUTION_CONTRACT.json",
-    "host_evidence": "receipts/host-activation/"
-  },
-  "package_inventory": "PACKAGE_INVENTORY.json",
-  "host_adapters": "HOST_ADAPTERS.json",
-  "files": [
-    "LICENSE",
-    "THIRD_PARTY_NOTICES.md",
-    "source-manifest.json",
-    "START_HERE.md",
-    "START_WITH_YOUR_ASSISTANT.txt",
-    "kernel/MAIOS_START_KERNEL.md",
-    "kernel/AXIOMATIC_RESULTANT_KERNEL.md",
-    "kernel/PROJECT_EVOLUTION_CONTRACT.json",
-    "meta-competences/ORIENT_AND_EVOLVE.md",
-    "assistant/STARTUP_INTERVIEW.md",
-    "setup/STARTUP_INTERVIEW.md",
-    "setup/MAIOS_SETUP_CONTRACT.md",
-    "setup/CONFIGURATION_STATE.json",
-    "project/CURRENT_STATE.md",
-    "project/PROJECT_BRIEF.md",
-    "skills/maios-setup-interviewer/SKILL.md",
-    "skills/maios-project-faculty-router/SKILL.md",
-    "skills/operate-maios-project-kernel/SKILL.md",
-    "CODEX_SETUP.md",
-    "CLAUDE.md",
-    "OPENCODE_SETUP.md",
-    "HERMES_SETUP.md",
-    "DSH_SETUP.md",
-    "HOST_ADAPTERS.json",
-    "COMPONENT_MATRIX.json",
-    "PACKAGE_INVENTORY.json",
-    ".agents/skills/maios-setup-interviewer/SKILL.md",
-    ".claude/skills/maios-setup-interviewer/SKILL.md",
-    ".opencode/skills/maios-setup-interviewer/SKILL.md",
-    ".agents/skills/operate-maios-project-kernel/SKILL.md",
-    ".claude/skills/operate-maios-project-kernel/SKILL.md",
-    ".opencode/skills/operate-maios-project-kernel/SKILL.md",
-    ".agents/skills/maios-project-faculty-router/SKILL.md",
-    ".claude/skills/maios-project-faculty-router/SKILL.md",
-    ".opencode/skills/maios-project-faculty-router/SKILL.md",
-    "receipts/host-activation/chatgpt_codex.json",
-    "receipts/host-activation/claude_code.json",
-    "receipts/host-activation/opencode.json",
-    "receipts/host-activation/hermes.json",
-    "receipts/host-activation/dsh.json",
-    ".repokernel/lifecycle/MANIFEST.json",
-    ".repokernel/lifecycle/PROFILE.json",
-    ".repokernel/lifecycle/INSTALL.md",
-    ".repokernel/lifecycle/install.py",
-    ".repokernel/lifecycle/INSTALLATION_RECEIPT.json"
-  ]
+  "target_modes": [
+    "new_repository",
+    "existing_repository"
+  ],
+  "version": "2.0.0"
 }

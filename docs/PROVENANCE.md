@@ -1,41 +1,34 @@
 # Provenance and reproducibility
 
-## Release source
+## Source owner
 
-The public repository imports the exact published package archive from:
+Version 2.0.0 is built from this `maios-project-kernel` repository. The package
+does not import a prepared payload from `maios_it`, MAIOS Form state, private
+RepoKernel source, D-ND/TMx topology, credentials, runtime state, or lifecycle
+hooks. Historical 1.6 files and the separate cut-down 2.0 attempt are comparison
+evidence only.
 
-```text
-source owner: MAIOS product source
-source state: published on maios_it main
-source revision: 9ef21c4622687ae6749644e7d996174b09ac7a43
-package version: 1.6.0
-source archive SHA-256: fc2c366a49cdbf662201c1fb4c80877bafabc932eaf0788a699a948681aa1982
-```
+The maintained source positions and exclusions are declared in
+[`sources/SOURCE_MANIFEST.json`](../sources/SOURCE_MANIFEST.json). The exact
+source-to-distribution mapping is
+[`release/PROJECTION.json`](../release/PROJECTION.json).
 
-The imported payload contains 69 files and matches the prepared source archive
-member-for-member and byte-for-byte. It excludes uncommitted workspace files.
-The source manifest is also delivered inside the package. The project-model
-input used during generation remains outside the installable payload as
-`docs/project-model.source.json`.
+## Content identity
 
-## Generated-output boundary
+The builder records:
 
-The package declares `contains_repokernel_source: false`. A pre-publication
-hash comparison found no byte-identical file shared with the checked
-RepoKernel, d-nd-seed, or d-nd-ux-ai-seed working trees.
+- SHA-256 of every decision-relevant source-tree file outside generated output;
+- SHA-256 of the projection and source manifest;
+- exact package member paths, byte lengths, and SHA-256 values;
+- deterministic ZIP SHA-256;
+- a build receipt with distribution verification.
 
-This evidence supports source separation; it is not a general legal opinion
-about every possible future contribution. New releases must repeat the
-provenance and private-residue checks.
+ZIP member order, timestamps, compression, and Unix file modes are fixed.
+Two builds from the same source tree must be byte-identical.
 
-## Reproducible archive
+## Claim boundary
 
-`tools/build_release.py` sorts paths, fixes ZIP timestamps, normalizes the
-archive root, and adds the repository's license and third-party notice to the
-installable payload. Running it twice against the same commit must produce the
-same SHA-256.
-
-The GitHub release builder overlays the repository-level `LICENSE` and
-`THIRD_PARTY_NOTICES.md` at the same archive paths. Its checksum may therefore
-differ from the 69-member source archive checksum above while the member count
-remains unchanged.
+A content-addressed source and reproducible archive prove artifact identity.
+They do not prove installation, native host discovery, semantic use, external
+effects, useful behavior, maintained reentry, or human acceptance. Those states
+must point to their own receipts or observations.

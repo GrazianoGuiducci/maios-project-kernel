@@ -2,6 +2,44 @@
 
 All notable changes to the public distribution are recorded here.
 
+## 2.0.0 - unreleased
+
+- Made the repository the sole living implementation source and made
+  `package/` plus the ZIP deterministic generated projections.
+- Replaced fixed primary/support routing with an open causal faculty field,
+  silent source/self-correction invariants, emergent extensions, and explicit
+  observed-delta contracts.
+- Added a project-local configuration engine with one canonical state,
+  hash-linked Context Capsule and SetupSpec, concurrency refusal, compact
+  projections, backups, receipts, idempotency, and recovery.
+- Added reciprocal competence cultivation so concrete work and its enabling
+  competence test and improve each other; self-approval is refused and only
+  reviewed evidence can activate a local competence delta.
+- Added a derived autological operating context with causal input freshness,
+  capability states, uncertainty, eligible local movements, and explicit
+  authority ceiling.
+- Added independently reviewed terminal-result admission that couples actual
+  result, faculty deltas, possibility impact, next movement, configuration,
+  projections, evolution, and reentry without automatic self-improvement or
+  external-effect authority.
+- Added a self-installing distribution with immutable preview plans, exact
+  package/target identity, empty and existing-repository modes, conflict and
+  symlink refusal, host-specific project-local projections, verification, and
+  evolution-preserving uninstall.
+- Removed packaged lifecycle hooks, duplicated skill owners, historical Form
+  state, fixed selection constraints, and package-first implementation
+  authority from the generated product.
+- Added source, archive, installer, recovery, configuration, composition,
+  competence, and host-projection tests while keeping native discovery,
+  semantic use, and maintained reentry as separate acceptance claims.
+- Corrected the Hermes adapter after native-source readback: it now projects
+  the one semantic skill into a project-local `.hermes` home and keeps
+  host-created state outside repository tracking without modifying the global
+  Hermes profile.
+- Bound installation input to the hash-declared inventory, refused untracked
+  extraction residue, disabled installer bytecode generation, and forbade
+  compiled Python caches in the distribution.
+
 ## 1.6.0 - 2026-08-24
 
 - Distinguished `potential`, `emergent`, `realized`, and `verified` competence

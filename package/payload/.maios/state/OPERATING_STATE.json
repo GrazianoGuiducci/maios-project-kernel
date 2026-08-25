@@ -1,0 +1,13 @@
+{
+  "schema": "maios.operating-state.v1",
+  "source_role": "installation_template",
+  "revision": 0,
+  "last_input_digests": {},
+  "active_movement": null,
+  "history": [],
+  "assessments": [],
+  "last_resultant": null,
+  "last_resultant_receipt": null,
+  "last_assessment": null,
+  "last_event_id": null
+}

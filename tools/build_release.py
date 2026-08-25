@@ -1,48 +1,75 @@
 #!/usr/bin/env python3
-"""Build a deterministic, installable MAIOS Project Kernel ZIP."""
+"""Build MAIOS Project Kernel from the living source tree."""
 
 from __future__ import annotations
 
-import hashlib
+import argparse
 import json
-import stat
-import zipfile
+import shutil
+import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = ROOT / "package"
-DIST = ROOT / "dist"
-FIXED_TIMESTAMP = (2026, 8, 24, 0, 0, 0)
+sys.path.insert(0, str(ROOT / "src"))
+
+from maios_project_kernel.builder import (  # noqa: E402
+    BuildError,
+    deterministic_zip,
+    promote_directory,
+    render_distribution,
+    verify_distribution,
+    write_json,
+)
+
+
+def parser() -> argparse.ArgumentParser:
+    result = argparse.ArgumentParser()
+    result.add_argument("--package-dir", type=Path, default=ROOT / "package")
+    result.add_argument("--dist-dir", type=Path, default=ROOT / "dist")
+    return result
 
 
 def main() -> int:
-    manifest = json.loads((PACKAGE / "MANIFEST.json").read_text(encoding="utf-8"))
-    version = manifest["version"]
-    DIST.mkdir(exist_ok=True)
-    output = DIST / f"maios-project-kernel-setup-v{version}.zip"
-
-    sources: dict[str, Path] = {}
-    for path in PACKAGE.rglob("*"):
-        if path.is_file():
-            sources[path.relative_to(PACKAGE).as_posix()] = path
-    sources["LICENSE"] = ROOT / "LICENSE"
-    sources["THIRD_PARTY_NOTICES.md"] = ROOT / "THIRD_PARTY_NOTICES.md"
-
-    with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
-        for name in sorted(sources):
-            data = sources[name].read_bytes()
-            info = zipfile.ZipInfo(name, FIXED_TIMESTAMP)
-            info.compress_type = zipfile.ZIP_DEFLATED
-            info.external_attr = (stat.S_IFREG | 0o644) << 16
-            archive.writestr(info, data)
-
-    digest = hashlib.sha256(output.read_bytes()).hexdigest()
-    checksum = DIST / "SHA256SUMS.txt"
-    checksum.write_text(f"{digest}  {output.name}\n", encoding="utf-8", newline="\n")
-    print(f"{output}")
-    print(f"SHA-256: {digest}")
-    return 0
+    args = parser().parse_args()
+    package_dir = args.package_dir.resolve()
+    dist_dir = args.dist_dir.resolve()
+    staging = package_dir.with_name(f".{package_dir.name}.staging")
+    if staging.exists():
+        if staging.is_symlink():
+            print(f"ERROR: staging path must not be a symlink: {staging}", file=sys.stderr)
+            return 2
+        shutil.rmtree(staging)
+    try:
+        build = render_distribution(ROOT, staging)
+        verification = verify_distribution(ROOT, staging)
+        if not verification["valid"]:
+            raise BuildError("; ".join(verification["errors"]))
+        promote_directory(staging, package_dir)
+        output = dist_dir / "maios-project-kernel-setup-v2.0.0.zip"
+        archive_sha256 = deterministic_zip(package_dir, output)
+        receipt = {
+            "schema": "maios.build-receipt.v2",
+            "version": "2.0.0",
+            "source_tree_sha256": build["source_tree_sha256"],
+            "package_file_count": build["package_file_count"],
+            "payload_file_count": build["payload_file_count"],
+            "archive": output.name,
+            "archive_sha256": archive_sha256,
+            "verification": verification,
+        }
+        write_json(dist_dir / "BUILD_RECEIPT.json", receipt)
+        (dist_dir / "SHA256SUMS").write_text(
+            f"{archive_sha256}  {output.name}\n", encoding="ascii", newline="\n"
+        )
+        print(json.dumps(receipt, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0
+    except (BuildError, OSError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 2
+    finally:
+        if staging.exists():
+            shutil.rmtree(staging)
 
 
 if __name__ == "__main__":

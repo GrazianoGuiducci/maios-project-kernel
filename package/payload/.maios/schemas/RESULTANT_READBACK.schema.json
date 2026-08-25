@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://maios.it/schemas/resultant-readback-v1.json",
+  "title": "MAIOS reviewed resultant readback",
+  "$comment": "This schema is an interoperable shape, not a closed ontology. The runtime validator applies causal and review invariants while extension relations remain possible.",
+  "type": "object",
+  "required": [
+    "schema",
+    "event_id",
+    "observed_at",
+    "movement",
+    "source_positions",
+    "candidate_resultant",
+    "preprojection_readback",
+    "actual_result",
+    "faculty_deltas",
+    "possibility_impact",
+    "next_movement",
+    "effect",
+    "review"
+  ],
+  "properties": {
+    "schema": {"const": "maios.resultant-readback.v1"},
+    "event_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
+    "observed_at": {"type": "string", "minLength": 1},
+    "movement": {"type": "object"},
+    "source_positions": {
+      "type": "object",
+      "required": [
+        "operator_source",
+        "verified_evidence",
+        "model_inference",
+        "retained_unknowns"
+      ],
+      "properties": {
+        "operator_source": {"$ref": "#/$defs/stringList"},
+        "verified_evidence": {"$ref": "#/$defs/stringList"},
+        "model_inference": {"$ref": "#/$defs/stringList"},
+        "retained_unknowns": {"$ref": "#/$defs/stringList"}
+      },
+      "additionalProperties": true
+    },
+    "candidate_resultant": {
+      "type": "object",
+      "required": ["summary"],
+      "properties": {"summary": {"type": "string", "minLength": 1}},
+      "additionalProperties": true
+    },
+    "preprojection_readback": {
+      "type": "object",
+      "required": ["status", "description", "corrections"],
+      "properties": {
+        "status": {"enum": ["preserved", "corrected", "noncollapse"]},
+        "description": {"type": "string", "minLength": 1},
+        "corrections": {"$ref": "#/$defs/stringList"}
+      },
+      "additionalProperties": true
+    },
+    "actual_result": {
+      "type": "object",
+      "required": ["status", "classification", "summary", "evidence_refs"],
+      "properties": {
+        "status": {"enum": ["completed", "partial", "blocked", "failed", "deferred"]},
+        "classification": {"$ref": "#/$defs/classification"},
+        "summary": {"type": "string", "minLength": 1},
+        "evidence_refs": {"$ref": "#/$defs/stringList"}
+      },
+      "additionalProperties": true
+    },
+    "faculty_deltas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["faculty_id", "classification", "description"],
+        "properties": {
+          "faculty_id": {"type": "string", "minLength": 1},
+          "classification": {"$ref": "#/$defs/classification"},
+          "description": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": true
+      }
+    },
+    "possibility_impact": {
+      "type": "object",
+      "required": ["opened", "preserved", "constrained", "eliminated"],
+      "properties": {
+        "opened": {"$ref": "#/$defs/stringList"},
+        "preserved": {"$ref": "#/$defs/stringList"},
+        "constrained": {"$ref": "#/$defs/stringList"},
+        "eliminated": {"$ref": "#/$defs/stringList"}
+      },
+      "additionalProperties": true
+    },
+    "next_movement": {
+      "type": "object",
+      "required": ["current_next", "reason", "reentry_condition"],
+      "properties": {
+        "current_next": {"type": "string", "minLength": 1},
+        "reason": {"type": "string", "minLength": 1},
+        "reentry_condition": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "effect": {
+      "type": "object",
+      "required": ["status", "boundary", "receipt_refs"],
+      "properties": {
+        "status": {"enum": ["none", "effect_unbound", "effect_bound"]},
+        "boundary": {"type": ["object", "null"]},
+        "receipt_refs": {"$ref": "#/$defs/stringList"}
+      },
+      "additionalProperties": true
+    },
+    "self_improvement_assessment": {
+      "type": ["object", "null"]
+    },
+    "review": {
+      "type": "object",
+      "required": ["status", "reviewer", "reviewer_relation", "producer_is_reviewer"],
+      "properties": {
+        "status": {"const": "accepted"},
+        "reviewer": {"type": "string", "minLength": 1},
+        "reviewer_relation": {"enum": ["operator", "owner", "independent_reviewer"]},
+        "producer_is_reviewer": {"const": false}
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "classification": {
+      "enum": [
+        "verified_improvement",
+        "no_change",
+        "regression",
+        "tradeoff",
+        "unverified"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

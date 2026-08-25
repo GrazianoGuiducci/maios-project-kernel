@@ -1,6 +1,0 @@
-{
-  "host": "hermes",
-  "status": "pending_host_open",
-  "evidence_required": ["project instructions discovered", "maios-setup-interviewer used", "project state updated"],
-  "update_when": "a fresh project session demonstrates the three conditions"
-}

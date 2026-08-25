@@ -1,47 +1,85 @@
-# Architecture and ownership boundaries
+# Architecture and ownership
 
-## Generative layer and delivered layer
+## Living source and generated delivery
+
+MAIOS Project Kernel 2.0.0 uses one implementation owner:
 
 ```text
-authorized context + selected capabilities
-                  |
-                  v
-       private RepoKernel compiler
-                  |
-                  v
-       generated Project Kernel
-                  |
-                  v
-  MAIOS setup + host-native adapters
-                  |
-                  v
-     project owned by the operator
+kernel, setup, competence, adapter, runtime, installer, and template sources
+-> source tests
+-> declared release projection
+-> generated package tree and immutable inventory
+-> deterministic ZIP
+-> explicit target transition
 ```
 
-RepoKernel is the private generative metakernel. It defines and compiles a
-project-specific structure, but its source is not part of this distribution.
-The Project Kernel is the generated result delivered to the project.
+`package/` is disposable generated evidence. Product behavior is never edited
+there. The builder refuses missing or unsafe projection sources and binds the
+source-tree, projection, source-manifest, package members, and archive digests.
 
-## Main layers in the package
+## Deep modules and stable seams
 
-| Layer | Role | Primary location |
-|---|---|---|
-| Project identity | Sources, intent, boundaries, and semantic continuity | `package/.repokernel/` |
-| MAIOS start kernel | Startup interpretation and human-guided configuration | `package/kernel/` |
-| Project state | Brief, current state, and re-entry point | `package/project/` |
-| Setup state | Configuration lifecycle and interview contract | `package/setup/` |
-| Local faculties | Interview, routing, and operation skills | `package/skills/` |
-| Host adapters | Native discovery paths and activation receipts | `package/.agents/`, `.claude/`, `.opencode/`, `HOST_ADAPTERS.json` |
+| Seam | Hidden policy owner |
+| --- | --- |
+| `install.py preview/apply/verify/uninstall` | `src/maios_project_kernel/installer.py` |
+| `maios.py status/compose/validate-movement` | `src/maios_project_kernel/runtime.py` |
+| `maios.py operating-status/validate-resultant/admit-resultant` | `src/maios_project_kernel/operating.py` |
+| `maios.py configuration-*` | `src/maios_project_kernel/configuration.py` |
+| `maios.py competence-*` | Runtime competence index and reviewed-delta policy |
+| `maios-project-system` | Semantic kernel and open faculty field |
 
-## Authority
+Deterministic code validates paths, state shape, concurrency, hashes, receipts,
+and recovery. The semantic host interprets the live circumstance. Candidate
+projection cannot decide meaning, relevance, quality, or authority.
 
-The person owns the project direction and external-effect decisions. The
-Project Kernel owns the project's explicit operational context. Host adapters
-translate that shared state into each assistant's discovery conventions; they
-do not create authority and they do not prove activation merely by existing.
+## Situated composition
 
-## Evolution
+Two silent invariants preserve source-bound orientation and pre-projection
+self-correction. Situated faculty families become candidates when the current
+relation makes them material. The field remains open: an unmatched faculty can
+enter with source, expected delta, invalidator, and reentry condition. No fixed
+primary/support count or keyword match is behavioral proof.
 
-`package/kernel/PROJECT_EVOLUTION_CONTRACT.json` classifies reusable change as
-case memory, competence, skill, function, or meta-evolution. A candidate is not
-silently promoted: the required review and ownership boundary still apply.
+## Configuration
+
+`setup/CONFIGURATION_STATE.json` is the sole project-configuration state owner. Accepted
+transitions derive:
+
+- `.maios/context/CONTEXT_CAPSULE.json`;
+- `.maios/context/SETUP_SPEC.json`;
+- `project/CURRENT_STATE.md`;
+- `project/PROJECT_BRIEF.md`.
+
+The transition checks current-state identity and sequence, keeps effect
+authority at `none`, stores a canonical backup, regenerates projections, and
+supports recovery only while the state still matches the receipt.
+
+## Operating relation and resultant coupling
+
+`.maios/state/OPERATING_STATE.json` owns only admitted terminal-result history,
+active next movement, causal input digests, and owner-governed improvement
+assessments. `.maios/context/OPERATING_CONTEXT.json` is a derived projection of
+configuration, host observations, competence state, faculty field, and this
+operating state. It never overrides those sources.
+
+An accepted resultant readback couples inspected behavior to canonical
+configuration, possibility impact, composition, evolution, projections, and
+reentry under one reviewed context hash. Admission is recoverable and
+project-local. Semantic approval stays with an independent reviewer;
+self-improvement promotion and external effects remain separate owner actions.
+
+## Reciprocal competence cultivation
+
+Concrete work and its enabling competence advance together. Existing faculties
+are reused or composed first; a real gap may form the smallest truthful local
+competence. The candidate is exercised on the actual work and independently
+reviewed. Only a `verified_improvement` or accepted `tradeoff` can become active;
+other results remain history. Another meta-level is added only when it changes
+comprehension, execution, proof, recovery, or reentry.
+
+## Authority and proof
+
+The package performs project-local writes selected by explicit commands. It
+does not change global configuration or grant external authority. Generated,
+packaged, installed, discovered, used, verified, maintained, and human-accepted
+states require different evidence. Each receipt states its claim boundary.

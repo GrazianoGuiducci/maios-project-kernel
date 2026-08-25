@@ -17,8 +17,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate public boundary
-        run: python tools/verify_distribution.py
+      - name: Validate living source behavior
+        run: python -B -m unittest discover -s tests -v
       - name: Build release twice
         run: |
           python tools/build_release.py
@@ -27,3 +27,5 @@ jobs:
           python tools/build_release.py
           second="$(find dist -maxdepth 1 -name '*.zip' -print -quit)"
           cmp /tmp/first.zip "$second"
+      - name: Validate generated public boundary
+        run: python -B tools/verify_distribution.py

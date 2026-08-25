@@ -1,0 +1,9 @@
+{
+  "schema": "maios.competence-index.v2",
+  "source_role": "installation_template",
+  "revision": 0,
+  "active": {},
+  "history": [],
+  "retained_unknowns": [],
+  "last_event_id": null
+}

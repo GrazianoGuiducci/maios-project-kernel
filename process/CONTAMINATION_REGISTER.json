@@ -1,0 +1,66 @@
+{
+  "schema": "maios.package-contamination-register.v1",
+  "updated_at": "2026-08-24",
+  "entries": [
+    {
+      "id": "historical-1-6-package",
+      "source": "origin/main@f6bb1387eb8cb95b4b6ba8d8ada7bf11aff7d7ac",
+      "classification": "historical_evidence",
+      "use": "functional inventory, compatibility evidence, and regression baseline",
+      "not_authority_for": "2.0.0 architecture, builder ownership, hook lifecycle, or proof claims"
+    },
+    {
+      "id": "dirty-2-0-cut-attempt",
+      "source": "separate local 1.6.0 reconstruction worktree",
+      "classification": "attempt_owned_residue",
+      "observed": "89 dirty paths and an approximate 4663-line deletion against 545 additions",
+      "use": "cold evidence of the unified-system-kernel idea and of the destructive completeness regression",
+      "disposition": "do not mutate, merge, copy wholesale, clean, or delete"
+    },
+    {
+      "id": "packaged-codex-lifecycle-hooks",
+      "source": "origin/main package/.repokernel/lifecycle",
+      "classification": "contaminated_current_authority",
+      "reason": "the local reconstruction removed the lifecycle hook incarnation after it added noise and false control; hook presence is not the source of KA, FDLA, routing, or continuity",
+      "disposition": "excluded from 2.0.0; the underlying source, aperture, result-readback, and recovery functions remain in the portable kernel"
+    },
+    {
+      "id": "fixed-primary-support-model",
+      "source": "origin/main package/.repokernel/entity/ENTITY_PROFILE.json",
+      "classification": "superseded_relation",
+      "reason": "a fixed one-primary-plus-bounded-support model narrows emergent composition",
+      "disposition": "replaced by an open causal faculty field with explicit material-delta selection"
+    },
+    {
+      "id": "form-state-and-builder",
+      "source": "MAIOS_CLIENT_SETUP and historical maios_it package lineage",
+      "classification": "excluded_adjacent_owner",
+      "reason": "the manual 2.0.0 must be complete before independent Form comparison",
+      "disposition": "do not read as package input or copy into the manual artifact"
+    },
+    {
+      "id": "post-compact-package-first-draft",
+      "source": "this isolated 2.0.0 worktree before source recovery",
+      "classification": "attempt_owned_residue",
+      "observed": "installer, runtime and semantic files were initially written under package/payload even though the prior operator correction selected maios-project-kernel as the living source",
+      "use": "causal evidence that a written source relation is not assimilated until it changes implementation behavior",
+      "disposition": "useful logic recovered under canonical root owners; the entire hand-authored package tree is replaced only by the deterministic generator"
+    },
+    {
+      "id": "hermes-generic-skill-discovery-assumption",
+      "source": "2.0.0 adapters/ADAPTERS.json and templates/project/HOSTS.md before native Hermes inspection",
+      "classification": "incorrect_host_contract",
+      "observed": "the declared Hermes adapter projected no native skill and assumed Hermes would scan the project skills/ folder; Hermes 0.20.0 scans HERMES_HOME/skills plus explicitly configured external directories instead",
+      "use": "behavioral evidence that a declared adapter id and generic instructions are not native discovery proof",
+      "disposition": "superseded in the living source by one project-local .hermes skill projection, explicit launch boundary, global-profile non-mutation, and a verifier that rejects non-generic adapters without exactly one semantic-owner projection"
+    },
+    {
+      "id": "extracted-installer-bytecode-residue",
+      "source": "final-candidate proof extraction before inventory-bound installer correction",
+      "classification": "host_generated_distribution_residue",
+      "observed": "running the extracted installer without Python -B created payload/.maios/installer/__pycache__/installer.cpython-313.pyc; source_entries then enumerated that undeclared file into the install plan",
+      "use": "behavioral evidence that an archive can be clean while its extracted distribution becomes contaminated before installation",
+      "disposition": "the failed candidate identity is superseded; the installer entry disables bytecode, planning verifies the exact inventory and refuses untracked files, the builder forbids compiled cache artifacts, and regression fixtures exercise normal Python invocation"
+    }
+  ]
+}

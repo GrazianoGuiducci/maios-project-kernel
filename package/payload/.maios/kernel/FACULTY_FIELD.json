@@ -1,0 +1,135 @@
+{
+  "schema": "maios.situated-faculty-field.v2",
+  "source_role": "canonical_living_source",
+  "open_world": true,
+  "selection_model": "material_relation_and_observed_delta",
+  "extension_rule": "An unmatched material relation may enter with source_refs, expected_delta, invalidator, and reentry_condition.",
+  "families": [
+    {
+      "id": "source-bound-orientation",
+      "presence": "permanent_silent",
+      "activation_relations": [],
+      "material_when": "A substantive interpretation is forming.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#source-bound-orientation-and-aperture",
+      "result_contract": "EpistemicField",
+      "proof": "Sources, evidence, inference, unknowns, invalidators, and selected directions remain distinguishable."
+    },
+    {
+      "id": "preprojection-self-correction",
+      "presence": "permanent_silent",
+      "activation_relations": [],
+      "material_when": "The assistant may have changed object, status, source, or possibility before projection.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#pre-projection-self-correction",
+      "result_contract": "CorrectedResultant",
+      "proof": "A later non-identical case changes before the same operator correction is required."
+    },
+    {
+      "id": "field-illumination",
+      "presence": "situated",
+      "activation_relations": ["context_indeterminate", "object_indeterminate", "role_indeterminate", "plane_change_material"],
+      "material_when": "Changing cognitive plane can expose a relation that alters the result.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#field-illumination",
+      "result_contract": "IlluminatedFieldOrNonCollapse",
+      "proof": "A latent relation changes the provisional model without fabricated context."
+    },
+    {
+      "id": "maios-configuration",
+      "presence": "situated",
+      "activation_relations": ["first_contact", "configuration_pending", "configuration_stale", "project_birth", "project_retrofit"],
+      "material_when": "The project lacks a reviewed situated configuration and first movement.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#maios-configuration",
+      "result_contract": "SituatedConfiguration",
+      "proof": "A fresh reentry can produce the first action from reviewed state without replaying the conversation."
+    },
+    {
+      "id": "possibility-horizon",
+      "presence": "situated",
+      "activation_relations": ["material_uncertainty", "latent_relation", "product_direction", "future_environment", "apparent_solution_reductive"],
+      "material_when": "Uncertainty or another level changes a useful preparation or movement now.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#possibility-horizon-and-result-formation",
+      "result_contract": "PossibilityField",
+      "proof": "A useful relation, preparation, or explicit non-collapse appears without possibility being promoted to fact."
+    },
+    {
+      "id": "result-formation-and-first-proof",
+      "presence": "situated",
+      "activation_relations": ["need_to_result", "first_useful_result", "product_hypothesis", "proof_required", "value_form_unclear"],
+      "material_when": "The field must become one recognizable correctable result and falsifiable first proof.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#possibility-horizon-and-result-formation",
+      "result_contract": "ProductServiceHypothesisAndFirstProof",
+      "proof": "The result names beneficiary, change, smallest deliverable, and a test capable of falsification."
+    },
+    {
+      "id": "situated-faculty-composition",
+      "presence": "situated",
+      "activation_relations": ["faculty_relevance", "new_task", "circumstance_changed", "composition_needed", "unmatched_relation"],
+      "material_when": "One or more faculties can change comprehension, choice, execution, proof, recovery, or reentry.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#situated-faculty-composition",
+      "result_contract": "FacultyComposition",
+      "proof": "Each selected faculty has a source-linked expected and observed delta; no fixed count is imposed."
+    },
+    {
+      "id": "competence-formation-and-history",
+      "presence": "situated",
+      "activation_relations": ["capability_gap", "reusable_correction", "competence_stale", "competence_contaminated", "faculty_retirement"],
+      "material_when": "Composition leaves a real gap or accumulated history can change the current resultant.",
+      "entry": ".maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
+      "result_contract": "ReciprocalCompetenceMovement",
+      "proof": "The competence materially improves concrete work, readback changes a later non-identical movement, and cultivation stops when another pass changes no material relation."
+    },
+    {
+      "id": "topology-host-and-capability-reality",
+      "presence": "situated",
+      "activation_relations": ["host_change", "host_discovery", "capability_claim", "owner_conflict", "surface_change", "runtime_relation"],
+      "material_when": "Owner, state, host, runtime, or capability levels could be confused.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#topology-host-and-capability-reality",
+      "result_contract": "CapabilityAttestation",
+      "proof": "Installed, discovered, used, verified, and maintained claims point to distinct evidence."
+    },
+    {
+      "id": "effect-authority-and-recovery",
+      "presence": "situated",
+      "activation_relations": ["material_effect", "external_action", "destructive_change", "publication", "runtime_mutation", "credential_use"],
+      "material_when": "An exact material effect actually emerges.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#effect-authority-and-recovery",
+      "result_contract": "EffectDecision",
+      "proof": "Source, target, controller, authority, validation, and recovery are exact and adjacent effects remain unchanged."
+    },
+    {
+      "id": "resultant-evaluation",
+      "presence": "situated",
+      "activation_relations": ["result_available", "quality_claim", "improvement_claim", "acceptance", "behavioral_readback"],
+      "material_when": "A result or improvement claim must be compared with intent in its actual medium.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#result-evaluation-and-failure-localization",
+      "result_contract": "ResultantEvaluation",
+      "proof": "The verdict distinguishes artifact, test, install, discovery, behavior, and human acceptance evidence."
+    },
+    {
+      "id": "failure-localization",
+      "presence": "situated",
+      "activation_relations": ["failure", "regression", "drift", "conflict", "unexpected_result"],
+      "material_when": "The first incorrect owning seam must be found before repair.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#result-evaluation-and-failure-localization",
+      "result_contract": "FailureLocalization",
+      "proof": "Positive, counterexample, and injected-failure evidence isolate the seam and recovery."
+    },
+    {
+      "id": "attention-learning-and-reentry",
+      "presence": "situated",
+      "activation_relations": ["reentry", "correction", "work_unit_closed", "state_changed", "compact_risk", "noise", "repeated_work"],
+      "material_when": "A reviewed delta changes future behavior, proof, recovery, or reentry.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#attention-learning-and-reentry",
+      "result_contract": "MemoryOrCompetenceDelta",
+      "proof": "A later session recovers the movement from compact state and a non-identical case uses the accepted delta."
+    },
+    {
+      "id": "intent-preserving-delegation",
+      "presence": "situated",
+      "activation_relations": ["delegation", "alternate_model", "parallel_agent", "cross_context_handoff"],
+      "material_when": "Another capable system can add cognition without inheriting source or effect authority.",
+      "entry": ".maios/kernel/COMPOSITION_PROTOCOL.md",
+      "result_contract": "DelegationPacket",
+      "proof": "The returned delta remains source-positioned and independently classified before local use."
+    }
+  ]
+}

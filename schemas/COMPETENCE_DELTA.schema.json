@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://maios.it/schemas/competence-delta.v2.json",
+  "title": "MAIOS reviewed competence delta",
+  "type": "object",
+  "required": [
+    "schema",
+    "event_id",
+    "competence_id",
+    "disposition",
+    "work_relation",
+    "source_refs",
+    "expected_delta",
+    "observed_delta",
+    "evidence_refs",
+    "invalidator",
+    "reentry_condition",
+    "review"
+  ],
+  "properties": {
+    "schema": {"const": "maios.competence-delta.v2"},
+    "event_id": {"type": "string", "minLength": 1},
+    "competence_id": {"type": "string", "minLength": 1},
+    "disposition": {
+      "enum": ["retain", "revise", "supersede", "retire", "evaluate"]
+    },
+    "work_relation": {"type": "string", "minLength": 1},
+    "source_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "expected_delta": {"type": "string", "minLength": 1},
+    "observed_delta": {
+      "type": "object",
+      "required": ["classification", "description"],
+      "properties": {
+        "classification": {"enum": ["verified_improvement", "no_change", "regression", "tradeoff", "unverified"]},
+        "description": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "invalidator": {"type": "string", "minLength": 1},
+    "reentry_condition": {"type": "string", "minLength": 1},
+    "supersedes_event_id": {"type": ["string", "null"]},
+    "review": {
+      "type": "object",
+      "required": ["status", "reviewer", "reviewer_relation", "producer_is_reviewer"],
+      "properties": {
+        "status": {"enum": ["pending", "accepted", "rejected"]},
+        "reviewer": {"type": "string", "minLength": 1},
+        "reviewer_relation": {"enum": ["operator", "owner", "independent_reviewer"]},
+        "producer_is_reviewer": {"const": false}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

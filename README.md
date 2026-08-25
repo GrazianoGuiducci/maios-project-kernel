@@ -1,100 +1,113 @@
 # MAIOS Project Kernel
 
-[Versione italiana](README.it.md)
+[Italian version](README.it.md)
 
-MAIOS Project Kernel is a self-configuring package for starting a new project
-with an AI assistant. You do not need to define the architecture, select the
-skills, or even know the product in advance: it starts from the person's real
-work, makes its understanding explicit, and proposes a first correctable
-result.
+MAIOS Project Kernel is a portable, self-installing project system for people
+working with AI assistants. It starts from the person's real situation and
+sources, forms an early correctable result, composes only the faculties that
+change the present movement, and preserves reviewed learning and reentry in the
+project itself.
 
-The package gives the project an operational identity, working memory, sources,
-capabilities, success criteria, and continuity. The person remains in control
-of decisions; installations, publications, and external integrations are not
-activated implicitly.
+Version `2.0.0` is currently an unreleased local candidate. No release, host
+activation, or public runtime claim follows from the source tree or tests.
 
-## Download and start
+## What changed in 2.0.0
 
-The recommended path is the
-[Releases](https://github.com/GrazianoGuiducci/maios-project-kernel/releases/latest)
-page, which provides the installable ZIP and its SHA-256 checksum.
+The repository is the living source system. `package/` and the ZIP are generated
+projections, never a second hand-authored implementation:
 
-1. Create a new, empty folder for the project.
-2. Extract the entire ZIP into that folder.
-3. Open the folder with your assistant.
-4. Write: `Read START_HERE.md and let's begin the configuration.`
+```text
+living source, tests, and accepted contracts
+-> deterministic package projection and inventory
+-> self-installing archive
+-> explicit target plan and receipt
+-> installed project
+-> separate host discovery, use, result, and maintained-reentry evidence
+```
 
-This release is designed for **a new project**. Do not extract it over an
-existing repository; that case requires a separate integration path.
+The system includes:
 
-The installable source can be inspected in [`package/`](package/). The current
-startup guide is in Italian at [`package/START_HERE.md`](package/START_HERE.md).
+- a source-bound, open-horizon semantic kernel;
+- an open causal faculty field with circumstance-sensitive composition;
+- MAIOS situated configuration with one canonical state, a hash-linked Context
+  Capsule and SetupSpec, compact human projections, concurrency checks, and
+  recovery;
+- an autological operating context that exposes current capability relations,
+  causal invalidations, uncertainty, and authority without claiming semantic
+  correctness or activation;
+- independently reviewed terminal readback that couples actual results,
+  possibility impact, next movement, and owner-governed improvement assessments
+  to configuration and reentry;
+- reciprocal competence cultivation: concrete work tests and improves the
+  competence that enables it, and reviewed competence deltas change later work;
+- deterministic `preview`, `apply`, `verify`, and `uninstall` installation for
+  empty or existing repositories without hidden overwrite;
+- project-local adapters for Codex, Claude Code, OpenCode, DSH, Hermes, and a
+  generic host path;
+- explicit separation of packaged, installed, discovered, used, verified, and
+  maintained states.
 
-## Two entry paths, one function
+## Build from source
 
-MAIOS provides two ways to obtain a situated Project Kernel:
+```powershell
+$env:PYTHONDONTWRITEBYTECODE='1'
+python -B -m unittest discover -s tests -v
+python -B tools\build_release.py
+python -B tools\verify_distribution.py
+```
 
-- **Self-configuring package:** context is discovered after download through an
-  initial conversation with the person.
-- **[MAIOS Form](https://maios.it/form.html):** starts from information that is
-  already structured, then discusses and refines it before generation.
+The builder reads [`release/PROJECTION.json`](release/PROJECTION.json), projects
+only declared canonical sources, writes `package/MANIFEST.json` and an exact
+SHA-256 inventory, then creates `dist/maios-project-kernel-setup-v2.0.0.zip`.
 
-The first path can help a person who does not yet know what is possible in
-their domain. The second starts from a more defined context. Both aim to create
-an operational structure owned by the project, able to guide the work and
-evolve without losing the reasons behind decisions.
+## Install the generated archive
 
-## What is included
+Extract the archive into a temporary distribution folder. Installation does
+not run automatically.
 
-- a generated Project Kernel ready to be specified in its real context;
-- a startup interview that turns problems, activities, and possibilities into
-  a first correctable direction;
-- configuration state, project brief, and re-entry point;
-- a meta-faculty that selects and composes relevant capabilities;
-- an evolution contract that distinguishes case memory, competence, skill,
-  function, and meta-evolution;
-- entries and guides for Codex, Claude Code, OpenCode, Hermes, and DeepSeek
-  Harness (DSH);
-- an optional, conflict-aware Codex lifecycle projection, packaged but not
-  installed or activated.
+```powershell
+python install.py preview --target C:\Projects\MyProject --mode new_repository --host codex --plan-out install-plan.json
+python install.py apply --plan install-plan.json
+```
 
-Host-specific entry points are summarized in
-[`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md).
+For an existing repository use `--mode existing_repository`. The plan classifies
+every destination as new, identical, or conflicting; divergent content blocks
+the transition. See [installation](docs/INSTALLATION.md) and [host
+compatibility](docs/COMPATIBILITY.md).
 
-## Recent evolution
+After installation, open the target project and ask the assistant to read
+`START_HERE.md`. Installation proves bytes and receipts only. A fresh host must
+still demonstrate native discovery, state use, relevant faculty behavior, an
+observable result, and later reentry.
 
-Version `1.6.0` distinguishes competence potential, emergent relevance,
-realized use, and verified improvement. It also adds a supervised, reversible
-enterprise learning cycle and makes license, third-party notices, and source
-provenance directly inspectable inside the package. Host activation and the
-optional Codex lifecycle projection remain separate from extraction.
+## MAIOS Setup and the Form route
 
-See [`CHANGELOG.md`](CHANGELOG.md) for the version history.
+This repository owns the manual `self_configuring` entry. It begins neutral and
+forms its situated configuration after acquisition. It does not import MAIOS
+Form state, P1-P5 answers, private workspace topology, credentials, lifecycle
+hooks, or inherited effect authority. The Form-generated route is a later,
+independent comparison after the manual 2.0.0 vertical is complete.
 
-## Current status
+## Source layout
 
-- Package version: `1.6.0`
-- Optional Codex lifecycle projection: packaged, not installed
-- Mode: deferred configuration through a startup interview
-- Target: new folder / new repository
-- Existing-repository installation: not supported in this release
+| Owner | Purpose |
+| --- | --- |
+| `kernel/` | Semantic kernel, faculty composition, evolution, and competence cultivation |
+| `setup/` | MAIOS configuration contract and canonical-state template |
+| `src/maios_project_kernel/` | Installer, configuration, operating relation, runtime, and builder |
+| `competences/`, `state/`, `schemas/` | Project-local competence, operating state, and reviewed-event contracts |
+| `adapters/` | Host discovery projections |
+| `templates/` | Distribution and installed-project entry files |
+| `release/PROJECTION.json` | Complete source-to-package mapping |
+| `tests/` | Source, package, installation, state, recovery, and behavior fixtures |
 
-## Related repositories
-
-- [`d-nd-seed`](https://github.com/GrazianoGuiducci/d-nd-seed) provides the
-  public capability and faculty registries used as pinned, `data_only`
-  generation references.
-- [`d-nd-ux-ai-seed`](https://github.com/GrazianoGuiducci/d-nd-ux-ai-seed)
-  contains public UX behavior contracts for agentic workspaces; it is a related
-  ecosystem surface, not code bundled in this package.
-
-The role and terms of the included sources are detailed in
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) and
-[`docs/PROVENANCE.md`](docs/PROVENANCE.md).
+Architecture and evidence boundaries are documented in
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and
+[docs/PROVENANCE.md](docs/PROVENANCE.md).
 
 ## License
 
-Repository content, excluding names and trademarks, is available under the
-[MIT License](LICENSE). Informational sources and their terms are listed in
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md), while
-names and marks are addressed in [`TRADEMARKS.md`](TRADEMARKS.md).
+Source and generated package content, excluding names and trademarks, are
+available under the [MIT License](LICENSE). See
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and
+[TRADEMARKS.md](TRADEMARKS.md).

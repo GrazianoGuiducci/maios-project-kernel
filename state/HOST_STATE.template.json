@@ -1,0 +1,25 @@
+{
+  "schema": "maios.host-state.v2",
+  "source_role": "installation_template",
+  "revision": 0,
+  "selected_adapter": null,
+  "installation_state": "installed_files_unverified_by_host",
+  "instruction_discovery": "unverified",
+  "skill_discovery": "unverified",
+  "state_read": "unverified",
+  "behavioral_activation": "unverified",
+  "maintained_reentry": "unverified",
+  "observed_capabilities": [],
+  "unverified_capabilities": [
+    "project file read",
+    "project file write",
+    "native skill discovery",
+    "tool execution",
+    "network access",
+    "delegated agents"
+  ],
+  "global_writes": [],
+  "evidence": [],
+  "attestation_history": [],
+  "last_event_id": null
+}

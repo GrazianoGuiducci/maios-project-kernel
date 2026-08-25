@@ -1,6 +1,0 @@
-{
-  "host": "opencode",
-  "status": "pending_host_open",
-  "evidence_required": ["AGENTS.md discovered", "maios-setup-interviewer used", "project state updated"],
-  "update_when": "a fresh project session demonstrates the three conditions"
-}

@@ -1,0 +1,61 @@
+{
+  "adapters": [
+    {
+      "id": "generic",
+      "projections": []
+    },
+    {
+      "id": "codex",
+      "projections": [
+        {
+          "destination": ".agents/skills/maios-project-system/SKILL.md",
+          "source": "payload/skills/maios-project-system/SKILL.md"
+        }
+      ]
+    },
+    {
+      "id": "claude",
+      "projections": [
+        {
+          "destination": ".claude/skills/maios-project-system/SKILL.md",
+          "source": "payload/skills/maios-project-system/SKILL.md"
+        }
+      ]
+    },
+    {
+      "id": "opencode",
+      "projections": [
+        {
+          "destination": ".opencode/skills/maios-project-system/SKILL.md",
+          "source": "payload/skills/maios-project-system/SKILL.md"
+        }
+      ]
+    },
+    {
+      "id": "hermes",
+      "projections": [
+        {
+          "destination": ".hermes/skills/maios-project-system/SKILL.md",
+          "source": "payload/skills/maios-project-system/SKILL.md"
+        },
+        {
+          "destination": ".hermes/.gitignore",
+          "source": "payload/skills/maios-project-system/adapters/hermes.gitignore"
+        }
+      ]
+    },
+    {
+      "id": "dsh",
+      "projections": [
+        {
+          "destination": ".agents/skills/maios-project-system/SKILL.md",
+          "source": "payload/skills/maios-project-system/SKILL.md"
+        }
+      ]
+    }
+  ],
+  "rule": "Adapters project the one semantic owner into a host-native discovery path; they are not distinct faculties or activation proof.",
+  "schema": "maios.host-adapters.v2",
+  "semantic_owner": "payload/skills/maios-project-system/SKILL.md",
+  "source_owner": "skills/maios-project-system/SKILL.md"
+}
