@@ -59,6 +59,10 @@ terminal admission, project-state/reentry coupling, causal staleness refusal,
 evidence-free self-improvement refusal, and fresh-process archive execution.
 The complete 17-test owner suite was replayed after publication-state
 reconciliation on 2026-08-25 and passes without changing the generated archive.
+The first projection-drift CI gate then exposed host-dependent `Path` ordering:
+Windows and Linux produced different inventory order and source-tree identity.
+Builder and installer enumeration now use canonical POSIX relative paths, and
+the owner test requires canonical inventory order before publication.
 Native host
 discovery for hosts other than Hermes, state reading, semantic use and
 maintained reentry remain separate unverified states until exercised on a

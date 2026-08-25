@@ -117,7 +117,9 @@ def verified_inventory_rows(root: Path) -> list[dict[str, Any]]:
         declared[relative] = row
 
     actual: dict[str, Path] = {}
-    for path in sorted(root.rglob("*")):
+    for path in sorted(
+        root.rglob("*"), key=lambda item: item.relative_to(root).as_posix()
+    ):
         relative = path.relative_to(root).as_posix()
         if path.is_symlink():
             raise InstallerError(f"package distribution contains a symlink: {relative}")
@@ -213,7 +215,9 @@ def target_snapshot(target: Path) -> dict[str, Any]:
     if not target.is_dir():
         return {"state": "not_directory", "digest": digest_bytes(b"not_directory")}
     rows: list[dict[str, Any]] = []
-    for path in sorted(target.rglob("*")):
+    for path in sorted(
+        target.rglob("*"), key=lambda item: item.relative_to(target).as_posix()
+    ):
         relative = path.relative_to(target)
         if ".git" in relative.parts:
             continue

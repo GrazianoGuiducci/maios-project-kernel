@@ -47,10 +47,13 @@ class DistributionFixture(unittest.TestCase):
 class BuilderTests(DistributionFixture):
     def test_distribution_is_source_bound_and_deterministic(self) -> None:
         manifest = builder.read_json(self.distribution / "MANIFEST.json")
+        inventory = builder.read_json(self.distribution / "PACKAGE_INVENTORY.json")
+        inventory_paths = [item["path"] for item in inventory["files"]]
         self.assertEqual(
             manifest["source_identity"]["tree_sha256"],
             builder.source_tree_digest(ROOT),
         )
+        self.assertEqual(inventory_paths, sorted(inventory_paths))
         first = self.base / "first.zip"
         second = self.base / "second.zip"
         self.assertEqual(

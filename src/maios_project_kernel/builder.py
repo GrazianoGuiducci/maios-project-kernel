@@ -73,7 +73,9 @@ def native(root: Path, relative: str) -> Path:
 def source_tree_files(root: Path) -> list[Path]:
     excluded_roots = {".git", "package", "dist", ".pytest_cache", "__pycache__"}
     result: list[Path] = []
-    for path in sorted(root.rglob("*")):
+    for path in sorted(
+        root.rglob("*"), key=lambda item: item.relative_to(root).as_posix()
+    ):
         if not path.is_file():
             continue
         relative = path.relative_to(root)
@@ -121,7 +123,10 @@ def transformed_adapters(root: Path) -> dict[str, Any]:
 
 def distribution_files(package_dir: Path, include_inventory: bool = True) -> list[Path]:
     result = []
-    for path in sorted(package_dir.rglob("*")):
+    for path in sorted(
+        package_dir.rglob("*"),
+        key=lambda item: item.relative_to(package_dir).as_posix(),
+    ):
         if path.is_file():
             if not include_inventory and path.name == "PACKAGE_INVENTORY.json":
                 continue
