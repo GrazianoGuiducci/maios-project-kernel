@@ -1,24 +1,26 @@
 # Third-party sources and generated-output boundary
 
-The installable package is an original MAIOS distribution generated for the
-project. The following sources were consulted as information inputs; their
-source files are not redistributed verbatim in this repository.
+MAIOS Project Kernel 2.0.0 is generated from the living sources in this
+repository. External repositories and owner-native competences listed below
+were consulted as historical evidence, design references or conceptual
+sources. Their code, private topology and authority are not imported into the
+distribution. The maintained source positions are recorded in the living
+repository under `sources/SOURCE_MANIFEST.json` and projected into the
+installed project as `.maios/SOURCE_MANIFEST.json`.
 
 ## d-nd-seed
 
 Two registries from `GrazianoGuiducci/d-nd-seed`, revision
 `4af0beaf482b881ba2b844a698ee9062ca7da17f`, were used as `data_only` inputs to
-the project entity profile:
+an earlier project entity profile:
 
 - `capabilities/registry.json`
 - `plugins/d-nd-core/skills/faculty-router/references/faculty-registry.json`
 
-The source repository is licensed under the GNU Affero General Public License
-v3.0. See the precise references and checksums in
-[`docs/source-manifest.json`](docs/source-manifest.json).
-
-No file in the installable package is byte-identical to a file in the cited
-d-nd-seed revision.
+That profile is not part of the 2.0.0 architecture and these registries are not
+current generation inputs. The source repository is licensed under the GNU
+Affero General Public License v3.0. No file from the cited revision is
+redistributed in the installable package.
 
 ## d-nd-ux-ai-seed
 
@@ -33,11 +35,17 @@ License of this distribution.
 
 ## RepoKernel
 
-RepoKernel was used to generate the Project Kernel contained in the package.
-RepoKernel is a separate private and proprietary metakernel. Its source code is
-not included in this repository and is not licensed by the repository's MIT
-License.
+RepoKernel owner contracts were consulted as a non-shipped design reference for
+Project Kernel neutrality, claim-level separation and target ownership.
+RepoKernel did not generate the 2.0.0 distribution and its source code is not
+included here. Its own repository and license remain separate from the MIT
+License of this distribution.
 
-The generated Project Kernel and the other files present in this repository
-are distributed under the repository's MIT License unless a file states
-otherwise.
+## KA, FDLA and Meta_Skill
+
+Owner-native KA, FDLA and Meta_Skill competences supplied non-shipped causal
+sources for source distinction, possibility preservation, pre-projection
+self-correction, causal readback, reciprocal competence cultivation and
+owner-governed evolution of coordinating relations. Their names identify
+provenance; no private source, local adapter, workspace topology or inherited
+effect authority is distributed.

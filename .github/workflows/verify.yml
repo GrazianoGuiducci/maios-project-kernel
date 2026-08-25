@@ -27,5 +27,7 @@ jobs:
           python tools/build_release.py
           second="$(find dist -maxdepth 1 -name '*.zip' -print -quit)"
           cmp /tmp/first.zip "$second"
+      - name: Require the committed package projection to match living source
+        run: git diff --exit-code -- package/
       - name: Validate generated public boundary
         run: python -B tools/verify_distribution.py

@@ -13,7 +13,28 @@
     {
       "id": "generate-complete-kernel-awareness",
       "position": "maintained_competence",
-      "used_for": ["functional coverage", "self-installation", "proof ladder", "contamination control"]
+      "used_for": ["functional coverage", "self-installation", "open composition", "operating readback", "contamination control"]
+    },
+    {
+      "id": "ka",
+      "position": "non_shipped_competence_source",
+      "used_for": ["source distinction", "difference preservation", "retained unknowns", "causal invalidation", "reversibility"],
+      "source_shipped": false,
+      "topology_imported": false
+    },
+    {
+      "id": "fdla",
+      "position": "non_shipped_competence_source",
+      "used_for": ["pre-projection correction", "assistant-deformation readback", "reusable causal learning"],
+      "source_shipped": false,
+      "topology_imported": false
+    },
+    {
+      "id": "meta-skill-architecture",
+      "position": "non_shipped_architecture_source",
+      "used_for": ["competence levels", "reciprocal cultivation", "composition", "owner-governed meta-evolution"],
+      "source_shipped": false,
+      "topology_imported": false
     },
     {
       "id": "repokernel-owner-contracts",

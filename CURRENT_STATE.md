@@ -11,9 +11,10 @@ product preserves the useful functional field and the MAIOS configurator,
 composes the logic made material by each circumstance, and now couples the
 reviewed terminal resultant back to canonical state, evolution, and reentry.
 
-The reconstructed living source is published on authenticated `origin/main` at
-`b59153e2ac4306c488e6e53b50fe5b706642deed`. This isolated worktree remains the
-only write owner for bounded source corrections.
+The core reconstruction entered authenticated `origin/main` with
+`b59153e2ac4306c488e6e53b50fe5b706642deed`; the maintained living source
+continues on `main`. This isolated worktree remains the only write owner for
+bounded source corrections.
 
 ## Architecture and observed result
 
@@ -92,9 +93,9 @@ Hermes profile.
 ## Publication and boundary
 
 The living source is published on `maios-project-kernel` main. The exact
-versioned archive is projected on maios.it by `maios_it` commit
-`bdf9a3e091f43e5cee4ea274df5b633d18fecbe7`: 63843 bytes, SHA-256
-`36199f204f88afa3720ded2b0a900dc0b7a0555191d7033be1baae7fa62cea10`.
+archive identity belongs to `dist/BUILD_RECEIPT.json` and to the versioned
+checksum published on maios.it; it is not copied into this source file because
+changing a source file necessarily changes the generated archive identity.
 Setup AI, Components and the Codex guide now expose the real installation path
 and the broader operating-Kernel direction.
 

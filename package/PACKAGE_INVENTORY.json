@@ -24,7 +24,7 @@
     {
       "bytes": 1490,
       "path": "MANIFEST.json",
-      "sha256": "5f8ad4d89e66c92935836c099e95e2701a7054f24038189ba7761c30af323607"
+      "sha256": "0730928b3b508386b1fd9102898ab1a2523cd87e3a5ddad433f0b681a5bf4d7d"
     },
     {
       "bytes": 188,
@@ -97,9 +97,9 @@
       "sha256": "d1ae58f672f5059804d32c987da3b50eeb360583d42bb8af2e06ddebceb76cad"
     },
     {
-      "bytes": 1271,
+      "bytes": 2116,
       "path": "payload/.maios/SOURCE_MANIFEST.json",
-      "sha256": "4e158141a72a6680de4d5563015f70807b6864dabc6b6e2ce7ecf5b5f32fbd1c"
+      "sha256": "c73e2d7db34acef6a065daea3674a3ecdac7477e9758c3c7615533b33146366a"
     },
     {
       "bytes": 682,
@@ -182,9 +182,9 @@
       "sha256": "d917b479a15a0a55e596f19b07339817486f4c40d4fc60ef3d63c3dac266a522"
     },
     {
-      "bytes": 1729,
+      "bytes": 2367,
       "path": "payload/THIRD_PARTY_NOTICES.md",
-      "sha256": "eb8c520dc06c28d68ea96fa87ba72cd18081b33a6bd17b1dedf52b0955919975"
+      "sha256": "8368fb9c788ed8fc78f1b7ea860da37ba0f56d49245dc6b69205d9d0f30800b5"
     },
     {
       "bytes": 322,
@@ -192,9 +192,9 @@
       "sha256": "10fc9d2b8deb63156248289213e06150871166422fba60f58fd9b83afcfcdcc5"
     },
     {
-      "bytes": 1729,
+      "bytes": 2367,
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "eb8c520dc06c28d68ea96fa87ba72cd18081b33a6bd17b1dedf52b0955919975"
+      "sha256": "8368fb9c788ed8fc78f1b7ea860da37ba0f56d49245dc6b69205d9d0f30800b5"
     }
   ],
   "schema": "maios.package-inventory.v2"

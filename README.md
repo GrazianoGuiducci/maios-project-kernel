@@ -16,6 +16,10 @@ No GitHub tag or Release has been created, and source publication does not
 claim host activation, semantic results, maintained reentry, or public runtime
 operation.
 
+This release is a foundation, not a ceiling: new competences, hosts and forms
+of embodiment can enter when a future circumstance makes their relations
+useful, without turning the current architecture into a fixed ontology.
+
 ## What changed in 2.0.0
 
 The repository is the living source system. `package/` and the ZIP are generated

@@ -6,9 +6,16 @@ reali della persona, forma presto un risultato correggibile, compone soltanto le
 facoltà che cambiano il movimento presente e conserva nel progetto
 l'apprendimento revisionato e il rientro.
 
-La versione `2.0.0` è attualmente un candidato locale non pubblicato. La
-presenza delle sorgenti o il superamento dei test non provano rilascio,
-attivazione su un host o comportamento pubblico.
+La versione `2.0.0` è pubblicata sul ramo `main` della repository. Il suo
+archivio auto-installante è disponibile su
+[maios.it](https://maios.it/downloads/maios-project-kernel-setup-v2.0.0.zip),
+insieme al [checksum SHA-256](https://maios.it/downloads/maios-project-kernel-setup-v2.0.0.zip.sha256).
+Non è stato creato un tag o una Release GitHub.
+
+Questa versione è una base, non un limite: nuove competenze, nuovi host e nuove
+forme di incarnazione potranno entrare quando le circostanze future renderanno
+utili le loro relazioni, senza trasformare l'architettura attuale in
+un'ontologia fissa.
 
 ## Relazione sorgente-pacchetto
 
