@@ -30,6 +30,7 @@
     {"source": "state/OPERATING_STATE.template.json", "destination": "payload/.maios/state/OPERATING_STATE.json"},
     {"source": "competences/INDEX.template.json", "destination": "payload/.maios/competences/INDEX.json"},
     {"source": "schemas/COMPETENCE_DELTA.schema.json", "destination": "payload/.maios/schemas/COMPETENCE_DELTA.schema.json"},
+    {"source": "schemas/COMPETENCE_FORMATION_CANDIDATE.schema.json", "destination": "payload/.maios/schemas/COMPETENCE_FORMATION_CANDIDATE.schema.json"},
     {"source": "schemas/RESULTANT_READBACK.schema.json", "destination": "payload/.maios/schemas/RESULTANT_READBACK.schema.json"},
     {"source": "docs/RECEIPTS.md", "destination": "payload/.maios/receipts/README.md"},
     {"source": "setup/MAIOS_SETUP_CONTRACT.md", "destination": "payload/setup/MAIOS_SETUP_CONTRACT.md"},

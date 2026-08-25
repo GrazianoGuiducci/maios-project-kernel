@@ -9,6 +9,10 @@ Issues and focused proposals are welcome. Before proposing a change, identify:
 - the hosts and states affected;
 - the evidence that would show an improvement without a regression.
 
+Fork the repository, create a focused branch in your fork, and open a pull
+request against the original `main` branch. Keep each proposal tied to one
+observable project condition and result.
+
 Do not submit credentials, private project material, personal data, or source
 from RepoKernel. Contributions should preserve the distinction between a file
 being included, discovered, configured, and actually active.

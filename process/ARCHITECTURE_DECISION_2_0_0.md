@@ -25,6 +25,7 @@ The public seam is small:
 install.py preview | apply | verify | uninstall
 maios.py status | compose | validate-movement | operating-status
 maios.py validate-resultant | admit-resultant
+maios.py competence-candidates | competence-status
 one maios-project-system skill
 ```
 
@@ -74,6 +75,13 @@ SetupSpec, current-state and brief projections with concurrency and recovery.
 Competence cultivation advances concrete work and its enabling competence
 reciprocally, admits only independently reviewed local deltas, and stops when
 another meta-level changes no material relation.
+
+The autological coupling is stateful but not self-authorizing: a reviewed
+resultant reads back its method and may form a candidate; declared activation
+relations project that candidate into later work; a later faculty delta updates
+its evidence and may prepare a pending competence delta. The reviewed competence
+index remains a separate owner, so no part of result production can approve its
+own formation.
 
 ## Operating relation decision
 

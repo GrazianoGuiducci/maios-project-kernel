@@ -6,8 +6,10 @@
   "active_movement": null,
   "history": [],
   "assessments": [],
+  "competence_candidates": [],
   "last_resultant": null,
   "last_resultant_receipt": null,
   "last_assessment": null,
+  "last_competence_candidate": null,
   "last_event_id": null
 }

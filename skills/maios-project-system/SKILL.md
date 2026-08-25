@@ -65,6 +65,15 @@ that exact context was reviewed. Admission updates project-local continuity;
 it does not prove semantic quality, assimilation, host activation, improvement
 promotion, or external effect.
 
+For every non-null self-improvement assessment, read back the method as well as
+the result: current method, observed causal relation, material delta, selected
+level, alternatives preserved, and stop condition. When the reviewed decision
+is `improve`, form the smallest candidate that can be exercised, give it
+sources, activation relations, invalidator, reentry, and a next exercise, then
+carry at least one activation relation into `next_movement.relations`.
+Admission makes this candidate eligible in the matching later circumstance; it
+does not make it a competence.
+
 Do not advance host capability state by inference. `maios.py host-status`
 reports the selected adapter and current claim levels. Prepare
 `validate-host-attestation` and `admit-host-attestation` events only from an
@@ -78,10 +87,11 @@ When the current composition cannot produce or prove the needed result, read
 `.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md`; recover, compose, form, or
 revise the smallest competence that can change the work. Exercise it on the
 real result, read back both the result and the competence, and admit only a
-reviewed delta. Do not create an infinite meta-stack: stop when another level
-changes no material relation. Use `maios.py competence-status` and
-`validate-competence-delta` when deterministic support is available; contract
-validity is not behavioral proof or review.
+reviewed delta. `maios.py competence-candidates` exposes formation and any
+pending delta; `competence-status` exposes only independently admitted
+competences. Do not create an infinite meta-stack: stop when another level
+changes no material relation. Use `validate-competence-delta` before a separate
+owner review; contract validity is not behavioral proof or review.
 
 Update `setup/CONFIGURATION_STATE.json` and `project/CURRENT_STATE.md` coherently
 when the project state truly changes. Current operator intent and verified

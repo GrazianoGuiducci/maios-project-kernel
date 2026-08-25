@@ -93,11 +93,12 @@
     },
     "next_movement": {
       "type": "object",
-      "required": ["current_next", "reason", "reentry_condition"],
+      "required": ["current_next", "reason", "reentry_condition", "relations"],
       "properties": {
         "current_next": {"type": "string", "minLength": 1},
         "reason": {"type": "string", "minLength": 1},
-        "reentry_condition": {"type": "string", "minLength": 1}
+        "reentry_condition": {"type": "string", "minLength": 1},
+        "relations": {"$ref": "#/$defs/stringList"}
       },
       "additionalProperties": true
     },
@@ -112,7 +113,10 @@
       "additionalProperties": true
     },
     "self_improvement_assessment": {
-      "type": ["object", "null"]
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/selfImprovementAssessment"}
+      ]
     },
     "review": {
       "type": "object",
@@ -139,6 +143,74 @@
         "tradeoff",
         "unverified"
       ]
+    },
+    "methodReadback": {
+      "type": "object",
+      "required": [
+        "current_method",
+        "observed_relation",
+        "causal_delta",
+        "selected_level",
+        "alternatives_preserved",
+        "stop_condition"
+      ],
+      "properties": {
+        "current_method": {"type": "string", "minLength": 1},
+        "observed_relation": {"type": "string", "minLength": 1},
+        "causal_delta": {"type": "string", "minLength": 1},
+        "selected_level": {"type": "string", "minLength": 1},
+        "alternatives_preserved": {"$ref": "#/$defs/stringList"},
+        "stop_condition": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "selfImprovementAssessment": {
+      "type": "object",
+      "required": [
+        "decision",
+        "target",
+        "evidence_refs",
+        "uncertainty",
+        "expected_delta",
+        "candidate_ref",
+        "method_readback"
+      ],
+      "properties": {
+        "decision": {
+          "enum": ["improve", "verify_first", "defer", "no_change", "reject"]
+        },
+        "target": {
+          "type": "object",
+          "required": ["kind", "id", "owner"],
+          "properties": {
+            "kind": {"type": "string", "minLength": 1},
+            "id": {"type": "string", "minLength": 1},
+            "owner": {"type": "string", "minLength": 1}
+          },
+          "additionalProperties": true
+        },
+        "evidence_refs": {"$ref": "#/$defs/stringList"},
+        "uncertainty": {"$ref": "#/$defs/stringList"},
+        "expected_delta": {"type": "string", "minLength": 1},
+        "candidate_ref": {"type": ["string", "null"]},
+        "method_readback": {"$ref": "#/$defs/methodReadback"},
+        "formation_candidate": {
+          "$ref": "COMPETENCE_FORMATION_CANDIDATE.schema.json"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"decision": {"const": "improve"}},
+            "required": ["decision"]
+          },
+          "then": {"required": ["formation_candidate"]},
+          "else": {
+            "properties": {"formation_candidate": {"type": "null"}}
+          }
+        }
+      ],
+      "additionalProperties": true
     }
   },
   "additionalProperties": true

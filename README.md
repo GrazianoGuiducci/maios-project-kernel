@@ -8,13 +8,16 @@ sources, forms an early correctable result, composes only the faculties that
 change the present movement, and preserves reviewed learning and reentry in the
 project itself.
 
-Version `2.0.0` is published on the repository's `main` branch. Its exact
-self-installing archive is also available from
-[maios.it](https://maios.it/downloads/maios-project-kernel-setup-v2.0.0.zip)
-with a published [SHA-256 checksum](https://maios.it/downloads/maios-project-kernel-setup-v2.0.0.zip.sha256).
-No GitHub tag or Release has been created, and source publication does not
-claim host activation, semantic results, maintained reentry, or public runtime
-operation.
+Version `2.0.0` is distributed from the canonical GitHub repository. The
+living source remains on `main`; the official Release carries the exact
+self-installing archive and `SHA256SUMS` file.
+
+- [Download Release 2.0.0](https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v2.0.0)
+- [Inspect or star the repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
+- [Fork the project](https://github.com/GrazianoGuiducci/maios-project-kernel/fork) to adapt it or propose a contribution
+
+Source publication and a Release do not claim host activation, semantic
+results, maintained reentry, or public runtime operation.
 
 This release is a foundation, not a ceiling: new competences, hosts and forms
 of embodiment can enter when a future circumstance makes their relations
@@ -48,7 +51,9 @@ The system includes:
   possibility impact, next movement, and owner-governed improvement assessments
   to configuration and reentry;
 - reciprocal competence cultivation: concrete work tests and improves the
-  competence that enables it, and reviewed competence deltas change later work;
+  competence that enables it; method readback forms candidates, matching later
+  movements exercise them, and only reviewed competence deltas change active
+  routing;
 - deterministic `preview`, `apply`, `verify`, and `uninstall` installation for
   empty or existing repositories without hidden overwrite;
 - project-local adapters for Codex, Claude Code, OpenCode, DSH, Hermes, and a

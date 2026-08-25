@@ -2,7 +2,7 @@
 
 updated: 2026-08-25
 active_surface: manual `maios-project-kernel` 2.0.0 living source system
-status: manual 2.0.0 living source and self-installing package complete; operating relation and terminal resultant coupling included; broader host validation remains non-blocking future evidence
+status: manual 2.0.0 living source includes locally verified autological competence formation; generated distribution is current; GitHub Release v2.0.0 is the canonical distribution surface
 
 ## Current resultant
 
@@ -10,11 +10,16 @@ The operator selected a complete replacement of the current package. The new
 product preserves the useful functional field and the MAIOS configurator,
 composes the logic made material by each circumstance, and now couples the
 reviewed terminal resultant back to canonical state, evolution, and reentry.
+The selected correction now makes competence formation part of that executed
+method: reviewed method readback forms a candidate, the candidate enters a
+later matching movement, and its observed delta stops at independent review
+before competence admission.
 
-The core reconstruction entered authenticated `origin/main` with
-`b59153e2ac4306c488e6e53b50fe5b706642deed`; the maintained living source
-continues on `main`. This isolated worktree remains the only write owner for
-bounded source corrections.
+The maintained living source belongs to this repository's `main` branch. The
+versioned GitHub Release binds that source revision to the generated archive
+and checksum; the website points to this owner instead of maintaining a second
+copy. The isolated release worktree remains the write owner for this bounded
+source movement.
 
 ## Architecture and observed result
 
@@ -32,7 +37,10 @@ correctness, activation, consciousness, or effect authority. A reviewed
 resultant can update the next movement, composition, possibility impact,
 evolution, projections, and reentry under one context-concurrency hash.
 
-Self-improvement is an owner-governed assessment, never an automatic loop.
+Self-improvement is an owner-governed executed relation, never an automatic
+approval loop. Method readback may form a project-local candidate with explicit
+activation relations. Later work can exercise and evaluate it; only a separate
+accepted competence delta can change the reviewed competence index.
 Skills, competences, meta-skills, meta-competences, routers, and their current
 forms remain open to revision, replacement, or a different level when later
 context makes that materially useful.
@@ -57,7 +65,12 @@ retention/revision and self-approval refusal, plus reviewed host claim
 dependencies. The new operating relation additionally passes focused tests for
 terminal admission, project-state/reentry coupling, causal staleness refusal,
 evidence-free self-improvement refusal, and fresh-process archive execution.
-The complete 17-test owner suite was replayed after publication-state
+The autological formation fixture additionally proves candidate formation,
+later circumstance-bound exercise, pending-review refusal and separately
+accepted admission. The complete 19-test owner suite was replayed after this
+source change and passes. The generated distribution contains 41 declared
+files and verifies against its exact inventory.
+The earlier 17-test owner suite was replayed after publication-state
 reconciliation on 2026-08-25 and passes without changing the generated archive.
 The first projection-drift CI gate then exposed host-dependent `Path` ordering:
 Windows and Linux produced different inventory order and source-tree identity.
@@ -95,23 +108,24 @@ Hermes profile.
 - `process/HERMES_NATIVE_DISCOVERY_RECEIPT_2_0_0.md`
 - `process/INSTALLER_DISTRIBUTION_INTEGRITY_RECEIPT_2_0_0.md`
 - `process/OPERATING_RELATION_IMPLEMENTATION_RECEIPT_2_0_0.md`
+- `process/AUTOLOGICAL_COMPETENCE_FORMATION_RECEIPT_2_0_0.md`
 - `kernel/`, `setup/`, `competences/`, `adapters/`, and `src/`
 - `templates/` and `release/PROJECTION.json`
 - `tools/` and `tests/`; generated `package/` is evidence, not an owner
 
 ## Publication and boundary
 
-The living source is published on `maios-project-kernel` main. The exact
-archive identity belongs to `dist/BUILD_RECEIPT.json` and to the versioned
-checksum published on maios.it; it is not copied into this source file because
-changing a source file necessarily changes the generated archive identity.
-Setup AI, Components and the Codex guide now expose the real installation path
-and the broader operating-Kernel direction.
+The living source is published on `maios-project-kernel` main. GitHub Release
+`v2.0.0` owns the versioned distribution: its assets are the generated ZIP and
+`SHA256SUMS` from the same source revision. The exact archive identity remains
+in `dist/BUILD_RECEIPT.json`; it is not copied into this source file because
+changing a source file necessarily changes that identity. MAIOS public pages
+link to the canonical repository and Release without mirroring the binary.
 
-No GitHub tag or Release, Form-package inspection, host-global configuration,
-hook installation, provider call, physical-system connection, service
-activation or direct runtime mutation is included. Package publication proves
-the distributed bytes and public projection, not host discovery beyond the
+The Release does not include Form-package inspection, host-global
+configuration, hook installation, provider calls, physical-system
+connections, service activation or direct runtime mutation. Package
+publication proves the distributed bytes, not host discovery beyond the
 recorded Hermes observation, semantic results or maintained reentry.
 
 ## Residue not to follow
@@ -133,6 +147,6 @@ hard_boundaries: no hidden global writes and no external effect authority
 reversible_preparations: source edits, deterministic builds, temp installations
 ```
 
-current_next: operator visual review of the public Setup AI, Components and Codex-guide surfaces, then select RepoKernel as a distinct owner surface before any later comparison with the Form-generated package
-first_safe_action: use `dist/BUILD_RECEIPT.json` or the matching public ZIP checksum for exact artifact identity; do not reopen Hermes or a broad host matrix unless a later event specifically needs that evidence
+current_next: observe independent download, first use, stars, forks and contributions as distinct signals; select RepoKernel as a separate owner surface before comparing the Form-generated package
+first_safe_action: use `dist/BUILD_RECEIPT.json` and the matching `SHA256SUMS` Release asset for exact artifact identity; do not reopen Hermes or a broad host matrix unless a later event specifically needs that evidence
 validation_needed: no validation blocks the manual package; real semantic-result quality, maintained reentry, RepoKernel integration, and Form comparison remain distinct event-bound future proofs

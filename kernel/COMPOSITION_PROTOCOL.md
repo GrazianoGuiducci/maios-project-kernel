@@ -21,11 +21,14 @@ relations exposed by the emerging result
 
 1. Keep permanent source/aperture and self-correction relations silent.
 2. Use the current circumstance to project known candidate families.
-3. Exercise only candidates with a stated expected delta.
-4. Admit an unmatched material relation as a sourced extension instead of
+3. Include reviewed project-local formation candidates only when their declared
+   activation relations match the current circumstance; keep them distinct
+   from admitted competences.
+4. Exercise only candidates with a stated expected delta.
+5. Admit an unmatched material relation as a sourced extension instead of
    forcing it into the nearest family.
-5. Reroute when the circumstance or resulting state changes.
-6. Stop when another pass changes no material relation.
+6. Reroute when the circumstance or resulting state changes.
+7. Stop when another pass changes no material relation.
 
 `python maios.py compose --circumstance <json>` returns the represented portion
 of this field. A selected movement may be checked with `validate-movement`.
@@ -66,3 +69,8 @@ state, and the independent review. Use `validate-resultant` before
 observed result to configuration, evolution, operating state, projections, and
 reentry. If its reviewed operating-context hash is stale, re-read and
 re-evaluate instead of merging over changed causal inputs.
+
+When the readback decision is `improve`, the next movement must carry a relation
+that activates the formed candidate. A later selected exercise and faculty
+delta can create a pending competence delta. This deterministic coupling makes
+method evolution executable while preserving independent admission.

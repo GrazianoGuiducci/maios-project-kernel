@@ -6,11 +6,16 @@ reali della persona, forma presto un risultato correggibile, compone soltanto le
 facoltà che cambiano il movimento presente e conserva nel progetto
 l'apprendimento revisionato e il rientro.
 
-La versione `2.0.0` è pubblicata sul ramo `main` della repository. Il suo
-archivio auto-installante è disponibile su
-[maios.it](https://maios.it/downloads/maios-project-kernel-setup-v2.0.0.zip),
-insieme al [checksum SHA-256](https://maios.it/downloads/maios-project-kernel-setup-v2.0.0.zip.sha256).
-Non è stato creato un tag o una Release GitHub.
+La versione `2.0.0` è distribuita dalla repository GitHub canonica. La sorgente
+viva resta su `main`; la Release ufficiale contiene l'archivio auto-installante
+esatto e il file `SHA256SUMS`.
+
+- [Scarica la Release 2.0.0](https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v2.0.0)
+- [Esplora o lascia una stella alla repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
+- [Crea un fork](https://github.com/GrazianoGuiducci/maios-project-kernel/fork) per adattare il progetto o proporre un contributo
+
+La pubblicazione della sorgente e della Release non prova l'attivazione negli
+host, i risultati semantici, il rientro mantenuto o un runtime pubblico.
 
 Questa versione è una base, non un limite: nuove competenze, nuovi host e nuove
 forme di incarnazione potranno entrare quando le circostanze future renderanno

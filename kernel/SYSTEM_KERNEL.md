@@ -177,18 +177,27 @@ optional self-improvement assessment and its owner
 independent accepted review
 ```
 
+The assessment also reads the method that produced the result. When the
+reviewed decision is `improve`, it forms a project-local candidate with an open
+form, activation relations, falsifier, reentry, and a concrete next exercise.
+Those activation relations enter the next movement, so the candidate can alter
+later work rather than remain descriptive metadata. Later faculty readback
+either keeps it under evidence, closes it without promotion, or prepares a
+pending competence delta for independent review.
+
 `validate-resultant` checks this contract. `admit-resultant` closes an accepted
 readback into project-local operating state, canonical configuration,
-projections, and a receipt under one concurrency hash. It does not approve its
-own result, promote an improvement candidate, prove assimilation, or grant an
-external effect.
+projections, and a receipt under one concurrency hash. It may form or evaluate
+an improvement candidate, but it does not approve its own result, admit that
+candidate as competence, prove assimilation, or grant an external effect.
 
 Self-improvement remains owner-governed. The system may record `improve`,
 `verify_first`, `defer`, `no_change`, or `reject`; it may never infer approval
-from its own production. Meta-competences, meta-skills, routing relations, and
-their forms remain revisable when the context changes. Another meta-level is
-formed only when it changes the real movement, never because the current schema
-made other levels invisible.
+from its own production. Formation, later exercise, proposed delta, accepted
+admission, and maintained assimilation are separate states. Meta-competences,
+meta-skills, routing relations, and their forms remain revisable when the
+context changes. Another meta-level is formed only when it changes the real
+movement, never because the current schema made other levels invisible.
 
 ## Attention, learning, and reentry
 

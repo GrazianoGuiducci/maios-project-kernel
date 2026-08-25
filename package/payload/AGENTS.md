@@ -23,8 +23,11 @@ Do not store the transcript as authority.
 projection. Use `maios.py operating-status` to re-derive the current relation.
 Use `validate-resultant` and `admit-resultant` only for a real inspected result
 with an independent accepted review and the exact reviewed context hash. A
-self-improvement assessment records a candidate for its owner; it never
-auto-promotes a skill, competence, meta-skill, router, or kernel relation.
+self-improvement assessment reads back the method and can form a candidate for
+later exercise when its activation relations enter the next movement. Use
+`competence-candidates` to distinguish formation, exercise, and a pending delta
+from `competence-status`, which contains independently admitted state. Never
+auto-promote a skill, competence, meta-skill, router, or kernel relation.
 
 Installation, discovery, use, and maintained behavior are different claims.
 The package grants no global host, provider, network, publication, deployment,

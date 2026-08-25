@@ -83,6 +83,7 @@ def validate_project(root: Path) -> dict[str, Any]:
         ".maios/kernel/EVOLUTION_CONTRACT.json",
         ".maios/competences/INDEX.json",
         ".maios/runtime/operating.py",
+        ".maios/schemas/COMPETENCE_FORMATION_CANDIDATE.schema.json",
         ".maios/schemas/RESULTANT_READBACK.schema.json",
         ".maios/state/OPERATING_STATE.json",
         "setup/CONFIGURATION_STATE.json",
@@ -366,6 +367,7 @@ def parser() -> argparse.ArgumentParser:
     admit_resultant_parser.add_argument("--readback", type=Path, required=True)
     admit_resultant_parser.add_argument("--expected-context-sha256", required=True)
     sub.add_parser("competence-status")
+    sub.add_parser("competence-candidates")
     delta_parser = sub.add_parser("validate-competence-delta")
     delta_parser.add_argument("--delta", type=Path, required=True)
     admit_parser = sub.add_parser("admit-competence-delta")
@@ -415,6 +417,8 @@ def main(argv: Iterable[str] | None = None) -> int:
             )
         elif args.command == "competence-status":
             result = competence_status(root)
+        elif args.command == "competence-candidates":
+            result = operating_engine.competence_candidate_status(root)
         elif args.command == "validate-competence-delta":
             result = validate_competence_delta(read_json(args.delta))
         elif args.command == "admit-competence-delta":

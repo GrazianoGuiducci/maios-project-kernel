@@ -289,6 +289,7 @@ class RuntimeTests(DistributionFixture):
                 "current_next": "exercise the next situated movement from reviewed state",
                 "reason": "the terminal result is now recoverable without transcript replay",
                 "reentry_condition": "current operator intent and causal inputs still agree",
+                "relations": ["configuration_pending", "project_birth"],
             },
             "effect": {"status": "none", "boundary": None, "receipt_refs": []},
             "self_improvement_assessment": {
@@ -302,6 +303,14 @@ class RuntimeTests(DistributionFixture):
                 "uncertainty": [],
                 "expected_delta": "retain open-world routing after this movement",
                 "candidate_ref": None,
+                "method_readback": {
+                    "current_method": "compose faculties from the situated relation",
+                    "observed_relation": "the method preserved source and reentry",
+                    "causal_delta": "the next movement starts from reviewed state",
+                    "selected_level": "routing method",
+                    "alternatives_preserved": ["later sourced extensions"],
+                    "stop_condition": "another readback changes no material relation",
+                },
             },
             "review": {
                 "status": "accepted",
@@ -392,6 +401,143 @@ class RuntimeTests(DistributionFixture):
             operating.admit_resultant_readback(
                 target, readback, status["context_sha256"]
             )
+
+    def test_competence_forms_in_readback_reenters_work_and_waits_for_review(self) -> None:
+        target, _ = self.install()
+        forming = self.resultant_readback("formation-01")
+        forming["next_movement"]["relations"] = [
+            "source_reconciliation",
+            "method_reentry",
+        ]
+        forming["self_improvement_assessment"] = {
+            "decision": "improve",
+            "target": {
+                "kind": "competence",
+                "id": "source-reconciliation",
+                "owner": "project",
+            },
+            "evidence_refs": ["fixture/formation-01"],
+            "uncertainty": ["maintained reuse remains unverified"],
+            "expected_delta": "begin later work from the owner-correct source",
+            "candidate_ref": "operating-state:source-reconciliation-candidate",
+            "method_readback": {
+                "current_method": "begin from the nearest package representation",
+                "observed_relation": "package-first entry hid the living source owner",
+                "causal_delta": "source ownership must be recovered before projection",
+                "selected_level": "project competence",
+                "alternatives_preserved": [
+                    "a later meta-skill may generalize the same causal relation"
+                ],
+                "stop_condition": "a later non-identical case starts source-first without replay",
+            },
+            "formation_candidate": {
+                "candidate_id": "source-reconciliation-candidate",
+                "form": "project competence candidate",
+                "purpose": "preserve the living source before generated projections",
+                "work_relation": "reconstruct one owner-correct source lane",
+                "source_refs": ["fixture/formation-01", "operator/source-rule"],
+                "activation_relations": [
+                    "source_reconciliation",
+                    "method_reentry",
+                ],
+                "invalidator": "a later case again begins from generated package bytes",
+                "reentry_condition": "when source and projection may be confused",
+                "next_exercise": "exercise source reconciliation on the next real movement",
+            },
+        }
+        forming_context = operating.operating_status(
+            target, forming["movement"]["circumstance"]
+        )
+        formation_receipt = operating.admit_resultant_readback(
+            target, forming, forming_context["context_sha256"]
+        )
+        self.assertEqual(
+            formation_receipt["formed_competence_candidate"],
+            "source-reconciliation-candidate",
+        )
+        candidates = operating.competence_candidate_status(target)
+        self.assertEqual(candidates["count"], 1)
+        self.assertEqual(candidates["candidates"][0]["status"], "ready_for_exercise")
+        next_context = operating.operating_status(
+            target,
+            {
+                "relations": ["source_reconciliation", "method_reentry"],
+                "requested_result": "recover the living source lane",
+                "effect": None,
+            },
+        )
+        self.assertIn(
+            "source-reconciliation-candidate",
+            {
+                item["id"]
+                for item in next_context["composition"]["known_candidates"]
+            },
+        )
+
+        exercised = self.resultant_readback("formation-02")
+        exercised["movement"] = {
+            "circumstance": {
+                "relations": ["source_reconciliation", "method_reentry"],
+                "requested_result": "recover the living source lane",
+                "effect": None,
+            },
+            "selected_faculties": [
+                {
+                    "id": "source-reconciliation-candidate",
+                    "reason": "its reentry relation matches the present source ambiguity",
+                    "expected_delta": "begin from the owner-correct living source",
+                }
+            ],
+            "effect_boundary": None,
+        }
+        exercised["faculty_deltas"] = [
+            {
+                "faculty_id": "source-reconciliation-candidate",
+                "classification": "verified_improvement",
+                "description": "the later movement began from the living source before projection",
+            }
+        ]
+        exercised["actual_result"]["evidence_refs"] = [
+            "tests/source-first-later-movement"
+        ]
+        exercised["next_movement"]["relations"] = ["project_continuity"]
+        exercised_context = operating.operating_status(
+            target, exercised["movement"]["circumstance"]
+        )
+        validation = operating.validate_resultant_readback(target, exercised)
+        self.assertTrue(validation["valid"], validation["errors"])
+        exercise_receipt = operating.admit_resultant_readback(
+            target, exercised, exercised_context["context_sha256"]
+        )
+        self.assertEqual(
+            exercise_receipt["evaluated_competence_candidates"],
+            ["source-reconciliation-candidate"],
+        )
+        candidate = operating.competence_candidate_status(target)["candidates"][0]
+        self.assertEqual(candidate["status"], "ready_for_review")
+        proposed = candidate["proposed_delta"]
+        self.assertEqual(proposed["review"]["status"], "pending")
+        self.assertTrue(runtime.validate_competence_delta(proposed)["valid"])
+        competence = runtime.competence_status(target)
+        with self.assertRaisesRegex(ValueError, "explicitly accepted"):
+            runtime.admit_competence_delta(
+                target, proposed, competence["index_sha256"]
+            )
+
+        reviewed = json.loads(json.dumps(proposed))
+        reviewed["review"] = {
+            "status": "accepted",
+            "reviewer": "project operator",
+            "reviewer_relation": "operator",
+            "producer_is_reviewer": False,
+        }
+        runtime.admit_competence_delta(
+            target, reviewed, competence["index_sha256"]
+        )
+        admitted_candidate = operating.competence_candidate_status(target)[
+            "candidates"
+        ][0]
+        self.assertEqual(admitted_candidate["status"], "admitted_reviewed")
 
     def test_context_change_reroutes_known_candidates_without_closing_field(self) -> None:
         target, _ = self.install()
@@ -702,6 +848,25 @@ class ArchiveFreshProcessTests(DistributionFixture):
         )
         self.assertEqual(competence_status.returncode, 0, competence_status.stderr)
         self.assertEqual(json.loads(competence_status.stdout)["history_count"], 0)
+        competence_candidates = subprocess.run(
+            [
+                sys.executable,
+                "-B",
+                str(target / "maios.py"),
+                "competence-candidates",
+            ],
+            cwd=target,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            check=False,
+        )
+        self.assertEqual(
+            competence_candidates.returncode,
+            0,
+            competence_candidates.stderr,
+        )
+        self.assertEqual(json.loads(competence_candidates.stdout)["count"], 0)
         operating_status = subprocess.run(
             [
                 sys.executable,
