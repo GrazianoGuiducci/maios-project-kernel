@@ -7,8 +7,9 @@ facoltà che cambiano il movimento presente e conserva nel progetto
 l'apprendimento causale e il rientro.
 
 La Release pubblica `v2.0.0` è disponibile dalla repository GitHub canonica.
-Il suo archivio installabile e il checksum sono generati dal completamento
-forward-resultant di questa stessa linea sorgente viva 2.0.0.
+Questa sorgente contiene il completamento forward-resultant della stessa linea
+2.0.0. Fino alla riconciliazione della pubblicazione, Release pubblica e
+sorgente viva restano identità distinte.
 
 - [Scarica la Release 2.0.0](https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v2.0.0)
 - [Esplora o lascia una stella alla repository](https://github.com/GrazianoGuiducci/maios-project-kernel)

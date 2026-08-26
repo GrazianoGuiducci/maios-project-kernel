@@ -9,8 +9,9 @@ change the present movement, and preserves causal learning and reentry in the
 project itself.
 
 The public `v2.0.0` Release is available from the canonical GitHub repository.
-Its installable archive and checksum are generated from the forward-resultant
-completion of this same living 2.0.0 source line.
+This source contains the forward-resultant completion of the same 2.0.0 line.
+Until publication is reconciled, the public Release and this living source
+remain distinct identities.
 
 - [Download Release 2.0.0](https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v2.0.0)
 - [Inspect or star the repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
