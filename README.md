@@ -5,7 +5,7 @@
 MAIOS Project Kernel is a portable, self-installing project system for people
 working with AI assistants. It starts from the person's real situation and
 sources, forms an early correctable result, composes only the faculties that
-change the present movement, and preserves reviewed learning and reentry in the
+change the present movement, and preserves causal learning and reentry in the
 project itself.
 
 Version `2.0.0` is distributed from the canonical GitHub repository. The
@@ -47,13 +47,12 @@ The system includes:
 - an autological operating context that exposes current capability relations,
   causal invalidations, uncertainty, and authority without claiming semantic
   correctness or activation;
-- independently reviewed terminal readback that couples actual results,
-  possibility impact, next movement, and owner-governed improvement assessments
-  to configuration and reentry;
+- forward-resultant readback that couples actual results, possibility impact,
+  next movement, and owner-bound causal learning to configuration and reentry;
 - reciprocal competence cultivation: concrete work tests and improves the
-  competence that enables it; method readback forms candidates, matching later
-  movements exercise them, and only reviewed competence deltas change active
-  routing;
+  competence that enables it; causal readback changes the closest owning
+  relation, matching later movements exercise it, and non-identical use can
+  revise or strengthen it;
 - deterministic `preview`, `apply`, `verify`, and `uninstall` installation for
   empty or existing repositories without hidden overwrite;
 - project-local adapters for Codex, Claude Code, OpenCode, DSH, Hermes, and a
@@ -109,7 +108,7 @@ independent comparison after the manual 2.0.0 vertical is complete.
 | `kernel/` | Semantic kernel, faculty composition, evolution, and competence cultivation |
 | `setup/` | MAIOS configuration contract and canonical-state template |
 | `src/maios_project_kernel/` | Installer, configuration, operating relation, runtime, and builder |
-| `competences/`, `state/`, `schemas/` | Project-local competence, operating state, and reviewed-event contracts |
+| `competences/`, `state/`, `schemas/` | Project-local competence index, forward-resultant learning state, and event contracts |
 | `adapters/` | Host discovery projections |
 | `templates/` | Distribution and installed-project entry files |
 | `release/PROJECTION.json` | Complete source-to-package mapping |

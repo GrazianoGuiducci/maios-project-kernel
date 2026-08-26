@@ -15,19 +15,20 @@ may enter as a sourced extension; the registry is not a ceiling.
 
 `setup/CONFIGURATION_STATE.json` is the structured state owner.
 `project/CURRENT_STATE.md` is its compact human projection. Update them only
-when a reviewed delta changes future behavior, evidence, recovery, or reentry.
+when a causal delta changes future behavior, evidence, recovery, or reentry.
 Do not store the transcript as authority.
 
-`.maios/state/OPERATING_STATE.json` owns admitted terminal-result history;
+`.maios/state/OPERATING_STATE.json` owns terminal-result history and reachable
+learning relations;
 `.maios/context/OPERATING_CONTEXT.json` is only a derived, invalidatable
 projection. Use `maios.py operating-status` to re-derive the current relation.
-Use `validate-resultant` and `admit-resultant` only for a real inspected result
-with an independent accepted review and the exact reviewed context hash. A
-self-improvement assessment reads back the method and can form a candidate for
-later exercise when its activation relations enter the next movement. Use
-`competence-candidates` to distinguish formation, exercise, and a pending delta
-from `competence-status`, which contains independently admitted state. Never
-auto-promote a skill, competence, meta-skill, router, or kernel relation.
+Use `validate-resultant` and `apply-resultant` for a real inspected result and
+the exact current context hash. An owner-bound `learning_delta` preserves what
+happened, why, future behavior, activation, invalidator, and reentry; it can
+enter the next matching movement immediately. Use `learning-status` to inspect
+these relations and keep persistence distinct from later assimilation evidence
+and from `competence-status`, which contains separately governed competence
+state. Never infer an external claim, effect, or assimilation from persistence.
 
 Installation, discovery, use, and maintained behavior are different claims.
 The package grants no global host, provider, network, publication, deployment,

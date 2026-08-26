@@ -1,6 +1,6 @@
 ---
 name: maios-project-system
-description: Initialize, resume, operate, or evolve a project through MAIOS Project Kernel by forming an open situated faculty composition from the current operator relation, real sources, host reality, result, and reviewed learning; use at first contact, reentry, changed circumstances, capability gaps, effects, or result review.
+description: Initialize, resume, operate, or evolve a project through MAIOS Project Kernel by forming an open situated faculty composition from the current operator relation, real sources, host reality, result, and causal learning; use at first contact, reentry, changed circumstances, capability gaps, effects, or result readback.
 ---
 
 # MAIOS Project System
@@ -50,29 +50,28 @@ validation, and recovery; continue every independent reversible movement.
 
 Inspect the actual result in its intended medium. Keep represented, installed,
 discovered, used, verified, and maintained states separate. Classify the
-observed delta literally and preserve only reviewed learning that changes
+observed delta literally and preserve the smallest causal learning that changes
 future behavior, proof, recovery, or reentry under
 `.maios/kernel/EVOLUTION_CONTRACT.json`.
 
 Close a terminal movement with one resultant readback under
 `.maios/schemas/RESULTANT_READBACK.schema.json`. Keep source positions,
 candidate and corrected projection, actual result, faculty deltas, possibility
-impact, next movement, effect state, optional owner-governed self-improvement
-assessment, and independent accepted review distinct. Run
-`validate-resultant --readback <json>`, re-read `operating-status`, then use
-`admit-resultant --readback <json> --expected-context-sha256 <sha>` only when
-that exact context was reviewed. Admission updates project-local continuity;
-it does not prove semantic quality, assimilation, host activation, improvement
-promotion, or external effect.
+impact, next movement, effect state, and optional owner-bound `learning_delta`
+distinct. Run `validate-resultant --readback <json>`, re-read
+`operating-status`, then use `apply-resultant --readback <json>
+--expected-context-sha256 <sha>`. Application updates project-local continuity;
+it does not prove an optional classification, assimilation, host activation,
+or external effect.
 
-For every non-null self-improvement assessment, read back the method as well as
-the result: current method, observed causal relation, material delta, selected
-level, alternatives preserved, and stop condition. When the reviewed decision
-is `improve`, form the smallest candidate that can be exercised, give it
-sources, activation relations, invalidator, reentry, and a next exercise, then
-carry at least one activation relation into `next_movement.relations`.
-Admission makes this candidate eligible in the matching later circumstance; it
-does not make it a competence.
+When work exposes a reusable correction, preserve what happened, causal delta,
+why it matters, future behavior, closest truthful owner, sources, activation
+relations, invalidator, and reentry condition. Carry at least one activation
+relation into `next_movement.relations`. This makes the correction reachable
+in the matching later circumstance without first turning it into a candidate
+or asking the system to approve its own learning. Use `learning-status` to see
+these relations. Later non-identical use remains the behavioral evidence and
+may revise or invalidate the relation.
 
 Do not advance host capability state by inference. `maios.py host-status`
 reports the selected adapter and current claim levels. Prepare
@@ -86,12 +85,12 @@ Treat concrete work and competence cultivation as one reciprocal movement.
 When the current composition cannot produce or prove the needed result, read
 `.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md`; recover, compose, form, or
 revise the smallest competence that can change the work. Exercise it on the
-real result, read back both the result and the competence, and admit only a
-reviewed delta. `maios.py competence-candidates` exposes formation and any
-pending delta; `competence-status` exposes only independently admitted
-competences. Do not create an infinite meta-stack: stop when another level
-changes no material relation. Use `validate-competence-delta` before a separate
-owner review; contract validity is not behavioral proof or review.
+real result, then let the causal relation enter the next field. `learning-status`
+exposes immediately reachable learning; `competence-status` exposes only
+separately owner-governed competence-index entries. Do not create an infinite
+meta-stack: stop when another level changes no material relation. Use the
+competence-delta path only when the owner deliberately wants that distinct
+durable index change; contract validity is not behavioral proof.
 
 Update `setup/CONFIGURATION_STATE.json` and `project/CURRENT_STATE.md` coherently
 when the project state truly changes. Current operator intent and verified

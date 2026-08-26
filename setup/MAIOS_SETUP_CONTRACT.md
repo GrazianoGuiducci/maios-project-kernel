@@ -40,8 +40,8 @@ interaction, not the semantic review of the proposed direction.
 
 ## Completion
 
-Configuration becomes `configured` when the project has a reviewed concrete
-case, first useful result, responsible reviewer, starting sources, selected
+Configuration becomes `configured` when the project has a concrete case,
+first useful result, attributable sources, selected
 movement, and recoverable reentry. It does not require every unknown to close.
 External execution, publication, installation of other software, provider use,
 or runtime action remains separately governed.
@@ -61,7 +61,7 @@ host, delivery, requested faculties, unknowns, and review. The SetupSpec binds
 the capsule and configuration hashes and exposes any missing consequential
 decision. Neither projection becomes a second state owner.
 
-When a reviewed terminal result is admitted, the derived capsule also links a
+When a terminal result is applied, the derived capsule also links a
 bounded summary of `.maios/context/OPERATING_CONTEXT.json`: its causal currency,
 eligible and blocked local movements, uncertainty count, and authority ceiling.
 The operating context is invalidatable and never replaces configuration, host,

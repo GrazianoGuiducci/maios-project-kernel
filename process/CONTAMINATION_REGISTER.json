@@ -1,6 +1,6 @@
 {
   "schema": "maios.package-contamination-register.v1",
-  "updated_at": "2026-08-24",
+  "updated_at": "2026-08-26",
   "entries": [
     {
       "id": "historical-1-6-package",
@@ -61,6 +61,14 @@
       "observed": "running the extracted installer without Python -B created payload/.maios/installer/__pycache__/installer.cpython-313.pyc; source_entries then enumerated that undeclared file into the install plan",
       "use": "behavioral evidence that an archive can be clean while its extracted distribution becomes contaminated before installation",
       "disposition": "the failed candidate identity is superseded; the installer entry disables bytecode, planning verifies the exact inventory and refuses untracked files, the builder forbids compiled cache artifacts, and regression fixtures exercise normal Python invocation"
+    },
+    {
+      "id": "resultant-review-assessment-admission-overlay",
+      "source": "2.0.0 operating relation before forward-resultant correction",
+      "classification": "superseded_procedural_overlay",
+      "observed": "real propagation to configuration, possibility state and reentry already existed, but self-improvement was routed through assessment, formation candidate, later exercise, pending delta and independent admission before the causal correction could become current",
+      "use": "causal evidence that claim validation and effect authority must remain local to the exact claim or effect rather than gate learning from what happened",
+      "disposition": "runtime and active contracts use direct owner-bound learning_delta plus later non-identical use; the old formation schema and receipts remain cold historical evidence and are not projected into the package"
     }
   ]
 }

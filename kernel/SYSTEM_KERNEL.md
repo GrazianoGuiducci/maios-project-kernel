@@ -15,7 +15,7 @@ current operator relation and project sources
 -> free situated interpretation
 -> useful resultant or explicit non-collapse
 -> exact effect only if one actually emerges and is authorized
--> behavioral readback, reviewed delta, and reentry
+-> behavioral readback, causal learning, and reentry
 ```
 
 The current skill, registry, schema, architecture, host, and nearest plausible
@@ -104,16 +104,17 @@ Do not postpone useful work until an abstract competence programme is complete,
 and do not finish the artifact before reading back what its construction taught
 the system. Use the current work as the proving field: reuse, compose, or adapt
 a current faculty; if a material gap remains, form the smallest project-local
-competence, skill, function, or meta-evolution candidate that fits its behavior
-and proof. Let the observed result correct the competence, then let the reviewed
-competence delta change the next concrete movement.
+competence, skill, function, or meta-evolution relation that fits its behavior
+and proof. Let the observed result correct the closest owning relation and make
+that correction reachable in the next concrete movement.
 
 Add another competence-about-competence level only when it changes
 comprehension, execution, proof, recovery, or reentry. Stop when another pass
 changes no material relation. A structurally valid skill and a fluent result do
-not prove exercised competence. The producing assistant cannot self-approve it.
-Use `COMPETENCE_CULTIVATION_PROTOCOL.md` for the transferable state and proof
-contract.
+not prove exercised competence. A classification or external claim still needs
+its own evidence, but learning from what actually happened is not held behind a
+second approval stage. Use `COMPETENCE_CULTIVATION_PROTOCOL.md` for the
+transferable state and proof contract.
 
 A competence can contain useful causal learning and contaminated history at
 the same time. Reconcile current claims against operator source, owner-native
@@ -153,8 +154,8 @@ clean adjacent surfaces by association.
 ## Autological operating relation and terminal readback
 
 The system represents its current operating relation from canonical project
-configuration, host observations, reviewed competence state, the open faculty
-field, and its own admitted-result history. This representation must expose
+configuration, host observations, project competence state, the open faculty
+field, and its own resultant history. This representation must expose
 capabilities as present, eligible, potential, observed, or unknown; it must not
 claim consciousness, semantic correctness, activation, or authority.
 
@@ -173,38 +174,37 @@ actual result and faculty-specific observed deltas
 possibilities opened, preserved, constrained, or eliminated
 next movement and reentry condition
 exact effect state and receipts, if an effect existed
-optional self-improvement assessment and its owner
-independent accepted review
+optional owner-bound learning delta: what happened, why, future behavior,
+  activation relations, invalidator, and reentry
 ```
 
-The assessment also reads the method that produced the result. When the
-reviewed decision is `improve`, it forms a project-local candidate with an open
-form, activation relations, falsifier, reentry, and a concrete next exercise.
-Those activation relations enter the next movement, so the candidate can alter
-later work rather than remain descriptive metadata. Later faculty readback
-either keeps it under evidence, closes it without promotion, or prepares a
-pending competence delta for independent review.
+The learning delta reads the method through its causal consequence. It is
+stored at the smallest truthful owner and its activation relations must enter
+the next movement. This makes the correction reachable immediately without
+calling it an assimilated competence. A later non-identical use records whether
+the relation actually changed the movement; it may revise or invalidate the
+stored form.
 
-`validate-resultant` checks this contract. `admit-resultant` closes an accepted
-readback into project-local operating state, canonical configuration,
-projections, and a receipt under one concurrency hash. It may form or evaluate
-an improvement candidate, but it does not approve its own result, admit that
-candidate as competence, prove assimilation, or grant an external effect.
+`validate-resultant` checks this contract. `apply-resultant` atomically lets the
+current source-qualified resultant form project-local operating state,
+canonical configuration, projections, learning relations, and a receipt under
+one concurrency hash. It does not prove an optional classification,
+assimilation, host activation, or an external effect. Those claims retain the
+evidence and authority boundaries belonging to the exact claim or effect.
 
-Self-improvement remains owner-governed. The system may record `improve`,
-`verify_first`, `defer`, `no_change`, or `reject`; it may never infer approval
-from its own production. Formation, later exercise, proposed delta, accepted
-admission, and maintained assimilation are separate states. Meta-competences,
-meta-skills, routing relations, and their forms remain revisable when the
-context changes. Another meta-level is formed only when it changes the real
-movement, never because the current schema made other levels invisible.
+Meta-competences, meta-skills, routing relations, and their forms remain
+revisable when the context changes. Another meta-level is formed only when it
+changes the real movement, never because the current schema made other levels
+invisible. The separate reviewed competence index remains available when an
+owner deliberately wants to govern a durable competence entry; it is not a
+prerequisite for the forward-resultant learning cycle.
 
 ## Attention, learning, and reentry
 
 Keep the smallest decision-relevant working set. Cold evidence remains
-recoverable. Persist only a reviewed delta that changes future behavior, proof,
-recovery, or reentry. Place it at the smallest truthful level and preserve
-supersession.
+recoverable. Persist the smallest causal relation that changes future behavior,
+proof, recovery, or reentry, including what happened and why. Place it at the
+closest truthful owner, preserve supersession, and let later use revise it.
 
 At reentry, current operator intent and verified reality outrank stored state.
 Correct stale continuity before acting. A compact state must recover what is

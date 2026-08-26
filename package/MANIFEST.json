@@ -9,7 +9,7 @@
   "contains_lifecycle_hooks": false,
   "contains_private_topology": false,
   "contains_repokernel_source": false,
-  "distribution_file_count": 41,
+  "distribution_file_count": 40,
   "entrypoint": "install.py",
   "global_writes": [],
   "host_adapters": [
@@ -20,7 +20,7 @@
     "hermes",
     "dsh"
   ],
-  "payload_file_count": 33,
+  "payload_file_count": 32,
   "product": "MAIOS Project Kernel",
   "project_entrypoint": "payload/START_HERE.md",
   "schema": "maios.project-kernel-distribution.v2",
@@ -34,10 +34,10 @@
   },
   "source_identity": {
     "owner": "maios-project-kernel repository",
-    "projection_sha256": "2816b1d319d0b49438a3b2fc0bf3fad8564e8802ecc03b5ab07426abe33b62cf",
+    "projection_sha256": "3392dc779ebb17b706801ae78134907414cd2114296135c54ed737946a258287",
     "revision_claim": "content_addressed_source_tree",
     "source_manifest_sha256": "c73e2d7db34acef6a065daea3674a3ecdac7477e9758c3c7615533b33146366a",
-    "tree_sha256": "6897ee53d9eb61d820c36cae904e64122f764c0ad5c173d32263837cfa5016ac"
+    "tree_sha256": "4666975a745c3836b04c952427be3ab8076b71af8259a35e55a62eb6dc39f102"
   },
   "target_modes": [
     "new_repository",

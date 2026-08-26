@@ -1,37 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://maios.it/schemas/resultant-readback-v1.json",
-  "title": "MAIOS reviewed resultant readback",
-  "$comment": "This schema is an interoperable shape, not a closed ontology. The runtime validator applies causal and review invariants while extension relations remain possible.",
+  "$id": "https://maios.it/schemas/resultant-readback-v2.json",
+  "title": "MAIOS forward-resultant readback",
+  "$comment": "This interoperable shape preserves the actual resultant and any owner-bound causal learning without imposing a review or admission stage. External claims and material effects retain their exact local evidence and authority boundaries.",
   "type": "object",
-  "required": [
-    "schema",
-    "event_id",
-    "observed_at",
-    "movement",
-    "source_positions",
-    "candidate_resultant",
-    "preprojection_readback",
-    "actual_result",
-    "faculty_deltas",
-    "possibility_impact",
-    "next_movement",
-    "effect",
-    "review"
-  ],
+  "required": ["schema", "event_id", "observed_at", "movement", "source_positions", "candidate_resultant", "preprojection_readback", "actual_result", "faculty_deltas", "possibility_impact", "next_movement", "effect"],
   "properties": {
-    "schema": {"const": "maios.resultant-readback.v1"},
+    "schema": {"const": "maios.resultant-readback.v2"},
     "event_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
     "observed_at": {"type": "string", "minLength": 1},
     "movement": {"type": "object"},
     "source_positions": {
       "type": "object",
-      "required": [
-        "operator_source",
-        "verified_evidence",
-        "model_inference",
-        "retained_unknowns"
-      ],
+      "required": ["operator_source", "verified_evidence", "model_inference", "retained_unknowns"],
       "properties": {
         "operator_source": {"$ref": "#/$defs/stringList"},
         "verified_evidence": {"$ref": "#/$defs/stringList"},
@@ -58,7 +39,7 @@
     },
     "actual_result": {
       "type": "object",
-      "required": ["status", "classification", "summary", "evidence_refs"],
+      "required": ["status", "summary", "evidence_refs"],
       "properties": {
         "status": {"enum": ["completed", "partial", "blocked", "failed", "deferred"]},
         "classification": {"$ref": "#/$defs/classification"},
@@ -71,7 +52,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["faculty_id", "classification", "description"],
+        "required": ["faculty_id", "description"],
         "properties": {
           "faculty_id": {"type": "string", "minLength": 1},
           "classification": {"$ref": "#/$defs/classification"},
@@ -112,22 +93,8 @@
       },
       "additionalProperties": true
     },
-    "self_improvement_assessment": {
-      "oneOf": [
-        {"type": "null"},
-        {"$ref": "#/$defs/selfImprovementAssessment"}
-      ]
-    },
-    "review": {
-      "type": "object",
-      "required": ["status", "reviewer", "reviewer_relation", "producer_is_reviewer"],
-      "properties": {
-        "status": {"const": "accepted"},
-        "reviewer": {"type": "string", "minLength": 1},
-        "reviewer_relation": {"enum": ["operator", "owner", "independent_reviewer"]},
-        "producer_is_reviewer": {"const": false}
-      },
-      "additionalProperties": true
+    "learning_delta": {
+      "oneOf": [{"type": "null"}, {"$ref": "#/$defs/learningDelta"}]
     }
   },
   "$defs": {
@@ -135,51 +102,19 @@
       "type": "array",
       "items": {"type": "string", "minLength": 1}
     },
+    "nonEmptyStringList": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
     "classification": {
-      "enum": [
-        "verified_improvement",
-        "no_change",
-        "regression",
-        "tradeoff",
-        "unverified"
-      ]
+      "enum": ["verified_improvement", "no_change", "regression", "tradeoff", "unverified"]
     },
-    "methodReadback": {
+    "learningDelta": {
       "type": "object",
-      "required": [
-        "current_method",
-        "observed_relation",
-        "causal_delta",
-        "selected_level",
-        "alternatives_preserved",
-        "stop_condition"
-      ],
+      "required": ["owner", "what_happened", "causal_delta", "why_it_matters", "future_behavior", "source_refs", "activation_relations", "invalidator", "reentry_condition"],
       "properties": {
-        "current_method": {"type": "string", "minLength": 1},
-        "observed_relation": {"type": "string", "minLength": 1},
-        "causal_delta": {"type": "string", "minLength": 1},
-        "selected_level": {"type": "string", "minLength": 1},
-        "alternatives_preserved": {"$ref": "#/$defs/stringList"},
-        "stop_condition": {"type": "string", "minLength": 1}
-      },
-      "additionalProperties": true
-    },
-    "selfImprovementAssessment": {
-      "type": "object",
-      "required": [
-        "decision",
-        "target",
-        "evidence_refs",
-        "uncertainty",
-        "expected_delta",
-        "candidate_ref",
-        "method_readback"
-      ],
-      "properties": {
-        "decision": {
-          "enum": ["improve", "verify_first", "defer", "no_change", "reject"]
-        },
-        "target": {
+        "owner": {
           "type": "object",
           "required": ["kind", "id", "owner"],
           "properties": {
@@ -189,27 +124,15 @@
           },
           "additionalProperties": true
         },
-        "evidence_refs": {"$ref": "#/$defs/stringList"},
-        "uncertainty": {"$ref": "#/$defs/stringList"},
-        "expected_delta": {"type": "string", "minLength": 1},
-        "candidate_ref": {"type": ["string", "null"]},
-        "method_readback": {"$ref": "#/$defs/methodReadback"},
-        "formation_candidate": {
-          "$ref": "COMPETENCE_FORMATION_CANDIDATE.schema.json"
-        }
+        "what_happened": {"type": "string", "minLength": 1},
+        "causal_delta": {"type": "string", "minLength": 1},
+        "why_it_matters": {"type": "string", "minLength": 1},
+        "future_behavior": {"type": "string", "minLength": 1},
+        "source_refs": {"$ref": "#/$defs/stringList"},
+        "activation_relations": {"$ref": "#/$defs/nonEmptyStringList"},
+        "invalidator": {"type": "string", "minLength": 1},
+        "reentry_condition": {"type": "string", "minLength": 1}
       },
-      "allOf": [
-        {
-          "if": {
-            "properties": {"decision": {"const": "improve"}},
-            "required": ["decision"]
-          },
-          "then": {"required": ["formation_candidate"]},
-          "else": {
-            "properties": {"formation_candidate": {"type": "null"}}
-          }
-        }
-      ],
       "additionalProperties": true
     }
   },

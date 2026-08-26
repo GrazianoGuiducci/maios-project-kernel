@@ -36,10 +36,10 @@
       "id": "maios-configuration",
       "presence": "situated",
       "activation_relations": ["first_contact", "configuration_pending", "configuration_stale", "project_birth", "project_retrofit"],
-      "material_when": "The project lacks a reviewed situated configuration and first movement.",
+      "material_when": "The project lacks a situated configuration and first movement.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#maios-configuration",
       "result_contract": "SituatedConfiguration",
-      "proof": "A fresh reentry can produce the first action from reviewed state without replaying the conversation."
+      "proof": "A fresh reentry can produce the first action from resultant state without replaying the conversation."
     },
     {
       "id": "possibility-horizon",
@@ -117,10 +117,10 @@
       "id": "attention-learning-and-reentry",
       "presence": "situated",
       "activation_relations": ["reentry", "correction", "work_unit_closed", "state_changed", "compact_risk", "noise", "repeated_work"],
-      "material_when": "A reviewed delta changes future behavior, proof, recovery, or reentry.",
+      "material_when": "A causal delta changes future behavior, proof, recovery, or reentry.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#attention-learning-and-reentry",
       "result_contract": "MemoryOrCompetenceDelta",
-      "proof": "A later session recovers the movement from compact state and a non-identical case uses the accepted delta."
+      "proof": "A later session recovers the movement from compact state and a non-identical case uses or revises the causal relation."
     },
     {
       "id": "intent-preserving-delegation",

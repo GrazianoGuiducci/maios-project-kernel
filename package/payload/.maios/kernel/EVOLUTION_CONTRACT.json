@@ -1,5 +1,5 @@
 {
-  "schema": "maios.project-evolution-contract.v2",
+  "schema": "maios.project-evolution-contract.v3",
   "source_role": "canonical_living_source",
   "state_owner": "setup/CONFIGURATION_STATE.json",
   "human_projection": "project/CURRENT_STATE.md",
@@ -8,7 +8,6 @@
   "operating_state_owner": ".maios/state/OPERATING_STATE.json",
   "operating_context_projection": ".maios/context/OPERATING_CONTEXT.json",
   "resultant_readback_schema": ".maios/schemas/RESULTANT_READBACK.schema.json",
-  "competence_formation_schema": ".maios/schemas/COMPETENCE_FORMATION_CANDIDATE.schema.json",
   "effect_authority_default": "none",
   "faculty_states": ["potential", "emergent", "realized", "verified"],
   "result_classifications": ["verified_improvement", "no_change", "regression", "tradeoff", "unverified"],
@@ -18,14 +17,15 @@
     "competence_delta",
     "skill_candidate",
     "function_candidate",
-    "meta_evolution_candidate"
+    "meta_evolution_candidate",
+    "learning_relation"
   ],
-  "retention_rule": "Preserve only a reviewed delta that changes future behavior, proof, recovery, or reentry.",
+  "retention_rule": "Preserve the smallest owner-bound causal relation that changes future behavior, proof, recovery, or reentry, including what happened and why.",
   "source_rule": "Keep operator source, evidence, inference, unknown, invalidator, and supersession distinguishable.",
-  "acceptance_rule": "The producing assistant cannot self-approve a capability or wider propagation.",
-  "resultant_rule": "A terminal resultant becomes durable only through an independently accepted readback that preserves source positions, pre-projection correction, actual delta, possibility impact, next movement, effect state, and causal input concurrency.",
-  "self_improvement_rule": "Self-improvement is an owner-governed executed relation: method readback may form a project-local candidate, its activation relations must enter a later movement, exercise may produce only a pending delta, and independent review remains required for competence admission; pending evidence is verify_first and every form remains revisable as context changes.",
-  "reciprocal_work_rule": "Concrete work tests the competence that enables it; reviewed readback improves that competence; the improved competence must change a later movement to support assimilation.",
+  "acceptance_rule": "Learning from the actual resultant enters the closest owner immediately; optional classifications, wider propagation, assimilation claims, and material effects keep their own evidence or authority boundary.",
+  "resultant_rule": "A terminal resultant becomes durable through a source-positioned readback that preserves pre-projection correction, actual result, possibility impact, next movement, optional owner-bound learning, effect state, and causal input concurrency.",
+  "learning_rule": "What happened, its causal delta, why it matters, future behavior, sources, activation relations, invalidator, and reentry become reachable in the next field; later non-identical use remains the assimilation evidence and may revise the relation.",
+  "reciprocal_work_rule": "Concrete work tests the competence that enables it; causal readback improves the owning relation; the changed relation must alter a later movement to support assimilation.",
   "cultivation_stop_rule": "Do not add another competence level when it changes no material relation in comprehension, execution, proof, recovery, or reentry.",
   "reentry_contract": [
     "active_surface",
@@ -43,6 +43,6 @@
     "raw_private_material",
     "credentials",
     "temporary_runtime_state",
-    "unreviewed_inference_as_fact"
+    "unattributed_inference_as_fact"
   ]
 }

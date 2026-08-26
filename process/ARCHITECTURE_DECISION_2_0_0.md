@@ -4,8 +4,8 @@
 
 The package must help an AI host and a person form one situated project system:
 recover the present relation, illuminate what matters, compose the faculties
-that change the movement, produce a useful result, inspect it, learn only the
-reviewed delta, and reenter without replaying the conversation.
+that change the movement, produce a useful result, inspect it, preserve the
+causal delta at its closest owner, and reenter without replaying the conversation.
 
 ## Design A: single narrative kernel
 
@@ -24,8 +24,8 @@ The public seam is small:
 ```text
 install.py preview | apply | verify | uninstall
 maios.py status | compose | validate-movement | operating-status
-maios.py validate-resultant | admit-resultant
-maios.py competence-candidates | competence-status
+maios.py validate-resultant | apply-resultant | learning-status
+maios.py competence-status
 one maios-project-system skill
 ```
 
@@ -73,15 +73,15 @@ Configuration and competence cultivation are deep modules behind `maios.py`.
 Configuration owns one structured state and regenerates Context Capsule,
 SetupSpec, current-state and brief projections with concurrency and recovery.
 Competence cultivation advances concrete work and its enabling competence
-reciprocally, admits only independently reviewed local deltas, and stops when
-another meta-level changes no material relation.
+reciprocally, lets causal learning enter the next field, and stops when another
+meta-level changes no material relation.
 
-The autological coupling is stateful but not self-authorizing: a reviewed
-resultant reads back its method and may form a candidate; declared activation
-relations project that candidate into later work; a later faculty delta updates
-its evidence and may prepare a pending competence delta. The reviewed competence
-index remains a separate owner, so no part of result production can approve its
-own formation.
+The autological coupling is stateful but not self-authorizing: a resultant
+reads the causal consequence of its method, stores the smallest owner-bound
+learning relation, and projects it into later work when activation relations
+match. A later faculty delta records non-identical use and may revise or
+invalidate the relation. The reviewed competence index remains a separate
+deliberate owner surface; it is not a gate in front of learning.
 
 ## Operating relation decision
 
@@ -90,15 +90,16 @@ Two implementation forms were compared for the missing terminal coupling:
 - a stateful `OperatingKernel` object coordinating every subsystem and holding
   semantic selection;
 - a value/result module deriving an operating context from explicit state and
-  admitting only a reviewed terminal readback.
+  applying the source-qualified terminal readback directly to the next field.
 
 Select the value/result module. The first form would centralize meaning and
 make the current class design the ceiling of future composition. The selected
 `operating.py` owns deterministic causal bookkeeping, freshness invalidation,
 resultant validation, state concurrency, terminal projections, recovery, and
-receipts. The semantic host and independent reviewer retain interpretation and
-approval. The module can evolve behind the stable commands without becoming a
-manager object, automatic self-improvement loop, or effect authority.
+receipts. The semantic host retains situated interpretation; exact claims and
+effects retain their own evidence or authority boundary. The module can evolve
+behind the stable commands without becoming a manager object, universal truth
+machine, or effect authority.
 
 ## Deletion and replacement test
 
@@ -116,4 +117,6 @@ on old lifecycle hooks, duplicated skill owners, or the historical Form state.
 - recovery that removes only unchanged installer-owned bytes;
 - native skill discovery from the selected host projection;
 - a situated composition fixture whose context change reroutes faculties;
-- a later reentry that uses reviewed state without transcript dependence.
+- a later reentry that uses resultant state without transcript dependence;
+- a causal learning relation that becomes reachable immediately and records
+  later non-identical use without claiming assimilation.

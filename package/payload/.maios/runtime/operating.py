@@ -1,7 +1,7 @@
-"""Autological operating relation and resultant readback for MAIOS projects.
+"""Autological operating relation and forward-resultant learning for MAIOS.
 
-The module owns deterministic state and causal bookkeeping.  It never decides
-semantic relevance, approves its own improvement, or grants external effects.
+The module owns deterministic state, causal bookkeeping, atomic transition and
+recovery.  It never decides semantic relevance or grants external effects.
 """
 
 from __future__ import annotations
@@ -24,8 +24,8 @@ except ImportError:  # installed runtime is loaded as project-local modules
 
 OPERATING_STATE_SCHEMA = "maios.operating-state.v1"
 OPERATING_CONTEXT_SCHEMA = "maios.operating-context.v1"
-RESULTANT_READBACK_SCHEMA = "maios.resultant-readback.v1"
-RESULTANT_ADMISSION_SCHEMA = "maios.resultant-admission.v1"
+RESULTANT_READBACK_SCHEMA = "maios.resultant-readback.v2"
+RESULTANT_TRANSITION_SCHEMA = "maios.resultant-transition.v2"
 RESULT_CLASSIFICATIONS = {
     "verified_improvement",
     "no_change",
@@ -35,13 +35,6 @@ RESULT_CLASSIFICATIONS = {
 }
 RESULT_STATUSES = {"completed", "partial", "blocked", "failed", "deferred"}
 PREPROJECTION_STATUSES = {"preserved", "corrected", "noncollapse"}
-SELF_IMPROVEMENT_DECISIONS = {
-    "improve",
-    "verify_first",
-    "defer",
-    "no_change",
-    "reject",
-}
 EFFECT_STATES = {"none", "effect_unbound", "effect_bound"}
 SAFE_EVENT_ID = re.compile(r"^[A-Za-z0-9._-]+$")
 
@@ -116,14 +109,12 @@ def read_operating_state(root: Path) -> dict[str, Any]:
         raise OperatingStateError("unsupported operating state schema")
     if not isinstance(value.get("revision"), int):
         raise OperatingStateError("operating state revision must be an integer")
-    for field in ("last_input_digests", "history", "assessments"):
+    for field in ("last_input_digests", "history"):
         expected = dict if field == "last_input_digests" else list
         if not isinstance(value.get(field), expected):
             raise OperatingStateError(f"operating state {field} has invalid type")
-    if not isinstance(value.get("competence_candidates", []), list):
-        raise OperatingStateError(
-            "operating state competence_candidates has invalid type"
-        )
+    if not isinstance(value.get("learning_relations", []), list):
+        raise OperatingStateError("operating state learning_relations has invalid type")
     return value
 
 
@@ -196,29 +187,25 @@ def compose(
                 }
             )
     operating_state = operating_state_override or read_operating_state(root.resolve())
-    for competence_candidate in operating_state.get("competence_candidates", []):
-        if competence_candidate.get("status") not in {
-            "ready_for_exercise",
-            "needs_evidence",
-        }:
+    for learning_relation in operating_state.get("learning_relations", []):
+        if learning_relation.get("status") != "reachable":
             continue
-        formation = competence_candidate.get("formation", {})
-        activation = set(formation.get("activation_relations", []))
+        activation = set(learning_relation.get("activation_relations", []))
         matched = sorted(relation_set & activation)
         if not matched:
             continue
         matched_relations.update(matched)
         candidates.append(
             {
-                "id": competence_candidate["candidate_id"],
-                "kind": "competence_formation_candidate",
+                "id": learning_relation["relation_id"],
+                "kind": "competence_learning_relation",
                 "matched_relations": matched,
-                "material_when": formation.get("work_relation"),
-                "entry": formation.get("next_exercise"),
-                "result_contract": competence_candidate.get("expected_delta"),
-                "proof": "a later faculty_delta and independent competence review",
-                "source_ref": competence_candidate.get("source_resultant_receipt"),
-                "claim_boundary": "eligible candidate is not an admitted competence",
+                "material_when": learning_relation.get("why_it_matters"),
+                "entry": learning_relation.get("future_behavior"),
+                "result_contract": learning_relation.get("causal_delta"),
+                "proof": "a later non-identical movement changes without reconstructing the same correction",
+                "source_ref": learning_relation.get("source_resultant_receipt"),
+                "claim_boundary": "preserved learning enlarges the reachable field; later use is distinct from assimilation",
             }
         )
     return {
@@ -229,7 +216,7 @@ def compose(
         "known_candidates": candidates,
         "unmatched_relations": sorted(relation_set - matched_relations),
         "open_world": True,
-        "selection_rule": "select only result-changing relations; reviewed formation candidates may be exercised without being treated as admitted competences, and an unmatched material relation may enter as a sourced extension",
+        "selection_rule": "select only result-changing relations; owner-bound learning may reenter when its activation relations match, and an unmatched material relation may enter as a sourced extension",
         "non_claim": "candidate projection is not semantic selection, execution, authority, or proof",
     }
 
@@ -413,37 +400,30 @@ def _operating_status(
         capability_relations.append(
             {
                 "id": competence_id,
-                "kind": "reviewed_project_competence",
-                "state": "available_reviewed",
+                "kind": "project_competence",
+                "state": "available",
                 "reason": competence.get("work_relation"),
                 "source_ref": ".maios/competences/INDEX.json",
-                "claim_boundary": "reviewed availability is not current exercise",
+                "claim_boundary": "availability is not current exercise or maintained assimilation",
             }
         )
-    admitted_candidate_ids = {
-        item.get("candidate_id")
-        for item in competence_index.get("history", [])
-        if _nonempty(item.get("candidate_id"))
-    }
-    for competence_candidate in operating_state.get("competence_candidates", []):
-        candidate_id = competence_candidate["candidate_id"]
-        if candidate_id in admitted_candidate_ids:
-            state = "admitted_reviewed"
-            reason = "an independently accepted competence delta records this candidate"
-        elif candidate_id in candidate_by_id:
-            state = "candidate_eligible"
-            reason = "formation relations match the represented circumstance"
+    for learning_relation in operating_state.get("learning_relations", []):
+        relation_id = learning_relation["relation_id"]
+        if relation_id in candidate_by_id:
+            state = "eligible"
+            reason = "the preserved causal relation matches the represented circumstance"
         else:
-            state = competence_candidate.get("status", "candidate_potential")
-            reason = "formation remains project-local and has not been admitted"
+            state = "potential"
+            reason = "the preserved causal relation remains reachable for a later circumstance"
         capability_relations.append(
             {
-                "id": candidate_id,
-                "kind": "competence_formation_candidate",
+                "id": relation_id,
+                "kind": "competence_learning_relation",
                 "state": state,
                 "reason": reason,
-                "source_ref": competence_candidate.get("source_resultant_receipt"),
-                "claim_boundary": "formation and exercise do not equal reviewed competence admission",
+                "owner": copy.deepcopy(learning_relation.get("owner")),
+                "source_ref": learning_relation.get("source_resultant_receipt"),
+                "claim_boundary": "persistence is not assimilation; later use remains observable and revisable",
             }
         )
     observed = sorted(set(host_state.get("observed_capabilities", [])))
@@ -524,9 +504,9 @@ def _operating_status(
                 "reason": "interpret and compare result-changing relations",
             },
             {
-                "id": "record_reviewed_resultant",
+                "id": "apply_resultant",
                 "effect": "project_local_state",
-                "reason": "close a reviewed result into canonical continuity",
+                "reason": "let the current source-qualified resultant form canonical continuity and the next field",
             },
         ],
         "blocked_actions": [
@@ -540,7 +520,7 @@ def _operating_status(
         "uncertainty": uncertainty,
         "expected_effects": {
             "compose_faculties": "no material effect",
-            "record_reviewed_resultant": "project-local state, projections, and receipts only",
+            "apply_resultant": "project-local state, projections, learning relations, and receipts only",
         },
         "recovery": {
             "configuration_receipt": ".maios/receipts/configuration/CURRENT.json",
@@ -550,10 +530,7 @@ def _operating_status(
             ),
         },
         "last_resultant": operating_state.get("last_resultant"),
-        "last_assessment": operating_state.get("last_assessment"),
-        "last_competence_candidate": operating_state.get(
-            "last_competence_candidate"
-        ),
+        "last_learning_relation": operating_state.get("last_learning_relation"),
         "claim_boundary": "this is a deterministic self-representation of current records, not consciousness, semantic correctness, or effect authority",
         "extensions": {},
     }
@@ -567,105 +544,63 @@ def operating_status(
     return _operating_status(root, circumstance)
 
 
-def competence_candidate_status(root: Path) -> dict[str, Any]:
+def learning_status(root: Path) -> dict[str, Any]:
     operating_state = read_operating_state(root.resolve())
-    competence_index = _competence_index(root.resolve())
-    admitted = {
-        item.get("candidate_id"): item.get("event_id")
-        for item in competence_index.get("history", [])
-        if _nonempty(item.get("candidate_id"))
-    }
-    candidates: list[dict[str, Any]] = []
-    for item in operating_state.get("competence_candidates", []):
-        candidate = copy.deepcopy(item)
-        if candidate.get("candidate_id") in admitted:
-            candidate["status"] = "admitted_reviewed"
-            candidate["admitted_event_id"] = admitted[candidate["candidate_id"]]
-        candidates.append(candidate)
+    relations = copy.deepcopy(operating_state.get("learning_relations", []))
     return {
-        "schema": "maios.competence-candidate-status.v1",
+        "schema": "maios.learning-status.v1",
         "operating_revision": operating_state["revision"],
-        "candidates": candidates,
-        "count": len(candidates),
-        "claim_boundary": "formation, exercise, and a proposed delta remain distinct from independently reviewed admission and later assimilation",
+        "relations": relations,
+        "count": len(relations),
+        "claim_boundary": "preserved learning is reachable immediately; later non-identical use remains the assimilation evidence",
     }
 
 
-def _validate_self_improvement(value: Any, errors: list[str]) -> None:
+def competence_candidate_status(root: Path) -> dict[str, Any]:
+    """Compatibility alias for callers of the superseded candidate view."""
+
+    return learning_status(root)
+
+
+def _learning_relation_id(owner: dict[str, Any]) -> str:
+    kind = re.sub(r"[^A-Za-z0-9._-]+", "-", owner["kind"].strip()).strip("-")
+    owner_id = re.sub(r"[^A-Za-z0-9._-]+", "-", owner["id"].strip()).strip("-")
+    return f"learning.{kind}.{owner_id}"
+
+
+def _validate_learning_delta(value: Any, errors: list[str]) -> None:
     if value is None:
         return
     if not isinstance(value, dict):
-        errors.append("self_improvement_assessment must be an object or null")
+        errors.append("learning_delta must be an object or null")
         return
-    if value.get("decision") not in SELF_IMPROVEMENT_DECISIONS:
-        errors.append("unsupported self improvement decision")
-    target = value.get("target")
-    if not isinstance(target, dict):
-        errors.append("self improvement target must be an object")
+    owner = value.get("owner")
+    if not isinstance(owner, dict):
+        errors.append("learning_delta.owner must be an object")
     else:
         for field in ("kind", "id", "owner"):
-            if not _nonempty(target.get(field)):
-                errors.append(f"self improvement target.{field} must be non-empty")
-    for field in ("evidence_refs", "uncertainty"):
-        item = value.get(field)
-        if not isinstance(item, list) or not all(_nonempty(entry) for entry in item):
-            errors.append(f"self improvement {field} must be a string list")
-    if not _nonempty(value.get("expected_delta")):
-        errors.append("self improvement expected_delta must be non-empty")
-    method_readback = value.get("method_readback")
-    if not isinstance(method_readback, dict):
-        errors.append("self improvement method_readback must be an object")
-        method_readback = {}
+            if not _nonempty(owner.get(field)):
+                errors.append(f"learning_delta.owner.{field} must be non-empty")
+        if all(_nonempty(owner.get(field)) for field in ("kind", "id", "owner")):
+            relation_id = _learning_relation_id(owner)
+            if not SAFE_EVENT_ID.fullmatch(relation_id):
+                errors.append("learning_delta owner cannot form a safe relation id")
     for field in (
-        "current_method",
-        "observed_relation",
+        "what_happened",
         "causal_delta",
-        "selected_level",
-        "stop_condition",
+        "why_it_matters",
+        "future_behavior",
+        "invalidator",
+        "reentry_condition",
     ):
-        if not _nonempty(method_readback.get(field)):
-            errors.append(f"self improvement method_readback.{field} must be non-empty")
-    alternatives = method_readback.get("alternatives_preserved")
-    if not isinstance(alternatives, list) or not all(
-        _nonempty(item) for item in alternatives
-    ):
-        errors.append(
-            "self improvement method_readback.alternatives_preserved must be a string list"
-        )
-    if value.get("decision") == "improve" and not value.get("evidence_refs"):
-        errors.append("improve requires evidence; use verify_first when evidence is pending")
-    formation = value.get("formation_candidate")
-    if value.get("decision") == "improve":
-        if not isinstance(formation, dict):
-            errors.append("improve requires a formation_candidate")
-            formation = {}
-        for field in (
-            "candidate_id",
-            "form",
-            "purpose",
-            "work_relation",
-            "invalidator",
-            "reentry_condition",
-            "next_exercise",
+        if not _nonempty(value.get(field)):
+            errors.append(f"learning_delta.{field} must be non-empty")
+    for field in ("source_refs", "activation_relations"):
+        item = value.get(field)
+        if not isinstance(item, list) or not item or not all(
+            _nonempty(entry) for entry in item
         ):
-            if not _nonempty(formation.get(field)):
-                errors.append(f"formation_candidate.{field} must be non-empty")
-        candidate_id = formation.get("candidate_id")
-        if _nonempty(candidate_id) and not SAFE_EVENT_ID.fullmatch(candidate_id):
-            errors.append("formation_candidate.candidate_id contains unsafe characters")
-        for field in ("source_refs", "activation_relations"):
-            item = formation.get(field)
-            if not isinstance(item, list) or not item or not all(
-                _nonempty(entry) for entry in item
-            ):
-                errors.append(
-                    f"formation_candidate.{field} must contain non-empty strings"
-                )
-    elif formation is not None:
-        errors.append("formation_candidate is only valid for decision improve")
-    candidate_ref = value.get("candidate_ref")
-    if candidate_ref is not None and not _nonempty(candidate_ref):
-        errors.append("self improvement candidate_ref must be null or non-empty")
+            errors.append(f"learning_delta.{field} must contain non-empty strings")
 
 
 def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
@@ -733,7 +668,8 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
         actual = {}
     if actual.get("status") not in RESULT_STATUSES:
         errors.append("unsupported actual result status")
-    if actual.get("classification") not in RESULT_CLASSIFICATIONS:
+    classification = actual.get("classification")
+    if classification is not None and classification not in RESULT_CLASSIFICATIONS:
         errors.append("unsupported actual result classification")
     if not _nonempty(actual.get("summary")):
         errors.append("actual_result.summary must be non-empty")
@@ -742,7 +678,7 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
         _nonempty(item) for item in evidence_refs
     ):
         errors.append("actual_result.evidence_refs must be a string list")
-    if actual.get("classification") != "unverified" and not evidence_refs:
+    if classification not in {None, "unverified"} and not evidence_refs:
         errors.append("a classified observed delta requires evidence")
 
     deltas = value.get("faculty_deltas")
@@ -761,7 +697,11 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
         seen_delta_ids.add(faculty_id)
         if faculty_id not in selected_ids:
             errors.append(f"faculty delta was not selected in movement: {faculty_id}")
-        if item.get("classification") not in RESULT_CLASSIFICATIONS:
+        faculty_classification = item.get("classification")
+        if (
+            faculty_classification is not None
+            and faculty_classification not in RESULT_CLASSIFICATIONS
+        ):
             errors.append(f"unsupported faculty delta classification: {faculty_id}")
         if not _nonempty(item.get("description")):
             errors.append(f"faculty delta description is missing: {faculty_id}")
@@ -817,42 +757,26 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
     ):
         errors.append("effect none cannot carry a boundary or receipt")
 
-    assessment = value.get("self_improvement_assessment")
-    _validate_self_improvement(assessment, errors)
-    if isinstance(assessment, dict) and assessment.get("decision") == "improve":
-        activation_relations = set(
-            assessment.get("formation_candidate", {}).get(
-                "activation_relations", []
-            )
+    if "self_improvement_assessment" in value:
+        errors.append(
+            "self_improvement_assessment is superseded; preserve the causal change as learning_delta"
         )
-        if not activation_relations.intersection(next_relations):
-            errors.append(
-                "an improvement candidate must enter the next movement through at least one activation relation"
-            )
-    review = value.get("review")
-    if not isinstance(review, dict):
-        errors.append("review must be an object")
-    else:
-        if review.get("status") != "accepted":
-            errors.append("resultant readback requires accepted review")
-        if not _nonempty(review.get("reviewer")):
-            errors.append("reviewer must be non-empty")
-        if review.get("reviewer_relation") not in {
-            "operator",
-            "owner",
-            "independent_reviewer",
-        }:
-            errors.append("unsupported reviewer relation")
-        if review.get("producer_is_reviewer") is not False:
-            errors.append("the producing assistant cannot approve its own resultant")
+    learning_delta = value.get("learning_delta")
+    _validate_learning_delta(learning_delta, errors)
+    if isinstance(learning_delta, dict) and not set(
+        learning_delta.get("activation_relations", [])
+    ).intersection(next_relations):
+        errors.append(
+            "learning_delta must enter the next movement through an activation relation"
+        )
 
     return {
-        "schema": "maios.resultant-readback-validation.v1",
+        "schema": "maios.resultant-readback-validation.v2",
         "valid": not errors,
         "errors": errors,
         "event_digest": digest(value) if not errors else None,
         "movement_validation": movement_validation,
-        "claim_boundary": "shape validity and accepted review do not prove semantic quality, improvement, assimilation, or external effect",
+        "claim_boundary": "shape and causal coherence do not prove external claims, assimilation, or effect authority",
     }
 
 
@@ -892,7 +816,7 @@ def _configuration_candidate(
     composition["last_readback"] = {
         "event_id": readback["event_id"],
         "receipt": receipt_relative,
-        "classification": actual["classification"],
+        "classification": actual.get("classification"),
         "summary": actual["summary"],
     }
 
@@ -908,130 +832,111 @@ def _configuration_candidate(
 
     evolution = candidate.setdefault("evolution", {})
     evolution["last_crystallization"] = receipt_relative
-    assessment = readback.get("self_improvement_assessment")
-    if assessment is not None:
-        evolution["self_improvement_assessment_refs"] = _merge_unique(
-            evolution.get("self_improvement_assessment_refs", []),
+    if readback.get("learning_delta") is not None:
+        evolution["learning_delta_refs"] = _merge_unique(
+            evolution.get("learning_delta_refs", []),
             [receipt_relative],
         )
     return candidate
 
 
-def _proposed_competence_delta(
-    readback: dict[str, Any],
-    competence_candidate: dict[str, Any],
-    faculty_delta: dict[str, Any],
-    competence_index: dict[str, Any],
-) -> dict[str, Any]:
-    target = competence_candidate["target"]
-    competence_id = target["id"]
-    current = competence_index.get("active", {}).get(competence_id)
-    disposition = "revise" if current else "retain"
-    return {
-        "schema": "maios.competence-delta.v2",
-        "event_id": f"{readback['event_id']}.{competence_candidate['candidate_id']}",
-        "candidate_id": competence_candidate["candidate_id"],
-        "origin_resultant_event_id": competence_candidate["origin_event_id"],
-        "competence_id": competence_id,
-        "disposition": disposition,
-        "work_relation": competence_candidate["formation"]["work_relation"],
-        "source_refs": competence_candidate["formation"]["source_refs"],
-        "expected_delta": competence_candidate["expected_delta"],
-        "observed_delta": {
-            "classification": faculty_delta["classification"],
-            "description": faculty_delta["description"],
-        },
-        "evidence_refs": readback["actual_result"]["evidence_refs"],
-        "invalidator": competence_candidate["formation"]["invalidator"],
-        "reentry_condition": competence_candidate["formation"][
-            "reentry_condition"
-        ],
-        "supersedes_event_id": current.get("event_id") if current else None,
-        "review": {
-            "status": "pending",
-            "reviewer": "pending owner review",
-            "reviewer_relation": "owner",
-            "producer_is_reviewer": False,
-        },
-    }
-
-
-def _evaluate_competence_candidates(
+def _update_learning_relations(
     current_operating: dict[str, Any],
     readback: dict[str, Any],
-    competence_index: dict[str, Any],
     receipt_relative: str,
-) -> tuple[list[dict[str, Any]], list[str]]:
-    """Read later exercise back into candidate state without admitting it."""
+) -> tuple[list[dict[str, Any]], str | None, list[str]]:
+    """Carry a causal correction into the next field and record later use."""
 
-    deltas = {
+    circumstance_digest = digest(readback["movement"]["circumstance"])
+    faculty_deltas = {
         item["faculty_id"]: item
         for item in readback.get("faculty_deltas", [])
         if isinstance(item, dict) and _nonempty(item.get("faculty_id"))
     }
-    updated: list[dict[str, Any]] = []
-    evaluated_ids: list[str] = []
-    for item in current_operating.get("competence_candidates", []):
-        candidate = copy.deepcopy(item)
-        candidate_id = candidate.get("candidate_id")
-        faculty_delta = deltas.get(candidate_id)
-        if (
-            faculty_delta is None
-            or candidate.get("status")
-            not in {"ready_for_exercise", "needs_evidence"}
-        ):
-            updated.append(candidate)
-            continue
-        classification = faculty_delta["classification"]
-        candidate["evaluation"] = {
-            "result_event_id": readback["event_id"],
-            "classification": classification,
-            "description": faculty_delta["description"],
-            "evidence_refs": copy.deepcopy(
-                readback["actual_result"]["evidence_refs"]
-            ),
-            "resultant_receipt": receipt_relative,
-        }
-        if classification in {"verified_improvement", "tradeoff"}:
-            candidate["status"] = "ready_for_review"
-            candidate["proposed_delta"] = _proposed_competence_delta(
-                readback, candidate, faculty_delta, competence_index
+    relations: list[dict[str, Any]] = []
+    exercised: list[str] = []
+    for source in current_operating.get("learning_relations", []):
+        relation = copy.deepcopy(source)
+        relation_id = relation.get("relation_id")
+        faculty_delta = faculty_deltas.get(relation_id)
+        if faculty_delta is not None:
+            nonidentical = (
+                relation.get("origin_circumstance_digest") != circumstance_digest
             )
-        elif classification == "unverified":
-            candidate["status"] = "needs_evidence"
-            candidate["proposed_delta"] = None
-        else:
-            candidate["status"] = "closed_without_promotion"
-            candidate["proposed_delta"] = None
-        evaluated_ids.append(candidate_id)
-        updated.append(candidate)
-    return updated, evaluated_ids
+            later_use = {
+                "event_id": readback["event_id"],
+                "circumstance_digest": circumstance_digest,
+                "nonidentical_to_origin": nonidentical,
+                "description": faculty_delta["description"],
+                "classification": faculty_delta.get("classification"),
+                "evidence_refs": copy.deepcopy(
+                    readback["actual_result"].get("evidence_refs", [])
+                ),
+                "resultant_receipt": receipt_relative,
+            }
+            relation["later_uses"] = [
+                *relation.get("later_uses", []),
+                later_use,
+            ]
+            relation["last_use"] = later_use
+            relation["later_nonidentical_use_observed"] = bool(
+                relation.get("later_nonidentical_use_observed") or nonidentical
+            )
+            exercised.append(relation_id)
+        relations.append(relation)
+
+    learning_delta = readback.get("learning_delta")
+    changed_relation_id: str | None = None
+    if isinstance(learning_delta, dict):
+        owner = copy.deepcopy(learning_delta["owner"])
+        changed_relation_id = _learning_relation_id(owner)
+        prior = next(
+            (
+                item
+                for item in relations
+                if item.get("relation_id") == changed_relation_id
+            ),
+            None,
+        )
+        relation = {
+            "schema": "maios.learning-relation.v1",
+            "relation_id": changed_relation_id,
+            "owner": owner,
+            "status": "reachable",
+            "origin_event_id": readback["event_id"],
+            "origin_circumstance_digest": circumstance_digest,
+            "what_happened": learning_delta["what_happened"],
+            "causal_delta": learning_delta["causal_delta"],
+            "why_it_matters": learning_delta["why_it_matters"],
+            "future_behavior": learning_delta["future_behavior"],
+            "source_refs": copy.deepcopy(learning_delta["source_refs"]),
+            "activation_relations": copy.deepcopy(
+                learning_delta["activation_relations"]
+            ),
+            "invalidator": learning_delta["invalidator"],
+            "reentry_condition": learning_delta["reentry_condition"],
+            "source_resultant_receipt": receipt_relative,
+            "supersedes_origin_event_id": (
+                prior.get("origin_event_id") if prior else None
+            ),
+            "supersedes_relation_digest": digest(prior) if prior else None,
+            "later_uses": copy.deepcopy(prior.get("later_uses", [])) if prior else [],
+            "last_use": copy.deepcopy(prior.get("last_use")) if prior else None,
+            "later_nonidentical_use_observed": bool(
+                prior and prior.get("later_nonidentical_use_observed")
+            ),
+            "claim_boundary": "the causal relation is available now; assimilation is evidenced only by later non-identical use",
+        }
+        relations = [
+            item
+            for item in relations
+            if item.get("relation_id") != changed_relation_id
+        ]
+        relations.append(relation)
+    return relations, changed_relation_id, exercised
 
 
-def _formed_competence_candidate(
-    readback: dict[str, Any], receipt_relative: str
-) -> dict[str, Any] | None:
-    assessment = readback.get("self_improvement_assessment")
-    if not isinstance(assessment, dict) or assessment.get("decision") != "improve":
-        return None
-    formation = assessment["formation_candidate"]
-    return {
-        "candidate_id": formation["candidate_id"],
-        "origin_event_id": readback["event_id"],
-        "status": "ready_for_exercise",
-        "target": copy.deepcopy(assessment["target"]),
-        "method_readback": copy.deepcopy(assessment["method_readback"]),
-        "formation": copy.deepcopy(formation),
-        "expected_delta": assessment["expected_delta"],
-        "evidence_refs": copy.deepcopy(assessment["evidence_refs"]),
-        "uncertainty": copy.deepcopy(assessment["uncertainty"]),
-        "source_resultant_receipt": receipt_relative,
-        "evaluation": None,
-        "proposed_delta": None,
-    }
-
-
-def admit_resultant_readback(
+def apply_resultant_readback(
     root: Path, readback: Any, expected_context_sha256: str
 ) -> dict[str, Any]:
     root = root.resolve()
@@ -1049,7 +954,7 @@ def admit_resultant_readback(
             if prior.get("event_digest") != event_digest:
                 raise OperatingStateError("event_id already exists with different content")
             return {
-                "schema": RESULTANT_ADMISSION_SCHEMA,
+                "schema": RESULTANT_TRANSITION_SCHEMA,
                 "status": "idempotent",
                 "event_id": event_id,
                 "operating_state_sha256": digest(current_operating),
@@ -1059,7 +964,7 @@ def admit_resultant_readback(
     current_context = operating_status(root, circumstance)
     if current_context["context_sha256"] != expected_context_sha256:
         raise OperatingStateError(
-            "operating context changed after review; re-read and re-evaluate"
+            "operating context changed before transition; re-read the current field"
         )
     current_configuration = configuration_engine.current_configuration(root)
     before_configuration_sha256 = configuration_engine.digest(current_configuration)
@@ -1086,7 +991,7 @@ def admit_resultant_readback(
     updated_operating["last_resultant_receipt"] = receipt_relative
     updated_operating["last_resultant"] = {
         "event_id": event_id,
-        "classification": readback["actual_result"]["classification"],
+        "classification": readback["actual_result"].get("classification"),
         "status": readback["actual_result"]["status"],
         "summary": readback["actual_result"]["summary"],
     }
@@ -1097,73 +1002,31 @@ def admit_resultant_readback(
             "event_id": event_id,
             "event_digest": event_digest,
             "receipt": receipt_relative,
-            "classification": readback["actual_result"]["classification"],
+            "classification": readback["actual_result"].get("classification"),
             "preprojection_status": readback["preprojection_readback"]["status"],
         },
     ]
     competence_index = _competence_index(root)
-    competence_candidates, evaluated_candidate_ids = _evaluate_competence_candidates(
+    learning_relations, changed_learning_id, exercised_learning_ids = (
+        _update_learning_relations(
         current_operating,
         readback,
-        competence_index,
         receipt_relative,
+        )
     )
-    assessment = readback.get("self_improvement_assessment")
-    if assessment is not None:
-        compact_assessment = {
-            "event_id": event_id,
-            "decision": assessment["decision"],
-            "target": copy.deepcopy(assessment["target"]),
-            "expected_delta": assessment["expected_delta"],
-            "candidate_ref": assessment.get("candidate_ref"),
-            "receipt": receipt_relative,
-        }
-        updated_operating["assessments"] = [
-            *current_operating.get("assessments", []),
-            compact_assessment,
-        ]
-        updated_operating["last_assessment"] = compact_assessment
-
-    formed_candidate = _formed_competence_candidate(readback, receipt_relative)
-    if formed_candidate is not None:
-        candidate_id = formed_candidate["candidate_id"]
-        if any(
-            item.get("candidate_id") == candidate_id
-            for item in current_operating.get("competence_candidates", [])
-        ):
-            raise OperatingStateError(
-                f"competence formation candidate already exists: {candidate_id}"
-            )
-        reserved_ids = {
-            item.get("id") for item in _faculty_field(root).get("families", [])
-        }
-        reserved_ids.update(competence_index.get("active", {}))
-        if candidate_id in reserved_ids:
-            raise OperatingStateError(
-                f"competence formation candidate conflicts with an existing faculty or competence: {candidate_id}"
-            )
-        competence_candidates.append(formed_candidate)
-        updated_operating["last_competence_candidate"] = {
-            "candidate_id": candidate_id,
-            "status": formed_candidate["status"],
-            "target": copy.deepcopy(formed_candidate["target"]),
+    updated_operating["learning_relations"] = learning_relations
+    if changed_learning_id is not None:
+        changed_learning = next(
+            item
+            for item in learning_relations
+            if item.get("relation_id") == changed_learning_id
+        )
+        updated_operating["last_learning_relation"] = {
+            "relation_id": changed_learning_id,
+            "origin_event_id": event_id,
+            "owner": copy.deepcopy(changed_learning["owner"]),
             "source_resultant_receipt": receipt_relative,
         }
-    elif evaluated_candidate_ids:
-        last_evaluated = next(
-            item
-            for item in reversed(competence_candidates)
-            if item.get("candidate_id") == evaluated_candidate_ids[-1]
-        )
-        updated_operating["last_competence_candidate"] = {
-            "candidate_id": last_evaluated["candidate_id"],
-            "status": last_evaluated["status"],
-            "target": copy.deepcopy(last_evaluated["target"]),
-            "source_resultant_receipt": last_evaluated[
-                "source_resultant_receipt"
-            ],
-        }
-    updated_operating["competence_candidates"] = competence_candidates
 
     host_state = host_engine.read_host_state(root)
     faculty_field = _faculty_field(root)
@@ -1191,10 +1054,10 @@ def admit_resultant_readback(
         )
         observed_context = operating_status(root, circumstance)
         if observed_context["context_sha256"] != final_context["context_sha256"]:
-            raise OperatingStateError("admitted state does not reproduce reviewed context")
+            raise OperatingStateError("applied state does not reproduce the resultant context")
         receipt = {
-            "schema": RESULTANT_ADMISSION_SCHEMA,
-            "status": "admitted",
+            "schema": RESULTANT_TRANSITION_SCHEMA,
+            "status": "applied",
             "event_id": event_id,
             "event_digest": event_digest,
             "before_operating_state_sha256": before_operating_sha256,
@@ -1205,14 +1068,12 @@ def admit_resultant_readback(
             ),
             "operating_context_sha256": final_context["context_sha256"],
             "configuration_receipt": configuration_receipt,
-            "formed_competence_candidate": (
-                formed_candidate["candidate_id"] if formed_candidate else None
-            ),
-            "evaluated_competence_candidates": evaluated_candidate_ids,
+            "learning_relation": changed_learning_id,
+            "exercised_learning_relations": exercised_learning_ids,
             "readback": readback,
             "global_writes": [],
             "external_effect_claimed": False,
-            "claim_boundary": "admission closes reviewed project-local state; semantic improvement, assimilation, and external effects remain separate claims",
+            "claim_boundary": "the transition records project-local resultant state; external truth, assimilation, and effect authority remain separate claims",
         }
         write_json_atomic(receipt_path, receipt)
         return receipt
@@ -1226,3 +1087,11 @@ def admit_resultant_readback(
         if configuration_receipt and configuration_receipt.get("status") == "applied":
             configuration_engine.recover_configuration(root, configuration_receipt)
         raise
+
+
+def admit_resultant_readback(
+    root: Path, readback: Any, expected_context_sha256: str
+) -> dict[str, Any]:
+    """Compatibility alias for the superseded review/admission command."""
+
+    return apply_resultant_readback(root, readback, expected_context_sha256)

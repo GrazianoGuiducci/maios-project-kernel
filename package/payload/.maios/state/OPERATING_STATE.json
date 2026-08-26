@@ -5,11 +5,9 @@
   "last_input_digests": {},
   "active_movement": null,
   "history": [],
-  "assessments": [],
-  "competence_candidates": [],
+  "learning_relations": [],
   "last_resultant": null,
   "last_resultant_receipt": null,
-  "last_assessment": null,
-  "last_competence_candidate": null,
+  "last_learning_relation": null,
   "last_event_id": null
 }

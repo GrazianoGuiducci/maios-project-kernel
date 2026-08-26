@@ -384,7 +384,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         if (
             operating_state.get("revision") != 0
             or operating_state.get("history") != []
-            or operating_state.get("assessments") != []
+            or operating_state.get("learning_relations") != []
         ):
             errors.append("initial operating state must not contain inherited project state")
     except BuildError as exc:

@@ -21,9 +21,9 @@ relations exposed by the emerging result
 
 1. Keep permanent source/aperture and self-correction relations silent.
 2. Use the current circumstance to project known candidate families.
-3. Include reviewed project-local formation candidates only when their declared
-   activation relations match the current circumstance; keep them distinct
-   from admitted competences.
+3. Include project-local learning relations only when their activation
+   relations match the current circumstance; keep persistence distinct from
+   later assimilation evidence and the separately governed competence index.
 4. Exercise only candidates with a stated expected delta.
 5. Admit an unmatched material relation as a sourced extension instead of
    forcing it into the nearest family.
@@ -64,13 +64,14 @@ composition actually helped.
 
 After inspecting the resultant, record actual status and classification,
 faculty deltas, source positions, possibility impact, next movement, effect
-state, and the independent review. Use `validate-resultant` before
-`admit-resultant`. Admission is the terminal project-local coupling from the
-observed result to configuration, evolution, operating state, projections, and
-reentry. If its reviewed operating-context hash is stale, re-read and
-re-evaluate instead of merging over changed causal inputs.
+state, and an optional owner-bound learning delta. Use `validate-resultant`
+before `apply-resultant`. Application is the terminal project-local coupling
+from the observed result to configuration, evolution, operating state,
+projections, learning, and reentry. If its operating-context hash is stale,
+re-read the current field instead of merging over changed causal inputs.
 
-When the readback decision is `improve`, the next movement must carry a relation
-that activates the formed candidate. A later selected exercise and faculty
-delta can create a pending competence delta. This deterministic coupling makes
-method evolution executable while preserving independent admission.
+When a causal learning delta exists, the next movement must carry one of its
+activation relations. The relation becomes reachable at once; a later selected
+exercise records non-identical use without manufacturing an admission or
+claiming assimilation. External claims and effects still resolve their exact
+evidence and authority where they arise.

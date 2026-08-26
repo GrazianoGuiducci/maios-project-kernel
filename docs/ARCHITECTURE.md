@@ -23,7 +23,7 @@ source-tree, projection, source-manifest, package members, and archive digests.
 | --- | --- |
 | `install.py preview/apply/verify/uninstall` | `src/maios_project_kernel/installer.py` |
 | `maios.py status/compose/validate-movement` | `src/maios_project_kernel/runtime.py` |
-| `maios.py operating-status/validate-resultant/admit-resultant` | `src/maios_project_kernel/operating.py` |
+| `maios.py operating-status/validate-resultant/apply-resultant/learning-status` | `src/maios_project_kernel/operating.py` |
 | `maios.py configuration-*` | `src/maios_project_kernel/configuration.py` |
 | `maios.py competence-*` | Runtime competence index and reviewed-delta policy |
 | `maios-project-system` | Semantic kernel and open faculty field |
@@ -56,26 +56,28 @@ supports recovery only while the state still matches the receipt.
 
 ## Operating relation and resultant coupling
 
-`.maios/state/OPERATING_STATE.json` owns only admitted terminal-result history,
-active next movement, causal input digests, and owner-governed improvement
-assessments. `.maios/context/OPERATING_CONTEXT.json` is a derived projection of
+`.maios/state/OPERATING_STATE.json` owns terminal-result history, active next
+movement, causal input digests, and owner-bound learning relations.
+`.maios/context/OPERATING_CONTEXT.json` is a derived projection of
 configuration, host observations, competence state, faculty field, and this
 operating state. It never overrides those sources.
 
-An accepted resultant readback couples inspected behavior to canonical
+An applied resultant readback couples inspected behavior to canonical
 configuration, possibility impact, composition, evolution, projections, and
-reentry under one reviewed context hash. Admission is recoverable and
-project-local. Semantic approval stays with an independent reviewer;
-self-improvement promotion and external effects remain separate owner actions.
+reentry under one current context hash. The transition is recoverable and
+project-local. Learning becomes immediately reachable; optional classifications,
+assimilation, host activation, and external effects remain separate claims.
 
 ## Reciprocal competence cultivation
 
 Concrete work and its enabling competence advance together. Existing faculties
 are reused or composed first; a real gap may form the smallest truthful local
-competence. The candidate is exercised on the actual work and independently
-reviewed. Only a `verified_improvement` or accepted `tradeoff` can become active;
-other results remain history. Another meta-level is added only when it changes
-comprehension, execution, proof, recovery, or reentry.
+competence relation. A causal correction is preserved at its closest owner and
+can change the next matching movement. Later non-identical use supplies the
+behavioral readback and may revise or invalidate it. The reviewed competence
+index remains a separate deliberate owner surface, not a prerequisite for
+learning. Another meta-level is added only when it changes comprehension,
+execution, proof, recovery, or reentry.
 
 ## Authority and proof
 

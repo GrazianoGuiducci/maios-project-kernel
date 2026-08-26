@@ -1,25 +1,25 @@
 # MAIOS Project Kernel current state
 
-updated: 2026-08-25
+updated: 2026-08-26
 active_surface: manual `maios-project-kernel` 2.0.0 living source system
-status: manual 2.0.0 living source includes locally verified autological competence formation; generated distribution is current; GitHub Release v2.0.0 is the canonical distribution surface
+status: forward-resultant learning and its source-only generated distribution are locally verified on a clean source branch; GitHub Release v2.0.0 still represents the prior official bytes until publication is selected and reconciled
 
 ## Current resultant
 
 The operator selected a complete replacement of the current package. The new
 product preserves the useful functional field and the MAIOS configurator,
-composes the logic made material by each circumstance, and now couples the
-reviewed terminal resultant back to canonical state, evolution, and reentry.
-The selected correction now makes competence formation part of that executed
-method: reviewed method readback forms a candidate, the candidate enters a
-later matching movement, and its observed delta stops at independent review
-before competence admission.
+composes the logic made material by each circumstance, and couples the terminal
+resultant directly to canonical state, evolution, learning, and reentry. The
+selected correction removes the `review -> assessment -> candidate -> admission`
+overlay from this causal cycle: what happened, why it matters, future behavior,
+owner, sources, activation, invalidator, and reentry become a reachable relation
+in the next field. A later non-identical use is recorded without being promoted
+automatically to assimilation.
 
-The maintained living source belongs to this repository's `main` branch. The
-versioned GitHub Release binds that source revision to the generated archive
-and checksum; the website points to this owner instead of maintaining a second
-copy. The isolated release worktree remains the write owner for this bounded
-source movement.
+The maintained living source currently belongs to the clean branch
+`codex/project-kernel-forward-resultant-20260826`. The prior `main` and GitHub
+Release remain unchanged until this source, generated archive, and publication
+effect are reconciled. The website remains outside this source movement.
 
 ## Architecture and observed result
 
@@ -31,16 +31,17 @@ not separate kernels.
 
 `src/maios_project_kernel/operating.py` closes the missing causal loop. It
 derives an autological operating context from configuration, host observations,
-reviewed competences, the open faculty field, and prior admitted results. It
+project competences, reachable learning, the open faculty field, and prior results. It
 exposes causal invalidations and capability states without claiming semantic
-correctness, activation, consciousness, or effect authority. A reviewed
-resultant can update the next movement, composition, possibility impact,
-evolution, projections, and reentry under one context-concurrency hash.
+correctness, activation, consciousness, or effect authority. A source-qualified
+resultant atomically updates the next movement, composition, possibility impact,
+learning, evolution, projections, and reentry under one context-concurrency hash.
 
-Self-improvement is an owner-governed executed relation, never an automatic
-approval loop. Method readback may form a project-local candidate with explicit
-activation relations. Later work can exercise and evaluate it; only a separate
-accepted competence delta can change the reviewed competence index.
+Self-improvement is an owner-bound causal relation, never an automatic truth or
+approval loop. Resultant readback changes the closest truthful owner immediately
+when that learning changes future behavior. Later work can exercise, revise, or
+invalidate it. A separate accepted competence delta remains available only for
+a deliberate competence-index change.
 Skills, competences, meta-skills, meta-competences, routers, and their current
 forms remain open to revision, replacement, or a different level when later
 context makes that materially useful.
@@ -60,16 +61,16 @@ or host-generated residue,
 circumstance-sensitive candidate
 rerouting, canonical configuration with hash-linked Context Capsule/SetupSpec,
 configuration concurrency and recovery, data/provider boundaries, open sourced
-faculty extension, effect-bound movement validation, reviewed competence
+faculty extension, effect-bound movement validation, governed competence-index
 retention/revision and self-approval refusal, plus reviewed host claim
 dependencies. The new operating relation additionally passes focused tests for
-terminal admission, project-state/reentry coupling, causal staleness refusal,
-evidence-free self-improvement refusal, and fresh-process archive execution.
-The autological formation fixture additionally proves candidate formation,
-later circumstance-bound exercise, pending-review refusal and separately
-accepted admission. The complete 19-test owner suite was replayed after this
-source change and passes. The generated distribution contains 41 declared
-files and verifies against its exact inventory.
+terminal application, project-state/reentry coupling, causal staleness refusal,
+legacy-assessment refusal, and fresh-process archive execution. The forward
+learning fixture additionally proves immediate reachability and later
+non-identical use without candidate or admission latency. The complete 19-test
+owner suite was replayed after this source change and passes. The source-only
+build contains 40 declared files, 32 payload files, and verifies against its
+exact inventory; generated identity remains owned by `dist/BUILD_RECEIPT.json`.
 The earlier 17-test owner suite was replayed after publication-state
 reconciliation on 2026-08-25 and passes without changing the generated archive.
 The first projection-drift CI gate then exposed host-dependent `Path` ordering:
@@ -109,18 +110,17 @@ Hermes profile.
 - `process/INSTALLER_DISTRIBUTION_INTEGRITY_RECEIPT_2_0_0.md`
 - `process/OPERATING_RELATION_IMPLEMENTATION_RECEIPT_2_0_0.md`
 - `process/AUTOLOGICAL_COMPETENCE_FORMATION_RECEIPT_2_0_0.md`
+- `process/FORWARD_RESULTANT_LEARNING_RECEIPT_2_0_0.md`
 - `kernel/`, `setup/`, `competences/`, `adapters/`, and `src/`
 - `templates/` and `release/PROJECTION.json`
 - `tools/` and `tests/`; generated `package/` is evidence, not an owner
 
 ## Publication and boundary
 
-The living source is published on `maios-project-kernel` main. GitHub Release
-`v2.0.0` owns the versioned distribution: its assets are the generated ZIP and
-`SHA256SUMS` from the same source revision. The exact archive identity remains
-in `dist/BUILD_RECEIPT.json`; it is not copied into this source file because
-changing a source file necessarily changes that identity. MAIOS public pages
-link to the canonical repository and Release without mirroring the binary.
+The prior living source is published on `maios-project-kernel` main. GitHub
+Release `v2.0.0` still owns its existing distribution. The forward-resultant
+branch is local source evidence until an exact publication decision reconciles
+main, archive, checksums, Release assets, and downstream public references.
 
 The Release does not include Form-package inspection, host-global
 configuration, hook installation, provider calls, physical-system
@@ -147,6 +147,6 @@ hard_boundaries: no hidden global writes and no external effect authority
 reversible_preparations: source edits, deterministic builds, temp installations
 ```
 
-current_next: observe independent download, first use, stars, forks and contributions as distinct signals; select RepoKernel as a separate owner surface before comparing the Form-generated package
-first_safe_action: use `dist/BUILD_RECEIPT.json` and the matching `SHA256SUMS` Release asset for exact artifact identity; do not reopen Hermes or a broad host matrix unless a later event specifically needs that evidence
-validation_needed: no validation blocks the manual package; real semantic-result quality, maintained reentry, RepoKernel integration, and Form comparison remain distinct event-bound future proofs
+current_next: inspect the final diff and decide source plus Release publication before entering RepoKernel
+first_safe_action: reconcile authenticated remote main and the production-bound Release effect; do not reopen Hermes, the Form pipeline, site work, or a broad host matrix
+validation_needed: publication destination and artifact-effect reconciliation; real semantic-result quality, maintained reentry, RepoKernel integration, and Form comparison remain distinct future events

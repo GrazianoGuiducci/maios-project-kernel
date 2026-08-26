@@ -30,18 +30,17 @@ The canonical semantic sources are:
 compose --circumstance <file.json>` can project the known candidate faculties
 for a declared circumstance, but the output is not semantic selection or proof.
 `python maios.py configuration-status` distinguishes pending, accepted, stale,
-and hash-linked configuration projections. `competence-status` shows reviewed
-project-local competence history without claiming later behavioral assimilation.
-`competence-candidates` shows method-derived candidates, their later exercise,
-and pending deltas without presenting them as admitted competences.
+and hash-linked configuration projections. `competence-status` shows separately
+governed project-local competence history without claiming later assimilation.
+`learning-status` shows causal learning that is immediately reachable in a
+matching circumstance, while keeping persistence distinct from assimilation.
 `operating-status` exposes the current project relation, capability states,
 causal invalidations, uncertainty, eligible local movements, and authority
-ceiling. After a real result is inspected and independently accepted,
-`validate-resultant` and `admit-resultant` can couple that terminal readback to
-configuration, evolution, projections, and reentry without granting an external
-effect. A reviewed `improve` assessment can enter a candidate into the next
-matching movement, but only a separately accepted competence delta can activate
-it and later behavior is still needed to support assimilation.
+ceiling. After a real result is inspected, `validate-resultant` and
+`apply-resultant` can couple that terminal readback to configuration, evolution,
+learning, projections, and reentry without granting an external effect. A
+causal learning delta can enter the next matching movement immediately; later
+non-identical behavior is still needed to support assimilation.
 
 Project-local, reversible configuration is allowed when you asked to initialize
 or use the project. An external, public, destructive, credentialed, or runtime

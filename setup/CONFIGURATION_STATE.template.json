@@ -84,7 +84,7 @@
     "contract": ".maios/kernel/EVOLUTION_CONTRACT.json",
     "last_crystallization": null,
     "accepted_delta_refs": [],
-    "self_improvement_assessment_refs": [],
+    "learning_delta_refs": [],
     "superseded_relations": []
   },
   "current_next": "Use the present operator relation and project sources to produce the first correctable useful result."
