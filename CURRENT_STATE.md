@@ -2,7 +2,7 @@
 
 updated: 2026-08-26
 active_surface: manual `maios-project-kernel` 2.0.0 living source system
-status: one forward-resultant 2.0.0 living source and generated distribution are locally verified; the compact-induced 2.0.1 overlay has been removed while its accurate causal-language corrections were retained; GitHub Release v2.0.0 still represents the prior official bytes until publication is selected and reconciled
+status: one forward-resultant 2.0.0 living source is published on main and its generated distribution is locally verified; the compact-induced 2.0.1 overlay has been removed while its accurate causal-language corrections were retained; GitHub Release v2.0.0 still represents the prior official bytes until its separate publication identity is reconciled
 
 ## Current resultant
 
@@ -16,10 +16,11 @@ owner, sources, activation, invalidator, and reentry become a reachable relation
 in the next field. A later non-identical use is recorded without being promoted
 automatically to assimilation.
 
-The maintained living source currently belongs to the clean branch
-`codex/project-kernel-forward-resultant-20260826`. The prior `main` and GitHub
-Release remain unchanged until this source, generated archive, and publication
-effect are reconciled. The website remains outside this source movement.
+The maintained living source was prepared on the clean branch
+`codex/project-kernel-forward-resultant-20260826` and published to `main` by an
+authenticated fast-forward. The existing `v2.0.0` tag and GitHub Release remain
+on the prior official identity until the archive publication effect is selected
+and reconciled. The website remains outside this source movement.
 
 An assistant-created post-compact overlay had renamed this same behavior to
 2.0.1 and declared a publication choice that the operator had not made. It did
@@ -123,10 +124,11 @@ Hermes profile.
 
 ## Publication and boundary
 
-The prior living source is published on `maios-project-kernel` main. GitHub
-Release `v2.0.0` still owns its existing distribution. The forward-resultant
-branch is local source evidence until an exact publication decision reconciles
-main, archive, checksums, Release assets, and downstream public references.
+The forward-resultant living source is published on `maios-project-kernel`
+`main`. GitHub Release `v2.0.0` still owns its earlier archive and checksum.
+Source publication and Release asset identity therefore remain explicitly
+distinct until an exact archive-publication decision reconciles tag, assets,
+checksums and downstream public references.
 
 The Release does not include Form-package inspection, host-global
 configuration, hook installation, provider calls, physical-system
@@ -153,6 +155,6 @@ hard_boundaries: no hidden global writes and no external effect authority
 reversible_preparations: source edits, deterministic builds, temp installations
 ```
 
-current_next: inspect the single 2.0.0 source and regenerated archive as the package candidate, then decide its source and Release publication before entering RepoKernel
-first_safe_action: review the bounded 2.0.0 diff and artifact identity; do not recreate 2.0.1, reopen Hermes, enter the Form pipeline or start a broad host matrix
-validation_needed: publication destination and artifact-effect reconciliation; real semantic-result quality, maintained reentry, RepoKernel integration, and Form comparison remain distinct future events
+current_next: decide whether and how to reconcile the existing v2.0.0 tag and Release assets with the now-published 2.0.0 living source before entering RepoKernel
+first_safe_action: compare the locally verified archive with the immutable public Release effect; do not recreate 2.0.1, reopen Hermes, enter the Form pipeline or start a broad host matrix
+validation_needed: Release asset and tag reconciliation; real semantic-result quality, maintained reentry, RepoKernel integration, and Form comparison remain distinct future events
