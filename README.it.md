@@ -4,15 +4,15 @@ MAIOS Project Kernel è un sistema di progetto portabile e auto-installante per
 persone che lavorano con assistenti AI. Parte dalla situazione e dalle fonti
 reali della persona, forma presto un risultato correggibile, compone soltanto le
 facoltà che cambiano il movimento presente e conserva nel progetto
-l'apprendimento revisionato e il rientro.
+l'apprendimento causale e il rientro.
 
-La versione `2.0.0` è distribuita dalla repository GitHub canonica. La sorgente
-viva resta su `main`; la Release ufficiale contiene l'archivio auto-installante
-esatto e il file `SHA256SUMS`.
+La Release pubblica `v2.0.0` è disponibile dalla repository GitHub canonica.
+Questa sorgente contiene il completamento forward-resultant della stessa linea
+2.0.0. Fino alla riconciliazione della pubblicazione, Release pubblica e
+sorgente viva restano identità distinte.
 
 - [Scarica la Release 2.0.0](https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v2.0.0)
 - [Esplora o lascia una stella alla repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
-- [Crea un fork](https://github.com/GrazianoGuiducci/maios-project-kernel/fork) per adattare il progetto o proporre un contributo
 
 La pubblicazione della sorgente e della Release non prova l'attivazione negli
 host, i risultati semantici, il rientro mantenuto o un runtime pubblico.
@@ -45,12 +45,12 @@ La 2.0.0 comprende:
 - contesto operativo autologico che espone relazioni di capacità, invalidazioni
   causali, incertezze e autorità correnti senza dichiarare correttezza semantica
   o attivazione;
-- readback terminale revisionato che collega risultato reale, impatto sulle
-  possibilità, movimento successivo e valutazioni di miglioramento governate
-  dal proprietario a configurazione e rientro;
+- readback forward-resultant che collega risultato reale, impatto sulle
+  possibilità, movimento successivo e apprendimento causale del proprietario
+  a configurazione e rientro;
 - coltivazione reciproca delle competenze: il lavoro concreto mette alla prova
-  la competenza che lo rende possibile, il readback la migliora e il delta
-  revisionato cambia i movimenti successivi;
+  la competenza che lo rende possibile, il readback corregge la relazione
+  proprietaria e il delta causale entra nei movimenti successivi;
 - installer deterministico con `preview`, `apply`, `verify` e `uninstall`, anche
   per repository esistenti senza sovrascritture nascoste;
 - adapter locali per Codex, Claude Code, OpenCode, DSH, Hermes e host generico;

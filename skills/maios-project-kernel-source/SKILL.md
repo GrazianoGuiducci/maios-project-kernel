@@ -19,6 +19,12 @@ living source -> generated package inventory -> archive -> install plan -> targe
 Never claim a later state from an earlier proof. Treat the Form-generated route
 as a later independent comparison, not a source or fixture for manual 2.0.0.
 
+A compact, collision with an existing public artifact, or an assistant's
+publication plan cannot select a new product version. Preserve useful source
+corrections in the current living line and keep version, tag and Release claims
+unselected until the operator chooses that product identity. A rewritten label
+without changed kernel behavior is not a new kernel.
+
 The source system exposes one semantic host faculty, an open causal faculty
 field, a situated configuration engine, and reciprocal competence cultivation.
 Preserve result-changing functions and their proof contracts; do not copy every

@@ -8,13 +8,13 @@ sources, forms an early correctable result, composes only the faculties that
 change the present movement, and preserves causal learning and reentry in the
 project itself.
 
-Version `2.0.0` is distributed from the canonical GitHub repository. The
-living source remains on `main`; the official Release carries the exact
-self-installing archive and `SHA256SUMS` file.
+The public `v2.0.0` Release is available from the canonical GitHub repository.
+This source contains the forward-resultant completion of the same 2.0.0 line.
+Until publication is reconciled, the public Release and this living source
+remain distinct identities.
 
 - [Download Release 2.0.0](https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v2.0.0)
 - [Inspect or star the repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
-- [Fork the project](https://github.com/GrazianoGuiducci/maios-project-kernel/fork) to adapt it or propose a contribution
 
 Source publication and a Release do not claim host activation, semantic
 results, maintained reentry, or public runtime operation.

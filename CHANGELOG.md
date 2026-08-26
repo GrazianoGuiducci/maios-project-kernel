@@ -13,15 +13,18 @@ All notable changes to the public distribution are recorded here.
   hash-linked Context Capsule and SetupSpec, concurrency refusal, compact
   projections, backups, receipts, idempotency, and recovery.
 - Added reciprocal competence cultivation so concrete work and its enabling
-  competence test and improve each other; self-approval is refused and only
-  reviewed evidence can activate a local competence delta.
+  competence test and improve each other; owner-bound causal learning enters
+  the next resultant directly, while deliberate competence-index changes still
+  refuse self-approval.
 - Added a derived autological operating context with causal input freshness,
   capability states, uncertainty, eligible local movements, and explicit
   authority ceiling.
-- Added independently reviewed terminal-result admission that couples actual
-  result, faculty deltas, possibility impact, next movement, configuration,
-  projections, evolution, and reentry without automatic self-improvement or
-  external-effect authority.
+- Replaced the universal `review -> assessment -> candidate -> admission`
+  overlay with forward-resultant readback coupling actual results, possibility
+  impact, next movement, owner-bound learning, configuration, evolution and
+  reentry. Claim classification and effect authority remain separate.
+- Removed the superseded competence-formation-candidate schema from the
+  generated package while retaining its historical source evidence.
 - Added a self-installing distribution with immutable preview plans, exact
   package/target identity, empty and existing-repository modes, conflict and
   symlink refusal, host-specific project-local projections, verification, and

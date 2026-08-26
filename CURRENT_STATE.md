@@ -2,7 +2,7 @@
 
 updated: 2026-08-26
 active_surface: manual `maios-project-kernel` 2.0.0 living source system
-status: forward-resultant learning and its source-only generated distribution are locally verified on a clean source branch; GitHub Release v2.0.0 still represents the prior official bytes until publication is selected and reconciled
+status: one forward-resultant 2.0.0 living source and generated distribution are locally verified; the compact-induced 2.0.1 overlay has been removed while its accurate causal-language corrections were retained; GitHub Release v2.0.0 still represents the prior official bytes until publication is selected and reconciled
 
 ## Current resultant
 
@@ -20,6 +20,12 @@ The maintained living source currently belongs to the clean branch
 `codex/project-kernel-forward-resultant-20260826`. The prior `main` and GitHub
 Release remain unchanged until this source, generated archive, and publication
 effect are reconciled. The website remains outside this source movement.
+
+An assistant-created post-compact overlay had renamed this same behavior to
+2.0.1 and declared a publication choice that the operator had not made. It did
+not contain a second kernel: runtime, kernel and competence files were
+unchanged. The version overlay is removed; only wording that truthfully exposes
+the already implemented causal-learning relation remains in the 2.0.0 source.
 
 ## Architecture and observed result
 
@@ -147,6 +153,6 @@ hard_boundaries: no hidden global writes and no external effect authority
 reversible_preparations: source edits, deterministic builds, temp installations
 ```
 
-current_next: inspect the final diff and decide source plus Release publication before entering RepoKernel
-first_safe_action: reconcile authenticated remote main and the production-bound Release effect; do not reopen Hermes, the Form pipeline, site work, or a broad host matrix
+current_next: inspect the single 2.0.0 source and regenerated archive as the package candidate, then decide its source and Release publication before entering RepoKernel
+first_safe_action: review the bounded 2.0.0 diff and artifact identity; do not recreate 2.0.1, reopen Hermes, enter the Form pipeline or start a broad host matrix
 validation_needed: publication destination and artifact-effect reconciliation; real semantic-result quality, maintained reentry, RepoKernel integration, and Form comparison remain distinct future events
