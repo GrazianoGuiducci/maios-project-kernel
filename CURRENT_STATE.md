@@ -2,7 +2,7 @@
 
 updated: 2026-08-27
 active_surface: manual self-configuring `maios-project-kernel` 2.0.0 living source
-status: first Codex-first operator-to-project vertical plus its portable competence-formation owner published on `main` at implementation commit `1344f25`; deterministic tracked package projection aligned, while Release and public-site effects remain separate
+status: first Codex-first operator-to-project vertical plus its portable competence-formation owner published on `main`; tracked package projection and public `v2.0.0` Release aligned to the completed living source, while public-site and behavioral acceptance remain separate
 
 ## Current resultant
 
@@ -80,10 +80,11 @@ owners.
 
 ## Boundary and next movement
 
-The Form-generated package remains a separate later owner and builder. Source
-publication of this repository does not mutate Form, RepoKernel, site,
-provider, Release or another harness.
+The Form-generated package remains a separate later owner and builder. This
+repository and its public `v2.0.0` Release now own the completed
+self-configuring package; they do not mutate Form, RepoKernel, site, provider
+or another harness.
 
-current_next: keep the self-configuring lane selected until its separately owned public Release identity is reconciled or explicitly deferred; do not enter Form implementation merely because the source package is now complete
-first_safe_action: preserve the published source and regenerated archive identities; when Release is selected, reconcile its tag and downloadable bytes without changing Form, RepoKernel or site owners
+current_next: the self-configuring source and distribution lane is closed with behavioral acceptance explicitly deferred; next reconstruct how private RepoKernel can consume the private whole-kernel generation competence for the separately assembled Form package
+first_safe_action: begin the later lane from current RepoKernel and Form owner sources, deriving one kernel source relation without shipping either private generator
 validation_deferred: real semantic acceptance, later non-identical reentry and native adapter behavior for additional harnesses remain available for a later selected validation movement

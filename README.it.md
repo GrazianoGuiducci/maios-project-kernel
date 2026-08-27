@@ -6,10 +6,8 @@ reali della persona, forma presto un risultato correggibile, compone soltanto le
 facoltà che cambiano il movimento presente e conserva nel progetto
 l'apprendimento causale e il rientro.
 
-La Release pubblica `v2.0.0` è disponibile dalla repository GitHub canonica.
-Questa sorgente contiene il completamento forward-resultant della stessa linea
-2.0.0. Fino alla riconciliazione della pubblicazione, Release pubblica e
-sorgente viva restano identità distinte.
+La Release pubblica `v2.0.0` è disponibile dalla repository GitHub canonica ed
+è generata da questa linea sorgente viva completata.
 
 - [Scarica la Release 2.0.0](https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v2.0.0)
 - [Esplora o lascia una stella alla repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
