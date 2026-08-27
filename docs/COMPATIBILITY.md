@@ -1,5 +1,8 @@
 # Host compatibility
 
+The project-local installer and helper require Python 3.10 or later. No
+third-party Python packages are required.
+
 All hosts receive the same neutral project sources. Native profiles project the
 permanent system owner and the host-adaptation competence; the latter can map
 the remaining portable competences into the conventions already understood by

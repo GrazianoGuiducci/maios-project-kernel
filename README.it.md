@@ -11,9 +11,12 @@ conversazione.
 La repository è il prodotto. La cartella tracciata [`package/`](package/) è la
 proiezione autoinstallante pronta all'uso.
 
+L'installer e l'helper installato richiedono Python 3.10 o successivo; non sono
+necessari pacchetti Python di terze parti.
+
 ## Inizia qui
 
-Clona o scarica la repository, apri `package/` con il coder e digli:
+Clona la repository, apri `package/` con il coder e digli:
 
 ```text
 Leggi AGENTS.md e la competenza maios-project-integration. Spiegami cosa può

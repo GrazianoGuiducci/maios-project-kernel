@@ -5,6 +5,11 @@ it with the coder and let the coder first explain its relation to the target.
 After the operator corrects or accepts the target, mode and host, preview the
 transition and apply that exact plan.
 
+## Requirement
+
+The installer and the installed `maios.py` helper require Python 3.10 or later.
+They use only the Python standard library.
+
 ## New project
 
 ```powershell

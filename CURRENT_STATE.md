@@ -2,8 +2,8 @@
 
 updated: 2026-08-27
 active_surface: manual self-configuring `maios-project-kernel` 2.0.0 living source
-status: repository-first self-configuring source and deterministic `package/`
-projection are structurally complete and ready to replace public v2.0.0
+status: public repository-first self-configuring source and deterministic
+`package/` projection are aligned on product line 2.0.0
 
 ## Current resultant
 
@@ -42,10 +42,12 @@ competence that understands how to update its own system.
 
 ## Proof state
 
-- the public base before replacement is
-  `7eb6dd510ece92e79b3d83fac6bcde52a97e2371`;
-- exact package count, payload count and source identity are supplied by the
-  deterministic package build receipt;
+- public main, tag `v2.0.0` and the GitHub Release target are one repository
+  product relation; the Release carries no separate custom asset;
+- exact package count, payload count, Python runtime requirement and source
+  identity are supplied by the deterministic package manifest and build receipt;
+- GitHub CI rebuilds the tracked package twice on Python 3.10 and refuses any
+  source-to-projection difference;
 - extended behavioral tests, real semantic acceptance, native host use and
   later non-identical reentry are intentionally deferred.
 
@@ -70,13 +72,15 @@ competence that understands how to update its own system.
 
 ## Boundary and next movement
 
-The current working candidate does not alter the public Release, site, Form,
-RepoKernel, provider or another runtime by implication.
+The public MAIOS pages are separate communication projections and must describe
+repository-first acquisition without claiming removed Release assets. The Form,
+RepoKernel, provider and other runtimes remain separate owner surfaces.
 
-current_next: commit, push and replace public v2.0.0 with the repository-first
-source and matching tracked `package/` projection
+current_next: align the MAIOS product pages, then enter the separately
+Form-generated Project Kernel lane from its current P1-P5 and RepoKernel sources
 
-first_safe_action: publish the selected repository replacement
+first_safe_action: publish this package-maintenance correction and verify the
+repository workflow
 
 validation_deferred: extended behavioral tests, real semantic acceptance,
 later non-identical reentry and native adapter behavior

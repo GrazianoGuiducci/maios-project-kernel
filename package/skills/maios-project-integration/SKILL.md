@@ -1,6 +1,6 @@
 ---
 name: maios-project-integration
-description: Understand, explain, preview, and integrate the MAIOS Project Kernel repository package into a selected new or existing project; use when an operator gives the package to a coder, asks what it can add, or wants to begin installation with Codex.
+description: Understand, explain, preview, and integrate the MAIOS Project Kernel repository package into a selected new or existing project; use when an operator gives the package to an AI coder or harness, asks what it can add, or wants to begin installation.
 ---
 
 # MAIOS Project Integration

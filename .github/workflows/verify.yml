@@ -16,17 +16,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.10"
       - name: Validate living source behavior
         run: python -B -m unittest discover -s tests -v
-      - name: Build release twice
+      - name: Build tracked package projection twice
         run: |
           python tools/build_release.py
-          first="$(find dist -maxdepth 1 -name '*.zip' -print -quit)"
-          cp "$first" /tmp/first.zip
+          git diff --exit-code -- package/
           python tools/build_release.py
-          second="$(find dist -maxdepth 1 -name '*.zip' -print -quit)"
-          cmp /tmp/first.zip "$second"
+          git diff --exit-code -- package/
       - name: Require the committed package projection to match living source
         run: git diff --exit-code -- package/
       - name: Validate generated public boundary

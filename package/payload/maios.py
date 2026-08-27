@@ -8,6 +8,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
+if sys.version_info < (3, 10):
+    raise SystemExit("MAIOS Project Kernel requires Python 3.10 or later.")
 sys.path.insert(0, str(ROOT / ".maios" / "runtime"))
 
 from kernel import main  # noqa: E402

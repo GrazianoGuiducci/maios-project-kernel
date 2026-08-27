@@ -10,9 +10,12 @@ and continue without reconstructing the whole conversation at every session.
 The repository is the product. Its tracked [`package/`](package/) directory is
 the ready-to-use self-installing projection.
 
+Running the installer and the installed helper requires Python 3.10 or later;
+no third-party Python packages are required.
+
 ## Start here
 
-Clone or download the repository, open `package/` with your coder, and say:
+Clone the repository, open `package/` with your coder, and say:
 
 ```text
 Read AGENTS.md and the maios-project-integration competence. Explain what this

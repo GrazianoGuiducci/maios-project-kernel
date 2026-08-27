@@ -4,6 +4,10 @@ All notable changes to the public distribution are recorded here.
 
 ## Unreleased living source
 
+No unreleased changes.
+
+## 2.0.0 - 2026-08-27
+
 - Added competence-driven activation for existing projects: the Kernel first
   understands the project already present, then forms only the competences the
   actual work requires.
@@ -16,8 +20,12 @@ All notable changes to the public distribution are recorded here.
   Kernel evolves through its competences; a future release may carry a
   competence that knows how to update its own system when that need becomes
   real.
-
-## 2.0.0 - 2026-08-25
+- Declared and enforced the Python 3.10 minimum at package entry, documented
+  the standard-library-only runtime and added it to the package manifest.
+- Replaced the retired ZIP-based CI step with two exact tracked `package/`
+  rebuild comparisons.
+- Aligned CodeMeta, citation and current-state metadata with repository-first
+  acquisition and the published Project Kernel page.
 
 - Made the repository the sole living implementation source and `package/` its
   deterministic installable projection.

@@ -69,6 +69,10 @@ class BuilderTests(DistributionFixture):
             manifest["source_identity"]["tree_sha256"],
             builder.source_tree_digest(ROOT),
         )
+        self.assertEqual(manifest["runtime_requirements"]["python"], ">=3.10")
+        self.assertEqual(
+            manifest["runtime_requirements"]["third_party_python_packages"], []
+        )
         self.assertEqual(inventory_paths, sorted(inventory_paths))
 
     def test_generated_staging_cannot_enter_source_identity(self) -> None:

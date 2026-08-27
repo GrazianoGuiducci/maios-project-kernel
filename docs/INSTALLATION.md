@@ -2,9 +2,12 @@
 
 ## Open the package
 
-Clone or download the repository and open its tracked `package/` directory with
+Clone the repository and open its tracked `package/` directory with
 the coder. `PACKAGE_INVENTORY.json` binds every generated package path, byte
 count and SHA-256 before the installer plans a target transition.
+
+The installer and the installed `maios.py` helper require Python 3.10 or later
+and use only the Python standard library.
 
 ## Preview and apply
 

@@ -2,9 +2,9 @@
   "algorithm": "sha256",
   "files": [
     {
-      "bytes": 1966,
+      "bytes": 1970,
       "path": ".agents/skills/maios-project-integration/SKILL.md",
-      "sha256": "7a7d702f1b11b875cbc7cf27c64e1348d7361112e1803d91539f2f602627ebbf"
+      "sha256": "5992941ee8d661befda7d6c4316ed69ea68c37738e52008b2fa5f5180b0d8cfc"
     },
     {
       "bytes": 809,
@@ -12,9 +12,9 @@
       "sha256": "e4ea9a38f8bfda87d5f521034e4b79bf8477b1dda48b44b1f180e03c7022dcb8"
     },
     {
-      "bytes": 2354,
+      "bytes": 2494,
       "path": "INSTALL.md",
-      "sha256": "1904d5ad14467f6010cf43ee0030cc549667dab7904adec516b1749adf145045"
+      "sha256": "bfeac741a7b8b3d8f8b8d29c6fbc253afd6a0c95200afdab55523ec11d0cb8cb"
     },
     {
       "bytes": 1074,
@@ -22,14 +22,14 @@
       "sha256": "a8da72c4929df6cd9498a7f2f3900a280dd2898097c4a17a5cbf84c4996fc1cd"
     },
     {
-      "bytes": 2066,
+      "bytes": 2161,
       "path": "MANIFEST.json",
-      "sha256": "0766e0285a60fbd3e0c8398852ecf5c6b7d1a08e443fd5de8f9a3558bb42a47b"
+      "sha256": "264a3d90abdba6c6ffd0918991aebcb7d530a5f2cfe384d86542257c41d134fc"
     },
     {
-      "bytes": 631,
+      "bytes": 755,
       "path": "README.md",
-      "sha256": "8c1362ea41a38497bb0827afde2cc188a287e9306d67dc7bd6f1f4db6d0eac86"
+      "sha256": "d432805b16e0099fe0d70a37087e36884e16aad2941aeed8d2fa97552173cd0e"
     },
     {
       "bytes": 2367,
@@ -42,9 +42,9 @@
       "sha256": "3a0107634e88effbb651110b0a69ca59d56b0fd22d4417ff6a00ac46799efc6c"
     },
     {
-      "bytes": 435,
+      "bytes": 542,
       "path": "install.py",
-      "sha256": "64d52eff85af8dbe15b1b561639e273b253104ae2be65557f4140bd78eaaac90"
+      "sha256": "c68f1572d9960b010d34acce32beafae9204d4cf6ba245931213964b96b7f1bb"
     },
     {
       "bytes": 1989,
@@ -172,9 +172,9 @@
       "sha256": "964ae55f975c70e144272ae45739bd37db63035763aed5b89293ec67857443a6"
     },
     {
-      "bytes": 352,
+      "bytes": 459,
       "path": "payload/maios.py",
-      "sha256": "f50577c2c7544b2d3a7ea0b433e5ac628873cf80098b6e008db6925f0194e681"
+      "sha256": "98fbbab780f1e4e85abb97a1083dfc4881756df1e2e4c37f1573c76697bd7e2f"
     },
     {
       "bytes": 1486,
@@ -232,9 +232,9 @@
       "sha256": "a187dafc6adaee4155566314c3c3b29ca76e59173910eb4bd68886c717c3aba4"
     },
     {
-      "bytes": 1966,
+      "bytes": 1970,
       "path": "skills/maios-project-integration/SKILL.md",
-      "sha256": "7a7d702f1b11b875cbc7cf27c64e1348d7361112e1803d91539f2f602627ebbf"
+      "sha256": "5992941ee8d661befda7d6c4316ed69ea68c37738e52008b2fa5f5180b0d8cfc"
     }
   ],
   "schema": "maios.package-inventory.v2"

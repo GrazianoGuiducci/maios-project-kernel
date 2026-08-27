@@ -37,6 +37,10 @@
   "payload_file_count": 37,
   "product": "MAIOS Project Kernel",
   "project_entrypoint": "payload/START_HERE.md",
+  "runtime_requirements": {
+    "python": ">=3.10",
+    "third_party_python_packages": []
+  },
   "schema": "maios.project-kernel-distribution.v2",
   "self_installation": {
     "conflict_refusal": true,
@@ -51,7 +55,7 @@
     "projection_sha256": "ecf5b6256c3d3b65becf9f2ab58675718e08f2a5fd8078b32d26869d1590febe",
     "revision_claim": "content_addressed_source_tree",
     "source_manifest_sha256": "d35fa1f08fe1a8434e408eb1a8612548d0fe8fe29cb8051ba6a24990bcb616c5",
-    "tree_sha256": "97ad8deaead3be743c8379260a92ad2a67168ce7ac87276183cd4360917b0038"
+    "tree_sha256": "8a54fcff5be2f230511617636ce881df4375408b9f6cce100ceab44e48c38217"
   },
   "target_modes": [
     "new_repository",

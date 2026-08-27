@@ -203,6 +203,10 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "product": "MAIOS Project Kernel",
         "version": "2.0.0",
         "entrypoint": "install.py",
+        "runtime_requirements": {
+            "python": ">=3.10",
+            "third_party_python_packages": [],
+        },
         "distribution_entry": {
             "instructions": "AGENTS.md",
             "neutral_competence": "skills/maios-project-integration/SKILL.md",
