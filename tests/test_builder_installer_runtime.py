@@ -45,6 +45,23 @@ class DistributionFixture(unittest.TestCase):
 
 
 class BuilderTests(DistributionFixture):
+    def test_distribution_opens_with_one_coder_facing_integration_competence(self) -> None:
+        self.assertTrue((self.distribution / "AGENTS.md").is_file())
+        canonical = (
+            self.distribution
+            / "skills"
+            / "maios-project-integration"
+            / "SKILL.md"
+        )
+        codex = (
+            self.distribution
+            / ".agents"
+            / "skills"
+            / "maios-project-integration"
+            / "SKILL.md"
+        )
+        self.assertEqual(canonical.read_bytes(), codex.read_bytes())
+
     def test_distribution_is_source_bound_and_deterministic(self) -> None:
         manifest = builder.read_json(self.distribution / "MANIFEST.json")
         inventory = builder.read_json(self.distribution / "PACKAGE_INVENTORY.json")
@@ -80,6 +97,13 @@ class BuilderTests(DistributionFixture):
             lf_digest = builder.source_tree_digest(root)
             source.write_bytes(b"first\r\nsecond\r\n")
             self.assertEqual(builder.source_tree_digest(root), lf_digest)
+
+    def test_projected_text_bytes_are_independent_of_checkout_line_endings(self) -> None:
+        source = self.base / "checkout-source.txt"
+        destination = self.base / "projected.txt"
+        source.write_bytes(b"first\r\nsecond\r\n")
+        builder.project_source_file(source, destination)
+        self.assertEqual(destination.read_bytes(), b"first\nsecond\n")
 
 
 class InstallerTests(DistributionFixture):
@@ -154,10 +178,23 @@ class InstallerTests(DistributionFixture):
         )
         self.assertEqual(host_state["selected_adapter"], "codex")
         self.assertEqual(host_state["skill_discovery"], "unverified")
-        self.assertEqual(
-            (target / ".agents" / "skills" / "maios-project-system" / "SKILL.md").read_bytes(),
-            (target / "skills" / "maios-project-system" / "SKILL.md").read_bytes(),
-        )
+        for competence_id in (
+            "maios-project-system",
+            "maios-start-new-project",
+            "maios-start-existing-project",
+            "maios-project-context",
+        ):
+            with self.subTest(competence_id=competence_id):
+                self.assertEqual(
+                    (
+                        target
+                        / ".agents"
+                        / "skills"
+                        / competence_id
+                        / "SKILL.md"
+                    ).read_bytes(),
+                    (target / "skills" / competence_id / "SKILL.md").read_bytes(),
+                )
 
     def test_every_declared_host_adapter_projects_the_same_semantic_owner(self) -> None:
         native_paths = {
@@ -531,6 +568,53 @@ class RuntimeTests(DistributionFixture):
         )
         self.assertFalse(missing_effect_boundary["valid"])
 
+    def test_represented_startup_and_context_competences_route_situationally(self) -> None:
+        target, _ = self.install("codex")
+        status = runtime.competence_status(target)
+        self.assertEqual(
+            set(status["represented"]),
+            {
+                "maios-start-new-project",
+                "maios-start-existing-project",
+                "maios-project-context",
+            },
+        )
+
+        new_project = runtime.compose(
+            target,
+            {
+                "relations": ["new_project", "configuration_pending"],
+                "requested_result": "form the first useful project movement",
+            },
+        )
+        new_ids = {item["id"] for item in new_project["known_candidates"]}
+        self.assertIn("maios-start-new-project", new_ids)
+        self.assertIn("maios-project-context", new_ids)
+        self.assertNotIn("maios-start-existing-project", new_ids)
+
+        existing_project = runtime.compose(
+            target,
+            {
+                "relations": ["existing_project", "project_context_changed"],
+                "requested_result": "integrate without replacing project identity",
+            },
+        )
+        existing_ids = {
+            item["id"] for item in existing_project["known_candidates"]
+        }
+        self.assertIn("maios-start-existing-project", existing_ids)
+        self.assertIn("maios-project-context", existing_ids)
+        self.assertNotIn("maios-start-new-project", existing_ids)
+        self.assertTrue(existing_project["open_world"])
+        self.assertEqual(
+            next(
+                item["entry"]
+                for item in existing_project["known_candidates"]
+                if item["id"] == "maios-start-existing-project"
+            ),
+            "skills/maios-start-existing-project/SKILL.md",
+        )
+
     def competence_delta(self) -> dict:
         return {
             "schema": "maios.competence-delta.v2",
@@ -538,6 +622,8 @@ class RuntimeTests(DistributionFixture):
             "competence_id": "source-reconciliation",
             "disposition": "retain",
             "work_relation": "reconstruct one owner-correct source lane",
+            "knowledge_entry": "skills/source-reconciliation/SKILL.md",
+            "activation_relations": ["source_ambiguity", "artifact_projection"],
             "source_refs": ["project/source-a", "operator/correction-1"],
             "expected_delta": "avoid package-first implementation",
             "observed_delta": {
@@ -558,6 +644,12 @@ class RuntimeTests(DistributionFixture):
 
     def test_reviewed_competence_delta_is_admitted_and_self_approval_is_refused(self) -> None:
         target, _ = self.install()
+        knowledge_entry = target / "skills" / "source-reconciliation" / "SKILL.md"
+        knowledge_entry.parent.mkdir(parents=True)
+        knowledge_entry.write_text(
+            "---\nname: source-reconciliation\ndescription: Recover the owner-correct living source when source and generated artifacts may be confused.\n---\n\n# Source reconciliation\n\nBegin from the living owner.\n",
+            encoding="utf-8",
+        )
         delta = self.competence_delta()
         validation = runtime.validate_competence_delta(delta)
         self.assertTrue(validation["valid"], validation["errors"])
@@ -569,6 +661,17 @@ class RuntimeTests(DistributionFixture):
         after = runtime.competence_status(target)
         self.assertIn("source-reconciliation", after["active"])
         self.assertEqual(after["history_count"], 1)
+        routed = runtime.compose(
+            target,
+            {
+                "relations": ["source_ambiguity"],
+                "requested_result": "recover the living source",
+            },
+        )
+        self.assertIn(
+            "source-reconciliation",
+            {item["id"] for item in routed["known_candidates"]},
+        )
         idempotent = runtime.admit_competence_delta(
             target, delta, after["index_sha256"]
         )

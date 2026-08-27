@@ -186,6 +186,43 @@ def compose(
                     "proof": family["proof"],
                 }
             )
+    competence_index = _competence_index(root.resolve())
+    indexed_competences = dict(competence_index.get("represented", {}))
+    indexed_competences.update(competence_index.get("active", {}))
+    for competence_id, competence in sorted(indexed_competences.items()):
+        if not isinstance(competence, dict):
+            raise OperatingStateError(
+                f"competence index entry must be an object: {competence_id}"
+            )
+        activation = set(
+            _string_list(
+                competence.get("activation_relations"),
+                f"competence.{competence_id}.activation_relations",
+                require=True,
+            )
+        )
+        matched = sorted(relation_set & activation)
+        if not matched:
+            continue
+        for field in ("work_relation", "knowledge_entry", "expected_delta"):
+            if not _nonempty(competence.get(field)):
+                raise OperatingStateError(
+                    f"competence.{competence_id}.{field} must be a non-empty string"
+                )
+        matched_relations.update(matched)
+        candidates.append(
+            {
+                "id": competence_id,
+                "kind": competence.get("kind", "project_competence"),
+                "matched_relations": matched,
+                "material_when": competence["work_relation"],
+                "entry": competence["knowledge_entry"],
+                "result_contract": competence["expected_delta"],
+                "proof": "the competence changes the current result and returns reusable learning to its closest owner",
+                "source_ref": competence["knowledge_entry"],
+                "claim_boundary": "representation and routing eligibility are not behavioral exercise or maintained assimilation",
+            }
+        )
     operating_state = operating_state_override or read_operating_state(root.resolve())
     for learning_relation in operating_state.get("learning_relations", []):
         if learning_relation.get("status") != "reachable":
@@ -394,16 +431,25 @@ def _operating_status(
                 "source_ref": ".maios/kernel/FACULTY_FIELD.json",
             }
         )
-    for competence_id, competence in sorted(
-        competence_index.get("active", {}).items()
-    ):
+    indexed_competences = dict(competence_index.get("represented", {}))
+    indexed_competences.update(competence_index.get("active", {}))
+    active_ids = set(competence_index.get("active", {}))
+    for competence_id, competence in sorted(indexed_competences.items()):
+        eligible = competence_id in candidate_by_id
         capability_relations.append(
             {
                 "id": competence_id,
-                "kind": "project_competence",
-                "state": "available",
-                "reason": competence.get("work_relation"),
-                "source_ref": ".maios/competences/INDEX.json",
+                "kind": competence.get("kind", "project_competence"),
+                "state": "eligible" if eligible else "available",
+                "reason": (
+                    "matched current circumstance relations"
+                    if eligible
+                    else competence.get("work_relation")
+                ),
+                "source_ref": competence.get(
+                    "knowledge_entry", ".maios/competences/INDEX.json"
+                ),
+                "index_state": "active_evolved" if competence_id in active_ids else "represented",
                 "claim_boundary": "availability is not current exercise or maintained assimilation",
             }
         )

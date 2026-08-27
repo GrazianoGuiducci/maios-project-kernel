@@ -1,8 +1,9 @@
 # Install MAIOS Project Kernel 2.0.0 — generated distribution
 
 The archive is self-installing, not self-executing. Extract it to a temporary
-directory, select an exact target and host, preview the transition, then apply
-that exact plan.
+directory and let the coder first explain the package's relation to the target.
+After the operator corrects or accepts the target, mode and host, preview the
+transition and apply that exact plan.
 
 ## New project
 
@@ -31,6 +32,10 @@ first write, apply stores a project-local `PENDING` journal. If the process or
 machine stops, run `python install.py recover-pending --target <target>` from
 this extracted distribution; recovery removes only unchanged attempt-owned
 bytes and preserves any evolved file.
+
+A conflict is returned to `maios-project-integration` as a target-owner
+relation. The coder can then propose the smallest explicit merge or placement
+movement without weakening the installer's non-overwrite contract.
 
 ## Verify and recover
 

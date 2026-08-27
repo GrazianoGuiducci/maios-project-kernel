@@ -1,7 +1,12 @@
 {
   "schema": "maios.host-adapters.v2",
   "semantic_owner": "skills/maios-project-system/SKILL.md",
-  "rule": "Adapters project the one semantic owner into a host-native discovery path; they are not distinct faculties or activation proof.",
+  "codex_first_competence_owners": [
+    "skills/maios-start-new-project/SKILL.md",
+    "skills/maios-start-existing-project/SKILL.md",
+    "skills/maios-project-context/SKILL.md"
+  ],
+  "rule": "Every adapter projects the permanent semantic owner. Codex additionally projects the first owner-native startup and context competences; other harnesses can read the neutral sources until their native projection is implemented.",
   "adapters": [
     {
       "id": "generic",
@@ -13,6 +18,18 @@
         {
           "source": "skills/maios-project-system/SKILL.md",
           "destination": ".agents/skills/maios-project-system/SKILL.md"
+        },
+        {
+          "source": "skills/maios-start-new-project/SKILL.md",
+          "destination": ".agents/skills/maios-start-new-project/SKILL.md"
+        },
+        {
+          "source": "skills/maios-start-existing-project/SKILL.md",
+          "destination": ".agents/skills/maios-start-existing-project/SKILL.md"
+        },
+        {
+          "source": "skills/maios-project-context/SKILL.md",
+          "destination": ".agents/skills/maios-project-context/SKILL.md"
         }
       ]
     },

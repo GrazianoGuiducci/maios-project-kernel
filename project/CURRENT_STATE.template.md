@@ -18,9 +18,11 @@ activation, and maintained reentry remain unverified until observed.
 
 ## Current next
 
-Use `maios-project-system`. Read the present field before asking questions and
-return the first correctable useful result. Configure only the distinctions
-that change the project.
+Use `maios-project-system` as the permanent entry. Let
+`maios-start-new-project` or `maios-start-existing-project` own first contact,
+then let `maios-project-context` form or refine the living context. Return the
+first correctable useful result and prepare owner-specific competence handoffs;
+configure only distinctions that change the project.
 
 ## Boundary
 

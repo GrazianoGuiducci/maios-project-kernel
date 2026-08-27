@@ -4,12 +4,18 @@ The installer selects one host projection:
 
 | Host | Native skill destination |
 | --- | --- |
-| Codex | `.agents/skills/maios-project-system/SKILL.md` |
+| Codex | `.agents/skills/` contains the system entry plus new-project, existing-project and context competences |
 | Claude Code | `.claude/skills/maios-project-system/SKILL.md` |
 | OpenCode | `.opencode/skills/maios-project-system/SKILL.md` |
 | DSH | `.agents/skills/maios-project-system/SKILL.md` |
 | Hermes | `.hermes/skills/maios-project-system/SKILL.md` |
-| Generic | root instructions plus `skills/maios-project-system/SKILL.md` |
+| Generic | root instructions plus neutral competence sources under `skills/` |
+
+Codex is the first complete native competence projection. The neutral sources
+for `maios-start-new-project`, `maios-start-existing-project` and
+`maios-project-context` are installed for every host; the other harness
+adapters currently project the permanent `maios-project-system` entry and can
+be extended after the Codex behavioral vertical establishes the contract.
 
 Hermes discovers skills from its active `HERMES_HOME`, not from an arbitrary
 project `skills/` directory. Start it from the project with a project-local

@@ -3,10 +3,25 @@
 Configuration makes the package specific to the present person, project,
 domain, sources, and host without deciding a solution form in advance.
 
+## Entry modes
+
+For a new project, `maios-start-new-project` establishes the first project
+identity, direction and useful result with the operator. For an existing
+project or system, `maios-start-existing-project` first preserves its identity,
+sources, conventions and live movement, then finds the smallest useful Kernel
+contribution. Both continue through `maios-project-context`.
+
 This archive is the `self_configuring` entry. It does not import Form state,
 P1-P5 answers, a Terminal Context Field, or an accepted external case. A Form
 route may later converge on the same situated-project function, but remains a
 different temporal source and builder until independently compared.
+
+In the self-configuring entry, the context competence conducts an adaptive
+dialogue: each turn uses what is already understood, produces a correctable
+movement and asks only for a relation that changes the result. In a later
+Form-generated entry, it begins from the accepted Form context and refines only
+what the live project or operator relation has changed. The two entries share
+the situated-context function without sharing temporal state or builder.
 
 ## Result
 
@@ -45,6 +60,12 @@ first useful result, attributable sources, selected
 movement, and recoverable reentry. It does not require every unknown to close.
 External execution, publication, installation of other software, provider use,
 or runtime action remains separately governed.
+
+The configured result also prepares owner-specific competence handoffs. Each
+handoff carries the active object, desired result, relevant sources, retained
+unknowns, expected contribution, exact effect boundary and return relation.
+Pertinent competences may then act alone or in composition without rebuilding
+the whole setup conversation.
 
 ## State
 

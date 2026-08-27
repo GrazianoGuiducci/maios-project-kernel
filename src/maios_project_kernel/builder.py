@@ -44,6 +44,13 @@ def source_identity_bytes(path: Path) -> bytes:
     return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
 
 
+def project_source_file(source: Path, destination: Path) -> None:
+    """Project canonical bytes so checkout line endings cannot change artifacts."""
+
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_bytes(source_identity_bytes(source))
+
+
 def read_json(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -122,6 +129,14 @@ def transformed_adapters(root: Path) -> dict[str, Any]:
         raise BuildError("adapter semantic_owner is missing")
     result["source_owner"] = owner
     result["semantic_owner"] = f"payload/{owner}"
+    codex_first = result.get("codex_first_competence_owners", [])
+    if not isinstance(codex_first, list) or not all(
+        isinstance(item, str) for item in codex_first
+    ):
+        raise BuildError("codex_first_competence_owners must be a list of paths")
+    result["codex_first_competence_owners"] = [
+        f"payload/{item}" for item in codex_first
+    ]
     for adapter in result.get("adapters", []):
         for projection in adapter.get("projections", []):
             source = projection.get("source")
@@ -175,8 +190,7 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         if not source.is_file() or source.is_symlink():
             raise BuildError(f"projection source is missing or unsafe: {source_rel}")
         destination = native(package_dir, destination_rel)
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(source, destination)
+        project_source_file(source, destination)
 
     write_json(package_dir / "adapters" / "ADAPTERS.json", transformed_adapters(root))
 
@@ -189,6 +203,11 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "product": "MAIOS Project Kernel",
         "version": "2.0.0",
         "entrypoint": "install.py",
+        "distribution_entry": {
+            "instructions": "AGENTS.md",
+            "neutral_competence": "skills/maios-project-integration/SKILL.md",
+            "codex_projection": ".agents/skills/maios-project-integration/SKILL.md",
+        },
         "project_entrypoint": "payload/START_HERE.md",
         "target_modes": ["new_repository", "existing_repository"],
         "host_adapters": ["generic", "codex", "claude", "opencode", "hermes", "dsh"],
@@ -212,6 +231,11 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "competence_cultivation": {
             "state_owner": "payload/.maios/competences/INDEX.json",
             "protocol": "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
+            "represented_owners": [
+                "payload/skills/maios-start-new-project/SKILL.md",
+                "payload/skills/maios-start-existing-project/SKILL.md",
+                "payload/skills/maios-project-context/SKILL.md",
+            ],
             "producer_self_approval": False,
             "behavioral_proof_separate": True,
         },
@@ -275,9 +299,12 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     package_dir = package_dir.resolve()
     errors: list[str] = []
     required = {
+        "AGENTS.md",
         "install.py",
         "MANIFEST.json",
         "PACKAGE_INVENTORY.json",
+        "skills/maios-project-integration/SKILL.md",
+        ".agents/skills/maios-project-integration/SKILL.md",
         "payload/START_HERE.md",
         "payload/maios.py",
         "payload/.maios/installer/installer.py",
@@ -289,6 +316,9 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "payload/.maios/schemas/RESULTANT_READBACK.schema.json",
         "payload/.maios/state/OPERATING_STATE.json",
         "payload/skills/maios-project-system/SKILL.md",
+        "payload/skills/maios-start-new-project/SKILL.md",
+        "payload/skills/maios-start-existing-project/SKILL.md",
+        "payload/skills/maios-project-context/SKILL.md",
     }
     actual_names = {
         path.relative_to(package_dir).as_posix() for path in distribution_files(package_dir)
@@ -334,6 +364,12 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         if adapters.get("semantic_owner") != "payload/skills/maios-project-system/SKILL.md":
             errors.append("host adapters do not point to the one packaged semantic owner")
         semantic_owner = adapters.get("semantic_owner")
+        codex_first_owners = adapters.get("codex_first_competence_owners", [])
+        if len(codex_first_owners) != 3 or not all(
+            isinstance(item, str) and item.startswith("payload/skills/")
+            for item in codex_first_owners
+        ):
+            errors.append("Codex-first competence owners are missing or malformed")
         for adapter in adapters.get("adapters", []):
             adapter_id = adapter.get("id")
             if adapter_id == "generic":
@@ -349,6 +385,20 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
                 errors.append(
                     f"host adapter {adapter_id!r} must project the one semantic owner exactly once"
                 )
+            if adapter_id == "codex":
+                for owner in codex_first_owners:
+                    owner_name = PurePosixPath(owner).parent.name
+                    projections = [
+                        item
+                        for item in adapter.get("projections", [])
+                        if item.get("source") == owner
+                        and item.get("destination")
+                        == f".agents/skills/{owner_name}/SKILL.md"
+                    ]
+                    if len(projections) != 1:
+                        errors.append(
+                            f"Codex adapter must project {owner_name!r} exactly once"
+                        )
     except BuildError as exc:
         errors.append(str(exc))
     try:
@@ -374,6 +424,28 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         competence_index = read_json(
             package_dir / "payload" / ".maios" / "competences" / "INDEX.json"
         )
+        represented = competence_index.get("represented")
+        expected_represented = {
+            "maios-start-new-project",
+            "maios-start-existing-project",
+            "maios-project-context",
+        }
+        if not isinstance(represented, dict) or set(represented) != expected_represented:
+            errors.append("initial competence index does not represent the startup/context owners")
+        else:
+            for competence_id, competence in represented.items():
+                knowledge_entry = competence.get("knowledge_entry")
+                activation = competence.get("activation_relations")
+                if not isinstance(knowledge_entry, str) or not isinstance(activation, list) or not activation:
+                    errors.append(
+                        f"represented competence {competence_id!r} lacks an operable entry or activation relations"
+                    )
+                    continue
+                knowledge_path = package_dir / "payload" / PurePosixPath(knowledge_entry)
+                if not knowledge_path.is_file() or knowledge_path.is_symlink():
+                    errors.append(
+                        f"represented competence {competence_id!r} has no safe packaged knowledge entry"
+                    )
         if competence_index.get("active") != {} or competence_index.get("history") != []:
             errors.append("initial competence index must not contain inherited project state")
         operating_state = read_json(
@@ -389,6 +461,14 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             errors.append("initial operating state must not contain inherited project state")
     except BuildError as exc:
         errors.append(str(exc))
+
+    integration_source = package_dir / "skills" / "maios-project-integration" / "SKILL.md"
+    integration_codex = (
+        package_dir / ".agents" / "skills" / "maios-project-integration" / "SKILL.md"
+    )
+    if integration_source.is_file() and integration_codex.is_file():
+        if integration_source.read_bytes() != integration_codex.read_bytes():
+            errors.append("distribution integration competence Codex projection drifted")
 
     forbidden_markers = (
         b".codex\\worktrees",

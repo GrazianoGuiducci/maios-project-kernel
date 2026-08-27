@@ -2,6 +2,29 @@
   "schema": "maios.competence-index.v2",
   "source_role": "installation_template",
   "revision": 0,
+  "represented": {
+    "maios-project-context": {
+      "kind": "package_competence",
+      "work_relation": "form or refine the living context and prepare owner-specific competence handoffs",
+      "knowledge_entry": "skills/maios-project-context/SKILL.md",
+      "activation_relations": ["configuration_pending", "context_refinement", "form_context_present", "project_context_changed"],
+      "expected_delta": "a current correctable context from which pertinent competences can act"
+    },
+    "maios-start-existing-project": {
+      "kind": "package_competence",
+      "work_relation": "recover an existing project's identity and first useful Kernel contribution",
+      "knowledge_entry": "skills/maios-start-existing-project/SKILL.md",
+      "activation_relations": ["existing_project", "existing_system", "project_reentry"],
+      "expected_delta": "the Kernel participates without replacing the existing project relation"
+    },
+    "maios-start-new-project": {
+      "kind": "package_competence",
+      "work_relation": "establish the initial identity, context, direction and first useful result of a new project",
+      "knowledge_entry": "skills/maios-start-new-project/SKILL.md",
+      "activation_relations": ["new_project", "project_birth", "configuration_pending"],
+      "expected_delta": "a first correctable situated project movement"
+    }
+  },
   "active": {},
   "history": [],
   "retained_unknowns": [],

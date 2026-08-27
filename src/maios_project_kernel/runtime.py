@@ -9,7 +9,7 @@ import json
 import os
 import re
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
 
 try:
@@ -88,6 +88,9 @@ def validate_project(root: Path) -> dict[str, Any]:
         "setup/CONFIGURATION_STATE.json",
         "project/CURRENT_STATE.md",
         "skills/maios-project-system/SKILL.md",
+        "skills/maios-start-new-project/SKILL.md",
+        "skills/maios-start-existing-project/SKILL.md",
+        "skills/maios-project-context/SKILL.md",
     ]
     missing = [relative for relative in required if not (root / relative).is_file()]
     errors: list[str] = []
@@ -112,10 +115,32 @@ def validate_project(root: Path) -> dict[str, Any]:
         errors.append(f"invalid configuration state: {exc}")
     try:
         index = read_competence_index(root)
+        if not isinstance(index.get("represented"), dict):
+            errors.append("competence index represented must be an object")
         if not isinstance(index.get("active"), dict):
             errors.append("competence index active must be an object")
         if not isinstance(index.get("history"), list):
             errors.append("competence index history must be a list")
+        for collection_name in ("represented", "active"):
+            collection = index.get(collection_name, {})
+            if not isinstance(collection, dict):
+                continue
+            for competence_id, competence in collection.items():
+                if not isinstance(competence, dict):
+                    errors.append(
+                        f"competence index {collection_name}.{competence_id} must be an object"
+                    )
+                    continue
+                if not _nonempty_strings(competence.get("activation_relations")):
+                    errors.append(
+                        f"competence index {collection_name}.{competence_id} activation_relations must not be empty"
+                    )
+                try:
+                    competence_knowledge_path(root, competence.get("knowledge_entry"))
+                except ValueError as exc:
+                    errors.append(
+                        f"competence index {collection_name}.{competence_id}: {exc}"
+                    )
     except Exception as exc:
         errors.append(f"invalid competence index: {exc}")
     return {
@@ -148,6 +173,25 @@ def ensure_project_local(root: Path, path: Path) -> None:
         raise ValueError(f"project state parent escapes root: {relative}")
 
 
+def competence_knowledge_path(root: Path, value: Any) -> Path:
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("knowledge_entry must be a non-empty project-relative path")
+    if "\\" in value:
+        raise ValueError("knowledge_entry must use POSIX separators")
+    relative = PurePosixPath(value)
+    if (
+        relative.is_absolute()
+        or ".." in relative.parts
+        or (relative.parts and relative.parts[0].endswith(":"))
+    ):
+        raise ValueError("knowledge_entry must remain inside the project")
+    path = root.resolve().joinpath(*relative.parts)
+    ensure_project_local(root, path)
+    if not path.is_file() or path.is_symlink():
+        raise ValueError(f"knowledge_entry is missing or unsafe: {value}")
+    return path
+
+
 def read_competence_index(root: Path) -> dict[str, Any]:
     root = root.resolve()
     path = competence_index_path(root)
@@ -164,6 +208,7 @@ def competence_status(root: Path) -> dict[str, Any]:
         "schema": "maios.competence-status.v2",
         "index_sha256": digest(index),
         "revision": index.get("revision"),
+        "represented": index.get("represented", {}),
         "active": index.get("active", {}),
         "history_count": len(index.get("history", [])),
         "retained_unknowns": index.get("retained_unknowns", []),
@@ -202,6 +247,13 @@ def validate_competence_delta(delta: Any) -> dict[str, Any]:
         errors.append("event_id contains unsafe characters")
     if delta.get("disposition") not in COMPETENCE_DISPOSITIONS:
         errors.append("unsupported competence disposition")
+    if delta.get("disposition") in {"retain", "revise", "supersede"}:
+        if not isinstance(delta.get("knowledge_entry"), str) or not delta[
+            "knowledge_entry"
+        ].strip():
+            errors.append("knowledge_entry must be a non-empty string")
+        if not _nonempty_strings(delta.get("activation_relations")):
+            errors.append("activation_relations must contain at least one relation")
     if not _nonempty_strings(delta.get("source_refs")):
         errors.append("source_refs must contain at least one source")
     if not isinstance(delta.get("evidence_refs"), list) or not all(
@@ -291,6 +343,8 @@ def admit_competence_delta(
         "evidence_refs"
     ]:
         raise ValueError("a competence disposition that changes routing requires evidence")
+    if disposition in {"retain", "revise", "supersede"}:
+        competence_knowledge_path(root, delta["knowledge_entry"])
 
     admitted = dict(delta)
     admitted["event_digest"] = event_digest
@@ -303,6 +357,8 @@ def admit_competence_delta(
             "event_id": event_id,
             "classification": classification,
             "work_relation": delta["work_relation"],
+            "knowledge_entry": delta["knowledge_entry"],
+            "activation_relations": delta["activation_relations"],
             "source_refs": delta["source_refs"],
             "expected_delta": delta["expected_delta"],
             "observed_delta": delta["observed_delta"],
