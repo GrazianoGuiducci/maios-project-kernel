@@ -2,7 +2,7 @@
 
 updated: 2026-08-27
 active_surface: manual self-configuring `maios-project-kernel` 2.0.0 living source
-status: first Codex-first operator-to-project vertical plus its portable competence-formation owner implemented in living source; deterministic rebuild and source publication are the active completion movement, while Release and public-site effects remain separate
+status: first Codex-first operator-to-project vertical plus its portable competence-formation owner published on `main` at implementation commit `1344f25`; deterministic tracked package projection aligned, while Release and public-site effects remain separate
 
 ## Current resultant
 
@@ -84,6 +84,6 @@ The Form-generated package remains a separate later owner and builder. Source
 publication of this repository does not mutate Form, RepoKernel, site,
 provider, Release or another harness.
 
-current_next: rebuild the deterministic package with the portable competence-formation owner and publish the completed living source on `main`; public Release reconciliation remains a later selected effect
-first_safe_action: regenerate `package/` and the ZIP from the declared projection, inspect the exact source delta, then publish only this owner-local completion
+current_next: keep the self-configuring lane selected until its separately owned public Release identity is reconciled or explicitly deferred; do not enter Form implementation merely because the source package is now complete
+first_safe_action: preserve the published source and regenerated archive identities; when Release is selected, reconcile its tag and downloadable bytes without changing Form, RepoKernel or site owners
 validation_deferred: real semantic acceptance, later non-identical reentry and native adapter behavior for additional harnesses remain available for a later selected validation movement
