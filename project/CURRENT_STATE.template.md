@@ -20,9 +20,12 @@ activation, and maintained reentry remain unverified until observed.
 
 Use `maios-project-system` as the permanent entry. Let
 `maios-start-new-project` or `maios-start-existing-project` own first contact,
-then let `maios-project-context` form or refine the living context. Return the
-first correctable useful result and prepare owner-specific competence handoffs;
-configure only distinctions that change the project.
+let `maios-project-host-adaptation` connect the current coder when needed, then
+let `maios-project-context` form or refine the living context. Return the first
+correctable useful result and prepare owner-specific competence handoffs. In
+an existing project, compose current competences first and let
+`maios-project-competence-formation` create only a capability that real work
+still needs.
 
 ## Boundary
 

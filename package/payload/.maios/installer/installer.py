@@ -694,7 +694,18 @@ def parser() -> argparse.ArgumentParser:
         "--mode", choices=("new_repository", "existing_repository"), required=True
     )
     preview.add_argument(
-        "--host", choices=("generic", "codex", "claude", "opencode", "hermes", "dsh"), required=True
+        "--host",
+        choices=(
+            "generic",
+            "codex",
+            "claude",
+            "opencode",
+            "hermes",
+            "openclaw",
+            "pi",
+            "dsh",
+        ),
+        required=True,
     )
     preview.add_argument("--plan-out", type=Path)
 

@@ -41,19 +41,14 @@
       "position": "design_reference",
       "used_for": ["Project Kernel neutrality", "claim levels", "target ownership"],
       "source_shipped": false
-    },
-    {
-      "id": "maios-project-kernel-1.6.0",
-      "position": "historical_evidence",
-      "used_for": ["functional inventory", "compatibility and regression baseline"]
     }
   ],
   "excluded": [
     "MAIOS Form state or package",
     "private D-ND or TMx topology",
     "credentials and runtime state",
-    "old lifecycle hooks",
-    "the dirty cut-down 2.0.0 attempt as implementation source"
+    "old lifecycle hooks and bootstrap packets",
+    "historical reconstruction receipts or candidate schemas"
   ],
   "effect_authority": "none"
 }

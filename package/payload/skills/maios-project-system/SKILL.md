@@ -14,7 +14,15 @@ Read `START_HERE.md`, `setup/CONFIGURATION_STATE.json` and
 movement. Let `maios-start-new-project`, `maios-start-existing-project` and
 `maios-project-context` own their respective behavior. Let
 `maios-project-competence-formation` own a material residual capability gap or
-a reusable correction that must change later work.
+a reusable correction that must change later work. Let
+`maios-project-host-adaptation` translate this relation when the present coder
+or harness needs another native incarnation.
+
+`START_HERE.md` is the stable system boot: it restores the Kernel relation and
+the way the project enters it. The current context is not stored in that boot.
+It is reconstructed from the operator, real project sources, canonical
+configuration, current state and pertinent competences. Update durable state
+only when a causal difference changes later behavior or reentry.
 
 ## Let the field act
 

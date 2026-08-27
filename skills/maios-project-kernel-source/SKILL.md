@@ -6,13 +6,13 @@ description: Build, inspect, validate, or evolve the manual MAIOS Project Kernel
 # MAIOS Project Kernel Source
 
 Read `CURRENT_STATE.md` and the selected architecture before changing source
-or build files. Use `process/CONTAMINATION_REGISTER.json` when historical files
-or another worktree could influence the result.
+or build files. Treat another dirty worktree as separately owned material, not
+as an input or cleanup target for the current source.
 
 Keep one vertical connected:
 
 ```text
-living source -> generated package inventory -> archive -> install plan -> target receipt
+living source -> generated package inventory -> install plan -> target receipt
 -> host discovery -> behavioral use -> maintained reentry
 ```
 

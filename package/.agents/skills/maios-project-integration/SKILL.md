@@ -1,11 +1,11 @@
 ---
 name: maios-project-integration
-description: Understand, explain, preview, and integrate an extracted MAIOS Project Kernel distribution into a selected new or existing project; use when an operator gives the package to a coder, asks what it can add, or wants to begin installation with Codex.
+description: Understand, explain, preview, and integrate the MAIOS Project Kernel repository package into a selected new or existing project; use when an operator gives the package to a coder, asks what it can add, or wants to begin installation with Codex.
 ---
 
 # MAIOS Project Integration
 
-This competence owns the movement from an extracted distribution to one
+This competence owns the movement from the tracked `package/` projection to one
 target-owned Project Kernel installation. It acts before project startup.
 
 ## Form shared understanding
@@ -39,4 +39,3 @@ After application, open the target project and let `maios-start-new-project`
 or `maios-start-existing-project` act from the installed state. Another harness
 may read this neutral competence and the host guide; its native projection is a
 later adapter movement and does not change the Kernel meaning.
-

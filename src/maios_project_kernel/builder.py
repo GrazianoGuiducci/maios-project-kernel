@@ -6,8 +6,6 @@ import hashlib
 import json
 import os
 import shutil
-import stat
-import zipfile
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -15,7 +13,6 @@ from typing import Any
 PROJECTION_SCHEMA = "maios.release-projection.v2"
 MANIFEST_SCHEMA = "maios.project-kernel-distribution.v2"
 INVENTORY_SCHEMA = "maios.package-inventory.v2"
-FIXED_TIMESTAMP = (2026, 8, 24, 0, 0, 0)
 
 
 class BuildError(RuntimeError):
@@ -86,7 +83,7 @@ def native(root: Path, relative: str) -> Path:
 
 
 def source_tree_files(root: Path) -> list[Path]:
-    excluded_roots = {".git", "package", "dist", ".pytest_cache", "__pycache__"}
+    excluded_roots = {".git", "package", ".pytest_cache", "__pycache__"}
     result: list[Path] = []
     for path in sorted(
         root.rglob("*"), key=lambda item: item.relative_to(root).as_posix()
@@ -98,7 +95,6 @@ def source_tree_files(root: Path) -> list[Path]:
         if (
             any(part in excluded_roots for part in relative.parts)
             or top.startswith(".package.")
-            or top.startswith(".dist.")
         ):
             continue
         if path.is_symlink():
@@ -129,13 +125,17 @@ def transformed_adapters(root: Path) -> dict[str, Any]:
         raise BuildError("adapter semantic_owner is missing")
     result["source_owner"] = owner
     result["semantic_owner"] = f"payload/{owner}"
-    codex_first = result.get("codex_first_competence_owners", [])
-    if not isinstance(codex_first, list) or not all(
-        isinstance(item, str) for item in codex_first
+    host_adaptation_owner = result.get("host_adaptation_owner")
+    if not isinstance(host_adaptation_owner, str):
+        raise BuildError("adapter host_adaptation_owner is missing")
+    result["host_adaptation_owner"] = f"payload/{host_adaptation_owner}"
+    portable_owners = result.get("portable_competence_owners", [])
+    if not isinstance(portable_owners, list) or not all(
+        isinstance(item, str) for item in portable_owners
     ):
-        raise BuildError("codex_first_competence_owners must be a list of paths")
-    result["codex_first_competence_owners"] = [
-        f"payload/{item}" for item in codex_first
+        raise BuildError("portable_competence_owners must be a list of paths")
+    result["portable_competence_owners"] = [
+        f"payload/{item}" for item in portable_owners
     ]
     for adapter in result.get("adapters", []):
         for projection in adapter.get("projections", []):
@@ -210,7 +210,9 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         },
         "project_entrypoint": "payload/START_HERE.md",
         "target_modes": ["new_repository", "existing_repository"],
-        "host_adapters": ["generic", "codex", "claude", "opencode", "hermes", "dsh"],
+        "host_adapters": [
+            item["id"] for item in read_json(root / "adapters" / "ADAPTERS.json")["adapters"]
+        ],
         "source_identity": {
             "owner": "maios-project-kernel repository",
             "tree_sha256": tree_sha256,
@@ -236,6 +238,7 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
                 "payload/skills/maios-start-existing-project/SKILL.md",
                 "payload/skills/maios-project-context/SKILL.md",
                 "payload/skills/maios-project-competence-formation/SKILL.md",
+                "payload/skills/maios-project-host-adaptation/SKILL.md",
             ],
             "producer_self_approval": False,
             "behavioral_proof_separate": True,
@@ -321,6 +324,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "payload/skills/maios-start-existing-project/SKILL.md",
         "payload/skills/maios-project-context/SKILL.md",
         "payload/skills/maios-project-competence-formation/SKILL.md",
+        "payload/skills/maios-project-host-adaptation/SKILL.md",
     }
     actual_names = {
         path.relative_to(package_dir).as_posix() for path in distribution_files(package_dir)
@@ -361,17 +365,29 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     try:
         adapters = read_json(package_dir / "adapters" / "ADAPTERS.json")
         adapter_ids = [item.get("id") for item in adapters.get("adapters", [])]
-        if adapter_ids != ["generic", "codex", "claude", "opencode", "hermes", "dsh"]:
+        if adapter_ids != [
+            "generic",
+            "codex",
+            "claude",
+            "opencode",
+            "hermes",
+            "openclaw",
+            "pi",
+            "dsh",
+        ]:
             errors.append("host adapter ids or order are incorrect")
         if adapters.get("semantic_owner") != "payload/skills/maios-project-system/SKILL.md":
             errors.append("host adapters do not point to the one packaged semantic owner")
         semantic_owner = adapters.get("semantic_owner")
-        codex_first_owners = adapters.get("codex_first_competence_owners", [])
-        if len(codex_first_owners) != 4 or not all(
+        host_adaptation_owner = adapters.get("host_adaptation_owner")
+        portable_owners = adapters.get("portable_competence_owners", [])
+        if len(portable_owners) != 5 or not all(
             isinstance(item, str) and item.startswith("payload/skills/")
-            for item in codex_first_owners
+            for item in portable_owners
         ):
-            errors.append("Codex-first competence owners are missing or malformed")
+            errors.append("portable competence owners are missing or malformed")
+        if host_adaptation_owner not in portable_owners:
+            errors.append("host-adaptation owner is not a portable competence owner")
         for adapter in adapters.get("adapters", []):
             adapter_id = adapter.get("id")
             if adapter_id == "generic":
@@ -387,8 +403,21 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
                 errors.append(
                     f"host adapter {adapter_id!r} must project the one semantic owner exactly once"
                 )
+            adaptation_projections = [
+                item
+                for item in adapter.get("projections", [])
+                if item.get("source") == host_adaptation_owner
+                and isinstance(item.get("destination"), str)
+                and item["destination"].endswith(
+                    "/maios-project-host-adaptation/SKILL.md"
+                )
+            ]
+            if len(adaptation_projections) != 1:
+                errors.append(
+                    f"host adapter {adapter_id!r} must project the host-adaptation owner exactly once"
+                )
             if adapter_id == "codex":
-                for owner in codex_first_owners:
+                for owner in portable_owners:
                     owner_name = PurePosixPath(owner).parent.name
                     projections = [
                         item
@@ -516,19 +545,6 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "package_file_count": len(actual_names),
         "source_tree_sha256": source_tree_digest(root),
     }
-
-
-def deterministic_zip(package_dir: Path, output: Path) -> str:
-    output.parent.mkdir(parents=True, exist_ok=True)
-    with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
-        for source in distribution_files(package_dir):
-            name = source.relative_to(package_dir).as_posix()
-            info = zipfile.ZipInfo(name, FIXED_TIMESTAMP)
-            info.compress_type = zipfile.ZIP_DEFLATED
-            mode = 0o755 if source.suffix == ".py" else 0o644
-            info.external_attr = (stat.S_IFREG | mode) << 16
-            archive.writestr(info, source.read_bytes())
-    return digest_file(output)
 
 
 def promote_directory(staging: Path, target: Path) -> None:

@@ -1,20 +1,26 @@
 {
   "schema": "maios.host-adapters.v2",
   "semantic_owner": "skills/maios-project-system/SKILL.md",
-  "codex_first_competence_owners": [
+  "host_adaptation_owner": "skills/maios-project-host-adaptation/SKILL.md",
+  "portable_competence_owners": [
     "skills/maios-start-new-project/SKILL.md",
     "skills/maios-start-existing-project/SKILL.md",
     "skills/maios-project-context/SKILL.md",
-    "skills/maios-project-competence-formation/SKILL.md"
+    "skills/maios-project-competence-formation/SKILL.md",
+    "skills/maios-project-host-adaptation/SKILL.md"
   ],
-  "rule": "Every adapter projects the permanent semantic owner. Codex additionally projects the first owner-native startup, context, and competence-formation competences; other harnesses can read the neutral sources until their native projection is implemented.",
+  "rule": "Every native profile projects the permanent semantic owner and the host-adaptation competence. Codex projects every portable owner immediately. Any capable coder may translate the neutral sources into its current harness conventions without forking Kernel meaning or treating a path as activation proof.",
   "adapters": [
     {
       "id": "generic",
+      "display_name": "Generic capable coder",
+      "native_skill_root": null,
       "projections": []
     },
     {
       "id": "codex",
+      "display_name": "ChatGPT / Codex coding agent",
+      "native_skill_root": ".agents/skills",
       "projections": [
         {
           "source": "skills/maios-project-system/SKILL.md",
@@ -35,33 +41,55 @@
         {
           "source": "skills/maios-project-competence-formation/SKILL.md",
           "destination": ".agents/skills/maios-project-competence-formation/SKILL.md"
+        },
+        {
+          "source": "skills/maios-project-host-adaptation/SKILL.md",
+          "destination": ".agents/skills/maios-project-host-adaptation/SKILL.md"
         }
       ]
     },
     {
       "id": "claude",
+      "display_name": "Claude Code",
+      "native_skill_root": ".claude/skills",
       "projections": [
         {
           "source": "skills/maios-project-system/SKILL.md",
           "destination": ".claude/skills/maios-project-system/SKILL.md"
+        },
+        {
+          "source": "skills/maios-project-host-adaptation/SKILL.md",
+          "destination": ".claude/skills/maios-project-host-adaptation/SKILL.md"
         }
       ]
     },
     {
       "id": "opencode",
+      "display_name": "OpenCode",
+      "native_skill_root": ".opencode/skills",
       "projections": [
         {
           "source": "skills/maios-project-system/SKILL.md",
           "destination": ".opencode/skills/maios-project-system/SKILL.md"
+        },
+        {
+          "source": "skills/maios-project-host-adaptation/SKILL.md",
+          "destination": ".opencode/skills/maios-project-host-adaptation/SKILL.md"
         }
       ]
     },
     {
       "id": "hermes",
+      "display_name": "Hermes",
+      "native_skill_root": ".hermes/skills",
       "projections": [
         {
           "source": "skills/maios-project-system/SKILL.md",
           "destination": ".hermes/skills/maios-project-system/SKILL.md"
+        },
+        {
+          "source": "skills/maios-project-host-adaptation/SKILL.md",
+          "destination": ".hermes/skills/maios-project-host-adaptation/SKILL.md"
         },
         {
           "source": "skills/maios-project-system/adapters/hermes.gitignore",
@@ -70,11 +98,47 @@
       ]
     },
     {
-      "id": "dsh",
+      "id": "openclaw",
+      "display_name": "OpenClaw",
+      "native_skill_root": ".agents/skills",
       "projections": [
         {
           "source": "skills/maios-project-system/SKILL.md",
           "destination": ".agents/skills/maios-project-system/SKILL.md"
+        },
+        {
+          "source": "skills/maios-project-host-adaptation/SKILL.md",
+          "destination": ".agents/skills/maios-project-host-adaptation/SKILL.md"
+        }
+      ]
+    },
+    {
+      "id": "pi",
+      "display_name": "Pi coding agent",
+      "native_skill_root": ".agents/skills",
+      "projections": [
+        {
+          "source": "skills/maios-project-system/SKILL.md",
+          "destination": ".agents/skills/maios-project-system/SKILL.md"
+        },
+        {
+          "source": "skills/maios-project-host-adaptation/SKILL.md",
+          "destination": ".agents/skills/maios-project-host-adaptation/SKILL.md"
+        }
+      ]
+    },
+    {
+      "id": "dsh",
+      "display_name": "DeepSeek Harness (DSH)",
+      "native_skill_root": ".agents/skills",
+      "projections": [
+        {
+          "source": "skills/maios-project-system/SKILL.md",
+          "destination": ".agents/skills/maios-project-system/SKILL.md"
+        },
+        {
+          "source": "skills/maios-project-host-adaptation/SKILL.md",
+          "destination": ".agents/skills/maios-project-host-adaptation/SKILL.md"
         }
       ]
     }

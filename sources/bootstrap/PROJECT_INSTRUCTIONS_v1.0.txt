@@ -1,5 +1,0 @@
-Build MAIOS Project Kernel 2.0.0 from this repository as the sole package
-source. Preserve the useful possibility field and MAIOS configuration function,
-but let each circumstance compose only the relations that change its result.
-Do not use the Form-generated package, the dirty cut-down attempt, old hooks, or
-maios.it as implementation authority. Prove every claim level separately.

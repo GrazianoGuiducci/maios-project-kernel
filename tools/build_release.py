@@ -15,25 +15,21 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from maios_project_kernel.builder import (  # noqa: E402
     BuildError,
-    deterministic_zip,
     promote_directory,
     render_distribution,
     verify_distribution,
-    write_json,
 )
 
 
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser()
     result.add_argument("--package-dir", type=Path, default=ROOT / "package")
-    result.add_argument("--dist-dir", type=Path, default=ROOT / "dist")
     return result
 
 
 def main() -> int:
     args = parser().parse_args()
     package_dir = args.package_dir.resolve()
-    dist_dir = args.dist_dir.resolve()
     staging = package_dir.with_name(f".{package_dir.name}.staging")
     if staging.exists():
         if staging.is_symlink():
@@ -46,22 +42,14 @@ def main() -> int:
         if not verification["valid"]:
             raise BuildError("; ".join(verification["errors"]))
         promote_directory(staging, package_dir)
-        output = dist_dir / "maios-project-kernel-setup-v2.0.0.zip"
-        archive_sha256 = deterministic_zip(package_dir, output)
         receipt = {
-            "schema": "maios.build-receipt.v2",
+            "schema": "maios.package-build-receipt.v3",
             "version": "2.0.0",
             "source_tree_sha256": build["source_tree_sha256"],
             "package_file_count": build["package_file_count"],
             "payload_file_count": build["payload_file_count"],
-            "archive": output.name,
-            "archive_sha256": archive_sha256,
             "verification": verification,
         }
-        write_json(dist_dir / "BUILD_RECEIPT.json", receipt)
-        (dist_dir / "SHA256SUMS").write_text(
-            f"{archive_sha256}  {output.name}\n", encoding="ascii", newline="\n"
-        )
         print(json.dumps(receipt, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
     except (BuildError, OSError) as exc:

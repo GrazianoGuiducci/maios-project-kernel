@@ -1,6 +1,6 @@
-# MAIOS Project Kernel 2.0.0 — generated distribution
+# MAIOS Project Kernel 2.0.0 — installable package projection
 
-Open this extracted folder with your coder and ask it to read `AGENTS.md` and
+Open this tracked `package/` folder with your coder and ask it to read `AGENTS.md` and
 use `maios-project-integration`. The first movement is a shared understanding
 of what the Kernel can add, how it fits the selected project and which
 integration will occur.

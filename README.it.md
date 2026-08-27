@@ -1,89 +1,264 @@
 # MAIOS Project Kernel
 
-MAIOS Project Kernel è un sistema di progetto portabile e auto-installante per
-persone che lavorano con assistenti AI. Parte dalla situazione e dalle fonti
-reali della persona, forma presto un risultato correggibile, compone soltanto le
-facoltà che cambiano il movimento presente e conserva nel progetto
-l'apprendimento causale e il rientro.
+[English version](README.md)
 
-La Release pubblica `v2.0.0` è disponibile dalla repository GitHub canonica ed
-è generata da questa linea sorgente viva completata.
+MAIOS Project Kernel fornisce a un progetto e al suo coder AI un kernel
+operativo condiviso. Li aiuta a comprendere la situazione presente, formare un
+primo risultato utile, rendere pertinenti le competenze richieste dal lavoro,
+imparare da ciò che accade e continuare senza ricostruire ogni volta l'intera
+conversazione.
 
-- [Scarica la Release 2.0.0](https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v2.0.0)
-- [Esplora o lascia una stella alla repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
+La repository è il prodotto. La cartella tracciata [`package/`](package/) è la
+proiezione autoinstallante pronta all'uso.
 
-La pubblicazione della sorgente e della Release non prova l'attivazione negli
-host, i risultati semantici, il rientro mantenuto o un runtime pubblico.
+## Inizia qui
 
-Questa versione è una base, non un limite: nuove competenze, nuovi host e nuove
-forme di incarnazione potranno entrare quando le circostanze future renderanno
-utili le loro relazioni, senza trasformare l'architettura attuale in
-un'ontologia fissa.
-
-## Relazione sorgente-pacchetto
-
-La repository è il sistema sorgente vivo. `package/` e lo ZIP sono proiezioni
-generate deterministicamente:
+Clona o scarica la repository, apri `package/` con il coder e digli:
 
 ```text
-sorgenti vive, contratti e prove
--> pacchetto generato e inventario
--> archivio auto-installante
--> piano esatto e ricevuta
--> progetto installato
--> prove separate di discovery, uso, risultato e rientro mantenuto
+Leggi AGENTS.md e la competenza maios-project-integration. Spiegami cosa può
+aggiungere questo pacchetto al mio progetto e come lo integreresti. Dopo che
+siamo d'accordo, prepara il piano di installazione.
 ```
 
-La 2.0.0 comprende:
-
-- kernel semantico source-bound e orizzonte aperto;
-- campo causale aperto delle facoltà e composizione situata;
-- configuratore MAIOS con unico stato canonico, Context Capsule e SetupSpec
-  collegati per hash, proiezioni leggibili, controllo di concorrenza e recupero;
-- contesto operativo autologico che espone relazioni di capacità, invalidazioni
-  causali, incertezze e autorità correnti senza dichiarare correttezza semantica
-  o attivazione;
-- readback forward-resultant che collega risultato reale, impatto sulle
-  possibilità, movimento successivo e apprendimento causale del proprietario
-  a configurazione e rientro;
-- coltivazione reciproca delle competenze: il lavoro concreto mette alla prova
-  la competenza che lo rende possibile, il readback corregge la relazione
-  proprietaria e il delta causale entra nei movimenti successivi;
-- competenza portatile di formazione: un divario reale o una correzione
-  riusabile diventa la più piccola competenza locale utile al progetto, senza
-  distribuire il generatore privato dei kernel completi;
-- installer deterministico con `preview`, `apply`, `verify` e `uninstall`, anche
-  per repository esistenti senza sovrascritture nascoste;
-- adapter locali per Codex, Claude Code, OpenCode, DSH, Hermes e host generico;
-- distinzione fra generato, pacchettizzato, installato, scoperto, usato,
-  verificato e mantenuto.
-
-## Costruzione
+Il coder forma prima una comprensione condivisa e correggibile. Poi prepara
+l'anteprima di una transizione esatta e locale al progetto. Aprire la
+repository non installa né esegue nulla.
 
 ```powershell
-$env:PYTHONDONTWRITEBYTECODE='1'
-python -B -m unittest discover -s tests -v
-python -B tools\build_release.py
-python -B tools\verify_distribution.py
-```
-
-## Installazione
-
-Dopo aver estratto lo ZIP in una cartella temporanea di distribuzione:
-
-```powershell
+Set-Location .\package
 python install.py preview --target C:\Projects\MioProgetto --mode new_repository --host codex --plan-out install-plan.json
 python install.py apply --plan install-plan.json
 ```
 
-L'installazione non parte da sola e non cambia configurazioni globali, hook,
-plugin, credenziali o altri progetti. Per una repository esistente usare
-`existing_repository`: un conflitto divergente blocca il piano.
+Per un progetto già esistente usa `--mode existing_repository`. Sostituisci
+`codex` con l'identificativo dell'host scelto, descritto più avanti.
 
-Questa repository possiede l'ingresso manuale `self_configuring`. Non importa
-stato o risposte del Form MAIOS; quel percorso verrà confrontato soltanto dopo
-la chiusura autonoma della verticale manuale 2.0.0.
+## Cosa accade dopo l'installazione
 
-Consulta [installazione](docs/INSTALLATION.md),
-[architettura](docs/ARCHITECTURE.md) e
-[compatibilità host](docs/COMPATIBILITY.md).
+```text
+operatore e progetto reale
+-> boot stabile del Kernel
+-> attivazione per progetto nuovo o esistente
+-> contesto vivo e orizzonte delle possibilità
+-> le competenze pertinenti agiscono da sole o insieme
+-> primo risultato utile e correggibile
+-> l'apprendimento riusabile ritorna alla competenza più vicina
+-> la sessione successiva riparte dal campo del progetto così modificato.
+```
+
+Il Kernel non è una risposta predefinita, un workflow fisso o un catalogo di
+skill. È il sistema di progetto che mantiene collegati intento, fonti,
+contesto, possibilità, competenze, risultati, apprendimento e rientro mentre il
+progetto cambia.
+
+## Due condizioni iniziali
+
+### Progetto nuovo
+
+Il Kernel stabilisce soltanto identità e contesto necessari per muoversi:
+
+- cosa la persona vuole cambiare;
+- fonti, persone, confini e ignoti già presenti;
+- poche possibilità realmente differenti, con le loro ragioni;
+- una direzione correggibile;
+- il primo risultato utile e il modo per metterlo alla prova.
+
+Restituisce valore prima di chiedere dettagli non decisivi.
+
+### Progetto esistente
+
+Il Kernel entra come nuovo partecipante senza sostituire l'identità del
+progetto. Legge fonti, istruzioni, convenzioni, stato, lavoro attivo e segnale
+dell'operatore già presenti. Quindi:
+
+- conserva il materiale esistente;
+- ricostruisce il contesto vivo senza ripetere ciò che il progetto sa;
+- espone il primo contributo utile del Kernel;
+- compone le competenze già raggiungibili;
+- forma soltanto le competenze aggiuntive rese necessarie dal lavoro reale.
+
+L'installer non esegue merge semantici nascosti. I percorsi divergenti restano
+conflitti che coder e operatore risolvono esplicitamente.
+
+## Boot stabile, contesto vivo
+
+I progetti installati partono da `START_HERE.md`. È un boot stabile del sistema,
+non un diario continuamente riscritto. Ripristina:
+
+- che cos'è il Kernel;
+- come il progetto vi entra;
+- come si collegano avvio, contesto, adattamento all'host, lavoro delle
+  competenze, apprendimento e rientro.
+
+Il contesto mutevole rimane nella relazione corrente con l'operatore, nelle
+fonti reali, in `setup/CONFIGURATION_STATE.json`, in
+`project/CURRENT_STATE.md`, nei risultanti recenti e nelle competenze che
+agiscono. Il boot cambia soltanto quando cambia la relazione stabile del
+Kernel.
+
+## Competenze operative incluse
+
+| Competenza | Funzione |
+| --- | --- |
+| `maios-project-integration` | Comprende e spiega il pacchetto repository, poi prepara l'integrazione posseduta dal target |
+| `maios-project-system` | Mantiene raggiungibile l'intera relazione del Kernel di progetto |
+| `maios-start-new-project` | Forma il primo movimento situato di un progetto realmente nuovo |
+| `maios-start-existing-project` | Attiva il Kernel in un progetto operativo senza sostituirne l'identità |
+| `maios-project-context` | Ricostruisce contesto vivo, possibilità utili, direzione, prova e passaggi alle competenze |
+| `maios-project-competence-formation` | Forma o evolve la più piccola competenza locale utile quando rimane un divario reale |
+| `maios-project-host-adaptation` | Traduce la relazione neutrale del Kernel nelle convenzioni native del coder corrente |
+
+Le competenze sono il sapere operativo del sistema. Svolgono il lavoro per cui
+sono pertinenti, conservano l'apprendimento causale riusabile e possono
+migliorare, comporsi, essere superate o ritirarsi attraverso l'uso successivo.
+
+## Come evolve il sistema
+
+Il Kernel installato è un seme. La sua evoluzione ordinaria non dipende da un
+meccanismo permanente di aggiornamento software:
+
+```text
+lavoro reale
+-> agisce la competenza pertinente
+-> risultato effettivo e correzione
+-> la differenza riusabile cambia il proprietario più vicino
+-> un lavoro successivo e non identico usa, rivede o invalida l'apprendimento.
+```
+
+Quando le competenze esistenti non riescono a sostenere una relazione
+materiale, la facoltà di formazione crea il corpo proprietario minimo utile:
+metodo, riferimento, protocollo, funzione, skill o relazione di coordinamento.
+Non copia nel progetto il generatore privato dei kernel completi.
+
+Se in futuro diventa necessario un aggiornamento strutturale, potrà essere
+consegnato come competenza capace di comprendere e aggiornare il proprio
+sistema. Non è un requisito del prodotto attuale.
+
+## Coder e harness supportati
+
+Ogni host riceve lo stesso Kernel neutrale e le stesse fonti delle competenze.
+Il profilo fornisce soltanto una proiezione nativa iniziale; la competenza di
+adattamento traduce la meccanica restante senza creare un Kernel diverso.
+
+| Host id | Coder o harness | Proiezione locale iniziale |
+| --- | --- | --- |
+| `codex` | ChatGPT / Codex coding agent | `.agents/skills/` con tutti i proprietari portabili |
+| `claude` | Claude Code | `.claude/skills/` con sistema e adattamento host |
+| `opencode` | OpenCode | `.opencode/skills/` con sistema e adattamento host |
+| `hermes` | Hermes | `.hermes/skills/` con sistema e adattamento host |
+| `openclaw` | OpenClaw | `.agents/skills/` con sistema e adattamento host |
+| `pi` | Pi coding agent | `.agents/skills/` con sistema e adattamento host |
+| `dsh` | DeepSeek Harness | `.agents/skills/` con sistema e adattamento host |
+| `generic` | Un altro coder capace | istruzioni radice e fonti neutrali in `skills/` |
+
+Installazione, scoperta nativa, lettura dello stato, uso semantico, risultato
+osservato e rientro mantenuto restano stati distinti. Un percorso proiettato
+non dichiara che quel particolare host abbia già esercitato il Kernel.
+
+Consulta [compatibilità host](docs/COMPATIBILITY.md) per i dettagli specifici.
+
+## Contratto di installazione
+
+La cartella generata `package/` contiene manifest e inventario SHA-256 esatti.
+L'installazione usa un piano di anteprima immutabile:
+
+- `new_repository` accetta soltanto un target assente o vuoto e promuove
+  atomicamente una directory di staging completa;
+- `existing_repository` inventaria il target, crea i percorsi mancanti,
+  conserva quelli identici e rifiuta il contenuto divergente;
+- una modifica al pacchetto o al target invalida il piano;
+- un'installazione interrotta può recuperare dal proprio journal `PENDING`;
+- riapplicare lo stesso pacchetto a un'installazione invariata è idempotente;
+- la disinstallazione rimuove soltanto file invariati posseduti dall'installer;
+- i file evoluti dal progetto vengono conservati e dichiarati.
+
+L'installer non modifica configurazione globale dell'host, hook, plugin,
+provider, credenziali, servizi, repository o altri progetti.
+
+Comandi di verifica e recupero:
+
+```powershell
+python C:\Projects\MioProgetto\.maios\installer\installer.py verify --target C:\Projects\MioProgetto
+python C:\Projects\MioProgetto\.maios\installer\installer.py uninstall --target C:\Projects\MioProgetto --receipt-out uninstall-receipt.json
+python install.py recover-pending --target C:\Projects\MioProgetto
+```
+
+La procedura completa è in [Installazione](docs/INSTALLATION.md).
+
+## Funzionamento locale al progetto
+
+Dopo l'installazione apri il progetto target e chiedi al coder di leggere
+`START_HERE.md`. Alcuni comandi locali utili:
+
+```powershell
+python maios.py status
+python maios.py configuration-status
+python maios.py competence-status
+python maios.py learning-status
+python maios.py operating-status
+```
+
+Gli helper di configurazione possono validare e applicare un candidato
+accettato con controllo di concorrenza e recupero. Gli helper di composizione e
+risultante espongono il campo rappresentato e aggiornano la continuità quando
+quel passaggio durevole serve davvero; non sostituiscono il giudizio semantico
+del coder e dell'operatore.
+
+## Struttura del pacchetto e della sorgente
+
+```text
+sorgenti vive della repository
+-> release/PROJECTION.json dichiarata
+-> proiezione deterministica e tracciata package/
+-> MANIFEST.json e PACKAGE_INVENTORY.json esatti
+-> anteprima e installazione possedute dal target
+-> Kernel, stato, competenze, apprendimento e rientro locali al progetto.
+```
+
+| Proprietario | Funzione |
+| --- | --- |
+| `kernel/` | Kernel semantico, campo aperto delle facoltà, composizione e coltivazione delle competenze |
+| `skills/` | Competenze di integrazione, sistema, avvio, contesto, formazione, adattamento host e gestione sorgente |
+| `setup/`, `project/`, `state/` | Configurazione canonica e continuità compatte del progetto |
+| `src/maios_project_kernel/` | Proiezione deterministica, installer, configurazione, runtime, stato host e readback operativo |
+| `adapters/` | Proiezioni locali per gli host |
+| `templates/` | Superfici di ingresso della distribuzione e del progetto installato |
+| `release/PROJECTION.json` | Mappa completa da sorgente a pacchetto |
+| `package/` | Superficie di installazione generata, tracciata e direttamente usabile |
+| `tests/` | Fixture di sorgente, pacchetto, installazione, recupero, stato e comportamento |
+
+`package/` viene generata dai proprietari vivi e non deve essere modificata a
+mano.
+
+## Costruzione dalla sorgente
+
+```powershell
+$env:PYTHONDONTWRITEBYTECODE='1'
+python -B tools\build_release.py
+python -B tools\verify_distribution.py
+```
+
+Il builder rigenera `package/`, il suo manifest e l'inventario esatto.
+
+## Evidenze e limiti attuali
+
+Sorgente, proiezione deterministica, inventario, meccanica dell'installer,
+routing di avvio, profili host e contratti di stato locale sono ispezionabili
+nella repository. Non dimostrano da soli accettazione semantica da parte di un
+operatore reale, uso nativo in ogni host o comportamento mantenuto in lavori
+successivi non identici. Queste osservazioni restano evidenze separate.
+
+Il pacchetto autoconfigurante non importa risposte del Form MAIOS, sorgente
+privata RepoKernel, topologia privata D-ND/TMx, credenziali, stato runtime o
+hook lifecycle. Il Project Kernel generato separatamente dal Form è un'altra
+pipeline con builder, contesto, byte e prove proprie.
+
+Consulta [Architettura](docs/ARCHITECTURE.md),
+[Provenienza](docs/PROVENANCE.md) e [Ricevute](docs/RECEIPTS.md) per i dettagli.
+
+## Licenza
+
+Sorgente e contenuto generato, esclusi nomi e marchi, sono disponibili con
+[licenza MIT](LICENSE). Consulta [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
+e [TRADEMARKS.md](TRADEMARKS.md).

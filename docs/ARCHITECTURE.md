@@ -9,13 +9,12 @@ kernel, setup, competence, adapter, runtime, installer, and template sources
 -> source tests
 -> declared release projection
 -> generated package tree and immutable inventory
--> deterministic ZIP
 -> explicit target transition
 ```
 
 `package/` is disposable generated evidence. Product behavior is never edited
 there. The builder refuses missing or unsafe projection sources and binds the
-source-tree, projection, source-manifest, package members, and archive digests.
+source-tree, projection, source-manifest and package members.
 
 ## Deep modules and stable seams
 
@@ -28,10 +27,25 @@ source-tree, projection, source-manifest, package members, and archive digests.
 | `maios.py competence-*` | Runtime competence index and reviewed-delta policy |
 | `maios-project-system` | Semantic kernel and open faculty field |
 | `maios-project-competence-formation` | Portable formation and cultivation of project-local competences |
+| `maios-project-host-adaptation` | Faithful translation of the neutral Kernel into host-native discovery and use |
 
 Deterministic code validates paths, state shape, concurrency, hashes, receipts,
 and recovery. The semantic host interprets the live circumstance. Candidate
 projection cannot decide meaning, relevance, quality, or authority.
+
+## Stable boot and living context
+
+`START_HERE.md` is a stable system boot: it restores what the Kernel is, its
+operating relation, and the entrances from which work can begin. It is not the
+owner of the changing project situation. The current operator relation,
+project sources, configuration state, recent resultants, and reachable
+competences reconstruct the living context. The boot changes only when that
+stable system relation changes; ordinary work evolves context and competences.
+
+For an existing project, `maios-start-existing-project` reads the project as it
+already is, forms the first useful Kernel contribution, and lets residual gaps
+create the competences the work actually needs. It does not impose a fixed
+pre-generated competence sequence.
 
 ## Situated composition
 

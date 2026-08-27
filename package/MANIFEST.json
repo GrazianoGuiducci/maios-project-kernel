@@ -7,7 +7,8 @@
       "payload/skills/maios-start-new-project/SKILL.md",
       "payload/skills/maios-start-existing-project/SKILL.md",
       "payload/skills/maios-project-context/SKILL.md",
-      "payload/skills/maios-project-competence-formation/SKILL.md"
+      "payload/skills/maios-project-competence-formation/SKILL.md",
+      "payload/skills/maios-project-host-adaptation/SKILL.md"
     ],
     "state_owner": "payload/.maios/competences/INDEX.json"
   },
@@ -20,7 +21,7 @@
     "instructions": "AGENTS.md",
     "neutral_competence": "skills/maios-project-integration/SKILL.md"
   },
-  "distribution_file_count": 47,
+  "distribution_file_count": 48,
   "entrypoint": "install.py",
   "global_writes": [],
   "host_adapters": [
@@ -29,9 +30,11 @@
     "claude",
     "opencode",
     "hermes",
+    "openclaw",
+    "pi",
     "dsh"
   ],
-  "payload_file_count": 36,
+  "payload_file_count": 37,
   "product": "MAIOS Project Kernel",
   "project_entrypoint": "payload/START_HERE.md",
   "schema": "maios.project-kernel-distribution.v2",
@@ -45,10 +48,10 @@
   },
   "source_identity": {
     "owner": "maios-project-kernel repository",
-    "projection_sha256": "1b88aed4f0d7a0ebedc05c02a3382880522fac7a135dfecd1b506c80460706cb",
+    "projection_sha256": "ecf5b6256c3d3b65becf9f2ab58675718e08f2a5fd8078b32d26869d1590febe",
     "revision_claim": "content_addressed_source_tree",
-    "source_manifest_sha256": "fd51e72e329a274c6384a4460893bf521979281808b0fe8cb75502168278394f",
-    "tree_sha256": "f6ae137280c1d541ba90e8075a97c6038f690927a85da79a50fe6f95bbf3847c"
+    "source_manifest_sha256": "d35fa1f08fe1a8434e408eb1a8612548d0fe8fe29cb8051ba6a24990bcb616c5",
+    "tree_sha256": "97ad8deaead3be743c8379260a92ad2a67168ce7ac87276183cd4360917b0038"
   },
   "target_modes": [
     "new_repository",

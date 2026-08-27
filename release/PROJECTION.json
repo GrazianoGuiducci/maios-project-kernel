@@ -44,6 +44,7 @@
     {"source": "skills/maios-start-existing-project/SKILL.md", "destination": "payload/skills/maios-start-existing-project/SKILL.md"},
     {"source": "skills/maios-project-context/SKILL.md", "destination": "payload/skills/maios-project-context/SKILL.md"},
     {"source": "skills/maios-project-competence-formation/SKILL.md", "destination": "payload/skills/maios-project-competence-formation/SKILL.md"},
+    {"source": "skills/maios-project-host-adaptation/SKILL.md", "destination": "payload/skills/maios-project-host-adaptation/SKILL.md"},
     {"source": "skills/maios-project-system/adapters/hermes.gitignore", "destination": "payload/skills/maios-project-system/adapters/hermes.gitignore"},
     {"source": "domains/README.md", "destination": "payload/domains/README.md"},
     {"source": "faculties/README.md", "destination": "payload/faculties/README.md"}

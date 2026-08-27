@@ -2,10 +2,25 @@
 
 All notable changes to the public distribution are recorded here.
 
+## Unreleased living source
+
+- Added competence-driven activation for existing projects: the Kernel first
+  understands the project already present, then forms only the competences the
+  actual work requires.
+- Added `maios-project-host-adaptation` and native starting profiles for
+  OpenClaw and Pi coding agent alongside ChatGPT/Codex, Claude Code, OpenCode,
+  Hermes and DSH.
+- Made `START_HERE.md` the stable system boot while living project context is
+  maintained by state, resultants and pertinent competences.
+- Kept installer upgrades outside the current product relation: the installed
+  Kernel evolves through its competences; a future release may carry a
+  competence that knows how to update its own system when that need becomes
+  real.
+
 ## 2.0.0 - 2026-08-25
 
-- Made the repository the sole living implementation source and made
-  `package/` plus the ZIP deterministic generated projections.
+- Made the repository the sole living implementation source and `package/` its
+  deterministic installable projection.
 - Replaced fixed primary/support routing with an open causal faculty field,
   silent source/self-correction invariants, emergent extensions, and explicit
   observed-delta contracts.
@@ -27,8 +42,7 @@ All notable changes to the public distribution are recorded here.
   overlay with forward-resultant readback coupling actual results, possibility
   impact, next movement, owner-bound learning, configuration, evolution and
   reentry. Claim classification and effect authority remain separate.
-- Removed the superseded competence-formation-candidate schema from the
-  generated package while retaining its historical source evidence.
+- Removed the superseded competence-formation-candidate schema.
 - Added a self-installing distribution with immutable preview plans, exact
   package/target identity, empty and existing-repository modes, conflict and
   symlink refusal, host-specific project-local projections, verification, and
@@ -36,7 +50,7 @@ All notable changes to the public distribution are recorded here.
 - Removed packaged lifecycle hooks, duplicated skill owners, historical Form
   state, fixed selection constraints, and package-first implementation
   authority from the generated product.
-- Added source, archive, installer, recovery, configuration, composition,
+- Added source, package, installer, recovery, configuration, composition,
   competence, and host-projection tests while keeping native discovery,
   semantic use, and maintained reentry as separate acceptance claims.
 - Corrected the Hermes adapter after native-source readback: it now projects

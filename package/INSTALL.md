@@ -1,7 +1,7 @@
-# Install MAIOS Project Kernel 2.0.0 — generated distribution
+# Install MAIOS Project Kernel 2.0.0 — repository package
 
-The archive is self-installing, not self-executing. Extract it to a temporary
-directory and let the coder first explain the package's relation to the target.
+The tracked `package/` projection is self-installing, not self-executing. Open
+it with the coder and let the coder first explain its relation to the target.
 After the operator corrects or accepts the target, mode and host, preview the
 transition and apply that exact plan.
 
@@ -30,7 +30,7 @@ backs up pre-existing identical target paths and never performs a semantic
 merge or hidden overwrite. A changed target invalidates the plan. Before its
 first write, apply stores a project-local `PENDING` journal. If the process or
 machine stops, run `python install.py recover-pending --target <target>` from
-this extracted distribution; recovery removes only unchanged attempt-owned
+this package directory; recovery removes only unchanged attempt-owned
 bytes and preserves any evolved file.
 
 A conflict is returned to `maios-project-integration` as a target-owner

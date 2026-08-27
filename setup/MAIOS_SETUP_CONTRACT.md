@@ -11,7 +11,13 @@ project or system, `maios-start-existing-project` first preserves its identity,
 sources, conventions and live movement, then finds the smallest useful Kernel
 contribution. Both continue through `maios-project-context`.
 
-This archive is the `self_configuring` entry. It does not import Form state,
+`START_HERE.md` is a stable system boot rather than a mutable copy of the
+project context. It reactivates the Kernel relation and its entrances. The
+operator, project sources, canonical configuration and pertinent competences
+reconstruct the living context; durable state changes only when the resulting
+causal difference changes later behavior or reentry.
+
+This repository package is the `self_configuring` entry. It does not import Form state,
 P1-P5 answers, a Terminal Context Field, or an accepted external case. A Form
 route may later converge on the same situated-project function, but remains a
 different temporal source and builder until independently compared.

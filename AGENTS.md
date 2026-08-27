@@ -10,14 +10,13 @@ current movement.
 ```text
 living repository sources and tests
 -> deterministic generated package tree
--> deterministic archive
 -> explicit installer plan
 -> target-owned installation
 -> host discovery and behavior proof
 -> maintained project reentry
 ```
 
-Keep every state distinct. A passing source test or archive checksum does not
+Keep every state distinct. A passing source test or package inventory does not
 prove installation, discovery, behavioral use, or maintained reentry.
 
 ## Current owner boundaries
@@ -30,16 +29,15 @@ prove installation, discovery, behavioral use, or maintained reentry.
 - `maios_it` is a later distribution surface. Source work here grants no push,
   release, publication, runtime, or public-site authority.
 
-The package may replace the previous product completely while preserving
-source lineage and falsifiable comparison evidence. Historical package files
-and the separate dirty 2.0.0 attempt are evidence, not current authority.
+The current source describes the product that is built now. Version history
+belongs to Git and `CHANGELOG.md`; it does not remain as a second startup,
+schema, receipt or package topology inside the living tree.
 
 ## Mutation rule
 
 Before changing source or build files, identify the exact paths, expected
-artifact difference, validation, and recovery. Do not modify other worktrees,
-clean concurrent residue, reuse hook lifecycle files, or copy private workspace
-state. Use `process/CONTAMINATION_REGISTER.json` for exact dispositions.
+artifact difference, validation, and recovery. Do not modify dirty concurrent
+worktrees, reuse hook lifecycle files, or copy private workspace state.
 
 ## Validation
 

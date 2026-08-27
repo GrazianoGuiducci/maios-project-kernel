@@ -2,64 +2,54 @@
 
 updated: 2026-08-27
 active_surface: manual self-configuring `maios-project-kernel` 2.0.0 living source
-status: first Codex-first operator-to-project vertical plus its portable competence-formation owner published on `main`; tracked package projection and public `v2.0.0` Release aligned to the completed living source, while public-site and behavioral acceptance remain separate
+status: repository-first self-configuring source and deterministic `package/`
+projection are structurally complete and ready to replace public v2.0.0
 
 ## Current resultant
 
-The extracted distribution now opens with one coder-facing integration
-competence. It reconstructs what the package can add, explains the target and
-installation movement to the operator, accepts correction, then uses the
-deterministic preview/apply installer without replacing conflicting target
+The distribution opens with a coder-facing integration competence. The coder
+understands and explains the package, receives operator correction, then uses
+the deterministic preview/apply transition without replacing divergent target
 material.
 
-After installation, one permanent project-system competence keeps the whole
-relation reachable while four closest owners perform distinct work:
+After installation, one permanent `maios-project-system` competence keeps the
+whole relation reachable while five closest owners perform distinct work:
 
 - `maios-start-new-project` establishes the first situated project movement;
-- `maios-start-existing-project` preserves an operating project's identity and
-  exposes the first useful Kernel contribution;
-- `maios-project-context` forms or refines the living context and prepares
-  owner-specific competence handoffs.
-- `maios-project-competence-formation` forms or evolves the smallest
-  project-local competence when composition leaves a real gap or work exposes
-  a reusable causal correction.
+- `maios-start-existing-project` understands an operating project, preserves
+  its identity and initializes the competence field its work requires;
+- `maios-project-context` reconstructs and refines living context;
+- `maios-project-competence-formation` forms or evolves the smallest useful
+  owner-native competence from a real residual gap or reusable correction;
+- `maios-project-host-adaptation` translates the neutral Kernel relation into
+  the current coder's discovery, instruction, state, tool, learning and reentry
+  conventions.
 
-The neutral sources are installed for every host. Codex additionally receives
-native projections of all five post-install competences. Other harnesses retain
-the permanent semantic projection and can read the neutral sources until their
-native multi-competence adapters are implemented from real host behavior.
+`START_HERE.md` is the stable system boot. It restores Kernel identity, method
+and operating entrances. Dynamic project context stays in operator relation,
+project sources, configuration, current state, resultants and pertinent
+competences; it is not copied into the boot after every movement.
 
-The competence index represents startup and context owners with their knowledge
-entrypoints, activation relations and expected deltas. The open faculty field
-routes the competence-formation owner through its portable skill body.
-Composition now lets those package competences and later project-evolved
-competences enter when the current circumstance makes them material.
-Forward-resultant learning remains reachable immediately through the closest
-owner and later non-identical use remains the evidence of assimilation.
+Codex receives native projections of all six post-install competences. Claude
+Code, OpenCode, Hermes, OpenClaw, Pi and DSH receive the permanent system owner
+plus host adaptation as their native starting relation. All hosts receive the
+same neutral sources. Names and paths are mechanics, not different kernels.
 
-## Observed proof
+Ordinary installed evolution happens through competence action, readback and
+closest-owner learning. A standing installer-upgrade subsystem is not a current
+requirement. If a future structural update becomes real, it can arrive as a
+competence that understands how to update its own system.
 
-- the previous five-skill source baseline passed the Codex skill validator and
-  the complete 22-test owner suite; the newly added competence-formation skill
-  remains in the explicitly deferred behavioral-validation movement;
-- Codex installation projects byte-identical native skills for the permanent,
-  new-project, existing-project and context owners;
-- new and existing startup relations route differently while the field remains
-  open;
-- a reviewed project competence with its own knowledge entry becomes routable;
-- the deterministic rebuild contains 47 declared files and 36 payload files,
-  including the neutral competence-formation body;
-- package inventory and source identity verification pass;
-- projected text bytes are canonicalized, so checkout line endings cannot alter
-  the generated artifact while retaining the same source identity;
-- the generated archive remains a projection of this living source.
+## Proof state
 
-These observations prove source structure, deterministic distribution,
-installation mechanics and represented routing. They do not by themselves
-prove a real operator's semantic acceptance, another harness's native use or
-maintained reentry across non-synthetic work.
+- the public base before replacement is
+  `7eb6dd510ece92e79b3d83fac6bcde52a97e2371`;
+- exact package count, payload count and source identity are supplied by the
+  deterministic package build receipt;
+- extended behavioral tests, real semantic acceptance, native host use and
+  later non-identical reentry are intentionally deferred.
 
-## Source of truth
+## Living owners
 
 - `AGENTS.md`
 - `skills/maios-project-integration/SKILL.md`
@@ -68,23 +58,25 @@ maintained reentry across non-synthetic work.
 - `skills/maios-start-existing-project/SKILL.md`
 - `skills/maios-project-context/SKILL.md`
 - `skills/maios-project-competence-formation/SKILL.md`
+- `skills/maios-project-host-adaptation/SKILL.md`
 - `setup/MAIOS_SETUP_CONTRACT.md`
 - `competences/INDEX.template.json`
+- `kernel/FACULTY_FIELD.json`
 - `adapters/ADAPTERS.json`
 - `src/maios_project_kernel/`
 - `release/PROJECTION.json`
-- `tests/`
 
-`package/` and the ZIP under `dist/` are generated projections, not living
-owners.
+`package/` is the generated installable projection, not a second living owner.
 
 ## Boundary and next movement
 
-The Form-generated package remains a separate later owner and builder. This
-repository and its public `v2.0.0` Release now own the completed
-self-configuring package; they do not mutate Form, RepoKernel, site, provider
-or another harness.
+The current working candidate does not alter the public Release, site, Form,
+RepoKernel, provider or another runtime by implication.
 
-current_next: the self-configuring source and distribution lane is closed with behavioral acceptance explicitly deferred; next reconstruct how private RepoKernel can consume the private whole-kernel generation competence for the separately assembled Form package
-first_safe_action: begin the later lane from current RepoKernel and Form owner sources, deriving one kernel source relation without shipping either private generator
-validation_deferred: real semantic acceptance, later non-identical reentry and native adapter behavior for additional harnesses remain available for a later selected validation movement
+current_next: commit, push and replace public v2.0.0 with the repository-first
+source and matching tracked `package/` projection
+
+first_safe_action: publish the selected repository replacement
+
+validation_deferred: extended behavioral tests, real semantic acceptance,
+later non-identical reentry and native adapter behavior

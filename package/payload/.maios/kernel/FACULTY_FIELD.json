@@ -78,6 +78,15 @@
       "proof": "The competence materially improves concrete work, readback changes a later non-identical movement, and cultivation stops when another pass changes no material relation."
     },
     {
+      "id": "maios-project-host-adaptation",
+      "presence": "situated",
+      "activation_relations": ["host_change", "host_integration", "host_discovery_shape", "harness_unrecognized", "capability_projection"],
+      "material_when": "The same Kernel relation must become discoverable and usable through the current coding harness without changing its meaning.",
+      "entry": "skills/maios-project-host-adaptation/SKILL.md",
+      "result_contract": "HostNativeKernelIncarnation",
+      "proof": "The host can discover, read, use, and re-enter the projected competences while installation, discovery, use, verification, and maintained reentry remain distinct claims."
+    },
+    {
       "id": "topology-host-and-capability-reality",
       "presence": "situated",
       "activation_relations": ["host_change", "host_discovery", "capability_claim", "owner_conflict", "surface_change", "runtime_relation"],

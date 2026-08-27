@@ -1,6 +1,6 @@
 # MAIOS Project Kernel distribution entry
 
-Use `maios-project-integration` as the owner of this extracted distribution.
+Use `maios-project-integration` as the owner of this repository package.
 Read `README.md`, `INSTALL.md`, `MANIFEST.json` and the selected target project
 before proposing an installation.
 
@@ -13,4 +13,3 @@ preview. Apply only the accepted target, mode and host plan.
 After installation, continue inside the target project. The installed startup
 competences distinguish a new project from an existing project and form or
 refine the context from which useful work can begin.
-

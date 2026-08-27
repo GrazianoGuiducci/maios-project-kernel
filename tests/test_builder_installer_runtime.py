@@ -5,7 +5,6 @@ import subprocess
 import sys
 import tempfile
 import unittest
-import zipfile
 from pathlib import Path
 
 
@@ -71,13 +70,6 @@ class BuilderTests(DistributionFixture):
             builder.source_tree_digest(ROOT),
         )
         self.assertEqual(inventory_paths, sorted(inventory_paths))
-        first = self.base / "first.zip"
-        second = self.base / "second.zip"
-        self.assertEqual(
-            builder.deterministic_zip(self.distribution, first),
-            builder.deterministic_zip(self.distribution, second),
-        )
-        self.assertEqual(first.read_bytes(), second.read_bytes())
 
     def test_generated_staging_cannot_enter_source_identity(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -184,6 +176,7 @@ class InstallerTests(DistributionFixture):
             "maios-start-existing-project",
             "maios-project-context",
             "maios-project-competence-formation",
+            "maios-project-host-adaptation",
         ):
             with self.subTest(competence_id=competence_id):
                 self.assertEqual(
@@ -203,9 +196,29 @@ class InstallerTests(DistributionFixture):
             "claude": ".claude/skills/maios-project-system/SKILL.md",
             "opencode": ".opencode/skills/maios-project-system/SKILL.md",
             "hermes": ".hermes/skills/maios-project-system/SKILL.md",
+            "openclaw": ".agents/skills/maios-project-system/SKILL.md",
+            "pi": ".agents/skills/maios-project-system/SKILL.md",
             "dsh": ".agents/skills/maios-project-system/SKILL.md",
         }
-        for host in ("generic", "codex", "claude", "opencode", "hermes", "dsh"):
+        adaptation_paths = {
+            "codex": ".agents/skills/maios-project-host-adaptation/SKILL.md",
+            "claude": ".claude/skills/maios-project-host-adaptation/SKILL.md",
+            "opencode": ".opencode/skills/maios-project-host-adaptation/SKILL.md",
+            "hermes": ".hermes/skills/maios-project-host-adaptation/SKILL.md",
+            "openclaw": ".agents/skills/maios-project-host-adaptation/SKILL.md",
+            "pi": ".agents/skills/maios-project-host-adaptation/SKILL.md",
+            "dsh": ".agents/skills/maios-project-host-adaptation/SKILL.md",
+        }
+        for host in (
+            "generic",
+            "codex",
+            "claude",
+            "opencode",
+            "hermes",
+            "openclaw",
+            "pi",
+            "dsh",
+        ):
             with self.subTest(host=host):
                 target, _ = self.install(host)
                 state = json.loads(
@@ -220,11 +233,21 @@ class InstallerTests(DistributionFixture):
                         target.joinpath(*Path(native_paths[host]).parts).read_bytes(),
                         canonical.read_bytes(),
                     )
+                    adaptation = (
+                        target / "skills" / "maios-project-host-adaptation" / "SKILL.md"
+                    )
+                    self.assertEqual(
+                        target.joinpath(*Path(adaptation_paths[host]).parts).read_bytes(),
+                        adaptation.read_bytes(),
+                    )
                 if host == "hermes":
                     ignore = (target / ".hermes" / ".gitignore").read_text(
                         encoding="utf-8"
                     )
                     self.assertIn("!skills/maios-project-system/SKILL.md", ignore)
+                    self.assertIn(
+                        "!skills/maios-project-host-adaptation/SKILL.md", ignore
+                    )
                 self.assertTrue(runtime.validate_project(target)["valid"])
 
     def test_pending_existing_install_has_deterministic_recovery(self) -> None:
@@ -617,6 +640,17 @@ class RuntimeTests(DistributionFixture):
             "maios-project-competence-formation",
             {item["id"] for item in formation["known_candidates"]},
         )
+        host_adaptation = runtime.compose(
+            target,
+            {
+                "relations": ["host_change", "capability_projection"],
+                "requested_result": "incarnate the Kernel in this harness",
+            },
+        )
+        self.assertIn(
+            "maios-project-host-adaptation",
+            {item["id"] for item in host_adaptation["known_candidates"]},
+        )
         self.assertTrue(existing_project["open_world"])
         self.assertEqual(
             next(
@@ -825,20 +859,16 @@ class RuntimeTests(DistributionFixture):
         self.assertEqual(final["maintained_reentry"], "verified")
 
 
-class ArchiveFreshProcessTests(DistributionFixture):
-    def test_extracted_archive_installs_and_runs_without_source_imports(self) -> None:
-        archive = self.base / "candidate.zip"
-        builder.deterministic_zip(self.distribution, archive)
-        extracted = self.base / "extracted"
-        with zipfile.ZipFile(archive) as zipped:
-            zipped.extractall(extracted)
+class ProjectedPackageFreshProcessTests(DistributionFixture):
+    def test_projected_package_installs_and_runs_without_source_imports(self) -> None:
+        package_root = self.distribution
         target = self.base / "fresh-target"
         plan = self.base / "fresh-plan.json"
 
         preview = subprocess.run(
             [
                 sys.executable,
-                str(extracted / "install.py"),
+                str(package_root / "install.py"),
                 "preview",
                 "--target",
                 str(target),
@@ -858,7 +888,7 @@ class ArchiveFreshProcessTests(DistributionFixture):
         apply = subprocess.run(
             [
                 sys.executable,
-                str(extracted / "install.py"),
+                str(package_root / "install.py"),
                 "apply",
                 "--plan",
                 str(plan),
@@ -869,7 +899,7 @@ class ArchiveFreshProcessTests(DistributionFixture):
             check=False,
         )
         self.assertEqual(apply.returncode, 0, apply.stderr)
-        self.assertFalse(any(path.name == "__pycache__" for path in extracted.rglob("*")))
+        self.assertFalse(any(path.name == "__pycache__" for path in package_root.rglob("*")))
         status = subprocess.run(
             [sys.executable, "-B", str(target / "maios.py"), "status"],
             cwd=target,

@@ -1,8 +1,15 @@
-# Start here — generated project entry
+# Start here — stable system boot
 
 This project contains MAIOS Project Kernel 2.0.0. It was installed through an
 explicit package plan; installation did not configure the project or prove
 that the current host has used its faculty.
+
+This boot remains compact and stable. It restores what the Kernel is, how the
+project enters it and which competences own startup, context, host adaptation,
+work and learning. The changing context remains with the operator, actual
+project sources, `setup/CONFIGURATION_STATE.json`, `project/CURRENT_STATE.md`
+and the competences that act. A fresh reentry therefore recovers the current
+field without continually rewriting the boot.
 
 Ask the current assistant:
 
@@ -19,6 +26,11 @@ existing project preserves its current identity and work. The context
 competence shows a useful interpretation and possibilities before requesting
 non-decisive detail, then prepares the working projections needed by the
 competences that will act.
+
+If this coder uses another harness incarnation, `maios-project-host-adaptation`
+connects the same neutral Kernel relation to that host's instruction, skill,
+tool and reentry conventions. The coder's current knowledge of its own system
+is part of that adaptation.
 
 When their composition leaves a real capability gap, or concrete work exposes
 a reusable causal correction, `maios-project-competence-formation` forms or
