@@ -91,6 +91,7 @@ def validate_project(root: Path) -> dict[str, Any]:
         "skills/maios-start-new-project/SKILL.md",
         "skills/maios-start-existing-project/SKILL.md",
         "skills/maios-project-context/SKILL.md",
+        "skills/maios-project-competence-formation/SKILL.md",
     ]
     missing = [relative for relative in required if not (root / relative).is_file()]
     errors: list[str] = []

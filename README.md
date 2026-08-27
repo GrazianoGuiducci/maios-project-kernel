@@ -53,6 +53,9 @@ The system includes:
   competence that enables it; causal readback changes the closest owning
   relation, matching later movements exercise it, and non-identical use can
   revise or strengthen it;
+- a portable competence-formation owner that turns a real residual gap or
+  reusable correction into the smallest useful project-local competence,
+  without shipping the private whole-kernel generator;
 - deterministic `preview`, `apply`, `verify`, and `uninstall` installation for
   empty or existing repositories without hidden overwrite;
 - project-local adapters for Codex, Claude Code, OpenCode, DSH, Hermes, and a
@@ -109,6 +112,7 @@ independent comparison after the manual 2.0.0 vertical is complete.
 | `setup/` | MAIOS configuration contract and canonical-state template |
 | `src/maios_project_kernel/` | Installer, configuration, operating relation, runtime, and builder |
 | `competences/`, `state/`, `schemas/` | Project-local competence index, forward-resultant learning state, and event contracts |
+| `skills/maios-project-competence-formation/` | Portable competence formation and cultivation body |
 | `adapters/` | Host discovery projections |
 | `templates/` | Distribution and installed-project entry files |
 | `release/PROJECTION.json` | Complete source-to-package mapping |

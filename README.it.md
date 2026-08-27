@@ -51,6 +51,9 @@ La 2.0.0 comprende:
 - coltivazione reciproca delle competenze: il lavoro concreto mette alla prova
   la competenza che lo rende possibile, il readback corregge la relazione
   proprietaria e il delta causale entra nei movimenti successivi;
+- competenza portatile di formazione: un divario reale o una correzione
+  riusabile diventa la più piccola competenza locale utile al progetto, senza
+  distribuire il generatore privato dei kernel completi;
 - installer deterministico con `preview`, `apply`, `verify` e `uninstall`, anche
   per repository esistenti senza sovrascritture nascoste;
 - adapter locali per Codex, Claude Code, OpenCode, DSH, Hermes e host generico;

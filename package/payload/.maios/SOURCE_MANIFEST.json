@@ -32,7 +32,7 @@
     {
       "id": "meta-skill-architecture",
       "position": "non_shipped_architecture_source",
-      "used_for": ["competence levels", "reciprocal cultivation", "composition", "owner-governed meta-evolution"],
+      "used_for": ["competence levels", "portable competence formation", "reciprocal cultivation", "composition", "owner-governed meta-evolution"],
       "source_shipped": false,
       "topology_imported": false
     },

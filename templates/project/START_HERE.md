@@ -20,6 +20,11 @@ competence shows a useful interpretation and possibilities before requesting
 non-decisive detail, then prepares the working projections needed by the
 competences that will act.
 
+When their composition leaves a real capability gap, or concrete work exposes
+a reusable causal correction, `maios-project-competence-formation` forms or
+evolves the smallest project-local competence that changes the result. This is
+a portable project faculty, not the private whole-kernel generator.
+
 The canonical semantic sources are:
 
 - `.maios/kernel/SYSTEM_KERNEL.md`;

@@ -114,7 +114,9 @@ changes no material relation. A structurally valid skill and a fluent result do
 not prove exercised competence. A classification or external claim still needs
 its own evidence, but learning from what actually happened is not held behind a
 second approval stage. Use `COMPETENCE_CULTIVATION_PROTOCOL.md` for the
-transferable state and proof contract.
+transferable state and proof contract, and use
+`skills/maios-project-competence-formation/SKILL.md` as its portable operating
+body.
 
 A competence can contain useful causal learning and contaminated history at
 the same time. Reconcile current claims against operator source, owner-native

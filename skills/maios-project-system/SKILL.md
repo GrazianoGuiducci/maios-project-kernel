@@ -12,7 +12,9 @@ and reentry in one living relation without performing every competence's work.
 Read `START_HERE.md`, `setup/CONFIGURATION_STATE.json` and
 `project/CURRENT_STATE.md` only to the depth that can change the present
 movement. Let `maios-start-new-project`, `maios-start-existing-project` and
-`maios-project-context` own their respective behavior.
+`maios-project-context` own their respective behavior. Let
+`maios-project-competence-formation` own a material residual capability gap or
+a reusable correction that must change later work.
 
 ## Let the field act
 

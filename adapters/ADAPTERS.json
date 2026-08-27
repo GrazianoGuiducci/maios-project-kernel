@@ -4,9 +4,10 @@
   "codex_first_competence_owners": [
     "skills/maios-start-new-project/SKILL.md",
     "skills/maios-start-existing-project/SKILL.md",
-    "skills/maios-project-context/SKILL.md"
+    "skills/maios-project-context/SKILL.md",
+    "skills/maios-project-competence-formation/SKILL.md"
   ],
-  "rule": "Every adapter projects the permanent semantic owner. Codex additionally projects the first owner-native startup and context competences; other harnesses can read the neutral sources until their native projection is implemented.",
+  "rule": "Every adapter projects the permanent semantic owner. Codex additionally projects the first owner-native startup, context, and competence-formation competences; other harnesses can read the neutral sources until their native projection is implemented.",
   "adapters": [
     {
       "id": "generic",
@@ -30,6 +31,10 @@
         {
           "source": "skills/maios-project-context/SKILL.md",
           "destination": ".agents/skills/maios-project-context/SKILL.md"
+        },
+        {
+          "source": "skills/maios-project-competence-formation/SKILL.md",
+          "destination": ".agents/skills/maios-project-competence-formation/SKILL.md"
         }
       ]
     },

@@ -27,6 +27,7 @@ source-tree, projection, source-manifest, package members, and archive digests.
 | `maios.py configuration-*` | `src/maios_project_kernel/configuration.py` |
 | `maios.py competence-*` | Runtime competence index and reviewed-delta policy |
 | `maios-project-system` | Semantic kernel and open faculty field |
+| `maios-project-competence-formation` | Portable formation and cultivation of project-local competences |
 
 Deterministic code validates paths, state shape, concurrency, hashes, receipts,
 and recovery. The semantic host interprets the live circumstance. Candidate

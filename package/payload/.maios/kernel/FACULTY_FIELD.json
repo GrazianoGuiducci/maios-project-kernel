@@ -69,11 +69,11 @@
       "proof": "Each selected faculty has a source-linked expected and observed delta; no fixed count is imposed."
     },
     {
-      "id": "competence-formation-and-history",
+      "id": "maios-project-competence-formation",
       "presence": "situated",
       "activation_relations": ["capability_gap", "reusable_correction", "competence_stale", "competence_contaminated", "faculty_retirement"],
       "material_when": "Composition leaves a real gap or accumulated history can change the current resultant.",
-      "entry": ".maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
+      "entry": "skills/maios-project-competence-formation/SKILL.md",
       "result_contract": "ReciprocalCompetenceMovement",
       "proof": "The competence materially improves concrete work, readback changes a later non-identical movement, and cultivation stops when another pass changes no material relation."
     },

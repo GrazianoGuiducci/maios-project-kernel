@@ -18,6 +18,8 @@ present work and source relation
 
 This is not a preliminary training or approval phase. It acts when the causal
 learning changes comprehension, execution, proof, recovery, or reentry.
+Its portable operating body is
+`skills/maios-project-competence-formation/SKILL.md`.
 
 ## Entering relation
 

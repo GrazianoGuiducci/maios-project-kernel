@@ -235,6 +235,7 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
                 "payload/skills/maios-start-new-project/SKILL.md",
                 "payload/skills/maios-start-existing-project/SKILL.md",
                 "payload/skills/maios-project-context/SKILL.md",
+                "payload/skills/maios-project-competence-formation/SKILL.md",
             ],
             "producer_self_approval": False,
             "behavioral_proof_separate": True,
@@ -319,6 +320,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "payload/skills/maios-start-new-project/SKILL.md",
         "payload/skills/maios-start-existing-project/SKILL.md",
         "payload/skills/maios-project-context/SKILL.md",
+        "payload/skills/maios-project-competence-formation/SKILL.md",
     }
     actual_names = {
         path.relative_to(package_dir).as_posix() for path in distribution_files(package_dir)
@@ -365,7 +367,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             errors.append("host adapters do not point to the one packaged semantic owner")
         semantic_owner = adapters.get("semantic_owner")
         codex_first_owners = adapters.get("codex_first_competence_owners", [])
-        if len(codex_first_owners) != 3 or not all(
+        if len(codex_first_owners) != 4 or not all(
             isinstance(item, str) and item.startswith("payload/skills/")
             for item in codex_first_owners
         ):

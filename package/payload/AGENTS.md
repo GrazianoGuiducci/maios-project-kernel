@@ -3,7 +3,9 @@
 Use `maios-project-system` as the permanent semantic entry. Let
 `maios-start-new-project` own a genuinely new target,
 `maios-start-existing-project` own a project that already has sources or active
-work, and `maios-project-context` form or refine the living context. Read
+work, and `maios-project-context` form or refine the living context. Let
+`maios-project-competence-formation` act when composition leaves a real
+capability gap or concrete work exposes a reusable correction. Read
 `START_HERE.md`, `setup/CONFIGURATION_STATE.json`, and
 `project/CURRENT_STATE.md` only to the depth that changes the present result.
 

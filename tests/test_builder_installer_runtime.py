@@ -183,6 +183,7 @@ class InstallerTests(DistributionFixture):
             "maios-start-new-project",
             "maios-start-existing-project",
             "maios-project-context",
+            "maios-project-competence-formation",
         ):
             with self.subTest(competence_id=competence_id):
                 self.assertEqual(
@@ -605,6 +606,17 @@ class RuntimeTests(DistributionFixture):
         self.assertIn("maios-start-existing-project", existing_ids)
         self.assertIn("maios-project-context", existing_ids)
         self.assertNotIn("maios-start-new-project", existing_ids)
+        formation = runtime.compose(
+            target,
+            {
+                "relations": ["capability_gap", "reusable_correction"],
+                "requested_result": "form the smallest useful project competence",
+            },
+        )
+        self.assertIn(
+            "maios-project-competence-formation",
+            {item["id"] for item in formation["known_candidates"]},
+        )
         self.assertTrue(existing_project["open_world"])
         self.assertEqual(
             next(

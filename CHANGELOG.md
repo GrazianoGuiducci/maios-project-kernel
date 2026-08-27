@@ -16,6 +16,10 @@ All notable changes to the public distribution are recorded here.
   competence test and improve each other; owner-bound causal learning enters
   the next resultant directly, while deliberate competence-index changes still
   refuse self-approval.
+- Added the portable `maios-project-competence-formation` owner so a real
+  residual capability gap can become the smallest useful project-local
+  competence without shipping the private whole-kernel generator or Meta_Skill
+  source.
 - Added a derived autological operating context with causal input freshness,
   capability states, uncertainty, eligible local movements, and explicit
   authority ceiling.
