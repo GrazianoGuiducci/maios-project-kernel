@@ -14,7 +14,8 @@ No unreleased changes.
 - Added semantic validation for the installed family contract, Project
   Meta-Faculty, Project Entity Profile, evolution and RepoKernel receipts,
   host catalogue/state, operating state, runtime and host-adaptation owner.
-- Bound explicit installation receipts to their exact target and limited
+- Bound explicit and automatically discovered installation receipts to their
+  exact target, including planning and idempotent apply paths, and limited
   existing-project plan snapshots to package-owned destination paths.
 - Made Project Entity source and installed catalogue paths explicit, aligned
   the Italian 3.0 documentation and separated product patch identity from the

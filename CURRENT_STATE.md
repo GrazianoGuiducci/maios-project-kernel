@@ -20,8 +20,10 @@ catalogue now produces both the distribution view and the installed runtime
 view, so installer, host state, status, operating readback and attestation use
 the same eight supported host ids. Installed Kernel-owned organs are validated
 for their schemas, owner relations and resolvable paths rather than presence
-alone. Explicit receipts are target-bound, and existing-project plans observe
-only paths the package can change.
+alone. Explicit and automatically discovered receipts are target-bound across
+planning, idempotent apply, verification and uninstall. A copied installation
+receipt cannot make another target appear idempotent. Existing-project plans
+observe only paths the package can change.
 
 The 18-family neutral coverage is now connected explicitly to the 15 living
 MAIOS faculties through `PROJECT_META_FACULTY_CROSSWALK.json`. Every source
@@ -73,16 +75,18 @@ competence that understands how to update its own system.
   and passes source-to-distribution verification; its exact source identity is
   supplied by the generated package manifest rather than copied into its own
   hashed source tree;
-- public `main` carries the reviewed 3.0.1 source candidate; the immutable tag
-  and GitHub Release remain at 3.0.0 until external review of the exact public
-  candidate supports promotion;
+- public `main` carries the reviewed 3.0.1 source candidate; its one reproduced
+  receipt/idempotency defect is corrected locally and regression-locked, while
+  the immutable tag and GitHub Release remain at 3.0.0 until the corrected
+  source is published and promoted;
 - exact package count, payload count, Python runtime requirement and source
   identity are supplied by the deterministic package manifest and build receipt;
 - GitHub CI rebuilds the tracked package twice on Python 3.10 and refuses any
   source-to-projection difference;
-- 26 local tests cover deterministic projection, every declared host through
+- 27 local tests cover deterministic projection, every declared host through
   installation/status/operating readback/attestation validation, corrupted or
-  missing Kernel organs, receipt target binding and unrelated existing-project
+  missing Kernel organs, explicit and automatically discovered receipt target
+  binding, copied-target idempotency refusal and unrelated existing-project
   changes; real native-host behavior and later non-identical reentry remain
   separate evidence.
 
@@ -114,9 +118,9 @@ Form, its P5 assembler, provider and other runtimes remain separate owner
 surfaces. They may inherit the same neutral RepoKernel generation relation only
 through their own context, bytes and proof.
 
-current_next: review the exact public 3.0.1 `main` candidate and, only after its
-acceptance, create the new immutable tag and GitHub Release before aligning the
-separate Form lane or public MAIOS communication
+current_next: publish the corrected 3.0.1 source and deterministic projection,
+then create the immutable tag and GitHub Release before aligning the separate
+Form lane or public MAIOS communication
 
 first_safe_action: preserve the synchronized family contract and compare both
 generated signatures after any reusable Project Kernel change

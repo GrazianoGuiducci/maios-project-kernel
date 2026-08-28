@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -412,6 +413,22 @@ class InstallerTests(DistributionFixture):
             installer.InstallerError, "does not belong to the requested target"
         ):
             installer.uninstall(second, receipt)
+
+    def test_copied_receipt_cannot_make_another_target_idempotent(self) -> None:
+        first, _ = self.install("generic")
+        second = self.base / "copied-target"
+        shutil.copytree(first, second)
+
+        self.assertIsNone(installer.current_receipt(second))
+        plan = installer.make_plan(
+            self.distribution, second, "new_repository", "generic"
+        )
+        self.assertEqual(plan["status"], "blocked")
+        self.assertIn("new_repository_target_is_not_empty", plan["blocked_reasons"])
+        with self.assertRaisesRegex(
+            installer.InstallerError, "blocked install plan cannot be applied"
+        ):
+            installer.apply_plan(self.distribution, plan)
 
     def test_pending_existing_install_has_deterministic_recovery(self) -> None:
         target = self.base / "pending-existing"

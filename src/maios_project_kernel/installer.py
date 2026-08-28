@@ -262,14 +262,20 @@ def has_unsafe_ancestor(target: Path, destination: str) -> bool:
 
 
 def current_receipt(target: Path) -> dict[str, Any] | None:
+    target = target.resolve()
     path = target / ".maios" / "receipts" / "install" / "CURRENT.json"
-    if not path.is_file():
+    if (
+        has_unsafe_ancestor(target, ".maios/receipts/install/CURRENT.json")
+        or path.is_symlink()
+        or not path.is_file()
+    ):
         return None
     try:
         value = read_json(path)
+        require_receipt_target(target, value)
     except InstallerError:
         return None
-    return value if value.get("schema") == RECEIPT_SCHEMA else None
+    return value
 
 
 def plan_digest(plan: dict[str, Any]) -> str:
