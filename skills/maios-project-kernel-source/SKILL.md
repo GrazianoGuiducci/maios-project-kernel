@@ -1,6 +1,6 @@
 ---
 name: maios-project-kernel-source
-description: Build, inspect, validate, or evolve the manual MAIOS Project Kernel package from its sole source repository while preserving open faculty composition, deterministic installation, proof levels, contamination boundaries, and compact reentry.
+description: Build, inspect, validate, or evolve the autonomous self-configuring MAIOS Project Kernel package from its sole source repository while preserving open faculty composition, deterministic installation, proof levels, contamination boundaries, and compact reentry.
 ---
 
 # MAIOS Project Kernel Source
@@ -17,7 +17,11 @@ living source -> generated package inventory -> install plan -> target receipt
 ```
 
 Never claim a later state from an earlier proof. Treat the Form-generated route
-as a later independent comparison, not a source or fixture for manual 2.0.0.
+as the preconfigured projection of the same Kernel family, not as the source or
+fixture of the autonomous package. The autonomous entry reconstructs and
+validates context with the operator; the Form entry starts from accepted
+configuration and refines it. Differences after entry must remain situated
+configuration, not divergent Kernel behavior.
 
 A compact, collision with an existing public artifact, or an assistant's
 publication plan cannot select a new product version. Preserve useful source

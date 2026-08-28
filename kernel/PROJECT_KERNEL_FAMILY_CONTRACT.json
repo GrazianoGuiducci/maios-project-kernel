@@ -1,0 +1,92 @@
+{
+  "contract_version": "1.0.0",
+  "entry_profile": {
+    "composition_invariant": "No mandatory primary faculty or fixed support count.",
+    "forbidden_fields": [
+      "faculty_palette"
+    ],
+    "schema": "maios.project-entry-profile.v1",
+    "selection_model": "material_relation_and_observed_delta"
+  },
+  "environment_readiness": {
+    "credential_boundary": "Explain and request access only when needed; never embed credentials in a package.",
+    "recommended": [
+      "version-control-and-repository"
+    ],
+    "required": [
+      "capable-ai-coder-or-harness",
+      "model-access",
+      "python-runtime"
+    ],
+    "situated": [
+      "remote-infrastructure"
+    ]
+  },
+  "evolution": {
+    "effect_authority_default": "none",
+    "faculty_states": [
+      "potential",
+      "emergent",
+      "realized",
+      "verified"
+    ],
+    "required_relations": [
+      "situated competence composition",
+      "first useful correctable result",
+      "causal resultant readback",
+      "closest-owner learning",
+      "portable competence formation",
+      "non-transcript reentry"
+    ]
+  },
+  "family_version": "3.0.0",
+  "lanes": {
+    "autonomous": {
+      "configuration_state": "deferred_to_first_operator_relation",
+      "contains_form_state": false,
+      "contains_repokernel_source": false,
+      "startup_interview": "required"
+    },
+    "form": {
+      "configuration_state": "preconfigured_from_accepted_form_context",
+      "contains_autonomous_package": false,
+      "contains_repokernel_source": false,
+      "startup_interview": "complete",
+      "state_owner": "setup/CONFIGURATION_STATE.json"
+    }
+  },
+  "meta_faculty": {
+    "effect_authority": "none",
+    "open_world": true,
+    "required_function_families": [
+      "self-location-and-reentry",
+      "source-integrity-and-epistemic-calibration",
+      "pre-projection-self-correction",
+      "open-horizon-and-level-shift",
+      "field-illumination-and-first-result",
+      "cognitive-aperture-and-limit-classification",
+      "representation-adequacy-and-non-collapse",
+      "faculty-discovery-composition-and-gap",
+      "competence-evolution-and-granularity",
+      "resultant-and-consequence-evaluation",
+      "memory-crystallization-and-causal-continuity",
+      "failure-localization-and-recovery",
+      "effect-authority-and-recovery",
+      "host-and-capability-reality",
+      "delegation-coordination-and-supervision",
+      "invariant-portability-and-distribution",
+      "self-improvement-and-independent-evaluation",
+      "operational-attention-and-routine-distillation"
+    ],
+    "schema": "repokernel.project-meta-faculty.v1"
+  },
+  "owner": "MAIOS Project Kernel family competence",
+  "purpose": "Carry only the reusable Project Kernel relation into the autonomous and Form-preconfigured products while each product retains its own entry state, builder, bytes and proof.",
+  "schema": "maios.project-kernel-family-contract.v1",
+  "transfer_rule": "Transfer a result-changing neutral relation in owner-native form; never copy the originating system identity, private topology, temporal state, credentials, authority or one package into the other.",
+  "update_protocol": {
+    "movement": "After a reusable autonomous Kernel change, update this contract, synchronize both owner-native copies and their mechanical version locks, rebuild each lane and compare their generated family signatures.",
+    "source": "This contract is the transferable family interface, not a semantic kernel or product state owner.",
+    "stop": "A synchronized contract does not prove implementation. A lane remains divergent until its generated artifact satisfies the shared invariants and its lane-specific entry relation."
+  }
+}

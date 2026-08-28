@@ -1,0 +1,258 @@
+{
+  "schema": "repokernel.seed-spec.v1",
+  "version": "repokernel.seed-spec.v1",
+  "seed_id": "maios-self-configuring-project-kernel-v3",
+  "source_manifest_hash": "8ff5634d0d07a85be54e8d6eb0bf892e3ffdf4ce12436a5c079508e34dab20db",
+  "project_model_hash": "5118a5d9fc6cfe96aa7fc7a1f145e499d7353fe0489430783356bbe151735b0e",
+  "canonical_namespace": ".repokernel",
+  "project": {
+    "name": "MAIOS Project Kernel",
+    "intent": "Give a project and its AI coder a shared self-configuring operating kernel.",
+    "product": "A self-installing Project Kernel with deferred situated configuration, competence cultivation and continuous reentry.",
+    "domain": "AI-assisted project operation"
+  },
+  "target": {
+    "mode": "new_repository",
+    "path": "MAIOSProjectKernel"
+  },
+  "readiness_level": "L2",
+  "authority_mode": "propose",
+  "review": {
+    "status": "accepted",
+    "accepted_by_role": "operator",
+    "accepted_at": "2026-08-27",
+    "review_cycle": "MAIOS-PK-3.0-CONVERGENCE-20260828"
+  },
+  "compiler_compatibility": {
+    "package_version": "0.4.0.dev0",
+    "contract_versions": {
+      "seed_spec": "repokernel.seed-spec.v1",
+      "project_entity_profile": "repokernel.project-entity-profile.v1"
+    }
+  },
+  "file_plan_policy": "stage_only",
+  "validation_plan": [
+    "validate-spec",
+    "validate-bundle",
+    "plan",
+    "stage",
+    "compose-with-maios-package-owner"
+  ],
+  "disclosure": {
+    "public": {
+      "name": true,
+      "intent": true,
+      "product": true
+    }
+  },
+  "extensions": {
+    "repokernel.project_entity": {
+      "schema": "repokernel.project-entity-profile.v1",
+      "role": {
+        "id": "maios-project-system",
+        "purpose": "Orient, configure and operate one project through its sources, pertinent competences, resultants, causal learning and reentry.",
+        "operating_recipient": "project owner and AI coder",
+        "startup_interview": "required"
+      },
+      "faculty_palette": {
+        "selection_model": "one_primary_plus_bounded_support",
+        "router": {
+          "id": "maios-project-system",
+          "source_ref": "maios-project-kernel-faculties",
+          "invocation": "router",
+          "state": "accepted",
+          "public_function": "Keep the complete project-level Kernel relation reachable and route the closest pertinent competences.",
+          "result_contract": "One situated project movement with sources, competences, result, causal learning and reentry connected.",
+          "portability": "embedded_project_competence",
+          "effect_class": "reasoning_only",
+          "implementation_state": "packaged"
+        },
+        "primary": {
+          "id": "maios-project-context",
+          "source_ref": "maios-project-kernel-faculties",
+          "invocation": "model-invoked",
+          "state": "accepted",
+          "public_function": "Form or refine living project context from the operator relation and real project sources.",
+          "result_contract": "A correctable situated configuration, useful possibilities, selected direction, first result and falsifiable proof.",
+          "portability": "embedded_project_competence",
+          "effect_class": "reasoning_only",
+          "implementation_state": "packaged"
+        },
+        "support": [
+          {
+            "id": "maios-start-new-project",
+            "source_ref": "maios-project-kernel-faculties",
+            "invocation": "model-invoked",
+            "state": "accepted",
+            "public_function": "Establish the first situated movement for a genuinely new project.",
+            "result_contract": "Initial project identity, direction, first correctable result and reentry.",
+            "portability": "embedded_project_competence",
+            "effect_class": "reasoning_only",
+            "implementation_state": "packaged"
+          },
+          {
+            "id": "maios-start-existing-project",
+            "source_ref": "maios-project-kernel-faculties",
+            "invocation": "model-invoked",
+            "state": "accepted",
+            "public_function": "Let the Kernel participate in an existing project without replacing its identity.",
+            "result_contract": "Preserved project identity, reconstructed live context and first useful Kernel contribution.",
+            "portability": "embedded_project_competence",
+            "effect_class": "reasoning_only",
+            "implementation_state": "packaged"
+          },
+          {
+            "id": "maios-project-competence-formation",
+            "source_ref": "maios-project-kernel-faculties",
+            "invocation": "model-invoked",
+            "state": "accepted",
+            "public_function": "Form or evolve the smallest project-local competence for a real residual gap or reusable correction.",
+            "result_contract": "A source-bound reciprocal competence movement that can change later non-identical work.",
+            "portability": "embedded_project_competence",
+            "effect_class": "local_write_gated",
+            "implementation_state": "packaged"
+          },
+          {
+            "id": "maios-project-host-adaptation",
+            "source_ref": "maios-project-kernel-faculties",
+            "invocation": "model-invoked",
+            "state": "accepted",
+            "public_function": "Translate the neutral Kernel into the current coder or harness conventions without changing its meaning.",
+            "result_contract": "A host-native Kernel incarnation with installation, discovery, use and maintained reentry kept distinct.",
+            "portability": "embedded_project_competence",
+            "effect_class": "local_write_gated",
+            "implementation_state": "packaged"
+          }
+        ]
+      },
+      "requested_bundle_ids": [
+        "self-configuring-project-kernel",
+        "project-continuity",
+        "competence-cultivation",
+        "host-portability"
+      ],
+      "capability_requirements": [
+        {
+          "id": "maios-project-system",
+          "source_ref": "maios-project-kernel-faculties",
+          "required": true,
+          "activation": "skill",
+          "side_effect_class": "reasoning_only",
+          "state": "accepted",
+          "source_type": "skill",
+          "source_path": "skills/maios-project-system/SKILL.md",
+          "maturity": "accepted-product-source",
+          "requires": [],
+          "delivery_mode": "embedded",
+          "installation_state": "packaged"
+        },
+        {
+          "id": "maios-project-context",
+          "source_ref": "maios-project-kernel-faculties",
+          "required": true,
+          "activation": "skill",
+          "side_effect_class": "reasoning_only",
+          "state": "accepted",
+          "source_type": "skill",
+          "source_path": "skills/maios-project-context/SKILL.md",
+          "maturity": "accepted-product-source",
+          "requires": ["maios-project-system"],
+          "delivery_mode": "embedded",
+          "installation_state": "packaged"
+        },
+        {
+          "id": "maios-start-new-project",
+          "source_ref": "maios-project-kernel-faculties",
+          "required": true,
+          "activation": "skill",
+          "side_effect_class": "reasoning_only",
+          "state": "accepted",
+          "source_type": "skill",
+          "source_path": "skills/maios-start-new-project/SKILL.md",
+          "maturity": "accepted-product-source",
+          "requires": ["maios-project-system", "maios-project-context"],
+          "delivery_mode": "embedded",
+          "installation_state": "packaged"
+        },
+        {
+          "id": "maios-start-existing-project",
+          "source_ref": "maios-project-kernel-faculties",
+          "required": true,
+          "activation": "skill",
+          "side_effect_class": "reasoning_only",
+          "state": "accepted",
+          "source_type": "skill",
+          "source_path": "skills/maios-start-existing-project/SKILL.md",
+          "maturity": "accepted-product-source",
+          "requires": ["maios-project-system", "maios-project-context"],
+          "delivery_mode": "embedded",
+          "installation_state": "packaged"
+        },
+        {
+          "id": "maios-project-competence-formation",
+          "source_ref": "maios-project-kernel-faculties",
+          "required": true,
+          "activation": "skill",
+          "side_effect_class": "local_write_gated",
+          "state": "accepted",
+          "source_type": "skill",
+          "source_path": "skills/maios-project-competence-formation/SKILL.md",
+          "maturity": "accepted-product-source",
+          "requires": ["maios-project-system"],
+          "delivery_mode": "embedded",
+          "installation_state": "packaged"
+        },
+        {
+          "id": "maios-project-host-adaptation",
+          "source_ref": "maios-project-kernel-faculties",
+          "required": true,
+          "activation": "skill",
+          "side_effect_class": "local_write_gated",
+          "state": "accepted",
+          "source_type": "skill",
+          "source_path": "skills/maios-project-host-adaptation/SKILL.md",
+          "maturity": "accepted-product-source",
+          "requires": ["maios-project-system"],
+          "delivery_mode": "embedded",
+          "installation_state": "packaged"
+        }
+      ],
+      "source_catalogs": [
+        {
+          "id": "maios-project-kernel-faculties",
+          "source_ref": "maios-faculty-field",
+          "revision": "3.0.0",
+          "registry_path": "kernel/FACULTY_FIELD.json",
+          "sha256": "31b27b04189e1aa9ab038917e0e944b9ac62bbc81fc1987bee5cf84e92e08148",
+          "freshness": "current",
+          "adoption": "pinned"
+        }
+      ],
+      "host_requirements": [
+        {
+          "id": "project-instruction-discovery",
+          "kind": "runtime",
+          "capability": "Read project-local root instructions and portable competence sources.",
+          "required": true,
+          "binding": "discover_at_activation"
+        },
+        {
+          "id": "python-runtime",
+          "kind": "runtime",
+          "capability": "Run the project-local installer and deterministic state helpers with Python 3.10 or later.",
+          "required": true,
+          "binding": "discover_at_activation"
+        }
+      ],
+      "completion": {
+        "success_condition": "The installed Project Kernel forms or refines a situated configuration, produces a first useful correctable result and preserves causal learning for reentry.",
+        "evidence": [
+          "target-owned installation receipt",
+          "accepted situated configuration or current-source refinement",
+          "first useful result and falsifiable proof",
+          "later non-identical reentry or explicit unverified status"
+        ]
+      }
+    }
+  }
+}

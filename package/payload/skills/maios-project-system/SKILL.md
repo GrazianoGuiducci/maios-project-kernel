@@ -11,7 +11,14 @@ and reentry in one living relation without performing every competence's work.
 
 Read `START_HERE.md`, `setup/CONFIGURATION_STATE.json` and
 `project/CURRENT_STATE.md` only to the depth that can change the present
-movement. Let `maios-start-new-project`, `maios-start-existing-project` and
+movement. At first contact, changed configuration, unfamiliar work, a
+competence gap, material effect, failure or handoff, also use
+`.maios/kernel/PROJECT_ENTITY_PROFILE.json` and
+`.maios/kernel/PROJECT_META_FACULTY.json` as compiled maps when they can change
+coverage or routing. They do not create another semantic owner: this competence
+remains the single operating entry and `FACULTY_FIELD.json` remains its
+MAIOS-native situated field. Let `maios-start-new-project`,
+`maios-start-existing-project` and
 `maios-project-context` own their respective behavior. Let
 `maios-project-competence-formation` own a material residual capability gap or
 a reusable correction that must change later work. Let

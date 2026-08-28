@@ -2,7 +2,7 @@
 
 ## Living source and generated delivery
 
-MAIOS Project Kernel 2.0.0 uses one implementation owner:
+MAIOS Project Kernel 3.0.0 uses one implementation owner:
 
 ```text
 kernel, setup, competence, adapter, runtime, installer, and template sources
@@ -15,6 +15,26 @@ kernel, setup, competence, adapter, runtime, installer, and template sources
 `package/` is disposable generated evidence. Product behavior is never edited
 there. The builder refuses missing or unsafe projection sources and binds the
 source-tree, projection, source-manifest and package members.
+
+## RepoKernel generation and MAIOS composition
+
+RepoKernel supplies a reviewed Project Entity relation and a general Project
+Meta-Faculty coverage map. The package builder verifies their source bundle and
+plan receipt, then translates them as:
+
+```text
+RepoKernel neutral generation
+-> PROJECT_ENTITY_PROFILE.json: open deferred direct-package entry
+-> PROJECT_META_FACULTY.json: open functional coverage
+-> one invocation rebind to skills/maios-project-system/SKILL.md
+-> MAIOS-native FACULTY_FIELD and closest operating competences
+```
+
+The translated profiles are organs of the installed Kernel, not another kernel
+or router. The fixed generated primary/support palette does not cross the
+boundary. RepoKernel implementation source, staging namespace and runtime are
+not shipped. `REPOKERNEL_PROJECTION.json` preserves the exact one-time source
+and translation relation.
 
 ## Deep modules and stable seams
 

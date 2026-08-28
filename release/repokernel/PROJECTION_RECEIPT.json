@@ -1,0 +1,50 @@
+{
+  "schema": "maios.repokernel-projection-receipt.v1",
+  "product": "MAIOS Project Kernel",
+  "version": "3.0.0",
+  "repokernel": {
+    "baseline_revision": "9192fe64035cc67207eb289b5677173d1df8ac82",
+    "source_revision": "9192fe64035cc67207eb289b5677173d1df8ac82",
+    "compiler_version": "0.4.0.dev0",
+    "compiler_state": "source_verified_current",
+    "plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a"
+  },
+  "source_bundle": {
+    "source_manifest": "release/repokernel/source-manifest.json",
+    "source_manifest_canonical_sha256": "8ff5634d0d07a85be54e8d6eb0bf892e3ffdf4ce12436a5c079508e34dab20db",
+    "project_model": "release/repokernel/project-model.json",
+    "project_model_canonical_sha256": "5118a5d9fc6cfe96aa7fc7a1f145e499d7353fe0489430783356bbe151735b0e",
+    "seed_spec": "release/repokernel/seed-spec.json",
+    "seed_spec_canonical_sha256": "8516658d5e8c6678ee05f4b8fc0f29986e26f4011810fc71cfa1a7bbec795a36",
+    "bundle_sha256": "cbc6ca1e65004342e53209b3a74292c215a10a62aa664e2c93a19e488ae14322"
+  },
+  "generated_source": {
+    "project_meta_faculty": "release/repokernel/generated/PROJECT_META_FACULTY.json",
+    "project_meta_faculty_sha256": "4c789ff8d225db1b356a91bbc141bca9cb6ad83e76a8f0c1727025e22b12f3e8",
+    "project_entity_profile_sha256": "fa647e5cac0554ad3ec79ddcbb753596941179313fed774fe9ad01f1cee5e9ca"
+  },
+  "composition": {
+    "source_entry": ".repokernel/skills/maios-project-kernel-semantic-kernel/SKILL.md",
+    "semantic_owner": "skills/maios-project-system/SKILL.md",
+    "project_meta_faculty": ".maios/kernel/PROJECT_META_FACULTY.json",
+    "project_entity_profile": ".maios/kernel/PROJECT_ENTITY_PROFILE.json",
+    "project_entity_translation": "owner_native_open_entry_profile",
+    "selection_model": "material_relation_and_observed_delta",
+    "fixed_generated_palette_transferred": false,
+    "environment_readiness": "required_before_project_implementation",
+    "startup_interview": "required",
+    "configuration_state": "deferred_to_first_operator_relation"
+  },
+  "boundaries": {
+    "contains_repokernel_source": false,
+    "runtime_dependency_on_repokernel": false,
+    "creates_second_semantic_owner": false,
+    "effect_authority": "none"
+  },
+  "excluded": [
+    "private RepoKernel implementation source",
+    "Form answers and preconfigured project state",
+    "private D-ND or TMx topology",
+    "global host configuration and runtime authority"
+  ]
+}

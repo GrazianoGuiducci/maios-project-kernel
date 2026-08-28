@@ -13,6 +13,11 @@ from typing import Any
 PROJECTION_SCHEMA = "maios.release-projection.v2"
 MANIFEST_SCHEMA = "maios.project-kernel-distribution.v2"
 INVENTORY_SCHEMA = "maios.package-inventory.v2"
+REPOKERNEL_RECEIPT_SCHEMA = "maios.repokernel-projection-receipt.v1"
+REPOKERNEL_META_SCHEMA = "repokernel.project-meta-faculty.v1"
+REPOKERNEL_ENTITY_SCHEMA = "repokernel.project-entity-profile.v1"
+PACKAGED_SEMANTIC_OWNER = "skills/maios-project-system/SKILL.md"
+FAMILY_CONTRACT_SCHEMA = "maios.project-kernel-family-contract.v1"
 
 
 class BuildError(RuntimeError):
@@ -57,11 +62,23 @@ def read_json(path: Path) -> Any:
 
 def write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-        newline="\n",
-    )
+    path.write_bytes(formatted_json_bytes(value))
+
+
+def formatted_json_bytes(value: Any) -> bytes:
+    return (
+        json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    ).encode("utf-8")
+
+
+def project_kernel_family_contract(root: Path) -> dict[str, Any]:
+    contract = read_json(root / "kernel" / "PROJECT_KERNEL_FAMILY_CONTRACT.json")
+    if contract.get("schema") != FAMILY_CONTRACT_SCHEMA:
+        raise BuildError("unsupported Project Kernel family contract")
+    version = contract.get("family_version")
+    if not isinstance(version, str) or not version:
+        raise BuildError("Project Kernel family contract has no version")
+    return contract
 
 
 def safe_relative(value: str) -> PurePosixPath:
@@ -146,6 +163,160 @@ def transformed_adapters(root: Path) -> dict[str, Any]:
     return result
 
 
+def repokernel_projection_inputs(
+    root: Path,
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """Read and bind the reviewed RepoKernel projection to its source bundle."""
+
+    base = root / "release" / "repokernel"
+    source_manifest = read_json(base / "source-manifest.json")
+    project_model = read_json(base / "project-model.json")
+    seed_spec = read_json(base / "seed-spec.json")
+    meta_faculty = read_json(base / "generated" / "PROJECT_META_FACULTY.json")
+    receipt = read_json(base / "PROJECTION_RECEIPT.json")
+
+    if receipt.get("schema") != REPOKERNEL_RECEIPT_SCHEMA:
+        raise BuildError("unsupported RepoKernel projection receipt schema")
+    if meta_faculty.get("schema") != REPOKERNEL_META_SCHEMA:
+        raise BuildError("unsupported generated Project Meta-Faculty schema")
+    project_entity = seed_spec.get("extensions", {}).get("repokernel.project_entity")
+    if (
+        not isinstance(project_entity, dict)
+        or project_entity.get("schema") != REPOKERNEL_ENTITY_SCHEMA
+    ):
+        raise BuildError("seed spec does not contain a valid Project Entity Profile")
+
+    bundle = receipt.get("source_bundle", {})
+    expected_bundle_hashes = {
+        "source_manifest_canonical_sha256": digest_bytes(
+            canonical_bytes(source_manifest)
+        ),
+        "project_model_canonical_sha256": digest_bytes(canonical_bytes(project_model)),
+        "seed_spec_canonical_sha256": digest_bytes(canonical_bytes(seed_spec)),
+    }
+    for field, actual in expected_bundle_hashes.items():
+        if bundle.get(field) != actual:
+            raise BuildError(f"RepoKernel projection receipt has stale {field}")
+
+    generated = receipt.get("generated_source", {})
+    if generated.get("project_meta_faculty_sha256") != digest_file(
+        base / "generated" / "PROJECT_META_FACULTY.json"
+    ):
+        raise BuildError("RepoKernel Project Meta-Faculty hash is stale")
+    if generated.get("project_entity_profile_sha256") != digest_bytes(
+        formatted_json_bytes(project_entity)
+    ):
+        raise BuildError("RepoKernel Project Entity Profile hash is stale")
+
+    composition = receipt.get("composition", {})
+    invocation = meta_faculty.get("invocation", {})
+    role = project_entity.get("role", {})
+    if invocation.get("entry") != composition.get("source_entry"):
+        raise BuildError("RepoKernel semantic source entry drifted from its receipt")
+    if composition.get("semantic_owner") != PACKAGED_SEMANTIC_OWNER:
+        raise BuildError("RepoKernel projection does not bind the packaged semantic owner")
+    if (
+        role.get("startup_interview") != "required"
+        or composition.get("startup_interview") != "required"
+        or composition.get("configuration_state")
+        != "deferred_to_first_operator_relation"
+    ):
+        raise BuildError("direct package must retain deferred situated configuration")
+    if meta_faculty.get("open_world") is not True:
+        raise BuildError("generated Project Meta-Faculty must remain open_world")
+    if meta_faculty.get("effect_authority") != "none":
+        raise BuildError("generated Project Meta-Faculty must not grant effect authority")
+    return meta_faculty, project_entity, receipt
+
+
+def composed_project_meta_faculty(
+    meta_faculty: dict[str, Any], receipt: dict[str, Any]
+) -> dict[str, Any]:
+    """Rebind the generated neutral map to the one living MAIOS semantic owner."""
+
+    result = json.loads(json.dumps(meta_faculty))
+    result["invocation"]["entry"] = receipt["composition"]["semantic_owner"]
+    return result
+
+
+def composed_project_entry_profile(
+    project_entity: dict[str, Any],
+    receipt: dict[str, Any],
+    family_contract: dict[str, Any],
+) -> dict[str, Any]:
+    """Translate RepoKernel's generated entity into the open MAIOS entry relation."""
+
+    capabilities = project_entity.get("capability_requirements", [])
+    return {
+        "schema": family_contract["entry_profile"]["schema"],
+        "product": "MAIOS Project Kernel",
+        "version": family_contract["family_version"],
+        "source_relation": {
+            "kind": "repokernel_generated_function_translated_to_owner_native_form",
+            "plan_id": receipt["repokernel"]["plan_id"],
+            "source_schema": project_entity["schema"],
+            "source_profile_sha256": receipt["generated_source"][
+                "project_entity_profile_sha256"
+            ],
+        },
+        "role": project_entity["role"],
+        "configuration_state": "deferred_to_first_operator_relation",
+        "competence_field": {
+            "selection_model": family_contract["entry_profile"]["selection_model"],
+            "permanent_entry": PACKAGED_SEMANTIC_OWNER,
+            "reachable_competences": [
+                item["id"] for item in capabilities if isinstance(item, dict) and "id" in item
+            ],
+            "composition_rule": (
+                "Let every pertinent owner-native competence participate; no mandatory "
+                "primary or fixed support count is imposed."
+            ),
+        },
+        "environment_readiness": {
+            "owner": "maios-project-integration and maios-project-host-adaptation",
+            "rule": (
+                "Before project implementation, identify what is already available, "
+                "explain material gaps and help the operator establish only the "
+                "environment the selected project needs."
+            ),
+            "requirements": [
+                {
+                    "id": "capable-ai-coder-or-harness",
+                    "required": True,
+                    "relation": "A capable coder or agentic harness can read project instructions and act on files.",
+                },
+                {
+                    "id": "model-access",
+                    "required": True,
+                    "relation": "The coder has usable model access through a provider, API or local model.",
+                },
+                {
+                    "id": "python-runtime",
+                    "required": True,
+                    "relation": "Python 3.10 or later can run installation and deterministic helpers.",
+                },
+                {
+                    "id": "version-control-and-repository",
+                    "required": False,
+                    "recommended": True,
+                    "relation": "Git and a repository service such as GitHub preserve collaboration and recovery when useful.",
+                },
+                {
+                    "id": "remote-infrastructure",
+                    "required": False,
+                    "recommended": False,
+                    "relation": "A VPS or project-specific stack is prepared only when the selected work needs it.",
+                },
+            ],
+            "credential_boundary": "Explain and request access when needed; never embed credentials in the package.",
+        },
+        "capability_requirements": capabilities,
+        "source_catalogs": project_entity.get("source_catalogs", []),
+        "requested_bundle_ids": project_entity.get("requested_bundle_ids", []),
+        "completion": project_entity.get("completion", {}),
+    }
+
+
 def distribution_files(package_dir: Path, include_inventory: bool = True) -> list[Path]:
     result = []
     for path in sorted(
@@ -170,10 +341,12 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
 
     projection_path = root / "release" / "PROJECTION.json"
     projection = read_json(projection_path)
+    family_contract = project_kernel_family_contract(root)
+    project_version = family_contract["family_version"]
     if projection.get("schema") != PROJECTION_SCHEMA:
         raise BuildError("unsupported release projection schema")
-    if projection.get("version") != "2.0.0":
-        raise BuildError("release projection version is not 2.0.0")
+    if projection.get("version") != project_version:
+        raise BuildError(f"release projection version is not {project_version}")
 
     destinations: set[str] = set()
     for item in projection.get("files", []):
@@ -192,6 +365,18 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         destination = native(package_dir, destination_rel)
         project_source_file(source, destination)
 
+    meta_faculty, project_entity, repokernel_receipt = repokernel_projection_inputs(
+        root
+    )
+    write_json(
+        package_dir / "payload" / ".maios" / "kernel" / "PROJECT_META_FACULTY.json",
+        composed_project_meta_faculty(meta_faculty, repokernel_receipt),
+    )
+    write_json(
+        package_dir / "payload" / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json",
+        composed_project_entry_profile(project_entity, repokernel_receipt, family_contract),
+    )
+
     write_json(package_dir / "adapters" / "ADAPTERS.json", transformed_adapters(root))
 
     tree_sha256 = source_tree_digest(root)
@@ -201,7 +386,7 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     manifest = {
         "schema": MANIFEST_SCHEMA,
         "product": "MAIOS Project Kernel",
-        "version": "2.0.0",
+        "version": project_version,
         "entrypoint": "install.py",
         "runtime_requirements": {
             "python": ">=3.10",
@@ -222,6 +407,9 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             "tree_sha256": tree_sha256,
             "projection_sha256": digest_file(projection_path),
             "source_manifest_sha256": digest_file(root / "sources" / "SOURCE_MANIFEST.json"),
+            "repokernel_projection_receipt_sha256": digest_file(
+                root / "release" / "repokernel" / "PROJECTION_RECEIPT.json"
+            ),
             "revision_claim": "content_addressed_source_tree",
         },
         "payload_file_count": payload_count,
@@ -247,6 +435,15 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             "producer_self_approval": False,
             "behavioral_proof_separate": True,
         },
+        "repokernel_projection": {
+            "plan_id": repokernel_receipt["repokernel"]["plan_id"],
+            "receipt": "payload/.maios/REPOKERNEL_PROJECTION.json",
+            "project_meta_faculty": "payload/.maios/kernel/PROJECT_META_FACULTY.json",
+            "project_entity_profile": "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
+            "semantic_owner": f"payload/{PACKAGED_SEMANTIC_OWNER}",
+            "startup_interview": "required",
+            "configuration_state": "deferred_to_first_operator_relation",
+        },
         "contains_repokernel_source": False,
         "contains_form_state": False,
         "contains_private_topology": False,
@@ -270,6 +467,7 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     }
     write_json(package_dir / "PACKAGE_INVENTORY.json", inventory)
     return {
+        "version": project_version,
         "source_tree_sha256": tree_sha256,
         "package_file_count": len(distribution_files(package_dir)),
         "payload_file_count": payload_count,
@@ -320,6 +518,10 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "payload/.maios/runtime/operating.py",
         "payload/.maios/kernel/SYSTEM_KERNEL.md",
         "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
+        "payload/.maios/kernel/PROJECT_META_FACULTY.json",
+        "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
+        "payload/.maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json",
+        "payload/.maios/REPOKERNEL_PROJECTION.json",
         "payload/.maios/competences/INDEX.json",
         "payload/.maios/schemas/RESULTANT_READBACK.schema.json",
         "payload/.maios/state/OPERATING_STATE.json",
@@ -336,12 +538,15 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     missing = sorted(required - actual_names)
     if missing:
         errors.append("missing required distribution files: " + ", ".join(missing))
+    manifest: dict[str, Any] = {}
+    family_contract = project_kernel_family_contract(root)
+    project_version = family_contract["family_version"]
     try:
         manifest = read_json(package_dir / "MANIFEST.json")
         if manifest.get("schema") != MANIFEST_SCHEMA:
             errors.append("unsupported distribution manifest schema")
-        if manifest.get("version") != "2.0.0":
-            errors.append("distribution version is not 2.0.0")
+        if manifest.get("version") != project_version:
+            errors.append(f"distribution version is not {project_version}")
         if manifest.get("source_identity", {}).get("tree_sha256") != source_tree_digest(root):
             errors.append("manifest source tree identity is stale")
         if manifest.get("distribution_file_count") != len(actual_names):
@@ -361,6 +566,75 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
                 errors.append(f"manifest must set {flag} false")
     except BuildError as exc:
         errors.append(str(exc))
+
+    try:
+        source_meta, source_entity, source_receipt = repokernel_projection_inputs(root)
+        packaged_receipt = read_json(
+            package_dir / "payload" / ".maios" / "REPOKERNEL_PROJECTION.json"
+        )
+        packaged_meta = read_json(
+            package_dir / "payload" / ".maios" / "kernel" / "PROJECT_META_FACULTY.json"
+        )
+        packaged_entity = read_json(
+            package_dir / "payload" / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json"
+        )
+        expected_meta = composed_project_meta_faculty(source_meta, source_receipt)
+        expected_entity = composed_project_entry_profile(
+            source_entity, source_receipt, family_contract
+        )
+        if packaged_receipt != source_receipt:
+            errors.append("packaged RepoKernel projection receipt drifted from source")
+        if packaged_meta != expected_meta:
+            errors.append("packaged Project Meta-Faculty is not the composed source projection")
+        if packaged_entity != expected_entity:
+            errors.append("packaged Project Entity Profile is not the owner-native translation")
+        family_ids = [
+            item.get("id") for item in packaged_meta.get("function_families", [])
+        ]
+        expected_family_ids = family_contract["meta_faculty"][
+            "required_function_families"
+        ]
+        if (
+            packaged_meta.get("open_world")
+            is not family_contract["meta_faculty"]["open_world"]
+            or packaged_meta.get("effect_authority")
+            != family_contract["meta_faculty"]["effect_authority"]
+            or sorted(family_ids) != sorted(expected_family_ids)
+            or None in family_ids
+            or len(family_ids) != len(set(family_ids))
+        ):
+            errors.append("packaged Project Meta-Faculty lost neutral functional coverage")
+        if packaged_meta.get("invocation", {}).get("entry") != PACKAGED_SEMANTIC_OWNER:
+            errors.append("packaged Project Meta-Faculty does not use the semantic owner")
+        if (
+            packaged_entity.get("role", {}).get("startup_interview")
+            != family_contract["lanes"]["autonomous"]["startup_interview"]
+        ):
+            errors.append("packaged Project Entity Profile lost required startup interview")
+        if (
+            packaged_entity.get("schema")
+            != family_contract["entry_profile"]["schema"]
+            or packaged_entity.get("competence_field", {}).get("selection_model")
+            != family_contract["entry_profile"]["selection_model"]
+            or any(
+                field in packaged_entity
+                for field in family_contract["entry_profile"]["forbidden_fields"]
+            )
+        ):
+            errors.append("packaged Project Entity Profile lost its open owner-native relation")
+        expected_projection = {
+            "plan_id": source_receipt["repokernel"]["plan_id"],
+            "receipt": "payload/.maios/REPOKERNEL_PROJECTION.json",
+            "project_meta_faculty": "payload/.maios/kernel/PROJECT_META_FACULTY.json",
+            "project_entity_profile": "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
+            "semantic_owner": f"payload/{PACKAGED_SEMANTIC_OWNER}",
+            "startup_interview": "required",
+            "configuration_state": "deferred_to_first_operator_relation",
+        }
+        if manifest.get("repokernel_projection") != expected_projection:
+            errors.append("distribution manifest does not bind the RepoKernel projection")
+    except (BuildError, KeyError, TypeError) as exc:
+        errors.append(f"invalid RepoKernel package composition: {exc}")
     try:
         errors.extend(inventory_errors(package_dir))
     except BuildError as exc:

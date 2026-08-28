@@ -21,6 +21,20 @@ current operator relation and project sources
 The current skill, registry, schema, architecture, host, and nearest plausible
 solution are lenses. None is the ceiling of what may become relevant.
 
+## Compiled coverage and one semantic owner
+
+RepoKernel compiles the accepted neutral project relation into
+`PROJECT_META_FACULTY.json` and `PROJECT_ENTITY_PROFILE.json`. These files are
+maps for coverage, startup configuration and reentry; they are not a second
+kernel, a second router, or a runtime dependency on RepoKernel. The single
+operating semantic owner remains `skills/maios-project-system/SKILL.md`.
+
+`FACULTY_FIELD.json` is the MAIOS-native situated incarnation of that general
+coverage. Read the generated maps when first contact, changed configuration,
+an unfamiliar relation, a competence gap, a material effect, failure, or
+handoff can change the result. Let the living field and closest competences act;
+never route merely because a generated family exists.
+
 ## Source-bound orientation and aperture
 
 Keep operator source, verified evidence, inference, hypothesis, unknown,

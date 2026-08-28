@@ -44,7 +44,7 @@ def main() -> int:
         promote_directory(staging, package_dir)
         receipt = {
             "schema": "maios.package-build-receipt.v3",
-            "version": "2.0.0",
+            "version": build["version"],
             "source_tree_sha256": build["source_tree_sha256"],
             "package_file_count": build["package_file_count"],
             "payload_file_count": build["payload_file_count"],

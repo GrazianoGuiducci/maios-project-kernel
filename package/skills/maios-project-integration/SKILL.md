@@ -23,6 +23,21 @@ correctable explanation of:
 Let the operator correct the target, mode, interpretation or desired movement.
 The explanation is the first product result, not a pre-installation ritual.
 
+## Prepare the operating environment
+
+Before project implementation, determine whether the operator already has a
+capable coder or agentic harness, usable model access and Python 3.10 or later.
+Explain only the missing relations and help establish them in the form suited
+to the selected project. Model access may come from a provider account, API or
+local model. Git and a repository service are strongly recommended when they
+improve collaboration and recovery; a VPS or dedicated stack is introduced
+only when the work needs it.
+
+If no harness is present yet, treat that state as `not_present_yet`: explain
+the available host families and help the operator prepare one before applying
+the Project Kernel. Never embed credentials, choose a paid provider silently or
+turn common examples into mandatory infrastructure.
+
 ## Integrate
 
 For Codex, use the native package instructions and repository skill

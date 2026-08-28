@@ -21,7 +21,7 @@
     "instructions": "AGENTS.md",
     "neutral_competence": "skills/maios-project-integration/SKILL.md"
   },
-  "distribution_file_count": 48,
+  "distribution_file_count": 52,
   "entrypoint": "install.py",
   "global_writes": [],
   "host_adapters": [
@@ -34,9 +34,18 @@
     "pi",
     "dsh"
   ],
-  "payload_file_count": 37,
+  "payload_file_count": 41,
   "product": "MAIOS Project Kernel",
   "project_entrypoint": "payload/START_HERE.md",
+  "repokernel_projection": {
+    "configuration_state": "deferred_to_first_operator_relation",
+    "plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",
+    "project_entity_profile": "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
+    "project_meta_faculty": "payload/.maios/kernel/PROJECT_META_FACULTY.json",
+    "receipt": "payload/.maios/REPOKERNEL_PROJECTION.json",
+    "semantic_owner": "payload/skills/maios-project-system/SKILL.md",
+    "startup_interview": "required"
+  },
   "runtime_requirements": {
     "python": ">=3.10",
     "third_party_python_packages": []
@@ -52,14 +61,15 @@
   },
   "source_identity": {
     "owner": "maios-project-kernel repository",
-    "projection_sha256": "ecf5b6256c3d3b65becf9f2ab58675718e08f2a5fd8078b32d26869d1590febe",
+    "projection_sha256": "3d632332538c0d60a925d1c91bbedaaa4e07025a14480d383ada4349afd98c83",
+    "repokernel_projection_receipt_sha256": "879c2850afc76dab68a95b388e5976855a653a7dd71b9cea011c91bce88ceb2e",
     "revision_claim": "content_addressed_source_tree",
-    "source_manifest_sha256": "d35fa1f08fe1a8434e408eb1a8612548d0fe8fe29cb8051ba6a24990bcb616c5",
-    "tree_sha256": "8a54fcff5be2f230511617636ce881df4375408b9f6cce100ceab44e48c38217"
+    "source_manifest_sha256": "2051522caa021680435806b08e6ebb81b506a39efe8b4965eed3de8a469b2526",
+    "tree_sha256": "e26da472329500122ea174dec62f47f1c5099faa9a4d8d04af424ff285bf6007"
   },
   "target_modes": [
     "new_repository",
     "existing_repository"
   ],
-  "version": "2.0.0"
+  "version": "3.0.0"
 }

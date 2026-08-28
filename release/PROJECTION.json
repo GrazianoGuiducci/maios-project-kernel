@@ -1,7 +1,7 @@
 {
   "schema": "maios.release-projection.v2",
   "product": "MAIOS Project Kernel",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "files": [
     {"source": "templates/distribution/AGENTS.md", "destination": "AGENTS.md"},
     {"source": "templates/distribution/install.py", "destination": "install.py"},
@@ -28,7 +28,9 @@
     {"source": "kernel/COMPETENCE_CULTIVATION_PROTOCOL.md", "destination": "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md"},
     {"source": "kernel/FACULTY_FIELD.json", "destination": "payload/.maios/kernel/FACULTY_FIELD.json"},
     {"source": "kernel/EVOLUTION_CONTRACT.json", "destination": "payload/.maios/kernel/EVOLUTION_CONTRACT.json"},
+    {"source": "kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json", "destination": "payload/.maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json"},
     {"source": "sources/SOURCE_MANIFEST.json", "destination": "payload/.maios/SOURCE_MANIFEST.json"},
+    {"source": "release/repokernel/PROJECTION_RECEIPT.json", "destination": "payload/.maios/REPOKERNEL_PROJECTION.json"},
     {"source": "state/HOST_STATE.template.json", "destination": "payload/.maios/state/HOST_STATE.json"},
     {"source": "state/OPERATING_STATE.template.json", "destination": "payload/.maios/state/OPERATING_STATE.json"},
     {"source": "competences/INDEX.template.json", "destination": "payload/.maios/competences/INDEX.json"},
@@ -51,6 +53,8 @@
   ],
   "generated": [
     "adapters/ADAPTERS.json",
+    "payload/.maios/kernel/PROJECT_META_FACULTY.json",
+    "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
     "MANIFEST.json",
     "PACKAGE_INVENTORY.json"
   ]

@@ -1,6 +1,6 @@
 # Start here — stable system boot
 
-This project contains MAIOS Project Kernel 2.0.0. It was installed through an
+This project contains MAIOS Project Kernel 3.0.0. It was installed through an
 explicit package plan; installation did not configure the project or prove
 that the current host has used its faculty.
 
@@ -32,6 +32,13 @@ connects the same neutral Kernel relation to that host's instruction, skill,
 tool and reentry conventions. The coder's current knowledge of its own system
 is part of that adaptation.
 
+At first entry, the coder also checks
+`.maios/kernel/PROJECT_ENTITY_PROFILE.json#environment_readiness`. It explains
+and helps prepare any material missing condition—capable harness, model access,
+Python, recommended version control or optional remote infrastructure—before
+project implementation. The profile does not select providers, create
+accounts, install global software or receive credentials by itself.
+
 When their composition leaves a real capability gap, or concrete work exposes
 a reusable causal correction, `maios-project-competence-formation` forms or
 evolves the smallest project-local competence that changes the result. This is
@@ -44,6 +51,12 @@ The canonical semantic sources are:
 - `.maios/kernel/COMPOSITION_PROTOCOL.md`;
 - `setup/CONFIGURATION_STATE.json`;
 - `project/CURRENT_STATE.md`.
+
+The package also includes `.maios/kernel/PROJECT_ENTITY_PROFILE.json` and
+`.maios/kernel/PROJECT_META_FACULTY.json`, generated once from the accepted
+neutral RepoKernel relation. They describe deferred startup and general
+functional coverage, but do not create another kernel or runtime dependency.
+`maios-project-system` composes them through the MAIOS-native faculty field.
 
 `python maios.py status` checks the installed structure. `python maios.py
 compose --circumstance <file.json>` can project represented package

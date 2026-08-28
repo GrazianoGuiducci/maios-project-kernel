@@ -34,6 +34,15 @@ their vocabulary. When the host has no native skill mechanism, its root
 instructions and neutral `skills/` sources remain a sufficient readable entry
 for a capable coder.
 
+Before declaring the host ready, read
+`.maios/kernel/PROJECT_ENTITY_PROFILE.json#environment_readiness` and classify
+each material requirement as available, missing, environment-dependent or not
+needed for this project. Explain a missing harness, model/provider or local
+model access, Python runtime, repository service or optional infrastructure and
+help the operator establish it through the current host's normal mechanisms.
+This preparation is part of adaptation; credentials and global configuration
+remain operator-controlled effects.
+
 ## Let Adaptation Become Competence
 
 Preserve a host-specific relation only when it changes later discovery, use,

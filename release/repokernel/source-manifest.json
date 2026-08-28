@@ -1,0 +1,46 @@
+{
+  "schema": "repokernel.source-manifest.v1",
+  "sources": [
+    {
+      "source_id": "maios-project-kernel-readme",
+      "path_or_origin": "README.md",
+      "authority": "repo",
+      "privacy": "public",
+      "freshness": "current",
+      "instruction_handling": "data_only",
+      "public_label": "MAIOS Project Kernel product description",
+      "used_for": ["project_identity", "product_result"]
+    },
+    {
+      "source_id": "maios-system-kernel",
+      "path_or_origin": "kernel/SYSTEM_KERNEL.md",
+      "authority": "repo",
+      "privacy": "public",
+      "freshness": "current",
+      "instruction_handling": "data_only",
+      "public_label": "MAIOS Project System Kernel",
+      "used_for": ["semantic_kernel", "operating_invariants"]
+    },
+    {
+      "source_id": "maios-faculty-field",
+      "path_or_origin": "kernel/FACULTY_FIELD.json",
+      "authority": "repo",
+      "privacy": "public",
+      "freshness": "current",
+      "instruction_handling": "data_only",
+      "public_label": "MAIOS open faculty field",
+      "used_for": ["project_entity_profile", "faculty_catalog"],
+      "sha256": "31b27b04189e1aa9ab038917e0e944b9ac62bbc81fc1987bee5cf84e92e08148"
+    },
+    {
+      "source_id": "maios-competence-cultivation",
+      "path_or_origin": "kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
+      "authority": "repo",
+      "privacy": "public",
+      "freshness": "current",
+      "instruction_handling": "data_only",
+      "public_label": "MAIOS competence cultivation protocol",
+      "used_for": ["competence_evolution", "causal_learning"]
+    }
+  ]
+}

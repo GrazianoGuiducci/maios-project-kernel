@@ -1,9 +1,10 @@
 {
   "schema": "maios.source-manifest.v2",
   "product": "MAIOS Project Kernel",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "source_owner": "maios-project-kernel repository",
-  "construction": "manual source-reconciled package",
+  "construction": "autonomous source-reconciled package with RepoKernel-generated functions translated into owner-native organs",
+  "repokernel_plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",
   "sources": [
     {
       "id": "operator-direction",
@@ -11,7 +12,7 @@
       "used_for": ["complete replacement", "open circumstance-driven composition", "possibility preservation"]
     },
     {
-      "id": "generate-complete-kernel-awareness",
+      "id": "project-kernel-family-method",
       "position": "maintained_competence",
       "used_for": ["functional coverage", "self-installation", "open composition", "operating readback", "contamination control"]
     },
@@ -38,9 +39,11 @@
     },
     {
       "id": "repokernel-owner-contracts",
-      "position": "design_reference",
-      "used_for": ["Project Kernel neutrality", "claim levels", "target ownership"],
-      "source_shipped": false
+      "position": "non_shipped_compiler_source",
+      "used_for": ["Project Kernel neutrality", "claim levels", "target ownership", "Project Entity Profile", "Project Meta-Faculty coverage"],
+      "source_shipped": false,
+      "runtime_dependency": false,
+      "generated_projection_receipt": ".maios/REPOKERNEL_PROJECTION.json"
     }
   ],
   "excluded": [

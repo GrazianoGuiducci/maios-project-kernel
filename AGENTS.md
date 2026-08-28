@@ -1,6 +1,6 @@
 # MAIOS Project Kernel source gate
 
-This repository is the sole source and deterministic builder for the manual
+This repository is the sole source and deterministic builder for the autonomous
 MAIOS Project Kernel package. Start from `CURRENT_STATE.md`, then read only the
 source, architecture, package, test, or release files that can change the
 current movement.
@@ -21,11 +21,12 @@ prove installation, discovery, behavioral use, or maintained reentry.
 
 ## Current owner boundaries
 
-- This repository owns the manual self-configuring package and its builder.
-- `MAIOS_CLIENT_SETUP` owns the later Form-generated route and is not an input
-  to the manual 2.0.0 build.
-- RepoKernel is a neutral design and generation source; its private source is
-  not shipped and it does not own this package build.
+- This repository owns the autonomous self-configuring package and its builder.
+- `MAIOS_CLIENT_SETUP` owns the later Form-generated route. It will preconfigure
+  the same Kernel family but is not an input to this autonomous build.
+- RepoKernel is a neutral design and generation source. Reviewed functions are
+  translated into owner-native package organs; its private source is not
+  shipped and it does not own this package build.
 - `maios_it` is a later distribution surface. Source work here grants no push,
   release, publication, runtime, or public-site authority.
 

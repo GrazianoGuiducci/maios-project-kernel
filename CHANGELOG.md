@@ -6,6 +6,18 @@ All notable changes to the public distribution are recorded here.
 
 No unreleased changes.
 
+## 3.0.0 - 2026-08-28
+
+- Preserved the autonomous 2.0 Kernel while assimilating RepoKernel's neutral
+  Project Meta-Faculty coverage and Project Entity entry relations without
+  making the package a RepoKernel input or runtime.
+- Translated RepoKernel's fixed primary/support palette into MAIOS's open
+  `material_relation_and_observed_delta` competence field.
+- Added coder-led environment readiness for harness, model access, Python,
+  repository/version control and optional remote infrastructure.
+- Bound the generated relations to the exact RepoKernel source and deterministic
+  package projection while keeping the Form package as a distinct later lane.
+
 ## 2.0.0 - 2026-08-27
 
 - Added competence-driven activation for existing projects: the Kernel first

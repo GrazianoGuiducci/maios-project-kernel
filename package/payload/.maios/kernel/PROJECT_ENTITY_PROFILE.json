@@ -1,0 +1,189 @@
+{
+  "capability_requirements": [
+    {
+      "activation": "skill",
+      "delivery_mode": "embedded",
+      "id": "maios-project-system",
+      "installation_state": "packaged",
+      "maturity": "accepted-product-source",
+      "required": true,
+      "requires": [],
+      "side_effect_class": "reasoning_only",
+      "source_path": "skills/maios-project-system/SKILL.md",
+      "source_ref": "maios-project-kernel-faculties",
+      "source_type": "skill",
+      "state": "accepted"
+    },
+    {
+      "activation": "skill",
+      "delivery_mode": "embedded",
+      "id": "maios-project-context",
+      "installation_state": "packaged",
+      "maturity": "accepted-product-source",
+      "required": true,
+      "requires": [
+        "maios-project-system"
+      ],
+      "side_effect_class": "reasoning_only",
+      "source_path": "skills/maios-project-context/SKILL.md",
+      "source_ref": "maios-project-kernel-faculties",
+      "source_type": "skill",
+      "state": "accepted"
+    },
+    {
+      "activation": "skill",
+      "delivery_mode": "embedded",
+      "id": "maios-start-new-project",
+      "installation_state": "packaged",
+      "maturity": "accepted-product-source",
+      "required": true,
+      "requires": [
+        "maios-project-system",
+        "maios-project-context"
+      ],
+      "side_effect_class": "reasoning_only",
+      "source_path": "skills/maios-start-new-project/SKILL.md",
+      "source_ref": "maios-project-kernel-faculties",
+      "source_type": "skill",
+      "state": "accepted"
+    },
+    {
+      "activation": "skill",
+      "delivery_mode": "embedded",
+      "id": "maios-start-existing-project",
+      "installation_state": "packaged",
+      "maturity": "accepted-product-source",
+      "required": true,
+      "requires": [
+        "maios-project-system",
+        "maios-project-context"
+      ],
+      "side_effect_class": "reasoning_only",
+      "source_path": "skills/maios-start-existing-project/SKILL.md",
+      "source_ref": "maios-project-kernel-faculties",
+      "source_type": "skill",
+      "state": "accepted"
+    },
+    {
+      "activation": "skill",
+      "delivery_mode": "embedded",
+      "id": "maios-project-competence-formation",
+      "installation_state": "packaged",
+      "maturity": "accepted-product-source",
+      "required": true,
+      "requires": [
+        "maios-project-system"
+      ],
+      "side_effect_class": "local_write_gated",
+      "source_path": "skills/maios-project-competence-formation/SKILL.md",
+      "source_ref": "maios-project-kernel-faculties",
+      "source_type": "skill",
+      "state": "accepted"
+    },
+    {
+      "activation": "skill",
+      "delivery_mode": "embedded",
+      "id": "maios-project-host-adaptation",
+      "installation_state": "packaged",
+      "maturity": "accepted-product-source",
+      "required": true,
+      "requires": [
+        "maios-project-system"
+      ],
+      "side_effect_class": "local_write_gated",
+      "source_path": "skills/maios-project-host-adaptation/SKILL.md",
+      "source_ref": "maios-project-kernel-faculties",
+      "source_type": "skill",
+      "state": "accepted"
+    }
+  ],
+  "competence_field": {
+    "composition_rule": "Let every pertinent owner-native competence participate; no mandatory primary or fixed support count is imposed.",
+    "permanent_entry": "skills/maios-project-system/SKILL.md",
+    "reachable_competences": [
+      "maios-project-system",
+      "maios-project-context",
+      "maios-start-new-project",
+      "maios-start-existing-project",
+      "maios-project-competence-formation",
+      "maios-project-host-adaptation"
+    ],
+    "selection_model": "material_relation_and_observed_delta"
+  },
+  "completion": {
+    "evidence": [
+      "target-owned installation receipt",
+      "accepted situated configuration or current-source refinement",
+      "first useful result and falsifiable proof",
+      "later non-identical reentry or explicit unverified status"
+    ],
+    "success_condition": "The installed Project Kernel forms or refines a situated configuration, produces a first useful correctable result and preserves causal learning for reentry."
+  },
+  "configuration_state": "deferred_to_first_operator_relation",
+  "environment_readiness": {
+    "credential_boundary": "Explain and request access when needed; never embed credentials in the package.",
+    "owner": "maios-project-integration and maios-project-host-adaptation",
+    "requirements": [
+      {
+        "id": "capable-ai-coder-or-harness",
+        "relation": "A capable coder or agentic harness can read project instructions and act on files.",
+        "required": true
+      },
+      {
+        "id": "model-access",
+        "relation": "The coder has usable model access through a provider, API or local model.",
+        "required": true
+      },
+      {
+        "id": "python-runtime",
+        "relation": "Python 3.10 or later can run installation and deterministic helpers.",
+        "required": true
+      },
+      {
+        "id": "version-control-and-repository",
+        "recommended": true,
+        "relation": "Git and a repository service such as GitHub preserve collaboration and recovery when useful.",
+        "required": false
+      },
+      {
+        "id": "remote-infrastructure",
+        "recommended": false,
+        "relation": "A VPS or project-specific stack is prepared only when the selected work needs it.",
+        "required": false
+      }
+    ],
+    "rule": "Before project implementation, identify what is already available, explain material gaps and help the operator establish only the environment the selected project needs."
+  },
+  "product": "MAIOS Project Kernel",
+  "requested_bundle_ids": [
+    "self-configuring-project-kernel",
+    "project-continuity",
+    "competence-cultivation",
+    "host-portability"
+  ],
+  "role": {
+    "id": "maios-project-system",
+    "operating_recipient": "project owner and AI coder",
+    "purpose": "Orient, configure and operate one project through its sources, pertinent competences, resultants, causal learning and reentry.",
+    "startup_interview": "required"
+  },
+  "schema": "maios.project-entry-profile.v1",
+  "source_catalogs": [
+    {
+      "adoption": "pinned",
+      "freshness": "current",
+      "id": "maios-project-kernel-faculties",
+      "registry_path": "kernel/FACULTY_FIELD.json",
+      "revision": "3.0.0",
+      "sha256": "31b27b04189e1aa9ab038917e0e944b9ac62bbc81fc1987bee5cf84e92e08148",
+      "source_ref": "maios-faculty-field"
+    }
+  ],
+  "source_relation": {
+    "kind": "repokernel_generated_function_translated_to_owner_native_form",
+    "plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",
+    "source_profile_sha256": "fa647e5cac0554ad3ec79ddcbb753596941179313fed774fe9ad01f1cee5e9ca",
+    "source_schema": "repokernel.project-entity-profile.v1"
+  },
+  "version": "3.0.0"
+}

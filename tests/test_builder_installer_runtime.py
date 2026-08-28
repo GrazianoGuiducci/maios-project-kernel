@@ -75,6 +75,62 @@ class BuilderTests(DistributionFixture):
         )
         self.assertEqual(inventory_paths, sorted(inventory_paths))
 
+    def test_repokernel_profiles_are_composed_under_one_semantic_owner(self) -> None:
+        meta = builder.read_json(
+            self.distribution
+            / "payload"
+            / ".maios"
+            / "kernel"
+            / "PROJECT_META_FACULTY.json"
+        )
+        entity = builder.read_json(
+            self.distribution
+            / "payload"
+            / ".maios"
+            / "kernel"
+            / "PROJECT_ENTITY_PROFILE.json"
+        )
+        receipt = builder.read_json(
+            self.distribution / "payload" / ".maios" / "REPOKERNEL_PROJECTION.json"
+        )
+        manifest = builder.read_json(self.distribution / "MANIFEST.json")
+
+        self.assertTrue(meta["open_world"])
+        self.assertEqual(meta["effect_authority"], "none")
+        self.assertEqual(len(meta["function_families"]), 18)
+        self.assertEqual(
+            meta["invocation"]["entry"], "skills/maios-project-system/SKILL.md"
+        )
+        self.assertEqual(entity["role"]["startup_interview"], "required")
+        self.assertEqual(entity["schema"], "maios.project-entry-profile.v1")
+        self.assertEqual(entity["version"], "3.0.0")
+        self.assertEqual(
+            entity["competence_field"]["selection_model"],
+            "material_relation_and_observed_delta",
+        )
+        self.assertNotIn("faculty_palette", entity)
+        requirements = {
+            item["id"]: item for item in entity["environment_readiness"]["requirements"]
+        }
+        self.assertTrue(requirements["capable-ai-coder-or-harness"]["required"])
+        self.assertTrue(requirements["model-access"]["required"])
+        self.assertTrue(requirements["python-runtime"]["required"])
+        self.assertTrue(requirements["version-control-and-repository"]["recommended"])
+        self.assertFalse(requirements["remote-infrastructure"]["required"])
+        self.assertEqual(receipt["version"], "3.0.0")
+        self.assertFalse(
+            receipt["composition"]["fixed_generated_palette_transferred"]
+        )
+        self.assertEqual(
+            receipt["composition"]["configuration_state"],
+            "deferred_to_first_operator_relation",
+        )
+        self.assertEqual(
+            manifest["repokernel_projection"]["semantic_owner"],
+            "payload/skills/maios-project-system/SKILL.md",
+        )
+        self.assertFalse(manifest["contains_repokernel_source"])
+
     def test_generated_staging_cannot_enter_source_identity(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

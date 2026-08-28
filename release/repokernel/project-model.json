@@ -1,0 +1,48 @@
+{
+  "schema": "repokernel.project-model.v1",
+  "identity": {
+    "name": "MAIOS Project Kernel"
+  },
+  "mission": "Give a project and its AI coder a shared operating kernel that can configure itself from real work, form useful results and cultivate the competences the project needs.",
+  "product_or_result": "A repository-first self-installing Project Kernel with deferred situated configuration, one semantic owner, portable competences and continuous reentry.",
+  "source_refs": [
+    "maios-project-kernel-readme",
+    "maios-system-kernel",
+    "maios-faculty-field",
+    "maios-competence-cultivation"
+  ],
+  "assertions": [
+    {
+      "id": "deferred-configuration",
+      "status": "verified",
+      "text": "Direct acquisition defers situated project configuration to the first operator relation.",
+      "source_refs": ["maios-project-kernel-readme", "maios-system-kernel"]
+    },
+    {
+      "id": "one-semantic-owner",
+      "status": "verified",
+      "text": "The maios-project-system competence is the single project-level semantic entry and routes the closest operating competences.",
+      "source_refs": ["maios-project-kernel-readme", "maios-system-kernel"]
+    },
+    {
+      "id": "reciprocal-competence-cultivation",
+      "status": "verified",
+      "text": "Concrete work and its enabling competence evolve reciprocally through source-bound causal readback.",
+      "source_refs": ["maios-competence-cultivation", "maios-system-kernel"]
+    }
+  ],
+  "boundaries": {
+    "authority": "proposal_only_during_repokernel_generation",
+    "writes": "staging_only_until_package_composition",
+    "excluded": [
+      "private RepoKernel source",
+      "Form answers or runtime state",
+      "private D-ND or TMx topology",
+      "global host configuration"
+    ]
+  },
+  "unknowns": [
+    "semantic acceptance by a new operator and coder",
+    "native behavioral use and maintained reentry on every supported host"
+  ]
+}
