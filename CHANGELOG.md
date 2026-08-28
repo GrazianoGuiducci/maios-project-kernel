@@ -4,7 +4,9 @@ All notable changes to the public distribution are recorded here.
 
 ## Unreleased living source
 
-No unreleased changes.
+- Recorded the completed public 3.0.1 publication and the transition to the
+  separate Form-generated package lane. This post-release source continuity
+  changes no 3.0.1 product behavior or installable payload.
 
 ## 3.0.1 - 2026-08-28
 

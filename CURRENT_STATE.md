@@ -3,7 +3,8 @@
 updated: 2026-08-28
 active_surface: autonomous self-configuring `maios-project-kernel` 3.0.1 living source
 status: public `main` carries the coherent 3.0.1 stabilization source and
-deterministic `package/` projection; tag and GitHub Release remain 3.0.0
+deterministic `package/` projection; the immutable tag and GitHub Release
+`v3.0.1` preserve the released snapshot while `main` continues as living source
 
 ## Current resultant
 
@@ -75,10 +76,19 @@ competence that understands how to update its own system.
   and passes source-to-distribution verification; its exact source identity is
   supplied by the generated package manifest rather than copied into its own
   hashed source tree;
-- public `main` carries the reviewed 3.0.1 source candidate; its one reproduced
-  receipt/idempotency defect is corrected locally and regression-locked, while
-  the immutable tag and GitHub Release remain at 3.0.0 until the corrected
-  source is published and promoted;
+- release identity selected: annotated tag and GitHub Release `v3.0.1` preserve
+  commit `9dbb014f62e9ab06a4c0dba7203adc3051faf531`, product 3.0.1 on
+  Project Kernel family 3.0.0, with 54 package files / 43 payload files and
+  source-tree SHA-256
+  `975dbab5deb6aff910fdb3f48da163c8dcaeb2b1c76c3e3572c98ba53110b642`;
+- external publication observed on 2026-08-28: the public tag, GitHub Release
+  target and successful CI run `33205531698` resolve to that immutable release
+  commit; the Release intentionally has no attached asset because tracked
+  `package/` is the installable projection;
+- living source continuation: `main` records the completed publication and the
+  next owner movement without rewriting the release snapshot; its current
+  source and package identities are supplied by Git and the regenerated
+  manifest rather than copied back into their own hashed source;
 - exact package count, payload count, Python runtime requirement and source
   identity are supplied by the deterministic package manifest and build receipt;
 - GitHub CI rebuilds the tracked package twice on Python 3.10 and refuses any
@@ -118,9 +128,9 @@ Form, its P5 assembler, provider and other runtimes remain separate owner
 surfaces. They may inherit the same neutral RepoKernel generation relation only
 through their own context, bytes and proof.
 
-current_next: publish the corrected 3.0.1 source and deterministic projection,
-then create the immutable tag and GitHub Release before aligning the separate
-Form lane or public MAIOS communication
+current_next: use the closed autonomous 3.0.1 resultant to complete the
+separate Form-generated package lane through its own MAIOS_CLIENT_SETUP,
+RepoKernel, generated-byte and host-entry identities
 
 first_safe_action: preserve the synchronized family contract and compare both
 generated signatures after any reusable Project Kernel change
