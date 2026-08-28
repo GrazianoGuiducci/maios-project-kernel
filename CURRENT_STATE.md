@@ -2,8 +2,8 @@
 
 updated: 2026-08-28
 active_surface: autonomous self-configuring `maios-project-kernel` 3.0.1 living source
-status: local 3.0.1 stabilization source and deterministic `package/`
-projection coherent; no public correction effect selected in this movement
+status: public `main` carries the coherent 3.0.1 stabilization source and
+deterministic `package/` projection; tag and GitHub Release remain 3.0.0
 
 ## Current resultant
 
@@ -73,9 +73,9 @@ competence that understands how to update its own system.
   and passes source-to-distribution verification; its exact source identity is
   supplied by the generated package manifest rather than copied into its own
   hashed source tree;
-- the public 3.0.0 identity remains the immutable `main`/tag/Release baseline;
-  this local 3.0.1 correction has not been committed, pushed, tagged or
-  published by the present movement;
+- public `main` carries the reviewed 3.0.1 source candidate; the immutable tag
+  and GitHub Release remain at 3.0.0 until external review of the exact public
+  candidate supports promotion;
 - exact package count, payload count, Python runtime requirement and source
   identity are supplied by the deterministic package manifest and build receipt;
 - GitHub CI rebuilds the tracked package twice on Python 3.10 and refuses any
@@ -114,9 +114,9 @@ Form, its P5 assembler, provider and other runtimes remain separate owner
 surfaces. They may inherit the same neutral RepoKernel generation relation only
 through their own context, bytes and proof.
 
-current_next: review the exact local 3.0.1 correction and, only when its public
-effect is selected, commit and publish it as a new immutable patch before
-aligning the separate Form lane or public MAIOS communication
+current_next: review the exact public 3.0.1 `main` candidate and, only after its
+acceptance, create the new immutable tag and GitHub Release before aligning the
+separate Form lane or public MAIOS communication
 
 first_safe_action: preserve the synchronized family contract and compare both
 generated signatures after any reusable Project Kernel change
