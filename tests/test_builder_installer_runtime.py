@@ -74,6 +74,18 @@ class BuilderTests(DistributionFixture):
             manifest["runtime_requirements"]["third_party_python_packages"], []
         )
         self.assertEqual(inventory_paths, sorted(inventory_paths))
+        installed_catalog = builder.read_json(
+            self.distribution
+            / "payload"
+            / ".maios"
+            / "config"
+            / "HOST_ADAPTERS.json"
+        )
+        self.assertEqual(
+            [item["id"] for item in installed_catalog["adapters"]],
+            manifest["host_adapters"],
+        )
+        self.assertEqual(manifest["project_kernel_family_version"], "3.0.0")
 
     def test_repokernel_profiles_are_composed_under_one_semantic_owner(self) -> None:
         meta = builder.read_json(
@@ -93,6 +105,13 @@ class BuilderTests(DistributionFixture):
         receipt = builder.read_json(
             self.distribution / "payload" / ".maios" / "REPOKERNEL_PROJECTION.json"
         )
+        crosswalk = builder.read_json(
+            self.distribution
+            / "payload"
+            / ".maios"
+            / "kernel"
+            / "PROJECT_META_FACULTY_CROSSWALK.json"
+        )
         manifest = builder.read_json(self.distribution / "MANIFEST.json")
 
         self.assertTrue(meta["open_world"])
@@ -109,6 +128,15 @@ class BuilderTests(DistributionFixture):
             "material_relation_and_observed_delta",
         )
         self.assertNotIn("faculty_palette", entity)
+        self.assertEqual(
+            entity["source_catalogs"][0]["installed_registry_path"],
+            ".maios/kernel/FACULTY_FIELD.json",
+        )
+        self.assertEqual(
+            entity["source_catalogs"][0]["source_registry_path"],
+            "kernel/FACULTY_FIELD.json",
+        )
+        self.assertNotIn("registry_path", entity["source_catalogs"][0])
         requirements = {
             item["id"]: item for item in entity["environment_readiness"]["requirements"]
         }
@@ -118,6 +146,11 @@ class BuilderTests(DistributionFixture):
         self.assertTrue(requirements["version-control-and-repository"]["recommended"])
         self.assertFalse(requirements["remote-infrastructure"]["required"])
         self.assertEqual(receipt["version"], "3.0.0")
+        self.assertEqual(len(crosswalk["mappings"]), 18)
+        self.assertEqual(
+            {item["source_id"] for item in crosswalk["mappings"]},
+            {item["id"] for item in meta["function_families"]},
+        )
         self.assertFalse(
             receipt["composition"]["fixed_generated_palette_transferred"]
         )
@@ -221,6 +254,20 @@ class InstallerTests(DistributionFixture):
         self.assertTrue(preexisting.is_file())
         self.assertFalse((target / ".maios" / "backups").exists())
 
+    def test_existing_project_plan_ignores_unrelated_target_changes(self) -> None:
+        target = self.base / "existing-with-unrelated-work"
+        target.mkdir()
+        unrelated = target / "application-state.txt"
+        unrelated.write_text("before\n", encoding="utf-8")
+        plan = installer.make_plan(
+            self.distribution, target, "existing_repository", "generic"
+        )
+        self.assertEqual(plan["target_snapshot"]["scope"], "projected_paths")
+        unrelated.write_text("after\n", encoding="utf-8")
+        receipt = installer.apply_plan(self.distribution, plan)
+        self.assertEqual(receipt["state"], "installed")
+        self.assertEqual(unrelated.read_text(encoding="utf-8"), "after\n")
+
     def test_selected_host_state_and_native_projection_are_installed_but_unverified(self) -> None:
         target, _ = self.install("codex")
         host_state = json.loads(
@@ -269,7 +316,7 @@ class InstallerTests(DistributionFixture):
             "pi": ".agents/skills/maios-project-host-adaptation/SKILL.md",
             "dsh": ".agents/skills/maios-project-host-adaptation/SKILL.md",
         }
-        for host in (
+        for host_id in (
             "generic",
             "codex",
             "claude",
@@ -279,28 +326,28 @@ class InstallerTests(DistributionFixture):
             "pi",
             "dsh",
         ):
-            with self.subTest(host=host):
-                target, _ = self.install(host)
+            with self.subTest(host=host_id):
+                target, _ = self.install(host_id)
                 state = json.loads(
                     (target / ".maios" / "state" / "HOST_STATE.json").read_text(
                         encoding="utf-8"
                     )
                 )
-                self.assertEqual(state["selected_adapter"], host)
+                self.assertEqual(state["selected_adapter"], host_id)
                 canonical = target / "skills" / "maios-project-system" / "SKILL.md"
-                if host in native_paths:
+                if host_id in native_paths:
                     self.assertEqual(
-                        target.joinpath(*Path(native_paths[host]).parts).read_bytes(),
+                        target.joinpath(*Path(native_paths[host_id]).parts).read_bytes(),
                         canonical.read_bytes(),
                     )
                     adaptation = (
                         target / "skills" / "maios-project-host-adaptation" / "SKILL.md"
                     )
                     self.assertEqual(
-                        target.joinpath(*Path(adaptation_paths[host]).parts).read_bytes(),
+                        target.joinpath(*Path(adaptation_paths[host_id]).parts).read_bytes(),
                         adaptation.read_bytes(),
                     )
-                if host == "hermes":
+                if host_id == "hermes":
                     ignore = (target / ".hermes" / ".gitignore").read_text(
                         encoding="utf-8"
                     )
@@ -308,7 +355,63 @@ class InstallerTests(DistributionFixture):
                     self.assertIn(
                         "!skills/maios-project-host-adaptation/SKILL.md", ignore
                     )
-                self.assertTrue(runtime.validate_project(target)["valid"])
+                project_validation = runtime.validate_project(target)
+                self.assertTrue(project_validation["valid"])
+                self.assertEqual(
+                    project_validation["validation_levels"],
+                    {
+                        "structure_present": True,
+                        "content_valid": True,
+                        "source_bound": True,
+                        "host_readable": True,
+                        "operating_state_readable": True,
+                        "behavior": "unverified",
+                    },
+                )
+                host_module_status = host.host_status(target)
+                self.assertEqual(host_module_status["selected_adapter"], host_id)
+                operating_status = operating.operating_status(target)
+                self.assertEqual(
+                    operating_status["host"]["selected_adapter"], host_id
+                )
+                attestation = {
+                    "schema": "maios.host-attestation.v2",
+                    "event_id": f"{host_id}-discovery",
+                    "host": host_id,
+                    "stage": "instruction_discovery",
+                    "result": "verified",
+                    "observation": "project instructions were discovered",
+                    "evidence_refs": [f"fixture/{host_id}"],
+                    "observed_capabilities": ["instruction_discovery"],
+                    "review": {
+                        "status": "accepted",
+                        "reviewer": "project operator",
+                        "reviewer_relation": "operator",
+                        "producer_is_reviewer": False,
+                    },
+                }
+                self.assertTrue(
+                    host.validate_host_attestation(target, attestation)["valid"]
+                )
+
+    def test_explicit_receipt_is_bound_to_the_requested_target(self) -> None:
+        first, receipt = self.install("generic")
+        second = self.base / "second-target"
+        second.mkdir()
+        explicit = first / ".maios" / "receipts" / "install" / "CURRENT.json"
+        self.assertEqual(installer.load_receipt(first, explicit), receipt)
+        with self.assertRaisesRegex(
+            installer.InstallerError, "does not belong to the requested target"
+        ):
+            installer.load_receipt(second, explicit)
+        with self.assertRaisesRegex(
+            installer.InstallerError, "does not belong to the requested target"
+        ):
+            installer.verify_installation(second, receipt)
+        with self.assertRaisesRegex(
+            installer.InstallerError, "does not belong to the requested target"
+        ):
+            installer.uninstall(second, receipt)
 
     def test_pending_existing_install_has_deterministic_recovery(self) -> None:
         target = self.base / "pending-existing"
@@ -353,6 +456,31 @@ class InstallerTests(DistributionFixture):
 
 
 class RuntimeTests(DistributionFixture):
+    def test_validation_rejects_missing_or_corrupt_kernel_organs(self) -> None:
+        cases = (
+            (".maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json", "remove"),
+            (".maios/kernel/PROJECT_META_FACULTY.json", "corrupt"),
+            (".maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json", "corrupt"),
+            (".maios/config/HOST_ADAPTERS.json", "corrupt"),
+            (".maios/runtime/host.py", "remove"),
+            (".maios/state/HOST_STATE.json", "corrupt"),
+            ("skills/maios-project-host-adaptation/SKILL.md", "remove"),
+        )
+        for index, (relative, mutation) in enumerate(cases):
+            with self.subTest(relative=relative, mutation=mutation):
+                target = self.base / f"organ-target-{index}"
+                plan = installer.make_plan(
+                    self.distribution, target, "new_repository", "generic"
+                )
+                installer.apply_plan(self.distribution, plan)
+                path = target.joinpath(*Path(relative).parts)
+                if mutation == "remove":
+                    path.unlink()
+                else:
+                    path.write_text("{not-json\n", encoding="utf-8")
+                validation = runtime.validate_project(target)
+                self.assertFalse(validation["valid"])
+
     def resultant_readback(self, event_id: str = "resultant-01") -> dict:
         return {
             "schema": "maios.resultant-readback.v2",
@@ -872,11 +1000,13 @@ class RuntimeTests(DistributionFixture):
             configuration.current_configuration(target)["setup_status"], "pending"
         )
 
-    def host_attestation(self, event_id: str, stage: str) -> dict:
+    def host_attestation(
+        self, event_id: str, stage: str, host_id: str = "codex"
+    ) -> dict:
         return {
             "schema": "maios.host-attestation.v2",
             "event_id": event_id,
-            "host": "codex",
+            "host": host_id,
             "stage": stage,
             "result": "verified",
             "observation": f"observed {stage} in a fresh process",
@@ -907,7 +1037,7 @@ class RuntimeTests(DistributionFixture):
             ("host-reentry", "maintained_reentry"),
         ):
             attestation = self.host_attestation(event_id, stage)
-            validation = host.validate_host_attestation(attestation)
+            validation = host.validate_host_attestation(target, attestation)
             self.assertTrue(validation["valid"], validation["errors"])
             receipt = host.admit_host_attestation(
                 target, attestation, current_sha

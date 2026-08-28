@@ -173,10 +173,11 @@
       "adoption": "pinned",
       "freshness": "current",
       "id": "maios-project-kernel-faculties",
-      "registry_path": "kernel/FACULTY_FIELD.json",
+      "installed_registry_path": ".maios/kernel/FACULTY_FIELD.json",
       "revision": "3.0.0",
       "sha256": "31b27b04189e1aa9ab038917e0e944b9ac62bbc81fc1987bee5cf84e92e08148",
-      "source_ref": "maios-faculty-field"
+      "source_ref": "maios-faculty-field",
+      "source_registry_path": "kernel/FACULTY_FIELD.json"
     }
   ],
   "source_relation": {

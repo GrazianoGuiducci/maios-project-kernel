@@ -1,4 +1,4 @@
-# Install MAIOS Project Kernel 3.0.0 — repository package
+# Install MAIOS Project Kernel 3.0.1 — repository package
 
 The tracked `package/` projection is self-installing, not self-executing. Open
 it with the coder and let the coder first explain its relation to the target.

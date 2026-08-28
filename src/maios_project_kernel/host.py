@@ -13,6 +13,7 @@ from typing import Any
 HOST_STATE_SCHEMA = "maios.host-state.v2"
 HOST_ATTESTATION_SCHEMA = "maios.host-attestation.v2"
 HOST_RECEIPT_SCHEMA = "maios.host-attestation-receipt.v2"
+HOST_CATALOG_SCHEMA = "maios.installed-host-adapters.v1"
 STAGE_FIELDS = {
     "instruction_discovery": "instruction_discovery",
     "skill_discovery": "skill_discovery",
@@ -78,6 +79,30 @@ def host_state_path(root: Path) -> Path:
     return root / ".maios" / "state" / "HOST_STATE.json"
 
 
+def read_host_catalog(root: Path) -> dict[str, Any]:
+    root = root.resolve()
+    path = root / ".maios" / "config" / "HOST_ADAPTERS.json"
+    ensure_project_local(root, path)
+    value = read_json(path)
+    if not isinstance(value, dict) or value.get("schema") != HOST_CATALOG_SCHEMA:
+        raise HostAttestationError("unsupported installed host adapter catalogue")
+    adapters = value.get("adapters")
+    if not isinstance(adapters, list) or not adapters:
+        raise HostAttestationError("installed host adapter catalogue is empty")
+    ids = [item.get("id") for item in adapters if isinstance(item, dict)]
+    if (
+        len(ids) != len(adapters)
+        or any(not isinstance(item, str) or not item for item in ids)
+        or len(ids) != len(set(ids))
+    ):
+        raise HostAttestationError("installed host adapter ids must be present and unique")
+    return value
+
+
+def supported_host_ids(root: Path) -> set[str]:
+    return {item["id"] for item in read_host_catalog(root)["adapters"]}
+
+
 def read_host_state(root: Path) -> dict[str, Any]:
     root = root.resolve()
     path = host_state_path(root)
@@ -85,14 +110,7 @@ def read_host_state(root: Path) -> dict[str, Any]:
     value = read_json(path)
     if not isinstance(value, dict) or value.get("schema") != HOST_STATE_SCHEMA:
         raise HostAttestationError("unsupported host state schema")
-    if value.get("selected_adapter") not in {
-        "generic",
-        "codex",
-        "claude",
-        "opencode",
-        "hermes",
-        "dsh",
-    }:
+    if value.get("selected_adapter") not in supported_host_ids(root):
         raise HostAttestationError("host state has no supported selected adapter")
     return value
 
@@ -114,7 +132,7 @@ def host_status(root: Path) -> dict[str, Any]:
     }
 
 
-def validate_host_attestation(value: Any) -> dict[str, Any]:
+def validate_host_attestation(root: Path, value: Any) -> dict[str, Any]:
     errors: list[str] = []
     if not isinstance(value, dict):
         return {
@@ -131,15 +149,11 @@ def validate_host_attestation(value: Any) -> dict[str, Any]:
         errors.append("event_id contains unsafe characters")
     if value.get("stage") not in STAGE_FIELDS:
         errors.append("unsupported host attestation stage")
-    if value.get("host") not in {
-        "generic",
-        "codex",
-        "claude",
-        "opencode",
-        "hermes",
-        "dsh",
-    }:
-        errors.append("unsupported attestation host")
+    try:
+        if value.get("host") not in supported_host_ids(root):
+            errors.append("unsupported attestation host")
+    except HostAttestationError as exc:
+        errors.append(str(exc))
     if value.get("result") not in {"verified", "failed"}:
         errors.append("host attestation result must be verified or failed")
     if not isinstance(value.get("observation"), str) or not value["observation"].strip():
@@ -183,7 +197,7 @@ def admit_host_attestation(
     root: Path, attestation: Any, expected_state_sha256: str
 ) -> dict[str, Any]:
     root = root.resolve()
-    validation = validate_host_attestation(attestation)
+    validation = validate_host_attestation(root, attestation)
     if not validation["valid"]:
         raise HostAttestationError(
             "invalid host attestation: " + "; ".join(validation["errors"])

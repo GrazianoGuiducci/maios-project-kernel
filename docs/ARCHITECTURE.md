@@ -2,7 +2,8 @@
 
 ## Living source and generated delivery
 
-MAIOS Project Kernel 3.0.0 uses one implementation owner:
+MAIOS Project Kernel 3.0.1 uses one implementation owner. Product patch
+identity and the shared Project Kernel family contract are recorded separately:
 
 ```text
 kernel, setup, competence, adapter, runtime, installer, and template sources
@@ -29,6 +30,11 @@ RepoKernel neutral generation
 -> one invocation rebind to skills/maios-project-system/SKILL.md
 -> MAIOS-native FACULTY_FIELD and closest operating competences
 ```
+
+`PROJECT_META_FACULTY_CROSSWALK.json` makes this consolidation inspectable. It
+maps every neutral source family to existing MAIOS faculty ids; build and
+runtime validation resolve those ids to real installed files and Markdown
+anchors without creating another router or semantic owner.
 
 The translated profiles are organs of the installed Kernel, not another kernel
 or router. The fixed generated primary/support palette does not cross the

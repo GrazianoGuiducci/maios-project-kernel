@@ -81,13 +81,18 @@ def validate_project(root: Path) -> dict[str, Any]:
         ".maios/kernel/COMPOSITION_PROTOCOL.md",
         ".maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
         ".maios/kernel/EVOLUTION_CONTRACT.json",
+        ".maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json",
         ".maios/kernel/PROJECT_META_FACULTY.json",
+        ".maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json",
         ".maios/kernel/PROJECT_ENTITY_PROFILE.json",
         ".maios/REPOKERNEL_PROJECTION.json",
+        ".maios/config/HOST_ADAPTERS.json",
         ".maios/competences/INDEX.json",
+        ".maios/runtime/host.py",
         ".maios/runtime/operating.py",
         ".maios/schemas/RESULTANT_READBACK.schema.json",
         ".maios/state/OPERATING_STATE.json",
+        ".maios/state/HOST_STATE.json",
         "setup/CONFIGURATION_STATE.json",
         "project/CURRENT_STATE.md",
         "skills/maios-project-system/SKILL.md",
@@ -95,6 +100,7 @@ def validate_project(root: Path) -> dict[str, Any]:
         "skills/maios-start-existing-project/SKILL.md",
         "skills/maios-project-context/SKILL.md",
         "skills/maios-project-competence-formation/SKILL.md",
+        "skills/maios-project-host-adaptation/SKILL.md",
     ]
     missing = [relative for relative in required if not (root / relative).is_file()]
     errors: list[str] = []
@@ -117,6 +123,192 @@ def validate_project(root: Path) -> dict[str, Any]:
             errors.append("configuration state owner mismatch")
     except Exception as exc:
         errors.append(f"invalid configuration state: {exc}")
+    source_error_start = len(errors)
+    family: dict[str, Any] = {}
+    try:
+        family = read_json(
+            root / ".maios" / "kernel" / "PROJECT_KERNEL_FAMILY_CONTRACT.json"
+        )
+        if family.get("schema") != "maios.project-kernel-family-contract.v1":
+            errors.append("unsupported Project Kernel family contract")
+        if not isinstance(family.get("family_version"), str):
+            errors.append("Project Kernel family contract has no version")
+    except Exception as exc:
+        errors.append(f"invalid Project Kernel family contract: {exc}")
+    meta: dict[str, Any] = {}
+    try:
+        meta = read_json(root / ".maios" / "kernel" / "PROJECT_META_FACULTY.json")
+        family_ids = [item.get("id") for item in meta.get("function_families", [])]
+        expected_ids = family.get("meta_faculty", {}).get(
+            "required_function_families", []
+        )
+        if meta.get("schema") != "repokernel.project-meta-faculty.v1":
+            errors.append("unsupported Project Meta-Faculty schema")
+        if meta.get("open_world") is not True or meta.get("effect_authority") != "none":
+            errors.append("Project Meta-Faculty must remain open and effect-neutral")
+        if (
+            not family_ids
+            or None in family_ids
+            or len(family_ids) != len(set(family_ids))
+            or sorted(family_ids) != sorted(expected_ids)
+        ):
+            errors.append("Project Meta-Faculty functional coverage is inconsistent")
+        if meta.get("invocation", {}).get("entry") != (
+            "skills/maios-project-system/SKILL.md"
+        ):
+            errors.append("Project Meta-Faculty semantic owner mismatch")
+    except Exception as exc:
+        errors.append(f"invalid Project Meta-Faculty: {exc}")
+    try:
+        entity = read_json(root / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json")
+        entry_contract = family.get("entry_profile", {})
+        autonomous = family.get("lanes", {}).get("autonomous", {})
+        if entity.get("schema") != entry_contract.get("schema"):
+            errors.append("Project Entity Profile schema mismatch")
+        if entity.get("version") != family.get("family_version"):
+            errors.append("Project Entity Profile family version mismatch")
+        if entity.get("competence_field", {}).get(
+            "selection_model"
+        ) != entry_contract.get("selection_model"):
+            errors.append("Project Entity Profile selection model mismatch")
+        if entity.get("role", {}).get("startup_interview") != autonomous.get(
+            "startup_interview"
+        ):
+            errors.append("Project Entity Profile startup relation mismatch")
+        if entity.get("configuration_state") != autonomous.get("configuration_state"):
+            errors.append("Project Entity Profile configuration state mismatch")
+        if any(field in entity for field in entry_contract.get("forbidden_fields", [])):
+            errors.append("Project Entity Profile contains a forbidden closed field")
+        for catalog in entity.get("source_catalogs", []):
+            installed_path = catalog.get("installed_registry_path")
+            if (
+                not isinstance(installed_path, str)
+                or PurePosixPath(installed_path).is_absolute()
+                or ".." in PurePosixPath(installed_path).parts
+                or not root.joinpath(*PurePosixPath(installed_path).parts).is_file()
+            ):
+                errors.append("Project Entity Profile contains an unresolved installed catalog")
+    except Exception as exc:
+        errors.append(f"invalid Project Entity Profile: {exc}")
+    try:
+        crosswalk = read_json(
+            root
+            / ".maios"
+            / "kernel"
+            / "PROJECT_META_FACULTY_CROSSWALK.json"
+        )
+        source_ids = [
+            item.get("id") for item in meta.get("function_families", [])
+        ]
+        target_by_id = {
+            item.get("id"): item for item in registry.get("families", [])
+        }
+        mappings = crosswalk.get("mappings", [])
+        mapped_sources = [
+            item.get("source_id") for item in mappings if isinstance(item, dict)
+        ]
+        resolved_targets: set[str] = set()
+        if (
+            crosswalk.get("schema") != "maios.project-meta-faculty-crosswalk.v1"
+            or crosswalk.get("source_schema") != meta.get("schema")
+            or crosswalk.get("target_schema") != registry.get("schema")
+            or crosswalk.get("semantic_owner") != "skills/maios-project-system/SKILL.md"
+            or crosswalk.get("open_world") is not True
+            or len(mapped_sources) != len(mappings)
+            or len(mapped_sources) != len(set(mapped_sources))
+            or sorted(mapped_sources) != sorted(source_ids)
+        ):
+            errors.append("Project Meta-Faculty crosswalk identity or coverage mismatch")
+        for mapping in mappings:
+            if not isinstance(mapping, dict):
+                continue
+            target_ids = mapping.get("target_faculty_ids")
+            if not isinstance(target_ids, list) or not target_ids:
+                errors.append("Project Meta-Faculty crosswalk mapping has no target")
+                continue
+            for target_id in target_ids:
+                target = target_by_id.get(target_id)
+                if target is None:
+                    errors.append(f"Project Meta-Faculty target is missing: {target_id}")
+                    continue
+                resolved_targets.add(target_id)
+                entry = target.get("entry")
+                if not isinstance(entry, str):
+                    errors.append(f"Project Meta-Faculty target has no entry: {target_id}")
+                    continue
+                path_text, separator, anchor = entry.partition("#")
+                entry_path = PurePosixPath(path_text)
+                if (
+                    entry_path.is_absolute()
+                    or ".." in entry_path.parts
+                    or not root.joinpath(*entry_path.parts).is_file()
+                ):
+                    errors.append(f"Project Meta-Faculty target entry is missing: {target_id}")
+                    continue
+                if separator:
+                    headings = []
+                    for line in root.joinpath(*entry_path.parts).read_text(
+                        encoding="utf-8"
+                    ).splitlines():
+                        if line.startswith("#"):
+                            heading = line.lstrip("#").strip().lower()
+                            heading = re.sub(r"[^\w\s-]", "", heading)
+                            headings.append(
+                                re.sub(r"[\s-]+", "-", heading).strip("-")
+                            )
+                    if anchor not in headings:
+                        errors.append(
+                            f"Project Meta-Faculty target anchor is missing: {target_id}"
+                        )
+        if resolved_targets != set(target_by_id):
+            errors.append("Project Meta-Faculty crosswalk does not resolve every faculty")
+    except Exception as exc:
+        errors.append(f"invalid Project Meta-Faculty crosswalk: {exc}")
+    try:
+        evolution = read_json(root / ".maios" / "kernel" / "EVOLUTION_CONTRACT.json")
+        if evolution.get("schema") != "maios.project-evolution-contract.v3":
+            errors.append("unsupported evolution contract")
+        if evolution.get("effect_authority_default") != "none":
+            errors.append("evolution contract grants effect authority")
+        if evolution.get("semantic_owner") != (
+            "skills/maios-project-system/SKILL.md"
+        ):
+            errors.append("evolution contract semantic owner mismatch")
+        if evolution.get("competence_state_owner") != ".maios/competences/INDEX.json":
+            errors.append("evolution contract competence owner mismatch")
+    except Exception as exc:
+        errors.append(f"invalid evolution contract: {exc}")
+    try:
+        receipt = read_json(root / ".maios" / "REPOKERNEL_PROJECTION.json")
+        boundaries = receipt.get("boundaries", {})
+        if receipt.get("schema") != "maios.repokernel-projection-receipt.v1":
+            errors.append("unsupported RepoKernel projection receipt")
+        if (
+            boundaries.get("contains_repokernel_source") is not False
+            or boundaries.get("runtime_dependency_on_repokernel") is not False
+            or boundaries.get("creates_second_semantic_owner") is not False
+            or boundaries.get("effect_authority") != "none"
+        ):
+            errors.append("RepoKernel projection boundary mismatch")
+    except Exception as exc:
+        errors.append(f"invalid RepoKernel projection receipt: {exc}")
+    source_bound = len(errors) == source_error_start
+    host_readable = True
+    try:
+        host_engine.read_host_catalog(root)
+        host_engine.read_host_state(root)
+    except Exception as exc:
+        host_readable = False
+        errors.append(f"invalid host state or catalogue: {exc}")
+    operating_state_readable = True
+    try:
+        operating_state = read_json(root / ".maios" / "state" / "OPERATING_STATE.json")
+        if operating_state.get("schema") != "maios.operating-state.v1":
+            operating_state_readable = False
+            errors.append("unsupported operating state")
+    except Exception as exc:
+        operating_state_readable = False
+        errors.append(f"invalid operating state: {exc}")
     try:
         index = read_competence_index(root)
         if not isinstance(index.get("represented"), dict):
@@ -153,6 +345,14 @@ def validate_project(root: Path) -> dict[str, Any]:
         "valid": not missing and not errors,
         "missing": missing,
         "errors": errors,
+        "validation_levels": {
+            "structure_present": not missing,
+            "content_valid": not errors,
+            "source_bound": source_bound,
+            "host_readable": host_readable,
+            "operating_state_readable": operating_state_readable,
+            "behavior": "unverified",
+        },
         "family_count": len(registry.get("families", [])),
         "setup_status": state.get("setup_status"),
     }
@@ -508,7 +708,7 @@ def main(argv: Iterable[str] | None = None) -> int:
             result = host_engine.host_status(root)
         elif args.command == "validate-host-attestation":
             result = host_engine.validate_host_attestation(
-                read_json(args.attestation)
+                root, read_json(args.attestation)
             )
         elif args.command == "admit-host-attestation":
             result = host_engine.admit_host_attestation(

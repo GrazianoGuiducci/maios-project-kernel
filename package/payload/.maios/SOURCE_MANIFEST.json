@@ -1,7 +1,7 @@
 {
   "schema": "maios.source-manifest.v2",
   "product": "MAIOS Project Kernel",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "source_owner": "maios-project-kernel repository",
   "construction": "autonomous source-reconciled package with RepoKernel-generated functions translated into owner-native organs",
   "repokernel_plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",

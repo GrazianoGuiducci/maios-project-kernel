@@ -11,6 +11,12 @@ conversazione.
 La repository è il prodotto. La cartella tracciata [`package/`](package/) è la
 proiezione autoinstallante pronta all'uso.
 
+RepoKernel fornisce funzioni neutrali revisionate: una relazione di ingresso
+Project Entity e una mappa di copertura Project Meta-Faculty. Questa repository
+autonoma le traduce nel proprio campo aperto di competenze e nell'unico
+proprietario semantico `maios-project-system`. RepoKernel non costruisce il
+pacchetto, non viene distribuito e non è una dipendenza runtime.
+
 L'installer e l'helper installato richiedono Python 3.10 o successivo; non sono
 necessari pacchetti Python di terze parti.
 
@@ -211,7 +217,8 @@ del coder e dell'operatore.
 ## Struttura del pacchetto e della sorgente
 
 ```text
-sorgenti vive della repository
+sorgenti vive della repository autonoma
++ funzioni RepoKernel revisionate e tradotte in relazioni native del proprietario
 -> release/PROJECTION.json dichiarata
 -> proiezione deterministica e tracciata package/
 -> MANIFEST.json e PACKAGE_INVENTORY.json esatti
@@ -227,6 +234,7 @@ sorgenti vive della repository
 | `src/maios_project_kernel/` | Proiezione deterministica, installer, configurazione, runtime, stato host e readback operativo |
 | `adapters/` | Proiezioni locali per gli host |
 | `templates/` | Superfici di ingresso della distribuzione e del progetto installato |
+| `release/repokernel/` | Input RepoKernel vincolato alla sorgente, mappa funzionale generata e ricevuta di traduzione |
 | `release/PROJECTION.json` | Mappa completa da sorgente a pacchetto |
 | `package/` | Superficie di installazione generata, tracciata e direttamente usabile |
 | `tests/` | Fixture di sorgente, pacchetto, installazione, recupero, stato e comportamento |
@@ -252,10 +260,11 @@ nella repository. Non dimostrano da soli accettazione semantica da parte di un
 operatore reale, uso nativo in ogni host o comportamento mantenuto in lavori
 successivi non identici. Queste osservazioni restano evidenze separate.
 
-Il pacchetto autoconfigurante non importa risposte del Form MAIOS, sorgente
-privata RepoKernel, topologia privata D-ND/TMx, credenziali, stato runtime o
-hook lifecycle. Il Project Kernel generato separatamente dal Form è un'altra
-pipeline con builder, contesto, byte e prove proprie.
+Il pacchetto autoconfigurante contiene traduzioni native delle funzioni neutrali
+RepoKernel revisionate, ma non importa risposte del Form MAIOS, sorgente privata
+RepoKernel, topologia privata D-ND/TMx, credenziali, stato runtime o hook
+lifecycle. Il Project Kernel generato separatamente dal Form è un'altra pipeline
+con builder, contesto, byte e prove proprie.
 
 Consulta [Architettura](docs/ARCHITECTURE.md),
 [Provenienza](docs/PROVENANCE.md) e [Ricevute](docs/RECEIPTS.md) per i dettagli.

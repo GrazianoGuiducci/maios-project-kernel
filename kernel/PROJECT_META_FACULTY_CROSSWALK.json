@@ -1,0 +1,82 @@
+{
+  "schema": "maios.project-meta-faculty-crosswalk.v1",
+  "source_schema": "repokernel.project-meta-faculty.v1",
+  "target_schema": "maios.situated-faculty-field.v2",
+  "semantic_owner": "skills/maios-project-system/SKILL.md",
+  "open_world": true,
+  "rule": "Every neutral source family resolves to one or more existing MAIOS faculties. Consolidation preserves the relation without creating a second competence owner or closing the field.",
+  "mappings": [
+    {
+      "source_id": "self-location-and-reentry",
+      "target_faculty_ids": ["maios-configuration", "attention-learning-and-reentry"]
+    },
+    {
+      "source_id": "source-integrity-and-epistemic-calibration",
+      "target_faculty_ids": ["source-bound-orientation"]
+    },
+    {
+      "source_id": "pre-projection-self-correction",
+      "target_faculty_ids": ["preprojection-self-correction"]
+    },
+    {
+      "source_id": "open-horizon-and-level-shift",
+      "target_faculty_ids": ["possibility-horizon"]
+    },
+    {
+      "source_id": "field-illumination-and-first-result",
+      "target_faculty_ids": ["field-illumination", "result-formation-and-first-proof"]
+    },
+    {
+      "source_id": "cognitive-aperture-and-limit-classification",
+      "target_faculty_ids": ["source-bound-orientation", "possibility-horizon"]
+    },
+    {
+      "source_id": "representation-adequacy-and-non-collapse",
+      "target_faculty_ids": ["source-bound-orientation", "field-illumination"]
+    },
+    {
+      "source_id": "faculty-discovery-composition-and-gap",
+      "target_faculty_ids": ["situated-faculty-composition"]
+    },
+    {
+      "source_id": "competence-evolution-and-granularity",
+      "target_faculty_ids": ["maios-project-competence-formation"]
+    },
+    {
+      "source_id": "resultant-and-consequence-evaluation",
+      "target_faculty_ids": ["resultant-evaluation"]
+    },
+    {
+      "source_id": "memory-crystallization-and-causal-continuity",
+      "target_faculty_ids": ["attention-learning-and-reentry"]
+    },
+    {
+      "source_id": "failure-localization-and-recovery",
+      "target_faculty_ids": ["failure-localization"]
+    },
+    {
+      "source_id": "effect-authority-and-recovery",
+      "target_faculty_ids": ["effect-authority-and-recovery"]
+    },
+    {
+      "source_id": "host-and-capability-reality",
+      "target_faculty_ids": ["topology-host-and-capability-reality", "maios-project-host-adaptation"]
+    },
+    {
+      "source_id": "delegation-coordination-and-supervision",
+      "target_faculty_ids": ["intent-preserving-delegation"]
+    },
+    {
+      "source_id": "invariant-portability-and-distribution",
+      "target_faculty_ids": ["maios-project-host-adaptation", "maios-project-competence-formation"]
+    },
+    {
+      "source_id": "self-improvement-and-independent-evaluation",
+      "target_faculty_ids": ["resultant-evaluation", "maios-project-competence-formation"]
+    },
+    {
+      "source_id": "operational-attention-and-routine-distillation",
+      "target_faculty_ids": ["attention-learning-and-reentry"]
+    }
+  ]
+}

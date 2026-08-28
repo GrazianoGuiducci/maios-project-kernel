@@ -2,7 +2,7 @@
 
 ## Source owner
 
-Version 3.0.0 is this `maios-project-kernel` repository. The autonomous 2.0
+Version 3.0.1 is this `maios-project-kernel` repository. The autonomous 2.0
 Kernel remains its living base; reviewed RepoKernel functions are assimilated
 through a source-bound translation receipt. The generated
 `package/` projection
@@ -14,7 +14,9 @@ package topology.
 The RepoKernel Project Meta-Faculty is retained as an open functional coverage
 map. Its generated entity profile is translated into the package's open,
 deferred owner-native entry relation; its fixed primary/support palette is not
-copied into the living competence field.
+copied into the living competence field. The owner-native crosswalk binds all
+18 neutral families to the 15 existing MAIOS faculties and their resolvable
+installed entries.
 
 The maintained source positions and exclusions are declared in
 [`sources/SOURCE_MANIFEST.json`](../sources/SOURCE_MANIFEST.json). The exact

@@ -6,6 +6,23 @@ All notable changes to the public distribution are recorded here.
 
 No unreleased changes.
 
+## 3.0.1 - 2026-08-28
+
+- Unified installer, installed state, host status and attestation around one
+  source-owned host catalogue; all eight declared adapters now complete the
+  same installed status and operating-readback path.
+- Added semantic validation for the installed family contract, Project
+  Meta-Faculty, Project Entity Profile, evolution and RepoKernel receipts,
+  host catalogue/state, operating state, runtime and host-adaptation owner.
+- Bound explicit installation receipts to their exact target and limited
+  existing-project plan snapshots to package-owned destination paths.
+- Made Project Entity source and installed catalogue paths explicit, aligned
+  the Italian 3.0 documentation and separated product patch identity from the
+  shared Project Kernel family version.
+- Added a validated owner-native crosswalk from all 18 neutral Project
+  Meta-Faculty families to the 15 existing MAIOS faculties and their installed
+  files or anchors.
+
 ## 3.0.0 - 2026-08-28
 
 - Preserved the autonomous 2.0 Kernel while assimilating RepoKernel's neutral

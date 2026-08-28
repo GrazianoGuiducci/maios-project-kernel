@@ -1,9 +1,9 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-08-28
-active_surface: autonomous self-configuring `maios-project-kernel` 3.0.0 living source
-status: 3.0 source and deterministic `package/` projection coherent and
-selected for public repository release
+active_surface: autonomous self-configuring `maios-project-kernel` 3.0.1 living source
+status: local 3.0.1 stabilization source and deterministic `package/`
+projection coherent; no public correction effect selected in this movement
 
 ## Current resultant
 
@@ -13,6 +13,21 @@ coverage map with no effect authority. The generated Project Entity relation
 is translated into a MAIOS-native deferred entry profile with no mandatory
 primary or fixed support count and with explicit environment readiness.
 RepoKernel source and runtime do not enter the package.
+
+The 3.0.1 stabilization keeps the shared Project Kernel family at 3.0.0 while
+separating product patch identity from family identity. One canonical adapter
+catalogue now produces both the distribution view and the installed runtime
+view, so installer, host state, status, operating readback and attestation use
+the same eight supported host ids. Installed Kernel-owned organs are validated
+for their schemas, owner relations and resolvable paths rather than presence
+alone. Explicit receipts are target-bound, and existing-project plans observe
+only paths the package can change.
+
+The 18-family neutral coverage is now connected explicitly to the 15 living
+MAIOS faculties through `PROJECT_META_FACULTY_CROSSWALK.json`. Every source
+family resolves to existing owner-native faculty ids, and every target entry
+resolves to an installed file and, where declared, a real Markdown anchor.
+This is an audit relation, not another router or semantic owner.
 
 The distribution opens with a coder-facing integration competence. The coder
 understands and explains the package, receives operator correction, then uses
@@ -54,19 +69,22 @@ competence that understands how to update its own system.
   generated the neutral source relations; the package builder verifies their
   hashes, translates them into the open MAIOS entry relation and preserves one
   semantic owner;
-- the deterministic package currently contains 52 files, 41 under `payload/`,
+- the local deterministic 3.0.1 package contains 54 files, 43 under `payload/`,
   and passes source-to-distribution verification; its exact source identity is
   supplied by the generated package manifest rather than copied into its own
   hashed source tree;
-- the 3.0 release is complete only when public `main`, tag `v3.0.0` and the
-  GitHub Release target resolve to the same reviewed source revision; the
-  tracked `package/` remains the installable product projection;
+- the public 3.0.0 identity remains the immutable `main`/tag/Release baseline;
+  this local 3.0.1 correction has not been committed, pushed, tagged or
+  published by the present movement;
 - exact package count, payload count, Python runtime requirement and source
   identity are supplied by the deterministic package manifest and build receipt;
 - GitHub CI rebuilds the tracked package twice on Python 3.10 and refuses any
   source-to-projection difference;
-- extended behavioral tests, real semantic acceptance, native host use and
-  later non-identical reentry are intentionally deferred.
+- 26 local tests cover deterministic projection, every declared host through
+  installation/status/operating readback/attestation validation, corrupted or
+  missing Kernel organs, receipt target binding and unrelated existing-project
+  changes; real native-host behavior and later non-identical reentry remain
+  separate evidence.
 
 ## Living owners
 
@@ -96,11 +114,12 @@ Form, its P5 assembler, provider and other runtimes remain separate owner
 surfaces. They may inherit the same neutral RepoKernel generation relation only
 through their own context, bytes and proof.
 
-current_next: review the exact public 3.0 repository result, then use the
-separately released Form to generate and accept one real P5 package
+current_next: review the exact local 3.0.1 correction and, only when its public
+effect is selected, commit and publish it as a new immutable patch before
+aligning the separate Form lane or public MAIOS communication
 
 first_safe_action: preserve the synchronized family contract and compare both
 generated signatures after any reusable Project Kernel change
 
-validation_deferred: extended behavioral tests, real semantic acceptance,
-later non-identical reentry and native adapter behavior
+validation_deferred: real semantic acceptance, later non-identical reentry,
+native adapter behavior and independent RepoKernel provenance/crosswalk design

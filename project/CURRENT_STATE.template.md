@@ -6,7 +6,7 @@ setup_status: pending
 
 ## Verified state
 
-MAIOS Project Kernel 3.0.0 is installed as project-local files. The current
+MAIOS Project Kernel 3.0.1 is installed as project-local files. The current
 host projection may be installed, but discovery, state use, behavioral
 activation, and maintained reentry remain unverified until observed.
 

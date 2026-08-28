@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import shutil
 from pathlib import Path, PurePosixPath
 from typing import Any
@@ -18,6 +19,7 @@ REPOKERNEL_META_SCHEMA = "repokernel.project-meta-faculty.v1"
 REPOKERNEL_ENTITY_SCHEMA = "repokernel.project-entity-profile.v1"
 PACKAGED_SEMANTIC_OWNER = "skills/maios-project-system/SKILL.md"
 FAMILY_CONTRACT_SCHEMA = "maios.project-kernel-family-contract.v1"
+INSTALLED_HOST_CATALOG_SCHEMA = "maios.installed-host-adapters.v1"
 
 
 class BuildError(RuntimeError):
@@ -163,6 +165,115 @@ def transformed_adapters(root: Path) -> dict[str, Any]:
     return result
 
 
+def installed_host_catalog(root: Path) -> dict[str, Any]:
+    """Project the canonical adapter catalogue into the installed runtime."""
+
+    source = read_json(root / "adapters" / "ADAPTERS.json")
+    adapters = source.get("adapters", [])
+    if source.get("schema") != "maios.host-adapters.v2" or not isinstance(
+        adapters, list
+    ):
+        raise BuildError("unsupported canonical host adapter catalogue")
+    projected: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for adapter in adapters:
+        if not isinstance(adapter, dict):
+            raise BuildError("host adapter catalogue contains a non-object entry")
+        adapter_id = adapter.get("id")
+        if not isinstance(adapter_id, str) or not adapter_id or adapter_id in seen:
+            raise BuildError("host adapter ids must be present and unique")
+        seen.add(adapter_id)
+        projected.append(
+            {
+                "id": adapter_id,
+                "display_name": adapter.get("display_name"),
+                "native_skill_root": adapter.get("native_skill_root"),
+            }
+        )
+    return {
+        "schema": INSTALLED_HOST_CATALOG_SCHEMA,
+        "source": "adapters/ADAPTERS.json",
+        "adapters": projected,
+    }
+
+
+def project_meta_crosswalk_errors(
+    crosswalk: Any,
+    meta_faculty: dict[str, Any],
+    faculty_field: dict[str, Any],
+    payload_root: Path,
+) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(crosswalk, dict) or crosswalk.get("schema") != (
+        "maios.project-meta-faculty-crosswalk.v1"
+    ):
+        return ["unsupported Project Meta-Faculty crosswalk"]
+    if (
+        crosswalk.get("source_schema") != meta_faculty.get("schema")
+        or crosswalk.get("target_schema") != faculty_field.get("schema")
+        or crosswalk.get("semantic_owner") != PACKAGED_SEMANTIC_OWNER
+        or crosswalk.get("open_world") is not True
+    ):
+        errors.append("Project Meta-Faculty crosswalk owner or schema mismatch")
+    source_ids = [
+        item.get("id") for item in meta_faculty.get("function_families", [])
+    ]
+    target_by_id = {
+        item.get("id"): item for item in faculty_field.get("families", [])
+    }
+    mappings = crosswalk.get("mappings", [])
+    mapping_source_ids = [
+        item.get("source_id") for item in mappings if isinstance(item, dict)
+    ]
+    if (
+        len(mapping_source_ids) != len(mappings)
+        or None in mapping_source_ids
+        or len(mapping_source_ids) != len(set(mapping_source_ids))
+        or sorted(mapping_source_ids) != sorted(source_ids)
+    ):
+        errors.append("Project Meta-Faculty crosswalk source coverage is incomplete")
+    resolved_target_ids: set[str] = set()
+    for mapping in mappings:
+        if not isinstance(mapping, dict):
+            continue
+        target_ids = mapping.get("target_faculty_ids")
+        if not isinstance(target_ids, list) or not target_ids:
+            errors.append(f"crosswalk mapping has no targets: {mapping.get('source_id')}")
+            continue
+        for target_id in target_ids:
+            target = target_by_id.get(target_id)
+            if target is None:
+                errors.append(f"crosswalk target does not exist: {target_id}")
+                continue
+            resolved_target_ids.add(target_id)
+            entry = target.get("entry")
+            if not isinstance(entry, str) or not entry:
+                errors.append(f"crosswalk target has no entry: {target_id}")
+                continue
+            path_text, separator, anchor = entry.partition("#")
+            try:
+                entry_path = native(payload_root, path_text)
+            except BuildError:
+                errors.append(f"crosswalk target entry is unsafe: {target_id}")
+                continue
+            if not entry_path.is_file():
+                errors.append(f"crosswalk target entry is missing: {target_id}")
+                continue
+            if separator:
+                headings = []
+                for line in entry_path.read_text(encoding="utf-8").splitlines():
+                    if not line.startswith("#"):
+                        continue
+                    heading = line.lstrip("#").strip().lower()
+                    heading = re.sub(r"[^\w\s-]", "", heading)
+                    headings.append(re.sub(r"[\s-]+", "-", heading).strip("-"))
+                if anchor not in headings:
+                    errors.append(f"crosswalk target anchor is missing: {target_id}")
+    if resolved_target_ids != set(target_by_id):
+        errors.append("Project Meta-Faculty crosswalk does not resolve every MAIOS faculty")
+    return errors
+
+
 def repokernel_projection_inputs(
     root: Path,
 ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
@@ -197,6 +308,38 @@ def repokernel_projection_inputs(
     for field, actual in expected_bundle_hashes.items():
         if bundle.get(field) != actual:
             raise BuildError(f"RepoKernel projection receipt has stale {field}")
+    if seed_spec.get("source_manifest_hash") != expected_bundle_hashes[
+        "source_manifest_canonical_sha256"
+    ]:
+        raise BuildError("RepoKernel seed has a stale source manifest hash")
+    if seed_spec.get("project_model_hash") != expected_bundle_hashes[
+        "project_model_canonical_sha256"
+    ]:
+        raise BuildError("RepoKernel seed has a stale project model hash")
+    if seed_spec.get("compiler_compatibility", {}).get(
+        "package_version"
+    ) != receipt.get("repokernel", {}).get("compiler_version"):
+        raise BuildError("RepoKernel compiler version drifted between seed and receipt")
+    if receipt.get("repokernel", {}).get("source_revision") != receipt.get(
+        "repokernel", {}
+    ).get("baseline_revision"):
+        raise BuildError("RepoKernel source revision is not bound to its reviewed baseline")
+    source_owner_manifest = read_json(root / "sources" / "SOURCE_MANIFEST.json")
+    if source_owner_manifest.get("repokernel_plan_id") != receipt.get(
+        "repokernel", {}
+    ).get("plan_id"):
+        raise BuildError("MAIOS source manifest is not bound to the RepoKernel plan")
+    for source in source_manifest.get("sources", []):
+        if not isinstance(source, dict) or "sha256" not in source:
+            continue
+        source_path = source.get("path_or_origin")
+        source_file = native(root, source_path) if isinstance(source_path, str) else None
+        if (
+            source_file is None
+            or not source_file.is_file()
+            or digest_file(source_file) != source.get("sha256")
+        ):
+            raise BuildError(f"RepoKernel input digest drifted: {source_path}")
 
     generated = receipt.get("generated_source", {})
     if generated.get("project_meta_faculty_sha256") != digest_file(
@@ -247,6 +390,20 @@ def composed_project_entry_profile(
     """Translate RepoKernel's generated entity into the open MAIOS entry relation."""
 
     capabilities = project_entity.get("capability_requirements", [])
+    source_catalogs: list[dict[str, Any]] = []
+    for source_catalog in project_entity.get("source_catalogs", []):
+        if not isinstance(source_catalog, dict):
+            raise BuildError("Project Entity source catalog entry must be an object")
+        translated = json.loads(json.dumps(source_catalog))
+        registry_path = translated.pop("registry_path", None)
+        if registry_path == "kernel/FACULTY_FIELD.json":
+            translated["source_registry_path"] = registry_path
+            translated["installed_registry_path"] = (
+                ".maios/kernel/FACULTY_FIELD.json"
+            )
+        elif registry_path is not None:
+            raise BuildError(f"untranslated Project Entity registry path: {registry_path}")
+        source_catalogs.append(translated)
     return {
         "schema": family_contract["entry_profile"]["schema"],
         "product": "MAIOS Project Kernel",
@@ -311,7 +468,7 @@ def composed_project_entry_profile(
             "credential_boundary": "Explain and request access when needed; never embed credentials in the package.",
         },
         "capability_requirements": capabilities,
-        "source_catalogs": project_entity.get("source_catalogs", []),
+        "source_catalogs": source_catalogs,
         "requested_bundle_ids": project_entity.get("requested_bundle_ids", []),
         "completion": project_entity.get("completion", {}),
     }
@@ -342,11 +499,15 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     projection_path = root / "release" / "PROJECTION.json"
     projection = read_json(projection_path)
     family_contract = project_kernel_family_contract(root)
-    project_version = family_contract["family_version"]
     if projection.get("schema") != PROJECTION_SCHEMA:
         raise BuildError("unsupported release projection schema")
-    if projection.get("version") != project_version:
-        raise BuildError(f"release projection version is not {project_version}")
+    project_version = projection.get("version")
+    if not isinstance(project_version, str) or not project_version:
+        raise BuildError("release projection has no product version")
+    if read_json(root / "sources" / "SOURCE_MANIFEST.json").get(
+        "version"
+    ) != project_version:
+        raise BuildError("product version drifted between projection and source manifest")
 
     destinations: set[str] = set()
     for item in projection.get("files", []):
@@ -378,6 +539,10 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     )
 
     write_json(package_dir / "adapters" / "ADAPTERS.json", transformed_adapters(root))
+    write_json(
+        package_dir / "payload" / ".maios" / "config" / "HOST_ADAPTERS.json",
+        installed_host_catalog(root),
+    )
 
     tree_sha256 = source_tree_digest(root)
     payload_count = len(
@@ -387,6 +552,7 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "schema": MANIFEST_SCHEMA,
         "product": "MAIOS Project Kernel",
         "version": project_version,
+        "project_kernel_family_version": family_contract["family_version"],
         "entrypoint": "install.py",
         "runtime_requirements": {
             "python": ">=3.10",
@@ -400,7 +566,7 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "project_entrypoint": "payload/START_HERE.md",
         "target_modes": ["new_repository", "existing_repository"],
         "host_adapters": [
-            item["id"] for item in read_json(root / "adapters" / "ADAPTERS.json")["adapters"]
+            item["id"] for item in installed_host_catalog(root)["adapters"]
         ],
         "source_identity": {
             "owner": "maios-project-kernel repository",
@@ -514,11 +680,14 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "payload/START_HERE.md",
         "payload/maios.py",
         "payload/.maios/installer/installer.py",
+        "payload/.maios/config/HOST_ADAPTERS.json",
         "payload/.maios/runtime/kernel.py",
+        "payload/.maios/runtime/host.py",
         "payload/.maios/runtime/operating.py",
         "payload/.maios/kernel/SYSTEM_KERNEL.md",
         "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
         "payload/.maios/kernel/PROJECT_META_FACULTY.json",
+        "payload/.maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json",
         "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
         "payload/.maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json",
         "payload/.maios/REPOKERNEL_PROJECTION.json",
@@ -540,13 +709,18 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         errors.append("missing required distribution files: " + ", ".join(missing))
     manifest: dict[str, Any] = {}
     family_contract = project_kernel_family_contract(root)
-    project_version = family_contract["family_version"]
+    projection = read_json(root / "release" / "PROJECTION.json")
+    project_version = projection.get("version")
     try:
         manifest = read_json(package_dir / "MANIFEST.json")
         if manifest.get("schema") != MANIFEST_SCHEMA:
             errors.append("unsupported distribution manifest schema")
         if manifest.get("version") != project_version:
             errors.append(f"distribution version is not {project_version}")
+        if manifest.get("project_kernel_family_version") != family_contract.get(
+            "family_version"
+        ):
+            errors.append("distribution family version is not bound to its contract")
         if manifest.get("source_identity", {}).get("tree_sha256") != source_tree_digest(root):
             errors.append("manifest source tree identity is stale")
         if manifest.get("distribution_file_count") != len(actual_names):
@@ -578,6 +752,16 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         packaged_entity = read_json(
             package_dir / "payload" / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json"
         )
+        packaged_crosswalk = read_json(
+            package_dir
+            / "payload"
+            / ".maios"
+            / "kernel"
+            / "PROJECT_META_FACULTY_CROSSWALK.json"
+        )
+        packaged_faculty_field = read_json(
+            package_dir / "payload" / ".maios" / "kernel" / "FACULTY_FIELD.json"
+        )
         expected_meta = composed_project_meta_faculty(source_meta, source_receipt)
         expected_entity = composed_project_entry_profile(
             source_entity, source_receipt, family_contract
@@ -588,6 +772,14 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             errors.append("packaged Project Meta-Faculty is not the composed source projection")
         if packaged_entity != expected_entity:
             errors.append("packaged Project Entity Profile is not the owner-native translation")
+        errors.extend(
+            project_meta_crosswalk_errors(
+                packaged_crosswalk,
+                packaged_meta,
+                packaged_faculty_field,
+                package_dir / "payload",
+            )
+        )
         family_ids = [
             item.get("id") for item in packaged_meta.get("function_families", [])
         ]
@@ -622,6 +814,15 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             )
         ):
             errors.append("packaged Project Entity Profile lost its open owner-native relation")
+        for catalog in packaged_entity.get("source_catalogs", []):
+            installed_path = catalog.get("installed_registry_path")
+            source_path = catalog.get("source_registry_path")
+            if not isinstance(installed_path, str) or not native(
+                package_dir / "payload", installed_path
+            ).is_file():
+                errors.append("Project Entity Profile contains an unresolved installed catalog")
+            if not isinstance(source_path, str) or not native(root, source_path).is_file():
+                errors.append("Project Entity Profile contains an unresolved source catalog")
         expected_projection = {
             "plan_id": source_receipt["repokernel"]["plan_id"],
             "receipt": "payload/.maios/REPOKERNEL_PROJECTION.json",
@@ -643,6 +844,12 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     try:
         adapters = read_json(package_dir / "adapters" / "ADAPTERS.json")
         adapter_ids = [item.get("id") for item in adapters.get("adapters", [])]
+        installed_catalog = read_json(
+            package_dir / "payload" / ".maios" / "config" / "HOST_ADAPTERS.json"
+        )
+        installed_ids = [
+            item.get("id") for item in installed_catalog.get("adapters", [])
+        ]
         if adapter_ids != [
             "generic",
             "codex",
@@ -654,6 +861,10 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             "dsh",
         ]:
             errors.append("host adapter ids or order are incorrect")
+        if installed_catalog != installed_host_catalog(root):
+            errors.append("installed host adapter catalogue drifted from its source")
+        if installed_ids != adapter_ids or manifest.get("host_adapters") != adapter_ids:
+            errors.append("host adapter projections do not expose one supported id set")
         if adapters.get("semantic_owner") != "payload/skills/maios-project-system/SKILL.md":
             errors.append("host adapters do not point to the one packaged semantic owner")
         semantic_owner = adapters.get("semantic_owner")

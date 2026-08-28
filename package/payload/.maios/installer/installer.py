@@ -209,15 +209,23 @@ def source_entries(root: Path, host: str) -> list[dict[str, Any]]:
     return [entries[key] for key in sorted(entries)]
 
 
-def target_snapshot(target: Path) -> dict[str, Any]:
+def target_snapshot(
+    target: Path, relevant_paths: Iterable[str] | None = None
+) -> dict[str, Any]:
     if not target.exists():
         return {"state": "absent", "digest": digest_bytes(b"absent")}
     if not target.is_dir():
         return {"state": "not_directory", "digest": digest_bytes(b"not_directory")}
     rows: list[dict[str, Any]] = []
-    for path in sorted(
-        target.rglob("*"), key=lambda item: item.relative_to(target).as_posix()
-    ):
+    if relevant_paths is None:
+        paths = sorted(
+            target.rglob("*"), key=lambda item: item.relative_to(target).as_posix()
+        )
+        scope = "whole_target"
+    else:
+        paths = [native(target, relative) for relative in sorted(set(relevant_paths))]
+        scope = "projected_paths"
+    for path in paths:
         relative = path.relative_to(target)
         if ".git" in relative.parts:
             continue
@@ -234,8 +242,11 @@ def target_snapshot(target: Path) -> dict[str, Any]:
             )
         elif path.is_dir():
             rows.append({"path": relative.as_posix(), "kind": "directory"})
+        else:
+            rows.append({"path": relative.as_posix(), "kind": "absent"})
     return {
         "state": "directory",
+        "scope": scope,
         "entries": rows,
         "digest": digest_bytes(canonical_bytes(rows)),
     }
@@ -272,7 +283,6 @@ def make_plan(root: Path, target: Path, mode: str, host: str) -> dict[str, Any]:
         raise InstallerError("target root must not be a symlink")
     target = target.resolve()
     identity = package_identity(root)
-    snapshot = target_snapshot(target)
     entries = source_entries(root, host)
     creates: list[str] = []
     identical: list[str] = []
@@ -293,6 +303,11 @@ def make_plan(root: Path, target: Path, mode: str, host: str) -> dict[str, Any]:
             identical.append(destination)
         else:
             conflicts.append({"path": destination, "reason": "divergent_content"})
+
+    snapshot = target_snapshot(
+        target,
+        None if mode == "new_repository" else [entry["destination"] for entry in entries],
+    )
 
     prior = current_receipt(target)
     exact_prior = bool(
@@ -537,6 +552,7 @@ def apply_plan(root: Path, plan: dict[str, Any]) -> dict[str, Any]:
 
 def verify_installation(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
     target = target.resolve()
+    require_receipt_target(target, receipt)
     results: list[dict[str, Any]] = []
     for entry in receipt.get("installer_owned_files", []):
         path = native(target, entry["path"])
@@ -623,6 +639,7 @@ def recover_pending(target: Path) -> dict[str, Any]:
 
 def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
     target = target.resolve()
+    require_receipt_target(target, receipt)
     removed: list[str] = []
     preserved_changed: list[str] = []
     missing: list[str] = []
@@ -674,13 +691,22 @@ def load_plan(path: Path) -> dict[str, Any]:
     return value
 
 
+def require_receipt_target(target: Path, receipt: Any) -> None:
+    target = target.resolve()
+    if not isinstance(receipt, dict) or receipt.get("schema") != RECEIPT_SCHEMA:
+        raise InstallerError("unsupported installation receipt schema")
+    receipt_target = receipt.get("target")
+    if not isinstance(receipt_target, str) or Path(receipt_target).resolve() != target:
+        raise InstallerError("installation receipt does not belong to the requested target")
+
+
 def load_receipt(target: Path, explicit: Path | None) -> dict[str, Any]:
+    target = target.resolve()
     path = explicit or target / ".maios" / "receipts" / "install" / "CURRENT.json"
     if path.is_symlink():
         raise InstallerError("installation receipt must not be a symlink")
     value = read_json(path)
-    if value.get("schema") != RECEIPT_SCHEMA:
-        raise InstallerError("unsupported installation receipt schema")
+    require_receipt_target(target, value)
     return value
 
 
@@ -693,20 +719,7 @@ def parser() -> argparse.ArgumentParser:
     preview.add_argument(
         "--mode", choices=("new_repository", "existing_repository"), required=True
     )
-    preview.add_argument(
-        "--host",
-        choices=(
-            "generic",
-            "codex",
-            "claude",
-            "opencode",
-            "hermes",
-            "openclaw",
-            "pi",
-            "dsh",
-        ),
-        required=True,
-    )
+    preview.add_argument("--host", required=True, metavar="ADAPTER_ID")
     preview.add_argument("--plan-out", type=Path)
 
     apply = sub.add_parser("apply")

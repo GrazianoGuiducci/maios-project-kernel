@@ -1,0 +1,46 @@
+{
+  "adapters": [
+    {
+      "display_name": "Generic capable coder",
+      "id": "generic",
+      "native_skill_root": null
+    },
+    {
+      "display_name": "ChatGPT / Codex coding agent",
+      "id": "codex",
+      "native_skill_root": ".agents/skills"
+    },
+    {
+      "display_name": "Claude Code",
+      "id": "claude",
+      "native_skill_root": ".claude/skills"
+    },
+    {
+      "display_name": "OpenCode",
+      "id": "opencode",
+      "native_skill_root": ".opencode/skills"
+    },
+    {
+      "display_name": "Hermes",
+      "id": "hermes",
+      "native_skill_root": ".hermes/skills"
+    },
+    {
+      "display_name": "OpenClaw",
+      "id": "openclaw",
+      "native_skill_root": ".agents/skills"
+    },
+    {
+      "display_name": "Pi coding agent",
+      "id": "pi",
+      "native_skill_root": ".agents/skills"
+    },
+    {
+      "display_name": "DeepSeek Harness (DSH)",
+      "id": "dsh",
+      "native_skill_root": ".agents/skills"
+    }
+  ],
+  "schema": "maios.installed-host-adapters.v1",
+  "source": "adapters/ADAPTERS.json"
+}
