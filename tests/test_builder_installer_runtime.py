@@ -1177,5 +1177,60 @@ class ProjectedPackageFreshProcessTests(DistributionFixture):
         )
 
 
+class RepositoryCompetenceFieldTests(unittest.TestCase):
+    def test_public_competence_field_is_reachable_from_a_clone(self) -> None:
+        required = [
+            "knowledge/KERNEL.md",
+            "research/AI_KERNEL_PAPER_FIELD.md",
+            "contributions/README.md",
+            "contributions/COMPETENCE_CONTRIBUTION_TEMPLATE.md",
+            "contributions/GPT_PRO_START.md",
+            "skills/maios-kernel-study/SKILL.md",
+            "skills/maios-kernel-paper/SKILL.md",
+            "skills/maios-kernel-contribution/SKILL.md",
+        ]
+        for relative in required:
+            self.assertTrue((ROOT / relative).is_file(), relative)
+
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        for skill_name in (
+            "maios-kernel-study",
+            "maios-kernel-paper",
+            "maios-kernel-contribution",
+        ):
+            skill = ROOT / "skills" / skill_name / "SKILL.md"
+            skill_text = skill.read_text(encoding="utf-8")
+            self.assertIn(f"name: {skill_name}", skill_text)
+            self.assertIn(skill_name, agents)
+            self.assertIn(skill_name, readme)
+
+    def test_repository_competence_field_is_not_in_installable_projection(self) -> None:
+        projection = builder.read_json(ROOT / "release" / "PROJECTION.json")
+        projected_sources = {item["source"] for item in projection["files"]}
+        repository_only = {
+            "knowledge/KERNEL.md",
+            "research/AI_KERNEL_PAPER_FIELD.md",
+            "contributions/README.md",
+            "contributions/COMPETENCE_CONTRIBUTION_TEMPLATE.md",
+            "contributions/GPT_PRO_START.md",
+            "skills/maios-kernel-study/SKILL.md",
+            "skills/maios-kernel-paper/SKILL.md",
+            "skills/maios-kernel-contribution/SKILL.md",
+        }
+        self.assertTrue(repository_only.isdisjoint(projected_sources))
+
+        with tempfile.TemporaryDirectory() as directory:
+            distribution = Path(directory) / "distribution"
+            builder.render_distribution(ROOT, distribution)
+            inventory = builder.read_json(distribution / "PACKAGE_INVENTORY.json")
+        installed_paths = {item["path"] for item in inventory["files"]}
+        for repository_path in repository_only:
+            self.assertFalse(
+                any(repository_path in installed_path for installed_path in installed_paths),
+                repository_path,
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

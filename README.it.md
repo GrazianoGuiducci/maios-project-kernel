@@ -20,9 +20,14 @@ pacchetto, non viene distribuito e non è una dipendenza runtime.
 L'installer e l'helper installato richiedono Python 3.10 o successivo; non sono
 necessari pacchetti Python di terze parti.
 
+Il clone ha due ingressi connessi: usare il pacchetto tracciato in un progetto,
+oppure studiare e contribuire al campo pubblico di competenze del Kernel nella
+repository. Il secondo ingresso dà al coder maggiore consapevolezza del
+sistema senza aggiungere nulla al target installato.
+
 ## Inizia qui
 
-Clona la repository, apri `package/` con il coder e digli:
+Clona la repository, apri la sua radice con il coder e digli:
 
 ```text
 Leggi AGENTS.md e la competenza maios-project-integration. Spiegami cosa può
@@ -42,6 +47,33 @@ python install.py apply --plan install-plan.json
 
 Per un progetto già esistente usa `--mode existing_repository`. Sostituisci
 `codex` con l'identificativo dell'host scelto, descritto più avanti.
+
+## Studia e contribuisci
+
+Apri la radice della repository con un coder capace e digli:
+
+```text
+Leggi AGENTS.md e la competenza maios-kernel-study. Ricostruisci il Kernel
+dalle sue fonti pubbliche, spiega la relazione che vedi e mostra quali fonti,
+evidenze, inferenze e questioni aperte sostengono la spiegazione.
+```
+
+Il campo pubblico collega:
+
+| Superficie | Funzione |
+| --- | --- |
+| [`knowledge/KERNEL.md`](knowledge/KERNEL.md) | Fonte pubblica della relazione costitutiva del Kernel, KA, FDLA, Meta_Skill, competenza, contesto e apprendimento |
+| [`research/AI_KERNEL_PAPER_FIELD.md`](research/AI_KERNEL_PAPER_FIELD.md) | Campo consapevole degli stati delle affermazioni per paper e articoli rigorosi |
+| [`maios-kernel-study`](skills/maios-kernel-study/SKILL.md) | Studia, spiega, confronta e interroga il Kernel dalle fonti pubbliche |
+| [`maios-kernel-paper`](skills/maios-kernel-paper/SKILL.md) | Forma un paper o articolo attraverso il campo assiomatico pertinente |
+| [`maios-kernel-contribution`](skills/maios-kernel-contribution/SKILL.md) | Trasforma un'idea, un metodo, una correzione o un falsificatore umano o AI in contributo legato alla sorgente |
+| [`contributions/GPT_PRO_START.md`](contributions/GPT_PRO_START.md) | Apre un ciclo delimitato di contribuzione con GPT Pro |
+
+Queste competenze agiscono sulla repository e non fanno parte della proiezione
+installabile corrente. Una persona, GPT Pro, Codex o un altro modello capace
+può contribuire attraverso la stessa relazione canonica. Contributo, merge,
+proiezione nel pacchetto, release, installazione e uso osservato restano effetti
+distinti.
 
 ## Cosa accade dopo l'installazione
 
@@ -230,6 +262,7 @@ sorgenti vive della repository autonoma
 | --- | --- |
 | `kernel/` | Kernel semantico, campo aperto delle facoltà, composizione e coltivazione delle competenze |
 | `skills/` | Competenze di integrazione, sistema, avvio, contesto, formazione, adattamento host e gestione sorgente |
+| `knowledge/`, `research/`, `contributions/` | Comprensione del Kernel, ricerca con stati delle affermazioni e campo di contribuzione delle competenze nativi della repository |
 | `setup/`, `project/`, `state/` | Configurazione canonica e continuità compatte del progetto |
 | `src/maios_project_kernel/` | Proiezione deterministica, installer, configurazione, runtime, stato host e readback operativo |
 | `adapters/` | Proiezioni locali per gli host |

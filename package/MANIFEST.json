@@ -66,7 +66,7 @@
     "repokernel_projection_receipt_sha256": "879c2850afc76dab68a95b388e5976855a653a7dd71b9cea011c91bce88ceb2e",
     "revision_claim": "content_addressed_source_tree",
     "source_manifest_sha256": "1678a882c1079fa817754f981e7f464a2605204a0d5f156e4c46deedf56ae75e",
-    "tree_sha256": "b048ef0cff025b9c293912055ce7d72a6265f872f1763e452933d17b6183d35e"
+    "tree_sha256": "9ccd5c4af60184c4c7a37a75ce963d13890ce44e8659a004a710f234f3f16c9e"
   },
   "target_modes": [
     "new_repository",

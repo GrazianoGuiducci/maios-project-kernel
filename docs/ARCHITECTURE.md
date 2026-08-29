@@ -42,6 +42,32 @@ boundary. RepoKernel implementation source, staging namespace and runtime are
 not shipped. `REPOKERNEL_PROJECTION.json` preserves the exact one-time source
 and translation relation.
 
+## Public knowledge and competence field
+
+The repository itself exposes a source-native field through which a human or
+AI coder can understand and evolve the Kernel:
+
+```text
+knowledge/KERNEL.md
+-> research/AI_KERNEL_PAPER_FIELD.md
+-> repository study, paper, and contribution competences
+-> source-bound contribution
+-> later use and causal readback.
+```
+
+KA, FDLA, and Meta_Skill are named here as the public canonical relation that
+forms the contribution: possibility aperture, in-movement causal correction,
+and living competence formation and evolution. The public files preserve the
+function without copying private workspace topology, temporal state, or
+credentials.
+
+This field is reachable from root `AGENTS.md` when a coder opens a clone. Its
+competences are intentionally absent from `release/PROJECTION.json`, so they do
+not enter the current installable `package/`. Repository study, accepted source
+change, package selection, release, installation, host discovery, use, and
+assimilation remain distinct relations. A later package inclusion begins with
+an explicit projection change and its own product validation.
+
 ## Deep modules and stable seams
 
 | Seam | Hidden policy owner |

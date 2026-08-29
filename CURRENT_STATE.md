@@ -1,10 +1,11 @@
 # MAIOS Project Kernel current state
 
-updated: 2026-08-28
+updated: 2026-08-29
 active_surface: autonomous self-configuring `maios-project-kernel` 3.0.1 living source
-status: public `main` carries the coherent 3.0.1 stabilization source and
-deterministic `package/` projection; the immutable tag and GitHub Release
-`v3.0.1` preserve the released snapshot while `main` continues as living source
+status: public `main` carries the repository-native Kernel knowledge, research
+and competence-contribution field in the coherent 3.0.1 living source; the
+immutable tag and GitHub Release `v3.0.1` retain the previously released
+snapshot because this source continuation changes no installable payload
 
 ## Current resultant
 
@@ -65,6 +66,22 @@ closest-owner learning. A standing installer-upgrade subsystem is not a current
 requirement. If a future structural update becomes real, it can arrive as a
 competence that understands how to update its own system.
 
+The repository now also carries a public, repository-native competence field.
+`knowledge/KERNEL.md` exposes the constitutive relation among KA, FDLA,
+Meta_Skill, situated competence, result, learning and reentry.
+`research/AI_KERNEL_PAPER_FIELD.md` gives papers and rigorous articles a
+claim-aware research spine. `maios-kernel-study`, `maios-kernel-paper` and
+`maios-kernel-contribution` let a coder study the Kernel, form an argument
+through the pertinent axiomatic field, and turn a human or model return into a
+source-bound contribution. The first GPT Pro cycle is represented by
+`contributions/GPT_PRO_START.md`.
+
+These public competences are not selected in `release/PROJECTION.json`. They
+change the awareness available to a coder working in the clone without
+changing installed Project Kernel behavior. Package manifest identity is
+regenerated from the complete living source; the projected payload and its
+functional files remain unchanged.
+
 ## Proof state
 
 - the RepoKernel plan
@@ -93,7 +110,8 @@ competence that understands how to update its own system.
   identity are supplied by the deterministic package manifest and build receipt;
 - GitHub CI rebuilds the tracked package twice on Python 3.10 and refuses any
   source-to-projection difference;
-- 27 local tests cover deterministic projection, every declared host through
+- 29 local tests cover deterministic projection, the repository-native public
+  competence-field boundary, every declared host through
   installation/status/operating readback/attestation validation, corrupted or
   missing Kernel organs, explicit and automatically discovered receipt target
   binding, copied-target idempotency refusal and unrelated existing-project
@@ -110,6 +128,12 @@ competence that understands how to update its own system.
 - `skills/maios-project-context/SKILL.md`
 - `skills/maios-project-competence-formation/SKILL.md`
 - `skills/maios-project-host-adaptation/SKILL.md`
+- `knowledge/KERNEL.md`
+- `research/AI_KERNEL_PAPER_FIELD.md`
+- `skills/maios-kernel-study/SKILL.md`
+- `skills/maios-kernel-paper/SKILL.md`
+- `skills/maios-kernel-contribution/SKILL.md`
+- `contributions/`
 - `setup/MAIOS_SETUP_CONTRACT.md`
 - `competences/INDEX.template.json`
 - `kernel/FACULTY_FIELD.json`
@@ -128,12 +152,13 @@ Form, its P5 assembler, provider and other runtimes remain separate owner
 surfaces. They may inherit the same neutral RepoKernel generation relation only
 through their own context, bytes and proof.
 
-current_next: use the closed autonomous 3.0.1 resultant to complete the
-separate Form-generated package lane through its own MAIOS_CLIENT_SETUP,
-RepoKernel, generated-byte and host-entry identities
+current_next: after the repository change is made available to GPT Pro, receive
+one source-pinned contribution and reintegrate its portable difference through
+the closest public owner
 
-first_safe_action: preserve the synchronized family contract and compare both
-generated signatures after any reusable Project Kernel change
+first_safe_action: give GPT Pro the minimum public source bundle in
+`contributions/GPT_PRO_START.md` and require the exact revision it observed
 
-validation_deferred: real semantic acceptance, later non-identical reentry,
-native adapter behavior and independent RepoKernel provenance/crosswalk design
+validation_deferred: first GPT Pro contribution use, later non-identical
+assimilation, real semantic acceptance, native adapter behavior and independent
+RepoKernel provenance/crosswalk design

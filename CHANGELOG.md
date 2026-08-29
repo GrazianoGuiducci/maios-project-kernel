@@ -4,6 +4,10 @@ All notable changes to the public distribution are recorded here.
 
 ## Unreleased living source
 
+- Added a repository-native public Kernel knowledge and research field, three
+  source competences for study, paper formation and contribution, and a
+  source-pinned GPT Pro contribution path. These sources improve coder
+  awareness in the clone without entering the current installable payload.
 - Recorded the completed public 3.0.1 publication and the transition to the
   separate Form-generated package lane. This post-release source continuity
   changes no 3.0.1 product behavior or installable payload.

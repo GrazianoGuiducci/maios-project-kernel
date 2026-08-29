@@ -19,9 +19,14 @@ runtime dependency.
 Running the installer and the installed helper requires Python 3.10 or later;
 no third-party Python packages are required.
 
+A clone has two connected entrances: use the tracked package in a project, or
+study and contribute to the public Kernel competence field in the repository.
+The second entrance gives a coder more awareness of the system without adding
+anything to an installed target.
+
 ## Start here
 
-Clone the repository, open `package/` with your coder, and say:
+Clone the repository, open its root with your coder, and say:
 
 ```text
 Read AGENTS.md and the maios-project-integration competence. Explain what this
@@ -41,6 +46,32 @@ python install.py apply --plan install-plan.json
 
 For a project that already exists, use `--mode existing_repository`. Replace
 `codex` with the selected host id described below.
+
+## Study and contribute
+
+Open the repository root with a capable coder and say:
+
+```text
+Read AGENTS.md and the maios-kernel-study competence. Reconstruct the Kernel
+from its public sources, explain the relation you see, and show which source,
+evidence, inference, and open question support your explanation.
+```
+
+The public source field connects:
+
+| Surface | Function |
+| --- | --- |
+| [`knowledge/KERNEL.md`](knowledge/KERNEL.md) | Public source for the Kernel's constitutive relation, KA, FDLA, Meta_Skill, competence, context, and learning |
+| [`research/AI_KERNEL_PAPER_FIELD.md`](research/AI_KERNEL_PAPER_FIELD.md) | Claim-aware field for papers and rigorous articles |
+| [`maios-kernel-study`](skills/maios-kernel-study/SKILL.md) | Studies, explains, compares, and questions the Kernel from public sources |
+| [`maios-kernel-paper`](skills/maios-kernel-paper/SKILL.md) | Forms a paper or article through the pertinent axiomatic field |
+| [`maios-kernel-contribution`](skills/maios-kernel-contribution/SKILL.md) | Turns a human or AI idea, method, correction, or falsifier into a source-bound contribution |
+| [`contributions/GPT_PRO_START.md`](contributions/GPT_PRO_START.md) | Opens one bounded GPT Pro contribution cycle |
+
+These competences act on the repository and are not part of the current
+installable projection. A human, GPT Pro, Codex, or another capable model can
+contribute through the same canonical relation. Contribution, merge, package
+projection, release, installation, and observed use remain distinct effects.
 
 ## What happens after installation
 
@@ -230,6 +261,7 @@ plus reviewed RepoKernel functions translated into owner-native relations
 | --- | --- |
 | `kernel/` | Semantic Kernel, open faculty field, composition, and competence cultivation |
 | `skills/` | Integration, system, startup, context, competence formation, host adaptation, and repository-source competences |
+| `knowledge/`, `research/`, `contributions/` | Repository-native Kernel understanding, claim-aware research, and competence contribution field |
 | `setup/`, `project/`, `state/` | Canonical configuration and compact project continuities |
 | `src/maios_project_kernel/` | Deterministic projection, installer, configuration, runtime, host state, and operating readback |
 | `adapters/` | Project-local host projections |
