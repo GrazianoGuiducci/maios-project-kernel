@@ -1,11 +1,11 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-01
-active_surface: autonomous self-configuring `maios-project-kernel` 3.0.3 release snapshot
+active_surface: autonomous self-configuring `maios-project-kernel` 3.0.3 public release
 status: the exact GPT Pro review of immutable `v3.0.2` has produced a bounded
-autonomous stabilization delta in living source and tracked `package/`; the
-operator has selected one exact 3.0.3 repository commit, push, annotated tag
-and GitHub Release movement, whose public identity remains to be observed
+autonomous stabilization delta in living source and tracked `package/`, now
+published on `main` with immutable annotated tag and GitHub Release `v3.0.3`;
+site, runtime, Form and RepoKernel effects remain separate
 
 ## Current resultant
 
@@ -66,9 +66,12 @@ credentials or external authority enters the package.
   uninstall pass; all eight adapter projections also install, verify, execute
   and uninstall from existing-project fixtures while preserving the sole
   project-owned marker and leaving no bytecode cache;
-- the exact 3.0.3 source snapshot is selected for repository publication; its
-  public branch, annotated tag, GitHub Release and CI remain unverified until
-  external readback completes;
+- release commit `9b23d6340b27c8c611d25560f5726de4fc046bff`, annotated tag
+  `v3.0.3` and the matching GitHub Release are public and exact; the tag object
+  is `7c6c2a1d83142dea02f2d78d599cd3a89ce88d08` and the Release has no attached
+  assets because tracked `package/` is the installable projection;
+- public CI succeeds for both `main` run 50 and tag run 51; each run verifies
+  Ubuntu/Python 3.10 and Windows/Python 3.13 against the exact release commit;
 - real person-coder entry, native host discovery/use, later non-identical
   assimilation, site and runtime remain separately unverified or unselected.
 
@@ -100,14 +103,14 @@ credentials or external authority enters the package.
 
 ## Boundary and next movement
 
-current_next: perform the selected 3.0.3 repository commit, authenticated push,
-annotated tag and GitHub Release; then observe the exact public refs, Release
-object and CI before recording the publication receipt and entering the
-separately owned Form-generated package movement
+current_next: preserve this post-release receipt on living `main`, then enter
+the separately owned Form-generated package movement without importing the
+autonomous builder, package bytes, temporal state or release proof
 
-supersession_condition: replace this state when final verification changes the
-snapshot, the publication effect establishes an immutable 3.0.3 identity, or a
-real installed-host result changes the behavioral proof state
+supersession_condition: replace this state when a later autonomous source
+result changes the deterministic package identity, a real installed-host
+result changes the behavioral proof state, or the separately owned Form
+movement establishes its own new resultant
 
 validation_deferred: real person-coder direct entry, conditional expanded
 entry, native host discovery and use, later non-identical assimilation, site,
