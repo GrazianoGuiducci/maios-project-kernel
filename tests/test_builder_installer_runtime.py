@@ -148,7 +148,7 @@ class BuilderTests(DistributionFixture):
             autonomous_entry["entry_policy"]["startup_interview"],
             "discretionary",
         )
-        self.assertEqual(autonomous_entry["product_version"], "3.0.2")
+        self.assertEqual(autonomous_entry["product_version"], "3.0.3")
         self.assertEqual(entity["schema"], "maios.project-entry-profile.v1")
         self.assertEqual(entity["version"], "3.0.0")
         self.assertEqual(
@@ -199,6 +199,20 @@ class BuilderTests(DistributionFixture):
             manifest["repokernel_projection"]["autonomous_entry_contract"],
             "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
         )
+
+    def test_builder_rejects_unknown_autonomous_contract_version(self) -> None:
+        source = self.base / "source"
+        kernel = source / "kernel"
+        kernel.mkdir(parents=True)
+        contract = builder.read_json(ROOT / "kernel" / "AUTONOMOUS_ENTRY_CONTRACT.json")
+        contract["contract_version"] = "9.0.0"
+        builder.write_json(kernel / "AUTONOMOUS_ENTRY_CONTRACT.json", contract)
+        family = builder.read_json(ROOT / "kernel" / "PROJECT_KERNEL_FAMILY_CONTRACT.json")
+
+        with self.assertRaisesRegex(
+            builder.BuildError, "unsupported autonomous entry contract version"
+        ):
+            builder.autonomous_entry_contract(source, family, "3.0.3")
 
     def test_generated_staging_cannot_enter_source_identity(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -583,6 +597,44 @@ class RuntimeTests(DistributionFixture):
                     path.write_text("{not-json\n", encoding="utf-8")
                 validation = runtime.validate_project(target)
                 self.assertFalse(validation["valid"])
+
+    def test_validation_rejects_autonomous_entry_identity_drift(self) -> None:
+        cases = (
+            (
+                ".maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
+                "contract_version",
+                "9.0.0",
+                "unsupported autonomous entry contract version",
+            ),
+            (
+                ".maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
+                "product_version",
+                "0.0.0",
+                "autonomous entry contract product version mismatch",
+            ),
+            (
+                ".maios/SOURCE_MANIFEST.json",
+                "version",
+                "0.0.0",
+                "autonomous entry contract product version mismatch",
+            ),
+        )
+        for index, (relative, field, value, expected_error) in enumerate(cases):
+            with self.subTest(relative=relative, field=field):
+                target = self.base / f"entry-identity-{index}"
+                plan = installer.make_plan(
+                    self.distribution, target, "new_repository", "generic"
+                )
+                installer.apply_plan(self.distribution, plan)
+                path = target.joinpath(*Path(relative).parts)
+                document = runtime.read_json(path)
+                document[field] = value
+                runtime.write_json_atomic(path, document)
+
+                validation = runtime.validate_project(target)
+
+                self.assertFalse(validation["valid"])
+                self.assertIn(expected_error, validation["errors"])
 
     def resultant_readback(self, event_id: str = "resultant-01") -> dict:
         return {

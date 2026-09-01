@@ -2,7 +2,7 @@
 
 ## Source owner
 
-Version 3.0.2 is this `maios-project-kernel` repository. The autonomous 2.0
+Version 3.0.3 is this `maios-project-kernel` repository. The autonomous 2.0
 Kernel remains its living base; reviewed RepoKernel functions are assimilated
 through a source-bound translation receipt. The generated
 `package/` projection

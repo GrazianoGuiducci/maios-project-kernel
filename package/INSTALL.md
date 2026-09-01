@@ -1,4 +1,4 @@
-# Install MAIOS Project Kernel 3.0.2 — repository package
+# Install MAIOS Project Kernel 3.0.3 — repository package
 
 The tracked `package/` projection is self-installing, not self-executing. Open
 it with the coder. When the target and intended change are already clear, the
@@ -43,6 +43,16 @@ bytes and preserves any evolved file.
 A conflict is returned to `maios-project-integration` as a target-owner
 relation. The coder can then propose the smallest explicit merge or placement
 movement without weakening the installer's non-overwrite contract.
+
+## Reinstallation and version migration
+
+Reapplying this exact artifact to its unchanged installation is idempotent.
+That property is not a cross-version upgrade claim. This package does not
+implement an in-place migration from a project installed by another product
+version, including 3.0.1 to 3.0.2 or 3.0.2 to 3.0.3. Preserve the existing
+target and its project-evolved files; if migration becomes necessary, treat it
+as a separate target-owned movement with an explicit inventory, reconciliation,
+effect, and recovery relation.
 
 ## Verify and recover
 

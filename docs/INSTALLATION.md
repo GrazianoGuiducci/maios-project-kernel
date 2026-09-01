@@ -33,6 +33,16 @@ Before planning, the installer verifies every distribution file against
 files. Its entry disables local Python bytecode generation so invoking the
 installer does not contaminate the package projection with `__pycache__`.
 
+## Reinstallation and version migration
+
+Reapplying the exact same artifact to its unchanged installation is
+idempotent. That property is not a cross-version upgrade claim. This package
+does not implement an in-place migration from a project installed by another
+product version, including 3.0.1 to 3.0.2 or 3.0.2 to 3.0.3. Preserve the
+existing target and its project-evolved files; if migration becomes necessary,
+treat it as a separate target-owned movement with an explicit inventory,
+reconciliation, effect, and recovery relation.
+
 Supported host ids are `generic`, `codex`, `claude`, `opencode`, `hermes`,
 `openclaw`, `pi`, and `dsh`.
 

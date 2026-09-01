@@ -2,7 +2,7 @@
 
 ## Living source and generated delivery
 
-MAIOS Project Kernel 3.0.2 uses one implementation owner. Product patch
+MAIOS Project Kernel 3.0.3 uses one implementation owner. Product patch
 identity and the shared Project Kernel family contract are recorded separately:
 
 ```text
@@ -136,9 +136,12 @@ operating state. It never overrides those sources.
 
 An applied resultant readback couples inspected behavior to canonical
 configuration, possibility impact, composition, evolution, projections, and
-reentry under one current context hash. The transition is recoverable and
-project-local. Learning becomes immediately reachable; optional classifications,
-assimilation, host activation, and external effects remain separate claims.
+reentry under one current context hash. The transition is project-local, uses
+atomic replacement for each file, and rolls back when an error is caught. It
+does not claim a crash-safe multi-file transaction or interprocess
+serialization. Learning becomes immediately reachable; optional
+classifications, assimilation, host activation, and external effects remain
+separate claims.
 
 ## Reciprocal competence cultivation
 

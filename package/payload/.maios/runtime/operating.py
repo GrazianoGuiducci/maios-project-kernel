@@ -1,7 +1,8 @@
 """Autological operating relation and forward-resultant learning for MAIOS.
 
-The module owns deterministic state, causal bookkeeping, atomic transition and
-recovery.  It never decides semantic relevance or grants external effects.
+The module owns deterministic state, causal bookkeeping, validated transition
+with per-file atomic replacement, and handled-failure rollback. It never
+decides semantic relevance or grants external effects.
 """
 
 from __future__ import annotations

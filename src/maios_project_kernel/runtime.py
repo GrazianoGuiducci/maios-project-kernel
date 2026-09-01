@@ -24,6 +24,10 @@ except ImportError:  # installed runtime is loaded as a project-local module
 
 COMPETENCE_INDEX_SCHEMA = "maios.competence-index.v2"
 COMPETENCE_DELTA_SCHEMA = "maios.competence-delta.v2"
+SOURCE_MANIFEST_SCHEMA = "maios.source-manifest.v2"
+AUTONOMOUS_ENTRY_CONTRACT_SCHEMA = "maios.autonomous-entry-contract.v1"
+AUTONOMOUS_ENTRY_CONTRACT_VERSION = "1.0.0"
+PRODUCT_NAME = "MAIOS Project Kernel"
 RESULT_CLASSIFICATIONS = {
     "verified_improvement",
     "no_change",
@@ -87,6 +91,7 @@ def validate_project(root: Path) -> dict[str, Any]:
         ".maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json",
         ".maios/kernel/PROJECT_ENTITY_PROFILE.json",
         ".maios/REPOKERNEL_PROJECTION.json",
+        ".maios/SOURCE_MANIFEST.json",
         ".maios/config/HOST_ADAPTERS.json",
         ".maios/competences/INDEX.json",
         ".maios/runtime/host.py",
@@ -125,6 +130,19 @@ def validate_project(root: Path) -> dict[str, Any]:
     except Exception as exc:
         errors.append(f"invalid configuration state: {exc}")
     source_error_start = len(errors)
+    source_manifest: dict[str, Any] = {}
+    try:
+        source_manifest = read_json(root / ".maios" / "SOURCE_MANIFEST.json")
+        if source_manifest.get("schema") != SOURCE_MANIFEST_SCHEMA:
+            errors.append("unsupported source manifest")
+        if source_manifest.get("product") != PRODUCT_NAME:
+            errors.append("source manifest product mismatch")
+        if not isinstance(source_manifest.get("version"), str) or not source_manifest.get(
+            "version"
+        ):
+            errors.append("source manifest has no product version")
+    except Exception as exc:
+        errors.append(f"invalid source manifest: {exc}")
     family: dict[str, Any] = {}
     try:
         family = read_json(
@@ -144,10 +162,17 @@ def validate_project(root: Path) -> dict[str, Any]:
         family_relation = autonomous_entry.get("family_relation", {})
         family_lane = family.get("lanes", {}).get("autonomous", {})
         entry_policy = autonomous_entry.get("entry_policy", {})
-        if autonomous_entry.get("schema") != "maios.autonomous-entry-contract.v1":
+        if autonomous_entry.get("schema") != AUTONOMOUS_ENTRY_CONTRACT_SCHEMA:
             errors.append("unsupported autonomous entry contract")
-        if autonomous_entry.get("product") != "MAIOS Project Kernel":
+        if (
+            autonomous_entry.get("contract_version")
+            != AUTONOMOUS_ENTRY_CONTRACT_VERSION
+        ):
+            errors.append("unsupported autonomous entry contract version")
+        if autonomous_entry.get("product") != PRODUCT_NAME:
             errors.append("autonomous entry contract product mismatch")
+        if autonomous_entry.get("product_version") != source_manifest.get("version"):
+            errors.append("autonomous entry contract product version mismatch")
         if autonomous_entry.get("owner") != "maios-project-kernel":
             errors.append("autonomous entry contract owner mismatch")
         if autonomous_entry.get("effect_authority") != "none":

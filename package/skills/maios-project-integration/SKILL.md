@@ -50,6 +50,21 @@ the available host families and help the operator prepare one before applying
 the Project Kernel. Never embed credentials, choose a paid provider silently or
 turn common examples into mandatory infrastructure.
 
+## Distinguish reinstallation from migration
+
+Compare the selected package manifest with an installed
+`.maios/SOURCE_MANIFEST.json` when the target already contains a Project
+Kernel. Reapplying the exact same artifact to its unchanged installation may be
+idempotent. A different product version is a different relation: the current
+installer does not claim an in-place migration, including 3.0.1 to 3.0.2 or
+3.0.2 to 3.0.3.
+
+Do not present an `existing_repository` preview as an upgrade merely because
+some paths are identical. Preserve the target and its evolved files, state the
+version boundary, and let a separately selected target-owned migration
+movement inventory compatibility, effect, and recovery if that need emerges.
+This boundary does not prescribe the form of a future migration competence.
+
 ## Integrate
 
 For Codex, use the native package instructions and repository skill

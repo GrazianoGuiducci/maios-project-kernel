@@ -20,6 +20,7 @@ REPOKERNEL_ENTITY_SCHEMA = "repokernel.project-entity-profile.v1"
 PACKAGED_SEMANTIC_OWNER = "skills/maios-project-system/SKILL.md"
 FAMILY_CONTRACT_SCHEMA = "maios.project-kernel-family-contract.v1"
 AUTONOMOUS_ENTRY_CONTRACT_SCHEMA = "maios.autonomous-entry-contract.v1"
+AUTONOMOUS_ENTRY_CONTRACT_VERSION = "1.0.0"
 INSTALLED_HOST_CATALOG_SCHEMA = "maios.installed-host-adapters.v1"
 
 
@@ -92,6 +93,8 @@ def autonomous_entry_contract(
     contract = read_json(root / "kernel" / "AUTONOMOUS_ENTRY_CONTRACT.json")
     if contract.get("schema") != AUTONOMOUS_ENTRY_CONTRACT_SCHEMA:
         raise BuildError("unsupported autonomous entry contract")
+    if contract.get("contract_version") != AUTONOMOUS_ENTRY_CONTRACT_VERSION:
+        raise BuildError("unsupported autonomous entry contract version")
     if contract.get("product") != "MAIOS Project Kernel":
         raise BuildError("autonomous entry contract product mismatch")
     if contract.get("product_version") != product_version:

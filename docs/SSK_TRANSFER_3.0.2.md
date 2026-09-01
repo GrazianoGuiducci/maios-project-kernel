@@ -140,7 +140,8 @@ The transition must:
 - supersede only the corresponding prior owner relation;
 - preserve later non-identical use separately for every relation;
 - reject duplicate or contradictory owner deltas;
-- remain atomic with configuration, operating state, projections and receipt.
+- remain coupled with configuration, operating state, projections and receipt
+  through one validated project-local transition.
 
 The 3.0.2 contract may replace the singular form cleanly. Do not accept both
 singular and plural fields with ambiguous precedence merely to preserve an

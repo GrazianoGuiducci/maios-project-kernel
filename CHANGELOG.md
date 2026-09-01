@@ -2,6 +2,19 @@
 
 All notable changes to the public distribution are recorded here.
 
+## 3.0.3 - 2026-09-01
+
+- Hardened autonomous entry identity at build and installed-runtime time:
+  unsupported contract versions and product-version drift against the installed
+  source manifest are rejected.
+- Clarified that resultant application uses atomic replacement per file and
+  rollback for handled failures; it does not claim crash-safe multi-file or
+  multiprocess transaction semantics.
+- Made the boundary between same-artifact idempotent reinstallation and an
+  unsupported cross-version in-place migration visible to coders and operators.
+- Reconciled host-discovery documentation with current owner sources and added
+  Windows/Python 3.13 to the distribution CI alongside Ubuntu/Python 3.10.
+
 ## 3.0.2 - 2026-09-01
 
 This release promotes the implemented living source and its verified tracked
@@ -18,8 +31,8 @@ and later non-identical assimilation remain separate evidence.
   compact causal margin, genuinely open fronts and one explicit focus for
   fresh-instance reentry without transcript replay.
 - Replaced singular `learning_delta` with plural closest-owner
-  `learning_deltas`, atomically preserving each distinct correction and its
-  later non-identical use relation.
+  `learning_deltas`, preserving each distinct correction and its later
+  non-identical use relation in one validated project-local transition.
 - Added optional semantic sensitivity to preprojection readback so a material
   meaning shift can preserve, correct or refuse collapse without becoming a
   mandatory vocabulary or review gate.

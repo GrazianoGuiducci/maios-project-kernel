@@ -2,7 +2,7 @@
 
 [Versione italiana](README.it.md)
 
-Current product version: **[3.0.2](VERSION.md)**. Shared Project Kernel family:
+Current product version: **[3.0.3](VERSION.md)**. Shared Project Kernel family:
 `3.0.0`.
 
 MAIOS Project Kernel gives a project and its AI coder a shared operating
@@ -33,7 +33,7 @@ the reading route that can change the present result:
 
 | Need | Read next | What the coder should understand or return |
 | --- | --- | --- |
-| Establish current truth | [`AGENTS.md`](AGENTS.md), [`CURRENT_STATE.md`](CURRENT_STATE.md), [`VERSION.md`](VERSION.md), [`CHANGELOG.md`](CHANGELOG.md) | Product `3.0.2`, family `3.0.0`, current evidence, boundaries, and the selected movement |
+| Establish current truth | [`AGENTS.md`](AGENTS.md), [`CURRENT_STATE.md`](CURRENT_STATE.md), [`VERSION.md`](VERSION.md), [`CHANGELOG.md`](CHANGELOG.md) | Product version `3.0.3`, family `3.0.0`, current evidence, boundaries, and the selected movement |
 | Understand value and possibility | [`knowledge/KERNEL.md`](knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/SSK_TRANSFER_3.0.2.md`](docs/SSK_TRANSFER_3.0.2.md) | What the Kernel changes for a project, which possibilities remain open, and how the SSK relations become product-native functions |
 | Integrate the package | [`package/AGENTS.md`](package/AGENTS.md), [`maios-project-integration`](package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](package/INSTALL.md), [`package/MANIFEST.json`](package/MANIFEST.json) | Exact target, mode, host projection, package-owned paths, preview, recovery, and unchanged surfaces |
 | Configure and operate the installed Kernel | [`START_HERE.md`](package/payload/START_HERE.md), [`maios-project-system`](package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | How context, competences, result, learning, semantic readback, and fresh reentry stay connected |
@@ -292,6 +292,13 @@ inventory. Installation uses an immutable preview plan:
 - uninstall removes only unchanged installer-owned files;
 - files evolved by the project are preserved and reported.
 
+Idempotency applies only to reapplying the exact same package to its unchanged
+installation. The current installer does not claim an in-place product-version
+migration: neither 3.0.1 to 3.0.2 nor 3.0.2 to 3.0.3 is an
+installer upgrade procedure. Preserve that target and its evolved files until
+a separately owned migration movement explicitly inventories and reconciles
+them.
+
 The installer does not modify global host configuration, hooks, plugins,
 providers, credentials, services, repositories, or other projects.
 
@@ -323,6 +330,10 @@ concurrency protection and recovery. Composition and resultant helpers expose
 the represented field and update continuity when that durable movement is
 actually needed; they do not replace semantic judgment by the coder and
 operator.
+
+Resultant application replaces each JSON file atomically and rolls back errors
+that reach the runtime. It does not currently claim crash-safe multi-file
+transactionality or serialization between concurrent runtime processes.
 
 ## Package and source structure
 

@@ -1,7 +1,7 @@
 {
   "schema": "maios.release-projection.v2",
   "product": "MAIOS Project Kernel",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "files": [
     {"source": "templates/distribution/AGENTS.md", "destination": "AGENTS.md"},
     {"source": "templates/distribution/install.py", "destination": "install.py"},

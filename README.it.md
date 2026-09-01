@@ -2,7 +2,7 @@
 
 [English version](README.md)
 
-Versione corrente del prodotto: **[3.0.2](VERSION.md)**. Famiglia Project
+Versione corrente del prodotto: **[3.0.3](VERSION.md)**. Famiglia Project
 Kernel condivisa: `3.0.0`.
 
 MAIOS Project Kernel fornisce a un progetto e al suo coder AI un kernel
@@ -35,7 +35,7 @@ soltanto il percorso di lettura che può cambiare il risultato presente:
 
 | Necessità | Leggere poi | Cosa il coder deve comprendere o restituire |
 | --- | --- | --- |
-| Stabilire la verità corrente | [`AGENTS.md`](AGENTS.md), [`CURRENT_STATE.md`](CURRENT_STATE.md), [`VERSION.md`](VERSION.md), [`CHANGELOG.md`](CHANGELOG.md) | Prodotto `3.0.2`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
+| Stabilire la verità corrente | [`AGENTS.md`](AGENTS.md), [`CURRENT_STATE.md`](CURRENT_STATE.md), [`VERSION.md`](VERSION.md), [`CHANGELOG.md`](CHANGELOG.md) | Versione prodotto `3.0.3`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
 | Comprendere valore e possibilità | [`knowledge/KERNEL.md`](knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/SSK_TRANSFER_3.0.2.md`](docs/SSK_TRANSFER_3.0.2.md) | Cosa cambia il Kernel in un progetto, quali possibilità restano aperte e come le relazioni SSK diventano funzioni proprie del prodotto |
 | Integrare il pacchetto | [`package/AGENTS.md`](package/AGENTS.md), [`maios-project-integration`](package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](package/INSTALL.md), [`package/MANIFEST.json`](package/MANIFEST.json) | Target esatto, modalità, proiezione host, percorsi posseduti dal pacchetto, anteprima, recupero e superfici immutate |
 | Configurare e usare il Kernel installato | [`START_HERE.md`](package/payload/START_HERE.md), [`maios-project-system`](package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | Come contesto, competenze, risultato, apprendimento, rilettura semantica e nuovo rientro restano connessi |
@@ -297,6 +297,14 @@ L'installazione usa un piano di anteprima immutabile:
 - la disinstallazione rimuove soltanto file invariati posseduti dall'installer;
 - i file evoluti dal progetto vengono conservati e dichiarati.
 
+L'idempotenza vale soltanto quando viene riapplicato lo stesso identico
+pacchetto alla sua installazione invariata. L'installer attuale non dichiara
+una migrazione in-place tra versioni del prodotto: né 3.0.1 → 3.0.2 né 3.0.2 →
+3.0.3 sono procedure di aggiornamento dell'installer.
+Quel target e i suoi file evoluti vanno preservati finché un movimento di
+migrazione, separatamente posseduto, non li inventaria e riconcilia
+esplicitamente.
+
 L'installer non modifica configurazione globale dell'host, hook, plugin,
 provider, credenziali, servizi, repository o altri progetti.
 
@@ -328,6 +336,11 @@ accettato con controllo di concorrenza e recupero. Gli helper di composizione e
 risultante espongono il campo rappresentato e aggiornano la continuità quando
 quel passaggio durevole serve davvero; non sostituiscono il giudizio semantico
 del coder e dell'operatore.
+
+L'applicazione del risultante sostituisce atomicamente ogni singolo file JSON e
+recupera gli errori che raggiungono il runtime. Al momento non dichiara una
+transazione multi-file resistente all'arresto improvviso né serializzazione tra
+processi runtime concorrenti.
 
 ## Struttura del pacchetto e della sorgente
 
