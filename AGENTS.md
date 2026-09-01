@@ -5,6 +5,12 @@ MAIOS Project Kernel package. Start from `CURRENT_STATE.md`, then read only the
 source, architecture, package, test, or release files that can change the
 current movement.
 
+Use `README.md` as the repository homepage and reading map. For package entry,
+its first readback tells the operator the value and possibilities visible in
+the actual target, the complete functional integration relation, the exact
+effect and recovery, and the proof levels still unobserved. Contract that
+readback into a direct start when target and effect are already clear.
+
 ## Product identity
 
 ```text
@@ -37,8 +43,6 @@ source without installing the package.
 
 - For Kernel study or explanation, read `knowledge/KERNEL.md` and
   `skills/maios-kernel-study/SKILL.md`.
-- For a paper or rigorous article, read `research/AI_KERNEL_PAPER_FIELD.md` and
-  `skills/maios-kernel-paper/SKILL.md`.
 - For a human or model contribution, read `contributions/README.md` and
   `skills/maios-kernel-contribution/SKILL.md`.
 

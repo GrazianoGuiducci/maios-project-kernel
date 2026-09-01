@@ -152,7 +152,7 @@
         "required": false
       }
     ],
-    "rule": "Before project implementation, identify what is already available, explain material gaps and help the operator establish only the environment the selected project needs."
+    "rule": "Observe what the current coder, model access and target already provide. Begin directly when the field is sufficient; explain and establish only a material missing condition for the selected project."
   },
   "product": "MAIOS Project Kernel",
   "requested_bundle_ids": [
@@ -165,7 +165,7 @@
     "id": "maios-project-system",
     "operating_recipient": "project owner and AI coder",
     "purpose": "Orient, configure and operate one project through its sources, pertinent competences, resultants, causal learning and reentry.",
-    "startup_interview": "required"
+    "startup_interview": "discretionary"
   },
   "schema": "maios.project-entry-profile.v1",
   "source_catalogs": [

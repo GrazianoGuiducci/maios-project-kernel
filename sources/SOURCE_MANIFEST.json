@@ -1,7 +1,7 @@
 {
   "schema": "maios.source-manifest.v2",
   "product": "MAIOS Project Kernel",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "source_owner": "maios-project-kernel repository",
   "construction": "autonomous source-reconciled package with RepoKernel-generated functions translated into owner-native organs",
   "repokernel_plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",
@@ -14,7 +14,14 @@
     {
       "id": "project-kernel-family-method",
       "position": "maintained_competence",
-      "used_for": ["functional coverage", "self-installation", "open composition", "operating readback", "contamination control"]
+      "used_for": ["functional coverage", "self-installation", "adaptive entry", "open composition", "causal-margin reentry", "plural owner-bound learning", "operating readback", "contamination control"]
+    },
+    {
+      "id": "autonomous-entry-contract",
+      "position": "product_owned_contract",
+      "used_for": ["discretionary coder entry", "direct start option", "material expanded entry", "non-empty semantic handoff"],
+      "family_contract_unchanged": true,
+      "form_lane_unchanged": true
     },
     {
       "id": "ka",
@@ -26,14 +33,14 @@
     {
       "id": "fdla",
       "position": "non_shipped_competence_source",
-      "used_for": ["pre-projection correction", "assistant-deformation readback", "reusable causal learning"],
+      "used_for": ["pre-projection correction", "assistant-deformation readback", "semantic sensitivity", "reusable causal learning"],
       "source_shipped": false,
       "topology_imported": false
     },
     {
       "id": "meta-skill-architecture",
       "position": "non_shipped_architecture_source",
-      "used_for": ["competence levels", "portable competence formation", "reciprocal cultivation", "composition", "owner-governed meta-evolution"],
+      "used_for": ["competence levels", "portable competence formation", "reciprocal cultivation", "multi-owner learning", "composition", "owner-governed meta-evolution"],
       "source_shipped": false,
       "topology_imported": false
     },

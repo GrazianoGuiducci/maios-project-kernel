@@ -32,9 +32,11 @@ Do not store the transcript as authority.
 learning relations;
 `.maios/context/OPERATING_CONTEXT.json` is only a derived, invalidatable
 projection. Re-derive it when a durable state transition or reentry depends on
-its currency. A real inspected result can preserve an owner-bound
-`learning_delta`; matching learning enters the next movement immediately and
-remains distinct from later assimilation evidence.
+its currency. A real inspected result preserves the compact causal margin and
+may preserve several distinct owner-bound entries in `learning_deltas`; every
+matching relation enters the next movement immediately and remains distinct
+from later assimilation evidence. Keep all still-open fronts and one explicit
+focus rather than flattening continuity into a transcript summary.
 
 Installation, discovery, use, and maintained behavior are different claims.
 The package grants no global host, provider, network, publication, deployment,

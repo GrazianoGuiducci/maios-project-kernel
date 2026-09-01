@@ -2,6 +2,9 @@
 
 [English version](README.md)
 
+Versione corrente del prodotto: **[3.0.2](VERSION.md)**. Famiglia Project
+Kernel condivisa: `3.0.0`.
+
 MAIOS Project Kernel fornisce a un progetto e al suo coder AI un kernel
 operativo condiviso. Li aiuta a comprendere la situazione presente, formare un
 primo risultato utile, rendere pertinenti le competenze richieste dal lavoro,
@@ -11,12 +14,6 @@ conversazione.
 La repository è il prodotto. La cartella tracciata [`package/`](package/) è la
 proiezione autoinstallante pronta all'uso.
 
-RepoKernel fornisce funzioni neutrali revisionate: una relazione di ingresso
-Project Entity e una mappa di copertura Project Meta-Faculty. Questa repository
-autonoma le traduce nel proprio campo aperto di competenze e nell'unico
-proprietario semantico `maios-project-system`. RepoKernel non costruisce il
-pacchetto, non viene distribuito e non è una dipendenza runtime.
-
 L'installer e l'helper installato richiedono Python 3.10 o successivo; non sono
 necessari pacchetti Python di terze parti.
 
@@ -25,19 +22,107 @@ oppure studiare e contribuire al campo pubblico di competenze del Kernel nella
 repository. Il secondo ingresso dà al coder maggiore consapevolezza del
 sistema senza aggiungere nulla al target installato.
 
-## Inizia qui
+## Inizia qui: operatore e coder AI
+
+Questo README è la homepage della repository sia per le persone sia per i
+sistemi AI. Mostra dove vive ogni tipo di verità, cosa il prodotto può rendere
+possibile e come preparare un'integrazione completa ma posseduta dal target,
+senza scambiare l'albero dei file per il prodotto né trasformare il setup in
+un'intervista generica.
+
+Un coder AI ricostruisce prima la relazione corrente del prodotto, poi sceglie
+soltanto il percorso di lettura che può cambiare il risultato presente:
+
+| Necessità | Leggere poi | Cosa il coder deve comprendere o restituire |
+| --- | --- | --- |
+| Stabilire la verità corrente | [`AGENTS.md`](AGENTS.md), [`CURRENT_STATE.md`](CURRENT_STATE.md), [`VERSION.md`](VERSION.md), [`CHANGELOG.md`](CHANGELOG.md) | Prodotto `3.0.2`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
+| Comprendere valore e possibilità | [`knowledge/KERNEL.md`](knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/SSK_TRANSFER_3.0.2.md`](docs/SSK_TRANSFER_3.0.2.md) | Cosa cambia il Kernel in un progetto, quali possibilità restano aperte e come le relazioni SSK diventano funzioni proprie del prodotto |
+| Integrare il pacchetto | [`package/AGENTS.md`](package/AGENTS.md), [`maios-project-integration`](package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](package/INSTALL.md), [`package/MANIFEST.json`](package/MANIFEST.json) | Target esatto, modalità, proiezione host, percorsi posseduti dal pacchetto, anteprima, recupero e superfici immutate |
+| Configurare e usare il Kernel installato | [`START_HERE.md`](package/payload/START_HERE.md), [`maios-project-system`](package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | Come contesto, competenze, risultato, apprendimento, rilettura semantica e nuovo rientro restano connessi |
+| Adattarsi al coder attivo | [`adapters/ADAPTERS.json`](adapters/ADAPTERS.json), [`maios-project-host-adaptation`](skills/maios-project-host-adaptation/SKILL.md), [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) | Quale proiezione nativa è disponibile, cosa è soltanto impacchettato e cosa richiede ancora osservazione sull'host |
+| Studiare o contribuire senza installare | [`contributions/README.md`](contributions/README.md), [`maios-kernel-study`](skills/maios-kernel-study/SKILL.md), [`maios-kernel-contribution`](skills/maios-kernel-contribution/SKILL.md) | Una spiegazione, correzione, falsificatore, competenza, test o contributo legato alle fonti, senza effetti impliciti su pacchetto o release |
+
+### Prima restituzione all'operatore
+
+Prima di cambiare il target, il coder deve poter restituire all'operatore una
+sola lettura compatta e legata alle evidenze:
+
+- cosa MAIOS Project Kernel può rendere possibile in questo progetto e perché;
+- l'identità esatta di prodotto, famiglia, pacchetto e sorgente ispezionata;
+- target, modalità `new_repository` o `existing_repository` e host attivo
+  ricavati da evidenze reali;
+- se l'avvio diretto è già disponibile oppure quale unica relazione mancante
+  cambierebbe materialmente integrazione, effetto o recupero;
+- una mappa completa del trasferimento funzionale che includa Kernel, contesto,
+  competenze, stato, proiezione host, risultato, apprendimento, rientro,
+  verifica e recupero;
+- file ed effetti esatti proposti, ciò che resta intatto, percorso di recupero
+  e ogni livello di prova ancora non osservato.
+
+Quando target ed effetto sono già chiari, questa restituzione si contrae in una
+proposta di avvio diretto. Non deve diventare una spiegazione obbligatoria,
+ripetere contesto già noto o chiedere all'operatore di progettare la soluzione
+prima che il Kernel abbia mostrato cosa è utile e possibile.
+
+### Mappa di capacità e valore
+
+Questa mappa è il modo più rapido con cui un'AI può comprendere l'intero
+prodotto senza caricare preventivamente ogni competenza:
+
+| Relazione del prodotto | Valore nel progetto | Sorgenti proprietarie decisive |
+| --- | --- | --- |
+| Ingresso adattivo diretto o ampliato | Comincia subito in un progetto leggibile e amplia la comprensione condivisa solo quando cambia il movimento | [`AUTONOMOUS_ENTRY_CONTRACT.json`](kernel/AUTONOMOUS_ENTRY_CONTRACT.json), [`maios-project-integration`](skills/maios-project-integration/SKILL.md) |
+| Contesto condiviso e correggibile | Collega intento dell'operatore, fonti reali, fatti, assunzioni, ignoti e autorità senza conservare il transcript come verità | [`MAIOS_SETUP_CONTRACT.md`](setup/MAIOS_SETUP_CONTRACT.md), [`maios-project-context`](package/payload/skills/maios-project-context/SKILL.md) |
+| Possibilità aperta e direzione situata | Mantiene raggiungibili possibilità non ancora rappresentate, motiva alternative utili e forma un movimento rivedibile | [`SYSTEM_KERNEL.md`](kernel/SYSTEM_KERNEL.md), [`FACULTY_FIELD.json`](kernel/FACULTY_FIELD.json) |
+| Composizione delle competenze pertinenti | Lascia che il lavoro selezioni o formi la capacità minima che cambia il risultato, senza trasformare una palette fissa nel limite del sistema | [`COMPETENCE_CULTIVATION_PROTOCOL.md`](kernel/COMPETENCE_CULTIVATION_PROTOCOL.md), [`maios-project-competence-formation`](package/payload/skills/maios-project-competence-formation/SKILL.md) |
+| Risultato utile e rilettura semantica | Fa sì che risultato reale, cambi di significato, conseguenze e relazioni immutate formino ciò che accade dopo | [`RESULTANT_READBACK.schema.json`](schemas/RESULTANT_READBACK.schema.json), [`src/maios_project_kernel/operating.py`](src/maios_project_kernel/operating.py) |
+| Apprendimento plurale e proprio degli owner | Restituisce ogni correzione riusabile alla competenza più vicina che deve cambiare, poi la prova in lavoro successivo non identico | [`EVOLUTION_CONTRACT.json`](kernel/EVOLUTION_CONTRACT.json), [`COMPETENCE_CULTIVATION_PROTOCOL.md`](kernel/COMPETENCE_CULTIVATION_PROTOCOL.md) |
+| Continuità causale compatta | Preserva margine causale vivo, fronti realmente aperti, un focus presente e rientro in una sessione nuova senza riprodurre la conversazione | [`OPERATING_STATE.template.json`](state/OPERATING_STATE.template.json), [`START_HERE.md`](templates/project/START_HERE.md) |
+| Adattamento nativo all'host | Proietta lo stesso Kernel nel percorso di scoperta nativo del coder selezionato, mantenendo distinta la presenza sull'host dall'uso osservato | [`ADAPTERS.json`](adapters/ADAPTERS.json), [`maios-project-host-adaptation`](skills/maios-project-host-adaptation/SKILL.md) |
+| Integrazione deterministica e recupero | Mostra in anteprima i cambiamenti posseduti dal pacchetto, rifiuta conflitti, applica un piano immutabile, verifica l'identità e preserva l'evoluzione del progetto in disinstallazione | [`INSTALLATION.md`](docs/INSTALLATION.md), [`installer.py`](src/maios_project_kernel/installer.py) |
+
+Queste relazioni sono un solo Kernel in movimento. La tabella è una mappa di
+orientamento, non un catalogo chiuso: una sorgente, competenza, host o schema
+presente non deve diventare il limite di ciò che il lavoro futuro può rendere
+raggiungibile.
+
+### Preparare il movimento completo di integrazione
+
+Prima di agire, il coder connette internamente l'intera relazione di consegna:
+
+```text
+identità della repository ed evidenze del target
+-> mappa funzionale completa e ignoti materiali
+-> avvio diretto o un solo chiarimento che cambia il risultato
+-> anteprima esatta di percorsi, effetti, superfici immutate e recupero
+-> applicazione posseduta dal target
+-> scoperta nativa di START_HERE e delle competenze pertinenti
+-> primo risultato utile e correggibile
+-> apprendimento proprio degli owner e rientro compatto
+-> restituzione legata alle evidenze di ciò che è rappresentato, installato,
+   scoperto, esercitato, cambiato e ancora non osservato.
+```
+
+Questa preparazione mantiene raggiungibili tutte le funzioni del prodotto, ma
+non forza tutte le skill nel contesto né tutte le decisioni future nel primo
+piano. Il progetto reale e l'operatore restano proprietari della configurazione
+situata e dell'evoluzione successiva.
+
+### Prima azione disponibile
 
 Clona la repository, apri la sua radice con il coder e digli:
 
 ```text
-Leggi AGENTS.md e la competenza maios-project-integration. Spiegami cosa può
-aggiungere questo pacchetto al mio progetto e come lo integreresti. Dopo che
-siamo d'accordo, prepara il piano di installazione.
+Leggi AGENTS.md e la competenza maios-project-integration. Usa questo README
+come mappa della repository. Dimmi cosa questo Kernel può rendere possibile qui
+e il movimento completo di integrazione posseduto dal target. Se target ed
+effetto sono già chiari, proponi l'avvio diretto; altrimenti spiega soltanto la
+relazione mancante che cambierebbe materialmente integrazione, effetto o
+recupero.
 ```
 
-Il coder forma prima una comprensione condivisa e correggibile. Poi prepara
-l'anteprima di una transizione esatta e locale al progetto. Aprire la
-repository non installa né esegue nulla.
+Nulla viene installato solo perché la repository è stata aperta. Dopo
+l'accettazione dell'anteprima esatta, il percorso disponibile è:
 
 ```powershell
 Set-Location .\package
@@ -63,9 +148,7 @@ Il campo pubblico collega:
 | Superficie | Funzione |
 | --- | --- |
 | [`knowledge/KERNEL.md`](knowledge/KERNEL.md) | Fonte pubblica della relazione costitutiva del Kernel, KA, FDLA, Meta_Skill, competenza, contesto e apprendimento |
-| [`research/AI_KERNEL_PAPER_FIELD.md`](research/AI_KERNEL_PAPER_FIELD.md) | Campo consapevole degli stati delle affermazioni per paper e articoli rigorosi |
 | [`maios-kernel-study`](skills/maios-kernel-study/SKILL.md) | Studia, spiega, confronta e interroga il Kernel dalle fonti pubbliche |
-| [`maios-kernel-paper`](skills/maios-kernel-paper/SKILL.md) | Forma un paper o articolo attraverso il campo assiomatico pertinente |
 | [`maios-kernel-contribution`](skills/maios-kernel-contribution/SKILL.md) | Trasforma un'idea, un metodo, una correzione o un falsificatore umano o AI in contributo legato alla sorgente |
 | [`contributions/GPT_PRO_START.md`](contributions/GPT_PRO_START.md) | Apre un ciclo delimitato di contribuzione con GPT Pro |
 
@@ -262,7 +345,7 @@ sorgenti vive della repository autonoma
 | --- | --- |
 | `kernel/` | Kernel semantico, campo aperto delle facoltà, composizione e coltivazione delle competenze |
 | `skills/` | Competenze di integrazione, sistema, avvio, contesto, formazione, adattamento host e gestione sorgente |
-| `knowledge/`, `research/`, `contributions/` | Comprensione del Kernel, ricerca con stati delle affermazioni e campo di contribuzione delle competenze nativi della repository |
+| `knowledge/`, `contributions/` | Comprensione del Kernel e campo di contribuzione delle competenze nativi della repository |
 | `setup/`, `project/`, `state/` | Configurazione canonica e continuità compatte del progetto |
 | `src/maios_project_kernel/` | Proiezione deterministica, installer, configurazione, runtime, stato host e readback operativo |
 | `adapters/` | Proiezioni locali per gli host |

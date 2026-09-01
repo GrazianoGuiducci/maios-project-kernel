@@ -35,8 +35,8 @@ supported by what happened.
 
 ## Forward-resultant learning
 
-When the actual movement exposes a reusable causal correction, preserve one
-`learning_delta` in the terminal readback:
+When the actual movement exposes reusable causal corrections, preserve each
+closest owner as one entry in `learning_deltas` in the terminal readback:
 
 - owner kind, id, and owner surface;
 - what happened and the causal change;
@@ -44,10 +44,12 @@ When the actual movement exposes a reusable causal correction, preserve one
 - source references and activation relations;
 - invalidator and reentry condition.
 
-At least one activation relation enters `next_movement.relations`. Applying the
-resultant stores this relation in `.maios/state/OPERATING_STATE.json`, so the
-next matching circumstance can compose it immediately. This persistence does
-not claim universal truth, verified improvement, or assimilation.
+At least one activation relation of every entry enters
+`next_movement.relations`. Applying the resultant stores all distinct
+owner-bound relations atomically in `.maios/state/OPERATING_STATE.json`, so the
+next matching circumstance can compose each one immediately. Do not collapse
+several changed owners into a generic self-improvement record. This persistence
+does not claim universal truth, verified improvement, or assimilation.
 
 When the relation is exercised later, the faculty readback records the new
 circumstance, observed description, any optional classification and its

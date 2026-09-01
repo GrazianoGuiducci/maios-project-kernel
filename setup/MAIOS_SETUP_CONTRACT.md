@@ -22,9 +22,12 @@ P1-P5 answers, a Terminal Context Field, or an accepted external case. A Form
 route may later converge on the same situated-project function, but remains a
 different temporal source and builder until independently compared.
 
-In the self-configuring entry, the context competence conducts an adaptive
-dialogue: each turn uses what is already understood, produces a correctable
-movement and asks only for a relation that changes the result. In a later
+In the self-configuring entry, the coder observes the request, target and its
+own already-available capabilities. When that field is sufficient it offers a
+direct project start with a concise effect and recovery preview. An adaptive
+dialogue is discretionary: it expands only when a missing relation changes the
+result, owner, effect or recovery, or when the operator requests exploration.
+In a later
 Form-generated entry, it begins from the accepted Form context and refines only
 what the live project or operator relation has changed. The two entries share
 the situated-context function without sharing temporal state or builder.
@@ -67,11 +70,12 @@ movement, and recoverable reentry. It does not require every unknown to close.
 External execution, publication, installation of other software, provider use,
 or runtime action remains separately governed.
 
-The configured result also prepares owner-specific competence handoffs. Each
-handoff carries the active object, desired result, relevant sources, retained
-unknowns, expected contribution, exact effect boundary and return relation.
-Pertinent competences may then act alone or in composition without rebuilding
-the whole setup conversation.
+The configured result may also preserve one optional owner-specific integration
+handoff. It carries the active object, desired result, relevant sources,
+retained unknowns, expected contribution, exact effect boundary and return
+relation. It is stored only when useful, never in the deterministic installer
+plan and never as raw conversation. Pertinent competences may then act alone or
+in composition without rebuilding the whole setup conversation.
 
 ## State
 

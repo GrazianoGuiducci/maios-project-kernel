@@ -1,9 +1,11 @@
-# Install MAIOS Project Kernel 3.0.1 — repository package
+# Install MAIOS Project Kernel 3.0.2 — repository package
 
 The tracked `package/` projection is self-installing, not self-executing. Open
-it with the coder and let the coder first explain its relation to the target.
-After the operator corrects or accepts the target, mode and host, preview the
-transition and apply that exact plan.
+it with the coder. When the target and intended change are already clear, the
+coder can infer the likely mode and host, show a concise effect and recovery
+preview, and offer the exact project start. Ask for explanation or exploration
+when useful; it is not a mandatory installation phase. Correct target, mode or
+host if needed, then preview the transition and apply that exact plan.
 
 ## Requirement
 

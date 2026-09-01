@@ -6,7 +6,7 @@ setup_status: pending
 
 ## Verified state
 
-MAIOS Project Kernel 3.0.1 is installed as project-local files. The current
+MAIOS Project Kernel 3.0.2 is installed as project-local files. The current
 host projection may be installed, but discovery, state use, behavioral
 activation, and maintained reentry remain unverified until observed.
 
@@ -19,7 +19,8 @@ activation, and maintained reentry remain unverified until observed.
 ## Current next
 
 Use `maios-project-system` as the permanent entry. Let
-`maios-start-new-project` or `maios-start-existing-project` own first contact,
+`maios-start-new-project` or `maios-start-existing-project` own entry when it is
+material,
 let `maios-project-host-adaptation` connect the current coder when needed, then
 let `maios-project-context` form or refine the living context. Return the first
 correctable useful result and prepare owner-specific competence handoffs. In

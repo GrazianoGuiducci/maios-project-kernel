@@ -11,11 +11,9 @@ refers to. A newer local source can change the meaning of the review.
 
 - `AGENTS.md`
 - `knowledge/KERNEL.md`
-- `research/AI_KERNEL_PAPER_FIELD.md`
 - `contributions/README.md`
 - `contributions/COMPETENCE_CONTRIBUTION_TEMPLATE.md`
 - `skills/maios-kernel-study/SKILL.md`
-- `skills/maios-kernel-paper/SKILL.md`
 - `skills/maios-kernel-contribution/SKILL.md`
 - `kernel/SYSTEM_KERNEL.md`
 - `docs/ARCHITECTURE.md`
@@ -34,8 +32,8 @@ merge, package, release, installation or publication authority.
 
 What we want to happen:
 Understand the Kernel from the supplied public sources, then expose one
-high-leverage relation that can make this repository's knowledge, paper field,
-competence system or coder experience more capable. Let the contribution take
+high-leverage relation that can make this repository's knowledge, competence
+system or coder experience more capable. Let the contribution take
 the smallest complete form that can change a later result: a competence,
 method, source correction, research delta, falsifier, test or patch.
 

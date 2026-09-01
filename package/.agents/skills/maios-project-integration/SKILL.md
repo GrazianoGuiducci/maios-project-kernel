@@ -1,6 +1,6 @@
 ---
 name: maios-project-integration
-description: Understand, explain, preview, and integrate the MAIOS Project Kernel repository package into a selected new or existing project; use when an operator gives the package to an AI coder or harness, asks what it can add, or wants to begin installation.
+description: Recognize, preview, and integrate the MAIOS Project Kernel repository package into a selected new or existing project, beginning directly when target and effect are already clear and expanding entry only when a material relation is missing.
 ---
 
 # MAIOS Project Integration
@@ -8,11 +8,22 @@ description: Understand, explain, preview, and integrate the MAIOS Project Kerne
 This competence owns the movement from the tracked `package/` projection to one
 target-owned Project Kernel installation. It acts before project startup.
 
-## Form shared understanding
+## Choose the smallest entry
 
 Read `README.md`, `INSTALL.md`, `MANIFEST.json`, `PACKAGE_INVENTORY.json`, the
-operator's current request and the selected target project. Return a concise,
-correctable explanation of:
+operator's current request and the selected target project. Treat the active
+coder or harness and its model access as observed when they are already acting;
+do not ask the operator to reconfirm them. Infer new or existing mode and the
+native host from target evidence when reliable, while keeping correction free.
+
+When target, intended change and material effect are sufficiently clear, offer
+the direct start: state the selected target and mode, summarize the files and
+effects the preview can create or preserve, state recovery, and make the exact
+preview available. Explanation is an available option, not a mandatory phase.
+
+Expand the entry only when a missing relation can change the target, mode,
+meaning, effect, recovery or first useful result, or when the operator asks to
+explore. Then return a concise, correctable explanation of:
 
 - what the Kernel can contribute to this project;
 - how the package fits the current coder or harness;
@@ -21,17 +32,18 @@ correctable explanation of:
 - how startup and context formation continue after installation.
 
 Let the operator correct the target, mode, interpretation or desired movement.
-The explanation is the first product result, not a pre-installation ritual.
+Ask at most for the missing material relation; do not turn technical flags into
+questions when the target sources already answer them.
 
 ## Prepare the operating environment
 
-Before project implementation, determine whether the operator already has a
-capable coder or agentic harness, usable model access and Python 3.10 or later.
-Explain only the missing relations and help establish them in the form suited
-to the selected project. Model access may come from a provider account, API or
-local model. Git and a repository service are strongly recommended when they
-improve collaboration and recovery; a VPS or dedicated stack is introduced
-only when the work needs it.
+Before running deterministic helpers, verify Python 3.10 or later. Observe the
+already acting coder, harness and model access instead of making them an intake
+gate. Explain only a material missing relation and help establish it in the
+form suited to the selected project. Model access may come from a provider
+account, API or local model. Git and a repository service are suggested when
+they improve collaboration and recovery; a VPS or dedicated stack is
+introduced only when the work needs it.
 
 If no harness is present yet, treat that state as `not_present_yet`: explain
 the available host families and help the operator prepare one before applying
@@ -49,6 +61,13 @@ Apply the exact plan when that integration movement is accepted. If the plan
 reports conflicts, preserve the target and return the smallest owner-correct
 merge or placement movement; do not overwrite or treat refusal as the end of
 the package's usefulness.
+
+When the first project movement benefits from durable context, use the
+installed configuration owner to preserve one optional `integration_handoff`
+containing only the active object, desired result, source references, retained
+unknowns, expected contribution, effect boundary and return relation. Apply it
+through the reversible configuration transition. Never put dialogue, provider
+credentials or semantic state in the installer plan or receipt.
 
 After application, open the target project and let `maios-start-new-project`
 or `maios-start-existing-project` act from the installed state. Another harness

@@ -2,15 +2,42 @@
 
 All notable changes to the public distribution are recorded here.
 
-## Unreleased living source
+## 3.0.2 - 2026-09-01
 
-- Added a repository-native public Kernel knowledge and research field, three
-  source competences for study, paper formation and contribution, and a
-  source-pinned GPT Pro contribution path. These sources improve coder
-  awareness in the clone without entering the current installable payload.
-- Recorded the completed public 3.0.1 publication and the transition to the
-  separate Form-generated package lane. This post-release source continuity
-  changes no 3.0.1 product behavior or installable payload.
+This release promotes the implemented living source and its verified tracked
+package projection. Real person-coder use, host-specific semantic activation
+and later non-identical assimilation remain separate evidence.
+
+- Made person-coder entry discretionary: a capable system can offer direct
+  project start with effect and recovery preview, while wider explanation is
+  used only when a missing relation changes the movement or is requested.
+- Kept the shared 3.0.0 family contract exact and added a product-owned
+  autonomous entry contract, so the discretionary direct-package policy does
+  not rewrite or force a rebuild of the Form-preconfigured lane.
+- Added `maios.operating-state.v2` and `maios.resultant-readback.v3` with a
+  compact causal margin, genuinely open fronts and one explicit focus for
+  fresh-instance reentry without transcript replay.
+- Replaced singular `learning_delta` with plural closest-owner
+  `learning_deltas`, atomically preserving each distinct correction and its
+  later non-identical use relation.
+- Added optional semantic sensitivity to preprojection readback so a material
+  meaning shift can preserve, correct or refuse collapse without becoming a
+  mandatory vocabulary or review gate.
+- Added an optional reversible `integration_handoff` to project configuration;
+  deterministic installer plans and receipts remain free of conversation and
+  semantic state.
+- Prevented normal project runtime execution from writing bytecode caches and
+  made uninstall remove matching package-generated cache files while
+  preserving unrelated project material.
+- Added negative readbacks for front removal/focus clearing, uncoupled semantic
+  sensitivity and absent integration handoff.
+- Preserved the reusable SSK-to-external-package transfer method outside the
+  product: distinguish causal function from source topology, translate into
+  the receiving owner, keep the future horizon open and prove only observed
+  product states.
+- Temporarily removed the Paper-specific research field and
+  `maios-kernel-paper` owner while retaining product-native study and
+  contribution surfaces.
 
 ## 3.0.1 - 2026-08-28
 

@@ -126,6 +126,7 @@ def validate_configuration(value: Any) -> dict[str, Any]:
     composition = value.get("faculty_composition")
     people = value.get("people_and_environment")
     data_boundary = value.get("data_boundary")
+    integration_handoff = value.get("integration_handoff")
     for name, item in (
         ("operator_relation", operator),
         ("present_field", field),
@@ -138,6 +139,35 @@ def validate_configuration(value: Any) -> dict[str, Any]:
     ):
         if not isinstance(item, dict):
             errors.append(f"{name} must be an object")
+
+    if integration_handoff is not None:
+        if not isinstance(integration_handoff, dict):
+            errors.append("integration_handoff must be an object or null")
+        else:
+            for field_name in (
+                "active_object",
+                "desired_result",
+                "expected_contribution",
+                "return_relation",
+            ):
+                if not _nonempty(integration_handoff.get(field_name)):
+                    errors.append(
+                        f"integration_handoff.{field_name} must be non-empty"
+                    )
+            for field_name in ("source_refs", "retained_unknowns"):
+                entries = integration_handoff.get(field_name)
+                if not isinstance(entries, list) or not all(
+                    _nonempty(entry) for entry in entries
+                ):
+                    errors.append(
+                        f"integration_handoff.{field_name} must be a string list"
+                    )
+            if "effect_boundary" not in integration_handoff or not isinstance(
+                integration_handoff.get("effect_boundary"), (dict, type(None))
+            ):
+                errors.append(
+                    "integration_handoff.effect_boundary must be an object or null"
+                )
 
     if status == "configured" and not errors:
         if not _nonempty(operator.get("current_intent")):
@@ -288,6 +318,7 @@ def context_capsule(root: Path, state: dict[str, Any]) -> dict[str, Any]:
             "smallest_deliverable": result.get("smallest_deliverable"),
         },
         "requested_faculties": state["faculty_composition"].get("selected", []),
+        "integration_handoff": state.get("integration_handoff"),
         "unknowns": present.get("unknowns", []),
         "retained_unknowns": present.get("retained_unknowns", []),
         "review": {
@@ -317,6 +348,7 @@ def setup_spec(state: dict[str, Any], capsule: dict[str, Any]) -> dict[str, Any]
         "first_proof": state["first_proof"],
         "faculty_composition": state["faculty_composition"],
         "current_next": state.get("current_next"),
+        "integration_handoff": state.get("integration_handoff"),
         "effect_authority": "none",
         "form_state_imported": False,
     }
@@ -400,6 +432,7 @@ def configuration_status(root: Path) -> dict[str, Any]:
         "configuration_sha256": digest(state),
         "valid": validation["valid"],
         "handoff_ready": validation["handoff_ready"],
+        "integration_handoff_present": state.get("integration_handoff") is not None,
         "missing_decisions": validation["missing_decisions"],
         "context_projection": (
             "current"

@@ -21,7 +21,7 @@
     "instructions": "AGENTS.md",
     "neutral_competence": "skills/maios-project-integration/SKILL.md"
   },
-  "distribution_file_count": 54,
+  "distribution_file_count": 55,
   "entrypoint": "install.py",
   "global_writes": [],
   "host_adapters": [
@@ -34,18 +34,19 @@
     "pi",
     "dsh"
   ],
-  "payload_file_count": 43,
+  "payload_file_count": 44,
   "product": "MAIOS Project Kernel",
   "project_entrypoint": "payload/START_HERE.md",
   "project_kernel_family_version": "3.0.0",
   "repokernel_projection": {
+    "autonomous_entry_contract": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
     "configuration_state": "deferred_to_first_operator_relation",
     "plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",
     "project_entity_profile": "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
     "project_meta_faculty": "payload/.maios/kernel/PROJECT_META_FACULTY.json",
     "receipt": "payload/.maios/REPOKERNEL_PROJECTION.json",
     "semantic_owner": "payload/skills/maios-project-system/SKILL.md",
-    "startup_interview": "required"
+    "startup_interview": "discretionary"
   },
   "runtime_requirements": {
     "python": ">=3.10",
@@ -61,16 +62,17 @@
     "recovery": "remove_only_unchanged_installer_owned_bytes"
   },
   "source_identity": {
+    "autonomous_entry_contract_sha256": "c23891a9e3d83daa71efdf4f332cd71353bbb0cca5b766955172ff5f2a6d3b22",
     "owner": "maios-project-kernel repository",
-    "projection_sha256": "85f47dc4b65fba264133c14240e10948cf96e265a207ce24960229bc09251b5c",
+    "projection_sha256": "7187eac33779061cb3512fda25393f16c6ee610e0effd7b3ee8dd29b163939fc",
     "repokernel_projection_receipt_sha256": "879c2850afc76dab68a95b388e5976855a653a7dd71b9cea011c91bce88ceb2e",
     "revision_claim": "content_addressed_source_tree",
-    "source_manifest_sha256": "1678a882c1079fa817754f981e7f464a2605204a0d5f156e4c46deedf56ae75e",
-    "tree_sha256": "9ccd5c4af60184c4c7a37a75ce963d13890ce44e8659a004a710f234f3f16c9e"
+    "source_manifest_sha256": "bfee9c984c0c07d55483ae48e404b525d07c0e19e9820350950760dcfa19f7a2",
+    "tree_sha256": "862e8ba0af4280b40f90c8578d6a70b4977a1cecb0d9944ceb3d1690aa9a9a02"
   },
   "target_modes": [
     "new_repository",
     "existing_repository"
   ],
-  "version": "3.0.1"
+  "version": "3.0.2"
 }

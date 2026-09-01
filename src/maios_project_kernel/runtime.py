@@ -82,6 +82,7 @@ def validate_project(root: Path) -> dict[str, Any]:
         ".maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
         ".maios/kernel/EVOLUTION_CONTRACT.json",
         ".maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json",
+        ".maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
         ".maios/kernel/PROJECT_META_FACULTY.json",
         ".maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json",
         ".maios/kernel/PROJECT_ENTITY_PROFILE.json",
@@ -135,6 +136,37 @@ def validate_project(root: Path) -> dict[str, Any]:
             errors.append("Project Kernel family contract has no version")
     except Exception as exc:
         errors.append(f"invalid Project Kernel family contract: {exc}")
+    autonomous_entry: dict[str, Any] = {}
+    try:
+        autonomous_entry = read_json(
+            root / ".maios" / "kernel" / "AUTONOMOUS_ENTRY_CONTRACT.json"
+        )
+        family_relation = autonomous_entry.get("family_relation", {})
+        family_lane = family.get("lanes", {}).get("autonomous", {})
+        entry_policy = autonomous_entry.get("entry_policy", {})
+        if autonomous_entry.get("schema") != "maios.autonomous-entry-contract.v1":
+            errors.append("unsupported autonomous entry contract")
+        if autonomous_entry.get("product") != "MAIOS Project Kernel":
+            errors.append("autonomous entry contract product mismatch")
+        if autonomous_entry.get("owner") != "maios-project-kernel":
+            errors.append("autonomous entry contract owner mismatch")
+        if autonomous_entry.get("effect_authority") != "none":
+            errors.append("autonomous entry contract grants effect authority")
+        if autonomous_entry.get("contains_form_state") is not False:
+            errors.append("autonomous entry contract contains Form state")
+        if (
+            family_relation.get("lane") != "autonomous"
+            or family_relation.get("family_version") != family.get("family_version")
+            or family_relation.get("configuration_state")
+            != family_lane.get("configuration_state")
+            or family_relation.get("startup_context_requirement")
+            != family_lane.get("startup_interview")
+        ):
+            errors.append("autonomous entry contract lost its family relation")
+        if entry_policy.get("startup_interview") != "discretionary":
+            errors.append("autonomous entry policy must remain discretionary")
+    except Exception as exc:
+        errors.append(f"invalid autonomous entry contract: {exc}")
     meta: dict[str, Any] = {}
     try:
         meta = read_json(root / ".maios" / "kernel" / "PROJECT_META_FACULTY.json")
@@ -163,6 +195,7 @@ def validate_project(root: Path) -> dict[str, Any]:
         entity = read_json(root / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json")
         entry_contract = family.get("entry_profile", {})
         autonomous = family.get("lanes", {}).get("autonomous", {})
+        autonomous_policy = autonomous_entry.get("entry_policy", {})
         if entity.get("schema") != entry_contract.get("schema"):
             errors.append("Project Entity Profile schema mismatch")
         if entity.get("version") != family.get("family_version"):
@@ -171,9 +204,9 @@ def validate_project(root: Path) -> dict[str, Any]:
             "selection_model"
         ) != entry_contract.get("selection_model"):
             errors.append("Project Entity Profile selection model mismatch")
-        if entity.get("role", {}).get("startup_interview") != autonomous.get(
+        if entity.get("role", {}).get(
             "startup_interview"
-        ):
+        ) != autonomous_policy.get("startup_interview"):
             errors.append("Project Entity Profile startup relation mismatch")
         if entity.get("configuration_state") != autonomous.get("configuration_state"):
             errors.append("Project Entity Profile configuration state mismatch")
@@ -303,7 +336,7 @@ def validate_project(root: Path) -> dict[str, Any]:
     operating_state_readable = True
     try:
         operating_state = read_json(root / ".maios" / "state" / "OPERATING_STATE.json")
-        if operating_state.get("schema") != "maios.operating-state.v1":
+        if operating_state.get("schema") != "maios.operating-state.v2":
             operating_state_readable = False
             errors.append("unsupported operating state")
     except Exception as exc:

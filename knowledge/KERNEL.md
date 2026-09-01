@@ -126,13 +126,13 @@ The repository carries two connected surfaces:
 
 ```text
 public source field:
-  knowledge, research, repository competences and contributions
+  knowledge, repository competences and contributions
 
 installable projection:
   release/PROJECTION.json -> package/ -> target project
 ```
 
-Repository-native study, paper and contribution competences help a human or AI
+Repository-native study and contribution competences help a human or AI
 understand and evolve the public source. They are not included in `package/`
 unless a later source change deliberately selects that product relation.
 Opening or cloning the repository does not install anything.
@@ -161,8 +161,6 @@ not through the identity of its author or the fluency of its wording.
   system contract.
 - Read [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md) for the implemented
   owner and projection topology.
-- Read [`research/AI_KERNEL_PAPER_FIELD.md`](../research/AI_KERNEL_PAPER_FIELD.md)
-  for the claim-aware research field.
 - Use [`maios-kernel-study`](../skills/maios-kernel-study/SKILL.md) to study or
   explain the Kernel.
 - Use [`maios-kernel-contribution`](../skills/maios-kernel-contribution/SKILL.md)

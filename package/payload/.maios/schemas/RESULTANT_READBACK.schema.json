@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://maios.it/schemas/resultant-readback-v2.json",
+  "$id": "https://maios.it/schemas/resultant-readback-v3.json",
   "title": "MAIOS forward-resultant readback",
   "$comment": "This interoperable shape preserves the actual resultant and any owner-bound causal learning without imposing a review or admission stage. External claims and material effects retain their exact local evidence and authority boundaries.",
   "type": "object",
-  "required": ["schema", "event_id", "observed_at", "movement", "source_positions", "candidate_resultant", "preprojection_readback", "actual_result", "faculty_deltas", "possibility_impact", "next_movement", "effect"],
+  "required": ["schema", "event_id", "observed_at", "movement", "source_positions", "candidate_resultant", "preprojection_readback", "actual_result", "faculty_deltas", "possibility_impact", "next_movement", "effect", "causal_margin", "learning_deltas"],
   "properties": {
-    "schema": {"const": "maios.resultant-readback.v2"},
+    "schema": {"const": "maios.resultant-readback.v3"},
     "event_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
     "observed_at": {"type": "string", "minLength": 1},
     "movement": {"type": "object"},
@@ -33,7 +33,17 @@
       "properties": {
         "status": {"enum": ["preserved", "corrected", "noncollapse"]},
         "description": {"type": "string", "minLength": 1},
-        "corrections": {"$ref": "#/$defs/stringList"}
+        "corrections": {"$ref": "#/$defs/stringList"},
+        "semantic_sensitivity": {
+          "type": "object",
+          "required": ["status", "description", "source_refs"],
+          "properties": {
+            "status": {"enum": ["not_material", "preserved", "corrected", "noncollapse"]},
+            "description": {"type": "string", "minLength": 1},
+            "source_refs": {"$ref": "#/$defs/stringList"}
+          },
+          "additionalProperties": true
+        }
       },
       "additionalProperties": true
     },
@@ -93,8 +103,45 @@
       },
       "additionalProperties": true
     },
-    "learning_delta": {
-      "oneOf": [{"type": "null"}, {"$ref": "#/$defs/learningDelta"}]
+    "causal_margin": {
+      "type": "object",
+      "required": ["operator_relation", "selected_object", "owner_surface", "last_faithful_resultant", "current_movement", "next_movement", "supersession_condition"],
+      "properties": {
+        "operator_relation": {"type": "string", "minLength": 1},
+        "selected_object": {"type": "string", "minLength": 1},
+        "owner_surface": {"type": "string", "minLength": 1},
+        "last_faithful_resultant": {"type": "string", "minLength": 1},
+        "current_movement": {"type": "string", "minLength": 1},
+        "next_movement": {"type": "string", "minLength": 1},
+        "supersession_condition": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "front_transition": {
+      "type": "object",
+      "required": ["upserts", "remove_ids", "focus_id"],
+      "properties": {
+        "upserts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/openFront"}
+        },
+        "remove_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"}
+        },
+        "focus_id": {
+          "oneOf": [
+            {"type": "null"},
+            {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"}
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "learning_deltas": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/learningDelta"}
     }
   },
   "$defs": {
@@ -109,6 +156,23 @@
     },
     "classification": {
       "enum": ["verified_improvement", "no_change", "regression", "tradeoff", "unverified"]
+    },
+    "openFront": {
+      "type": "object",
+      "required": ["id", "title", "owner_surface", "status", "last_faithful_resultant", "current_movement", "next_movement", "reentry_condition", "supersession_condition"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
+        "title": {"type": "string", "minLength": 1},
+        "owner_surface": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1},
+        "last_faithful_resultant": {"type": "string", "minLength": 1},
+        "current_movement": {"type": "string", "minLength": 1},
+        "next_movement": {"type": "string", "minLength": 1},
+        "reentry_condition": {"type": "string", "minLength": 1},
+        "supersession_condition": {"type": "string", "minLength": 1},
+        "source_refs": {"$ref": "#/$defs/stringList"}
+      },
+      "additionalProperties": true
     },
     "learningDelta": {
       "type": "object",

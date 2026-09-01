@@ -2,7 +2,7 @@
 
 ## Living source and generated delivery
 
-MAIOS Project Kernel 3.0.1 uses one implementation owner. Product patch
+MAIOS Project Kernel 3.0.2 uses one implementation owner. Product patch
 identity and the shared Project Kernel family contract are recorded separately:
 
 ```text
@@ -16,6 +16,12 @@ kernel, setup, competence, adapter, runtime, installer, and template sources
 `package/` is disposable generated evidence. Product behavior is never edited
 there. The builder refuses missing or unsafe projection sources and binds the
 source-tree, projection, source-manifest and package members.
+
+`PROJECT_KERNEL_FAMILY_CONTRACT.json` remains the exact transferable family
+interface. `AUTONOMOUS_ENTRY_CONTRACT.json` is a different, product-owned
+organ: it binds the family-required deferred context to a discretionary direct
+entry policy. Builder, packaged profile, runtime and family synchronizer check
+this owner split; the Form lane is not rewritten by an autonomous patch.
 
 ## RepoKernel generation and MAIOS composition
 
@@ -49,8 +55,7 @@ AI coder can understand and evolve the Kernel:
 
 ```text
 knowledge/KERNEL.md
--> research/AI_KERNEL_PAPER_FIELD.md
--> repository study, paper, and contribution competences
+-> repository study and contribution competences
 -> source-bound contribution
 -> later use and causal readback.
 ```
@@ -72,7 +77,7 @@ an explicit projection change and its own product validation.
 
 | Seam | Hidden policy owner |
 | --- | --- |
-| `install.py preview/apply/verify/uninstall` | `src/maios_project_kernel/installer.py` |
+| `install.py preview/apply/verify/uninstall` | `src/maios_project_kernel/installer.py`, including conservative package-bytecode cleanup |
 | `maios.py status/compose/validate-movement` | `src/maios_project_kernel/runtime.py` |
 | `maios.py operating-status/validate-resultant/apply-resultant/learning-status` | `src/maios_project_kernel/operating.py` |
 | `maios.py configuration-*` | `src/maios_project_kernel/configuration.py` |

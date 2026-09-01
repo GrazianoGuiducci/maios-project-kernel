@@ -37,9 +37,11 @@ for a capable coder.
 Before declaring the host ready, read
 `.maios/kernel/PROJECT_ENTITY_PROFILE.json#environment_readiness` and classify
 each material requirement as available, missing, environment-dependent or not
-needed for this project. Explain a missing harness, model/provider or local
-model access, Python runtime, repository service or optional infrastructure and
-help the operator establish it through the current host's normal mechanisms.
+needed for this project. Observe the active harness and usable model access
+when they are already present rather than asking the operator to reconfirm
+them. Explain a missing harness, model/provider or local model access, Python
+runtime, repository service or optional infrastructure and help the operator
+establish it through the current host's normal mechanisms.
 This preparation is part of adaptation; credentials and global configuration
 remain operator-controlled effects.
 

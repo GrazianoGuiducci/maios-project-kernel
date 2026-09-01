@@ -22,10 +22,10 @@ except ImportError:  # installed runtime is loaded as project-local modules
     import host as host_engine  # type: ignore[no-redef]
 
 
-OPERATING_STATE_SCHEMA = "maios.operating-state.v1"
+OPERATING_STATE_SCHEMA = "maios.operating-state.v2"
 OPERATING_CONTEXT_SCHEMA = "maios.operating-context.v1"
-RESULTANT_READBACK_SCHEMA = "maios.resultant-readback.v2"
-RESULTANT_TRANSITION_SCHEMA = "maios.resultant-transition.v2"
+RESULTANT_READBACK_SCHEMA = "maios.resultant-readback.v3"
+RESULTANT_TRANSITION_SCHEMA = "maios.resultant-transition.v3"
 RESULT_CLASSIFICATIONS = {
     "verified_improvement",
     "no_change",
@@ -37,6 +37,26 @@ RESULT_STATUSES = {"completed", "partial", "blocked", "failed", "deferred"}
 PREPROJECTION_STATUSES = {"preserved", "corrected", "noncollapse"}
 EFFECT_STATES = {"none", "effect_unbound", "effect_bound"}
 SAFE_EVENT_ID = re.compile(r"^[A-Za-z0-9._-]+$")
+CAUSAL_MARGIN_FIELDS = (
+    "operator_relation",
+    "selected_object",
+    "owner_surface",
+    "last_faithful_resultant",
+    "current_movement",
+    "next_movement",
+    "supersession_condition",
+)
+OPEN_FRONT_FIELDS = (
+    "id",
+    "title",
+    "owner_surface",
+    "status",
+    "last_faithful_resultant",
+    "current_movement",
+    "next_movement",
+    "reentry_condition",
+    "supersession_condition",
+)
 
 
 class OperatingStateError(RuntimeError):
@@ -100,6 +120,50 @@ def operating_context_path(root: Path) -> Path:
     return root / ".maios" / "context" / "OPERATING_CONTEXT.json"
 
 
+def _validate_causal_margin(value: Any, errors: list[str], prefix: str) -> None:
+    if not isinstance(value, dict):
+        errors.append(f"{prefix} must be an object")
+        return
+    for field in CAUSAL_MARGIN_FIELDS:
+        if not _nonempty(value.get(field)):
+            errors.append(f"{prefix}.{field} must be non-empty")
+
+
+def _validate_open_fronts(
+    fronts: Any, focused_front_id: Any, errors: list[str], prefix: str
+) -> set[str]:
+    if not isinstance(fronts, list):
+        errors.append(f"{prefix} must be a list")
+        return set()
+    seen: set[str] = set()
+    for index, front in enumerate(fronts):
+        item_prefix = f"{prefix}[{index}]"
+        if not isinstance(front, dict):
+            errors.append(f"{item_prefix} must be an object")
+            continue
+        for field in OPEN_FRONT_FIELDS:
+            if not _nonempty(front.get(field)):
+                errors.append(f"{item_prefix}.{field} must be non-empty")
+        front_id = front.get("id")
+        if _nonempty(front_id):
+            if not SAFE_EVENT_ID.fullmatch(front_id):
+                errors.append(f"{item_prefix}.id contains unsafe characters")
+            if front_id in seen:
+                errors.append(f"duplicate open front id: {front_id}")
+            seen.add(front_id)
+        source_refs = front.get("source_refs", [])
+        if not isinstance(source_refs, list) or not all(
+            _nonempty(source_ref) for source_ref in source_refs
+        ):
+            errors.append(f"{item_prefix}.source_refs must be a string list")
+    if focused_front_id is not None:
+        if not _nonempty(focused_front_id):
+            errors.append("focused_front_id must be a non-empty string or null")
+        elif focused_front_id not in seen:
+            errors.append("focused_front_id must identify a preserved open front")
+    return seen
+
+
 def read_operating_state(root: Path) -> dict[str, Any]:
     root = root.resolve()
     path = operating_state_path(root)
@@ -115,6 +179,18 @@ def read_operating_state(root: Path) -> dict[str, Any]:
             raise OperatingStateError(f"operating state {field} has invalid type")
     if not isinstance(value.get("learning_relations", []), list):
         raise OperatingStateError("operating state learning_relations has invalid type")
+    state_errors: list[str] = []
+    _validate_causal_margin(value.get("causal_margin"), state_errors, "causal_margin")
+    _validate_open_fronts(
+        value.get("open_fronts"),
+        value.get("focused_front_id"),
+        state_errors,
+        "open_fronts",
+    )
+    if not isinstance(value.get("last_learning_relations"), list):
+        state_errors.append("last_learning_relations must be a list")
+    if state_errors:
+        raise OperatingStateError("invalid operating state: " + "; ".join(state_errors))
     return value
 
 
@@ -535,6 +611,9 @@ def _operating_status(
             "current_result": configuration.get("result", {}).get("current"),
             "current_next": configuration.get("current_next"),
         },
+        "causal_margin": copy.deepcopy(operating_state.get("causal_margin")),
+        "open_fronts": copy.deepcopy(operating_state.get("open_fronts", [])),
+        "focused_front_id": operating_state.get("focused_front_id"),
         "host": {
             "selected_adapter": host_state.get("selected_adapter"),
             "revision": host_state.get("revision"),
@@ -576,7 +655,9 @@ def _operating_status(
             ),
         },
         "last_resultant": operating_state.get("last_resultant"),
-        "last_learning_relation": operating_state.get("last_learning_relation"),
+        "last_learning_relations": copy.deepcopy(
+            operating_state.get("last_learning_relations", [])
+        ),
         "claim_boundary": "this is a deterministic self-representation of current records, not consciousness, semantic correctness, or effect authority",
         "extensions": {},
     }
@@ -614,23 +695,21 @@ def _learning_relation_id(owner: dict[str, Any]) -> str:
     return f"learning.{kind}.{owner_id}"
 
 
-def _validate_learning_delta(value: Any, errors: list[str]) -> None:
-    if value is None:
-        return
+def _validate_learning_delta(value: Any, errors: list[str], prefix: str) -> None:
     if not isinstance(value, dict):
-        errors.append("learning_delta must be an object or null")
+        errors.append(f"{prefix} must be an object")
         return
     owner = value.get("owner")
     if not isinstance(owner, dict):
-        errors.append("learning_delta.owner must be an object")
+        errors.append(f"{prefix}.owner must be an object")
     else:
         for field in ("kind", "id", "owner"):
             if not _nonempty(owner.get(field)):
-                errors.append(f"learning_delta.owner.{field} must be non-empty")
+                errors.append(f"{prefix}.owner.{field} must be non-empty")
         if all(_nonempty(owner.get(field)) for field in ("kind", "id", "owner")):
             relation_id = _learning_relation_id(owner)
             if not SAFE_EVENT_ID.fullmatch(relation_id):
-                errors.append("learning_delta owner cannot form a safe relation id")
+                errors.append(f"{prefix} owner cannot form a safe relation id")
     for field in (
         "what_happened",
         "causal_delta",
@@ -640,13 +719,53 @@ def _validate_learning_delta(value: Any, errors: list[str]) -> None:
         "reentry_condition",
     ):
         if not _nonempty(value.get(field)):
-            errors.append(f"learning_delta.{field} must be non-empty")
+            errors.append(f"{prefix}.{field} must be non-empty")
     for field in ("source_refs", "activation_relations"):
         item = value.get(field)
         if not isinstance(item, list) or not item or not all(
             _nonempty(entry) for entry in item
         ):
-            errors.append(f"learning_delta.{field} must contain non-empty strings")
+            errors.append(f"{prefix}.{field} must contain non-empty strings")
+
+
+def _validate_front_transition(root: Path, value: Any, errors: list[str]) -> None:
+    if value is None:
+        return
+    if not isinstance(value, dict):
+        errors.append("front_transition must be an object or absent")
+        return
+    upserts = value.get("upserts")
+    remove_ids = value.get("remove_ids")
+    if "focus_id" not in value:
+        errors.append("front_transition.focus_id is required")
+    if not isinstance(remove_ids, list) or not all(
+        _nonempty(front_id) and SAFE_EVENT_ID.fullmatch(front_id)
+        for front_id in remove_ids
+    ):
+        errors.append("front_transition.remove_ids must be a safe string list")
+        remove_ids = []
+    elif len(remove_ids) != len(set(remove_ids)):
+        errors.append("front_transition.remove_ids contains duplicates")
+    upsert_errors: list[str] = []
+    upsert_ids = _validate_open_fronts(upserts, None, upsert_errors, "front_transition.upserts")
+    errors.extend(upsert_errors)
+    if upsert_ids.intersection(remove_ids):
+        errors.append("front_transition cannot remove and upsert the same front")
+    focus_id = value.get("focus_id")
+    if focus_id is not None and (
+        not _nonempty(focus_id) or not SAFE_EVENT_ID.fullmatch(focus_id)
+    ):
+        errors.append("front_transition.focus_id must be a safe string or null")
+        return
+    try:
+        current_ids = {
+            front["id"] for front in read_operating_state(root).get("open_fronts", [])
+        }
+    except (OperatingStateError, KeyError, TypeError):
+        current_ids = set()
+    final_ids = (current_ids - set(remove_ids)) | upsert_ids
+    if focus_id is not None and focus_id not in final_ids:
+        errors.append("front_transition.focus_id must identify a resulting open front")
 
 
 def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
@@ -707,6 +826,34 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
         errors.append("preprojection_readback.corrections must be a string list")
     if preprojection.get("status") == "corrected" and not corrections:
         errors.append("a corrected readback requires at least one correction")
+    semantic_sensitivity = preprojection.get("semantic_sensitivity")
+    if semantic_sensitivity is not None:
+        if not isinstance(semantic_sensitivity, dict):
+            errors.append(
+                "preprojection_readback.semantic_sensitivity must be an object or absent"
+            )
+        else:
+            if semantic_sensitivity.get("status") not in {
+                "not_material",
+                "preserved",
+                "corrected",
+                "noncollapse",
+            }:
+                errors.append("unsupported semantic sensitivity status")
+            if not _nonempty(semantic_sensitivity.get("description")):
+                errors.append("semantic sensitivity description must be non-empty")
+            semantic_sources = semantic_sensitivity.get("source_refs")
+            if not isinstance(semantic_sources, list) or not all(
+                _nonempty(source_ref) for source_ref in semantic_sources
+            ):
+                errors.append("semantic sensitivity source_refs must be a string list")
+            if (
+                semantic_sensitivity.get("status") == "corrected"
+                and preprojection.get("status") != "corrected"
+            ):
+                errors.append(
+                    "a corrected semantic sensitivity must correct the preprojection readback"
+                )
 
     actual = value.get("actual_result")
     if not isinstance(actual, dict):
@@ -805,19 +952,47 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
 
     if "self_improvement_assessment" in value:
         errors.append(
-            "self_improvement_assessment is superseded; preserve the causal change as learning_delta"
+            "self_improvement_assessment is superseded; preserve causal changes as owner-bound learning_deltas"
         )
-    learning_delta = value.get("learning_delta")
-    _validate_learning_delta(learning_delta, errors)
-    if isinstance(learning_delta, dict) and not set(
-        learning_delta.get("activation_relations", [])
-    ).intersection(next_relations):
+    if "learning_delta" in value:
+        errors.append("learning_delta is superseded by the plural learning_deltas relation")
+    learning_deltas = value.get("learning_deltas")
+    if not isinstance(learning_deltas, list):
+        errors.append("learning_deltas must be a list")
+        learning_deltas = []
+    seen_learning_ids: set[str] = set()
+    for index, learning_delta in enumerate(learning_deltas):
+        prefix = f"learning_deltas[{index}]"
+        _validate_learning_delta(learning_delta, errors, prefix)
+        if not isinstance(learning_delta, dict):
+            continue
+        owner = learning_delta.get("owner")
+        if isinstance(owner, dict) and all(
+            _nonempty(owner.get(field)) for field in ("kind", "id", "owner")
+        ):
+            relation_id = _learning_relation_id(owner)
+            if relation_id in seen_learning_ids:
+                errors.append(f"duplicate learning owner relation: {relation_id}")
+            seen_learning_ids.add(relation_id)
+        if not set(learning_delta.get("activation_relations", [])).intersection(
+            next_relations
+        ):
+            errors.append(
+                f"{prefix} must enter the next movement through an activation relation"
+            )
+
+    causal_margin = value.get("causal_margin")
+    _validate_causal_margin(causal_margin, errors, "causal_margin")
+    if isinstance(causal_margin, dict) and causal_margin.get(
+        "next_movement"
+    ) != next_movement.get("current_next"):
         errors.append(
-            "learning_delta must enter the next movement through an activation relation"
+            "causal_margin.next_movement must match next_movement.current_next"
         )
+    _validate_front_transition(root, value.get("front_transition"), errors)
 
     return {
-        "schema": "maios.resultant-readback-validation.v2",
+        "schema": "maios.resultant-readback-validation.v3",
         "valid": not errors,
         "errors": errors,
         "event_digest": digest(value) if not errors else None,
@@ -878,7 +1053,7 @@ def _configuration_candidate(
 
     evolution = candidate.setdefault("evolution", {})
     evolution["last_crystallization"] = receipt_relative
-    if readback.get("learning_delta") is not None:
+    if readback.get("learning_deltas"):
         evolution["learning_delta_refs"] = _merge_unique(
             evolution.get("learning_delta_refs", []),
             [receipt_relative],
@@ -890,7 +1065,7 @@ def _update_learning_relations(
     current_operating: dict[str, Any],
     readback: dict[str, Any],
     receipt_relative: str,
-) -> tuple[list[dict[str, Any]], str | None, list[str]]:
+) -> tuple[list[dict[str, Any]], list[str], list[str]]:
     """Carry a causal correction into the next field and record later use."""
 
     circumstance_digest = digest(readback["movement"]["circumstance"])
@@ -931,11 +1106,13 @@ def _update_learning_relations(
             exercised.append(relation_id)
         relations.append(relation)
 
-    learning_delta = readback.get("learning_delta")
-    changed_relation_id: str | None = None
-    if isinstance(learning_delta, dict):
+    changed_relation_ids: list[str] = []
+    for learning_delta in readback.get("learning_deltas", []):
+        if not isinstance(learning_delta, dict):
+            continue
         owner = copy.deepcopy(learning_delta["owner"])
         changed_relation_id = _learning_relation_id(owner)
+        changed_relation_ids.append(changed_relation_id)
         prior = next(
             (
                 item
@@ -979,7 +1156,36 @@ def _update_learning_relations(
             if item.get("relation_id") != changed_relation_id
         ]
         relations.append(relation)
-    return relations, changed_relation_id, exercised
+    return relations, changed_relation_ids, exercised
+
+
+def _apply_front_transition(
+    current_operating: dict[str, Any], transition: Any
+) -> tuple[list[dict[str, Any]], str | None]:
+    fronts = copy.deepcopy(current_operating.get("open_fronts", []))
+    focused_front_id = current_operating.get("focused_front_id")
+    if not isinstance(transition, dict):
+        return fronts, focused_front_id
+    remove_ids = set(transition.get("remove_ids", []))
+    fronts = [front for front in fronts if front.get("id") not in remove_ids]
+    upserts = {
+        front["id"]: copy.deepcopy(front)
+        for front in transition.get("upserts", [])
+        if isinstance(front, dict) and _nonempty(front.get("id"))
+    }
+    replaced: set[str] = set()
+    updated: list[dict[str, Any]] = []
+    for front in fronts:
+        front_id = front.get("id")
+        if front_id in upserts:
+            updated.append(upserts[front_id])
+            replaced.add(front_id)
+        else:
+            updated.append(front)
+    updated.extend(
+        front for front_id, front in upserts.items() if front_id not in replaced
+    )
+    return updated, transition.get("focus_id")
 
 
 def apply_resultant_readback(
@@ -1050,10 +1256,13 @@ def apply_resultant_readback(
             "receipt": receipt_relative,
             "classification": readback["actual_result"].get("classification"),
             "preprojection_status": readback["preprojection_readback"]["status"],
+            "semantic_sensitivity_status": readback["preprojection_readback"]
+            .get("semantic_sensitivity", {})
+            .get("status"),
         },
     ]
     competence_index = _competence_index(root)
-    learning_relations, changed_learning_id, exercised_learning_ids = (
+    learning_relations, changed_learning_ids, exercised_learning_ids = (
         _update_learning_relations(
         current_operating,
         readback,
@@ -1061,18 +1270,27 @@ def apply_resultant_readback(
         )
     )
     updated_operating["learning_relations"] = learning_relations
-    if changed_learning_id is not None:
+    updated_operating["last_learning_relations"] = []
+    for changed_learning_id in changed_learning_ids:
         changed_learning = next(
             item
             for item in learning_relations
             if item.get("relation_id") == changed_learning_id
         )
-        updated_operating["last_learning_relation"] = {
-            "relation_id": changed_learning_id,
-            "origin_event_id": event_id,
-            "owner": copy.deepcopy(changed_learning["owner"]),
-            "source_resultant_receipt": receipt_relative,
-        }
+        updated_operating["last_learning_relations"].append(
+            {
+                "relation_id": changed_learning_id,
+                "origin_event_id": event_id,
+                "owner": copy.deepcopy(changed_learning["owner"]),
+                "source_resultant_receipt": receipt_relative,
+            }
+        )
+    updated_operating["causal_margin"] = copy.deepcopy(readback["causal_margin"])
+    open_fronts, focused_front_id = _apply_front_transition(
+        current_operating, readback.get("front_transition")
+    )
+    updated_operating["open_fronts"] = open_fronts
+    updated_operating["focused_front_id"] = focused_front_id
 
     host_state = host_engine.read_host_state(root)
     faculty_field = _faculty_field(root)
@@ -1114,7 +1332,7 @@ def apply_resultant_readback(
             ),
             "operating_context_sha256": final_context["context_sha256"],
             "configuration_receipt": configuration_receipt,
-            "learning_relation": changed_learning_id,
+            "learning_relations": changed_learning_ids,
             "exercised_learning_relations": exercised_learning_ids,
             "readback": readback,
             "global_writes": [],

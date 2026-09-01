@@ -19,6 +19,7 @@ REPOKERNEL_META_SCHEMA = "repokernel.project-meta-faculty.v1"
 REPOKERNEL_ENTITY_SCHEMA = "repokernel.project-entity-profile.v1"
 PACKAGED_SEMANTIC_OWNER = "skills/maios-project-system/SKILL.md"
 FAMILY_CONTRACT_SCHEMA = "maios.project-kernel-family-contract.v1"
+AUTONOMOUS_ENTRY_CONTRACT_SCHEMA = "maios.autonomous-entry-contract.v1"
 INSTALLED_HOST_CATALOG_SCHEMA = "maios.installed-host-adapters.v1"
 
 
@@ -80,6 +81,52 @@ def project_kernel_family_contract(root: Path) -> dict[str, Any]:
     version = contract.get("family_version")
     if not isinstance(version, str) or not version:
         raise BuildError("Project Kernel family contract has no version")
+    return contract
+
+
+def autonomous_entry_contract(
+    root: Path, family_contract: dict[str, Any], product_version: str
+) -> dict[str, Any]:
+    """Read the product-owned entry policy without rewriting the family lane."""
+
+    contract = read_json(root / "kernel" / "AUTONOMOUS_ENTRY_CONTRACT.json")
+    if contract.get("schema") != AUTONOMOUS_ENTRY_CONTRACT_SCHEMA:
+        raise BuildError("unsupported autonomous entry contract")
+    if contract.get("product") != "MAIOS Project Kernel":
+        raise BuildError("autonomous entry contract product mismatch")
+    if contract.get("product_version") != product_version:
+        raise BuildError("autonomous entry contract product version mismatch")
+    if contract.get("owner") != "maios-project-kernel":
+        raise BuildError("autonomous entry contract owner mismatch")
+    if contract.get("effect_authority") != "none":
+        raise BuildError("autonomous entry contract grants effect authority")
+    if contract.get("contains_form_state") is not False:
+        raise BuildError("autonomous entry contract must not contain Form state")
+
+    family_relation = contract.get("family_relation", {})
+    family_lane = family_contract.get("lanes", {}).get("autonomous", {})
+    if (
+        family_relation.get("lane") != "autonomous"
+        or family_relation.get("family_version")
+        != family_contract.get("family_version")
+        or family_relation.get("configuration_state")
+        != family_lane.get("configuration_state")
+        or family_relation.get("startup_context_requirement")
+        != family_lane.get("startup_interview")
+    ):
+        raise BuildError("autonomous entry contract lost its family relation")
+
+    policy = contract.get("entry_policy", {})
+    for field in (
+        "normal_movement",
+        "expanded_entry_condition",
+        "operator_correction_rule",
+        "future_form_rule",
+    ):
+        if not isinstance(policy.get(field), str) or not policy[field].strip():
+            raise BuildError(f"autonomous entry contract has no {field}")
+    if policy.get("startup_interview") != "discretionary":
+        raise BuildError("autonomous product entry must remain discretionary")
     return contract
 
 
@@ -386,6 +433,7 @@ def composed_project_entry_profile(
     project_entity: dict[str, Any],
     receipt: dict[str, Any],
     family_contract: dict[str, Any],
+    entry_contract: dict[str, Any],
 ) -> dict[str, Any]:
     """Translate RepoKernel's generated entity into the open MAIOS entry relation."""
 
@@ -416,7 +464,12 @@ def composed_project_entry_profile(
                 "project_entity_profile_sha256"
             ],
         },
-        "role": project_entity["role"],
+        "role": {
+            **project_entity["role"],
+            "startup_interview": entry_contract["entry_policy"][
+                "startup_interview"
+            ],
+        },
         "configuration_state": "deferred_to_first_operator_relation",
         "competence_field": {
             "selection_model": family_contract["entry_profile"]["selection_model"],
@@ -432,9 +485,9 @@ def composed_project_entry_profile(
         "environment_readiness": {
             "owner": "maios-project-integration and maios-project-host-adaptation",
             "rule": (
-                "Before project implementation, identify what is already available, "
-                "explain material gaps and help the operator establish only the "
-                "environment the selected project needs."
+                "Observe what the current coder, model access and target already provide. "
+                "Begin directly when the field is sufficient; explain and establish only "
+                "a material missing condition for the selected project."
             ),
             "requirements": [
                 {
@@ -508,6 +561,9 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "version"
     ) != project_version:
         raise BuildError("product version drifted between projection and source manifest")
+    entry_contract = autonomous_entry_contract(
+        root, family_contract, project_version
+    )
 
     destinations: set[str] = set()
     for item in projection.get("files", []):
@@ -535,7 +591,9 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     )
     write_json(
         package_dir / "payload" / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json",
-        composed_project_entry_profile(project_entity, repokernel_receipt, family_contract),
+        composed_project_entry_profile(
+            project_entity, repokernel_receipt, family_contract, entry_contract
+        ),
     )
 
     write_json(package_dir / "adapters" / "ADAPTERS.json", transformed_adapters(root))
@@ -573,6 +631,9 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             "tree_sha256": tree_sha256,
             "projection_sha256": digest_file(projection_path),
             "source_manifest_sha256": digest_file(root / "sources" / "SOURCE_MANIFEST.json"),
+            "autonomous_entry_contract_sha256": digest_file(
+                root / "kernel" / "AUTONOMOUS_ENTRY_CONTRACT.json"
+            ),
             "repokernel_projection_receipt_sha256": digest_file(
                 root / "release" / "repokernel" / "PROJECTION_RECEIPT.json"
             ),
@@ -606,8 +667,11 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             "receipt": "payload/.maios/REPOKERNEL_PROJECTION.json",
             "project_meta_faculty": "payload/.maios/kernel/PROJECT_META_FACULTY.json",
             "project_entity_profile": "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
+            "autonomous_entry_contract": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
             "semantic_owner": f"payload/{PACKAGED_SEMANTIC_OWNER}",
-            "startup_interview": "required",
+            "startup_interview": entry_contract["entry_policy"][
+                "startup_interview"
+            ],
             "configuration_state": "deferred_to_first_operator_relation",
         },
         "contains_repokernel_source": False,
@@ -689,6 +753,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "payload/.maios/kernel/PROJECT_META_FACULTY.json",
         "payload/.maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json",
         "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
+        "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
         "payload/.maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json",
         "payload/.maios/REPOKERNEL_PROJECTION.json",
         "payload/.maios/competences/INDEX.json",
@@ -711,6 +776,9 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     family_contract = project_kernel_family_contract(root)
     projection = read_json(root / "release" / "PROJECTION.json")
     project_version = projection.get("version")
+    entry_contract = autonomous_entry_contract(
+        root, family_contract, project_version
+    )
     try:
         manifest = read_json(package_dir / "MANIFEST.json")
         if manifest.get("schema") != MANIFEST_SCHEMA:
@@ -752,6 +820,13 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         packaged_entity = read_json(
             package_dir / "payload" / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json"
         )
+        packaged_entry_contract = read_json(
+            package_dir
+            / "payload"
+            / ".maios"
+            / "kernel"
+            / "AUTONOMOUS_ENTRY_CONTRACT.json"
+        )
         packaged_crosswalk = read_json(
             package_dir
             / "payload"
@@ -764,7 +839,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         )
         expected_meta = composed_project_meta_faculty(source_meta, source_receipt)
         expected_entity = composed_project_entry_profile(
-            source_entity, source_receipt, family_contract
+            source_entity, source_receipt, family_contract, entry_contract
         )
         if packaged_receipt != source_receipt:
             errors.append("packaged RepoKernel projection receipt drifted from source")
@@ -772,6 +847,8 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             errors.append("packaged Project Meta-Faculty is not the composed source projection")
         if packaged_entity != expected_entity:
             errors.append("packaged Project Entity Profile is not the owner-native translation")
+        if packaged_entry_contract != entry_contract:
+            errors.append("packaged autonomous entry contract drifted from source")
         errors.extend(
             project_meta_crosswalk_errors(
                 packaged_crosswalk,
@@ -800,9 +877,9 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             errors.append("packaged Project Meta-Faculty does not use the semantic owner")
         if (
             packaged_entity.get("role", {}).get("startup_interview")
-            != family_contract["lanes"]["autonomous"]["startup_interview"]
+            != entry_contract["entry_policy"]["startup_interview"]
         ):
-            errors.append("packaged Project Entity Profile lost required startup interview")
+            errors.append("packaged Project Entity Profile lost its current startup relation")
         if (
             packaged_entity.get("schema")
             != family_contract["entry_profile"]["schema"]
@@ -828,8 +905,11 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             "receipt": "payload/.maios/REPOKERNEL_PROJECTION.json",
             "project_meta_faculty": "payload/.maios/kernel/PROJECT_META_FACULTY.json",
             "project_entity_profile": "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
+            "autonomous_entry_contract": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
             "semantic_owner": f"payload/{PACKAGED_SEMANTIC_OWNER}",
-            "startup_interview": "required",
+            "startup_interview": entry_contract["entry_policy"][
+                "startup_interview"
+            ],
             "configuration_state": "deferred_to_first_operator_relation",
         }
         if manifest.get("repokernel_projection") != expected_projection:
@@ -971,7 +1051,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         operating_state = read_json(
             package_dir / "payload" / ".maios" / "state" / "OPERATING_STATE.json"
         )
-        if operating_state.get("schema") != "maios.operating-state.v1":
+        if operating_state.get("schema") != "maios.operating-state.v2":
             errors.append("initial operating state schema is incorrect")
         if (
             operating_state.get("revision") != 0

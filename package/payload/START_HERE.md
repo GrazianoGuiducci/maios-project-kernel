@@ -1,6 +1,6 @@
 # Start here — stable system boot
 
-This project contains MAIOS Project Kernel 3.0.1. It was installed through an
+This project contains MAIOS Project Kernel 3.0.2. It was installed through an
 explicit package plan; installation did not configure the project or prove
 that the current host has used its faculty.
 
@@ -15,9 +15,9 @@ Ask the current assistant:
 
 ```text
 Read START_HERE.md, determine whether this is a new or existing project, and
-use the corresponding MAIOS startup competence. Explain what you understand,
-then give me the first useful correctable result from what I have already said
-or placed here.
+use the corresponding MAIOS startup competence. Begin directly from what I
+have already said or placed here and give me the first useful correctable
+result. Expand the entry only if a missing relation materially changes it.
 ```
 
 The assistant starts from your current request, the real project files, and
@@ -34,9 +34,10 @@ is part of that adaptation.
 
 At first entry, the coder also checks
 `.maios/kernel/PROJECT_ENTITY_PROFILE.json#environment_readiness`. It explains
-and helps prepare any material missing condition—capable harness, model access,
-Python, recommended version control or optional remote infrastructure—before
-project implementation. The profile does not select providers, create
+and helps prepare only a material missing condition. The already acting coder,
+harness and model access are observed rather than re-asked; Python 3.10 or later
+is checked before deterministic helpers, while version control and remote
+infrastructure remain situated options. The profile does not select providers, create
 accounts, install global software or receive credentials by itself.
 
 When their composition leaves a real capability gap, or concrete work exposes
@@ -71,9 +72,11 @@ matching circumstance, while keeping persistence distinct from assimilation.
 `operating-status` exposes the current project relation when durable state or
 reentry needs it. After a real result is inspected, `validate-resultant` and
 `apply-resultant` can couple that terminal readback to configuration, evolution,
-learning, projections, and reentry without granting an external effect. A
-causal learning delta can enter the next matching movement immediately; later
-non-identical behavior is still needed to support assimilation.
+learning, projections, and reentry without granting an external effect.
+Distinct causal learning deltas can enter the next matching movement
+immediately. The readback also preserves the compact causal margin and all open
+fronts needed for reentry; later non-identical behavior is still needed to
+support assimilation.
 
 Project-local, reversible configuration is allowed when you asked to initialize
 or use the project. An external, public, destructive, credentialed, or runtime

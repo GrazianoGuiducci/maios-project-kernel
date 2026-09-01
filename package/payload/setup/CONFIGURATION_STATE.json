@@ -80,6 +80,7 @@
     "allowed_external_projection": []
   },
   "effect_authority": "none",
+  "integration_handoff": null,
   "evolution": {
     "contract": ".maios/kernel/EVOLUTION_CONTRACT.json",
     "last_crystallization": null,

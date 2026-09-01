@@ -106,6 +106,20 @@ class BuilderTests(DistributionFixture):
         receipt = builder.read_json(
             self.distribution / "payload" / ".maios" / "REPOKERNEL_PROJECTION.json"
         )
+        family_contract = builder.read_json(
+            self.distribution
+            / "payload"
+            / ".maios"
+            / "kernel"
+            / "PROJECT_KERNEL_FAMILY_CONTRACT.json"
+        )
+        autonomous_entry = builder.read_json(
+            self.distribution
+            / "payload"
+            / ".maios"
+            / "kernel"
+            / "AUTONOMOUS_ENTRY_CONTRACT.json"
+        )
         crosswalk = builder.read_json(
             self.distribution
             / "payload"
@@ -121,7 +135,20 @@ class BuilderTests(DistributionFixture):
         self.assertEqual(
             meta["invocation"]["entry"], "skills/maios-project-system/SKILL.md"
         )
-        self.assertEqual(entity["role"]["startup_interview"], "required")
+        self.assertEqual(entity["role"]["startup_interview"], "discretionary")
+        self.assertEqual(
+            family_contract["lanes"]["autonomous"]["startup_interview"],
+            "required",
+        )
+        self.assertEqual(
+            autonomous_entry["family_relation"]["startup_context_requirement"],
+            "required",
+        )
+        self.assertEqual(
+            autonomous_entry["entry_policy"]["startup_interview"],
+            "discretionary",
+        )
+        self.assertEqual(autonomous_entry["product_version"], "3.0.2")
         self.assertEqual(entity["schema"], "maios.project-entry-profile.v1")
         self.assertEqual(entity["version"], "3.0.0")
         self.assertEqual(
@@ -163,7 +190,15 @@ class BuilderTests(DistributionFixture):
             manifest["repokernel_projection"]["semantic_owner"],
             "payload/skills/maios-project-system/SKILL.md",
         )
+        self.assertEqual(
+            manifest["repokernel_projection"]["startup_interview"],
+            "discretionary",
+        )
         self.assertFalse(manifest["contains_repokernel_source"])
+        self.assertEqual(
+            manifest["repokernel_projection"]["autonomous_entry_contract"],
+            "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
+        )
 
     def test_generated_staging_cannot_enter_source_identity(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -268,6 +303,56 @@ class InstallerTests(DistributionFixture):
         receipt = installer.apply_plan(self.distribution, plan)
         self.assertEqual(receipt["state"], "installed")
         self.assertEqual(unrelated.read_text(encoding="utf-8"), "after\n")
+
+    def test_runtime_execution_and_bytecode_cache_leave_existing_project_recoverable(self) -> None:
+        target = self.base / "existing-runtime-recovery"
+        target.mkdir()
+        marker = target / "existing-project-marker.txt"
+        marker.write_text("project-owned\n", encoding="utf-8")
+        plan = installer.make_plan(
+            self.distribution, target, "existing_repository", "generic"
+        )
+        self.assertEqual(plan["status"], "ready")
+        receipt = installer.apply_plan(self.distribution, plan)
+
+        executed = subprocess.run(
+            [sys.executable, str(target / "maios.py"), "status"],
+            cwd=target,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(executed.returncode, 0, executed.stderr)
+        self.assertFalse((target / ".maios" / "runtime" / "__pycache__").exists())
+
+        compiled = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "py_compile",
+                str(target / ".maios" / "runtime" / "kernel.py"),
+            ],
+            cwd=target,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(compiled.returncode, 0, compiled.stderr)
+        cache_files = list(
+            (target / ".maios" / "runtime" / "__pycache__").glob("kernel.*.pyc")
+        )
+        self.assertTrue(cache_files)
+
+        removal = installer.uninstall(target, receipt)
+        self.assertTrue(removal["complete"], removal)
+        self.assertTrue(removal["removed_runtime_cache"])
+        self.assertEqual(removal["preserved_runtime_cache"], [])
+        remaining_files = sorted(
+            path.relative_to(target).as_posix()
+            for path in target.rglob("*")
+            if path.is_file()
+        )
+        self.assertEqual(remaining_files, ["existing-project-marker.txt"])
 
     def test_selected_host_state_and_native_projection_are_installed_but_unverified(self) -> None:
         target, _ = self.install("codex")
@@ -476,6 +561,7 @@ class RuntimeTests(DistributionFixture):
     def test_validation_rejects_missing_or_corrupt_kernel_organs(self) -> None:
         cases = (
             (".maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json", "remove"),
+            (".maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json", "corrupt"),
             (".maios/kernel/PROJECT_META_FACULTY.json", "corrupt"),
             (".maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json", "corrupt"),
             (".maios/config/HOST_ADAPTERS.json", "corrupt"),
@@ -500,7 +586,7 @@ class RuntimeTests(DistributionFixture):
 
     def resultant_readback(self, event_id: str = "resultant-01") -> dict:
         return {
-            "schema": "maios.resultant-readback.v2",
+            "schema": "maios.resultant-readback.v3",
             "event_id": event_id,
             "observed_at": "2026-08-25T08:00:00Z",
             "movement": {
@@ -531,6 +617,11 @@ class RuntimeTests(DistributionFixture):
                 "status": "corrected",
                 "description": "removed the assumption that package presence proves operation",
                 "corrections": ["restored the living project relation as source"],
+                "semantic_sensitivity": {
+                    "status": "corrected",
+                    "description": "kept the living source distinct from generated package bytes",
+                    "source_refs": ["fixture/resultant-01"],
+                },
             },
             "actual_result": {
                 "status": "completed",
@@ -557,8 +648,47 @@ class RuntimeTests(DistributionFixture):
                 "reentry_condition": "current operator intent and causal inputs still agree",
                 "relations": ["configuration_pending", "project_birth"],
             },
+            "causal_margin": {
+                "operator_relation": "operator selected a source-first movement",
+                "selected_object": "the first situated project movement",
+                "owner_surface": "target project configuration and operating state",
+                "last_faithful_resultant": "the resultant now controls project reentry",
+                "current_movement": "bind the source-qualified result to project continuity",
+                "next_movement": "exercise the next situated movement from resultant state",
+                "supersession_condition": "a later source-qualified result changes the next movement",
+            },
+            "front_transition": {
+                "upserts": [
+                    {
+                        "id": "first-project-movement",
+                        "title": "First situated project movement",
+                        "owner_surface": "target project",
+                        "status": "open",
+                        "last_faithful_resultant": "the resultant now controls project reentry",
+                        "current_movement": "bind the first resultant",
+                        "next_movement": "exercise the next situated movement from resultant state",
+                        "reentry_condition": "project continuity is needed again",
+                        "supersession_condition": "a later result closes or redirects this front",
+                        "source_refs": ["fixture/resultant-01"],
+                    },
+                    {
+                        "id": "host-adaptation",
+                        "title": "Host adaptation remains available",
+                        "owner_surface": "target project host relation",
+                        "status": "open",
+                        "last_faithful_resultant": "the host projection is installed but use is unverified",
+                        "current_movement": "preserve the host relation without selecting it",
+                        "next_movement": "adapt only when host-native discovery changes the result",
+                        "reentry_condition": "host discovery or use becomes material",
+                        "supersession_condition": "reviewed host evidence changes the relation",
+                        "source_refs": [".maios/state/HOST_STATE.json"],
+                    }
+                ],
+                "remove_ids": [],
+                "focus_id": "first-project-movement",
+            },
             "effect": {"status": "none", "boundary": None, "receipt_refs": []},
-            "learning_delta": None,
+            "learning_deltas": [],
         }
 
     def test_operating_context_applies_resultant_into_reentry(self) -> None:
@@ -600,7 +730,13 @@ class RuntimeTests(DistributionFixture):
         )
         self.assertEqual(applied["freshness"]["status"], "current")
         self.assertEqual(applied["last_resultant"]["event_id"], readback["event_id"])
-        self.assertIsNone(applied["last_learning_relation"])
+        self.assertEqual(applied["last_learning_relations"], [])
+        self.assertEqual(applied["causal_margin"], readback["causal_margin"])
+        self.assertEqual(applied["focused_front_id"], "first-project-movement")
+        self.assertEqual(
+            {front["id"] for front in applied["open_fronts"]},
+            {"first-project-movement", "host-adaptation"},
+        )
         capsule = configuration.read_json(
             target / ".maios" / "context" / "CONTEXT_CAPSULE.json"
         )
@@ -614,6 +750,72 @@ class RuntimeTests(DistributionFixture):
         )
         self.assertEqual(idempotent["status"], "idempotent")
 
+        continuation = self.resultant_readback("resultant-02")
+        del continuation["front_transition"]
+        continuation_context = operating.operating_status(
+            target, continuation["movement"]["circumstance"]
+        )
+        operating.apply_resultant_readback(
+            target, continuation, continuation_context["context_sha256"]
+        )
+        continued = operating.operating_status(
+            target, continuation["movement"]["circumstance"]
+        )
+        self.assertEqual(
+            {front["id"] for front in continued["open_fronts"]},
+            {"first-project-movement", "host-adaptation"},
+        )
+        self.assertEqual(continued["focused_front_id"], "first-project-movement")
+
+    def test_front_removal_updates_focus_and_can_close_the_open_set(self) -> None:
+        target, _ = self.install()
+        initial = self.resultant_readback("fronts-initial")
+        initial_context = operating.operating_status(
+            target, initial["movement"]["circumstance"]
+        )
+        operating.apply_resultant_readback(
+            target, initial, initial_context["context_sha256"]
+        )
+
+        remove_focused = self.resultant_readback("fronts-remove-focused")
+        remove_focused["front_transition"] = {
+            "upserts": [],
+            "remove_ids": ["first-project-movement"],
+            "focus_id": "host-adaptation",
+        }
+        next_context = operating.operating_status(
+            target, remove_focused["movement"]["circumstance"]
+        )
+        operating.apply_resultant_readback(
+            target, remove_focused, next_context["context_sha256"]
+        )
+        focused = operating.operating_status(
+            target, remove_focused["movement"]["circumstance"]
+        )
+        self.assertEqual(
+            [front["id"] for front in focused["open_fronts"]],
+            ["host-adaptation"],
+        )
+        self.assertEqual(focused["focused_front_id"], "host-adaptation")
+
+        close_last = self.resultant_readback("fronts-close-last")
+        close_last["front_transition"] = {
+            "upserts": [],
+            "remove_ids": ["host-adaptation"],
+            "focus_id": None,
+        }
+        final_context = operating.operating_status(
+            target, close_last["movement"]["circumstance"]
+        )
+        operating.apply_resultant_readback(
+            target, close_last, final_context["context_sha256"]
+        )
+        closed = operating.operating_status(
+            target, close_last["movement"]["circumstance"]
+        )
+        self.assertEqual(closed["open_fronts"], [])
+        self.assertIsNone(closed["focused_front_id"])
+
     def test_resultant_refuses_legacy_assessment_and_stale_context(self) -> None:
         target, _ = self.install()
         readback = self.resultant_readback("resultant-stale")
@@ -622,6 +824,38 @@ class RuntimeTests(DistributionFixture):
         validation = operating.validate_resultant_readback(target, invalid)
         self.assertFalse(validation["valid"])
         self.assertTrue(any("superseded" in item for item in validation["errors"]))
+
+        uncoupled = self.resultant_readback("resultant-uncoupled-sensitivity")
+        uncoupled["preprojection_readback"]["status"] = "preserved"
+        uncoupled["preprojection_readback"]["corrections"] = []
+        validation = operating.validate_resultant_readback(target, uncoupled)
+        self.assertFalse(validation["valid"])
+        self.assertTrue(
+            any(
+                "correct the preprojection readback" in item
+                for item in validation["errors"]
+            )
+        )
+
+        duplicate = self.resultant_readback("resultant-duplicate-learning")
+        duplicate["next_movement"]["relations"] = ["method_reentry"]
+        owner_delta = {
+            "owner": {"kind": "competence", "id": "same-owner", "owner": "project"},
+            "what_happened": "one correction happened",
+            "causal_delta": "the owner must behave differently",
+            "why_it_matters": "duplicate precedence would be ambiguous",
+            "future_behavior": "retain one coherent owner relation",
+            "source_refs": ["fixture/duplicate-learning"],
+            "activation_relations": ["method_reentry"],
+            "invalidator": "the correction no longer changes behavior",
+            "reentry_condition": "the same relation becomes material",
+        }
+        duplicate["learning_deltas"] = [owner_delta, json.loads(json.dumps(owner_delta))]
+        duplicate_validation = operating.validate_resultant_readback(target, duplicate)
+        self.assertFalse(duplicate_validation["valid"])
+        self.assertTrue(
+            any("duplicate learning owner relation" in item for item in duplicate_validation["errors"])
+        )
 
         status = operating.operating_status(
             target, readback["movement"]["circumstance"]
@@ -642,14 +876,14 @@ class RuntimeTests(DistributionFixture):
                 target, readback, status["context_sha256"]
             )
 
-    def test_learning_delta_reenters_and_records_later_nonidentical_use(self) -> None:
+    def test_learning_deltas_reenter_and_record_later_nonidentical_use(self) -> None:
         target, _ = self.install()
         forming = self.resultant_readback("formation-01")
         forming["next_movement"]["relations"] = [
             "source_reconciliation",
             "method_reentry",
         ]
-        forming["learning_delta"] = {
+        forming["learning_deltas"] = [{
             "owner": {
                 "kind": "competence",
                 "id": "source-reconciliation",
@@ -663,7 +897,21 @@ class RuntimeTests(DistributionFixture):
             "activation_relations": ["source_reconciliation", "method_reentry"],
             "invalidator": "a later case again begins from generated package bytes",
             "reentry_condition": "when source and projection may be confused",
-        }
+        }, {
+            "owner": {
+                "kind": "competence",
+                "id": "adaptive-project-entry",
+                "owner": "project",
+            },
+            "what_happened": "the present field already supplied a capable system and target",
+            "causal_delta": "offer direct entry before expanding explanation",
+            "why_it_matters": "a mandatory interview delays useful project work",
+            "future_behavior": "begin directly when no material relation is missing",
+            "source_refs": ["fixture/formation-01", "operator/direct-entry-rule"],
+            "activation_relations": ["method_reentry"],
+            "invalidator": "direct entry would leave target, effect or recovery materially ambiguous",
+            "reentry_condition": "when the package enters an already capable system",
+        }]
         forming_context = operating.operating_status(
             target, forming["movement"]["circumstance"]
         )
@@ -671,12 +919,17 @@ class RuntimeTests(DistributionFixture):
             target, forming, forming_context["context_sha256"]
         )
         self.assertEqual(
-            formation_receipt["learning_relation"],
-            "learning.competence.source-reconciliation",
+            formation_receipt["learning_relations"],
+            [
+                "learning.competence.source-reconciliation",
+                "learning.competence.adaptive-project-entry",
+            ],
         )
         learning = operating.learning_status(target)
-        self.assertEqual(learning["count"], 1)
-        self.assertEqual(learning["relations"][0]["status"], "reachable")
+        self.assertEqual(learning["count"], 2)
+        self.assertTrue(
+            all(relation["status"] == "reachable" for relation in learning["relations"])
+        )
         next_context = operating.operating_status(
             target,
             {
@@ -720,7 +973,7 @@ class RuntimeTests(DistributionFixture):
             "tests/source-first-later-movement"
         ]
         exercised["next_movement"]["relations"] = ["project_continuity"]
-        exercised["learning_delta"] = None
+        exercised["learning_deltas"] = []
         exercised_context = operating.operating_status(
             target, exercised["movement"]["circumstance"]
         )
@@ -733,7 +986,11 @@ class RuntimeTests(DistributionFixture):
             exercise_receipt["exercised_learning_relations"],
             ["learning.competence.source-reconciliation"],
         )
-        relation = operating.learning_status(target)["relations"][0]
+        relation = next(
+            item
+            for item in operating.learning_status(target)["relations"]
+            if item["relation_id"] == "learning.competence.source-reconciliation"
+        )
         self.assertTrue(relation["later_nonidentical_use_observed"])
         self.assertEqual(relation["last_use"]["event_id"], "formation-02")
 
@@ -958,6 +1215,10 @@ class RuntimeTests(DistributionFixture):
     def test_configuration_apply_derives_hash_linked_state_and_recovers(self) -> None:
         target, _ = self.install()
         current = configuration.current_configuration(target)
+        initial_status = configuration.configuration_status(target)
+        self.assertIsNone(current["integration_handoff"])
+        self.assertFalse(initial_status["integration_handoff_present"])
+        self.assertFalse(initial_status["handoff_ready"])
         candidate = json.loads(json.dumps(current))
         candidate["setup_status"] = "configured"
         candidate["checkpoint"] = {
@@ -986,6 +1247,15 @@ class RuntimeTests(DistributionFixture):
             }
         )
         candidate["people_and_environment"]["sources"] = ["project/source-a"]
+        candidate["integration_handoff"] = {
+            "active_object": "source-backed project continuity",
+            "desired_result": "the first useful result",
+            "source_refs": ["project/source-a"],
+            "retained_unknowns": ["later host behavior remains unverified"],
+            "expected_contribution": "begin from the selected source lane",
+            "effect_boundary": None,
+            "return_relation": "return the result and its next reentry condition",
+        }
         candidate["current_next"] = "produce the first useful result"
 
         validation = configuration.validate_configuration(candidate)
@@ -996,6 +1266,7 @@ class RuntimeTests(DistributionFixture):
         self.assertEqual(receipt["status"], "applied")
         status = configuration.configuration_status(target)
         self.assertTrue(status["handoff_ready"])
+        self.assertTrue(status["integration_handoff_present"])
         self.assertEqual(status["context_projection"], "current")
         self.assertEqual(status["setup_spec_projection"], "current")
         spec = configuration.read_json(
@@ -1003,6 +1274,7 @@ class RuntimeTests(DistributionFixture):
         )
         self.assertFalse(spec["form_state_imported"])
         self.assertEqual(spec["status"], "accepted")
+        self.assertEqual(spec["integration_handoff"], candidate["integration_handoff"])
         stale_candidate = json.loads(json.dumps(candidate))
         stale_candidate["checkpoint"]["sequence"] = 2
         stale_candidate["current_next"] = "a concurrent next movement"
@@ -1181,12 +1453,10 @@ class RepositoryCompetenceFieldTests(unittest.TestCase):
     def test_public_competence_field_is_reachable_from_a_clone(self) -> None:
         required = [
             "knowledge/KERNEL.md",
-            "research/AI_KERNEL_PAPER_FIELD.md",
             "contributions/README.md",
             "contributions/COMPETENCE_CONTRIBUTION_TEMPLATE.md",
             "contributions/GPT_PRO_START.md",
             "skills/maios-kernel-study/SKILL.md",
-            "skills/maios-kernel-paper/SKILL.md",
             "skills/maios-kernel-contribution/SKILL.md",
         ]
         for relative in required:
@@ -1196,7 +1466,6 @@ class RepositoryCompetenceFieldTests(unittest.TestCase):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         for skill_name in (
             "maios-kernel-study",
-            "maios-kernel-paper",
             "maios-kernel-contribution",
         ):
             skill = ROOT / "skills" / skill_name / "SKILL.md"
@@ -1204,18 +1473,23 @@ class RepositoryCompetenceFieldTests(unittest.TestCase):
             self.assertIn(f"name: {skill_name}", skill_text)
             self.assertIn(skill_name, agents)
             self.assertIn(skill_name, readme)
+        for removed in (
+            "research/AI_KERNEL_PAPER_FIELD.md",
+            "skills/maios-kernel-paper/SKILL.md",
+        ):
+            self.assertFalse((ROOT / removed).exists(), removed)
+            self.assertNotIn(removed, agents)
+            self.assertNotIn(removed, readme)
 
     def test_repository_competence_field_is_not_in_installable_projection(self) -> None:
         projection = builder.read_json(ROOT / "release" / "PROJECTION.json")
         projected_sources = {item["source"] for item in projection["files"]}
         repository_only = {
             "knowledge/KERNEL.md",
-            "research/AI_KERNEL_PAPER_FIELD.md",
             "contributions/README.md",
             "contributions/COMPETENCE_CONTRIBUTION_TEMPLATE.md",
             "contributions/GPT_PRO_START.md",
             "skills/maios-kernel-study/SKILL.md",
-            "skills/maios-kernel-paper/SKILL.md",
             "skills/maios-kernel-contribution/SKILL.md",
         }
         self.assertTrue(repository_only.isdisjoint(projected_sources))

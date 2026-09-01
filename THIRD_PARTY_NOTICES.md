@@ -1,6 +1,6 @@
 # Third-party sources and generated-output boundary
 
-MAIOS Project Kernel 3.0.1 is generated from the living sources in this
+MAIOS Project Kernel 3.0.2 is generated from the living sources in this
 repository. External repositories and owner-native competences listed below
 were consulted as historical evidence, design references or conceptual
 sources. Their code, private topology and authority are not imported into the
@@ -38,7 +38,7 @@ License of this distribution.
 RepoKernel owner contracts and its source-bound compiler generated the neutral
 Project Meta-Faculty and Project Entity relations identified by the packaged
 projection receipt. This repository translates those reviewed functions into
-owner-native organs and generates the 3.0.1 distribution. RepoKernel source,
+owner-native organs and generates the 3.0.2 distribution. RepoKernel source,
 runtime and fixed selection topology are not included here. Its own repository
 and license remain separate from the MIT License of this distribution.
 

@@ -53,8 +53,10 @@ movement immediately.
 
 Use `maios.py operating-status` when current durable state or reentry changes
 the result. Use the resultant transition when an inspected result must update
-project continuity, working projections or learning. Ordinary work does not
-need a terminal state ritual.
+project continuity, its compact causal margin, open fronts, working projections
+or one or more owner-bound learning relations. Ordinary work does not need a
+terminal state ritual. Preserve every still-live front and change the explicit
+focus only when the resultant actually changes it.
 
 Current operator intent and verified project reality outrank stored continuity.
 Representation, installation, discovery, use, observed improvement and later

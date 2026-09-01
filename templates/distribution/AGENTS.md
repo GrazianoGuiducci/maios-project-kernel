@@ -4,11 +4,12 @@ Use `maios-project-integration` as the owner of this repository package.
 Read `README.md`, `INSTALL.md`, `MANIFEST.json` and the selected target project
 before proposing an installation.
 
-Begin from the operator's intended project and coder. Explain what the Kernel
-adds, how it would enter the target, which possibilities become available and
-which existing material would remain owned by the project. Let the operator
-correct or accept that shared understanding, then produce the exact installer
-preview. Apply only the accepted target, mode and host plan.
+Begin from the operator's intended project, the selected target and the coder
+already acting. When target, mode, effect and recovery are sufficiently clear,
+offer the direct project start and produce the exact installer preview. Expand
+the explanation of what the Kernel adds, available possibilities or preserved
+owner material only when a missing relation changes the movement or the
+operator asks to explore. Apply only the corrected target, mode and host plan.
 
 After installation, continue inside the target project. The installed startup
 competences distinguish a new project from an existing project and form or

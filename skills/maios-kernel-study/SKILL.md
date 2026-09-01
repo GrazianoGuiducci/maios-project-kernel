@@ -7,8 +7,8 @@ description: Study, explain, compare, or question the MAIOS Project Kernel from 
 
 Use the repository as a public competence field. Begin with
 `knowledge/KERNEL.md`, then read only the owner sources that can change the
-question: `kernel/SYSTEM_KERNEL.md`, `docs/ARCHITECTURE.md`,
-`research/AI_KERNEL_PAPER_FIELD.md`, implementation or tests.
+question: `kernel/SYSTEM_KERNEL.md`, `knowledge/KERNEL.md`,
+`docs/ARCHITECTURE.md`, implementation or tests.
 
 Reconstruct the Kernel through its movement:
 

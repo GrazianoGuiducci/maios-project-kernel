@@ -649,7 +649,8 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
     removed: list[str] = []
     preserved_changed: list[str] = []
     missing: list[str] = []
-    for entry in reversed(receipt.get("installer_owned_files", [])):
+    owned_entries = list(receipt.get("installer_owned_files", []))
+    for entry in reversed(owned_entries):
         path = native(target, entry["path"])
         if has_unsafe_ancestor(target, entry["path"]) or path.is_symlink():
             preserved_changed.append(entry["path"])
@@ -661,6 +662,48 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
             path.unlink()
             removed.append(entry["path"])
             remove_empty_parents(path.parent, target)
+    removed_runtime_cache: list[str] = []
+    preserved_runtime_cache: list[str] = []
+    cache_sources = {
+        entry["path"]
+        for entry in owned_entries
+        if isinstance(entry, dict)
+        and isinstance(entry.get("path"), str)
+        and PurePosixPath(entry["path"]).suffix == ".py"
+    }
+    for source_relative in sorted(cache_sources):
+        source_path = PurePosixPath(source_relative)
+        cache_relative = (source_path.parent / "__pycache__").as_posix()
+        cache_dir = native(target, cache_relative)
+        if not cache_dir.exists():
+            continue
+        if has_unsafe_ancestor(target, cache_relative) or cache_dir.is_symlink():
+            preserved_runtime_cache.append(cache_relative)
+            continue
+        if not cache_dir.is_dir():
+            preserved_runtime_cache.append(cache_relative)
+            continue
+        cache_prefix = f"{source_path.stem}."
+        for candidate in sorted(cache_dir.iterdir(), key=lambda item: item.name):
+            if not (
+                candidate.name == f"{source_path.stem}.pyc"
+                or (
+                    candidate.name.startswith(cache_prefix)
+                    and candidate.name.endswith(".pyc")
+                )
+            ):
+                continue
+            relative = candidate.relative_to(target).as_posix()
+            if (
+                has_unsafe_ancestor(target, relative)
+                or candidate.is_symlink()
+                or not candidate.is_file()
+            ):
+                preserved_runtime_cache.append(relative)
+                continue
+            candidate.unlink()
+            removed_runtime_cache.append(relative)
+        remove_empty_parents(cache_dir, target)
     for entry in reversed(receipt.get("installer_owned_backup_files", [])):
         path = native(target, entry["path"])
         if has_unsafe_ancestor(target, entry["path"]) or path.is_symlink():
@@ -674,7 +717,7 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
             removed.append(entry["path"])
             remove_empty_parents(path.parent, target)
     receipt_path = target / ".maios" / "receipts" / "install" / "CURRENT.json"
-    if receipt_path.is_file() and not preserved_changed:
+    if receipt_path.is_file() and not preserved_changed and not preserved_runtime_cache:
         receipt_path.unlink()
         remove_empty_parents(receipt_path.parent, target)
     result = {
@@ -684,7 +727,9 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
         "removed": sorted(removed),
         "preserved_changed": sorted(preserved_changed),
         "already_missing": sorted(missing),
-        "complete": not preserved_changed,
+        "removed_runtime_cache": sorted(set(removed_runtime_cache)),
+        "preserved_runtime_cache": sorted(set(preserved_runtime_cache)),
+        "complete": not preserved_changed and not preserved_runtime_cache,
     }
     return result
 

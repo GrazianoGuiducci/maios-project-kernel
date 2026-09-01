@@ -1,13 +1,24 @@
 {
-  "schema": "maios.operating-state.v1",
+  "schema": "maios.operating-state.v2",
   "source_role": "installation_template",
   "revision": 0,
   "last_input_digests": {},
+  "causal_margin": {
+    "operator_relation": "The first substantive operator contribution will situate the project.",
+    "selected_object": "The project or desired change is not yet situated.",
+    "owner_surface": "The target project will retain ownership of its state and work.",
+    "last_faithful_resultant": "The Kernel is installed but has not yet produced a project resultant.",
+    "current_movement": "Enter from the current operator signal and real project sources.",
+    "next_movement": "Use the present operator relation and project sources to produce the first correctable useful result.",
+    "supersession_condition": "Replace this margin when a source-qualified resultant changes project continuity."
+  },
+  "open_fronts": [],
+  "focused_front_id": null,
   "active_movement": null,
   "history": [],
   "learning_relations": [],
   "last_resultant": null,
   "last_resultant_receipt": null,
-  "last_learning_relation": null,
+  "last_learning_relations": [],
   "last_event_id": null
 }
