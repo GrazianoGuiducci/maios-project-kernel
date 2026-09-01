@@ -4,8 +4,8 @@ updated: 2026-09-01
 active_surface: autonomous self-configuring `maios-project-kernel` 3.0.2 release
 status: the bounded SSK functional delta is implemented in living source,
 passes the source behavioral suite, is represented in the deterministic
-tracked `package/` and is selected for publication on `main` and as immutable
-release `v3.0.2`; site and runtime effects remain separate
+tracked `package/` and is published on `main` with immutable tag and GitHub
+Release `v3.0.2`; site and runtime effects remain separate
 
 ## Current resultant
 
@@ -76,9 +76,11 @@ a universal model.
   project-owned marker only;
 - a real interactive person-coder direct entry and conditional expanded entry
   remain to be observed;
-- `main`, tag and GitHub Release publication are selected as the exact 3.0.2
-  source effect; public page, Form/RepoKernel lane, runtime activation and
-  workstation recovery remain separate movements.
+- release commit `62a095fbb84fa9c23855080bc492838abbae6761`, annotated tag
+  `v3.0.2` and the matching GitHub Release are public; the Release has no
+  attached assets because tracked `package/` is the installable projection;
+- immutable `v3.0.1` history remains unchanged; public page, Form/RepoKernel
+  lane, runtime activation and workstation recovery remain separate movements.
 
 ## Living owners
 
@@ -105,15 +107,15 @@ a universal model.
 
 ## Boundary and next movement
 
-current_next: publish the exact verified 3.0.2 source and tracked projection on
-`main`, preserve the immutable `v3.0.1` history, create `v3.0.2`, then enter
-the operator-selected, separately owned Form-generated package movement; keep
-page, runtime, real interactive acceptance and total workstation recovery
-distinct
+current_next: inspect and reconcile the documentation that each supported host
+uses to understand, discover and activate the 3.0.2 Kernel, then enter the
+operator-selected, separately owned Form-generated package movement; keep site,
+runtime, real interactive acceptance and total workstation recovery distinct
 
 supersession_condition: replace this state when the deterministic 3.0.2
-package identity changes, a source failure changes the selected delta, or a
-later real interactive entry supplies new behavioral evidence
+package identity changes, host-documentation review changes an owner-native
+entry, a source failure changes the selected delta, or a later real interactive
+entry supplies new behavioral evidence
 
 validation_deferred: real person-coder direct entry, conditional expanded
 entry, later non-identical assimilation, public page and total workstation
