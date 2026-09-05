@@ -56,8 +56,7 @@ Compare the selected package manifest with an installed
 `.maios/SOURCE_MANIFEST.json` when the target already contains a Project
 Kernel. Reapplying the exact same artifact to its unchanged installation may be
 idempotent. A different product version is a different relation: the current
-installer does not claim an in-place migration, including 3.0.1 to 3.0.2 or
-3.0.2 to 3.0.3.
+installer does not claim an in-place migration.
 
 Do not present an `existing_repository` preview as an upgrade merely because
 some paths are identical. Preserve the target and its evolved files, state the
@@ -88,3 +87,10 @@ After application, open the target project and let `maios-start-new-project`
 or `maios-start-existing-project` act from the installed state. Another harness
 may read this neutral competence and the host guide; its native projection is a
 later adapter movement and does not change the Kernel meaning.
+
+The first installation carrying the new update standard records its exact
+baseline in `.maios/receipts/install/CURRENT.json`. Future selected updates use
+`.maios/kernel/UPDATE_CONTINUITY.md` to compare original distribution, local
+learning and proposed source, preserve state compatibility and recover the
+affected files. The standard starts here; no earlier-installation migration
+adapter is required.

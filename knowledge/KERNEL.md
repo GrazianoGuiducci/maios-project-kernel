@@ -165,3 +165,13 @@ not through the identity of its author or the fluency of its wording.
   explain the Kernel.
 - Use [`maios-kernel-contribution`](../skills/maios-kernel-contribution/SKILL.md)
   to turn a new method or idea into a repository contribution.
+
+## Competences as sources of continuing understanding
+
+The installed seed now includes `.maios/kernel/KNOWLEDGE_CONTINUUM.md`, a compact
+explanation and example, alongside qualified founding operating relations.
+The deeper study and contribution competences remain repository-native.
+A competence retains knowledge, reasons, practical method and source access;
+work can teach it, and its changed body becomes the next use's source.
+Native entries point to that living body. Receipts, distribution and later
+behavior remain distinguishable observations of this continuing relation.

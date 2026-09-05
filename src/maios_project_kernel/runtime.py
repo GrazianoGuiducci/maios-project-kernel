@@ -687,7 +687,10 @@ def parser() -> argparse.ArgumentParser:
     admit_resultant_parser.add_argument("--readback", type=Path, required=True)
     admit_resultant_parser.add_argument("--expected-context-sha256", required=True)
     sub.add_parser("competence-status")
-    sub.add_parser("learning-status")
+    learning_parser = sub.add_parser("learning-status")
+    learning_parser.add_argument("--include-cold", action="store_true")
+    knowledge_parser = sub.add_parser("knowledge-status")
+    knowledge_parser.add_argument("--path", dest="paths", action="append", required=True)
     sub.add_parser("competence-candidates")
     delta_parser = sub.add_parser("validate-competence-delta")
     delta_parser.add_argument("--delta", type=Path, required=True)
@@ -738,8 +741,10 @@ def main(argv: Iterable[str] | None = None) -> int:
             )
         elif args.command == "competence-status":
             result = competence_status(root)
+        elif args.command == "knowledge-status":
+            result = operating_engine.knowledge_status(root, args.paths)
         elif args.command in {"learning-status", "competence-candidates"}:
-            result = operating_engine.learning_status(root)
+            result = operating_engine.learning_status(root, include_cold=getattr(args, "include_cold", False))
         elif args.command == "validate-competence-delta":
             result = validate_competence_delta(read_json(args.delta))
         elif args.command == "admit-competence-delta":

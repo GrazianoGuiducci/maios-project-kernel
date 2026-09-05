@@ -23,15 +23,40 @@ Its portable operating body is
 
 ## Entering relation
 
+The assistant builds context from sources, operator relations, work and
+consequences, then derives the intent through which competences can project
+useful solutions. Learning can revise that context, intent and the way future
+competences are formed. This generative relation acts during ordinary work;
+it does not start only after onboarding or an explicit task description.
+
 Preserve the concrete work and change sought; current sources, evidence,
-unknowns and direction; faculties already available and the exact remaining
-gap; the expected observable delta; and any exact material effect boundary.
+unknowns and direction; faculties already available and the capacity that could
+become useful; what difference it can make; and any exact material effect.
+Intent, memory, knowledge acquisition, successful composition and emerging
+possibility can initiate formation before a failure or capability gap.
 
 Do not create a skill merely because a topic is unfamiliar. First reuse,
 compose, adapt, illuminate, or preserve explicit non-collapse. If a material
-gap remains, select the smallest truthful owner and form: method, deterministic
-function, reference, skill, competence, meta-competence, or another relation
-supported by what happened.
+gap remains, address it; formation can also follow the other causes above.
+Let the relation determine a useful owner and form: memory, method, function,
+reference, skill, entity, competence, meta-competence or kernel. These can
+coexist and develop internal depth without becoming a mandatory taxonomy.
+The body carries source knowledge, reasons, practical method, critical
+self-correction and the way its result can teach it. The generative competence
+learns when this formation changes how later capacities should be formed.
+
+## Portable continuation and intelligible learning
+
+The current host uses the living project-owned competence bodies.
+When helpful, explain their actual contribution, why they are being composed
+or formed, and the learned difference now available. Short explanations during
+work let the person understand and correct the method. Do not claim a planned
+or unsaved improvement as preserved learning.
+
+Use the deterministic transition below when its helpers are available. When a helper is unavailable,
+retain actual work, sources, changed competence bodies and the unresolved
+state transition in project continuity without inventing a helper receipt. With read-only access,
+return that continuation to the person and state where preservation is pending.
 
 ## Forward-resultant learning
 
@@ -44,10 +69,10 @@ closest owner as one entry in `learning_deltas` in the terminal readback:
 - source references and activation relations;
 - invalidator and reentry condition.
 
-At least one activation relation of every entry enters
-`next_movement.relations`. Applying the resultant stores all distinct
-owner-bound relations atomically in `.maios/state/OPERATING_STATE.json`, so the
-next matching circumstance can compose each one immediately. Do not collapse
+Applying the resultant preserves independently identified learning relations
+in `.maios/state/OPERATING_STATE.json`. Availability does not require adding a
+label to the next movement: semantic pertinence can make the knowledge useful
+now or later, including beyond a deterministic label match. Do not collapse
 several changed owners into a generic self-improvement record. This persistence
 does not claim universal truth, verified improvement, or assimilation.
 
@@ -57,9 +82,25 @@ evidence. A non-identical later use is the relevant behavioral signal. It may
 support assimilation, expose a tradeoff, revise the relation, or trigger its
 invalidator; file presence and schema validity cannot decide that claim.
 
-The same owner id may receive a later learning delta. The active relation is
-replaced, while its prior digest, origin event, receipts, and uses preserve
-causal supersession. The past does not remain current authority.
+Several learnings from one owner can coexist. A later date or the same owner
+does not imply replacement. A new delta may explicitly name `supersedes`
+relation IDs with `supersession_reason`; the earlier knowledge and its use
+evidence remain recoverable, while the new relation starts its own use history.
+
+Optional `learning_transitions` address an existing relation by `relation_id`,
+with `status` (`reachable`, `cooled` or `retired`), `reason` and
+`reentry_condition`. Cooling and retirement remove automatic candidate recall
+without deleting knowledge. Reopening is a situated decision, not a frequency
+threshold. `learning-status` shows active learning by default; `--include-cold`
+also recovers cooled and superseded relations.
+
+The assistant changes the actual knowledge body when reusable understanding
+must continue there. The state transition records that learning; it does not
+write semantic knowledge on the assistant's behalf. Native skill entries
+read the living source, keeping changed methods reachable without duplicating
+the bodies. When identity matters, `knowledge-status --path <project-path>`
+observes only the named sources or entries; a movement can retain those paths
+as `knowledge_refs` to detect a changed consumed body before a state transition.
 
 ## Claims, effects, and the separate competence index
 

@@ -12,7 +12,7 @@ import hashlib
 import json
 import os
 import re
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 try:
@@ -234,6 +234,8 @@ def compose(
     if not isinstance(circumstance, dict):
         raise OperatingStateError("circumstance must be an object")
     relations = _string_list(circumstance.get("relations"), "circumstance.relations")
+    if "knowledge_refs" in circumstance:
+        knowledge_status(root, circumstance["knowledge_refs"])
     registry = _faculty_field(root.resolve())
     relation_set = set(relations)
     silent: list[dict[str, Any]] = []
@@ -416,17 +418,52 @@ def _default_circumstance(configuration: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def knowledge_status(root: Path, paths: list[str]) -> dict[str, Any]:
+    """Observe selected files, following native entries to their living bodies."""
+    root = root.resolve()
+    if not isinstance(paths, list):
+        raise OperatingStateError("knowledge_refs must be a list")
+    _string_list(paths, "knowledge_refs")
+    pending = list(paths)
+    observed: dict[str, Any] = {}
+    while pending:
+        relative = pending.pop(0)
+        path = PurePosixPath(relative)
+        if (not relative or path.is_absolute() or ".." in path.parts
+                or chr(92) in relative or ":" in relative or path.as_posix() != relative):
+            raise OperatingStateError(f"knowledge path must be project-relative: {relative}")
+        if relative in observed:
+            continue
+        target = root.joinpath(*path.parts)
+        ensure_project_local(root, target)
+        if target.is_symlink() or (target.exists() and not target.is_file()):
+            raise OperatingStateError(f"knowledge path is not a regular file: {relative}")
+        if not target.exists():
+            observed[relative] = {"status": "missing"}
+            continue
+        data = target.read_bytes()
+        observed[relative] = {"status": "present", "sha256": hashlib.sha256(data).hexdigest()}
+        for line in data.splitlines():
+            if line.startswith(b"<!-- maios-knowledge-entry: ") and line.endswith(b" -->"):
+                pending.append(line.removeprefix(b"<!-- maios-knowledge-entry: ").removesuffix(b" -->").decode("utf-8"))
+    return {"schema": "maios.knowledge-observation.v1", "files": observed,
+            "claim_boundary": "selected content identity, not comprehension or assimilation"}
+
+
 def _input_digests(
     configuration: dict[str, Any],
     host_state: dict[str, Any],
     competence_index: dict[str, Any],
     faculty_field: dict[str, Any],
+    root: Path,
+    knowledge_refs: list[str],
 ) -> dict[str, str]:
     return {
         "configuration": digest(configuration),
         "host_state": digest(host_state),
         "competence_index": digest(competence_index),
         "faculty_field": digest(faculty_field),
+        "knowledge": digest(knowledge_status(root, knowledge_refs)),
     }
 
 
@@ -451,6 +488,7 @@ def _invalidated_relations(changed: list[str]) -> list[dict[str, Any]]:
         ],
         "competence_index": ["active competence relations", "later routing"],
         "faculty_field": ["known candidate projection", "composition reasons"],
+        "knowledge": ["selected consumed knowledge", "native entry continuation"],
     }
     return [
         {"input": item, "derived_relations": impact[item]}
@@ -479,7 +517,8 @@ def _operating_status(
         operating_state_override=operating_state,
     )
     inputs = _input_digests(
-        configuration, host_state, competence_index, faculty_field
+        configuration, host_state, competence_index, faculty_field, root,
+        circumstance.get("knowledge_refs", [])
     )
     changed = _changed_inputs(operating_state.get("last_input_digests", {}), inputs)
 
@@ -532,6 +571,8 @@ def _operating_status(
         )
     for learning_relation in operating_state.get("learning_relations", []):
         relation_id = learning_relation["relation_id"]
+        if learning_relation.get("status") != "reachable":
+            continue
         if relation_id in candidate_by_id:
             state = "eligible"
             reason = "the preserved causal relation matches the represented circumstance"
@@ -608,6 +649,7 @@ def _operating_status(
             "intent": configuration.get("operator_relation", {}).get(
                 "current_intent"
             ),
+            "intent_source": configuration.get("operator_relation", {}).get("intent_source"),
             "requested_result": circumstance.get("requested_result"),
             "current_result": configuration.get("result", {}).get("current"),
             "current_next": configuration.get("current_next"),
@@ -672,14 +714,17 @@ def operating_status(
     return _operating_status(root, circumstance)
 
 
-def learning_status(root: Path) -> dict[str, Any]:
+def learning_status(root: Path, *, include_cold: bool = False) -> dict[str, Any]:
     operating_state = read_operating_state(root.resolve())
-    relations = copy.deepcopy(operating_state.get("learning_relations", []))
+    all_relations = operating_state.get("learning_relations", [])
+    relations = copy.deepcopy([item for item in all_relations
+                               if include_cold or item.get("status") == "reachable"])
     return {
         "schema": "maios.learning-status.v1",
         "operating_revision": operating_state["revision"],
         "relations": relations,
         "count": len(relations),
+        "cold_count": sum(item.get("status") != "reachable" for item in all_relations),
         "claim_boundary": "preserved learning is reachable immediately; later non-identical use remains the assimilation evidence",
     }
 
@@ -690,10 +735,9 @@ def competence_candidate_status(root: Path) -> dict[str, Any]:
     return learning_status(root)
 
 
-def _learning_relation_id(owner: dict[str, Any]) -> str:
-    kind = re.sub(r"[^A-Za-z0-9._-]+", "-", owner["kind"].strip()).strip("-")
-    owner_id = re.sub(r"[^A-Za-z0-9._-]+", "-", owner["id"].strip()).strip("-")
-    return f"learning.{kind}.{owner_id}"
+def _learning_relation_id(owner: dict[str, Any], event_id: str, ordinal: int) -> str:
+    identity = {key: owner[key] for key in ("kind", "id", "owner")}
+    return "learning." + digest({"owner": identity, "event": event_id, "ordinal": ordinal})
 
 
 def _validate_learning_delta(value: Any, errors: list[str], prefix: str) -> None:
@@ -707,10 +751,6 @@ def _validate_learning_delta(value: Any, errors: list[str], prefix: str) -> None
         for field in ("kind", "id", "owner"):
             if not _nonempty(owner.get(field)):
                 errors.append(f"{prefix}.owner.{field} must be non-empty")
-        if all(_nonempty(owner.get(field)) for field in ("kind", "id", "owner")):
-            relation_id = _learning_relation_id(owner)
-            if not SAFE_EVENT_ID.fullmatch(relation_id):
-                errors.append(f"{prefix} owner cannot form a safe relation id")
     for field in (
         "what_happened",
         "causal_delta",
@@ -961,26 +1001,50 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
     if not isinstance(learning_deltas, list):
         errors.append("learning_deltas must be a list")
         learning_deltas = []
-    seen_learning_ids: set[str] = set()
+    existing = {item["relation_id"]: item for item in read_operating_state(root).get("learning_relations", [])}
+    changed_existing: set[str] = set()
+    seen_deltas: set[str] = set()
     for index, learning_delta in enumerate(learning_deltas):
         prefix = f"learning_deltas[{index}]"
         _validate_learning_delta(learning_delta, errors, prefix)
         if not isinstance(learning_delta, dict):
             continue
-        owner = learning_delta.get("owner")
-        if isinstance(owner, dict) and all(
-            _nonempty(owner.get(field)) for field in ("kind", "id", "owner")
-        ):
-            relation_id = _learning_relation_id(owner)
-            if relation_id in seen_learning_ids:
-                errors.append(f"duplicate learning owner relation: {relation_id}")
-            seen_learning_ids.add(relation_id)
-        if not set(learning_delta.get("activation_relations", [])).intersection(
-            next_relations
-        ):
-            errors.append(
-                f"{prefix} must enter the next movement through an activation relation"
-            )
+        delta_digest = digest(learning_delta)
+        if delta_digest in seen_deltas:
+            errors.append("duplicate learning delta")
+        seen_deltas.add(delta_digest)
+        supersedes = learning_delta.get("supersedes", [])
+        if not isinstance(supersedes, list) or not all(_nonempty(x) for x in supersedes):
+            errors.append(f"{prefix}.supersedes must be a string list")
+            continue
+        if supersedes and not _nonempty(learning_delta.get("supersession_reason")):
+            errors.append(f"{prefix}.supersession_reason is required")
+        for relation_id in supersedes:
+            if relation_id not in existing:
+                errors.append(f"unknown learning relation: {relation_id}")
+            if relation_id in changed_existing:
+                errors.append(f"conflicting learning transition: {relation_id}")
+            changed_existing.add(relation_id)
+    transitions = value.get("learning_transitions", [])
+    if not isinstance(transitions, list):
+        errors.append("learning_transitions must be a list")
+        transitions = []
+    for transition in transitions:
+        if not isinstance(transition, dict):
+            errors.append("learning transition must be an object")
+            continue
+        relation_id = transition.get("relation_id")
+        if not _nonempty(relation_id) or relation_id not in existing:
+            errors.append("learning transition must name an existing relation")
+            continue
+        if relation_id in changed_existing:
+            errors.append(f"conflicting learning transition: {relation_id}")
+        changed_existing.add(relation_id)
+        if transition.get("status") not in {"reachable", "cooled", "retired"}:
+            errors.append("unsupported learning transition status")
+        for key in ("reason", "reentry_condition"):
+            if not _nonempty(transition.get(key)):
+                errors.append(f"learning transition {key} is required")
 
     causal_margin = value.get("causal_margin")
     _validate_causal_margin(causal_margin, errors, "causal_margin")
@@ -1108,20 +1172,19 @@ def _update_learning_relations(
         relations.append(relation)
 
     changed_relation_ids: list[str] = []
-    for learning_delta in readback.get("learning_deltas", []):
+    for ordinal, learning_delta in enumerate(readback.get("learning_deltas", [])):
         if not isinstance(learning_delta, dict):
             continue
         owner = copy.deepcopy(learning_delta["owner"])
-        changed_relation_id = _learning_relation_id(owner)
+        changed_relation_id = _learning_relation_id(owner, readback["event_id"], ordinal)
         changed_relation_ids.append(changed_relation_id)
-        prior = next(
-            (
-                item
-                for item in relations
-                if item.get("relation_id") == changed_relation_id
-            ),
-            None,
-        )
+        supersedes = learning_delta.get("supersedes", [])
+        for previous in relations:
+            if previous["relation_id"] in supersedes:
+                previous["status"] = "superseded"
+                previous["superseded_by"] = changed_relation_id
+                previous["status_reason"] = learning_delta["supersession_reason"]
+                previous["status_event_id"] = readback["event_id"]
         relation = {
             "schema": "maios.learning-relation.v1",
             "relation_id": changed_relation_id,
@@ -1140,15 +1203,10 @@ def _update_learning_relations(
             "invalidator": learning_delta["invalidator"],
             "reentry_condition": learning_delta["reentry_condition"],
             "source_resultant_receipt": receipt_relative,
-            "supersedes_origin_event_id": (
-                prior.get("origin_event_id") if prior else None
-            ),
-            "supersedes_relation_digest": digest(prior) if prior else None,
-            "later_uses": copy.deepcopy(prior.get("later_uses", [])) if prior else [],
-            "last_use": copy.deepcopy(prior.get("last_use")) if prior else None,
-            "later_nonidentical_use_observed": bool(
-                prior and prior.get("later_nonidentical_use_observed")
-            ),
+            "supersedes": copy.deepcopy(supersedes),
+            "later_uses": [],
+            "last_use": None,
+            "later_nonidentical_use_observed": False,
             "claim_boundary": "the causal relation is available now; assimilation is evidenced only by later non-identical use",
         }
         relations = [
@@ -1157,6 +1215,12 @@ def _update_learning_relations(
             if item.get("relation_id") != changed_relation_id
         ]
         relations.append(relation)
+    for transition in readback.get("learning_transitions", []):
+        relation = next(item for item in relations if item["relation_id"] == transition["relation_id"])
+        relation["status"] = transition["status"]
+        relation["status_reason"] = transition["reason"]
+        relation["reentry_condition"] = transition["reentry_condition"]
+        relation["status_event_id"] = readback["event_id"]
     return relations, changed_relation_ids, exercised
 
 
@@ -1296,7 +1360,8 @@ def apply_resultant_readback(
     host_state = host_engine.read_host_state(root)
     faculty_field = _faculty_field(root)
     updated_operating["last_input_digests"] = _input_digests(
-        candidate_configuration, host_state, competence_index, faculty_field
+        candidate_configuration, host_state, competence_index, faculty_field, root,
+        circumstance.get("knowledge_refs", [])
     )
     final_context = _operating_status(
         root,

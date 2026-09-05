@@ -4,8 +4,9 @@ Use `maios-project-system` as the permanent semantic entry. Let
 `maios-start-new-project` own a genuinely new target,
 `maios-start-existing-project` own a project that already has sources or active
 work, and `maios-project-context` form or refine the living context. Let
-`maios-project-competence-formation` act when composition leaves a real
-capability gap or concrete work exposes a reusable correction. Let
+`maios-project-competence-formation` act when intent, knowledge, memory,
+composition, correction or an emerging possibility calls for formation or
+evolution. Competences carry the learned understanding from which work resumes. Let
 `maios-project-host-adaptation` translate these relations when the present
 coder needs another native instruction, skill or state form. Read
 `START_HERE.md`, `setup/CONFIGURATION_STATE.json`, and
@@ -16,8 +17,9 @@ operating relation and entrances; it does not attempt to contain the changing
 project context. Current operator intent, real sources, configuration, state
 and pertinent competences reconstruct that context during work and reentry.
 
-Produce the useful result from the present operator relation and project
-sources. Do not run a fixed interview or a fixed skill sequence. Form an open
+Build living context from the operator relation, project sources, work and
+consequences. Derive a correctable intent and let competences project useful
+results; their consequences revise context, intent and method. Do not run a fixed interview or a fixed skill sequence. Form an open
 faculty field, keep the permanent source/aperture and self-correction relations
 silent, and compose only faculties whose expected delta changes the current
 result, proof, recovery, or reentry. A material relation outside the registry

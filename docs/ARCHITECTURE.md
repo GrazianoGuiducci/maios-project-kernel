@@ -2,7 +2,7 @@
 
 ## Living source and generated delivery
 
-MAIOS Project Kernel 3.0.3 uses one implementation owner. Product patch
+The autonomous local candidate uses one implementation owner. Product
 identity and the shared Project Kernel family contract are recorded separately:
 
 ```text
@@ -100,8 +100,8 @@ competences reconstruct the living context. The boot changes only when that
 stable system relation changes; ordinary work evolves context and competences.
 
 For an existing project, `maios-start-existing-project` reads the project as it
-already is, forms the first useful Kernel contribution, and lets residual gaps
-create the competences the work actually needs. It does not impose a fixed
+already is, forms the first useful Kernel contribution, and lets intent,
+knowledge, successful work and emerging possibilities cultivate competences. It does not impose a fixed
 pre-generated competence sequence.
 
 ## Situated composition
@@ -160,3 +160,28 @@ The package performs project-local writes selected by explicit commands. It
 does not change global configuration or grant external authority. Generated,
 packaged, installed, discovered, used, verified, maintained, and human-accepted
 states require different evidence. Each receipt states its claim boundary.
+
+## Living knowledge and selective continuation
+
+The competence body owns current know-how; native skill entries retain its
+discovery metadata and refer to that source. This avoids divergent copies of
+the operating method. Metadata and routing changes still reach their actual
+consumers. The installed `KNOWLEDGE_CONTINUUM.md` explains the relation with a
+practical example; `FOUNDING_RELATIONS.md` carries the qualified A0-A11 reference.
+
+Learning relations have identities derived from their exact owner, source event
+and ordinal within that event. Multiple aspects of one owner coexist.
+Replacement names exact predecessors and a reason; use evidence remains with
+its originating relation. Cooling or retirement removes candidate recall while
+history remains recoverable. Availability does not force next-movement labels.
+
+`knowledge-status` observes only requested project paths and follows native
+entries to their living sources. Optional `circumstance.knowledge_refs` joins
+those content identities to the resultant's concurrency comparison; ordinary
+work does not scan the full corpus. Invalidated host capabilities become
+unknown without erasing unrelated observations.
+
+The historical RepoKernel generation uses its preserved input snapshot. The
+living faculty field can evolve without falsifying that historical receipt.
+New installations retain an exact file baseline and state identities for the
+update method in `UPDATE_CONTINUITY.md`. There is no automatic migration engine.

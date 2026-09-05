@@ -38,7 +38,7 @@ installer does not contaminate the package projection with `__pycache__`.
 Reapplying the exact same artifact to its unchanged installation is
 idempotent. That property is not a cross-version upgrade claim. This package
 does not implement an in-place migration from a project installed by another
-product version, including 3.0.1 to 3.0.2 or 3.0.2 to 3.0.3. Preserve the
+product version. Preserve the
 existing target and its project-evolved files; if migration becomes necessary,
 treat it as a separate target-owned movement with an explicit inventory,
 reconciliation, effect, and recovery relation.
@@ -84,3 +84,10 @@ python maios.py apply-configuration --candidate candidate.json --expected-state-
 
 The apply command writes only project-local state, projections, backup, and
 receipt. External effects remain separately unauthorized.
+
+The first installation carrying the new update standard records its exact
+baseline in `.maios/receipts/install/CURRENT.json`. Future selected updates use
+`.maios/kernel/UPDATE_CONTINUITY.md` to compare original distribution, local
+learning and proposed source, preserve state compatibility and recover the
+affected files. The standard starts here; no earlier-installation migration
+adapter is required.

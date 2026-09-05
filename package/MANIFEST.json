@@ -21,7 +21,7 @@
     "instructions": "AGENTS.md",
     "neutral_competence": "skills/maios-project-integration/SKILL.md"
   },
-  "distribution_file_count": 55,
+  "distribution_file_count": 58,
   "entrypoint": "install.py",
   "global_writes": [],
   "host_adapters": [
@@ -34,7 +34,7 @@
     "pi",
     "dsh"
   ],
-  "payload_file_count": 44,
+  "payload_file_count": 47,
   "product": "MAIOS Project Kernel",
   "project_entrypoint": "payload/START_HERE.md",
   "project_kernel_family_version": "3.0.0",
@@ -62,17 +62,17 @@
     "recovery": "remove_only_unchanged_installer_owned_bytes"
   },
   "source_identity": {
-    "autonomous_entry_contract_sha256": "42eb8d21ec4791f66781225c98487d809448c19f63be008372fa1e1fad35512a",
+    "autonomous_entry_contract_sha256": "06398f73657463aecd88bb7508e9b9900b48639fa2417eab4e1624a26a416882",
     "owner": "maios-project-kernel repository",
-    "projection_sha256": "ef91f3eb7c3ef37d870435e6c20262ed7e784c1449e1b61a4105c3583ff5b52c",
-    "repokernel_projection_receipt_sha256": "879c2850afc76dab68a95b388e5976855a653a7dd71b9cea011c91bce88ceb2e",
+    "projection_sha256": "1a48d5ff57166722a7aa59eb91a57abe0451179a1fe8bd6b6258389a434aec3b",
+    "repokernel_projection_receipt_sha256": "d294756e66579e4094769e4e9aea9f190a5559d699843007912fd827c5b86697",
     "revision_claim": "content_addressed_source_tree",
-    "source_manifest_sha256": "a19c12522378e5b3cbe03cfafbef3878bcc4b11a2b124951885850cba275a5ba",
-    "tree_sha256": "0643fa3de76bd77cfc448cf97df6433f848f839b44b16a73f894f5104f466d5b"
+    "source_manifest_sha256": "6d68067f7c3be75b9f4f58b15177b2a469bc0dd8205c85edc49961114275c3f2",
+    "tree_sha256": "eccd0a2dd57422035bb67a8d4ddd8dddba3ec89eecabc0e24120c826be61dec4"
   },
   "target_modes": [
     "new_repository",
     "existing_repository"
   ],
-  "version": "3.0.3"
+  "version": "3.0.3+continuum.1"
 }

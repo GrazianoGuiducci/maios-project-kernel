@@ -2,7 +2,7 @@
 
 ## Source owner
 
-Version 3.0.3 is this `maios-project-kernel` repository. The autonomous 2.0
+The local 3.0.3+continuum.1 candidate is this `maios-project-kernel` repository. The autonomous 2.0
 Kernel remains its living base; reviewed RepoKernel functions are assimilated
 through a source-bound translation receipt. The generated
 `package/` projection
@@ -47,3 +47,9 @@ identity.
 They do not prove installation, native host discovery, semantic use, external
 effects, useful behavior, maintained reentry, or human acceptance. Those states
 must point to their own receipts or observations.
+
+The living faculty field evolves independently of the original RepoKernel
+generation input. `release/repokernel/input-snapshots/FACULTY_FIELD.json` keeps
+that exact historical input; its binding is in the projection receipt.
+`FOUNDING_RELATIONS.md` is the complete qualified A0-A11 operating reference
+used for this transfer, not a claim to contain the whole D-ND model.

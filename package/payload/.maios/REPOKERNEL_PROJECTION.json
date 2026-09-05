@@ -46,5 +46,13 @@
     "Form answers and preconfigured project state",
     "private D-ND or TMx topology",
     "global host configuration and runtime authority"
-  ]
+  ],
+  "input_snapshots": {
+    "maios-faculty-field": {
+      "path": "release/repokernel/input-snapshots/FACULTY_FIELD.json",
+      "source_path": "kernel/FACULTY_FIELD.json",
+      "sha256": "31b27b04189e1aa9ab038917e0e944b9ac62bbc81fc1987bee5cf84e92e08148",
+      "relation": "exact historical generation input; the living field evolves independently"
+    }
+  }
 }

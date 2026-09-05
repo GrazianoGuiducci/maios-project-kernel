@@ -168,6 +168,15 @@ def validate_host_attestation(root: Path, value: Any) -> dict[str, Any]:
         isinstance(item, str) and bool(item.strip()) for item in capabilities
     ):
         errors.append("observed_capabilities must be a list of non-empty strings")
+    invalidated = value.get("invalidated_capabilities", [])
+    if not isinstance(invalidated, list) or not all(
+        isinstance(item, str) and bool(item.strip()) for item in invalidated
+    ):
+        errors.append("invalidated_capabilities must be a list of non-empty strings")
+    elif (value.get("result") == "verified" and isinstance(capabilities, list)
+          and all(isinstance(x, str) for x in capabilities)
+          and set(invalidated) & set(capabilities)):
+        errors.append("a capability cannot be verified and invalidated in the same observation")
     review = value.get("review")
     if not isinstance(review, dict):
         errors.append("review must be an object")
@@ -222,7 +231,7 @@ def admit_host_attestation(
             }
 
     stage = attestation["stage"]
-    if stage == "behavioral_activation":
+    if stage == "behavioral_activation" and attestation["result"] == "verified":
         discovered = (
             state.get("instruction_discovery") == "verified"
             or state.get("skill_discovery") == "verified"
@@ -231,7 +240,8 @@ def admit_host_attestation(
             raise HostAttestationError(
                 "behavioral activation requires verified discovery and state read"
             )
-    if stage == "maintained_reentry" and state.get("behavioral_activation") != "verified":
+    if (stage == "maintained_reentry" and attestation["result"] == "verified"
+            and state.get("behavioral_activation") != "verified"):
         raise HostAttestationError(
             "maintained reentry requires prior verified behavioral activation"
         )
@@ -251,6 +261,16 @@ def admit_host_attestation(
             set(state.get("observed_capabilities", []))
             | set(attestation.get("observed_capabilities", []))
         )
+    invalidated = set(attestation.get("invalidated_capabilities", []))
+    if attestation["result"] == "failed":
+        invalidated.update(attestation.get("observed_capabilities", []))
+    updated["observed_capabilities"] = sorted(
+        set(updated.get("observed_capabilities", [])) - invalidated
+    )
+    updated["unverified_capabilities"] = sorted(
+        (set(state.get("unverified_capabilities", [])) | invalidated)
+        - set(updated["observed_capabilities"])
+    )
     after_sha256 = digest(updated)
     path = host_state_path(root)
     ensure_project_local(root, path)

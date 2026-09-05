@@ -1,3 +1,3 @@
-"""MAIOS Project Kernel 3.0.3 living source system."""
+"""MAIOS Project Kernel 3.0.3+continuum.1 living source system."""
 
-__version__ = "3.0.3"
+__version__ = "3.0.3+continuum.1"

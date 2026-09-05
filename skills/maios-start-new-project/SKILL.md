@@ -10,9 +10,14 @@ Own the first situated movement of a new project. Read `START_HERE.md`,
 files already present and the operator's current contribution.
 
 Establish only the identity and context needed to make a useful movement now.
-Let `maios-project-context` form the self-configuring dialogue. Show what is
-already understood, a small horizon of useful possibilities with reasons, one
-correctable direction and the first result worth producing and testing.
+Let `maios-project-context` build living context and derive a correctable intent
+from it. Interaction enriches that field where useful. Show what is already
+understood, useful solutions or possibilities with reasons when a choice is
+needed, and the first result worth producing. The initial environment is the
+organization of context, sources, available tools and competences needed now;
+it matures through work. Context formation, setup and the first contribution
+already happen through competences. Explain their useful contribution as it
+helps the person understand the system.
 
 Return the result before asking for non-decisive detail. When the operator
 corrects the interpretation, preserve the causal difference with this

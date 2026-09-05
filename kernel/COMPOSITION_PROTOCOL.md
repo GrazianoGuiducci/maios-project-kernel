@@ -9,8 +9,9 @@ meaning or faculty is correct.
 Recover only relations that can change the movement:
 
 ```text
-accepted intent and requested result
-present object, sources, actors, and unknowns
+context constructed from current sources, actors, work and consequences
+intent derived from that context, with its source and uncertainty
+useful result or still-open relation
 host capabilities actually observed
 current project state and reentry
 material effect, if one exists
@@ -19,16 +20,23 @@ relations exposed by the emerging result
 
 ## Composition
 
-1. Keep permanent source/aperture and self-correction relations silent.
-2. Use the current circumstance to project known candidate families.
-3. Include project-local learning relations only when their activation
-   relations match the current circumstance; keep persistence distinct from
-   later assimilation evidence and the separately governed competence index.
-4. Exercise only candidates with a stated expected delta.
-5. Admit an unmatched material relation as a sourced extension instead of
-   forcing it into the nearest family.
-6. Reroute when the circumstance or resulting state changes.
-7. Stop when another pass changes no material relation.
+Source-bound orientation and critical self-correction participate inside each
+acting competence. Let the constructed context and its emerging intent make
+the pertinent knowledge act. Projected candidate families are a partial map;
+neither an exact keyword match nor an index entry is required for a reachable
+competence to contribute. Preserve why its contribution changes the result.
+
+A result can recall another competence, several contributions can act together,
+and one result can become another competence's field. A downstream difference
+can return to an upstream method. Let these relations form through the work;
+do not impose a fixed stack or a cascade on every case. Current learning can
+participate through its meaning even when a stored activation label differs.
+
+If a durable movement record uses an unrepresented relation, its supported
+extension preserves sources, invalidator and reentry. That record makes the
+relation continuable without restricting what may become pertinent. Correct
+the composition when the field changes and stop adding participants when they
+no longer change the useful result.
 
 `python maios.py compose --circumstance <json>` returns the represented portion
 of this field. A selected movement may be checked with `validate-movement`.
@@ -70,8 +78,8 @@ from the observed result to configuration, evolution, operating state,
 projections, learning, and reentry. If its operating-context hash is stale,
 re-read the current field instead of merging over changed causal inputs.
 
-When a causal learning delta exists, the next movement must carry one of its
-activation relations. The relation becomes reachable at once; a later selected
-exercise records non-identical use without manufacturing an admission or
-claiming assimilation. External claims and effects still resolve their exact
+Learning becomes reachable without obliging the next movement to use or name
+it. Several learnings can coexist for an owner; replacement is explicit.
+A later selected exercise records its own relation's use without manufacturing
+an admission or claiming assimilation. External claims and effects still resolve their exact
 evidence and authority where they arise.

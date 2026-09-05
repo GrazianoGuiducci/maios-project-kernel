@@ -1,7 +1,7 @@
 {
   "schema": "maios.release-projection.v2",
   "product": "MAIOS Project Kernel",
-  "version": "3.0.3",
+  "version": "3.0.3+continuum.1",
   "files": [
     {"source": "templates/distribution/AGENTS.md", "destination": "AGENTS.md"},
     {"source": "templates/distribution/install.py", "destination": "install.py"},
@@ -51,7 +51,10 @@
     {"source": "skills/maios-project-host-adaptation/SKILL.md", "destination": "payload/skills/maios-project-host-adaptation/SKILL.md"},
     {"source": "skills/maios-project-system/adapters/hermes.gitignore", "destination": "payload/skills/maios-project-system/adapters/hermes.gitignore"},
     {"source": "domains/README.md", "destination": "payload/domains/README.md"},
-    {"source": "faculties/README.md", "destination": "payload/faculties/README.md"}
+    {"source": "faculties/README.md", "destination": "payload/faculties/README.md"},
+    {"source": "kernel/FOUNDING_RELATIONS.md", "destination": "payload/.maios/kernel/FOUNDING_RELATIONS.md"},
+    {"source": "kernel/UPDATE_CONTINUITY.md", "destination": "payload/.maios/kernel/UPDATE_CONTINUITY.md"},
+    {"source": "kernel/KNOWLEDGE_CONTINUUM.md", "destination": "payload/.maios/kernel/KNOWLEDGE_CONTINUUM.md"}
   ],
   "generated": [
     "adapters/ADAPTERS.json",

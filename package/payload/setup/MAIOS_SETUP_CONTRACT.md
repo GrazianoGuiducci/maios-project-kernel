@@ -3,6 +3,13 @@
 Configuration makes the package specific to the present person, project,
 domain, sources, and host without deciding a solution form in advance.
 
+Context continues to be built from sources, work and consequences after setup.
+The assistant derives a correctable intent and lets competences produce useful
+solutions. Preserve whether it was expressed or inferred, its reasons and what
+could change that reading in `operator_relation.intent_source` and the relevant
+source-bound knowledge. An inferred intent does not become an operator quote
+or effect authority when saved.
+
 ## Entry modes
 
 For a new project, `maios-start-new-project` establishes the first project

@@ -1,6 +1,32 @@
 # Changelog
 
+## Development candidate for review — 3.0.3+continuum.1
+
+- Form competences from intent, knowledge, memory, success and emerging
+  possibilities; preserve source-bound context, inferred intent and reasons.
+- Carry the qualified founding relations, logical ascent, critical self-readback
+  and sustainable awareness through the acting knowledge and reentry.
+- Render native skill entries as references to living project-owned bodies.
+- Preserve coexisting learnings by exact owner and event identity; make
+  supersession, cooling, retirement and reopening explicit and retain prior
+  evidence with its originating relation.
+- Keep learning available without forcing its labels into the next movement.
+- Observe selected knowledge files and reject stale dependent transitions.
+- Withdraw explicitly invalidated host capabilities while preserving others.
+- Preserve historical generation inputs independently of the evolving field.
+- Retain a first-installation baseline and an owner-native future update method.
+- Keep the release number open; public release, Form and unified mode are separate.
+
 All notable changes to the public distribution are recorded here.
+
+## Unreleased
+
+- Added a light weekly read-only source check to `maios-project-system`. The
+  installed Kernel can notice useful upstream improvements while preserving
+  project-owned evolution; no download, migration or update is implied.
+- Linked the repository homepage to the canonical SSK working paper as an
+  optional research and interpretation companion. Paper, package, runtime and
+  evidence states remain independent.
 
 ## 3.0.3 - 2026-09-01
 

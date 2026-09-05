@@ -51,10 +51,30 @@ Preserve a host-specific relation only when it changes later discovery, use,
 recovery or reentry. If the adaptation exposes a reusable method, return it to
 this competence or the smallest host-native owner in the same movement. Let
 `maios-project-competence-formation` create another project-local body only
-when the current host relation still leaves a material capability gap.
+when host knowledge, a useful result or a capability gap calls for a reusable
+capacity.
 
 Record installed, discovered, state-read, behaviorally used and maintained
 states separately. A native path is useful mechanics, not evidence that the
 host used the Kernel. Global profile, provider, credential and network changes
 remain outside this project-owned adaptation unless the operator separately
 selects their exact effect.
+
+## Keep the consumed knowledge current
+
+Native SKILL entries retain discovery metadata and point to the living body
+under `skills/`. Read that body at use and resolve references from its directory.
+When knowledge evolves, update the source; when name, description, owner or
+routing changes, update the pertinent native entry as well. Preserve any local
+adaptation and correct a stale copy where the host actually reads it.
+
+For a selected file identity question, use `maios.py knowledge-status --path
+<project-relative-file>`. It follows a native entry to its living source and
+reports the observed bytes; it does not select competences or prove their use.
+A movement may retain those paths in `circumstance.knowledge_refs` so a later
+state transition notices a concurrent change in the knowledge it consumed.
+
+When an actual observation shows a capability has become unavailable, name it
+in `invalidated_capabilities` in the host attestation. A failed observation's
+`observed_capabilities` also withdraw only those named capabilities. Earlier
+evidence remains in history; unaffected capabilities remain available.

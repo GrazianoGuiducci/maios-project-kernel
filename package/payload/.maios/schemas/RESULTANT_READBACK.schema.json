@@ -139,6 +139,7 @@
       },
       "additionalProperties": true
     },
+    "learning_transitions": {"type": "array", "items": {"type": "object", "required": ["relation_id", "status", "reason", "reentry_condition"], "properties": {"relation_id": {"type": "string", "minLength": 1}, "status": {"enum": ["reachable", "cooled", "retired"]}, "reason": {"type": "string", "minLength": 1}, "reentry_condition": {"type": "string", "minLength": 1}}, "additionalProperties": true}},
     "learning_deltas": {
       "type": "array",
       "items": {"$ref": "#/$defs/learningDelta"}
@@ -178,6 +179,8 @@
       "type": "object",
       "required": ["owner", "what_happened", "causal_delta", "why_it_matters", "future_behavior", "source_refs", "activation_relations", "invalidator", "reentry_condition"],
       "properties": {
+        "supersedes": {"$ref": "#/$defs/stringList"},
+        "supersession_reason": {"type": "string", "minLength": 1},
         "owner": {
           "type": "object",
           "required": ["kind", "id", "owner"],

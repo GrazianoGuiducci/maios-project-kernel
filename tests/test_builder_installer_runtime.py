@@ -148,7 +148,7 @@ class BuilderTests(DistributionFixture):
             autonomous_entry["entry_policy"]["startup_interview"],
             "discretionary",
         )
-        self.assertEqual(autonomous_entry["product_version"], "3.0.3")
+        self.assertEqual(autonomous_entry["product_version"], builder.read_json(ROOT / "release/PROJECTION.json")["version"])
         self.assertEqual(entity["schema"], "maios.project-entry-profile.v1")
         self.assertEqual(entity["version"], "3.0.0")
         self.assertEqual(
@@ -394,7 +394,7 @@ class InstallerTests(DistributionFixture):
                         / competence_id
                         / "SKILL.md"
                     ).read_bytes(),
-                    (target / "skills" / competence_id / "SKILL.md").read_bytes(),
+                    installer.rendered_skill_entry(self.distribution, f"payload/skills/{competence_id}/SKILL.md"),
                 )
 
     def test_every_declared_host_adapter_projects_the_same_semantic_owner(self) -> None:
@@ -438,14 +438,14 @@ class InstallerTests(DistributionFixture):
                 if host_id in native_paths:
                     self.assertEqual(
                         target.joinpath(*Path(native_paths[host_id]).parts).read_bytes(),
-                        canonical.read_bytes(),
+                        installer.rendered_skill_entry(self.distribution, "payload/skills/maios-project-system/SKILL.md"),
                     )
                     adaptation = (
                         target / "skills" / "maios-project-host-adaptation" / "SKILL.md"
                     )
                     self.assertEqual(
                         target.joinpath(*Path(adaptation_paths[host_id]).parts).read_bytes(),
-                        adaptation.read_bytes(),
+                        installer.rendered_skill_entry(self.distribution, "payload/skills/maios-project-host-adaptation/SKILL.md"),
                     )
                 if host_id == "hermes":
                     ignore = (target / ".hermes" / ".gitignore").read_text(
@@ -906,7 +906,7 @@ class RuntimeTests(DistributionFixture):
         duplicate_validation = operating.validate_resultant_readback(target, duplicate)
         self.assertFalse(duplicate_validation["valid"])
         self.assertTrue(
-            any("duplicate learning owner relation" in item for item in duplicate_validation["errors"])
+            any("duplicate learning delta" in item for item in duplicate_validation["errors"])
         )
 
         status = operating.operating_status(
@@ -970,13 +970,10 @@ class RuntimeTests(DistributionFixture):
         formation_receipt = operating.apply_resultant_readback(
             target, forming, forming_context["context_sha256"]
         )
-        self.assertEqual(
-            formation_receipt["learning_relations"],
-            [
-                "learning.competence.source-reconciliation",
-                "learning.competence.adaptive-project-entry",
-            ],
-        )
+        learning_ids = formation_receipt["learning_relations"]
+        self.assertEqual(len(learning_ids), 2)
+        self.assertEqual(len(set(learning_ids)), 2)
+        source_learning_id = learning_ids[0]
         learning = operating.learning_status(target)
         self.assertEqual(learning["count"], 2)
         self.assertTrue(
@@ -991,7 +988,7 @@ class RuntimeTests(DistributionFixture):
             },
         )
         self.assertIn(
-            "learning.competence.source-reconciliation",
+            source_learning_id,
             {
                 item["id"]
                 for item in next_context["composition"]["known_candidates"]
@@ -1007,7 +1004,7 @@ class RuntimeTests(DistributionFixture):
             },
             "selected_faculties": [
                 {
-                    "id": "learning.competence.source-reconciliation",
+                    "id": source_learning_id,
                     "reason": "its reentry relation matches the present source ambiguity",
                     "expected_delta": "begin from the owner-correct living source",
                 }
@@ -1016,7 +1013,7 @@ class RuntimeTests(DistributionFixture):
         }
         exercised["faculty_deltas"] = [
             {
-                "faculty_id": "learning.competence.source-reconciliation",
+                "faculty_id": source_learning_id,
                 "classification": "verified_improvement",
                 "description": "the later movement began from the living source before projection",
             }
@@ -1036,12 +1033,12 @@ class RuntimeTests(DistributionFixture):
         )
         self.assertEqual(
             exercise_receipt["exercised_learning_relations"],
-            ["learning.competence.source-reconciliation"],
+            [source_learning_id],
         )
         relation = next(
             item
             for item in operating.learning_status(target)["relations"]
-            if item["relation_id"] == "learning.competence.source-reconciliation"
+            if item["relation_id"] == source_learning_id
         )
         self.assertTrue(relation["later_nonidentical_use_observed"])
         self.assertEqual(relation["last_use"]["event_id"], "formation-02")

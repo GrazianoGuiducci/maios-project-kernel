@@ -18,3 +18,11 @@ project-local causal transition. Reachable learning remains under
 `.maios/state/OPERATING_STATE.json`; it is not itself proof of assimilation.
 Only a separate competence receipt can prove an owner-governed competence-index
 change, and neither receipt alone proves maintained behavior.
+
+Learning receipts may preserve multiple distinct aspects of one owner.
+Supersession names exact predecessor IDs and reasons. Earlier use remains
+attributed to that relation; it is not inherited as evidence about a successor.
+`learning_transitions` preserves cooling, retirement or reopening of a named
+relation with its reason and reentry. These records do not themselves edit
+semantic knowledge bodies. Installation receipts include `update_baseline`
+with source/destination identities and the initial distributed hashes.

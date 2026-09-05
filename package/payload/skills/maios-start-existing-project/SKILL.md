@@ -20,7 +20,7 @@ existing project identity, sources and active movement
 -> living context and present possibility horizon
 -> reachable project and package competences compose
 -> the first useful correctable Kernel contribution
--> residual capability gaps form only the competences the work actually needs.
+-> intent, knowledge, learning and emerging possibilities form useful capacities.
 ```
 
 Let `maios-project-host-adaptation` connect the current coder when its native
@@ -30,8 +30,9 @@ repeating information already owned by the project.
 
 Do not pre-generate a fixed competence sequence. Exercise the competences and
 learning already reachable; prepare owner-specific handoffs from the context;
-then let `maios-project-competence-formation` form or evolve the smallest
-missing competence when concrete work exposes a real residual gap. The
+let `maios-project-competence-formation` form or evolve the capacity that the
+intent, learning or emerging possibility makes useful. The project trajectory
+may already supply a correctable intent; results can revise that understanding. The
 resulting competence becomes part of the project field and its later use can
 improve, supersede or retire it.
 

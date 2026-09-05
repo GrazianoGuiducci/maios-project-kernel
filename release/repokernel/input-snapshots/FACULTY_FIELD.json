@@ -3,7 +3,7 @@
   "source_role": "canonical_living_source",
   "open_world": true,
   "selection_model": "material_relation_and_observed_delta",
-  "extension_rule": "Known families and labels are partial projections. Relevance may emerge through comprehension and change the question or source selection. A declared extension preserves its sources, useful difference and continuation without limiting cognition.",
+  "extension_rule": "An unmatched material relation may enter with source_refs, expected_delta, invalidator, and reentry_condition.",
   "families": [
     {
       "id": "source-bound-orientation",
@@ -26,12 +26,7 @@
     {
       "id": "field-illumination",
       "presence": "situated",
-      "activation_relations": [
-        "context_indeterminate",
-        "object_indeterminate",
-        "role_indeterminate",
-        "plane_change_material"
-      ],
+      "activation_relations": ["context_indeterminate", "object_indeterminate", "role_indeterminate", "plane_change_material"],
       "material_when": "Changing cognitive plane can expose a relation that alters the result.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#field-illumination",
       "result_contract": "IlluminatedFieldOrNonCollapse",
@@ -40,32 +35,16 @@
     {
       "id": "maios-configuration",
       "presence": "situated",
-      "activation_relations": [
-        "first_contact",
-        "configuration_pending",
-        "configuration_stale",
-        "project_birth",
-        "project_retrofit",
-        "context_construction",
-        "context_changed",
-        "intent_inference",
-        "result_changes_context"
-      ],
-      "material_when": "The living context must be built or revised so its inferred intent and useful solutions can form or change, during setup or ordinary work.",
-      "entry": "skills/maios-project-context/SKILL.md",
+      "activation_relations": ["first_contact", "configuration_pending", "configuration_stale", "project_birth", "project_retrofit"],
+      "material_when": "The project lacks a situated configuration and first movement.",
+      "entry": ".maios/kernel/SYSTEM_KERNEL.md#maios-configuration",
       "result_contract": "SituatedConfiguration",
-      "proof": "A source, result or correction changes context and its derived intent while their basis remains attributable at reentry."
+      "proof": "A fresh reentry can produce the first action from resultant state without replaying the conversation."
     },
     {
       "id": "possibility-horizon",
       "presence": "situated",
-      "activation_relations": [
-        "material_uncertainty",
-        "latent_relation",
-        "product_direction",
-        "future_environment",
-        "apparent_solution_reductive"
-      ],
+      "activation_relations": ["material_uncertainty", "latent_relation", "product_direction", "future_environment", "apparent_solution_reductive"],
       "material_when": "Uncertainty or another level changes a useful preparation or movement now.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#possibility-horizon-and-result-formation",
       "result_contract": "PossibilityField",
@@ -74,13 +53,7 @@
     {
       "id": "result-formation-and-first-proof",
       "presence": "situated",
-      "activation_relations": [
-        "need_to_result",
-        "first_useful_result",
-        "product_hypothesis",
-        "proof_required",
-        "value_form_unclear"
-      ],
+      "activation_relations": ["need_to_result", "first_useful_result", "product_hypothesis", "proof_required", "value_form_unclear"],
       "material_when": "The field must become one recognizable correctable result and falsifiable first proof.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#possibility-horizon-and-result-formation",
       "result_contract": "ProductServiceHypothesisAndFirstProof",
@@ -89,13 +62,7 @@
     {
       "id": "situated-faculty-composition",
       "presence": "situated",
-      "activation_relations": [
-        "faculty_relevance",
-        "new_task",
-        "circumstance_changed",
-        "composition_needed",
-        "unmatched_relation"
-      ],
+      "activation_relations": ["faculty_relevance", "new_task", "circumstance_changed", "composition_needed", "unmatched_relation"],
       "material_when": "One or more faculties can change comprehension, choice, execution, proof, recovery, or reentry.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#situated-faculty-composition",
       "result_contract": "FacultyComposition",
@@ -104,21 +71,8 @@
     {
       "id": "maios-project-competence-formation",
       "presence": "situated",
-      "activation_relations": [
-        "capability_gap",
-        "reusable_correction",
-        "competence_stale",
-        "competence_contaminated",
-        "faculty_retirement",
-        "intent_formation",
-        "knowledge_acquisition",
-        "useful_memory",
-        "successful_composition",
-        "emerging_possibility",
-        "knowledge_continuation",
-        "kernel_self_maintenance"
-      ],
-      "material_when": "Intent, knowledge, memory, learning, a useful composition or an emerging possibility calls for a capacity to form, deepen or reorganize.",
+      "activation_relations": ["capability_gap", "reusable_correction", "competence_stale", "competence_contaminated", "faculty_retirement"],
+      "material_when": "Composition leaves a real gap or accumulated history can change the current resultant.",
       "entry": "skills/maios-project-competence-formation/SKILL.md",
       "result_contract": "ReciprocalCompetenceMovement",
       "proof": "The competence materially improves concrete work, readback changes a later non-identical movement, and cultivation stops when another pass changes no material relation."
@@ -126,13 +80,7 @@
     {
       "id": "maios-project-host-adaptation",
       "presence": "situated",
-      "activation_relations": [
-        "host_change",
-        "host_integration",
-        "host_discovery_shape",
-        "harness_unrecognized",
-        "capability_projection"
-      ],
+      "activation_relations": ["host_change", "host_integration", "host_discovery_shape", "harness_unrecognized", "capability_projection"],
       "material_when": "The same Kernel relation must become discoverable and usable through the current coding harness without changing its meaning.",
       "entry": "skills/maios-project-host-adaptation/SKILL.md",
       "result_contract": "HostNativeKernelIncarnation",
@@ -141,14 +89,7 @@
     {
       "id": "topology-host-and-capability-reality",
       "presence": "situated",
-      "activation_relations": [
-        "host_change",
-        "host_discovery",
-        "capability_claim",
-        "owner_conflict",
-        "surface_change",
-        "runtime_relation"
-      ],
+      "activation_relations": ["host_change", "host_discovery", "capability_claim", "owner_conflict", "surface_change", "runtime_relation"],
       "material_when": "Owner, state, host, runtime, or capability levels could be confused.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#topology-host-and-capability-reality",
       "result_contract": "CapabilityAttestation",
@@ -157,14 +98,7 @@
     {
       "id": "effect-authority-and-recovery",
       "presence": "situated",
-      "activation_relations": [
-        "material_effect",
-        "external_action",
-        "destructive_change",
-        "publication",
-        "runtime_mutation",
-        "credential_use"
-      ],
+      "activation_relations": ["material_effect", "external_action", "destructive_change", "publication", "runtime_mutation", "credential_use"],
       "material_when": "An exact material effect actually emerges.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#effect-authority-and-recovery",
       "result_contract": "EffectDecision",
@@ -173,13 +107,7 @@
     {
       "id": "resultant-evaluation",
       "presence": "situated",
-      "activation_relations": [
-        "result_available",
-        "quality_claim",
-        "improvement_claim",
-        "acceptance",
-        "behavioral_readback"
-      ],
+      "activation_relations": ["result_available", "quality_claim", "improvement_claim", "acceptance", "behavioral_readback"],
       "material_when": "A result or improvement claim must be compared with intent in its actual medium.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#result-evaluation-and-failure-localization",
       "result_contract": "ResultantEvaluation",
@@ -188,13 +116,7 @@
     {
       "id": "failure-localization",
       "presence": "situated",
-      "activation_relations": [
-        "failure",
-        "regression",
-        "drift",
-        "conflict",
-        "unexpected_result"
-      ],
+      "activation_relations": ["failure", "regression", "drift", "conflict", "unexpected_result"],
       "material_when": "The first incorrect owning seam must be found before repair.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#result-evaluation-and-failure-localization",
       "result_contract": "FailureLocalization",
@@ -203,15 +125,7 @@
     {
       "id": "attention-learning-and-reentry",
       "presence": "situated",
-      "activation_relations": [
-        "reentry",
-        "correction",
-        "work_unit_closed",
-        "state_changed",
-        "compact_risk",
-        "noise",
-        "repeated_work"
-      ],
+      "activation_relations": ["reentry", "correction", "work_unit_closed", "state_changed", "compact_risk", "noise", "repeated_work"],
       "material_when": "A causal delta changes future behavior, proof, recovery, or reentry.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#attention-learning-and-reentry",
       "result_contract": "MemoryOrCompetenceDelta",
@@ -220,12 +134,7 @@
     {
       "id": "intent-preserving-delegation",
       "presence": "situated",
-      "activation_relations": [
-        "delegation",
-        "alternate_model",
-        "parallel_agent",
-        "cross_context_handoff"
-      ],
+      "activation_relations": ["delegation", "alternate_model", "parallel_agent", "cross_context_handoff"],
       "material_when": "Another capable system can add cognition without inheriting source or effect authority.",
       "entry": ".maios/kernel/COMPOSITION_PROTOCOL.md",
       "result_contract": "DelegationPacket",

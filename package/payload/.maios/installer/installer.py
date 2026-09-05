@@ -160,6 +160,29 @@ def adapter_projection(root: Path, host: str) -> list[dict[str, str]]:
     return list(by_id[host].get("projections", []))
 
 
+def rendered_skill_entry(root: Path, source_relative: str) -> bytes:
+    source = native(root, source_relative)
+    if not source.is_file() or source.is_symlink():
+        raise InstallerError(f"unsafe native skill source: {source_relative}")
+    text = source.read_text(encoding="utf-8")
+    if not text.startswith("---\n") or len(text.split("---", 2)) != 3:
+        raise InstallerError(f"native skill source lacks metadata: {source_relative}")
+    frontmatter = text.split("---", 2)[1]
+    living_source = source_relative.removeprefix("payload/")
+    safe_relative(living_source)
+    return (
+        "---" + frontmatter + "---\n\n"
+        f"<!-- maios-knowledge-entry: {living_source} -->\n"
+        "# Living competence entry\n\n"
+        f"Read and exercise `{living_source}` from the project root.\n"
+        "That project-owned body supplies the current knowledge, method and\n"
+        "continuation; resolve its references and helpers from its directory.\n"
+        "Return reusable learning to that living owner. If invocation or ownership\n"
+        "changes, update this discovery entry too. Do not substitute the startup\n"
+        "snapshot for the evolving method or claim to read an unavailable source.\n"
+    ).encode("utf-8")
+
+
 def source_entries(root: Path, host: str) -> list[dict[str, Any]]:
     entries: dict[str, dict[str, Any]] = {}
     payload_rows = [
@@ -194,7 +217,8 @@ def source_entries(root: Path, host: str) -> list[dict[str, Any]]:
         source = native(root, source_rel)
         if not source.is_file():
             raise InstallerError(f"adapter source is missing: {source_rel}")
-        data = source.read_bytes()
+        is_skill = source_rel.endswith("/SKILL.md") and destination.endswith("/SKILL.md")
+        data = rendered_skill_entry(root, source_rel) if is_skill else source.read_bytes()
         candidate = {
             "source": source_rel,
             "destination": destination,
@@ -202,6 +226,8 @@ def source_entries(root: Path, host: str) -> list[dict[str, Any]]:
             "bytes": len(data),
             "kind": "host_projection",
         }
+        if is_skill:
+            candidate["render"] = {"type": "live_skill", "source": source_rel}
         existing = entries.get(destination)
         if existing and existing["sha256"] != candidate["sha256"]:
             raise InstallerError(f"adapter destination collision: {destination}")
@@ -378,6 +404,8 @@ def copy_entry(root: Path, base: Path, entry: dict[str, Any]) -> None:
     render = entry.get("render")
     if isinstance(render, dict) and render.get("type") == "host_state":
         data = rendered_host_state(root, render["host"])
+    elif isinstance(render, dict) and render.get("type") == "live_skill":
+        data = rendered_skill_entry(root, entry["source"])
     else:
         source = native(root, entry["source"])
         if not source.is_file() or source.is_symlink():
@@ -446,6 +474,17 @@ def install_receipt(plan: dict[str, Any], state: str) -> dict[str, Any]:
         "plan_digest": plan["plan_digest"],
         "package_identity": plan["package_identity"],
         "installer_owned_files": owned,
+        "update_baseline": {
+            "schema": "maios.update-baseline.v1",
+            "policy": ".maios/kernel/UPDATE_CONTINUITY.md",
+            "configuration_schema": "maios.configuration-state.v2",
+            "operating_schema": "maios.operating-state.v2",
+            "files": [
+                {key: entry[key] for key in ("source", "destination", "sha256", "bytes", "kind")}
+                for entry in plan["entries"]
+            ],
+            "rule": "compare exact distributed base, local evolution and proposed source; preserve divergent local knowledge and state",
+        },
         "preserved_preexisting_identical": plan["preserves_identical"],
         "backup_root": backup_root,
         "installer_owned_backup_files": backed_up,

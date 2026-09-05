@@ -20,8 +20,10 @@ remains the single operating entry and `FACULTY_FIELD.json` remains its
 MAIOS-native situated field. Let `maios-start-new-project`,
 `maios-start-existing-project` and
 `maios-project-context` own their respective behavior. Let
-`maios-project-competence-formation` own a material residual capability gap or
-a reusable correction that must change later work. Let
+`maios-project-competence-formation` own the capacity that intent, knowledge,
+memory, successful work, correction or an emerging possibility makes useful.
+The competences supply source-bound awareness and evolve through their results;
+the first interpretation does not decide the full horizon of relevance. Let
 `maios-project-host-adaptation` translate this relation when the present coder
 or harness needs another native incarnation.
 
@@ -44,6 +46,26 @@ Ask only for a missing relation that would make that result materially
 different. A material effect carries its own exact source, target, controller
 and recovery relation.
 
+## Keep a light source contact
+
+At the first ordinary active reentry after seven days have elapsed since the
+last check, inspect the canonical
+[MAIOS Project Kernel repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
+in read-only mode for changes that can improve this project's Kernel,
+competences or capacity to evolve. Begin with the installed identity in
+`.maios/SOURCE_MANIFEST.json`, then the repository `VERSION.md`, `CHANGELOG.md`
+and current Release; read deeper only when a material useful relation appears.
+If the source is unavailable, continue ordinary work and leave the check
+pending without blocking the project.
+
+Treat upstream changes as source-qualified improvement possibilities, not
+update commands. Preserve project-owned evolution, report a useful delta to
+the operator and let a separately selected local improvement or future update
+movement own any material effect. Never download, install, overwrite, migrate
+or contact third parties by implication. When the check changes reentry or
+prevents repetition, preserve only its date and observed source identity in
+project continuity; if no useful delta appears, continue without ceremony.
+
 ## Continue through the resultant
 
 When work exposes reusable learning, return it to the closest competence owner
@@ -61,3 +83,16 @@ focus only when the resultant actually changes it.
 Current operator intent and verified project reality outrank stored continuity.
 Representation, installation, discovery, use, observed improvement and later
 assimilation remain distinct states.
+
+## Awareness and continuation
+
+Use `.maios/kernel/KNOWLEDGE_CONTINUUM.md` when understanding how competences
+carry knowledge and reasons can change the present movement or help the person.
+Teach reusable understanding to the acting competence and follow it into the
+entries that must read it. Keep the live causal margin compact and deeper
+knowledge reachable; preserve the possibility of changing the question itself.
+
+When an upstream or local structural update is selected, use
+`.maios/kernel/UPDATE_CONTINUITY.md` with formation and host adaptation.
+Its installation baseline supports comparison and recovery; source contact
+alone does not apply an update.

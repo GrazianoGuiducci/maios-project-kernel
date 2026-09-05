@@ -1,8 +1,20 @@
 # MAIOS Project Kernel
 
+Review candidate: **3.0.3+continuum.1**, from public release baseline 3.0.3.
+The next release number remains open. This candidate makes competences living
+sources of knowledge and method: context and intent evolve through work,
+several learnings can coexist, and superseded knowledge remains recoverable
+outside active recall. Native entries read living bodies. The first
+installation also retains an exact baseline for future updates that preserve
+project-owned evolution. Local mechanical verification does not establish
+assimilation in use.
+
+For the current source review, start from the [review brief](docs/REVIEW_CONTINUUM.md)
+and identify the exact commit being read. The next release number remains open.
+
 [Versione italiana](README.it.md)
 
-Current product version: **[3.0.3](VERSION.md)**. Shared Project Kernel family:
+Public release baseline: **[3.0.3](VERSION.md)**. Shared Project Kernel family:
 `3.0.0`.
 
 MAIOS Project Kernel gives a project and its AI coder a shared operating
@@ -34,7 +46,7 @@ the reading route that can change the present result:
 | Need | Read next | What the coder should understand or return |
 | --- | --- | --- |
 | Establish current truth | [`AGENTS.md`](AGENTS.md), [`CURRENT_STATE.md`](CURRENT_STATE.md), [`VERSION.md`](VERSION.md), [`CHANGELOG.md`](CHANGELOG.md) | Product version `3.0.3`, family `3.0.0`, current evidence, boundaries, and the selected movement |
-| Understand value and possibility | [`knowledge/KERNEL.md`](knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/SSK_TRANSFER_3.0.2.md`](docs/SSK_TRANSFER_3.0.2.md) | What the Kernel changes for a project, which possibilities remain open, and how the SSK relations become product-native functions |
+| Understand value and possibility | [`knowledge/KERNEL.md`](knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/SSK_TRANSFER_3.0.2.md`](docs/SSK_TRANSFER_3.0.2.md), [System Semantic Kernel (SSK) working paper](https://github.com/GrazianoGuiducci/maios-ssk-paper) | What the Kernel changes for a project, which possibilities remain open, and the related academic context; the Paper is optional and does not prove product behaviour |
 | Integrate the package | [`package/AGENTS.md`](package/AGENTS.md), [`maios-project-integration`](package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](package/INSTALL.md), [`package/MANIFEST.json`](package/MANIFEST.json) | Exact target, mode, host projection, package-owned paths, preview, recovery, and unchanged surfaces |
 | Configure and operate the installed Kernel | [`START_HERE.md`](package/payload/START_HERE.md), [`maios-project-system`](package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | How context, competences, result, learning, semantic readback, and fresh reentry stay connected |
 | Adapt to the active coder | [`adapters/ADAPTERS.json`](adapters/ADAPTERS.json), [`maios-project-host-adaptation`](skills/maios-project-host-adaptation/SKILL.md), [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) | Which native projection is available, what has only been packaged, and what still needs host observation |
@@ -145,6 +157,7 @@ The public source field connects:
 | [`knowledge/KERNEL.md`](knowledge/KERNEL.md) | Public source for the Kernel's constitutive relation, KA, FDLA, Meta_Skill, competence, context, and learning |
 | [`maios-kernel-study`](skills/maios-kernel-study/SKILL.md) | Studies, explains, compares, and questions the Kernel from public sources |
 | [`maios-kernel-contribution`](skills/maios-kernel-contribution/SKILL.md) | Turns a human or AI idea, method, correction, or falsifier into a source-bound contribution |
+| [System Semantic Kernel (SSK) working paper](https://github.com/GrazianoGuiducci/maios-ssk-paper) | Related academic corpus and conceptual guide for consultation; it remains independent from this product's source, release, installation, and evidence |
 | [`contributions/GPT_PRO_START.md`](contributions/GPT_PRO_START.md) | Opens one bounded GPT Pro contribution cycle |
 
 These competences act on the repository and are not part of the current

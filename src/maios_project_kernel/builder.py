@@ -383,7 +383,16 @@ def repokernel_projection_inputs(
         if not isinstance(source, dict) or "sha256" not in source:
             continue
         source_path = source.get("path_or_origin")
-        source_file = native(root, source_path) if isinstance(source_path, str) else None
+        snapshot = receipt.get("input_snapshots", {}).get(source.get("source_id"))
+        input_path = source_path
+        if snapshot is not None:
+            if (not isinstance(snapshot, dict)
+                    or snapshot.get("source_path") != source_path
+                    or snapshot.get("sha256") != source.get("sha256")
+                    or not isinstance(snapshot.get("path"), str)):
+                raise BuildError(f"invalid historical RepoKernel input binding: {source_path}")
+            input_path = snapshot["path"]
+        source_file = native(root, input_path) if isinstance(input_path, str) else None
         if (
             source_file is None
             or not source_file.is_file()

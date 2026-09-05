@@ -1,6 +1,6 @@
 # Start here — stable system boot
 
-This project contains MAIOS Project Kernel 3.0.3. It was installed through an
+This project contains MAIOS Project Kernel 3.0.3+continuum.1 (local development build). It was installed through an
 explicit package plan; installation did not configure the project or prove
 that the current host has used its faculty.
 
@@ -11,6 +11,11 @@ project sources, `setup/CONFIGURATION_STATE.json`, `project/CURRENT_STATE.md`
 and the competences that act. A fresh reentry therefore recovers the current
 field without continually rewriting the boot.
 
+At a new session, recover the relevant present. A boot-only request pauses
+for the task; an already selected movement continues after orientation. A stored
+open front does not select itself. Sources and project trajectory may supply
+a useful correctable intent without requiring another prompt.
+
 Ask the current assistant:
 
 ```text
@@ -20,8 +25,10 @@ have already said or placed here and give me the first useful correctable
 result. Expand the entry only if a missing relation materially changes it.
 ```
 
-The assistant starts from your current request, the real project files, and
-`setup/CONFIGURATION_STATE.json`. A new project forms its first context; an
+The assistant builds context from your relation, actual project files, work
+and consequences. It derives a correctable intent and lets competences produce
+useful solutions. `setup/CONFIGURATION_STATE.json` retains a projection of this
+understanding; results can revise it throughout the work. A new project forms its first context; an
 existing project preserves its current identity and work. The context
 competence shows a useful interpretation and possibilities before requesting
 non-decisive detail, then prepares the working projections needed by the
@@ -40,10 +47,14 @@ is checked before deterministic helpers, while version control and remote
 infrastructure remain situated options. The profile does not select providers, create
 accounts, install global software or receive credentials by itself.
 
-When their composition leaves a real capability gap, or concrete work exposes
-a reusable causal correction, `maios-project-competence-formation` forms or
-evolves the smallest project-local competence that changes the result. This is
-a portable project faculty, not the private whole-kernel generator.
+`maios-project-competence-formation` forms, composes or evolves capacities from
+intent, memory, knowledge, learning, successful composition and emerging
+possibilities. Initial context, setup and useful work already happen through
+competences. They carry practical knowledge, reasons, critical self-correction
+and the capacity to learn. The assistant explains their contribution when it
+helps you understand or correct the work. Read
+`.maios/kernel/KNOWLEDGE_CONTINUUM.md` for a practical example and
+`.maios/kernel/FOUNDING_RELATIONS.md` when deeper operating reasons matter.
 
 The canonical semantic sources are:
 
