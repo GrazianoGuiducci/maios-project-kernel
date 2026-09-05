@@ -1,5 +1,5 @@
 {
-  "schema": "maios.configuration-state.v2",
+  "schema": "maios.configuration-state.v3",
   "source_role": "configuration_template",
   "state_owner": "setup/CONFIGURATION_STATE.json",
   "setup_status": "pending",

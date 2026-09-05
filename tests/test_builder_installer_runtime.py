@@ -464,6 +464,7 @@ class InstallerTests(DistributionFixture):
                         "content_valid": True,
                         "source_bound": True,
                         "host_readable": True,
+                        "configuration_state_readable": True,
                         "operating_state_readable": True,
                         "behavior": "unverified",
                     },

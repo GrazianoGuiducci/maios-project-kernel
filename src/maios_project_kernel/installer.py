@@ -14,7 +14,7 @@ from typing import Any, Iterable
 
 
 PLAN_SCHEMA = "maios.install-plan.v2"
-RECEIPT_SCHEMA = "maios.installation-receipt.v2"
+RECEIPT_SCHEMA = "maios.installation-receipt.v3"
 UNINSTALL_SCHEMA = "maios.uninstall-receipt.v2"
 PENDING_SCHEMA = "maios.pending-installation.v2"
 
@@ -299,6 +299,7 @@ def current_receipt(target: Path) -> dict[str, Any] | None:
     try:
         value = read_json(path)
         require_receipt_target(target, value)
+        require_valid_installation_receipt(value)
     except InstallerError:
         return None
     return value
@@ -350,6 +351,9 @@ def make_plan(root: Path, target: Path, mode: str, host: str) -> dict[str, Any]:
     )
     nonempty = snapshot.get("state") == "directory" and bool(snapshot.get("entries"))
     blocked_reasons: list[str] = []
+    receipt_path = target / ".maios" / "receipts" / "install" / "CURRENT.json"
+    if prior is None and (receipt_path.exists() or receipt_path.is_symlink()):
+        blocked_reasons.append("invalid_current_installation_receipt")
     idempotent = exact_prior and not creates and not conflicts
     if mode == "new_repository" and nonempty and not idempotent:
         blocked_reasons.append("new_repository_target_is_not_empty")
@@ -442,8 +446,8 @@ def update_baseline(plan: dict[str, Any]) -> dict[str, Any]:
     return {
         "schema": "maios.update-baseline.v1",
         "policy": ".maios/kernel/UPDATE_CONTINUITY.md",
-        "configuration_schema": "maios.configuration-state.v2",
-        "operating_schema": "maios.operating-state.v2",
+        "configuration_schema": "maios.configuration-state.v3",
+        "operating_schema": "maios.operating-state.v3",
         "plan_digest": plan["plan_digest"],
         "package_identity": plan["package_identity"],
         "files": [{key: entry[key] for key in ("source", "destination", "sha256", "bytes", "kind")}
@@ -463,7 +467,11 @@ def verify_update_baseline(receipt: dict[str, Any]) -> dict[str, Any]:
             if receipt.get(key) != plan.get(key):
                 errors.append("baseline plan differs from receipt: " + key)
         destinations: set[str] = set()
+        if not isinstance(plan.get("entries"), list):
+            raise InstallerError("original plan entries must be a list")
         for entry in plan["entries"]:
+            if not isinstance(entry, dict):
+                raise InstallerError("original plan entry must be an object")
             safe_relative(entry["source"])
             safe_relative(entry["destination"])
             if entry["destination"] in destinations:
@@ -471,6 +479,16 @@ def verify_update_baseline(receipt: dict[str, Any]) -> dict[str, Any]:
             destinations.add(entry["destination"])
         if not destinations:
             errors.append("baseline has no files")
+        partitions: list[set[str]] = []
+        for key in ("creates", "preserves_identical"):
+            paths = plan.get(key)
+            if not isinstance(paths, list) or any(not isinstance(p, str) for p in paths):
+                raise InstallerError("original plan " + key + " must be a path list")
+            if len(paths) != len(set(paths)):
+                errors.append("duplicate original plan path: " + key)
+            partitions.append(set(paths))
+        if partitions[0] & partitions[1] or partitions[0] | partitions[1] != destinations:
+            errors.append("original plan ownership does not partition its destinations")
         if receipt.get("update_baseline") != update_baseline(plan):
             errors.append("update baseline differs from the original plan and package identity")
     except (InstallerError, KeyError, TypeError, ValueError) as exc:
@@ -524,6 +542,36 @@ def install_receipt(plan: dict[str, Any], state: str) -> dict[str, Any]:
         "behavior_claimed": False,
         "recovery": "run the installed .maios/installer/installer.py uninstall command",
     }
+
+
+def validate_installation_receipt(receipt: Any) -> dict[str, Any]:
+    """Bind every consumer's ownership decisions to the retained original plan."""
+    if not isinstance(receipt, dict):
+        return {"schema": "maios.installation-receipt-validation.v1", "valid": False,
+                "errors": ["installation receipt must be an object"], "baseline": None}
+    baseline = verify_update_baseline(receipt)
+    errors = list(baseline["errors"])
+    if receipt.get("schema") != RECEIPT_SCHEMA:
+        errors.append("unsupported installation receipt schema")
+    if receipt.get("state") != "installed":
+        errors.append("installation receipt must describe an installed result")
+    if baseline["valid"]:
+        try:
+            expected = install_receipt(receipt["install_plan"], "installed")
+            for key in ("installer_owned_files", "preserved_preexisting_identical",
+                        "backup_root", "installer_owned_backup_files"):
+                if key not in receipt or receipt[key] != expected[key]:
+                    errors.append("installation receipt differs from original plan: " + key)
+        except (KeyError, TypeError, ValueError) as exc:
+            errors.append("invalid original plan ownership: " + str(exc))
+    return {"schema": "maios.installation-receipt-validation.v1", "valid": not errors,
+            "errors": errors, "baseline": baseline}
+
+
+def require_valid_installation_receipt(receipt: Any) -> None:
+    validation = validate_installation_receipt(receipt)
+    if not validation["valid"]:
+        raise InstallerError("invalid installation receipt: " + "; ".join(validation["errors"]))
 
 
 def backup_identical(target: Path, plan: dict[str, Any]) -> None:
@@ -630,9 +678,9 @@ def apply_plan(root: Path, plan: dict[str, Any]) -> dict[str, Any]:
 def verify_installation(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
     target = target.resolve()
     require_receipt_target(target, receipt)
-    baseline = verify_update_baseline(receipt)
+    validation = validate_installation_receipt(receipt)
     results: list[dict[str, Any]] = []
-    for entry in receipt.get("installer_owned_files", []):
+    for entry in receipt["installer_owned_files"] if validation["valid"] else []:
         path = native(target, entry["path"])
         if has_unsafe_ancestor(target, entry["path"]) or path.is_symlink():
             state = "unsafe_path"
@@ -654,9 +702,10 @@ def verify_installation(target: Path, receipt: dict[str, Any]) -> dict[str, Any]
         "receipt_state": receipt.get("state"),
         "files": results,
         "missing": missing,
-        "installed": not missing,
-        "baseline": baseline,
-        "valid": not missing and baseline["valid"],
+        "installed": not missing and validation["valid"],
+        "baseline": validation["baseline"],
+        "receipt_validation": validation,
+        "valid": not missing and validation["valid"],
         "behavior_claimed": False,
     }
 
@@ -720,6 +769,7 @@ def recover_pending(target: Path) -> dict[str, Any]:
 def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
     target = target.resolve()
     require_receipt_target(target, receipt)
+    require_valid_installation_receipt(receipt)
     removed: list[str] = []
     preserved_changed: list[str] = []
     missing: list[str] = []
@@ -832,6 +882,7 @@ def load_receipt(target: Path, explicit: Path | None) -> dict[str, Any]:
         raise InstallerError("installation receipt must not be a symlink")
     value = read_json(path)
     require_receipt_target(target, value)
+    require_valid_installation_receipt(value)
     return value
 
 

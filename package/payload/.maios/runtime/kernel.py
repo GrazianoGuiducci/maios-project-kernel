@@ -124,13 +124,11 @@ def validate_project(root: Path) -> dict[str, Any]:
             errors.append("faculty family ids must be present and unique")
     except Exception as exc:
         errors.append(f"invalid faculty field: {exc}")
+    configuration_state_readable = True
     try:
-        state = read_json(root / "setup" / "CONFIGURATION_STATE.json")
-        if state.get("effect_authority") != "none":
-            errors.append("initial effect_authority must be none")
-        if state.get("state_owner") != "setup/CONFIGURATION_STATE.json":
-            errors.append("configuration state owner mismatch")
+        state = configuration_engine.current_configuration(root)
     except Exception as exc:
+        configuration_state_readable = False
         errors.append(f"invalid configuration state: {exc}")
     source_error_start = len(errors)
     source_manifest: dict[str, Any] = {}
@@ -363,10 +361,7 @@ def validate_project(root: Path) -> dict[str, Any]:
         errors.append(f"invalid host state or catalogue: {exc}")
     operating_state_readable = True
     try:
-        operating_state = read_json(root / ".maios" / "state" / "OPERATING_STATE.json")
-        if operating_state.get("schema") != "maios.operating-state.v2":
-            operating_state_readable = False
-            errors.append("unsupported operating state")
+        operating_engine.read_operating_state(root)
     except Exception as exc:
         operating_state_readable = False
         errors.append(f"invalid operating state: {exc}")
@@ -411,6 +406,7 @@ def validate_project(root: Path) -> dict[str, Any]:
             "content_valid": not errors,
             "source_bound": source_bound,
             "host_readable": host_readable,
+            "configuration_state_readable": configuration_state_readable,
             "operating_state_readable": operating_state_readable,
             "behavior": "unverified",
         },

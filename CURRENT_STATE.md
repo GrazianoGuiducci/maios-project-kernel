@@ -2,8 +2,8 @@
 
 updated: 2026-09-05
 active_surface: autonomous continuum candidate with receiving-review corrections
-status: corrections implemented; 46 local tests pass
-development_build: 3.0.3+continuum.2
+status: receipt and status corrections implemented; 49 local tests pass
+development_build: 3.0.3+continuum.3
 public_release_baseline: 3.0.3
 next_public_release_number: open; 3.1.0 is the current proposal
 
@@ -36,6 +36,14 @@ A locally evolved body can remain target_evolved with a valid historical
 baseline. This verifies internal consistency, not authenticity against
 coordinated rewriting, automatic migration or successful real-world updates.
 
+The follow-up review of commit 228448b exposed unbound ownership maps in that
+receipt and shallow validation in general status. One receipt validator now
+derives all file and backup ownership from the original plan. Invalid receipts
+cannot establish installation success, idempotent reuse or uninstall; attempted
+reapplication and uninstall preserve both files and receipt. General status uses
+the canonical configuration and operating readers. Their incompatible shapes,
+and the installation receipt, now have v3 identities; learning relation stays v2.
+
 The configuration owner preserves source-contact attempts and successes,
 including no-change outcomes. Local commands record observations and expose
 the ordinary seven-day cadence; they perform no network or background work.
@@ -43,12 +51,17 @@ An unavailable source remains pending and does not overwrite the last success.
 
 ## Current evidence
 
-All 46 local tests pass. Seven new cases exercise default reentry in a separate
+The previous candidate passed 46 local tests. Its cases exercise default reentry in a separate
 process, plural cross-owner genealogy and predecessor reopening, corrupt state
 rejection, missing organs, configured intent provenance, source-contact
 continuity and baseline integrity while local knowledge evolves. The matching
 candidate case also exercises selecting one useful aspect without forcing
 other available learning to participate.
+
+Three further cases exercise corrupted receipt ownership through all consumers,
+configuration rejection through installed status and distinct first-user schema
+identities. The existing learning-corruption case now also exercises installed
+status. All 49 local tests pass on this revision.
 
 The generated package remains 58 files, 47 in the payload. Its manifest and
 inventory bind the current source identity. Metadata or source changes require

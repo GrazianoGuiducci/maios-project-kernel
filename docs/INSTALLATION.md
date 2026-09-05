@@ -95,6 +95,11 @@ adapter is required.
 Installer verification also checks that this baseline matches the saved
 original plan and package identity. A changed local knowledge body remains
 `target_evolved`; it does not invalidate a coherent historical baseline.
+Receipt ownership and backup maps must also match the original plan. An invalid
+current receipt blocks reapplication and uninstall without changing files or
+removing the receipt. `verify` refuses to infer installation success from a
+corrupt map. General `python maios.py status` uses the same canonical state
+readers as the configuration and operating commands.
 
 An operational configured intent requires a non-empty `intent_source` in the
 configuration candidate. Attribute expressed, inferred or retained intent in

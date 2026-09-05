@@ -39,5 +39,19 @@ the current `active_knowledge_refs` for a fresh default reentry. Omission
 inherits that selection and an explicit list replaces it, including `[]`.
 An install receipt retains its original `install_plan`; verification compares
 the update baseline against this digest-bound plan and package identity.
-`installed` reports required installation files, while `valid` also requires
-a consistent baseline. Local evolution does not invalidate the baseline.
+The canonical receipt validator also derives all owned files, preserved
+pre-existing paths, the backup root and backup files from that same plan.
+Receipt readers, idempotent reapplication and uninstall consume this validator.
+An inconsistent current receipt blocks reapplication and uninstall before any
+mutation, preserving both project files and the receipt for recovery.
+Verification cannot claim `installed` or `valid` from an untrusted file map;
+`receipt_validation` explains the inconsistency. With a valid receipt, file
+presence and local evolution are reported separately. Local evolution does not
+invalidate the historical baseline.
+
+The first-user contracts are `maios.installation-receipt.v3`,
+`maios.configuration-state.v3` and `maios.operating-state.v3`. Their required
+original plan, source-contact/provenance and knowledge-selection/genealogy
+structures differ from the earlier v2 shapes. Learning relations retain their
+own `maios.learning-relation.v2` identity. This names the new contracts and does
+not introduce a migration for earlier installations.

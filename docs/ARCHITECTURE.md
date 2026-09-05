@@ -196,6 +196,12 @@ update method in `UPDATE_CONTINUITY.md`. There is no automatic migration engine.
 
 The install receipt preserves its original digest-bound plan. Installer
 verification distinguishes file presence and evolution from baseline integrity.
+All receipt consumers also bind ownership and backup maps to that plan through
+one validator. A corrupt current receipt cannot authorize idempotent reuse or
+uninstall. General `status` uses the canonical configuration and operating
+readers, so invalid provenance, source contact or genealogy cannot appear
+valid through a weaker diagnostic path. Configuration, operating state and
+installation receipt use v3 contracts; learning relation remains v2.
 The configuration owner also carries `source_contact.last_attempt` and
 `last_success`. `source-contact-status` reports the ordinary seven-day cadence;
 `record-source-contact` records a read-only observation through the existing

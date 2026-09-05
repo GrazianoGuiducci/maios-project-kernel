@@ -10,7 +10,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 
-CONFIGURATION_SCHEMA = "maios.configuration-state.v2"
+CONFIGURATION_SCHEMA = "maios.configuration-state.v3"
 RECEIPT_SCHEMA = "maios.configuration-receipt.v2"
 RECOVERY_SCHEMA = "maios.configuration-recovery.v2"
 

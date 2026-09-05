@@ -23,7 +23,7 @@ except ImportError:  # installed runtime is loaded as project-local modules
     import host as host_engine  # type: ignore[no-redef]
 
 
-OPERATING_STATE_SCHEMA = "maios.operating-state.v2"
+OPERATING_STATE_SCHEMA = "maios.operating-state.v3"
 OPERATING_CONTEXT_SCHEMA = "maios.operating-context.v1"
 RESULTANT_READBACK_SCHEMA = "maios.resultant-readback.v3"
 RESULTANT_TRANSITION_SCHEMA = "maios.resultant-transition.v3"

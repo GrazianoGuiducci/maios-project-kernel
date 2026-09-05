@@ -1063,7 +1063,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         operating_state = read_json(
             package_dir / "payload" / ".maios" / "state" / "OPERATING_STATE.json"
         )
-        if operating_state.get("schema") != "maios.operating-state.v2":
+        if operating_state.get("schema") != "maios.operating-state.v3":
             errors.append("initial operating state schema is incorrect")
         if (
             operating_state.get("revision") != 0

@@ -256,6 +256,9 @@ class KnowledgeContinuationTests(base.DistributionFixture):
                 operating.write_json_atomic(operating.operating_state_path(target), candidate)
                 with self.assertRaises(operating.OperatingStateError):
                     operating.operating_status(target)
+                result = self.fresh(target, "status", expected=2)
+                self.assertFalse(result["valid"])
+                self.assertFalse(result["validation_levels"]["operating_state_readable"])
         operating.write_json_atomic(operating.operating_state_path(target), original)
         self.assertEqual(operating.learning_status(target)["count"], 1)
 
@@ -331,6 +334,108 @@ class KnowledgeContinuationTests(base.DistributionFixture):
             altered = copy.deepcopy(receipt)
             mutate(altered)
             result = installer.verify_installation(target, altered)
-            self.assertTrue(result["installed"])
+            self.assertFalse(result["installed"])
             self.assertFalse(result["valid"])
             self.assertTrue(result["baseline"]["errors"])
+
+    def test_corrupt_receipt_cannot_verify_reapply_or_remove_an_installation(self):
+        for mode in ("new_repository", "existing_repository"):
+            target = self.base / mode
+            if mode == "existing_repository":
+                target.mkdir()
+                shutil.copyfile(self.distribution / "payload/AGENTS.md", target / "AGENTS.md")
+            plan = installer.make_plan(self.distribution, target, mode, "generic")
+            receipt = installer.apply_plan(self.distribution, plan)
+            repeated = installer.make_plan(self.distribution, target, mode, "generic")
+            self.assertEqual(repeated["status"], "idempotent")
+            current = target / ".maios/receipts/install/CURRENT.json"
+            snapshot = lambda: {p.relative_to(target).as_posix(): p.read_bytes()
+                                for p in target.rglob("*") if p.is_file()}
+            original = snapshot()
+            mutations = {
+                "installer_owned_files": [],
+                "preserved_preexisting_identical": ["unowned.txt"],
+                "backup_root": ".maios/backups/unrelated",
+                "installer_owned_backup_files": [{"path": "unowned.txt", "sha256": "0" * 64}],
+            }
+            for key, value in mutations.items():
+                with self.subTest(mode=mode, field=key):
+                    altered = copy.deepcopy(receipt)
+                    altered[key] = value
+                    installer.write_json(current, altered)
+                    before = snapshot()
+                    result = installer.verify_installation(target, altered)
+                    self.assertTrue(result["baseline"]["valid"])
+                    self.assertFalse(result["valid"])
+                    self.assertFalse(result["installed"])
+                    self.assertIn(key, " ".join(result["receipt_validation"]["errors"]))
+                    self.assertIsNone(installer.current_receipt(target))
+                    for explicit in (None, current):
+                        with self.assertRaises(installer.InstallerError):
+                            installer.load_receipt(target, explicit)
+                    blocked = installer.make_plan(self.distribution, target, mode, "generic")
+                    self.assertEqual(blocked["status"], "blocked")
+                    self.assertIn("invalid_current_installation_receipt", blocked["blocked_reasons"])
+                    for reapply in (repeated, blocked):
+                        with self.assertRaises(installer.InstallerError):
+                            installer.apply_plan(self.distribution, reapply)
+                    with self.assertRaises(installer.InstallerError):
+                        installer.uninstall(target, altered)
+                    cli = subprocess.run([sys.executable, "-B", str(target / ".maios/installer/installer.py"),
+                                          "uninstall", "--target", str(target)], capture_output=True, text=True)
+                    self.assertEqual(cli.returncode, 2, cli.stdout or cli.stderr)
+                    self.assertEqual(before, snapshot())
+                    current.write_bytes(original[".maios/receipts/install/CURRENT.json"])
+            self.assertEqual(original, snapshot())
+            self.assertEqual(installer.apply_plan(self.distribution, repeated), receipt)
+            self.assertTrue(installer.uninstall(target, receipt)["complete"])
+            if mode == "existing_repository":
+                self.assertEqual((target / "AGENTS.md").read_bytes(), original["AGENTS.md"])
+
+    def test_general_status_rejects_invalid_configuration_through_its_owner(self):
+        target, _ = self.install()
+        original = configuration.current_configuration(target)
+        configured = copy.deepcopy(original)
+        configured["setup_status"] = "configured"
+        configured["operator_relation"].update(current_intent="improve the design", intent_source="operator's project direction",
+                                              point_of_view="project operator", direction_status="selected")
+        configured["result"].update(current="a useful change", beneficiary="operator", smallest_deliverable="design correction", owner_review="accepted")
+        configured["first_proof"].update(statement="the result is usable", falsifiable_test="inspect the receiving behavior", reviewer="operator", result="unverified")
+        self.assertTrue(configuration.validate_configuration(configured)["valid"])
+        mutations = [
+            lambda s: s["operator_relation"].update(intent_source=None),
+            lambda s: s.pop("source_contact"),
+            lambda s: s.update(source_contact={"last_attempt": "invalid", "last_success": None}),
+        ]
+        path = target / "setup/CONFIGURATION_STATE.json"
+        for mutate in mutations:
+            candidate = copy.deepcopy(configured)
+            mutate(candidate)
+            path.write_text(json.dumps(candidate), encoding="utf-8")
+            with self.assertRaises(configuration.ConfigurationError):
+                configuration.current_configuration(target)
+            result = self.fresh(target, "status", expected=2)
+            self.assertFalse(result["valid"])
+            self.assertFalse(result["validation_levels"]["configuration_state_readable"])
+        path.write_text(json.dumps(configured), encoding="utf-8")
+        self.assertTrue(self.fresh(target, "status")["valid"])
+
+    def test_first_user_contracts_distinguish_incompatible_state_shapes(self):
+        target, receipt = self.install()
+        self.assertEqual(receipt["schema"], "maios.installation-receipt.v3")
+        self.assertEqual(receipt["update_baseline"]["configuration_schema"], "maios.configuration-state.v3")
+        self.assertEqual(receipt["update_baseline"]["operating_schema"], "maios.operating-state.v3")
+        for relative, schema, reader in (
+            ("setup/CONFIGURATION_STATE.json", "maios.configuration-state.v3", configuration.current_configuration),
+            (".maios/state/OPERATING_STATE.json", "maios.operating-state.v3", operating.read_operating_state),
+        ):
+            path = target / relative
+            state = reader(target)
+            self.assertEqual(state["schema"], schema)
+            state["schema"] = schema.replace(".v3", ".v2")
+            path.write_text(json.dumps(state), encoding="utf-8")
+            self.assertFalse(self.fresh(target, "status", expected=2)["valid"])
+            state["schema"] = schema
+            path.write_text(json.dumps(state), encoding="utf-8")
+        receipt["schema"] = "maios.installation-receipt.v2"
+        self.assertFalse(installer.validate_installation_receipt(receipt)["valid"])

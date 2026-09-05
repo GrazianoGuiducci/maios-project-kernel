@@ -1,5 +1,20 @@
 # Changelog
 
+## Receipt and status corrections — 3.0.3+continuum.3
+
+- Derive receipt ownership, preserved pre-existing paths and backup maps from
+  the original install plan through one validator used by verification, readers,
+  reapplication and uninstall. A corrupt current receipt blocks changes and
+  remains available alongside the untouched files for recovery.
+- Make general status consume the canonical configuration and operating readers,
+  including intent provenance, source-contact and learning-state validation.
+- Identify incompatible first-user configuration, operating-state and installation
+  receipt contracts as v3; learning relation remains v2. No migration is added.
+- Add focused receipt-corruption, configuration-status and contract-identity
+  cases, and extend the existing learning-corruption test to installed CLI status.
+- Pass all 49 local tests; model use and later assimilation remain unobserved.
+- Keep the final public release number open and the Form and unified work separate.
+
 ## Review corrections — 3.0.3+continuum.2
 
 - Preserve selected knowledge references through fresh default reentry; allow

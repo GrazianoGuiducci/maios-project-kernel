@@ -1,5 +1,5 @@
 {
-  "schema": "maios.operating-state.v2",
+  "schema": "maios.operating-state.v3",
   "source_role": "installation_template",
   "revision": 0,
   "last_input_digests": {},

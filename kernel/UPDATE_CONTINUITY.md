@@ -20,6 +20,17 @@ body can still be reported as `target_evolved` with a valid historical base.
 This is an internal consistency check, not a signature against coordinated
 rewriting of the plan and receipt. It does not prove that an update was applied.
 
+The same receipt validator derives the file ownership and backup maps from
+the original plan. Verification, receipt loading, reapplication and uninstall
+use that relation. An inconsistent map stops recovery or reapplication before
+changing files or discarding the receipt; an intact baseline alone cannot
+establish which paths those operations may change.
+
+The initial state contracts are `maios.configuration-state.v3` and
+`maios.operating-state.v3`, retained in `maios.installation-receipt.v3`.
+Their identities distinguish the new required structures from earlier shapes.
+Use these exact identities when reasoning about a later update's compatibility.
+
 When an update becomes useful, understand the functional difference with the
 current project. Compare the exact distributed base, the living local body and
 the proposed upstream source. Preserve local additions and still-useful

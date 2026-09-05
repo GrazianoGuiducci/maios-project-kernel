@@ -110,3 +110,10 @@ When an upstream or local structural update is selected, use
 `.maios/kernel/UPDATE_CONTINUITY.md` with formation and host adaptation.
 Its installation baseline supports comparison and recovery; source contact
 alone does not apply an update.
+
+When installation or recovery becomes material, keep the receipt's ownership
+and backup maps coupled to its original plan. The installed receipt validator
+serves every consumer; an inconsistent receipt requires reconstruction from
+qualified sources before changing files. General `status` reads the canonical
+configuration and operating owners, including their current contract identities.
+Do not infer a healthy state from a weaker duplicate of an owner's validation.
