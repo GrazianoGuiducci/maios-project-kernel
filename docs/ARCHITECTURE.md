@@ -181,7 +181,23 @@ those content identities to the resultant's concurrency comparison; ordinary
 work does not scan the full corpus. Invalidated host capabilities become
 unknown without erasing unrelated observations.
 
+`active_knowledge_refs` in operating state preserves the current selection for
+default reentry. Omitted references inherit it; an explicit list replaces it,
+including an empty list. Relation v2 keeps plural historical `superseded_by`
+edges and an event-bound `lifecycle`, independently of the status used for recall.
+An open `supersession_context` explains cross-owner and further plural
+continuations. Reading stored learning validates IDs, owners, reference
+symmetry, event chronology and use summaries without certifying their meaning.
+
 The historical RepoKernel generation uses its preserved input snapshot. The
 living faculty field can evolve without falsifying that historical receipt.
 New installations retain an exact file baseline and state identities for the
 update method in `UPDATE_CONTINUITY.md`. There is no automatic migration engine.
+
+The install receipt preserves its original digest-bound plan. Installer
+verification distinguishes file presence and evolution from baseline integrity.
+The configuration owner also carries `source_contact.last_attempt` and
+`last_success`. `source-contact-status` reports the ordinary seven-day cadence;
+`record-source-contact` records a read-only observation through the existing
+configuration transition. These commands do not contact the network or schedule
+work. A failed attempt remains pending and never replaces the last success.

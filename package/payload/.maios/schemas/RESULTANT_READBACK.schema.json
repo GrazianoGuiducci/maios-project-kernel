@@ -181,6 +181,14 @@
       "properties": {
         "supersedes": {"$ref": "#/$defs/stringList"},
         "supersession_reason": {"type": "string", "minLength": 1},
+        "supersession_context": {
+          "type": "object", "required": ["relation", "source_refs"],
+          "properties": {
+            "relation": {"type": "string", "minLength": 1},
+            "source_refs": {"$ref": "#/$defs/nonEmptyStringList"}
+          },
+          "additionalProperties": true
+        },
         "owner": {
           "type": "object",
           "required": ["kind", "id", "owner"],

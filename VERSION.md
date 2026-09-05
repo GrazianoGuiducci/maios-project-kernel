@@ -1,6 +1,6 @@
 # Version
 
-Current development build: `3.0.3+continuum.1`.
+Current development build: `3.0.3+continuum.2`.
 Public release baseline: `3.0.3`.
 The next public release number remains to be selected from the completed scope.
 

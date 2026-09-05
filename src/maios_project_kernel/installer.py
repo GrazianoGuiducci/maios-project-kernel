@@ -438,6 +438,47 @@ def copy_entry(root: Path, base: Path, entry: dict[str, Any]) -> None:
         raise InstallerError(f"copied byte mismatch: {entry['destination']}")
 
 
+def update_baseline(plan: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "schema": "maios.update-baseline.v1",
+        "policy": ".maios/kernel/UPDATE_CONTINUITY.md",
+        "configuration_schema": "maios.configuration-state.v2",
+        "operating_schema": "maios.operating-state.v2",
+        "plan_digest": plan["plan_digest"],
+        "package_identity": plan["package_identity"],
+        "files": [{key: entry[key] for key in ("source", "destination", "sha256", "bytes", "kind")}
+                  for entry in plan["entries"]],
+        "rule": "compare exact distributed base, local evolution and proposed source; preserve divergent local knowledge and state",
+    }
+
+
+def verify_update_baseline(receipt: dict[str, Any]) -> dict[str, Any]:
+    errors: list[str] = []
+    plan = receipt.get("install_plan")
+    try:
+        if not isinstance(plan, dict):
+            raise InstallerError("original install plan is missing")
+        verify_plan(plan)
+        for key in ("target", "mode", "host", "plan_digest", "package_identity"):
+            if receipt.get(key) != plan.get(key):
+                errors.append("baseline plan differs from receipt: " + key)
+        destinations: set[str] = set()
+        for entry in plan["entries"]:
+            safe_relative(entry["source"])
+            safe_relative(entry["destination"])
+            if entry["destination"] in destinations:
+                errors.append("duplicate baseline destination")
+            destinations.add(entry["destination"])
+        if not destinations:
+            errors.append("baseline has no files")
+        if receipt.get("update_baseline") != update_baseline(plan):
+            errors.append("update baseline differs from the original plan and package identity")
+    except (InstallerError, KeyError, TypeError, ValueError) as exc:
+        errors.append("invalid update baseline: " + str(exc))
+    return {"schema": "maios.update-baseline-verification.v1", "valid": not errors, "errors": errors,
+            "claim_boundary": "internal historical consistency, not a signature or proof against coordinated rewriting"}
+
+
 def install_receipt(plan: dict[str, Any], state: str) -> dict[str, Any]:
     owned = [
         {
@@ -474,17 +515,8 @@ def install_receipt(plan: dict[str, Any], state: str) -> dict[str, Any]:
         "plan_digest": plan["plan_digest"],
         "package_identity": plan["package_identity"],
         "installer_owned_files": owned,
-        "update_baseline": {
-            "schema": "maios.update-baseline.v1",
-            "policy": ".maios/kernel/UPDATE_CONTINUITY.md",
-            "configuration_schema": "maios.configuration-state.v2",
-            "operating_schema": "maios.operating-state.v2",
-            "files": [
-                {key: entry[key] for key in ("source", "destination", "sha256", "bytes", "kind")}
-                for entry in plan["entries"]
-            ],
-            "rule": "compare exact distributed base, local evolution and proposed source; preserve divergent local knowledge and state",
-        },
+        "install_plan": json.loads(json.dumps(plan)),
+        "update_baseline": update_baseline(plan),
         "preserved_preexisting_identical": plan["preserves_identical"],
         "backup_root": backup_root,
         "installer_owned_backup_files": backed_up,
@@ -598,6 +630,7 @@ def apply_plan(root: Path, plan: dict[str, Any]) -> dict[str, Any]:
 def verify_installation(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
     target = target.resolve()
     require_receipt_target(target, receipt)
+    baseline = verify_update_baseline(receipt)
     results: list[dict[str, Any]] = []
     for entry in receipt.get("installer_owned_files", []):
         path = native(target, entry["path"])
@@ -622,6 +655,8 @@ def verify_installation(target: Path, receipt: dict[str, Any]) -> dict[str, Any]
         "files": results,
         "missing": missing,
         "installed": not missing,
+        "baseline": baseline,
+        "valid": not missing and baseline["valid"],
         "behavior_claimed": False,
     }
 
@@ -851,7 +886,7 @@ def main(argv: Iterable[str] | None = None) -> int:
             receipt = load_receipt(args.target, args.receipt)
             result = verify_installation(args.target, receipt)
             print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
-            return 0 if result["installed"] else 2
+            return 0 if result["valid"] else 2
         if args.command == "recover-pending":
             result = recover_pending(args.target)
             if args.receipt_out:

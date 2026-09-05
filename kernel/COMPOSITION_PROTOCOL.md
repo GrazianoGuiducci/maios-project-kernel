@@ -72,7 +72,7 @@ composition actually helped.
 
 After inspecting the resultant, record actual status and classification,
 faculty deltas, source positions, possibility impact, next movement, effect
-state, and an optional owner-bound learning delta. Use `validate-resultant`
+state, and zero or more owner-bound learning deltas. Use `validate-resultant`
 before `apply-resultant`. Application is the terminal project-local coupling
 from the observed result to configuration, evolution, operating state,
 projections, learning, and reentry. If its operating-context hash is stale,

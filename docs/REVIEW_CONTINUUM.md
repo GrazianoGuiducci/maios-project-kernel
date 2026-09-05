@@ -1,12 +1,19 @@
 # Lettura della candidata autonoma per ChatGPT
 
 Questa repository contiene le sorgenti complete e il pacchetto generato della
-candidata MAIOS Project Kernel `3.0.3+continuum.1`, derivata dalla release 3.0.3.
+candidata MAIOS Project Kernel `3.0.3+continuum.2`, derivata dalla release 3.0.3.
 Il numero della prossima release pubblica resta aperto. Identifica il commit
 esatto che riesci a leggere e usa sorgenti e `package/` di quella revisione:
 una precedente lettura della repository o della release 3.0.3 non descrive
 questa candidata. Se l'accesso restituisce una revisione precedente, rendi
 esplicita la differenza prima di attribuirle le modifiche qui descritte.
+
+Questa è la revisione successiva alla recensione della candidata continuum.1
+al commit `0a07ce4fb22a6a8050db10281a89363cc63f1e9c`. Le correzioni sono in
+`CHANGELOG.md`: rientro con sorgenti recuperabili, genealogia plurale distinta
+dal richiamo corrente, attribuzione e validazione, baseline verificata e
+contatto con la sorgente persistente. I casi emersi nella recensione hanno
+prodotto riscontri mirati; non è necessario ricominciare una revisione generale.
 
 Parti da [CURRENT_STATE.md](../CURRENT_STATE.md), quindi dalle competenze e dalle
 sorgenti che cambiano la comprensione. L'intento è trasferire il potenziale del
@@ -29,7 +36,7 @@ possibilità. I fondamenti D-ND rimangono il riferimento fuori dalla riscrittura
 automatica; [FOUNDING_RELATIONS.md](../kernel/FOUNDING_RELATIONS.md) è la
 rappresentazione qualificata A0-A11, non una pretesa di contenere tutto D-ND.
 
-Sono passati 39 test locali, compresi sei casi mirati alle nuove meccaniche.
+Sono passati 46 test locali, compresi i nuovi casi ricavati dalla recensione.
 Il pacchetto ha 58 file, 47 nel payload, e corrisponde alla sorgente verificata.
 Queste evidenze non provano ancora uso di un host/modello reale o assimilazione.
 Non serve ripetere un programma di test: un ulteriore riscontro serve quando

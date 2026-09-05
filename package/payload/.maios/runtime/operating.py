@@ -190,6 +190,8 @@ def read_operating_state(root: Path) -> dict[str, Any]:
     )
     if not isinstance(value.get("last_learning_relations"), list):
         state_errors.append("last_learning_relations must be a list")
+    _validate_learning_state(value, state_errors)
+    _validate_knowledge_refs(value.get("active_knowledge_refs"))
     if state_errors:
         raise OperatingStateError("invalid operating state: " + "; ".join(state_errors))
     return value
@@ -223,6 +225,148 @@ def _nonempty(value: Any) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
 
+def _owner_identity(owner: Any) -> tuple[Any, ...]:
+    return tuple(owner.get(key) if isinstance(owner, dict) else None for key in ("kind", "id", "owner"))
+
+
+def _validate_supersession_context(value: Any, errors: list[str], prefix: str) -> None:
+    if not isinstance(value, dict) or not _nonempty(value.get("relation")):
+        errors.append(f"{prefix} must explain the ownership or plural continuation relation")
+    if (not isinstance(value, dict) or not isinstance(value.get("source_refs"), list)
+            or not value["source_refs"] or not all(_nonempty(x) for x in value["source_refs"])):
+        errors.append(f"{prefix}.source_refs must contain non-empty strings")
+
+
+def _validate_learning_state(state: dict[str, Any], errors: list[str]) -> None:
+    """Validate stored causal references, not the truth of learned knowledge."""
+    relations = state.get("learning_relations", [])
+    by_id: dict[str, Any] = {}
+    history = state.get("history", [])
+    events: dict[str, Any] = {}
+    order: dict[str, int] = {}
+    for position, event in enumerate(history):
+        if not isinstance(event, dict) or not _nonempty(event.get("event_id")):
+            errors.append("invalid operating history event")
+            continue
+        event_id = event["event_id"]
+        expected = f".maios/receipts/resultant/{event_id}.json"
+        if not SAFE_EVENT_ID.fullmatch(event_id) or event.get("receipt") != expected or event_id in events:
+            errors.append("invalid or duplicate operating history identity")
+        events[event_id] = event
+        order[event_id] = position
+
+    def strings(value: Any, field: str) -> list[str]:
+        if not isinstance(value, list) or not all(_nonempty(x) for x in value):
+            errors.append(f"{field} must be a string list")
+            return []
+        if len(value) != len(set(value)):
+            errors.append(f"{field} contains duplicate references")
+        return value
+
+    for item in relations:
+        if not isinstance(item, dict) or not _nonempty(item.get("relation_id")):
+            errors.append("invalid learning relation identity")
+            continue
+        relation_id = item["relation_id"]
+        if relation_id in by_id:
+            errors.append("duplicate learning relation id: " + relation_id)
+        by_id[relation_id] = item
+        if item.get("schema") != "maios.learning-relation.v2":
+            errors.append("unsupported learning relation schema: " + relation_id)
+        _validate_learning_delta(item, errors, relation_id)
+        origin = item.get("origin_event_id") if _nonempty(item.get("origin_event_id")) else None
+        ordinal = item.get("origin_ordinal")
+        if (origin not in events or not isinstance(ordinal, int) or isinstance(ordinal, bool)
+                or ordinal < 0 or not isinstance(item.get("owner"), dict)):
+            errors.append("invalid learning origin: " + relation_id)
+        else:
+            if relation_id != _learning_relation_id(item["owner"], origin, ordinal):
+                errors.append("learning identity differs from its origin: " + relation_id)
+            if item.get("source_resultant_receipt") != events[origin]["receipt"]:
+                errors.append("learning origin receipt mismatch: " + relation_id)
+        if not re.fullmatch(r"[0-9a-f]{64}", str(item.get("origin_circumstance_digest", ""))):
+            errors.append("invalid learning origin digest: " + relation_id)
+        strings(item.get("supersedes"), relation_id + ".supersedes")
+        strings(item.get("superseded_by"), relation_id + ".superseded_by")
+        if item.get("supersedes") and not _nonempty(item.get("supersession_reason")):
+            errors.append("learning supersession reason is missing: " + relation_id)
+        lifecycle = item.get("lifecycle")
+        previous_status = None
+        previous_order = -1
+        if not isinstance(lifecycle, list) or not lifecycle:
+            errors.append("learning lifecycle is missing: " + relation_id)
+            lifecycle = []
+        for step in lifecycle:
+            if not isinstance(step, dict):
+                errors.append("invalid learning lifecycle entry: " + relation_id)
+                continue
+            event_id = step.get("event_id") if _nonempty(step.get("event_id")) else None
+            if (event_id not in events or order.get(event_id, -1) < previous_order
+                    or step.get("resultant_receipt") != events.get(event_id, {}).get("receipt")):
+                errors.append("learning lifecycle event mismatch: " + relation_id)
+            if (step.get("from_status") != previous_status
+                    or step.get("to_status") not in {"reachable", "superseded", "cooled", "retired"}
+                    or not _nonempty(step.get("reason"))):
+                errors.append("incoherent learning lifecycle: " + relation_id)
+            if step.get("to_status") == "superseded" and step.get("successor_id") not in strings(item.get("superseded_by"), relation_id + ".superseded_by"):
+                errors.append("supersession lifecycle lost its successor: " + relation_id)
+            previous_status = step.get("to_status")
+            previous_order = order.get(event_id, -1)
+        if lifecycle and (not isinstance(lifecycle[0], dict) or lifecycle[0].get("event_id") != origin or item.get("status") != previous_status):
+            errors.append("learning status differs from lifecycle: " + relation_id)
+        if item.get("superseded_by") != [x.get("successor_id") for x in lifecycle if isinstance(x, dict) and x.get("to_status") == "superseded"]:
+            errors.append("learning successor history differs from its lifecycle: " + relation_id)
+        uses = item.get("later_uses")
+        if not isinstance(uses, list):
+            errors.append("learning later_uses must be a list: " + relation_id)
+            uses = []
+        for use in uses:
+            if not isinstance(use, dict):
+                errors.append("invalid learning use: " + relation_id)
+                continue
+            event_id = use.get("event_id") if _nonempty(use.get("event_id")) else None
+            if (event_id not in events or order.get(event_id, -1) <= order.get(origin, -1)
+                    or use.get("resultant_receipt") != events.get(event_id, {}).get("receipt")
+                    or not _nonempty(use.get("description"))
+                    or not re.fullmatch(r"[0-9a-f]{64}", str(use.get("circumstance_digest", "")))
+                    or use.get("nonidentical_to_origin") is not
+                    (use.get("circumstance_digest") != item.get("origin_circumstance_digest"))):
+                errors.append("invalid learning use evidence: " + relation_id)
+            strings(use.get("evidence_refs"), relation_id + ".later_use.evidence_refs")
+        if (item.get("last_use") != (uses[-1] if uses else None)
+                or item.get("later_nonidentical_use_observed") is not
+                any(isinstance(x, dict) and x.get("nonidentical_to_origin") is True for x in uses)):
+            errors.append("learning use summary differs from its evidence: " + relation_id)
+    if errors:
+        return
+    for relation_id, item in by_id.items():
+        for field, reverse in (("supersedes", "superseded_by"), ("superseded_by", "supersedes")):
+            for target in strings(item.get(field), relation_id + "." + field):
+                other = by_id.get(target)
+                if other is None or target == relation_id or relation_id not in other.get(reverse, []):
+                    errors.append("incoherent learning genealogy: " + relation_id)
+                elif field == "supersedes":
+                    if order.get(other.get("origin_event_id"), -1) >= order.get(item.get("origin_event_id"), -1):
+                        errors.append("learning ancestry must precede its successor: " + relation_id)
+                    if _owner_identity(other["owner"]) != _owner_identity(item["owner"]):
+                        _validate_supersession_context(item.get("supersession_context"), errors, relation_id)
+                elif item["superseded_by"].index(target) > 0:
+                    _validate_supersession_context(other.get("supersession_context"), errors, target)
+    for summary in state.get("last_learning_relations", []):
+        if not isinstance(summary, dict) or not _nonempty(summary.get("relation_id")):
+            errors.append("invalid last learning summary")
+            continue
+        item = by_id.get(summary["relation_id"])
+        if item is None or any(summary.get(key) != item.get(key) for key in ("owner", "origin_event_id", "source_resultant_receipt")):
+            errors.append("last learning summary differs from relation")
+
+
+def _resolved_circumstance(circumstance: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
+    result = copy.deepcopy(circumstance)
+    result.setdefault("knowledge_refs", copy.deepcopy(state.get("active_knowledge_refs", [])))
+    return result
+
+
 def compose(
     root: Path,
     circumstance: dict[str, Any],
@@ -235,7 +379,7 @@ def compose(
         raise OperatingStateError("circumstance must be an object")
     relations = _string_list(circumstance.get("relations"), "circumstance.relations")
     if "knowledge_refs" in circumstance:
-        knowledge_status(root, circumstance["knowledge_refs"])
+        _validate_knowledge_refs(circumstance["knowledge_refs"])
     registry = _faculty_field(root.resolve())
     relation_set = set(relations)
     silent: list[dict[str, Any]] = []
@@ -418,12 +562,19 @@ def _default_circumstance(configuration: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _validate_knowledge_refs(paths: Any) -> None:
+    _string_list(paths, "knowledge_refs")
+    for relative in paths:
+        path = PurePosixPath(relative)
+        if (path.is_absolute() or ".." in path.parts or chr(92) in relative
+                or ":" in relative or path.as_posix() != relative or relative == "."):
+            raise OperatingStateError(f"knowledge path must be project-relative: {relative}")
+
+
 def knowledge_status(root: Path, paths: list[str]) -> dict[str, Any]:
     """Observe selected files, following native entries to their living bodies."""
     root = root.resolve()
-    if not isinstance(paths, list):
-        raise OperatingStateError("knowledge_refs must be a list")
-    _string_list(paths, "knowledge_refs")
+    _validate_knowledge_refs(paths)
     pending = list(paths)
     observed: dict[str, Any] = {}
     while pending:
@@ -510,7 +661,10 @@ def _operating_status(
     competence_index = _competence_index(root)
     faculty_field = _faculty_field(root)
     operating_state = operating_state_override or read_operating_state(root)
-    circumstance = circumstance or _default_circumstance(configuration)
+    circumstance = _resolved_circumstance(
+        circumstance if circumstance is not None else _default_circumstance(configuration),
+        operating_state,
+    )
     projection = compose(
         root,
         circumstance,
@@ -640,6 +794,7 @@ def _operating_status(
         "operating_state_sha256": digest(operating_state),
         "operating_revision": operating_state["revision"],
         "input_digests": inputs,
+        "knowledge_refs": copy.deepcopy(circumstance["knowledge_refs"]),
         "freshness": {
             "status": "current" if not changed else "changed_or_unobserved",
             "changed_inputs": changed,
@@ -1001,7 +1156,10 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
     if not isinstance(learning_deltas, list):
         errors.append("learning_deltas must be a list")
         learning_deltas = []
-    existing = {item["relation_id"]: item for item in read_operating_state(root).get("learning_relations", [])}
+    current_state = read_operating_state(root)
+    existing = {item["relation_id"]: item for item in current_state.get("learning_relations", [])}
+    already_applied = any(item["event_id"] == value.get("event_id") and item["event_digest"] == digest(value)
+                          for item in current_state["history"])
     changed_existing: set[str] = set()
     seen_deltas: set[str] = set()
     for index, learning_delta in enumerate(learning_deltas):
@@ -1019,11 +1177,19 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
             continue
         if supersedes and not _nonempty(learning_delta.get("supersession_reason")):
             errors.append(f"{prefix}.supersession_reason is required")
+        if len(supersedes) != len(set(supersedes)):
+            errors.append(f"{prefix}.supersedes contains duplicate references")
+        contextual = "supersession_context" in learning_delta
+        if contextual:
+            _validate_supersession_context(learning_delta["supersession_context"], errors, prefix + ".supersession_context")
         for relation_id in supersedes:
             if relation_id not in existing:
                 errors.append(f"unknown learning relation: {relation_id}")
-            if relation_id in changed_existing:
-                errors.append(f"conflicting learning transition: {relation_id}")
+                continue
+            previous = existing[relation_id]
+            if (not already_applied and not contextual and (previous.get("superseded_by") or relation_id in changed_existing
+                    or _owner_identity(previous["owner"]) != _owner_identity(learning_delta.get("owner", {})))):
+                errors.append(f"{prefix}.supersession_context is required for cross-owner or plural continuation")
             changed_existing.add(relation_id)
     transitions = value.get("learning_transitions", [])
     if not isinstance(transitions, list):
@@ -1130,10 +1296,11 @@ def _update_learning_relations(
     current_operating: dict[str, Any],
     readback: dict[str, Any],
     receipt_relative: str,
+    circumstance: dict[str, Any],
 ) -> tuple[list[dict[str, Any]], list[str], list[str]]:
     """Carry a causal correction into the next field and record later use."""
 
-    circumstance_digest = digest(readback["movement"]["circumstance"])
+    circumstance_digest = digest(circumstance)
     faculty_deltas = {
         item["faculty_id"]: item
         for item in readback.get("faculty_deltas", [])
@@ -1181,16 +1348,22 @@ def _update_learning_relations(
         supersedes = learning_delta.get("supersedes", [])
         for previous in relations:
             if previous["relation_id"] in supersedes:
+                previous["lifecycle"].append({
+                    "event_id": readback["event_id"], "resultant_receipt": receipt_relative,
+                    "from_status": previous["status"], "to_status": "superseded",
+                    "successor_id": changed_relation_id, "reason": learning_delta["supersession_reason"],
+                })
                 previous["status"] = "superseded"
-                previous["superseded_by"] = changed_relation_id
+                previous["superseded_by"].append(changed_relation_id)
                 previous["status_reason"] = learning_delta["supersession_reason"]
                 previous["status_event_id"] = readback["event_id"]
         relation = {
-            "schema": "maios.learning-relation.v1",
+            "schema": "maios.learning-relation.v2",
             "relation_id": changed_relation_id,
             "owner": owner,
             "status": "reachable",
             "origin_event_id": readback["event_id"],
+            "origin_ordinal": ordinal,
             "origin_circumstance_digest": circumstance_digest,
             "what_happened": learning_delta["what_happened"],
             "causal_delta": learning_delta["causal_delta"],
@@ -1204,6 +1377,11 @@ def _update_learning_relations(
             "reentry_condition": learning_delta["reentry_condition"],
             "source_resultant_receipt": receipt_relative,
             "supersedes": copy.deepcopy(supersedes),
+            "supersession_reason": learning_delta.get("supersession_reason"),
+            "supersession_context": copy.deepcopy(learning_delta.get("supersession_context")),
+            "superseded_by": [],
+            "lifecycle": [{"event_id": readback["event_id"], "resultant_receipt": receipt_relative,
+                           "from_status": None, "to_status": "reachable", "reason": learning_delta["causal_delta"]}],
             "later_uses": [],
             "last_use": None,
             "later_nonidentical_use_observed": False,
@@ -1217,6 +1395,11 @@ def _update_learning_relations(
         relations.append(relation)
     for transition in readback.get("learning_transitions", []):
         relation = next(item for item in relations if item["relation_id"] == transition["relation_id"])
+        relation["lifecycle"].append({
+            "event_id": readback["event_id"], "resultant_receipt": receipt_relative,
+            "from_status": relation["status"], "to_status": transition["status"],
+            "reason": transition["reason"], "reentry_condition": transition["reentry_condition"],
+        })
         relation["status"] = transition["status"]
         relation["status_reason"] = transition["reason"]
         relation["reentry_condition"] = transition["reentry_condition"]
@@ -1277,7 +1460,7 @@ def apply_resultant_readback(
                 "operating_state_sha256": digest(current_operating),
             }
 
-    circumstance = readback["movement"]["circumstance"]
+    circumstance = _resolved_circumstance(readback["movement"]["circumstance"], current_operating)
     current_context = operating_status(root, circumstance)
     if current_context["context_sha256"] != expected_context_sha256:
         raise OperatingStateError(
@@ -1332,6 +1515,7 @@ def apply_resultant_readback(
         current_operating,
         readback,
         receipt_relative,
+        circumstance,
         )
     )
     updated_operating["learning_relations"] = learning_relations
@@ -1356,6 +1540,11 @@ def apply_resultant_readback(
     )
     updated_operating["open_fronts"] = open_fronts
     updated_operating["focused_front_id"] = focused_front_id
+    updated_operating["active_knowledge_refs"] = copy.deepcopy(circumstance["knowledge_refs"])
+    state_errors: list[str] = []
+    _validate_learning_state(updated_operating, state_errors)
+    if state_errors:
+        raise OperatingStateError("invalid resulting learning state: " + "; ".join(state_errors))
 
     host_state = host_engine.read_host_state(root)
     faculty_field = _faculty_field(root)
@@ -1401,6 +1590,7 @@ def apply_resultant_readback(
             "learning_relations": changed_learning_ids,
             "exercised_learning_relations": exercised_learning_ids,
             "readback": readback,
+            "consumed_knowledge_refs": copy.deepcopy(circumstance["knowledge_refs"]),
             "global_writes": [],
             "external_effect_claimed": False,
             "claim_boundary": "the transition records project-local resultant state; external truth, assimilation, and effect authority remain separate claims",

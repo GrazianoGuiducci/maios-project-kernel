@@ -1,6 +1,6 @@
 # MAIOS Project Kernel
 
-Candidata per recensione: **3.0.3+continuum.1**, dalla release pubblica 3.0.3.
+Candidata per recensione: **3.0.3+continuum.2**, dalla release pubblica 3.0.3.
 Il numero della prossima release resta da scegliere. Questa candidata porta
 competenze come fonti vive di sapere e metodo: il contesto e l'intento evolvono
 attraverso il lavoro; apprendimenti diversi possono coesistere e quelli
@@ -8,6 +8,11 @@ superati restano recuperabili senza occupare il richiamo attivo. Gli ingressi
 degli host leggono i corpi vivi. La prima installazione conserva inoltre una
 base esatta per i futuri aggiornamenti che rispettano l'evoluzione del progetto.
 La verifica locale dei meccanismi non dimostra ancora assimilazione nell'uso.
+
+Questa revisione conserva i riferimenti alla conoscenza al nuovo rientro,
+distingue la genealogia plurale dal richiamo corrente e verifica la baseline
+originaria rispettando l'evoluzione locale. Il contatto con la sorgente
+conserva nello stato del progetto tentativi e osservazioni riuscite.
 
 Per la recensione delle sorgenti, parti dalle [indicazioni di lettura](docs/REVIEW_CONTINUUM.md)
 e identifica il commit esatto che stai leggendo. Il numero della prossima release resta aperto.

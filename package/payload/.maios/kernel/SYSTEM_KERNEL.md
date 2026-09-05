@@ -267,21 +267,23 @@ actual result and faculty-specific observed deltas
 possibilities opened, preserved, constrained, or eliminated
 next movement and reentry condition
 exact effect state and receipts, if an effect existed
-optional owner-bound learning delta: what happened, why, future behavior,
+zero or more owner-bound learning deltas: what happened, why, future behavior,
   activation relations, invalidator, and reentry
 ```
 
-The learning delta reads the method through its causal consequence. It is
+Each learning delta reads the method through its causal consequence. It is
 stored at the smallest truthful owner and remains reachable without forcing
 its activation relations into the next movement. This preserves availability without
 calling it an assimilated competence. A later non-identical use records whether
 the relation actually changed the movement; it may revise or invalidate the
 stored form.
 
-`validate-resultant` checks this contract. `apply-resultant` atomically lets the
-current source-qualified resultant form project-local operating state,
-canonical configuration, projections, learning relations, and a receipt under
-one concurrency hash. It does not prove an optional classification,
+`validate-resultant` checks this contract. `apply-resultant` lets the current
+source-qualified resultant form project-local operating state, canonical
+configuration, projections, learning relations, and a receipt under one
+optimistic context hash. Each file is replaced atomically and caught errors
+trigger rollback; this is not a crash-safe multi-file transaction or
+interprocess serialization. It does not prove an optional classification,
 assimilation, host activation, or an external effect. Those claims retain the
 evidence and authority boundaries belonging to the exact claim or effect.
 

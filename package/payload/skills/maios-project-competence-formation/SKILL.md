@@ -135,6 +135,15 @@ recoverable history. Infrequent use alone does not make a competence obsolete;
 physical deletion is a separate effect. A skill, its index and a host copy
 must not silently disagree about which method is current.
 
+Current availability is distinct from historical genealogy. Multiple successors
+and cross-owner continuations can remain useful; express their relation and
+source reasons rather than erasing predecessors or forcing one successor.
+Reopening an earlier method preserves its history. The helpers carry plural
+edges and lifecycle evidence as described in `.maios/kernel/KNOWLEDGE_CONTINUUM.md`.
+When selected source freshness matters to a durable transition, preserve its
+`knowledge_refs` so a new instance can find the same bodies. Replace or clear
+that selection when the present work changes; do not accumulate it by default.
+
 Without a usable write path, return the exact learned change and its owner for
 continuation. When a helper is unavailable, preserve the useful causal margin in the
 project continuity and identify the unresolved state transition without

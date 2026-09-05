@@ -1276,6 +1276,7 @@ class RuntimeTests(DistributionFixture):
             "summary": "first reviewed situated configuration",
         }
         candidate["operator_relation"]["current_intent"] = "form a source-backed project"
+        candidate["operator_relation"]["intent_source"] = "operator's reviewed project direction"
         candidate["operator_relation"]["point_of_view"] = "project operator"
         candidate["operator_relation"]["direction_status"] = "selected"
         candidate["result"].update(

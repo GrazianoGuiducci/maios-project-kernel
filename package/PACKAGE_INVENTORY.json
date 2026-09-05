@@ -24,7 +24,7 @@
     {
       "bytes": 3042,
       "path": "MANIFEST.json",
-      "sha256": "01231c00d62fface1ef066fd24046649b6a8e6a6d6dbe592ca1cd743d1eeba47"
+      "sha256": "39e5f09ba70d162f5c1e4181db766e15e3fe0b107a01014de2abe776280c297c"
     },
     {
       "bytes": 1085,
@@ -54,7 +54,7 @@
     {
       "bytes": 3263,
       "path": "payload/.maios/SOURCE_MANIFEST.json",
-      "sha256": "6d68067f7c3be75b9f4f58b15177b2a469bc0dd8205c85edc49961114275c3f2"
+      "sha256": "17ac88e6bd8c9aaa3351fe06ad559a964a960bfdb5fe8a9511984deb58ea5a26"
     },
     {
       "bytes": 1762,
@@ -67,14 +67,14 @@
       "sha256": "7a97dfd987cf80e518c158065a18b9557efebf206c6509ea99859b2f6847164f"
     },
     {
-      "bytes": 35208,
+      "bytes": 36950,
       "path": "payload/.maios/installer/installer.py",
-      "sha256": "2f1b2e2922af44aa007ad5496b6fcb02de92bbe172ee5c839dacca830d65cd85"
+      "sha256": "74a86842d3467d79d6a61810f76c754ad29bbb5754945585aab2191529f85e82"
     },
     {
       "bytes": 1368,
       "path": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
-      "sha256": "06398f73657463aecd88bb7508e9b9900b48639fa2417eab4e1624a26a416882"
+      "sha256": "ddf31708e063f004f9a8874780242d18e4305c22442570e2563986eec8be171a"
     },
     {
       "bytes": 6750,
@@ -82,9 +82,9 @@
       "sha256": "ab018da557c6c9f3bb50840be599860d622405fe7329831e12c51ca169b23ea4"
     },
     {
-      "bytes": 3569,
+      "bytes": 3571,
       "path": "payload/.maios/kernel/COMPOSITION_PROTOCOL.md",
-      "sha256": "79bb7839158ef6e882c5b20bc9f1e91f32213d6648e0bfb851dd515a02b8d59a"
+      "sha256": "1e99fb882854a8cc20bc9c0c8ac792df9f0ec3014b6736768f6f1eb8b57349bd"
     },
     {
       "bytes": 3310,
@@ -102,9 +102,9 @@
       "sha256": "814f960d55be1a5f041b5a59cde7d2b3d7b1d02f285afcefba20620ae35ed6b5"
     },
     {
-      "bytes": 2564,
+      "bytes": 3618,
       "path": "payload/.maios/kernel/KNOWLEDGE_CONTINUUM.md",
-      "sha256": "17fc400acb6786b471172aa15b8566789c7e3afef57914fa1854e7ddafa2e8f2"
+      "sha256": "c0d036fd7c1b32ed6eb8bd78ea017015a6e4aea474887609271bcc9ef66dcdd1"
     },
     {
       "bytes": 6966,
@@ -127,24 +127,24 @@
       "sha256": "e303ea5a515c813a8217948c0843ee9bda99dc5e2cb6ef1e8f834a13aec1d0d1"
     },
     {
-      "bytes": 17201,
+      "bytes": 17351,
       "path": "payload/.maios/kernel/SYSTEM_KERNEL.md",
-      "sha256": "262ce79981fd23dc4f2ccaf8c3ac02fc78a6c00043e0bc3f9c3f4af45c21dbdd"
+      "sha256": "c37a02f3be44078caf488d953d37fa97a6903ee833a6fefc44c87541eb469e91"
     },
     {
-      "bytes": 2462,
+      "bytes": 3008,
       "path": "payload/.maios/kernel/UPDATE_CONTINUITY.md",
-      "sha256": "b4222b10defd600c12815f8cccbb64f29421208f864f78c7b5493327458bc4dc"
+      "sha256": "d555fbe6611255a5b30ec3c081d84d90f0c4a516ad1d35c27918336ad8370ef5"
     },
     {
-      "bytes": 1662,
+      "bytes": 2633,
       "path": "payload/.maios/receipts/README.md",
-      "sha256": "a01b3919dabb7f044ee7b8a08c1e9542a8e07bf97fd545784da570a9ed5a422d"
+      "sha256": "c84e49ab7a40d5e6157b1d26a9793f356651cfb7ea87fcce87ffbf21feac6c4e"
     },
     {
-      "bytes": 22686,
+      "bytes": 27126,
       "path": "payload/.maios/runtime/configuration.py",
-      "sha256": "06f8548ef74ea557e64bd55b6d14150d8c91289010aa6d61fb75f191db2b223a"
+      "sha256": "2456d54d19c04784a3dd99a13b412f095f9b99ea20cffc23b47e7016c55e55fc"
     },
     {
       "bytes": 12084,
@@ -152,14 +152,14 @@
       "sha256": "76bd22b6bc548f747229ab286484667cb954bb94faa116bb86acdb207e08259d"
     },
     {
-      "bytes": 36988,
+      "bytes": 37754,
       "path": "payload/.maios/runtime/kernel.py",
-      "sha256": "804d8e94b36d28eaa98228757cfa4e60b3d0c83cfc523ec4e3dab9fb90aca5a4"
+      "sha256": "cedb091c10a7c47dbb3a7927bbd986111f7ca5a3d97a114075e8c0e7ecb8e1f1"
     },
     {
-      "bytes": 61388,
+      "bytes": 73366,
       "path": "payload/.maios/runtime/operating.py",
-      "sha256": "7b1178938bdacdc54f208c665d6810df8c88b655179c0ce779afe30b4dc17546"
+      "sha256": "4ede20add273e64482eb54e90bc20ad783eff924a3759dd1afa6a623f0fb8f76"
     },
     {
       "bytes": 2481,
@@ -167,9 +167,9 @@
       "sha256": "44765286e2c385db5d35aefd5c01c3f3e07136b8e2c355a6fb521d9418c4b46f"
     },
     {
-      "bytes": 8857,
+      "bytes": 9175,
       "path": "payload/.maios/schemas/RESULTANT_READBACK.schema.json",
-      "sha256": "5b69d9c2d7662798b2cd7da7ae3639c07305cac16597651b558888014383d024"
+      "sha256": "0fc73ab1c45a792d45524f0ff4b4fd17ffe4eef89c8305de3a0e92ea5f8ca9fb"
     },
     {
       "bytes": 682,
@@ -177,14 +177,14 @@
       "sha256": "a483b343f0a6da9a727da7107655ad27e14cf000708c19d54b1c910bed83b1e7"
     },
     {
-      "bytes": 1094,
+      "bytes": 1125,
       "path": "payload/.maios/state/OPERATING_STATE.json",
-      "sha256": "0105a42874f92017bcb5f32b568a36c88531ec805011460f9f3da55e74d6fbbc"
+      "sha256": "a398b90b9edf7b3168a925348c355f67c75f49d1f98ea9950f787310d7aa3e9e"
     },
     {
-      "bytes": 2821,
+      "bytes": 2946,
       "path": "payload/AGENTS.md",
-      "sha256": "a4d2bd761473a01d5f335cf68f4a3e6d9a27361cfb3e94f40788e0efab4ac37b"
+      "sha256": "4f686e6b6526153c6998cd57e194a156f8da4faa5b8e1b6fb0d769d4ffe64a9c"
     },
     {
       "bytes": 570,
@@ -237,9 +237,9 @@
       "sha256": "2b303b90231fae6681aa312a6b99388c89a2c141ec422b7aabdf6b4b343d39d1"
     },
     {
-      "bytes": 2519,
+      "bytes": 2597,
       "path": "payload/setup/CONFIGURATION_STATE.json",
-      "sha256": "41488a1d8426adda832e4dbc55021212a7cdbca84c79097c0cfe6609b7f2321b"
+      "sha256": "29a6831e647ded869dace415d65826855a68d108560a33b68939f50a7644e44e"
     },
     {
       "bytes": 6091,
@@ -247,9 +247,9 @@
       "sha256": "2c2fa229887bddb3814a663dbad7f0cb881064297d1af4dc876a769106acaef8"
     },
     {
-      "bytes": 8671,
+      "bytes": 9297,
       "path": "payload/skills/maios-project-competence-formation/SKILL.md",
-      "sha256": "744831a36270c6a0e3542511591635156938dec39ed8d26f974e69a91660843b"
+      "sha256": "6585b24bb1b288530e70d14abc7e8cfcda393353d6aafc23e64dbca51c2e02ef"
     },
     {
       "bytes": 5191,
@@ -262,9 +262,9 @@
       "sha256": "236516236ffdeee5dd3adcd0ebd371abc04b395dd28479c54a2cbb7cd60ce370"
     },
     {
-      "bytes": 5539,
+      "bytes": 6548,
       "path": "payload/skills/maios-project-system/SKILL.md",
-      "sha256": "6bbf1c4f17b56a727546bfdda6ad87f75a49a019e3bf868423d8fb4a30746fc8"
+      "sha256": "ec23d0d59a6bc07dfd1d27647579ce8d1bf746be7f20da1cff8b1c23c7d0ea51"
     },
     {
       "bytes": 177,

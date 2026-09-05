@@ -1,5 +1,23 @@
 # Changelog
 
+## Review corrections — 3.0.3+continuum.2
+
+- Preserve selected knowledge references through fresh default reentry; allow
+  explicit replacement or clearing without accumulating unrelated sources.
+- Keep plural learning ancestry and event-bound lifecycle separate from current
+  recall; qualify cross-owner and further plural continuations with source reasons.
+- Validate stored relation identity, owners, genealogy, chronology and use evidence.
+- Make native host wording preserve candidates without mandatory activation.
+- Require the three installed continuum organs and provenance for configured intent.
+- Record source-contact attempts and successful observations through canonical
+  configuration, including no-change and unavailable outcomes, without background work.
+- Preserve the original install plan and verify its baseline and package binding
+  independently of legitimate evolution in local knowledge bodies.
+- Correct the transaction claim to per-file atomic replacement and caught-error
+  rollback, and align the documentation with plural learning.
+- Pass all 46 local tests, including seven new regression cases and the extended
+  selective-participation case. Real model use and assimilation remain unobserved.
+
 ## Development candidate for review — 3.0.3+continuum.1
 
 - Form competences from intent, knowledge, memory, success and emerging
@@ -16,10 +34,6 @@
 - Preserve historical generation inputs independently of the evolving field.
 - Retain a first-installation baseline and an owner-native future update method.
 - Keep the release number open; public release, Form and unified mode are separate.
-
-All notable changes to the public distribution are recorded here.
-
-## Unreleased
 
 - Added a light weekly read-only source check to `maios-project-system`. The
   installed Kernel can notice useful upstream improvements while preserving

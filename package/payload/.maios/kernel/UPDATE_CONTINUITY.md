@@ -12,6 +12,14 @@ The baseline describes distribution, not the current meaning or quality of
 evolved local files. Keep the originating artifact or its exact recoverable
 source available when a later comparison needs the original bodies.
 
+The receipt also preserves `install_plan`, bound to its original plan digest.
+The installed installer `verify` command reports baseline consistency against
+that plan and package identity separately from present file evolution. Missing
+or inconsistent baseline fields make verification invalid; a locally learned
+body can still be reported as `target_evolved` with a valid historical base.
+This is an internal consistency check, not a signature against coordinated
+rewriting of the plan and receipt. It does not prove that an update was applied.
+
 When an update becomes useful, understand the functional difference with the
 current project. Compare the exact distributed base, the living local body and
 the proposed upstream source. Preserve local additions and still-useful

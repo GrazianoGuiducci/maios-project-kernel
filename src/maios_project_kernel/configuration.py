@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+from datetime import datetime, timedelta, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -115,6 +116,7 @@ def validate_configuration(value: Any) -> dict[str, Any]:
         errors.append("unsupported setup_status")
     if value.get("effect_authority") != "none":
         errors.append("configuration cannot pre-grant material effect authority")
+    _validate_source_contact(value.get("source_contact"), errors)
     checkpoint = value.get("checkpoint")
     if not isinstance(checkpoint, dict) or not isinstance(checkpoint.get("sequence"), int):
         errors.append("checkpoint.sequence must be an integer")
@@ -172,6 +174,8 @@ def validate_configuration(value: Any) -> dict[str, Any]:
     if status == "configured" and not errors:
         if not _nonempty(operator.get("current_intent")):
             missing_decisions.append("operator_relation.current_intent")
+        if not _nonempty(operator.get("intent_source")):
+            missing_decisions.append("operator_relation.intent_source")
         if not _nonempty(operator.get("point_of_view")):
             missing_decisions.append("operator_relation.point_of_view")
         if operator.get("direction_status") not in {"selected", "open_reviewed"}:
@@ -216,6 +220,83 @@ def validate_configuration(value: Any) -> dict[str, Any]:
         "handoff_ready": status == "configured" and not missing_decisions and not errors,
         "claim_boundary": "valid accepted state does not prove external action or behavioral outcome",
     }
+
+
+def _contact_time(value: Any) -> datetime:
+    if not isinstance(value, str):
+        raise ValueError("contact time must be a timezone-qualified timestamp")
+    result = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if result.tzinfo is None:
+        raise ValueError("contact time must include a timezone")
+    return result
+
+
+def _validate_source_contact(value: Any, errors: list[str]) -> None:
+    if not isinstance(value, dict):
+        errors.append("source_contact must be an object")
+        return
+    for key in ("last_attempt", "last_success"):
+        if key not in value:
+            errors.append("source_contact." + key + " is missing")
+        item = value.get(key)
+        if item is None:
+            continue
+        if not isinstance(item, dict):
+            errors.append("source_contact." + key + " must be an observation or null")
+            continue
+        try:
+            _contact_time(item.get("observed_at"))
+        except ValueError as exc:
+            errors.append(str(exc))
+        if (item.get("status") not in {"observed", "unavailable"}
+                or not _nonempty(item.get("summary"))
+                or (item.get("status") == "observed" and not _nonempty(item.get("source_identity")))
+                or (item.get("status") == "unavailable" and item.get("source_identity") is not None)
+                or (key == "last_success" and item.get("status") != "observed")):
+            errors.append("invalid source_contact." + key)
+    attempt, success = value.get("last_attempt"), value.get("last_success")
+    if isinstance(attempt, dict) and attempt.get("status") == "observed" and success != attempt:
+        errors.append("successful source contact must preserve the same last_success")
+    if success is not None:
+        try:
+            if attempt is None or _contact_time(success["observed_at"]) > _contact_time(attempt["observed_at"]):
+                errors.append("source contact chronology is inconsistent")
+        except (KeyError, TypeError, ValueError):
+            errors.append("source contact chronology is invalid")
+
+
+def source_contact_status(root: Path, at: str | None = None) -> dict[str, Any]:
+    state = current_configuration(root)
+    contact = state["source_contact"]
+    now = _contact_time(at) if at is not None else datetime.now(timezone.utc)
+    attempt = contact["last_attempt"]
+    due_at = _contact_time(attempt["observed_at"]) + timedelta(days=7) if attempt else None
+    return {"schema": "maios.source-contact-status.v1", "state_owner": "setup/CONFIGURATION_STATE.json#source_contact",
+            **contact, "configuration_sha256": digest(state),
+            "ordinary_contact_due": due_at is None or now >= due_at,
+            "next_ordinary_contact_at": due_at.isoformat() if due_at else None,
+            "pending": bool(attempt and attempt["status"] == "unavailable"),
+            "claim_boundary": "a due contact is for an active reentry; this command performs no network call or background work"}
+
+
+def record_source_contact(root: Path, observation: Any, expected_state_sha256: str) -> dict[str, Any]:
+    current = current_configuration(root)
+    if not isinstance(observation, dict):
+        raise ConfigurationError("source contact observation must be an object")
+    candidate = json.loads(json.dumps(current))
+    previous = current["source_contact"]["last_attempt"]
+    candidate["source_contact"]["last_attempt"] = observation
+    if observation.get("status") == "observed":
+        candidate["source_contact"]["last_success"] = observation
+    errors: list[str] = []
+    _validate_source_contact(candidate["source_contact"], errors)
+    if errors:
+        raise ConfigurationError("invalid source contact: " + "; ".join(errors))
+    if previous and _contact_time(observation["observed_at"]) < _contact_time(previous["observed_at"]):
+        raise ConfigurationError("source contact cannot move its observation time backwards")
+    candidate["checkpoint"] = {"sequence": current["checkpoint"]["sequence"] + 1,
+                               "updated_at": observation["observed_at"], "summary": observation["summary"]}
+    return apply_configuration(root, candidate, expected_state_sha256)
 
 
 def current_configuration(root: Path) -> dict[str, Any]:

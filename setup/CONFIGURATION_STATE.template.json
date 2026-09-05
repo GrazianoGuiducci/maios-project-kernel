@@ -3,6 +3,10 @@
   "source_role": "configuration_template",
   "state_owner": "setup/CONFIGURATION_STATE.json",
   "setup_status": "pending",
+  "source_contact": {
+    "last_attempt": null,
+    "last_success": null
+  },
   "checkpoint": {
     "sequence": 0,
     "updated_at": null,

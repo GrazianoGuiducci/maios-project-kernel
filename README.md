@@ -1,6 +1,6 @@
 # MAIOS Project Kernel
 
-Review candidate: **3.0.3+continuum.1**, from public release baseline 3.0.3.
+Review candidate: **3.0.3+continuum.2**, from public release baseline 3.0.3.
 The next release number remains open. This candidate makes competences living
 sources of knowledge and method: context and intent evolve through work,
 several learnings can coexist, and superseded knowledge remains recoverable
@@ -8,6 +8,11 @@ outside active recall. Native entries read living bodies. The first
 installation also retains an exact baseline for future updates that preserve
 project-owned evolution. Local mechanical verification does not establish
 assimilation in use.
+
+This revision preserves selected knowledge references across fresh reentry,
+keeps plural learning history independent of current recall, and validates
+the original update baseline while allowing local knowledge to evolve. Source
+contact records both attempts and successful observations in project state.
 
 For the current source review, start from the [review brief](docs/REVIEW_CONTINUUM.md)
 and identify the exact commit being read. The next release number remains open.

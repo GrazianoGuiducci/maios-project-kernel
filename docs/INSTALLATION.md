@@ -91,3 +91,20 @@ baseline in `.maios/receipts/install/CURRENT.json`. Future selected updates use
 learning and proposed source, preserve state compatibility and recover the
 affected files. The standard starts here; no earlier-installation migration
 adapter is required.
+
+Installer verification also checks that this baseline matches the saved
+original plan and package identity. A changed local knowledge body remains
+`target_evolved`; it does not invalidate a coherent historical baseline.
+
+An operational configured intent requires a non-empty `intent_source` in the
+configuration candidate. Attribute expressed, inferred or retained intent in
+the form appropriate to its actual sources; no closed vocabulary or additional
+operator interview is required. Unresolved setup can remain provisional.
+
+The system competence uses `python maios.py source-contact-status` and
+`python maios.py record-source-contact --observation contact.json --expected-state-sha256 <current-sha256>`
+to continue an actual source observation. The observation records `observed_at`
+with timezone, `status` (`observed` or `unavailable`), `source_identity` (exact
+revision for success, null for failure), and `summary`, including no-change
+results. State lives under `source_contact` in the canonical configuration.
+These local commands perform no network or background work.

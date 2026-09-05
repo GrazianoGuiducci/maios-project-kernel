@@ -3,6 +3,7 @@
   "source_role": "installation_template",
   "revision": 0,
   "last_input_digests": {},
+  "active_knowledge_refs": [],
   "causal_margin": {
     "operator_relation": "The first substantive operator contribution will situate the project.",
     "selected_object": "The project or desired change is not yet situated.",

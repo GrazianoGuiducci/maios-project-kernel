@@ -81,6 +81,9 @@ def validate_project(root: Path) -> dict[str, Any]:
         "AGENTS.md",
         "maios.py",
         ".maios/kernel/SYSTEM_KERNEL.md",
+        ".maios/kernel/FOUNDING_RELATIONS.md",
+        ".maios/kernel/KNOWLEDGE_CONTINUUM.md",
+        ".maios/kernel/UPDATE_CONTINUITY.md",
         ".maios/kernel/FACULTY_FIELD.json",
         ".maios/kernel/COMPOSITION_PROTOCOL.md",
         ".maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
@@ -672,6 +675,11 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--project-root", type=Path)
     sub = result.add_subparsers(dest="command", required=True)
     sub.add_parser("status")
+    contact_status = sub.add_parser("source-contact-status")
+    contact_status.add_argument("--at")
+    contact_record = sub.add_parser("record-source-contact")
+    contact_record.add_argument("--observation", type=Path, required=True)
+    contact_record.add_argument("--expected-state-sha256", required=True)
     compose_parser = sub.add_parser("compose")
     compose_parser.add_argument("--circumstance", type=Path, required=True)
     movement_parser = sub.add_parser("validate-movement")
@@ -720,6 +728,10 @@ def main(argv: Iterable[str] | None = None) -> int:
         root = project_root(args.project_root)
         if args.command == "status":
             result = validate_project(root)
+        elif args.command == "source-contact-status":
+            result = configuration_engine.source_contact_status(root, args.at)
+        elif args.command == "record-source-contact":
+            result = configuration_engine.record_source_contact(root, read_json(args.observation), args.expected_state_sha256)
         elif args.command == "compose":
             result = compose(root, read_json(args.circumstance))
         elif args.command == "validate-movement":
