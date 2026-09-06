@@ -106,7 +106,7 @@ def read_host_state(root: Path) -> dict[str, Any]:
 
 def host_status(root: Path) -> dict[str, Any]:
     state = read_host_state(root)
-    errors = configuration_engine.history_receipt_errors(root, "host", state.get("attestation_history", []))
+    errors = configuration_engine.owner_state_receipt_errors(root, "host", state)
     pending = configuration_engine.pending_transitions(root)
     return {
         "valid": not errors and not pending, "recovery_required": bool(errors or pending),
@@ -120,7 +120,9 @@ def host_status(root: Path) -> dict[str, Any]:
         "state_read": state.get("state_read"),
         "behavioral_activation": state.get("behavioral_activation"),
         "maintained_reentry": state.get("maintained_reentry"),
-        "observed_capabilities": state.get("observed_capabilities", []),
+        "observed_capabilities": [] if errors else state.get("observed_capabilities", []),
+        "unverified_capabilities": sorted(set(state.get("unverified_capabilities", []))
+                                          | (set(state.get("observed_capabilities", [])) if errors else set())),
         "claim_boundary": "installation and indexed attestations do not substitute for their referenced observations",
     }
 
@@ -135,6 +137,9 @@ def validate_host_attestation(root: Path, value: Any) -> dict[str, Any]:
         }
     if value.get("schema") != HOST_ATTESTATION_SCHEMA:
         errors.append("unsupported host attestation schema")
+    for field in ("sequence", "event_digest"):
+        if field in value:
+            errors.append(f"{field} is reserved for recorded event metadata")
     event_id = value.get("event_id")
     if not isinstance(event_id, str) or not event_id:
         errors.append("event_id must be non-empty")
@@ -206,7 +211,7 @@ def admit_host_attestation(
             "invalid host attestation: " + "; ".join(validation["errors"])
         )
     state = read_host_state(root)
-    coherence = configuration_engine.history_receipt_errors(root, "host", state.get("attestation_history", []))
+    coherence = configuration_engine.owner_state_receipt_errors(root, "host", state)
     if coherence:
         raise HostAttestationError("; ".join(coherence))
     before_sha256 = digest(state)

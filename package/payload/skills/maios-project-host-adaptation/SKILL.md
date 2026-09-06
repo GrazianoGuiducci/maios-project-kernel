@@ -78,3 +78,10 @@ When an actual observation shows a capability has become unavailable, name it
 in `invalidated_capabilities` in the host attestation. A failed observation's
 `observed_capabilities` also withdraw only those named capabilities. Earlier
 evidence remains in history; unaffected capabilities remain available.
+
+An accepted attestation must survive recording without losing caller fields.
+Top-level sequence/event_digest belong to history metadata; other extensions
+remain available. Relate the current host state to its latest receipt before
+treating recorded capabilities as observed. A mismatch requires owner recovery
+and preserves the files; it cannot be silently promoted by an identical retry.
+Earlier valid observations keep their historical meaning after later evolution.

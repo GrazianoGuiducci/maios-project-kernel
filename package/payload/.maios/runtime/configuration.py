@@ -151,6 +151,41 @@ def history_receipt_errors(root: Path, owner: str, history: Any) -> list[str]:
     return [error for prior in history for error in terminal_receipt_errors(root, owner, prior)]
 
 
+def owner_state_receipt_errors(root: Path, owner: str, state: dict[str, Any]) -> list[str]:
+    """Bind only the latest host/index transition to its current managed state.
+
+    Historical receipts retain their own context. Competence knowledge bodies
+    are separate living sources, not bytes owned by an index admission.
+    """
+    history_field, after_field = {
+        "host": ("attestation_history", "after_state_sha256"),
+        "competence": ("history", "after_index_sha256"),
+    }[owner]
+    history = state.get(history_field, [])
+    errors = history_receipt_errors(root, owner, history)
+    if errors:
+        return errors
+    try:
+        revision = state.get("revision")
+        if type(revision) is not int or revision < 0:
+            raise ValueError("current revision is malformed")
+        if not history:
+            if revision != 0 or state.get("last_event_id") is not None:
+                raise ValueError("current transition has no recorded history")
+            return []
+        latest = history[-1]
+        if (revision != len(history) or type(latest.get("sequence")) is not int
+                or revision != latest["sequence"] or state.get("last_event_id") != latest["event_id"]):
+            raise ValueError("current revision or event differs from the latest transition")
+        relative = f".maios/receipts/{owner}/{latest['event_id']}.json"
+        receipt = read_json(project_local_file(root, root / relative))
+        if receipt[after_field] != digest(state):
+            raise ValueError("current state digest differs from the latest terminal receipt")
+    except (ValueError, RuntimeError, OSError, KeyError, TypeError) as exc:
+        return [f"{owner} current state recovery required: {exc}"]
+    return []
+
+
 def require_no_pending_transition(root: Path, allowed_owner: str | None = None) -> None:
     pending = [p for p in pending_transitions(root)
                if p != f".maios/receipts/{allowed_owner}/PENDING.json"]

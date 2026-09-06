@@ -729,9 +729,12 @@ def _operating_status(
                 "claim_boundary": "persistence is not assimilation; later use remains observable and revisable",
             }
         )
-    observed = sorted(set(host_state.get("observed_capabilities", [])))
+    host_errors = configuration_engine.owner_state_receipt_errors(root, "host", host_state)
+    recorded_observed = set(host_state.get("observed_capabilities", []))
+    observed = [] if host_errors else sorted(recorded_observed)
     unverified = sorted(
-        set(host_state.get("unverified_capabilities", [])) - set(observed)
+        (set(host_state.get("unverified_capabilities", []))
+         | (recorded_observed if host_errors else set())) - set(observed)
     )
     for capability in observed:
         capability_relations.append(
@@ -864,9 +867,9 @@ def continuum_status(root: Path) -> dict[str, Any]:
             or state["history"][-1].get("receipt") != state.get("last_resultant_receipt")):
         errors.append("current resultant differs from the terminal history event")
     host_state = host_engine.read_host_state(root)
-    errors.extend(configuration_engine.history_receipt_errors(root, "host", host_state.get("attestation_history", [])))
+    errors.extend(configuration_engine.owner_state_receipt_errors(root, "host", host_state))
     index = _competence_index(root)
-    errors.extend(configuration_engine.history_receipt_errors(root, "competence", index.get("history", [])))
+    errors.extend(configuration_engine.owner_state_receipt_errors(root, "competence", index))
     return {"valid": not errors, "errors": errors, "pending_journals": pending}
 
 

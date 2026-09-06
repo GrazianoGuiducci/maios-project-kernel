@@ -1,6 +1,6 @@
 # MAIOS Project Kernel
 
-MAIOS Project Kernel **3.1.2** makes competences living
+MAIOS Project Kernel **3.1.3** makes competences living
 sources of knowledge and method: context and intent evolve through work,
 several learnings can coexist, and superseded knowledge remains recoverable
 outside active recall. Native entries read living bodies. The first
@@ -18,12 +18,16 @@ Interrupted installation now preserves uncertain files: recovery distinguishes
 planned paths from actual creations and retains a completed installation when
 only its pending journal needs cleanup.
 
+Patch 3.1.3 keeps event input distinct from internal history metadata and
+checks current host and competence-index state against the latest receipt.
+Historical replay and the evolution of living competence bodies remain open.
+
 For the current source review, start from the [review brief](docs/REVIEW_CONTINUUM.md)
-and identify the exact commit being read. See [the 3.1.2 corrections](docs/RELEASE_3.1.2.md).
+and identify the exact commit being read. See [the 3.1.3 corrections](docs/RELEASE_3.1.3.md).
 
 [Versione italiana](README.it.md)
 
-Product version: **[3.1.2](VERSION.md)**. Shared Project Kernel family:
+Product version: **[3.1.3](VERSION.md)**. Shared Project Kernel family:
 `3.0.0`.
 
 MAIOS Project Kernel gives a project and its AI coder a shared operating
@@ -54,7 +58,7 @@ the reading route that can change the present result:
 
 | Need | Read next | What the coder should understand or return |
 | --- | --- | --- |
-| Establish current truth | [`AGENTS.md`](AGENTS.md), [`CURRENT_STATE.md`](CURRENT_STATE.md), [`VERSION.md`](VERSION.md), [`CHANGELOG.md`](CHANGELOG.md) | Product version `3.1.2`, family `3.0.0`, current evidence, boundaries, and the selected movement |
+| Establish current truth | [`AGENTS.md`](AGENTS.md), [`CURRENT_STATE.md`](CURRENT_STATE.md), [`VERSION.md`](VERSION.md), [`CHANGELOG.md`](CHANGELOG.md) | Product version `3.1.3`, family `3.0.0`, current evidence, boundaries, and the selected movement |
 | Understand value and possibility | [`knowledge/KERNEL.md`](knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/SSK_TRANSFER_3.0.2.md`](docs/SSK_TRANSFER_3.0.2.md), [System Semantic Kernel (SSK) working paper](https://github.com/GrazianoGuiducci/maios-ssk-paper) | What the Kernel changes for a project, which possibilities remain open, and the related academic context; the Paper is optional and does not prove product behaviour |
 | Integrate the package | [`package/AGENTS.md`](package/AGENTS.md), [`maios-project-integration`](package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](package/INSTALL.md), [`package/MANIFEST.json`](package/MANIFEST.json) | Exact target, mode, host projection, package-owned paths, preview, recovery, and unchanged surfaces |
 | Configure and operate the installed Kernel | [`START_HERE.md`](package/payload/START_HERE.md), [`maios-project-system`](package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | How context, competences, result, learning, semantic readback, and fresh reentry stay connected |

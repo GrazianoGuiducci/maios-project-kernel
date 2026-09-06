@@ -483,7 +483,7 @@ def read_competence_index(root: Path) -> dict[str, Any]:
 
 def competence_status(root: Path) -> dict[str, Any]:
     index = read_competence_index(root)
-    errors = configuration_engine.history_receipt_errors(root, "competence", index.get("history", []))
+    errors = configuration_engine.owner_state_receipt_errors(root, "competence", index)
     pending = configuration_engine.pending_transitions(root)
     return {
         "valid": not errors and not pending, "recovery_required": bool(errors or pending),
@@ -515,6 +515,9 @@ def validate_competence_delta(delta: Any) -> dict[str, Any]:
         }
     if delta.get("schema") != COMPETENCE_DELTA_SCHEMA:
         errors.append("unsupported competence delta schema")
+    for field in ("sequence", "event_digest"):
+        if field in delta:
+            errors.append(f"{field} is reserved for recorded event metadata")
     for field in (
         "event_id",
         "competence_id",
@@ -588,7 +591,7 @@ def admit_competence_delta(
         raise ValueError("only an explicitly accepted review can be admitted")
 
     index = read_competence_index(root)
-    coherence = configuration_engine.history_receipt_errors(root, "competence", index.get("history", []))
+    coherence = configuration_engine.owner_state_receipt_errors(root, "competence", index)
     if coherence:
         raise ValueError("; ".join(coherence))
     before_sha256 = digest(index)

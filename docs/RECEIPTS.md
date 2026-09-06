@@ -135,3 +135,16 @@ qualified identity remains. Installer and runtime use the same path helper;
 Windows junction checks use reparse metadata available in Python 3.10.
 Installer verify declares `verification_scope: installer_owned_files`; this
 never transfers a pre-existing file to uninstall ownership.
+
+Host and competence event inputs reserve the top-level names `sequence` and
+`event_digest` for history metadata. They are rejected before state writes;
+other extensions, including nested uses of these names, remain allowed.
+
+Current host and competence-index state must match the latest owner's terminal
+receipt: revision, event identity and after-state digest are checked together.
+Earlier receipts are validated against their own history, never today's state.
+An unrecorded change requires recovery; duplicate input does not repair or
+legitimize it. Incoherent host capabilities are reported as unverified. This
+does not bind living knowledge-body bytes to an index receipt. Preserve the
+affected files and reconcile the exact owner; no automatic repair or proof of
+authenticity against coordinated changes is implied.

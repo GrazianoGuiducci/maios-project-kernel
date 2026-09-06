@@ -160,3 +160,10 @@ qualified current identity. Protect control paths from filesystem-equivalent
 event names. Share path confinement across installer and runtime, including
 Windows junctions on the minimum supported Python version. Follow the source
 helper into both installed contexts; clone imports alone do not prove delivery.
+
+Keep an accepted event body reconstructible without loss: reserve only actual
+history metadata names before admission, leaving other extensions open. A
+coherent historical event is a different relation from coherent current owner
+state. Bind only the latest host/index transition to its current projection;
+qualify divergence at status and replay without freezing living knowledge
+bodies or rejudging historical movements against later circumstances.

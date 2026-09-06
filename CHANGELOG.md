@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.1.3 — 2026-09-06
+
+- Reject only the two reserved history metadata fields before host/competence
+  admission; retain arbitrary other input extensions and their exact body digest.
+- Link the latest host/index receipt to the current managed state in status,
+  continuum and replay. Preserve incoherent files and report recovery required.
+- Qualify capabilities in incoherent host state as unverified at readback.
+- Preserve historical replay, independent owner transitions and living knowledge
+  evolution. Add six installed-process regressions for the two reviewed defects.
+
 ## 3.1.2 — 2026-09-06
 
 - Reserve case-equivalent PENDING event IDs before writes and defend transaction

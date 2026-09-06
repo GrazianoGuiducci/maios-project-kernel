@@ -1,9 +1,10 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-06
-active_surface: autonomous Project Kernel 3.1.2 publication readback
-status: 3.1.2 published; release tags immutable; receiving Form work remains next
-product_version: 3.1.2
+active_surface: autonomous Project Kernel 3.1.3 corrective patch
+status: corrective source prepared; 3.1.2 remains the published baseline
+product_version: 3.1.3
+selected_corrective_version: 3.1.3
 current_public_release: v3.1.2
 release_commit: 295a1c7bb0589faf2b4f96524dce6410682e3d80
 release_ci: passed on Ubuntu/Python 3.10 and Windows/Python 3.10 and 3.13
@@ -12,26 +13,18 @@ release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/t
 
 ## Current resultant
 
-The 3.1.2 release is published at the immutable commit above. This main readback
-records the completed effect and changes only current-state documentation and
-generated source-identity metadata. Its installed payload matches the release.
+The review of 3.1.2 closes its six prior findings and reports two further P2
+defects. Both were reproduced through the complete installed package for host
+and competence owners. Accepted input could overwrite internal event metadata;
+coherent history could mask a changed current state or latest after-state hash.
 
-The post-release review of 8724782 supplied six code-derived findings, with its
-proposed reproductions not yet executed. Local regression work reproduced all
-six, including a real Windows junction: the baseline yielded 32 failing
-subcases across ten focused cases, with only the symlink-creation case skipped.
-The 3.1.2 correction follows existing owners rather than adding kernel theory.
-
-Host and competence admissions now share acquired output snapshots, caught
-rollback and visible pending recovery. Event identifiers cannot alias PENDING.
-One filesystem source supplies exclusive-descriptor temporary writes and local
-path confinement in both installer and runtime projections. Terminal evidence
-is checked against its own body, identity and history before replay; later
-legitimate evolution does not rejudge historical semantics. Installer verify
-names its ownership scope. Read docs/RELEASE_3.1.2.md and the review evidence.
-
-The previous 3.1.1/3.1.0 corrections remain, and their published tags are
-immutable. The later main state readback is distinct from a tagged snapshot.
+The 3.1.3 source reserves only top-level sequence/event_digest and shares the
+latest owner-state/receipt relation across status, continuum and replay. An
+incoherent host state does not promote recorded capabilities to verified
+observations. Valid extensions, prior event replay after a later transition,
+independent owners and living knowledge body evolution remain available.
+See docs/RELEASE_3.1.3.md and docs/REVIEW_CONTINUUM.md. The prior transactional,
+filesystem and receipt-body corrections remain intact, with immutable tags.
 
 ## Retained continuum and 3.1.0 corrections
 
@@ -97,29 +90,15 @@ including no-change outcomes. Local commands record observations and expose
 the ordinary seven-day cadence; they perform no network or background work.
 An unavailable source remains pending and does not overwrite the last success.
 
-## Current evidence
+## Verification
 
-The local suite ran 77 tests: 75 passed, two actual symlink cases skipped because
-this Windows workstation lacks creation privilege. The real junction case
-passed through preview, verify, recover-pending and uninstall, preserving
-external sentinels. Eleven focused cases include seven atomic writer seams,
-host/competence failures before and after receipts, incomplete rollback and
-fresh installed status, reserved names, replay and isolated body corruption.
-The prior configuration/resultant recovery cases remain in the full suite. CI then exposed a
-path-spelling difference on Windows: confinement compared a canonical root
-with an original path, and fault injectors compared unresolved destinations.
-The shared helper now derives the relative path before canonicalizing the
-root, while checking each descendant and the resolved parent. A relative-root
-reproduction and canonical comparisons in the injectors cover that seam.
-
-The shared helper is delivered from one source in both independent installer
-and runtime contexts. The package now contains 60 files / 49 payload files.
-CI passed on Ubuntu/Python 3.10 and Windows/Python 3.10 and 3.13, including
-suite, two builds and tracked-package verification. The final focused rerun
-also exercises host and competence late-failure rollback and successful retry
-inside isolated processes importing only installed modules. This is observed
-runtime delivery, not model-level semantic use or later assimilation. All
-release identities above were read back after publication.
+Six new cases reproduce metadata collisions, isolated current-state and latest
+receipt changes, lost history, lawful extensions, historical replay and living
+knowledge evolution through the installed CLI in separate isolated processes.
+The complete local Windows suite ran 83 cases: 81 passed and two symlink cases
+were skipped for missing creation privilege. The real Windows junction passed.
+Two builds matched and distribution verification passed. CI results belong to
+the exact published commit; model use and assimilation remain distinct.
 
 The previous six focused installer recovery cases pass, including the two reported data-loss scenarios.
 They also exercise whole-journal rejection before any deletion, recorded and
@@ -155,7 +134,7 @@ adaptation owns native continuation. KNOWLEDGE_CONTINUUM.md and
 UPDATE_CONTINUITY.md explain the installed knowledge and update relations.
 
 Use the corrected artifact and docs/REVIEW_CONTINUUM.md for any material
-follow-up. The corrective version is 3.1.1; no earlier-installation migration
+follow-up. The corrective version is 3.1.3; no earlier-installation migration
 is required because the new update standard begins with its first users.
 The shared family remains 3.0.0. Form follows through its own owners; unified
 chat/harness convergence remains separately preserved.
