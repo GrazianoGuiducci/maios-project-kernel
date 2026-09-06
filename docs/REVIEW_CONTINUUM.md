@@ -74,8 +74,8 @@ possibilità. I fondamenti D-ND rimangono il riferimento fuori dalla riscrittura
 automatica; [FOUNDING_RELATIONS.md](../kernel/FOUNDING_RELATIONS.md) è la
 rappresentazione qualificata A0-A11, non una pretesa di contenere tutto D-ND.
 
-La suite corrente contiene 83 test; il caso con symlink reali viene eseguito dove il sistema ne consente la creazione. Leggi la CI del commit esatto per il risultato osservato.
-Il pacchetto ha 60 file, 49 nel payload, e corrisponde alla sorgente verificata.
+La suite della release 3.1.3 conteneva 83 test; il caso con symlink reali viene eseguito dove il sistema ne consente la creazione. Leggi la CI del commit esatto per il risultato osservato.
+Il pacchetto della release 3.1.3 aveva 60 file, 49 nel payload, corrispondenti alla sua sorgente verificata.
 Queste evidenze non provano ancora uso di un host/modello reale o assimilazione.
 Non serve ripetere un programma di test: un ulteriore riscontro serve quando
 risolve una differenza concreta emersa dalla lettura.

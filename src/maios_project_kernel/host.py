@@ -21,13 +21,7 @@ HOST_STATE_SCHEMA = "maios.host-state.v2"
 HOST_ATTESTATION_SCHEMA = "maios.host-attestation.v2"
 HOST_RECEIPT_SCHEMA = "maios.host-attestation-receipt.v2"
 HOST_CATALOG_SCHEMA = "maios.installed-host-adapters.v1"
-STAGE_FIELDS = {
-    "instruction_discovery": "instruction_discovery",
-    "skill_discovery": "skill_discovery",
-    "state_read": "state_read",
-    "behavioral_activation": "behavioral_activation",
-    "maintained_reentry": "maintained_reentry",
-}
+STAGE_FIELDS = {stage: stage for stage in configuration_engine.HOST_ATTESTATION_STAGES}
 SAFE_EVENT_ID = re.compile(r"^[A-Za-z0-9._-]+$")
 
 
@@ -115,11 +109,7 @@ def host_status(root: Path) -> dict[str, Any]:
         "selected_adapter": state["selected_adapter"],
         "revision": state.get("revision", 0),
         "host_state_sha256": digest(state),
-        "instruction_discovery": state.get("instruction_discovery"),
-        "skill_discovery": state.get("skill_discovery"),
-        "state_read": state.get("state_read"),
-        "behavioral_activation": state.get("behavioral_activation"),
-        "maintained_reentry": state.get("maintained_reentry"),
+        **{stage: "unverified" if errors else state.get(stage) for stage in STAGE_FIELDS},
         "observed_capabilities": [] if errors else state.get("observed_capabilities", []),
         "unverified_capabilities": sorted(set(state.get("unverified_capabilities", []))
                                           | (set(state.get("observed_capabilities", [])) if errors else set())),

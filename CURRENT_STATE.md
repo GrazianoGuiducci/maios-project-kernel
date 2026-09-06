@@ -1,9 +1,9 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-06
-active_surface: situated coordination and shared-project continuation competence
-status: verified candidate selected for source publication and final review; numbered release remains 3.1.3
-product_version: 3.1.3+coordination.1
+active_surface: initial owner-state integrity correction following accepted coordination review
+status: initial-state correction verified; source publication selected; numbered release remains 3.1.3
+product_version: 3.1.3+coordination.2
 current_public_release: v3.1.3
 release_commit: 2dc82936154e1b43417120a31f0403baf05d5e66
 release_ci: passed on Ubuntu/Python 3.10 and Windows/Python 3.10 and 3.13
@@ -12,35 +12,37 @@ release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/t
 
 ## Current resultant
 
-The operator selected competence formation for a future continuation through
-OpenCode, Claude Code, Hermes or another harness, and the functional MMK/N0
-comparison with 3.1.2. The comparison also covers the current published 3.1.3.
-The existing delegation faculty previously reached generic composition, which
-did not teach its coordinating method. It now reaches the project coordination
-competence and the supporting shared-project host-adaptation knowledge.
+The review accepted the coordination delta at 7bd30bb58acfeeb8928f1dd8c53f4a34b4f50369
+in its declared scope and identified one pre-existing initial-state P2. The
+candidate .2 corrects that residue in both host and competence owners. An empty
+history cannot carry already-observed host stages/capabilities/evidence or
+already-admitted active competences. A first receipt cannot absorb such claims.
 
-The candidate preserves common method, situated instance identity, direct
-responsibility, cognitive freedom, useful overview, return and learning. It
-knows how to form a real future connection and recognizes the current single
-selected-adapter state without presenting it as a permanent possibility limit.
-The current work does not configure another harness or change runtime state.
-Read docs/INSTANCE_COORDINATION.md for the source-bound functional comparison.
+Four installed-process regressions reproduce and close the defect. Incoherent
+files remain intact and recovery is visible at fresh reentry before any write.
+Harmless extensions, unknowns, represented competences, actual first failed
+observations and independently evolving bodies remain available. The coordination
+method and future harness readiness are retained; no other host is configured.
+Read docs/REVIEW_INITIAL_STATE.md for cause, evidence and the preserved freedom.
 
-The local suite ran 84 cases in 109.897 seconds: 82 passed, two symlink
-creation cases skipped for missing Windows privilege. The real junction case
-passed. The added installed-process case follows the delivered method link,
-observes a later body change and preserves existing state; unrelated work does
-not automatically recall coordination. Two equal builds and distribution
-verification cover 62 package files / 51 payload files. These checks do not
-prove a receiving model's use or assimilation. The released evidence below
-belongs to its stated 3.1.3 snapshot, not to these new knowledge bodies.
-The operator selected final review and source publication of this candidate.
-The review entry is docs/REVIEW_COORDINATION.md; use the exact supplied commit
-and its CI, since this source snapshot precedes its own publication readback.
-No new numbered release is selected here. Form remains a separate receiving front.
-The first candidate CI exposed a test-only path comparison between a resolved
-method and an unresolved Windows temporary-root alias. The test now resolves
-both sides and retains its confinement assertion; runtime code is unchanged.
+The current suite has 88 cases and the package has 62 files / 51 payload files.
+The complete local suite passed in 213.266 seconds: 86 passed and two
+symlink-privilege skips; the real junction case passed. Two equal builds and
+distribution verification establish the source/package relation. The CI of the
+published commit supplies its separate platform evidence.
+The next selected effect is source publication of this corrective candidate.
+The numbered release remains 3.1.3. No new global review is scheduled; Form,
+site and the deferred unified product retain their independent receiving fronts.
+Actual model use and assimilation remain unobserved.
+
+## Reviewed coordination.1 baseline
+
+The .1 candidate at 7bd30bb passed exact-commit CI: 84 cases on each job,
+84 passed on both Windows versions and 83 passed / one Windows-specific skip
+on Ubuntu. Equal builds and verification covered 62 package files / 51 payload
+files. Its new test uses a resolved temporary root on Windows. The review
+accepted the coordinated delegation and future harness knowledge in scope;
+it did not observe actual receiving-model use. This evidence belongs to .1.
 
 ## Published 3.1.3 baseline
 
@@ -125,7 +127,7 @@ including no-change outcomes. Local commands record observations and expose
 the ordinary seven-day cadence; they perform no network or background work.
 An unavailable source remains pending and does not overwrite the last success.
 
-## Verification
+## Verification of published 3.1.3
 
 Six new cases reproduce metadata collisions, isolated current-state and latest
 receipt changes, lost history, lawful extensions, historical replay and living
@@ -153,8 +155,8 @@ configuration rejection through installed status and distinct first-user schema
 identities. The existing learning-corruption case now also exercises installed
 status.
 
-The generated package has 60 files, 49 in the payload. Its manifest and
-inventory bind the current source identity. Metadata or source changes require
+The released 3.1.3 package has 60 files, 49 in the payload. Its manifest and
+inventory bind that release source identity. Metadata or source changes require
 regeneration and exact source-to-distribution verification.
 
 These are local mechanical proofs. Native host discovery by a real model,

@@ -46,7 +46,10 @@ its mechanics need clarification. Examples of distinct discovery mechanisms:
 - [Claude Code](https://code.claude.com/docs/en/skills) supports project
   `.claude/skills`; source precedence can affect which same-named skill is used.
 - [Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills)
-  has profile-owned skill storage; identify the active profile and its home.
+  has profile-owned storage and project skill discovery in `.hermes/skills`
+  and `.agents/skills` with an explicit project trust decision. Identify the
+  active profile, project root and applicable trust state from current docs;
+  source availability alone does not configure or trust the project.
 
 These examples are refreshable mechanics, not an exhaustive host list. A folder
 created for a different application may be readable without being automatically

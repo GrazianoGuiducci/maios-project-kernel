@@ -173,3 +173,12 @@ coherent historical event is a different relation from coherent current owner
 state. Bind only the latest host/index transition to its current projection;
 qualify divergence at status and replay without freezing living knowledge
 bodies or rejudging historical movements against later circumstances.
+
+The zero-transition state has its own causal meaning. Without recorded host
+attestations, stages, observed capabilities and their evidence cannot describe
+observations already performed. Without index admission history, `active`
+cannot describe admitted competences. A first receipt must not legitimize such
+earlier claims merely by including them in its after-state hash. Preserve an
+incoherent file for owner recovery while leaving unknown capabilities, harmless
+extensions, represented methods and living knowledge available. A future
+qualified origin needs its own explicit owner relation; a label alone is not it.

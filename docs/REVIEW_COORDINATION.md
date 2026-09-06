@@ -1,4 +1,8 @@
-# Ultima lettura della candidata autoinstallante
+# Lettura storica della candidata autoinstallante .1
+
+La risposta e la correzione del residuo iniziale sono in
+[REVIEW_INITIAL_STATE.md](REVIEW_INITIAL_STATE.md). I conteggi sotto appartengono
+alla candidata .1 al commit `7bd30bb58acfeeb8928f1dd8c53f4a34b4f50369`.
 
 Oggetto: `3.1.3+coordination.1`, successiva alla release pubblicata `3.1.3`
 al commit `2dc82936154e1b43417120a31f0403baf05d5e66`. Il riferimento da recensire

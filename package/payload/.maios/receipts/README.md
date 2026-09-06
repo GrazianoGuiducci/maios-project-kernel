@@ -148,3 +148,14 @@ legitimize it. Incoherent host capabilities are reported as unverified. This
 does not bind living knowledge-body bytes to an index receipt. Preserve the
 affected files and reconcile the exact owner; no automatic repair or proof of
 authenticity against coordinated changes is implied.
+
+Before any host/index transition, revision zero and an empty history cannot
+carry claims of completed observations or admissions. Host stages remain
+unverified, observed capabilities and aggregate evidence are empty, and the
+competence index has no admitted `active` entries. A first receipt cannot
+retroactively establish the origin of an earlier unrecorded claim by hashing
+it into the next state. Status and admission share this initial-state check;
+incoherent host stages are reported as unverified and the source files remain
+available for recovery. This checks the owner-specific claims, not equality to
+an installation template: unknowns, extensions, represented competences and
+living knowledge bodies retain their own evolution.

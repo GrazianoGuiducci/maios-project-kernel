@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.1.3+coordination.2 — initial-state integrity, 2026-09-06
+
+- Reject unrecorded initial host stages, observed capabilities and aggregate
+  evidence, and initial active-index admissions before any owner transition.
+- Preserve the incoherent files for recovery; report host stages as unverified.
+- Retain harmless extensions, unknown capabilities, represented methods and
+  living knowledge evolution. Add four installed-process regression cases.
+- Qualify historical verification counts and refresh future Hermes discovery
+  knowledge without configuring another harness.
+
 ## 3.1.3+coordination.1 — development candidate, 2026-09-06
 
 - Connect the existing delegation faculty to an operative coordination

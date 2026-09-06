@@ -92,3 +92,9 @@ remain available. Relate the current host state to its latest receipt before
 treating recorded capabilities as observed. A mismatch requires owner recovery
 and preserves the files; it cannot be silently promoted by an identical retry.
 Earlier valid observations keep their historical meaning after later evolution.
+
+Before the first recorded attestation, stages and capabilities remain
+unverified and no aggregate observation evidence has been recorded. A later
+attestation cannot supply the missing origin of a pre-existing claim by simply
+hashing the whole state. Recover the incoherent owner relation before recording
+another transition; preserve unknown capabilities and independently useful work.

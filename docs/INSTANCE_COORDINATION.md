@@ -1,6 +1,6 @@
 # Shared Project Knowledge And Situated Coordination
 
-The development candidate `3.1.3+coordination.1` completes operative knowledge
+Introduced in `3.1.3+coordination.1`, and retained by its successors, this delta completes operative knowledge
 for continuing a project through another instance or harness. It introduces
 neither another running assistant nor a multi-instance state service.
 

@@ -21,6 +21,10 @@ except ImportError:  # generated runtime and installer carry the same source
 CONFIGURATION_SCHEMA = "maios.configuration-state.v3"
 RECEIPT_SCHEMA = "maios.configuration-receipt.v2"
 RECOVERY_SCHEMA = "maios.configuration-recovery.v2"
+HOST_ATTESTATION_STAGES = (
+    "instruction_discovery", "skill_discovery", "state_read",
+    "behavioral_activation", "maintained_reentry",
+)
 
 
 class ConfigurationError(RuntimeError):
@@ -172,6 +176,18 @@ def owner_state_receipt_errors(root: Path, owner: str, state: dict[str, Any]) ->
         if not history:
             if revision != 0 or state.get("last_event_id") is not None:
                 raise ValueError("current transition has no recorded history")
+            # Validate the zero-transition claims, not equality to a fixed
+            # template. Unknowns, extensions and represented knowledge are free
+            # to evolve; these fields specifically record completed admissions.
+            if owner == "host":
+                for stage in HOST_ATTESTATION_STAGES:
+                    if state.get(stage, "unverified") != "unverified":
+                        raise ValueError(f"initial {stage} has no recorded attestation")
+                for field in ("observed_capabilities", "evidence"):
+                    if state.get(field, []) != []:
+                        raise ValueError(f"initial {field} has no recorded attestation")
+            elif state.get("active", {}) != {}:
+                raise ValueError("initial active competences have no recorded admission")
             return []
         latest = history[-1]
         if (revision != len(history) or type(latest.get("sequence")) is not int
