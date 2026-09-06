@@ -1,22 +1,16 @@
-# Lettura di MAIOS Project Kernel 3.1.0 per ChatGPT
+# Lettura della patch MAIOS Project Kernel 3.1.1 per ChatGPT
 
-La versione selezionata è `3.1.0`. Le sorgenti complete e il pacchetto generato
-appartengono a questa repository. Identifica il commit esatto che stai leggendo;
-la release numerata è identificata dal tag `v3.1.0` quando pubblicato.
+Le due recensioni post-release di `2e760d1613d28374dd6cf0e8dae66914d451c8a0`
+chiudono le tre correzioni precedenti. I nuovi riscontri riguardano il rollback
+risultato/configurazione, la ricevuta persa su riapplicazione identica, gli output
+transitori nel package, l'ownership dei cache Python e i link negli organi runtime.
+La patch 3.1.1 tratta questi punti nei loro owner; il tag v3.1.0 rimane invariato.
 
-Le due recensioni di `8eb82da57b6048044721ebae2c588825cea4b968`
-(`3.0.3+continuum.4`) chiudono i difetti del recupero PENDING. La recensione
-allegata segnala inoltre la ricevuta di disinstallazione superata e la pulizia
-di directory preesistenti. Entrambi i casi sono stati riprodotti e corretti.
-
-Il delta della 3.1.0 richiede una ricevuta CURRENT valida e corrispondente prima
-di ogni disinstallazione, anche con `--receipt`. CURRENT mancante, invalido o
-legato a un piano differente comporta rifiuto prima della prima cancellazione.
-La verifica resta leggibile per una ricevuta archiviata, ma distingue
-`current_relation`, validità storica e presenza dei file; non dichiara installata
-la ricevuta superata. Le directory dei progetti esistenti restano conservate
-anche dopo la pulizia di payload, cache, backup e ricevuta. Il recupero PENDING
-resta quello già recensito. Le regressioni sono in `test_uninstall_ownership.py`.
+Leggi [RELEASE_3.1.1.md](RELEASE_3.1.1.md), le regressioni in
+`test_runtime_recovery.py` e `test_delivery_boundaries.py`, poi le sorgenti e
+proiezioni dello stesso commit. Il nuovo diario di transizione è evidenza per
+un recupero qualificato; non esegue automaticamente cancellazioni dai suoi dati.
+I meccanismi non dichiarano transazioni crash-safe o lock generali tra writer.
 
 Parti da [CURRENT_STATE.md](../CURRENT_STATE.md), quindi dalle competenze e dalle
 sorgenti che cambiano la comprensione. L'intento è trasferire il potenziale del
@@ -39,7 +33,7 @@ possibilità. I fondamenti D-ND rimangono il riferimento fuori dalla riscrittura
 automatica; [FOUNDING_RELATIONS.md](../kernel/FOUNDING_RELATIONS.md) è la
 rappresentazione qualificata A0-A11, non una pretesa di contenere tutto D-ND.
 
-Sono passati tutti i 58 test locali, inclusi sei casi di recupero e tre casi di disinstallazione mirati.
+La suite contiene 66 test; il caso con symlink reali viene eseguito dove il sistema ne consente la creazione. Leggi la CI del commit esatto per il risultato osservato.
 Il pacchetto ha 58 file, 47 nel payload, e corrisponde alla sorgente verificata.
 Queste evidenze non provano ancora uso di un host/modello reale o assimilazione.
 Non serve ripetere un programma di test: un ulteriore riscontro serve quando

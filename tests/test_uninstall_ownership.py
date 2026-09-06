@@ -89,10 +89,11 @@ class UninstallOwnershipTests(base.DistributionFixture):
         self.assertEqual(compiled.returncode, 0, compiled.stderr)
         result = installer.uninstall(target, receipt)
         self.assertTrue(result["complete"], result)
-        self.assertTrue(result["removed_runtime_cache"])
+        self.assertEqual(result["removed_runtime_cache"], [])
+        self.assertTrue(result["preserved_runtime_cache"])
         for relative, identity in original_dirs.items():
             with self.subTest(directory=relative):
                 directory = target / relative
                 self.assertTrue(directory.is_dir())
                 self.assertEqual(identity, (directory.stat().st_dev, directory.stat().st_ino))
-        self.assertEqual(list(self.snapshot(target)), ["START_HERE.md"])
+        self.assertEqual(sorted(self.snapshot(target)), sorted(["START_HERE.md", *result["preserved_runtime_cache"]]))

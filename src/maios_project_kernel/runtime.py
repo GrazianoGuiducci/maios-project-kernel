@@ -71,11 +71,24 @@ def project_root(explicit: Path | None = None) -> Path:
     current = Path.cwd().resolve()
     for candidate in (current, *current.parents):
         if (candidate / ".maios" / "kernel" / "FACULTY_FIELD.json").is_file():
+            project_local_file(candidate, candidate / ".maios/kernel/FACULTY_FIELD.json")
             return candidate
     raise ValueError("MAIOS project root not found")
 
 
+def project_local_file(root: Path, path: Path) -> Path:
+    try:
+        return configuration_engine.project_local_file(root.resolve(), path)
+    except configuration_engine.ConfigurationError as exc:
+        raise ValueError(str(exc)) from exc
+
+
 def validate_project(root: Path) -> dict[str, Any]:
+    root = root.resolve()
+
+    def read_json(path: Path) -> Any:
+        return configuration_engine.read_json(project_local_file(root, path))
+
     required = [
         "START_HERE.md",
         "AGENTS.md",
@@ -113,6 +126,14 @@ def validate_project(root: Path) -> dict[str, Any]:
     ]
     missing = [relative for relative in required if not (root / relative).is_file()]
     errors: list[str] = []
+    unsafe = []
+    for relative in required:
+        if relative not in missing:
+            try:
+                project_local_file(root, root / relative)
+            except ValueError:
+                unsafe.append(relative)
+                errors.append("unsafe project organ: " + relative)
     registry: dict[str, Any] = {}
     state: dict[str, Any] = {}
     try:
@@ -300,7 +321,7 @@ def validate_project(root: Path) -> dict[str, Any]:
                 if (
                     entry_path.is_absolute()
                     or ".." in entry_path.parts
-                    or not root.joinpath(*entry_path.parts).is_file()
+                    or not project_local_file(root, root.joinpath(*entry_path.parts)).is_file()
                 ):
                     errors.append(f"Project Meta-Faculty target entry is missing: {target_id}")
                     continue
@@ -351,7 +372,7 @@ def validate_project(root: Path) -> dict[str, Any]:
             errors.append("RepoKernel projection boundary mismatch")
     except Exception as exc:
         errors.append(f"invalid RepoKernel projection receipt: {exc}")
-    source_bound = len(errors) == source_error_start
+    source_bound = len(errors) == source_error_start and not unsafe
     host_readable = True
     try:
         host_engine.read_host_catalog(root)
@@ -365,6 +386,11 @@ def validate_project(root: Path) -> dict[str, Any]:
     except Exception as exc:
         operating_state_readable = False
         errors.append(f"invalid operating state: {exc}")
+    try:
+        coherence = operating_engine.continuum_status(root)
+        errors.extend(coherence["errors"])
+    except Exception as exc:
+        errors.append(f"continuum recovery state cannot be read: {exc}")
     try:
         index = read_competence_index(root)
         if not isinstance(index.get("represented"), dict):
@@ -428,7 +454,7 @@ def ensure_project_local(root: Path, path: Path) -> None:
     current = root
     for part in relative.parts:
         current = current / part
-        if current.exists() and current.is_symlink():
+        if current.is_symlink() or (hasattr(current, "is_junction") and current.is_junction()):
             raise ValueError(f"project state path contains a symlink: {relative}")
     if not path.parent.resolve().is_relative_to(root):
         raise ValueError(f"project state parent escapes root: {relative}")

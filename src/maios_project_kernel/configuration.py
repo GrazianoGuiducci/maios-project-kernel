@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import hashlib
+import base64
 import json
 import os
+from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any
@@ -72,11 +74,121 @@ def ensure_project_local(root: Path, path: Path) -> None:
     current = root
     for part in relative.parts:
         current = current / part
-        if current.exists() and current.is_symlink():
+        if current.is_symlink() or (hasattr(current, "is_junction") and current.is_junction()):
             raise ConfigurationError(f"project state path contains a symlink: {relative}")
     resolved_parent = path.parent.resolve()
     if not resolved_parent.is_relative_to(root):
         raise ConfigurationError(f"project state parent escapes root: {relative}")
+
+
+def project_local_file(root: Path, path: Path) -> Path:
+    ensure_project_local(root.resolve(), path)
+    if not path.is_file():
+        raise ConfigurationError(f"project-local file is missing: {path}")
+    return path
+
+
+CONFIGURATION_OUTPUTS = (
+    "setup/CONFIGURATION_STATE.json", ".maios/context/CONTEXT_CAPSULE.json",
+    ".maios/context/SETUP_SPEC.json", "project/CURRENT_STATE.md",
+    "project/PROJECT_BRIEF.md", ".maios/receipts/configuration/CURRENT.json",
+)
+
+
+def pending_transitions(root: Path) -> list[str]:
+    result = []
+    for owner in ("configuration", "resultant"):
+        relative = f".maios/receipts/{owner}/PENDING.json"
+        path = root / relative
+        try:
+            ensure_project_local(root.resolve(), path)
+        except ConfigurationError:
+            result.append(relative)
+            continue
+        if path.exists() or path.is_symlink():
+            result.append(relative)
+    return result
+
+
+def require_no_pending_transition(root: Path, allowed_owner: str | None = None) -> None:
+    pending = [p for p in pending_transitions(root)
+               if p != f".maios/receipts/{allowed_owner}/PENDING.json"]
+    if pending:
+        raise ConfigurationError("state transition recovery required: " + ", ".join(pending))
+
+
+def write_bytes_atomic(path: Path, data: bytes) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.maios-restore-{os.getpid()}")
+    try:
+        temporary.write_bytes(data)
+        os.replace(temporary, path)
+    finally:
+        if temporary.exists():
+            temporary.unlink()
+
+
+@contextmanager
+def state_transaction(root: Path, owner: str, relatives: tuple[str, ...], *, allowed_owner: str | None = None):
+    """Capture recovery before state writes; retain evidence if caught rollback fails.
+
+    This handles caught exceptions, not arbitrary writers or crash-safe multi-file commit.
+    The journal is evidence for qualified recovery, never an automatic deletion plan.
+    """
+    root = root.resolve()
+    require_no_pending_transition(root, allowed_owner)
+    snapshot = {}
+    for relative in relatives:
+        path = root / relative
+        ensure_project_local(root, path)
+        if path.exists() and not path.is_file():
+            raise ConfigurationError(f"state output is not a regular file: {relative}")
+        snapshot[relative] = path.read_bytes() if path.is_file() else None
+    journal = root / f".maios/receipts/{owner}/PENDING.json"
+    ensure_project_local(root, journal)
+    journal.parent.mkdir(parents=True, exist_ok=True)
+    evidence = {"schema": "maios.state-transition-journal.v1", "owner": owner,
+                "target": str(root), "state": "prepared", "before": {
+                    p: base64.b64encode(data).decode("ascii") if data is not None else None
+                    for p, data in snapshot.items()}}
+    with journal.open("x", encoding="utf-8", newline="\n") as stream:
+        json.dump(evidence, stream, sort_keys=True)
+        stream.flush()
+        os.fsync(stream.fileno())
+    try:
+        yield
+    except Exception as original:
+        failures = []
+        for relative, data in reversed(list(snapshot.items())):
+            path = root / relative
+            try:
+                ensure_project_local(root, path)
+                if data is None:
+                    if path.exists():
+                        if not path.is_file():
+                            raise ConfigurationError("changed output type")
+                        path.unlink()
+                elif not path.is_file() or path.read_bytes() != data:
+                    write_bytes_atomic(path, data)
+            except Exception:
+                failures.append(relative)
+        if not failures:
+            try:
+                ensure_project_local(root, journal)
+                journal.unlink()
+            except Exception:
+                failures.append(journal.relative_to(root).as_posix())
+        if failures:
+            raise ConfigurationError("state rollback incomplete; recovery required: " +
+                                     ", ".join(failures) + "; evidence: " + str(journal)) from original
+        raise
+    else:
+        # All state and terminal receipts are committed; cleanup cannot undo that result.
+        try:
+            ensure_project_local(root, journal)
+            journal.unlink()
+        except Exception as exc:
+            raise ConfigurationError("state transition committed; journal cleanup required: " + str(journal)) from exc
 
 
 def safe_receipt_relative(value: str) -> PurePosixPath:
@@ -506,6 +618,8 @@ def configuration_status(root: Path) -> dict[str, Any]:
     validation = validate_configuration(state)
     capsule_path = root / ".maios" / "context" / "CONTEXT_CAPSULE.json"
     spec_path = root / ".maios" / "context" / "SETUP_SPEC.json"
+    ensure_project_local(root, capsule_path)
+    ensure_project_local(root, spec_path)
     expected_capsule = context_capsule(root, state)
     expected_spec = setup_spec(state, expected_capsule)
     return {
@@ -513,7 +627,8 @@ def configuration_status(root: Path) -> dict[str, Any]:
         "setup_status": state["setup_status"],
         "revision": state["checkpoint"]["sequence"],
         "configuration_sha256": digest(state),
-        "valid": validation["valid"],
+        "valid": validation["valid"] and not pending_transitions(root),
+        "pending_journals": pending_transitions(root),
         "handoff_ready": validation["handoff_ready"],
         "integration_handoff_present": state.get("integration_handoff") is not None,
         "missing_decisions": validation["missing_decisions"],
@@ -531,9 +646,10 @@ def configuration_status(root: Path) -> dict[str, Any]:
 
 
 def apply_configuration(
-    root: Path, candidate: Any, expected_state_sha256: str
+    root: Path, candidate: Any, expected_state_sha256: str, *, _within_resultant: bool = False
 ) -> dict[str, Any]:
     root = root.resolve()
+    require_no_pending_transition(root, "resultant" if _within_resultant else None)
     validation = validate_configuration(candidate)
     if not validation["valid"]:
         raise ConfigurationError("invalid candidate: " + "; ".join(validation["errors"]))
@@ -542,7 +658,14 @@ def apply_configuration(
     if expected_state_sha256 != before_sha256:
         raise ConfigurationError("configuration changed after review; re-read and re-evaluate")
     after_sha256 = digest(candidate)
-    if after_sha256 != before_sha256:
+    if after_sha256 == before_sha256:
+        return {"schema": RECEIPT_SCHEMA, "status": "idempotent",
+                "before_state_sha256": before_sha256, "after_state_sha256": after_sha256,
+                "revision": candidate["checkpoint"]["sequence"],
+                "last_transition_receipt": ".maios/receipts/configuration/CURRENT.json",
+                "global_writes": [], "external_effect_claimed": False}
+    with state_transaction(root, "configuration", CONFIGURATION_OUTPUTS,
+                           allowed_owner="resultant" if _within_resultant else None):
         expected_sequence = int(current["checkpoint"]["sequence"]) + 1
         if candidate["checkpoint"]["sequence"] != expected_sequence:
             raise ConfigurationError(
@@ -564,29 +687,27 @@ def apply_configuration(
         ensure_project_local(root, configuration_path(root))
         write_json_atomic(configuration_path(root), candidate)
         status = "applied"
-    else:
-        status = "idempotent"
 
-    projections = project_state(root, candidate)
-    receipt = {
-        "schema": RECEIPT_SCHEMA,
-        "status": status,
-        "before_state_sha256": before_sha256,
-        "after_state_sha256": after_sha256,
-        "revision": candidate["checkpoint"]["sequence"],
-        "backup_path": (
-            f".maios/backups/configuration/{after_sha256}/CONFIGURATION_STATE.json"
-            if after_sha256 != before_sha256
-            else None
-        ),
-        "projections": projections,
-        "global_writes": [],
-        "external_effect_claimed": False,
-    }
-    receipt_path = root / ".maios" / "receipts" / "configuration" / "CURRENT.json"
-    ensure_project_local(root, receipt_path)
-    write_json_atomic(receipt_path, receipt)
-    return receipt
+        projections = project_state(root, candidate)
+        receipt = {
+            "schema": RECEIPT_SCHEMA,
+            "status": status,
+            "before_state_sha256": before_sha256,
+            "after_state_sha256": after_sha256,
+            "revision": candidate["checkpoint"]["sequence"],
+            "backup_path": (
+                f".maios/backups/configuration/{after_sha256}/CONFIGURATION_STATE.json"
+                if after_sha256 != before_sha256
+                else None
+            ),
+            "projections": projections,
+            "global_writes": [],
+            "external_effect_claimed": False,
+        }
+        receipt_path = root / ".maios" / "receipts" / "configuration" / "CURRENT.json"
+        ensure_project_local(root, receipt_path)
+        write_json_atomic(receipt_path, receipt)
+        return receipt
 
 
 def recover_configuration(root: Path, receipt: Any) -> dict[str, Any]:
@@ -609,18 +730,20 @@ def recover_configuration(root: Path, receipt: Any) -> dict[str, Any]:
     prior = read_json(backup)
     if digest(prior) != receipt.get("before_state_sha256"):
         raise ConfigurationError("configuration backup digest mismatch")
-    ensure_project_local(root, configuration_path(root))
-    write_json_atomic(configuration_path(root), prior)
-    projections = project_state(root, prior)
-    result = {
-        "schema": RECOVERY_SCHEMA,
-        "status": "recovered",
-        "from_state_sha256": receipt["after_state_sha256"],
-        "to_state_sha256": receipt["before_state_sha256"],
-        "projections": projections,
-        "global_writes": [],
-    }
-    recovery_path = root / ".maios" / "receipts" / "configuration" / "RECOVERY.json"
-    ensure_project_local(root, recovery_path)
-    write_json_atomic(recovery_path, result)
-    return result
+    outputs = (*CONFIGURATION_OUTPUTS, ".maios/receipts/configuration/RECOVERY.json")
+    with state_transaction(root, "configuration", outputs):
+        ensure_project_local(root, configuration_path(root))
+        write_json_atomic(configuration_path(root), prior)
+        projections = project_state(root, prior)
+        result = {
+            "schema": RECOVERY_SCHEMA,
+            "status": "recovered",
+            "from_state_sha256": receipt["after_state_sha256"],
+            "to_state_sha256": receipt["before_state_sha256"],
+            "projections": projections,
+            "global_writes": [],
+        }
+        recovery_path = root / ".maios" / "receipts" / "configuration" / "RECOVERY.json"
+        ensure_project_local(root, recovery_path)
+        write_json_atomic(recovery_path, result)
+        return result

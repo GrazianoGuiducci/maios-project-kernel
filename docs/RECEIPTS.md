@@ -97,3 +97,25 @@ a lock against arbitrary concurrent writers.
 Existing-project receipts do not record directory ownership. Uninstall retains
 empty parent directories after file, backup, cache and receipt cleanup. New
 repository mode retains its existing empty-parent cleanup inside the target.
+
+Runtime configuration and resultant transitions snapshot the canonical state,
+derived projections and prior receipts before their first state write. Their
+owner-local `PENDING.json` journals carry base64-encoded original bytes and paths
+under `maios.state-transition-journal.v1`. Caught failure restores those exact
+bytes, including the prior configuration receipt, independently of whether a
+callee returned its new receipt. Failed rollback retains the journal; `status`
+and `operating-status` expose recovery needs and another apply is refused.
+
+The journals are recovery evidence, not executable plans. After an incomplete
+rollback, inspect the named owner, original bytes and present files and reconcile
+the exact affected state before removing the journal. A cleanup-only failure
+after a committed transition also leaves that evidence visible. There is no
+automatic journal replay, arbitrary-writer lock or multi-file crash-safe claim.
+Configuration backups can remain as evidence after a caught failure.
+
+Identical configuration reapplication returns an idempotent result without
+changing projections or CURRENT; that result points to the last material
+transition receipt. The receipt and its recoverable backup remain linked.
+General status also checks the configuration's last resultant against operating
+history and the current resultant receipt, so an orphaned event cannot appear
+coherent merely because both individual state files have valid shapes.

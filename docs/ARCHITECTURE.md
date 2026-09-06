@@ -77,7 +77,7 @@ an explicit projection change and its own product validation.
 
 | Seam | Hidden policy owner |
 | --- | --- |
-| `install.py preview/apply/verify/uninstall` | `src/maios_project_kernel/installer.py`, including conservative package-bytecode cleanup |
+| `install.py preview/apply/verify/uninstall` | `src/maios_project_kernel/installer.py`, including transient-output isolation and preservation of unregistered bytecode |
 | `maios.py status/compose/validate-movement` | `src/maios_project_kernel/runtime.py` |
 | `maios.py operating-status/validate-resultant/apply-resultant/learning-status` | `src/maios_project_kernel/operating.py` |
 | `maios.py configuration-*` | `src/maios_project_kernel/configuration.py` |
@@ -142,6 +142,14 @@ does not claim a crash-safe multi-file transaction or interprocess
 serialization. Learning becomes immediately reachable; optional
 classifications, assimilation, host activation, and external effects remain
 separate claims.
+
+Recovery becomes available before the first state mutation: the configuration
+owner supplies a shared snapshot transaction for configuration, resultant and
+configuration recovery. It preserves exact prior states, projections and
+receipts. An incomplete caught rollback leaves owner-local PENDING evidence
+visible to status and fresh reentry. CURRENT is unchanged on an idempotent
+configuration call. The runtime checks current resultant relations and uses
+project-local readers that reject linked source organs and crosswalk targets.
 
 ## Reciprocal competence cultivation
 

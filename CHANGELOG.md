@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.1.1 - 2026-09-06
+
+- Capture recovery before the first configuration/resultant write and restore
+  canonical states, derived projections and previous receipts on caught failure.
+- Keep durable before-state evidence when rollback cannot complete; status and
+  reentry flag pending or unlinked resultant relations and refuse another apply.
+- Preserve the last material configuration receipt on identical reapplication.
+- Reject transient plan/receipt outputs inside package, recognized source or
+  target before any effect; document and exercise the external temporary path.
+- Preserve all unregistered matching Python bytecode, including pre-existing
+  files and caches of project-evolved source modules.
+- Reject symlinks and linked ancestors in runtime organs and crosswalk reads.
+- Add eight regressions (66 tests total); keep v3.1.0 and family 3.0.0 unchanged.
+
+
 ## 3.1.0 - 2026-09-06
 
 - Promote the continuum capabilities developed in the four review candidates:

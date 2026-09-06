@@ -133,3 +133,16 @@ project and use the historical receipt for investigation, not normal removal.
 Separate historical consistency, present file evidence and current authority
 in the readback. File ownership also does not establish directory ownership:
 existing-project empty directories remain unless their ownership is known.
+
+Apply the same distinction to Python caches: matching a module name does not
+prove ownership. Keep transient plan and CLI receipt outputs outside the
+verified package, source checkout and target. Use a temporary path in examples.
+
+For a coupled state transition, recovery must exist before its first mutation,
+not depend on a receipt returned after a child function completes. Preserve
+canonical states, derived projections and the previous recoverable receipt as
+one relation. A no-op must retain that relation. If rollback cannot finish,
+keep its PENDING evidence visible and reconcile the affected owner before
+another apply. An individually valid configuration and operating state can
+still disagree on the present event; read their relation at fresh reentry.
+Runtime source organs must be real project-local files, including their ancestors.

@@ -431,8 +431,8 @@ The source, state/readback contracts, existing competence owners, adaptive
 entry, conditional handoff, Paper-field removal, deterministic projection and
 negative regressions are implemented. The shared family contract and the new
 autonomous entry contract are verified as distinct owners. Runtime execution
-suppresses normal bytecode residue, while uninstall also removes matching
-package-generated caches without deleting unrelated project files.
+suppresses normal bytecode residue. The later 3.1.1 ownership correction
+preserves all unregistered matching caches; names alone do not prove creation.
 
 The remaining acceptance plane is real person–coder use through direct and
 expanded entry, followed by later non-identical assimilation. That observation

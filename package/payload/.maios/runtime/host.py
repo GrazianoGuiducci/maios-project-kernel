@@ -54,7 +54,7 @@ def ensure_project_local(root: Path, path: Path) -> None:
     current = root
     for part in relative.parts:
         current = current / part
-        if current.exists() and current.is_symlink():
+        if current.is_symlink() or (hasattr(current, "is_junction") and current.is_junction()):
             raise HostAttestationError(f"host state path contains a symlink: {relative}")
     if not path.parent.resolve().is_relative_to(root):
         raise HostAttestationError(f"host state parent escapes root: {relative}")

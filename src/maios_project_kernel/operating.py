@@ -105,7 +105,7 @@ def ensure_project_local(root: Path, path: Path) -> None:
     current = root
     for part in relative.parts:
         current = current / part
-        if current.exists() and current.is_symlink():
+        if current.is_symlink() or (hasattr(current, "is_junction") and current.is_junction()):
             raise OperatingStateError(
                 f"operating state path contains a symlink: {relative}"
             )
@@ -198,14 +198,14 @@ def read_operating_state(root: Path) -> dict[str, Any]:
 
 
 def _competence_index(root: Path) -> dict[str, Any]:
-    value = read_json(root / ".maios" / "competences" / "INDEX.json")
+    value = read_json(configuration_engine.project_local_file(root, root / ".maios" / "competences" / "INDEX.json"))
     if not isinstance(value, dict) or value.get("schema") != "maios.competence-index.v2":
         raise OperatingStateError("unsupported competence index schema")
     return value
 
 
 def _faculty_field(root: Path) -> dict[str, Any]:
-    value = read_json(root / ".maios" / "kernel" / "FACULTY_FIELD.json")
+    value = read_json(configuration_engine.project_local_file(root, root / ".maios" / "kernel" / "FACULTY_FIELD.json"))
     if not isinstance(value, dict) or value.get("open_world") is not True:
         raise OperatingStateError("faculty field must be an open object")
     return value
@@ -863,10 +863,48 @@ def _operating_status(
     return result
 
 
+def continuum_status(root: Path) -> dict[str, Any]:
+    root = root.resolve()
+    pending = configuration_engine.pending_transitions(root)
+    errors = ["pending state transition: " + path for path in pending]
+    configuration = configuration_engine.current_configuration(root)
+    state = read_operating_state(root)
+    relation = configuration.get("faculty_composition", {}).get("last_readback") or {}
+    if (relation.get("event_id") != state.get("last_event_id")
+            or relation.get("receipt") != state.get("last_resultant_receipt")):
+        errors.append("configuration and operating state disagree on the current resultant")
+    if state.get("last_event_id"):
+        relative = state.get("last_resultant_receipt")
+        if not isinstance(relative, str):
+            errors.append("current resultant has no receipt path")
+        else:
+            try:
+                receipt = read_json(configuration_engine.project_local_file(root, root / relative))
+                last = state["history"][-1]
+                if (receipt.get("schema") != RESULTANT_TRANSITION_SCHEMA
+                        or receipt.get("event_id") != state["last_event_id"]
+                        or last.get("event_id") != state["last_event_id"]
+                        or last.get("receipt") != relative
+                        or receipt.get("event_digest") != last.get("event_digest")):
+                    errors.append("current resultant receipt differs from operating history")
+            except Exception as exc:
+                errors.append("current resultant receipt is unavailable or invalid: " + str(exc))
+    return {"valid": not errors, "errors": errors, "pending_journals": pending}
+
+
 def operating_status(
     root: Path, circumstance: dict[str, Any] | None = None
 ) -> dict[str, Any]:
-    return _operating_status(root, circumstance)
+    result = _operating_status(root, circumstance)
+    coherence = continuum_status(root)
+    if not coherence["valid"]:
+        result["eligible_actions"] = [x for x in result["eligible_actions"] if x["id"] != "apply_resultant"]
+        result["blocked_actions"].append({"id": "apply_resultant", "reason": "continuum recovery required"})
+        result["context_sha256"] = digest({k: v for k, v in result.items() if k != "context_sha256"})
+    # Recovery evidence is a present safety readback, outside the content fingerprint.
+    result["recovery_required"] = not coherence["valid"]
+    result["continuum"] = coherence
+    return result
 
 
 def learning_status(root: Path, *, include_cold: bool = False) -> dict[str, Any]:
@@ -1440,6 +1478,7 @@ def apply_resultant_readback(
     root: Path, readback: Any, expected_context_sha256: str
 ) -> dict[str, Any]:
     root = root.resolve()
+    configuration_engine.require_no_pending_transition(root)
     validation = validate_resultant_readback(root, readback)
     if not validation["valid"]:
         raise OperatingStateError(
@@ -1462,6 +1501,8 @@ def apply_resultant_readback(
 
     circumstance = _resolved_circumstance(readback["movement"]["circumstance"], current_operating)
     current_context = operating_status(root, circumstance)
+    if current_context["recovery_required"]:
+        raise OperatingStateError("continuum recovery required before another resultant")
     if current_context["context_sha256"] != expected_context_sha256:
         raise OperatingStateError(
             "operating context changed before transition; re-read the current field"
@@ -1563,15 +1604,17 @@ def apply_resultant_readback(
     context_path = operating_context_path(root)
     ensure_project_local(root, state_path)
     ensure_project_local(root, context_path)
-    prior_context = read_json(context_path) if context_path.is_file() else None
-    configuration_receipt: dict[str, Any] | None = None
-    try:
+    outputs = (*configuration_engine.CONFIGURATION_OUTPUTS,
+               state_path.relative_to(root).as_posix(), context_path.relative_to(root).as_posix(),
+               receipt_relative)
+    with configuration_engine.state_transaction(root, "resultant", outputs):
         write_json_atomic(state_path, updated_operating)
         write_json_atomic(context_path, final_context)
         configuration_receipt = configuration_engine.apply_configuration(
-            root, candidate_configuration, before_configuration_sha256
+            root, candidate_configuration, before_configuration_sha256, _within_resultant=True
         )
-        observed_context = operating_status(root, circumstance)
+        # The owning transaction has not written its terminal receipt yet.
+        observed_context = _operating_status(root, circumstance)
         if observed_context["context_sha256"] != final_context["context_sha256"]:
             raise OperatingStateError("applied state does not reproduce the resultant context")
         receipt = {
@@ -1597,16 +1640,6 @@ def apply_resultant_readback(
         }
         write_json_atomic(receipt_path, receipt)
         return receipt
-    except Exception:
-        write_json_atomic(state_path, current_operating)
-        if prior_context is None:
-            if context_path.exists():
-                context_path.unlink()
-        else:
-            write_json_atomic(context_path, prior_context)
-        if configuration_receipt and configuration_receipt.get("status") == "applied":
-            configuration_engine.recover_configuration(root, configuration_receipt)
-        raise
 
 
 def admit_resultant_readback(

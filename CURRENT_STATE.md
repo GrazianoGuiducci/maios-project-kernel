@@ -1,13 +1,26 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-06
-active_surface: autonomous Project Kernel 3.1.0
-status: release source prepared with recovery and uninstall corrections
-product_version: 3.1.0
-previous_public_release: 3.0.3
-release_snapshot: GitHub tag v3.1.0 after publication; this source records selection
+active_surface: autonomous Project Kernel 3.1.1 corrective patch
+status: correction source prepared; publication evidence remains separate
+product_version: 3.1.1
+current_public_release: v3.1.0
+release_commit: 2e760d1613d28374dd6cf0e8dae66914d451c8a0
+release_ci: passed on Ubuntu and Windows
+selected_corrective_version: 3.1.1
 
 ## Current resultant
+
+The post-release reviews close the three 3.1.0 corrections and expose distinct
+runtime and delivery defects. The 3.1.1 patch captures state/projection/receipt
+recovery before mutation, preserves CURRENT on no-op configuration, and exposes
+pending or unlinked resultant state at reentry. The same transaction owner
+handles direct configuration recovery. Transient CLI outputs must stay outside
+source, package and target; unregistered bytecode stays with the project. Runtime
+source organs and their crosswalk readers reject symlinks and linked ancestors.
+The 3.1.0 tag remains unchanged. See docs/RELEASE_3.1.1.md for the correction scope.
+
+## Retained continuum and 3.1.0 corrections
 
 The operator selected final versioning after the two reviews of continuum.4
 (`8eb82da`). The accumulated capabilities warrant 3.1.0. Both reviews close
@@ -73,11 +86,17 @@ An unavailable source remains pending and does not overwrite the last success.
 
 ## Current evidence
 
-Six focused recovery cases pass, including the two reported data-loss scenarios.
+Eight new regression cases bring the suite to 66 tests. They exercise installed
+CLI failure, late writes, incomplete rollback and fresh reentry, idempotent
+recovery continuity, the documented external-plan roundtrip, cache ownership
+and linked runtime organs. The real symlink case requires host permission;
+local Windows skips it when unavailable and Linux CI executes it. Exact test
+and release observations are recorded by the release owner after execution.
+
+The previous six focused installer recovery cases pass, including the two reported data-loss scenarios.
 They also exercise whole-journal rejection before any deletion, recorded and
 unrecorded creation, replaced/changed/unidentifiable files, competing journal
-and stage acquisition, and cleanup failure after commit. All 58 local tests
-pass, including three uninstall ownership regressions against real generated
+and stage acquisition, and cleanup failure after commit. The retained 58-test baseline passes, including three uninstall ownership regressions against real generated
 artifacts, absent/invalid CURRENT and pre-existing directories with cache and backups. The suite also retains the earlier continuation and installation cases.
 
 Those cases exercise default reentry in a separate process, plural cross-owner
@@ -108,7 +127,7 @@ adaptation owns native continuation. KNOWLEDGE_CONTINUUM.md and
 UPDATE_CONTINUITY.md explain the installed knowledge and update relations.
 
 Use the corrected artifact and docs/REVIEW_CONTINUUM.md for any material
-follow-up. Version 3.1.0 is selected; no earlier-installation migration
+follow-up. The corrective version is 3.1.1; no earlier-installation migration
 is required because the new update standard begins with its first users.
 The shared family remains 3.0.0. Form follows through its own owners; unified
 chat/harness convergence remains separately preserved.

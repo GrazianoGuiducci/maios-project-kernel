@@ -376,14 +376,14 @@ class InstallerTests(DistributionFixture):
 
         removal = installer.uninstall(target, receipt)
         self.assertTrue(removal["complete"], removal)
-        self.assertTrue(removal["removed_runtime_cache"])
-        self.assertEqual(removal["preserved_runtime_cache"], [])
+        self.assertEqual(removal["removed_runtime_cache"], [])
+        self.assertTrue(removal["preserved_runtime_cache"])
         remaining_files = sorted(
             path.relative_to(target).as_posix()
             for path in target.rglob("*")
             if path.is_file()
         )
-        self.assertEqual(remaining_files, ["existing-project-marker.txt"])
+        self.assertEqual(remaining_files, sorted(["existing-project-marker.txt", *removal["preserved_runtime_cache"]]))
 
     def test_selected_host_state_and_native_projection_are_installed_but_unverified(self) -> None:
         target, _ = self.install("codex")

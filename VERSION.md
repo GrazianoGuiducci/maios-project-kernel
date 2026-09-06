@@ -1,19 +1,17 @@
 # Version
 
-Product version: `3.1.0`.
-Previous numbered release: `3.0.3`.
+Product version: `3.1.1`.
+Previous numbered release: `3.1.0` at `2e760d1613d28374dd6cf0e8dae66914d451c8a0`.
 Shared Project Kernel family: `3.0.0`.
 
-The minor version names the accumulated continuum capabilities: living knowledge
-sources, plural learning genealogy, sustainable recall and reentry, durable
-source contact and the initial update baseline. It includes the reviewed
-installation, recovery and uninstall corrections.
+This patch corrects the promised caught-failure recovery across resultant,
+configuration and reentry; preserves the recoverable receipt on idempotent
+configuration; keeps transient CLI outputs outside source, distribution and
+target; preserves unregistered bytecode; and rejects linked runtime organs.
 
-The first-user installation, configuration and operating contracts use v3;
-learning relations use v2. No earlier-installation migration is required by the
-selected first-user scope. Idempotent reapplication remains distinct from a
-future target-owned update that preserves local evolution.
-
-The autonomous product version does not advance the Form package or select the
-separately deferred unified chat/harness product. GitHub tag `v3.1.0` identifies
-the release snapshot; source version and observed publication remain distinct.
+Version 3.1 introduced the accumulated knowledge continuum and first-user v3
+state contracts, with learning relations v2. No earlier-installation migration
+is required by the selected first-user scope. Idempotent reapplication is not
+automatic cross-version migration. The Form and unified chat/harness product
+retain their own owners and versions. Tag v3.1.0 remains immutable; v3.1.1
+identifies the corrective snapshot when published.

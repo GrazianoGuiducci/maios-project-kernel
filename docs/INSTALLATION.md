@@ -15,8 +15,9 @@ Opening the repository does not install or execute the package. From
 `package/`:
 
 ```powershell
-python install.py preview --target C:\Projects\MyProject --mode new_repository --host codex --plan-out install-plan.json
-python install.py apply --plan install-plan.json
+$maiosPlan = Join-Path $env:TEMP "maios-install-plan.json"
+python install.py preview --target C:\Projects\MyProject --mode new_repository --host codex --plan-out $maiosPlan
+python install.py apply --plan $maiosPlan
 ```
 
 `new_repository` requires an absent or empty target and promotes a complete
@@ -76,14 +77,29 @@ profile or `.env` into the project.
 
 ## Verify and uninstall
 
+Plans and optional CLI receipt files are transient outputs. Keep them outside
+the distribution, its recognized source checkout and the target project. The
+examples use the system temporary directory; the CLI rejects an unsafe output
+before preview writes or uninstall/recovery effects. If an older invocation
+left `install-plan.json` inside `package/`, preserve it outside the package
+before retrying. The inventory remains strict about unexpected package files.
+
 ```powershell
 python C:\Projects\MyProject\.maios\installer\installer.py verify --target C:\Projects\MyProject
-python C:\Projects\MyProject\.maios\installer\installer.py uninstall --target C:\Projects\MyProject --receipt-out uninstall-receipt.json
+$maiosReceipt = Join-Path $env:TEMP "maios-uninstall-receipt.json"
+python C:\Projects\MyProject\.maios\installer\installer.py uninstall --target C:\Projects\MyProject --receipt-out $maiosReceipt
 ```
 
 Uninstall removes only unchanged installer-owned files and backups. A file
 changed by the target project is preserved and reported, so recovery can be
 partial without erasing project evolution.
+
+Python bytecode has no recorded creation ownership. Uninstall preserves every
+unregistered matching cache and lists it in `preserved_runtime_cache`, even if
+its source was removed or evolved. `complete` concerns installer-owned files
+and backups; remaining unowned caches do not grant cleanup authority or make
+their retained bytes a failed owned-file removal. Ordinary MAIOS launchers
+already suppress automatic bytecode generation.
 
 Before deleting anything, uninstall requires a valid `CURRENT.json` and binds
 the supplied receipt to its target, original plan, digest and package identity.

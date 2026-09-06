@@ -95,6 +95,24 @@ def distribution_root() -> Path | None:
     return None
 
 
+def require_external_output(path: Path, distribution: Path | None, target: Path) -> None:
+    """Transient outputs must not mutate the verified input or the selected target."""
+    forbidden = {target.resolve()}
+    if distribution is not None:
+        forbidden.add(distribution.resolve())
+    candidates = set(Path(__file__).resolve().parents)
+    if distribution is not None:
+        candidates.update((distribution.resolve(), *distribution.resolve().parents))
+    for candidate in candidates:
+        if ((candidate / "release/PROJECTION.json").is_file()
+                and (candidate / "src/maios_project_kernel/builder.py").is_file()):
+            forbidden.add(candidate)
+    lexical = Path(os.path.abspath(path))
+    resolved = path.resolve()
+    if any(lexical.is_relative_to(base) or resolved.is_relative_to(base) for base in forbidden):
+        raise InstallerError("plan and receipt outputs must stay outside the distribution, source repository and target; use a temporary path")
+
+
 def verified_inventory_rows(root: Path) -> list[dict[str, Any]]:
     inventory = read_json(root / "PACKAGE_INVENTORY.json")
     if inventory.get("schema") != "maios.package-inventory.v2":
@@ -958,16 +976,8 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
             ):
                 continue
             relative = candidate.relative_to(target).as_posix()
-            if (
-                has_unsafe_ancestor(target, relative)
-                or candidate.is_symlink()
-                or not candidate.is_file()
-            ):
-                preserved_runtime_cache.append(relative)
-                continue
-            candidate.unlink()
-            removed_runtime_cache.append(relative)
-        clean_empty_parents(cache_dir)
+            # A matching module name is not creation or ownership evidence.
+            preserved_runtime_cache.append(relative)
     for entry in reversed(receipt.get("installer_owned_backup_files", [])):
         path = native(target, entry["path"])
         if has_unsafe_ancestor(target, entry["path"]) or path.is_symlink():
@@ -981,7 +991,7 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
             removed.append(entry["path"])
             clean_empty_parents(path.parent)
     receipt_path = target / ".maios" / "receipts" / "install" / "CURRENT.json"
-    if receipt_path.is_file() and not preserved_changed and not preserved_runtime_cache:
+    if receipt_path.is_file() and not preserved_changed:
         receipt_path.unlink()
         clean_empty_parents(receipt_path.parent)
     result = {
@@ -993,7 +1003,8 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
         "already_missing": sorted(missing),
         "removed_runtime_cache": sorted(set(removed_runtime_cache)),
         "preserved_runtime_cache": sorted(set(preserved_runtime_cache)),
-        "complete": not preserved_changed and not preserved_runtime_cache,
+        "runtime_cache_ownership": "unrecorded_preserved",
+        "complete": not preserved_changed,
     }
     return result
 
@@ -1061,6 +1072,9 @@ def main(argv: Iterable[str] | None = None) -> int:
     args = parser().parse_args(list(argv) if argv is not None else None)
     try:
         root = distribution_root()
+        output = getattr(args, "plan_out", None) or getattr(args, "receipt_out", None)
+        if output is not None:
+            require_external_output(output, root, args.target)
         if args.command in {"preview", "apply"} and root is None:
             raise InstallerError("preview/apply require the original distribution")
         if args.command == "preview":

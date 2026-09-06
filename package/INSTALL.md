@@ -1,4 +1,4 @@
-# Install MAIOS Project Kernel 3.1.0 — repository package
+# Install MAIOS Project Kernel 3.1.1 — repository package
 
 The tracked `package/` projection is self-installing, not self-executing. Open
 it with the coder. When the target and intended change are already clear, the
@@ -12,11 +12,16 @@ host if needed, then preview the transition and apply that exact plan.
 The installer and the installed `maios.py` helper require Python 3.10 or later.
 They use only the Python standard library.
 
+Keep plans and CLI output receipts outside this package, the source repository
+and the target. The examples use the system temporary directory. The CLI checks
+this before any output or removal effect; the package inventory stays immutable.
+
 ## New project
 
 ```powershell
-python install.py preview --target C:\Projects\MyProject --mode new_repository --host codex --plan-out install-plan.json
-python install.py apply --plan install-plan.json
+$maiosPlan = Join-Path $env:TEMP "maios-install-plan.json"
+python install.py preview --target C:\Projects\MyProject --mode new_repository --host codex --plan-out $maiosPlan
+python install.py apply --plan $maiosPlan
 ```
 
 `new_repository` accepts only an absent or empty target. The first apply builds
@@ -27,8 +32,9 @@ is idempotent.
 ## Existing project
 
 ```powershell
-python install.py preview --target C:\Projects\Existing --mode existing_repository --host codex --plan-out install-plan.json
-python install.py apply --plan install-plan.json
+$maiosPlan = Join-Path $env:TEMP "maios-install-plan.json"
+python install.py preview --target C:\Projects\Existing --mode existing_repository --host codex --plan-out $maiosPlan
+python install.py apply --plan $maiosPlan
 ```
 
 This mode inventories the existing project, classifies every destination as
@@ -47,6 +53,8 @@ explicit receipt copy is supplied. A different, invalid or missing CURRENT
 refuses deletion. Archived receipts can still support read-only `verify`, which
 reports their current relation separately from historical consistency. Empty
 directories in existing projects remain because their ownership is unrecorded.
+Unregistered bytecode also remains and is reported; a matching name does not
+establish ownership. Normal MAIOS launchers suppress automatic bytecode creation.
 
 A conflict is returned to `maios-project-integration` as a target-owner
 relation. The coder can then propose the smallest explicit merge or placement
@@ -66,7 +74,8 @@ effect, and recovery relation.
 
 ```powershell
 python C:\Projects\MyProject\.maios\installer\installer.py verify --target C:\Projects\MyProject
-python C:\Projects\MyProject\.maios\installer\installer.py uninstall --target C:\Projects\MyProject --receipt-out uninstall-receipt.json
+$maiosReceipt = Join-Path $env:TEMP "maios-uninstall-receipt.json"
+python C:\Projects\MyProject\.maios\installer\installer.py uninstall --target C:\Projects\MyProject --receipt-out $maiosReceipt
 ```
 
 Recovery removes only installer-created files whose bytes are still identical.
