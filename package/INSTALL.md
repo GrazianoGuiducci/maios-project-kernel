@@ -1,4 +1,4 @@
-# Install MAIOS Project Kernel 3.0.3+continuum.1 (local development build) — repository package
+# Install MAIOS Project Kernel 3.1.0 — repository package
 
 The tracked `package/` projection is self-installing, not self-executing. Open
 it with the coder. When the target and intended change are already clear, the
@@ -38,7 +38,15 @@ merge or hidden overwrite. A changed target invalidates the plan. Before its
 first write, apply stores a project-local `PENDING` journal. If the process or
 machine stops, run `python install.py recover-pending --target <target>` from
 this package directory; recovery removes only unchanged attempt-owned
-bytes and preserves any evolved file.
+bytes and preserves evolved or uncertain files. A planned path alone does not
+establish ownership; if CURRENT has committed the same plan, recovery only
+finishes journal cleanup.
+
+Uninstall requires the valid current installation receipt, including when an
+explicit receipt copy is supplied. A different, invalid or missing CURRENT
+refuses deletion. Archived receipts can still support read-only `verify`, which
+reports their current relation separately from historical consistency. Empty
+directories in existing projects remain because their ownership is unrecorded.
 
 A conflict is returned to `maios-project-integration` as a target-owner
 relation. The coder can then propose the smallest explicit merge or placement

@@ -1,13 +1,22 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-06
-active_surface: autonomous continuum candidate with receiving-review corrections
-status: pending recovery corrections implemented; 55 local tests pass
-development_build: 3.0.3+continuum.4
-public_release_baseline: 3.0.3
-next_public_release_number: open; 3.1.0 is the current proposal
+active_surface: autonomous Project Kernel 3.1.0
+status: release source prepared with recovery and uninstall corrections
+product_version: 3.1.0
+previous_public_release: 3.0.3
+release_snapshot: GitHub tag v3.1.0 after publication; this source records selection
 
 ## Current resultant
+
+The operator selected final versioning after the two reviews of continuum.4
+(`8eb82da`). The accumulated capabilities warrant 3.1.0. Both reviews close
+the pending-recovery defects; the attached review additionally identifies a
+stale explicit uninstall receipt and unowned empty-directory cleanup. These
+were reproduced and corrected. Uninstall now binds a valid receipt to CURRENT
+before any deletion and rejects a missing, invalid or different current plan.
+Read-only verify exposes current_relation separately from historical receipt
+validity and file presence. Existing-project directory identities are retained.
 
 The two reviews of cd744e2 exposed unbound pending-journal maps and recovery of
 files merely planned for creation. Both were reproduced in temporary targets.
@@ -63,8 +72,9 @@ An unavailable source remains pending and does not overwrite the last success.
 Six focused recovery cases pass, including the two reported data-loss scenarios.
 They also exercise whole-journal rejection before any deletion, recorded and
 unrecorded creation, replaced/changed/unidentifiable files, competing journal
-and stage acquisition, and cleanup failure after commit. All 55 local tests
-pass. The suite also retains the earlier continuation and installation cases.
+and stage acquisition, and cleanup failure after commit. All 58 local tests
+pass, including three uninstall ownership regressions against real generated
+artifacts, absent/invalid CURRENT and pre-existing directories with cache and backups. The suite also retains the earlier continuation and installation cases.
 
 Those cases exercise default reentry in a separate process, plural cross-owner
 genealogy and predecessor reopening, corrupt state
@@ -94,7 +104,7 @@ adaptation owns native continuation. KNOWLEDGE_CONTINUUM.md and
 UPDATE_CONTINUITY.md explain the installed knowledge and update relations.
 
 Use the corrected artifact and docs/REVIEW_CONTINUUM.md for any material
-follow-up. The release number remains open; no earlier-installation migration
+follow-up. Version 3.1.0 is selected; no earlier-installation migration
 is required because the new update standard begins with its first users.
 The shared family remains 3.0.0. Form follows through its own owners; unified
 chat/harness convergence remains separately preserved.

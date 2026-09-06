@@ -773,10 +773,29 @@ def apply_plan(root: Path, plan: dict[str, Any]) -> dict[str, Any]:
     return receipt
 
 
+def receipt_current_relation(target: Path, receipt: dict[str, Any]) -> str:
+    """Relate a historical receipt to the installation presently governing target."""
+    target = target.resolve()
+    relative = ".maios/receipts/install/CURRENT.json"
+    path = target / relative
+    if has_unsafe_ancestor(target, relative) or path.is_symlink():
+        return "current_invalid"
+    if not path.exists():
+        return "current_missing"
+    current = current_receipt(target)
+    if current is None:
+        return "current_invalid"
+    if any(receipt.get(key) != current.get(key)
+           for key in ("target", "plan_digest", "package_identity", "install_plan")):
+        return "current_mismatch"
+    return "current"
+
+
 def verify_installation(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
     target = target.resolve()
     require_receipt_target(target, receipt)
     validation = validate_installation_receipt(receipt)
+    relation = receipt_current_relation(target, receipt)
     results: list[dict[str, Any]] = []
     for entry in receipt["installer_owned_files"] if validation["valid"] else []:
         path = native(target, entry["path"])
@@ -800,10 +819,12 @@ def verify_installation(target: Path, receipt: dict[str, Any]) -> dict[str, Any]
         "receipt_state": receipt.get("state"),
         "files": results,
         "missing": missing,
-        "installed": not missing and validation["valid"],
+        "current_relation": relation,
+        "files_present": not missing and validation["valid"],
+        "installed": not missing and validation["valid"] and relation == "current",
         "baseline": validation["baseline"],
         "receipt_validation": validation,
-        "valid": not missing and validation["valid"],
+        "valid": not missing and validation["valid"] and relation == "current",
         "behavior_claimed": False,
     }
 
@@ -880,6 +901,15 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
     target = target.resolve()
     require_receipt_target(target, receipt)
     require_valid_installation_receipt(receipt)
+    relation = receipt_current_relation(target, receipt)
+    if relation != "current":
+        raise InstallerError("uninstall requires the valid current installation receipt: " + relation)
+
+    def clean_empty_parents(path: Path) -> None:
+        # Existing-target receipts record file ownership, not directory ownership.
+        if receipt["mode"] == "new_repository":
+            remove_empty_parents(path, target)
+
     removed: list[str] = []
     preserved_changed: list[str] = []
     missing: list[str] = []
@@ -895,7 +925,7 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
         else:
             path.unlink()
             removed.append(entry["path"])
-            remove_empty_parents(path.parent, target)
+            clean_empty_parents(path.parent)
     removed_runtime_cache: list[str] = []
     preserved_runtime_cache: list[str] = []
     cache_sources = {
@@ -937,7 +967,7 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
                 continue
             candidate.unlink()
             removed_runtime_cache.append(relative)
-        remove_empty_parents(cache_dir, target)
+        clean_empty_parents(cache_dir)
     for entry in reversed(receipt.get("installer_owned_backup_files", [])):
         path = native(target, entry["path"])
         if has_unsafe_ancestor(target, entry["path"]) or path.is_symlink():
@@ -949,11 +979,11 @@ def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
         else:
             path.unlink()
             removed.append(entry["path"])
-            remove_empty_parents(path.parent, target)
+            clean_empty_parents(path.parent)
     receipt_path = target / ".maios" / "receipts" / "install" / "CURRENT.json"
     if receipt_path.is_file() and not preserved_changed and not preserved_runtime_cache:
         receipt_path.unlink()
-        remove_empty_parents(receipt_path.parent, target)
+        clean_empty_parents(receipt_path.parent)
     result = {
         "schema": UNINSTALL_SCHEMA,
         "target": str(target),
@@ -987,6 +1017,8 @@ def require_receipt_target(target: Path, receipt: Any) -> None:
 
 def load_receipt(target: Path, explicit: Path | None) -> dict[str, Any]:
     target = target.resolve()
+    if explicit is None and has_unsafe_ancestor(target, ".maios/receipts/install/CURRENT.json"):
+        raise InstallerError("unsafe current installation receipt path")
     path = explicit or target / ".maios" / "receipts" / "install" / "CURRENT.json"
     if path.is_symlink():
         raise InstallerError("installation receipt must not be a symlink")

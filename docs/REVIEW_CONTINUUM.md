@@ -1,23 +1,22 @@
-# Lettura della candidata autonoma per ChatGPT
+# Lettura di MAIOS Project Kernel 3.1.0 per ChatGPT
 
-Questa repository contiene le sorgenti complete e il pacchetto generato della
-candidata MAIOS Project Kernel `3.0.3+continuum.4`, derivata dalla release 3.0.3.
-Il numero della prossima release pubblica resta aperto. Identifica il commit
-esatto che riesci a leggere e usa sorgenti e `package/` di quella revisione:
-una precedente lettura della repository o della release 3.0.3 non descrive
-questa candidata. Se l'accesso restituisce una revisione precedente, rendi
-esplicita la differenza prima di attribuirle le modifiche qui descritte.
+La versione selezionata è `3.1.0`. Le sorgenti complete e il pacchetto generato
+appartengono a questa repository. Identifica il commit esatto che stai leggendo;
+la release numerata è identificata dal tag `v3.1.0` quando pubblicato.
 
-Questa revisione risponde alle due recensioni della candidata continuum.3,
-commit `cd744e257881c13ad1ff8c0619a835154aa5be90`. Il nuovo delta riguarda il
-recupero: PENDING v3 conserva il piano originario e distingue mappe pianificate
-da creazioni effettive. Il giornale completo viene validato prima di cancellare;
-identità del file e hash devono corrispondere alla creazione registrata. File
-incerti, anche identici, restano con il giornale. Backup e giornale hanno
-creazione esclusiva; un tentativo non acquisito non viene ripulito. Dopo il
-commit della ricevuta finale il recupero conserva l'installazione e termina
-soltanto la pulizia del giornale. Le precedenti correzioni rimangono implementate.
-Le regressioni seguono questi percorsi; non serve ricominciare una revisione generale.
+Le due recensioni di `8eb82da57b6048044721ebae2c588825cea4b968`
+(`3.0.3+continuum.4`) chiudono i difetti del recupero PENDING. La recensione
+allegata segnala inoltre la ricevuta di disinstallazione superata e la pulizia
+di directory preesistenti. Entrambi i casi sono stati riprodotti e corretti.
+
+Il delta della 3.1.0 richiede una ricevuta CURRENT valida e corrispondente prima
+di ogni disinstallazione, anche con `--receipt`. CURRENT mancante, invalido o
+legato a un piano differente comporta rifiuto prima della prima cancellazione.
+La verifica resta leggibile per una ricevuta archiviata, ma distingue
+`current_relation`, validità storica e presenza dei file; non dichiara installata
+la ricevuta superata. Le directory dei progetti esistenti restano conservate
+anche dopo la pulizia di payload, cache, backup e ricevuta. Il recupero PENDING
+resta quello già recensito. Le regressioni sono in `test_uninstall_ownership.py`.
 
 Parti da [CURRENT_STATE.md](../CURRENT_STATE.md), quindi dalle competenze e dalle
 sorgenti che cambiano la comprensione. L'intento è trasferire il potenziale del
@@ -40,7 +39,7 @@ possibilità. I fondamenti D-ND rimangono il riferimento fuori dalla riscrittura
 automatica; [FOUNDING_RELATIONS.md](../kernel/FOUNDING_RELATIONS.md) è la
 rappresentazione qualificata A0-A11, non una pretesa di contenere tutto D-ND.
 
-Sono passati tutti i 55 test locali, inclusi i sei casi di recupero mirati.
+Sono passati tutti i 58 test locali, inclusi sei casi di recupero e tre casi di disinstallazione mirati.
 Il pacchetto ha 58 file, 47 nel payload, e corrisponde alla sorgente verificata.
 Queste evidenze non provano ancora uso di un host/modello reale o assimilazione.
 Non serve ripetere un programma di test: un ulteriore riscontro serve quando

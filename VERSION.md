@@ -1,12 +1,19 @@
 # Version
 
-Current development build: `3.0.3+continuum.4`.
-Public release baseline: `3.0.3`.
-The next public release number remains to be selected from the completed scope.
+Product version: `3.1.0`.
+Previous numbered release: `3.0.3`.
+Shared Project Kernel family: `3.0.0`.
 
-The build metadata identifies a distinct autonomous review artifact while the
-release decision is open. It carries generative competence formation,
-sustainable knowledge continuation, independently preserved learning relations,
-live native entries and the initial update baseline. It is not a published
-release or the separately deferred unified chat/harness package.
-The shared family contract remains `3.0.0`.
+The minor version names the accumulated continuum capabilities: living knowledge
+sources, plural learning genealogy, sustainable recall and reentry, durable
+source contact and the initial update baseline. It includes the reviewed
+installation, recovery and uninstall corrections.
+
+The first-user installation, configuration and operating contracts use v3;
+learning relations use v2. No earlier-installation migration is required by the
+selected first-user scope. Idempotent reapplication remains distinct from a
+future target-owned update that preserves local evolution.
+
+The autonomous product version does not advance the Form package or select the
+separately deferred unified chat/harness product. GitHub tag `v3.1.0` identifies
+the release snapshot; source version and observed publication remain distinct.

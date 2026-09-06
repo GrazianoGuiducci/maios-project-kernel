@@ -85,6 +85,24 @@ Uninstall removes only unchanged installer-owned files and backups. A file
 changed by the target project is preserved and reported, so recovery can be
 partial without erasing project evolution.
 
+Before deleting anything, uninstall requires a valid `CURRENT.json` and binds
+the supplied receipt to its target, original plan, digest and package identity.
+This also applies to `--receipt`: an archived receipt cannot authorize removal
+from a different current installation on the same path. A missing, invalid or
+different CURRENT causes refusal without mutation. When CURRENT is absent,
+an archived receipt remains useful for read-only investigation; reconstruction
+from qualified sources is a separate recovery movement, not a normal uninstall.
+
+`verify --receipt <file>` reports `current_relation` as `current`,
+`current_mismatch`, `current_missing` or `current_invalid`. `receipt_validation`
+and `files_present` describe the historical receipt and its recorded files;
+`installed` and overall `valid` also require the current relation to match.
+
+For `existing_repository`, empty directories remain because the receipt records
+file ownership, not directory ownership. This applies to payload, backup, cache
+and receipt parents. `new_repository` may prune empty parents inside its newly
+created target; the target root itself is retained.
+
 ## Configure the project
 
 Open the installed project with the selected assistant and ask it to read

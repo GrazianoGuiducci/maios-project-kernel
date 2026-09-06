@@ -302,7 +302,7 @@ class InstallerTests(DistributionFixture):
         removal = installer.uninstall(target, receipt)
         self.assertTrue(removal["complete"])
         self.assertTrue(preexisting.is_file())
-        self.assertFalse((target / ".maios" / "backups").exists())
+        self.assertFalse(any(p.is_file() for p in (target / ".maios" / "backups").rglob("*")))
 
     def test_existing_project_plan_ignores_unrelated_target_changes(self) -> None:
         target = self.base / "existing-with-unrelated-work"

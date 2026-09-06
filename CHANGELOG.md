@@ -1,5 +1,24 @@
 # Changelog
 
+## 3.1.0 - 2026-09-06
+
+- Promote the continuum capabilities developed in the four review candidates:
+  living knowledge sources, plural learning genealogy, sustainable recall and
+  fresh reentry, persistent source contact and a plan-bound initial update baseline.
+- Retain canonical v3 receipt/configuration/operating contracts, native live
+  entries and conservative PENDING recovery with actual-creation evidence.
+- Bind uninstall to the valid current installation, including explicit receipts;
+  reject stale, missing or invalid CURRENT relations before any deletion.
+- Expose historical receipt validity, file presence and current-installation
+  relation separately in read-only verification.
+- Preserve unrecorded directory ownership on existing projects across payload,
+  backup, runtime-cache and receipt cleanup.
+- Align version metadata, package entry, citations and bilingual README with 3.1.0.
+- Add three reproduced uninstall regressions; the complete suite contains 58 tests.
+- Keep the shared family at 3.0.0. Native model use and later non-identical
+  assimilation remain unobserved; Form and unified convergence retain their owners.
+
+
 ## Pending recovery corrections — 3.0.3+continuum.4
 
 - Bind pending journal v3 to its original plan, complete planned payload/backup

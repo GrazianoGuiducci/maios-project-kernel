@@ -125,3 +125,11 @@ provenance can be reconstructed; do not label an incomplete recovery complete.
 Once the installation receipt has committed, journal cleanup must retain that
 installed result. Apply this difference to backup and failure paths as well as
 the successful installation path.
+
+Before uninstall, relate the receipt to the installation currently governing
+that target. A valid archived plan does not authorize effects on a later plan
+at the same path. If CURRENT is different, invalid or absent, preserve the
+project and use the historical receipt for investigation, not normal removal.
+Separate historical consistency, present file evidence and current authority
+in the readback. File ownership also does not establish directory ownership:
+existing-project empty directories remain unless their ownership is known.

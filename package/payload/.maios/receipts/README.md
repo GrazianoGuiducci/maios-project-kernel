@@ -81,3 +81,19 @@ as installer-owned. Pre-existing identical target-owned files are preserved
 but not included in that file report; `maios.py status` checks the current
 required Kernel structure through its canonical state readers. Neither command
 certifies semantic use or assimilation by a model.
+
+A valid historical receipt for a target is not authority over every later
+installation at that path. Uninstall compares it with a valid CURRENT before
+its first deletion, including for explicit `--receipt` use. Target, original
+plan, digest and package identity must agree. Missing or invalid CURRENT, or a
+different current plan, refuses uninstall without changing files.
+
+Read-only verification keeps `receipt_validation` and `files_present` separate
+from `current_relation` (`current`, `current_mismatch`, `current_missing`,
+`current_invalid`). Overall `valid` and `installed` require both historical
+consistency and the current relation. This is plan identity, not a signature or
+a lock against arbitrary concurrent writers.
+
+Existing-project receipts do not record directory ownership. Uninstall retains
+empty parent directories after file, backup, cache and receipt cleanup. New
+repository mode retains its existing empty-parent cleanup inside the target.
