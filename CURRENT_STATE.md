@@ -1,9 +1,10 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-06
-active_surface: autonomous Project Kernel 3.1.1 publication readback
-status: 3.1.1 published; release tag immutable; receiving Form work remains next
-product_version: 3.1.1
+active_surface: autonomous Project Kernel 3.1.2 corrective patch
+status: corrective source prepared; 3.1.1 remains the published baseline
+product_version: 3.1.2
+selected_corrective_version: 3.1.2
 current_public_release: v3.1.1
 release_commit: 872478246512491bc5d85fa27821786ff163ddd2
 release_ci: passed on Ubuntu and Windows
@@ -12,19 +13,22 @@ release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/t
 
 ## Current resultant
 
-The 3.1.1 release is published at the immutable commit above. This living-main
-readback records the completed effect and next receiving movement; it changes
-only current-state documentation and the generated source-identity metadata.
-The released artifact stays attached to its tag.
+The post-release review of 8724782 supplied six code-derived findings, with its
+proposed reproductions not yet executed. Local regression work reproduced all
+six, including a real Windows junction: the baseline yielded 32 failing
+subcases across ten focused cases, with only the symlink-creation case skipped.
+The 3.1.2 correction follows existing owners rather than adding kernel theory.
 
-The post-release reviews close the three 3.1.0 corrections and expose distinct
-runtime and delivery defects. The 3.1.1 patch captures state/projection/receipt
-recovery before mutation, preserves CURRENT on no-op configuration, and exposes
-pending or unlinked resultant state at reentry. The same transaction owner
-handles direct configuration recovery. Transient CLI outputs must stay outside
-source, package and target; unregistered bytecode stays with the project. Runtime
-source organs and their crosswalk readers reject symlinks and linked ancestors.
-The 3.1.0 tag remains unchanged. See docs/RELEASE_3.1.1.md for the correction scope.
+Host and competence admissions now share acquired output snapshots, caught
+rollback and visible pending recovery. Event identifiers cannot alias PENDING.
+One filesystem source supplies exclusive-descriptor temporary writes and local
+path confinement in both installer and runtime projections. Terminal evidence
+is checked against its own body, identity and history before replay; later
+legitimate evolution does not rejudge historical semantics. Installer verify
+names its ownership scope. Read docs/RELEASE_3.1.2.md and the review evidence.
+
+The previous 3.1.1/3.1.0 corrections remain, and their published tags are
+immutable. The later main state readback is distinct from a tagged snapshot.
 
 ## Retained continuum and 3.1.0 corrections
 
@@ -92,19 +96,20 @@ An unavailable source remains pending and does not overwrite the last success.
 
 ## Current evidence
 
-The release commit passed all 66 tests on Ubuntu, including actual symbolic
-links, and the complete Windows CI job. Local Windows passed 65 cases and
-skipped the symlink case because this workstation lacks creation permission;
-the five final runtime regressions also passed locally after the last readback
-refinement. Two local builds were byte-identical and distribution verification
-passed for all 58 files / 47 payload files. Both CI jobs reproduced the
-committed package twice and verified its public boundary.
+The local suite ran 77 tests: 75 passed, two actual symlink cases skipped because
+this Windows workstation lacks creation privilege. The real junction case
+passed through preview, verify, recover-pending and uninstall, preserving
+external sentinels. Eleven focused cases include seven atomic writer seams,
+host/competence failures before and after receipts, incomplete rollback and
+fresh installed status, reserved names, replay and isolated body corruption.
+The prior configuration/resultant recovery cases remain in the full suite.
 
-Eight new cases cover installed CLI failure, late writes, incomplete rollback
-and fresh reentry, idempotent recovery continuity, the documented external-plan
-roundtrip, cache ownership and linked runtime organs. Exact source, release and
-CI identities are recorded above. Real model use and later non-identical
-assimilation still require their own observations.
+The shared helper is delivered from one source in both independent installer
+and runtime contexts. The package now contains 60 files / 49 payload files.
+CI runs Ubuntu/Python 3.10 and Windows/Python 3.10 and 3.13; read the exact
+commit's result for platform observations. Release publication is recorded
+only after it occurs. The local counts above precede the final last-receipt
+readback refinement, which is included in the focused rerun and release CI.
 
 The previous six focused installer recovery cases pass, including the two reported data-loss scenarios.
 They also exercise whole-journal rejection before any deletion, recorded and
@@ -124,7 +129,7 @@ configuration rejection through installed status and distinct first-user schema
 identities. The existing learning-corruption case now also exercises installed
 status.
 
-The generated package remains 58 files, 47 in the payload. Its manifest and
+The generated package has 60 files, 49 in the payload. Its manifest and
 inventory bind the current source identity. Metadata or source changes require
 regeneration and exact source-to-distribution verification.
 

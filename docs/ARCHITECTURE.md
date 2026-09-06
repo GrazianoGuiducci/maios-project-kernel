@@ -224,3 +224,10 @@ The configuration owner also carries `source_contact.last_attempt` and
 `record-source-contact` records a read-only observation through the existing
 configuration transition. These commands do not contact the network or schedule
 work. A failed attempt remains pending and never replaces the last success.
+
+The filesystem helper has one source and two local projections, beside the
+standalone installer and runtime. It owns exclusive temporary acquisition,
+qualified cleanup identity and path confinement on the supported platforms.
+The existing configuration transaction protocol also carries host/competence
+state and receipt outputs; the shared terminal reader serves status and replay.
+This keeps persistence uniform without adding an independent kernel framework.

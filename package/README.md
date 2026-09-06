@@ -1,4 +1,4 @@
-# MAIOS Project Kernel 3.1.1 — installable package projection
+# MAIOS Project Kernel 3.1.2 — installable package projection
 
 Open this tracked `package/` folder with your coder and ask it to read `AGENTS.md` and
 use `maios-project-integration`. If the target and intended change are already

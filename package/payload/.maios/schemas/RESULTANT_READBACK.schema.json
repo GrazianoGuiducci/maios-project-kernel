@@ -7,7 +7,7 @@
   "required": ["schema", "event_id", "observed_at", "movement", "source_positions", "candidate_resultant", "preprojection_readback", "actual_result", "faculty_deltas", "possibility_impact", "next_movement", "effect", "causal_margin", "learning_deltas"],
   "properties": {
     "schema": {"const": "maios.resultant-readback.v3"},
-    "event_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
+    "event_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$", "not": {"pattern": "^[Pp][Ee][Nn][Dd][Ii][Nn][Gg]$"}, "description": "PENDING in every case spelling is reserved for transaction control."},
     "observed_at": {"type": "string", "minLength": 1},
     "movement": {"type": "object"},
     "source_positions": {

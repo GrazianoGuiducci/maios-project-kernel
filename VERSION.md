@@ -1,17 +1,17 @@
 # Version
 
-Product version: `3.1.1`.
-Previous numbered release: `3.1.0` at `2e760d1613d28374dd6cf0e8dae66914d451c8a0`.
+Product version: `3.1.2`.
+Previous numbered release: `3.1.1` at `872478246512491bc5d85fa27821786ff163ddd2`.
 Shared Project Kernel family: `3.0.0`.
 
-This patch corrects the promised caught-failure recovery across resultant,
-configuration and reentry; preserves the recoverable receipt on idempotent
-configuration; keeps transient CLI outputs outside source, distribution and
-target; preserves unregistered bytecode; and rejects linked runtime organs.
+This patch makes persistence and path confinement consistent across existing
+resultant, configuration, host, competence and installation paths. It reserves
+transaction control identifiers, acquires atomic temporaries exclusively,
+protects host and competence receipt transitions, and validates terminal
+historical evidence before replay. Junction checks also support Python 3.10.
 
-Version 3.1 introduced the accumulated knowledge continuum and first-user v3
-state contracts, with learning relations v2. No earlier-installation migration
-is required by the selected first-user scope. Idempotent reapplication is not
-automatic cross-version migration. The Form and unified chat/harness product
-retain their own owners and versions. Tag v3.1.0 remains immutable; v3.1.1
-identifies the corrective snapshot when published.
+Version 3.1 introduced the knowledge continuum and first-user v3 state contracts,
+with learning relations v2. Idempotent reapplication does not implement automatic
+cross-version migration. The Form and unified chat/harness product retain their
+own versions. Existing release tags remain immutable; v3.1.2 identifies this
+corrective snapshot when published.

@@ -6,10 +6,16 @@ import hashlib
 import base64
 import json
 import os
+import re
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any
+
+try:
+    from . import filesystem as filesystem_engine
+except ImportError:  # generated runtime and installer carry the same source
+    import maios_filesystem as filesystem_engine  # type: ignore[no-redef]
 
 
 CONFIGURATION_SCHEMA = "maios.configuration-state.v3"
@@ -39,26 +45,11 @@ def read_json(path: Path) -> Any:
 
 
 def write_json_atomic(path: Path, value: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(f".{path.name}.maios-tmp-{os.getpid()}")
-    text = json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-    try:
-        temporary.write_text(text, encoding="utf-8", newline="\n")
-        os.replace(temporary, path)
-    finally:
-        if temporary.exists():
-            temporary.unlink()
+    filesystem_engine.write_json_atomic(path, value)
 
 
 def write_text_atomic(path: Path, text: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(f".{path.name}.maios-tmp-{os.getpid()}")
-    try:
-        temporary.write_text(text, encoding="utf-8", newline="\n")
-        os.replace(temporary, path)
-    finally:
-        if temporary.exists():
-            temporary.unlink()
+    filesystem_engine.write_text_atomic(path, text)
 
 
 def configuration_path(root: Path) -> Path:
@@ -66,19 +57,11 @@ def configuration_path(root: Path) -> Path:
 
 
 def ensure_project_local(root: Path, path: Path) -> None:
-    root = root.resolve()
     try:
-        relative = path.relative_to(root)
-    except ValueError as exc:
-        raise ConfigurationError(f"path is outside project root: {path}") from exc
-    current = root
-    for part in relative.parts:
-        current = current / part
-        if current.is_symlink() or (hasattr(current, "is_junction") and current.is_junction()):
-            raise ConfigurationError(f"project state path contains a symlink: {relative}")
-    resolved_parent = path.parent.resolve()
-    if not resolved_parent.is_relative_to(root):
-        raise ConfigurationError(f"project state parent escapes root: {relative}")
+        filesystem_engine.ensure_local(root, path)
+    except (ValueError, OSError) as exc:
+        raise ConfigurationError(str(exc)) from exc
+
 
 
 def project_local_file(root: Path, path: Path) -> Path:
@@ -97,7 +80,7 @@ CONFIGURATION_OUTPUTS = (
 
 def pending_transitions(root: Path) -> list[str]:
     result = []
-    for owner in ("configuration", "resultant"):
+    for owner in ("configuration", "resultant", "host", "competence"):
         relative = f".maios/receipts/{owner}/PENDING.json"
         path = root / relative
         try:
@@ -110,6 +93,64 @@ def pending_transitions(root: Path) -> list[str]:
     return result
 
 
+def valid_event_id(value: Any) -> bool:
+    return (isinstance(value, str) and re.fullmatch(r"[A-Za-z0-9._-]+", value) is not None
+            and value.casefold() != "pending")
+
+
+def terminal_receipt_errors(root: Path, owner: str, prior: Any) -> list[str]:
+    """Validate historical evidence against its own body, never today's semantic field."""
+    schemas = {"resultant": "maios.resultant-transition.v3",
+               "host": "maios.host-attestation-receipt.v2", "competence": "maios.competence-admission.v2"}
+    try:
+        if not isinstance(prior, dict) or not valid_event_id(prior.get("event_id")):
+            raise ValueError("invalid recorded event identity")
+        event_id = prior["event_id"]
+        relative = f".maios/receipts/{owner}/{event_id}.json"
+        if owner == "resultant" and prior.get("receipt") != relative:
+            raise ValueError("history receipt path differs from event identity")
+        receipt = read_json(project_local_file(root, root / relative))
+        if not isinstance(receipt, dict) or receipt.get("schema") != schemas[owner]:
+            raise ValueError("unsupported terminal receipt")
+        if receipt.get("event_id") != event_id:
+            raise ValueError("terminal receipt event differs from history")
+        expected_status = "applied" if owner == "resultant" else "admitted"
+        if receipt.get("status") != expected_status:
+            raise ValueError("receipt is not terminal")
+        if owner == "resultant":
+            body = receipt.get("readback")
+            if not isinstance(body, dict) or body.get("schema") != "maios.resultant-readback.v3":
+                raise ValueError("terminal readback is missing or malformed")
+        else:
+            body = {k: v for k, v in prior.items() if k not in {"event_digest", "sequence"}}
+            if receipt.get("revision") != prior.get("sequence"):
+                raise ValueError("terminal revision differs from recorded transition")
+        body_digest = digest(body)
+        if body.get("event_id") != event_id or body_digest != prior.get("event_digest"):
+            raise ValueError("recorded event digest differs from its body")
+        # Older host v2 receipts use the full digest-bound attestation in history.
+        if owner != "host" or "event_digest" in receipt:
+            if receipt.get("event_digest") != body_digest:
+                raise ValueError("terminal event digest differs from its body")
+        if owner == "host" and any(receipt.get(k) != body.get(k) for k in ("stage", "result")):
+            raise ValueError("terminal host observation differs from history")
+        hash_fields = {"resultant": ("before_operating_state_sha256", "after_operating_state_sha256",
+                                     "before_configuration_sha256", "after_configuration_sha256", "operating_context_sha256"),
+                       "host": ("before_state_sha256", "after_state_sha256"),
+                       "competence": ("before_index_sha256", "after_index_sha256")}[owner]
+        if any(not isinstance(receipt.get(k), str) or not re.fullmatch(r"[0-9a-f]{64}", receipt[k]) for k in hash_fields):
+            raise ValueError("terminal state digests are malformed")
+    except (ValueError, RuntimeError, OSError, KeyError, TypeError) as exc:
+        return [f"{owner} terminal receipt recovery required: {exc}"]
+    return []
+
+
+def history_receipt_errors(root: Path, owner: str, history: Any) -> list[str]:
+    if not isinstance(history, list):
+        return [f"{owner} history must be a list"]
+    return [error for prior in history for error in terminal_receipt_errors(root, owner, prior)]
+
+
 def require_no_pending_transition(root: Path, allowed_owner: str | None = None) -> None:
     pending = [p for p in pending_transitions(root)
                if p != f".maios/receipts/{allowed_owner}/PENDING.json"]
@@ -118,14 +159,7 @@ def require_no_pending_transition(root: Path, allowed_owner: str | None = None) 
 
 
 def write_bytes_atomic(path: Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(f".{path.name}.maios-restore-{os.getpid()}")
-    try:
-        temporary.write_bytes(data)
-        os.replace(temporary, path)
-    finally:
-        if temporary.exists():
-            temporary.unlink()
+    filesystem_engine.write_bytes_atomic(path, data)
 
 
 @contextmanager
@@ -137,6 +171,9 @@ def state_transaction(root: Path, owner: str, relatives: tuple[str, ...], *, all
     """
     root = root.resolve()
     require_no_pending_transition(root, allowed_owner)
+    journal = root / f".maios/receipts/{owner}/PENDING.json"
+    if any((root / r).as_posix().casefold() == journal.as_posix().casefold() for r in relatives):
+        raise ConfigurationError("event output collides with transaction control path")
     snapshot = {}
     for relative in relatives:
         path = root / relative

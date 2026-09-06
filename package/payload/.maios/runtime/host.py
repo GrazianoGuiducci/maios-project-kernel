@@ -9,6 +9,13 @@ import re
 from pathlib import Path
 from typing import Any
 
+try:
+    from . import filesystem as filesystem_engine
+    from . import configuration as configuration_engine
+except ImportError:  # generated runtime and installer carry the same source
+    import maios_filesystem as filesystem_engine  # type: ignore[no-redef]
+    import configuration as configuration_engine  # type: ignore[no-redef]
+
 
 HOST_STATE_SCHEMA = "maios.host-state.v2"
 HOST_ATTESTATION_SCHEMA = "maios.host-attestation.v2"
@@ -46,33 +53,15 @@ def read_json(path: Path) -> Any:
 
 
 def ensure_project_local(root: Path, path: Path) -> None:
-    root = root.resolve()
     try:
-        relative = path.relative_to(root)
-    except ValueError as exc:
-        raise HostAttestationError(f"path is outside project root: {path}") from exc
-    current = root
-    for part in relative.parts:
-        current = current / part
-        if current.is_symlink() or (hasattr(current, "is_junction") and current.is_junction()):
-            raise HostAttestationError(f"host state path contains a symlink: {relative}")
-    if not path.parent.resolve().is_relative_to(root):
-        raise HostAttestationError(f"host state parent escapes root: {relative}")
+        filesystem_engine.ensure_local(root, path)
+    except (ValueError, OSError) as exc:
+        raise HostAttestationError(str(exc)) from exc
+
 
 
 def write_json_atomic(path: Path, value: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(f".{path.name}.maios-tmp-{os.getpid()}")
-    try:
-        temporary.write_text(
-            json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-            encoding="utf-8",
-            newline="\n",
-        )
-        os.replace(temporary, path)
-    finally:
-        if temporary.exists():
-            temporary.unlink()
+    filesystem_engine.write_json_atomic(path, value)
 
 
 def host_state_path(root: Path) -> Path:
@@ -117,7 +106,11 @@ def read_host_state(root: Path) -> dict[str, Any]:
 
 def host_status(root: Path) -> dict[str, Any]:
     state = read_host_state(root)
+    errors = configuration_engine.history_receipt_errors(root, "host", state.get("attestation_history", []))
+    pending = configuration_engine.pending_transitions(root)
     return {
+        "valid": not errors and not pending, "recovery_required": bool(errors or pending),
+        "errors": errors, "pending_journals": pending,
         "schema": "maios.host-status.v2",
         "selected_adapter": state["selected_adapter"],
         "revision": state.get("revision", 0),
@@ -145,8 +138,8 @@ def validate_host_attestation(root: Path, value: Any) -> dict[str, Any]:
     event_id = value.get("event_id")
     if not isinstance(event_id, str) or not event_id:
         errors.append("event_id must be non-empty")
-    elif not SAFE_EVENT_ID.fullmatch(event_id):
-        errors.append("event_id contains unsafe characters")
+    elif not configuration_engine.valid_event_id(event_id):
+        errors.append("event_id is unsafe or reserved for transaction control")
     if value.get("stage") not in STAGE_FIELDS:
         errors.append("unsupported host attestation stage")
     try:
@@ -206,12 +199,16 @@ def admit_host_attestation(
     root: Path, attestation: Any, expected_state_sha256: str
 ) -> dict[str, Any]:
     root = root.resolve()
+    configuration_engine.require_no_pending_transition(root)
     validation = validate_host_attestation(root, attestation)
     if not validation["valid"]:
         raise HostAttestationError(
             "invalid host attestation: " + "; ".join(validation["errors"])
         )
     state = read_host_state(root)
+    coherence = configuration_engine.history_receipt_errors(root, "host", state.get("attestation_history", []))
+    if coherence:
+        raise HostAttestationError("; ".join(coherence))
     before_sha256 = digest(state)
     if expected_state_sha256 != before_sha256:
         raise HostAttestationError("host state changed after review")
@@ -274,11 +271,11 @@ def admit_host_attestation(
     after_sha256 = digest(updated)
     path = host_state_path(root)
     ensure_project_local(root, path)
-    write_json_atomic(path, updated)
     receipt = {
         "schema": HOST_RECEIPT_SCHEMA,
         "status": "admitted",
         "event_id": attestation["event_id"],
+        "event_digest": validation["event_digest"],
         "stage": stage,
         "result": attestation["result"],
         "before_state_sha256": before_sha256,
@@ -294,5 +291,10 @@ def admit_host_attestation(
         / f"{attestation['event_id']}.json"
     )
     ensure_project_local(root, receipt_path)
-    write_json_atomic(receipt_path, receipt)
-    return receipt
+    if receipt_path.exists() or filesystem_engine.is_link(receipt_path):
+        raise HostAttestationError("terminal receipt path already exists outside recorded history")
+    outputs = (path.relative_to(root).as_posix(), receipt_path.relative_to(root).as_posix())
+    with configuration_engine.state_transaction(root, "host", outputs):
+        write_json_atomic(path, updated)
+        write_json_atomic(receipt_path, receipt)
+        return receipt

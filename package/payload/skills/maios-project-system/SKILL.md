@@ -146,3 +146,17 @@ keep its PENDING evidence visible and reconcile the affected owner before
 another apply. An individually valid configuration and operating state can
 still disagree on the present event; read their relation at fresh reentry.
 Runtime source organs must be real project-local files, including their ancestors.
+
+Follow an effect invariant through every owner that exercises it. Host and
+competence state need the same acquired recovery, terminal receipt and fresh
+reentry relation as configuration and resultants. A duplicate request, a
+recorded event and coherent terminal evidence are different facts. Recompute
+the stored body's digest against its history; preserve historical evidence
+after legitimate evolution without judging old choices against today's field.
+
+Atomic promotion does not establish ownership of a temporary pathname. Acquire
+the temporary exclusively, write through its descriptor, and clean only its
+qualified current identity. Protect control paths from filesystem-equivalent
+event names. Share path confinement across installer and runtime, including
+Windows junctions on the minimum supported Python version. Follow the source
+helper into both installed contexts; clone imports alone do not prove delivery.

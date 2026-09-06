@@ -16,6 +16,11 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 try:
+    from . import filesystem as filesystem_engine
+except ImportError:  # generated runtime and installer carry the same source
+    import maios_filesystem as filesystem_engine  # type: ignore[no-redef]
+
+try:
     from . import configuration as configuration_engine
     from . import host as host_engine
 except ImportError:  # installed runtime is loaded as project-local modules
@@ -82,35 +87,15 @@ def read_json(path: Path) -> Any:
 
 
 def write_json_atomic(path: Path, value: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(f".{path.name}.maios-tmp-{os.getpid()}")
-    try:
-        temporary.write_text(
-            json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-            encoding="utf-8",
-            newline="\n",
-        )
-        os.replace(temporary, path)
-    finally:
-        if temporary.exists():
-            temporary.unlink()
+    filesystem_engine.write_json_atomic(path, value)
 
 
 def ensure_project_local(root: Path, path: Path) -> None:
-    root = root.resolve()
     try:
-        relative = path.relative_to(root)
-    except ValueError as exc:
-        raise OperatingStateError(f"path is outside project root: {path}") from exc
-    current = root
-    for part in relative.parts:
-        current = current / part
-        if current.is_symlink() or (hasattr(current, "is_junction") and current.is_junction()):
-            raise OperatingStateError(
-                f"operating state path contains a symlink: {relative}"
-            )
-    if not path.parent.resolve().is_relative_to(root):
-        raise OperatingStateError(f"operating state parent escapes root: {relative}")
+        filesystem_engine.ensure_local(root, path)
+    except (ValueError, OSError) as exc:
+        raise OperatingStateError(str(exc)) from exc
+
 
 
 def operating_state_path(root: Path) -> Path:
@@ -873,22 +858,15 @@ def continuum_status(root: Path) -> dict[str, Any]:
     if (relation.get("event_id") != state.get("last_event_id")
             or relation.get("receipt") != state.get("last_resultant_receipt")):
         errors.append("configuration and operating state disagree on the current resultant")
-    if state.get("last_event_id"):
-        relative = state.get("last_resultant_receipt")
-        if not isinstance(relative, str):
-            errors.append("current resultant has no receipt path")
-        else:
-            try:
-                receipt = read_json(configuration_engine.project_local_file(root, root / relative))
-                last = state["history"][-1]
-                if (receipt.get("schema") != RESULTANT_TRANSITION_SCHEMA
-                        or receipt.get("event_id") != state["last_event_id"]
-                        or last.get("event_id") != state["last_event_id"]
-                        or last.get("receipt") != relative
-                        or receipt.get("event_digest") != last.get("event_digest")):
-                    errors.append("current resultant receipt differs from operating history")
-            except Exception as exc:
-                errors.append("current resultant receipt is unavailable or invalid: " + str(exc))
+    errors.extend(configuration_engine.history_receipt_errors(root, "resultant", state.get("history", [])))
+    if state.get("last_event_id") and (not state.get("history")
+            or state["history"][-1].get("event_id") != state["last_event_id"]
+            or state["history"][-1].get("receipt") != state.get("last_resultant_receipt")):
+        errors.append("current resultant differs from the terminal history event")
+    host_state = host_engine.read_host_state(root)
+    errors.extend(configuration_engine.history_receipt_errors(root, "host", host_state.get("attestation_history", [])))
+    index = _competence_index(root)
+    errors.extend(configuration_engine.history_receipt_errors(root, "competence", index.get("history", [])))
     return {"valid": not errors, "errors": errors, "pending_journals": pending}
 
 
@@ -1016,8 +994,8 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
     event_id = value.get("event_id")
     if not _nonempty(event_id):
         errors.append("event_id must be non-empty")
-    elif not SAFE_EVENT_ID.fullmatch(event_id):
-        errors.append("event_id contains unsafe characters")
+    elif not configuration_engine.valid_event_id(event_id):
+        errors.append("event_id is unsafe or reserved for transaction control")
     if not _nonempty(value.get("observed_at")):
         errors.append("observed_at must be non-empty")
 
@@ -1479,25 +1457,25 @@ def apply_resultant_readback(
 ) -> dict[str, Any]:
     root = root.resolve()
     configuration_engine.require_no_pending_transition(root)
-    validation = validate_resultant_readback(root, readback)
-    if not validation["valid"]:
-        raise OperatingStateError(
-            "invalid resultant readback: " + "; ".join(validation["errors"])
-        )
-
+    if not isinstance(readback, dict) or not configuration_engine.valid_event_id(readback.get("event_id")):
+        raise OperatingStateError("event_id is unsafe or reserved for transaction control")
+    coherence = continuum_status(root)
+    if not coherence["valid"]:
+        raise OperatingStateError("continuum recovery required: " + "; ".join(coherence["errors"]))
     current_operating = read_operating_state(root)
     event_id = readback["event_id"]
-    event_digest = validation["event_digest"]
+    event_digest = digest(readback)
     for prior in current_operating.get("history", []):
         if prior.get("event_id") == event_id:
             if prior.get("event_digest") != event_digest:
                 raise OperatingStateError("event_id already exists with different content")
             return {
-                "schema": RESULTANT_TRANSITION_SCHEMA,
-                "status": "idempotent",
-                "event_id": event_id,
-                "operating_state_sha256": digest(current_operating),
+                "schema": RESULTANT_TRANSITION_SCHEMA, "status": "idempotent",
+                "event_id": event_id, "operating_state_sha256": digest(current_operating),
             }
+    validation = validate_resultant_readback(root, readback)
+    if not validation["valid"]:
+        raise OperatingStateError("invalid resultant readback: " + "; ".join(validation["errors"]))
 
     circumstance = _resolved_circumstance(readback["movement"]["circumstance"], current_operating)
     current_context = operating_status(root, circumstance)
@@ -1513,6 +1491,8 @@ def apply_resultant_readback(
     receipt_relative = f".maios/receipts/resultant/{event_id}.json"
     receipt_path = root.joinpath(*Path(receipt_relative).parts)
     ensure_project_local(root, receipt_path)
+    if receipt_path.exists() or filesystem_engine.is_link(receipt_path):
+        raise OperatingStateError("terminal receipt path already exists outside recorded history")
 
     candidate_configuration = _configuration_candidate(
         current_configuration, readback, receipt_relative

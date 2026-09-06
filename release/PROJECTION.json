@@ -1,7 +1,7 @@
 {
   "schema": "maios.release-projection.v2",
   "product": "MAIOS Project Kernel",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "files": [
     {"source": "templates/distribution/AGENTS.md", "destination": "AGENTS.md"},
     {"source": "templates/distribution/install.py", "destination": "install.py"},
@@ -18,6 +18,8 @@
     {"source": "templates/project/maios.py", "destination": "payload/maios.py"},
     {"source": "LICENSE", "destination": "payload/LICENSE"},
     {"source": "THIRD_PARTY_NOTICES.md", "destination": "payload/THIRD_PARTY_NOTICES.md"},
+    {"source": "src/maios_project_kernel/filesystem.py", "destination": "payload/.maios/installer/maios_filesystem.py"},
+    {"source": "src/maios_project_kernel/filesystem.py", "destination": "payload/.maios/runtime/maios_filesystem.py"},
     {"source": "src/maios_project_kernel/installer.py", "destination": "payload/.maios/installer/installer.py"},
     {"source": "src/maios_project_kernel/runtime.py", "destination": "payload/.maios/runtime/kernel.py"},
     {"source": "src/maios_project_kernel/configuration.py", "destination": "payload/.maios/runtime/configuration.py"},

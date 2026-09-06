@@ -13,6 +13,11 @@ from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
 
 try:
+    from . import filesystem as filesystem_engine
+except ImportError:  # generated runtime and installer carry the same source
+    import maios_filesystem as filesystem_engine  # type: ignore[no-redef]
+
+try:
     from . import configuration as configuration_engine
     from . import host as host_engine
     from . import operating as operating_engine
@@ -54,15 +59,7 @@ def read_json(path: Path) -> Any:
 
 
 def write_json_atomic(path: Path, value: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(f".{path.name}.maios-tmp-{os.getpid()}")
-    data = json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-    try:
-        temporary.write_text(data, encoding="utf-8", newline="\n")
-        os.replace(temporary, path)
-    finally:
-        if temporary.exists():
-            temporary.unlink()
+    filesystem_engine.write_json_atomic(path, value)
 
 
 def project_root(explicit: Path | None = None) -> Path:
@@ -111,6 +108,8 @@ def validate_project(root: Path) -> dict[str, Any]:
         ".maios/config/HOST_ADAPTERS.json",
         ".maios/competences/INDEX.json",
         ".maios/runtime/host.py",
+        ".maios/runtime/maios_filesystem.py",
+        ".maios/installer/maios_filesystem.py",
         ".maios/runtime/operating.py",
         ".maios/schemas/RESULTANT_READBACK.schema.json",
         ".maios/state/OPERATING_STATE.json",
@@ -446,18 +445,11 @@ def competence_index_path(root: Path) -> Path:
 
 
 def ensure_project_local(root: Path, path: Path) -> None:
-    root = root.resolve()
     try:
-        relative = path.relative_to(root)
-    except ValueError as exc:
-        raise ValueError(f"path is outside project root: {path}") from exc
-    current = root
-    for part in relative.parts:
-        current = current / part
-        if current.is_symlink() or (hasattr(current, "is_junction") and current.is_junction()):
-            raise ValueError(f"project state path contains a symlink: {relative}")
-    if not path.parent.resolve().is_relative_to(root):
-        raise ValueError(f"project state parent escapes root: {relative}")
+        filesystem_engine.ensure_local(root, path)
+    except (ValueError, OSError) as exc:
+        raise ValueError(str(exc)) from exc
+
 
 
 def competence_knowledge_path(root: Path, value: Any) -> Path:
@@ -491,7 +483,11 @@ def read_competence_index(root: Path) -> dict[str, Any]:
 
 def competence_status(root: Path) -> dict[str, Any]:
     index = read_competence_index(root)
+    errors = configuration_engine.history_receipt_errors(root, "competence", index.get("history", []))
+    pending = configuration_engine.pending_transitions(root)
     return {
+        "valid": not errors and not pending, "recovery_required": bool(errors or pending),
+        "errors": errors, "pending_journals": pending,
         "schema": "maios.competence-status.v2",
         "index_sha256": digest(index),
         "revision": index.get("revision"),
@@ -530,8 +526,8 @@ def validate_competence_delta(delta: Any) -> dict[str, Any]:
         if not isinstance(delta.get(field), str) or not delta[field].strip():
             errors.append(f"{field} must be a non-empty string")
     event_id = delta.get("event_id")
-    if isinstance(event_id, str) and not SAFE_EVENT_ID.fullmatch(event_id):
-        errors.append("event_id contains unsafe characters")
+    if isinstance(event_id, str) and not configuration_engine.valid_event_id(event_id):
+        errors.append("event_id is unsafe or reserved for transaction control")
     if delta.get("disposition") not in COMPETENCE_DISPOSITIONS:
         errors.append("unsupported competence disposition")
     if delta.get("disposition") in {"retain", "revise", "supersede"}:
@@ -584,6 +580,7 @@ def admit_competence_delta(
     root: Path, delta: Any, expected_index_sha256: str
 ) -> dict[str, Any]:
     root = root.resolve()
+    configuration_engine.require_no_pending_transition(root)
     validation = validate_competence_delta(delta)
     if not validation["valid"]:
         raise ValueError("invalid competence delta: " + "; ".join(validation["errors"]))
@@ -591,6 +588,9 @@ def admit_competence_delta(
         raise ValueError("only an explicitly accepted review can be admitted")
 
     index = read_competence_index(root)
+    coherence = configuration_engine.history_receipt_errors(root, "competence", index.get("history", []))
+    if coherence:
+        raise ValueError("; ".join(coherence))
     before_sha256 = digest(index)
     if expected_index_sha256 != before_sha256:
         raise ValueError("competence index changed after review; re-read and re-evaluate")
@@ -661,8 +661,6 @@ def admit_competence_delta(
     after_sha256 = digest(updated)
     index_path = competence_index_path(root)
     ensure_project_local(root, index_path)
-    write_json_atomic(index_path, updated)
-
     receipt = {
         "schema": "maios.competence-admission.v2",
         "status": "admitted",
@@ -676,8 +674,13 @@ def admit_competence_delta(
     }
     receipt_path = root / ".maios" / "receipts" / "competence" / f"{event_id}.json"
     ensure_project_local(root, receipt_path)
-    write_json_atomic(receipt_path, receipt)
-    return receipt
+    if receipt_path.exists() or filesystem_engine.is_link(receipt_path):
+        raise ValueError("terminal receipt path already exists outside recorded history")
+    outputs = (index_path.relative_to(root).as_posix(), receipt_path.relative_to(root).as_posix())
+    with configuration_engine.state_transaction(root, "competence", outputs):
+        write_json_atomic(index_path, updated)
+        write_json_atomic(receipt_path, receipt)
+        return receipt
 
 
 def compose(root: Path, circumstance: dict[str, Any]) -> dict[str, Any]:

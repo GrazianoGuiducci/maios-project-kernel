@@ -98,7 +98,7 @@ Existing-project receipts do not record directory ownership. Uninstall retains
 empty parent directories after file, backup, cache and receipt cleanup. New
 repository mode retains its existing empty-parent cleanup inside the target.
 
-Runtime configuration and resultant transitions snapshot the canonical state,
+Runtime configuration, resultant, host and competence transitions snapshot the canonical state,
 derived projections and prior receipts before their first state write. Their
 owner-local `PENDING.json` journals carry base64-encoded original bytes and paths
 under `maios.state-transition-journal.v1`. Caught failure restores those exact
@@ -116,6 +116,22 @@ Configuration backups can remain as evidence after a caught failure.
 Identical configuration reapplication returns an idempotent result without
 changing projections or CURRENT; that result points to the last material
 transition receipt. The receipt and its recoverable backup remain linked.
-General status also checks the configuration's last resultant against operating
-history and the current resultant receipt, so an orphaned event cannot appear
-coherent merely because both individual state files have valid shapes.
+Status and replay share terminal evidence validation: receipt structure, event
+identity, body digest and history must agree. Resultant readbacks are hashed
+from their stored body; host and competence events keep that body in their
+history. Earlier host v2 receipts bind stage, result and revision to the full
+digest-bound historical attestation. Historical after-state hashes describe
+that transition, not today's state after legitimate evolution. Old semantic
+choices are not rejudged against the present field during replay.
+
+PENDING is reserved case-insensitively in all event-owning paths; an event
+cannot use a transaction control pathname. A terminal path already present
+outside recorded history is preserved and refused. A replay requires coherent
+terminal evidence, even when the request is an exact duplicate.
+
+All JSON, text, bytes and rollback outputs use exclusively acquired temporary
+files, written through the original descriptor and cleaned only while their
+qualified identity remains. Installer and runtime use the same path helper;
+Windows junction checks use reparse metadata available in Python 3.10.
+Installer verify declares `verification_scope: installer_owned_files`; this
+never transfers a pre-existing file to uninstall ownership.

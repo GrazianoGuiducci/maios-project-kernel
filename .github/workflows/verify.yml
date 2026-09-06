@@ -17,6 +17,8 @@ jobs:
             python: "3.10"
           - os: windows-latest
             python: "3.13"
+          - os: windows-latest
+            python: "3.10"
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out repository

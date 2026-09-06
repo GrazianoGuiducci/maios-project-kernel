@@ -13,6 +13,11 @@ import uuid
 from pathlib import Path, PurePosixPath
 from typing import Any, Callable, Iterable
 
+try:
+    from . import filesystem as filesystem_engine
+except ImportError:  # generated runtime and installer carry the same source
+    import maios_filesystem as filesystem_engine  # type: ignore[no-redef]
+
 
 PLAN_SCHEMA = "maios.install-plan.v2"
 RECEIPT_SCHEMA = "maios.installation-receipt.v3"
@@ -46,18 +51,7 @@ def read_json(path: Path) -> Any:
 
 
 def write_json(path: Path, value: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(f".{path.name}.maios-tmp-{os.getpid()}")
-    try:
-        temporary.write_text(
-            json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-            encoding="utf-8",
-            newline="\n",
-        )
-        os.replace(temporary, path)
-    finally:
-        if temporary.exists():
-            temporary.unlink()
+    filesystem_engine.write_json_atomic(path, value)
 
 
 def rendered_host_state(root: Path, host: str) -> bytes:
@@ -274,7 +268,7 @@ def target_snapshot(
         relative = path.relative_to(target)
         if ".git" in relative.parts:
             continue
-        if path.is_symlink():
+        if has_unsafe_ancestor(target, relative.as_posix()):
             rows.append({"path": relative.as_posix(), "kind": "symlink"})
         elif path.is_file():
             rows.append(
@@ -298,16 +292,21 @@ def target_snapshot(
 
 
 def has_unsafe_ancestor(target: Path, destination: str) -> bool:
-    current = target
-    for part in safe_relative(destination).parts[:-1]:
-        current = current / part
-        if current.exists() and current.is_symlink():
-            return True
+    try:
+        filesystem_engine.ensure_local(target, native(target, destination))
+    except (ValueError, OSError):
+        return True
     return False
 
 
+def canonical_target(target: Path) -> Path:
+    if filesystem_engine.is_link(target.expanduser()):
+        raise InstallerError("target root must not be a symlink or junction")
+    return target.resolve()
+
+
 def current_receipt(target: Path) -> dict[str, Any] | None:
-    target = target.resolve()
+    target = canonical_target(target)
     path = target / ".maios" / "receipts" / "install" / "CURRENT.json"
     if (
         has_unsafe_ancestor(target, ".maios/receipts/install/CURRENT.json")
@@ -331,9 +330,9 @@ def plan_digest(plan: dict[str, Any]) -> str:
 
 def make_plan(root: Path, target: Path, mode: str, host: str) -> dict[str, Any]:
     root = root.resolve()
-    if target.expanduser().is_symlink():
+    if filesystem_engine.is_link(target.expanduser()):
         raise InstallerError("target root must not be a symlink")
-    target = target.resolve()
+    target = canonical_target(target)
     identity = package_identity(root)
     entries = source_entries(root, host)
     creates: list[str] = []
@@ -793,7 +792,7 @@ def apply_plan(root: Path, plan: dict[str, Any]) -> dict[str, Any]:
 
 def receipt_current_relation(target: Path, receipt: dict[str, Any]) -> str:
     """Relate a historical receipt to the installation presently governing target."""
-    target = target.resolve()
+    target = canonical_target(target)
     relative = ".maios/receipts/install/CURRENT.json"
     path = target / relative
     if has_unsafe_ancestor(target, relative) or path.is_symlink():
@@ -810,7 +809,7 @@ def receipt_current_relation(target: Path, receipt: dict[str, Any]) -> str:
 
 
 def verify_installation(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
-    target = target.resolve()
+    target = canonical_target(target)
     require_receipt_target(target, receipt)
     validation = validate_installation_receipt(receipt)
     relation = receipt_current_relation(target, receipt)
@@ -833,6 +832,7 @@ def verify_installation(target: Path, receipt: dict[str, Any]) -> dict[str, Any]
     ]
     return {
         "schema": "maios.installation-verification.v2",
+        "verification_scope": "installer_owned_files",
         "target": str(target),
         "receipt_state": receipt.get("state"),
         "files": results,
@@ -858,7 +858,7 @@ def remove_empty_parents(path: Path, stop: Path) -> None:
 
 
 def recover_pending(target: Path, expected_attempt: str | None = None) -> dict[str, Any]:
-    target = target.resolve()
+    target = canonical_target(target)
     path = target / ".maios" / "receipts" / "install" / "PENDING.json"
     if has_unsafe_ancestor(target, ".maios/receipts/install/PENDING.json") or path.is_symlink():
         raise InstallerError("unsafe pending installation receipt path")
@@ -916,7 +916,7 @@ def recover_pending(target: Path, expected_attempt: str | None = None) -> dict[s
 
 
 def uninstall(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
-    target = target.resolve()
+    target = canonical_target(target)
     require_receipt_target(target, receipt)
     require_valid_installation_receipt(receipt)
     relation = receipt_current_relation(target, receipt)
@@ -1018,7 +1018,7 @@ def load_plan(path: Path) -> dict[str, Any]:
 
 
 def require_receipt_target(target: Path, receipt: Any) -> None:
-    target = target.resolve()
+    target = canonical_target(target)
     if not isinstance(receipt, dict) or receipt.get("schema") != RECEIPT_SCHEMA:
         raise InstallerError("unsupported installation receipt schema")
     receipt_target = receipt.get("target")
@@ -1027,7 +1027,7 @@ def require_receipt_target(target: Path, receipt: Any) -> None:
 
 
 def load_receipt(target: Path, explicit: Path | None) -> dict[str, Any]:
-    target = target.resolve()
+    target = canonical_target(target)
     if explicit is None and has_unsafe_ancestor(target, ".maios/receipts/install/CURRENT.json"):
         raise InstallerError("unsafe current installation receipt path")
     path = explicit or target / ".maios" / "receipts" / "install" / "CURRENT.json"

@@ -1,5 +1,22 @@
 # Changelog
 
+## 3.1.2 — 2026-09-06
+
+- Reserve case-equivalent PENDING event IDs before writes and defend transaction
+  output paths against collisions with their control journal.
+- Extend caught-failure rollback and persistent recovery evidence to host and
+  competence admissions, including late receipt failures and idempotent retry.
+- Share exclusively acquired atomic temporaries across every JSON/text/bytes
+  writer and restore path; preserve foreign or replaced temporary objects.
+- Share project-local confinement with the installer, including real Windows
+  junctions and the Python 3.10 reparse-tag path.
+- Validate terminal receipt bodies, digests, identity and history before status
+  or replay; preserve legitimate historical events after later evolution.
+- Report installer verification_scope without transferring ownership of
+  pre-existing project files to uninstall.
+- Add eleven focused regression cases (77 total), a Windows/Python 3.10 CI job,
+  and the shared filesystem source in both standalone delivery contexts.
+
 ## 3.1.1 - 2026-09-06
 
 - Capture recovery before the first configuration/resultant write and restore

@@ -764,6 +764,8 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "payload/.maios/config/HOST_ADAPTERS.json",
         "payload/.maios/runtime/kernel.py",
         "payload/.maios/runtime/host.py",
+        "payload/.maios/runtime/maios_filesystem.py",
+        "payload/.maios/installer/maios_filesystem.py",
         "payload/.maios/runtime/operating.py",
         "payload/.maios/kernel/SYSTEM_KERNEL.md",
         "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
