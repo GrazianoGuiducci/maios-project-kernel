@@ -24,7 +24,7 @@
     {
       "bytes": 3045,
       "path": "MANIFEST.json",
-      "sha256": "154e583a3d4c0e4ef44687378f67fdbc584446802d5414f4aa0c2844e67463b1"
+      "sha256": "68b3bdc0fb973896a51bafd41b6c5671e7602a2e2076ebbf00e6d76d4efece45"
     },
     {
       "bytes": 1062,
@@ -142,14 +142,14 @@
       "sha256": "a199bc1b41ab4c4c89c1203280e5a2ac18c8536ab439deb8f485405a79f2f315"
     },
     {
-      "bytes": 10303,
+      "bytes": 10609,
       "path": "payload/.maios/receipts/README.md",
-      "sha256": "3523828dbce3a6f6b3f677e170c8e2e2ce0f64a571b1798a22a29b2a1e525c80"
+      "sha256": "2b9ddc916852a1eeebae3c76b9d47335aa319ee4c1aa7054d13cc5b3d379fc6f"
     },
     {
-      "bytes": 38356,
+      "bytes": 38494,
       "path": "payload/.maios/runtime/configuration.py",
-      "sha256": "1f1fff08f303bfcfbf12a3aa365e701b697bbbe34ba7f3a361f17dccf36fe42c"
+      "sha256": "e0fbf0c724cd396c73fde59245cdd6f9f34fdf5198424b62841df861c036c466"
     },
     {
       "bytes": 12591,

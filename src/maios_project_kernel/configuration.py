@@ -69,7 +69,9 @@ def ensure_project_local(root: Path, path: Path) -> None:
 
 
 def project_local_file(root: Path, path: Path) -> Path:
-    ensure_project_local(root.resolve(), path)
+    # Preserve the paired root/path spelling until the confinement helper has
+    # derived the relative path; it then resolves the root and checks children.
+    ensure_project_local(root, path)
     if not path.is_file():
         raise ConfigurationError(f"project-local file is missing: {path}")
     return path
@@ -88,7 +90,7 @@ def pending_transitions(root: Path) -> list[str]:
         relative = f".maios/receipts/{owner}/PENDING.json"
         path = root / relative
         try:
-            ensure_project_local(root.resolve(), path)
+            ensure_project_local(root, path)
         except ConfigurationError:
             result.append(relative)
             continue

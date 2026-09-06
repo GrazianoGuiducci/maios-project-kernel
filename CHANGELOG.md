@@ -9,6 +9,8 @@
   living knowledge evolution. Add four installed-process regression cases.
 - Qualify historical verification counts and refresh future Hermes discovery
   knowledge without configuring another harness.
+- Preserve equivalent root/path spellings through receipt and pending-journal
+  confinement; add an installed-process regression for both owner readers.
 
 ## 3.1.3+coordination.1 — development candidate, 2026-09-06
 

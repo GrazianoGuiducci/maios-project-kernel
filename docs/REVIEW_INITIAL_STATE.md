@@ -49,10 +49,23 @@ ammissione, mentre il caso positivo di estensioni e conoscenza era già valido.
 | Competenza in `active` senza storia, poi evento per un'altra competenza | Incoerenza riconosciuta anche nell'owner indice; evento rifiutato, metodo ancora leggibile |
 | Estensioni, unknowns, metodo rappresentato, vera prima osservazione e corpo evoluto | Stato valido, ammissione coerente e successiva lettura disponibili |
 
-La suite della candidata .2 contiene 88 casi; il risultato effettivo e gli
+La suite della candidata .2 contiene 89 casi; il risultato effettivo e gli
 eventuali skip appartengono alla CI del commit esatto. Il pacchetto mantiene
 62 file totali e 51 nel payload. Queste prove riguardano persistenza e rientro;
 l'uso semantico e l'assimilazione da parte di un secondo modello restano distinti.
+
+La prima CI .2 ha inoltre reso visibile una perdita della relazione fra radice
+e percorso nei lettori di ricevute e journal. Veniva risolta soltanto la radice
+prima del controllo: con un alias Windows, uno stato valido poteva apparire
+incoerente. I due lettori ora conservano la coppia originale fino al controllo
+comune, che ricava il percorso relativo, risolve la radice e verifica i suoi
+discendenti. Il rifiuto di traversal, symlink e junction interni resta attivo.
+Una quinta regressione riproduce il caso per entrambi gli owner attraverso i
+moduli installati in processi nuovi; prova anche il rifiuto del traversal nei
+discendenti. Il seguito locale ha passato sette di otto casi mirati, con un
+solo skip per il privilegio symlink; include il caso con junction reale.
+La precedente suite locale di 88 casi appartiene alla prima revisione .2;
+la CI del commit corretto esegue l'intera suite di 89 casi.
 
 ## Affinamenti della documentazione
 

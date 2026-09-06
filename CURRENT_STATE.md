@@ -25,11 +25,17 @@ observations and independently evolving bodies remain available. The coordinatio
 method and future harness readiness are retained; no other host is configured.
 Read docs/REVIEW_INITIAL_STATE.md for cause, evidence and the preserved freedom.
 
-The current suite has 88 cases and the package has 62 files / 51 payload files.
-The complete local suite passed in 213.266 seconds: 86 passed and two
-symlink-privilege skips; the real junction case passed. Two equal builds and
-distribution verification establish the source/package relation. The CI of the
-published commit supplies its separate platform evidence.
+The current suite has 89 cases and the package has 62 files / 51 payload files.
+The initial .2 source passed 88 local cases in 213.266 seconds: 86 passed and two
+symlink-privilege skips. CI then exposed a pre-existing root-alias mismatch in
+receipt/journal readers, made visible by the corrected stage readback. The
+readers now preserve the root/path pair until the shared confinement helper
+derives its relative path. Child traversal and linked descendants stay refused.
+The fifth regression covers both installed owner readers using equivalent
+root spellings. Eight relevant cases passed locally after this correction
+(seven passed, one symlink-privilege skip, real junction executed). Two equal
+builds and verification establish the source/package relation. Exact-commit CI
+executes the entire current 89-case suite on all three declared platform jobs.
 The next selected effect is source publication of this corrective candidate.
 The numbered release remains 3.1.3. No new global review is scheduled; Form,
 site and the deferred unified product retain their independent receiving fronts.

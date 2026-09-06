@@ -159,3 +159,8 @@ incoherent host stages are reported as unverified and the source files remain
 available for recovery. This checks the owner-specific claims, not equality to
 an installation template: unknowns, extensions, represented competences and
 living knowledge bodies retain their own evolution.
+
+Receipt and pending-journal readers retain the supplied root/path pair until
+the common confinement helper derives its relative path. Equivalent spellings
+of the selected root are valid; resolving only that root beforehand can lose
+their relation. Child traversal, symlinks and junctions remain rejected.

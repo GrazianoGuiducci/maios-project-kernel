@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 
 import test_builder_installer_runtime as base
 import test_owner_event_integrity as integrity
@@ -10,6 +12,39 @@ class InitialOwnerStateTests(base.DistributionFixture):
     owner_case = integrity.OwnerEventIntegrityTests.owner_case
     command = integrity.OwnerEventIntegrityTests.command
     admit = integrity.OwnerEventIntegrityTests.admit
+
+    def test_equivalent_root_spelling_preserves_receipt_and_pending_readback(self):
+        script = """
+import json, sys
+from pathlib import Path
+root = Path(sys.argv[1])
+sys.path.insert(0, str(root / '.maios/runtime'))
+import configuration, host, kernel
+owner = sys.argv[2]
+result = host.host_status(root) if owner == 'host' else kernel.competence_status(root)
+relative = '.maios/receipts/' + owner + '/first.json'
+try:
+    configuration.project_local_file(root, root / '..' / root.name / relative)
+except configuration.ConfigurationError:
+    result['child_traversal_rejected'] = True
+else:
+    result['child_traversal_rejected'] = False
+print(json.dumps(result))
+"""
+        for owner in ("host", "competence"):
+            with self.subTest(owner=owner):
+                target, event, path = self.owner_case(owner, "root-spelling-" + owner)
+                self.assertEqual(self.admit(target, owner, event, path)[1]["status"], "admitted")
+                # Both roots select the same directory; descendants must still
+                # be checked before following links or parent traversals.
+                alias = target / ".." / target.name
+                process = subprocess.run([sys.executable, "-I", "-B", "-c", script, str(alias), owner],
+                                         capture_output=True, text=True)
+                self.assertEqual(process.returncode, 0, process.stderr)
+                result = json.loads(process.stdout)
+                self.assertTrue(result["valid"], result)
+                self.assertFalse(result["recovery_required"])
+                self.assertTrue(result["child_traversal_rejected"])
 
     def assert_unrecorded_claim_rejected(self, target, owner, event, state_path):
         before = state_path.read_bytes()
