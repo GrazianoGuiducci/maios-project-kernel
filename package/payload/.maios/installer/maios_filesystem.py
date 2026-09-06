@@ -23,8 +23,13 @@ def is_link(path: Path) -> bool:
 
 
 def ensure_local(root: Path, path: Path) -> None:
-    root = root.resolve()
-    relative = path.relative_to(root)
+    original_root = root if root.is_absolute() else Path.cwd() / root
+    original_path = path if path.is_absolute() else Path.cwd() / path
+    root = original_root.resolve()
+    try:
+        relative = original_path.relative_to(original_root)
+    except ValueError:
+        relative = original_path.relative_to(root)
     if ".." in relative.parts:
         raise ValueError(f"path contains parent traversal: {relative}")
     current = root
@@ -32,7 +37,7 @@ def ensure_local(root: Path, path: Path) -> None:
         current = current / part
         if is_link(current):
             raise ValueError(f"project path contains a symlink or junction: {relative}")
-    if not path.parent.resolve().is_relative_to(root):
+    if not original_path.parent.resolve().is_relative_to(root):
         raise ValueError(f"project path parent escapes root: {relative}")
 
 

@@ -102,7 +102,12 @@ passed through preview, verify, recover-pending and uninstall, preserving
 external sentinels. Eleven focused cases include seven atomic writer seams,
 host/competence failures before and after receipts, incomplete rollback and
 fresh installed status, reserved names, replay and isolated body corruption.
-The prior configuration/resultant recovery cases remain in the full suite.
+The prior configuration/resultant recovery cases remain in the full suite. CI then exposed a
+path-spelling difference on Windows: confinement compared a canonical root
+with an original path, and fault injectors compared unresolved destinations.
+The shared helper now derives the relative path before canonicalizing the
+root, while checking each descendant and the resolved parent. A relative-root
+reproduction and canonical comparisons in the injectors cover that seam.
 
 The shared helper is delivered from one source in both independent installer
 and runtime contexts. The package now contains 60 files / 49 payload files.

@@ -9,7 +9,8 @@
 - Share exclusively acquired atomic temporaries across every JSON/text/bytes
   writer and restore path; preserve foreign or replaced temporary objects.
 - Share project-local confinement with the installer, including real Windows
-  junctions and the Python 3.10 reparse-tag path.
+  junctions and the Python 3.10 reparse-tag path. Equivalent root spellings retain
+  their relative path before canonicalization; linked descendants stay rejected.
 - Validate terminal receipt bodies, digests, identity and history before status
   or replay; preserve legitimate historical events after later evolution.
 - Report installer verification_scope without transferring ownership of

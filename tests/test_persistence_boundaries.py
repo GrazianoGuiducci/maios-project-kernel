@@ -85,10 +85,10 @@ class PersistenceBoundaryTests(base.DistributionFixture):
                     before = state.read_bytes()
                     original = module.write_json_atomic
                     def fail(path, value):
-                        if path == receipt and when == "before":
+                        if path.resolve() == receipt.resolve() and when == "before":
                             raise OSError("receipt unavailable")
                         original(path, value)
-                        if path == receipt and when == "after":
+                        if path.resolve() == receipt.resolve() and when == "after":
                             raise OSError("late receipt failure")
                     if when == "directory":
                         receipt.mkdir(parents=True)
@@ -132,7 +132,7 @@ before = state.read_bytes()
 original = module.write_json_atomic
 def fail(path, value):
     original(path, value)
-    if path == receipt: raise OSError('installed late failure')
+    if path.resolve() == receipt.resolve(): raise OSError('installed late failure')
 with patch.object(module, 'write_json_atomic', side_effect=fail):
     try: admit(root, event, module.digest(read(root)))
     except OSError: pass
@@ -155,7 +155,7 @@ assert receipt.is_file() and kernel.validate_project(root)['valid']
                 original = module.write_json_atomic
                 def fail(path, value):
                     original(path, value)
-                    if path == receipt:
+                    if path.resolve() == receipt.resolve():
                         raise OSError("late receipt failure")
                 with patch.object(module, "write_json_atomic", side_effect=fail), \
                      patch.object(configuration, "write_bytes_atomic", side_effect=OSError("rollback unavailable")):
@@ -210,6 +210,10 @@ assert receipt.is_file() and kernel.validate_project(root)['valid']
 
     def test_acquired_temporary_collision_and_cleanup_preserve_foreign_objects(self):
         from maios_project_kernel import filesystem
+        probe = "from pathlib import Path; import sys; sys.path.insert(0,sys.argv[1]); from maios_project_kernel import filesystem; filesystem.ensure_local(Path('.'), Path('output.json'))"
+        result = subprocess.run([sys.executable, "-I", "-B", "-c", probe, str(base.ROOT / "src")],
+                                cwd=self.base, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
         folder = self.base / "exclusive-output"
         folder.mkdir()
         destination = folder / "state.json"

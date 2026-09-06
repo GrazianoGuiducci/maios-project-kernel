@@ -24,7 +24,7 @@
     {
       "bytes": 3030,
       "path": "MANIFEST.json",
-      "sha256": "0ab6f3eb54728e3dbc548dc12f7b119d63d08259dcebcb87d34ec234e904d153"
+      "sha256": "925c52305dac329e527dbad688b63cccb2d72534679af2b97b047e5db0ed2771"
     },
     {
       "bytes": 1047,
@@ -72,9 +72,9 @@
       "sha256": "dfe25528e790c28f488b0cebdf4d5ae27a95127f1c49bd1d5ebe8da1cc128857"
     },
     {
-      "bytes": 3010,
+      "bytes": 3273,
       "path": "payload/.maios/installer/maios_filesystem.py",
-      "sha256": "5d7b431c10ecd6fe510ca5f7ea4252a12f4c7170031fef6d0e4d50e44e1c8ab8"
+      "sha256": "4e89b896694893eee9c992e671838911ac8724a45993897dd4d9442af5357296"
     },
     {
       "bytes": 1356,
@@ -162,9 +162,9 @@
       "sha256": "e760f027b6d2b8d7ee0b15fc0b71162fc114013877d144c1f1f9a28f0941fdd4"
     },
     {
-      "bytes": 3010,
+      "bytes": 3273,
       "path": "payload/.maios/runtime/maios_filesystem.py",
-      "sha256": "5d7b431c10ecd6fe510ca5f7ea4252a12f4c7170031fef6d0e4d50e44e1c8ab8"
+      "sha256": "4e89b896694893eee9c992e671838911ac8724a45993897dd4d9442af5357296"
     },
     {
       "bytes": 75394,
