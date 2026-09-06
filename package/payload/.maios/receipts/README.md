@@ -55,3 +55,29 @@ original plan, source-contact/provenance and knowledge-selection/genealogy
 structures differ from the earlier v2 shapes. Learning relations retain their
 own `maios.learning-relation.v2` identity. This names the new contracts and does
 not introduce a migration for earlier installations.
+
+Interrupted existing-project installations use `maios.pending-installation.v3`.
+Its original `install_plan`, digest and package/target identity bind the complete
+`planned_files` and `planned_backup_files` maps. `created_files` separately
+records successful exclusive creations, each with its planned hash and the
+device, inode and qualified timestamp observed on the creating descriptor.
+Use birth time when available, otherwise metadata-change time, retaining that
+basis in the record. Python distinguishes these platform-dependent attributes
+in its [stat documentation](https://docs.python.org/3/library/os.html#os.stat_result).
+A missing reliable identity remains explicitly uncertain. An attempt UUID and
+exclusive journal creation keep a failed acquisition from recovering another
+attempt. These records are local evidence, not signatures against coordinated
+rewriting of the journal and its sources.
+
+The pending validator rejects the entire inconsistent journal before deletion.
+Recovery compares recorded file identities and hashes with the present files;
+planned paths alone never authorize deletion. Uncertain or changed files and
+their journal remain available. A matching committed installation receipt
+changes recovery into journal cleanup only. Recovery reports this as
+`maios.pending-installation-recovery.v3` with `installation_retained`.
+
+Installer `verify` reports receipt consistency and the current files recorded
+as installer-owned. Pre-existing identical target-owned files are preserved
+but not included in that file report; `maios.py status` checks the current
+required Kernel structure through its canonical state readers. Neither command
+certifies semantic use or assimilation by a model.

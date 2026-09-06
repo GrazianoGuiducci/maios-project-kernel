@@ -1,5 +1,23 @@
 # Changelog
 
+## Pending recovery corrections — 3.0.3+continuum.4
+
+- Bind pending journal v3 to its original plan, complete planned payload/backup
+  maps and attempt identity; validate every creation record before any deletion.
+- Separate planned paths from successful exclusive creations. Record file
+  identity from the creating descriptor and preserve unrecorded, replaced,
+  unidentifiable or changed files with their journal during recovery.
+- Create backups and journals exclusively. A failed journal or staging-directory
+  acquisition never cleans up a competing attempt.
+- Retain a committed installation if pending-journal cleanup fails; a later
+  matching recovery removes only the journal. Preserve unowned empty directories.
+- Cover corrupt maps, both concurrent-file cases, interrupted recording,
+  replacement identity, competing acquisition and post-commit cleanup in six
+  focused regression cases; extend the existing successful recovery case.
+- Clarify that installer verification reports installer-owned files, while
+  general status checks current required Kernel structure. Release number stays open.
+- Pass all 55 local tests; actual host/model use and assimilation remain unobserved.
+
 ## Receipt and status corrections — 3.0.3+continuum.3
 
 - Derive receipt ownership, preserved pre-existing paths and backup maps from

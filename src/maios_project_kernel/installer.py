@@ -9,14 +9,15 @@ import json
 import os
 import shutil
 import sys
+import uuid
 from pathlib import Path, PurePosixPath
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 
 PLAN_SCHEMA = "maios.install-plan.v2"
 RECEIPT_SCHEMA = "maios.installation-receipt.v3"
 UNINSTALL_SCHEMA = "maios.uninstall-receipt.v2"
-PENDING_SCHEMA = "maios.pending-installation.v2"
+PENDING_SCHEMA = "maios.pending-installation.v3"
 
 
 class InstallerError(RuntimeError):
@@ -401,7 +402,42 @@ def verify_plan(plan: dict[str, Any]) -> None:
         raise InstallerError("unsupported install mode")
 
 
-def copy_entry(root: Path, base: Path, entry: dict[str, Any]) -> None:
+def file_identity(value: os.stat_result) -> dict[str, int | str] | None:
+    if not value.st_ino:
+        return None  # no reliable file identity: recovery must preserve it
+    # Windows exposes birth time separately; legacy ctime can differ between
+    # descriptor and pathname observations even for the same newly created file.
+    basis = "birthtime_ns" if hasattr(value, "st_birthtime_ns") else "ctime_ns"
+    return {"device": value.st_dev, "inode": value.st_ino, "time_basis": basis,
+            "time_ns": getattr(value, "st_" + basis)}
+
+
+def create_file(base: Path, relative: str, data: bytes) -> dict[str, Any]:
+    """Return evidence from the descriptor acquired by this exclusive creation."""
+    destination = native(base, relative)
+    if has_unsafe_ancestor(base, relative) or destination.is_symlink():
+        raise InstallerError(f"unsafe creation destination: {relative}")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        descriptor = os.open(destination, os.O_WRONLY | os.O_CREAT | os.O_EXCL |
+                             getattr(os, "O_BINARY", 0), 0o644)
+    except FileExistsError as exc:
+        raise InstallerError(f"destination appeared after preview: {relative}") from exc
+    with os.fdopen(descriptor, "wb") as stream:
+        stream.write(data)
+        stream.flush()
+        os.fsync(stream.fileno())
+        identity = file_identity(os.fstat(stream.fileno()))
+    # Failed or unrecorded writes remain uncertain; never unlink by path here.
+    sha256 = digest_bytes(data)
+    if (has_unsafe_ancestor(base, relative) or destination.is_symlink()
+        or not destination.is_file() or digest_file(destination) != sha256
+        or (identity is not None and file_identity(destination.stat()) != identity)):
+        raise InstallerError(f"created file changed before recording: {relative}")
+    return {"path": relative, "sha256": sha256, "file_identity": identity}
+
+
+def copy_entry(root: Path, base: Path, entry: dict[str, Any]) -> dict[str, Any]:
     destination = native(base, entry["destination"])
     if has_unsafe_ancestor(base, entry["destination"]) or destination.is_symlink():
         raise InstallerError(f"unsafe destination changed after preview: {entry['destination']}")
@@ -417,29 +453,7 @@ def copy_entry(root: Path, base: Path, entry: dict[str, Any]) -> None:
         data = source.read_bytes()
     if digest_bytes(data) != entry["sha256"]:
         raise InstallerError(f"package source changed after preview: {entry['source']}")
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    descriptor: int | None = None
-    try:
-        descriptor = os.open(
-            destination,
-            os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_BINARY", 0),
-            0o644,
-        )
-        with os.fdopen(descriptor, "wb") as stream:
-            descriptor = None
-            stream.write(data)
-    except FileExistsError as exc:
-        raise InstallerError(
-            f"destination appeared after preview: {entry['destination']}"
-        ) from exc
-    except Exception:
-        if descriptor is not None:
-            os.close(descriptor)
-        if destination.is_file() and not destination.is_symlink():
-            destination.unlink()
-        raise
-    if digest_file(destination) != entry["sha256"]:
-        raise InstallerError(f"copied byte mismatch: {entry['destination']}")
+    return create_file(base, entry["destination"], data)
 
 
 def update_baseline(plan: dict[str, Any]) -> dict[str, Any]:
@@ -574,23 +588,19 @@ def require_valid_installation_receipt(receipt: Any) -> None:
         raise InstallerError("invalid installation receipt: " + "; ".join(validation["errors"]))
 
 
-def backup_identical(target: Path, plan: dict[str, Any]) -> None:
+def backup_identical(target: Path, plan: dict[str, Any],
+                     record_created: Callable[[dict[str, Any]], None]) -> None:
     if plan["mode"] != "existing_repository" or not plan["preserves_identical"]:
         return
-    backup = target / ".maios" / "backups" / plan["plan_digest"]
-    for relative in plan["preserves_identical"]:
+    for entry in install_receipt(plan, "pending")["installer_owned_backup_files"]:
+        relative = entry["source_path"]
         source = native(target, relative)
         if has_unsafe_ancestor(target, relative) or source.is_symlink() or not source.is_file():
             raise InstallerError(f"pre-existing identical path changed after preview: {relative}")
-        destination = native(backup, relative)
-        if has_unsafe_ancestor(target, destination.relative_to(target).as_posix()):
-            raise InstallerError(f"unsafe backup destination: {relative}")
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        if destination.exists():
-            if not destination.is_file() or digest_file(destination) != digest_file(source):
-                raise InstallerError(f"backup destination conflict: {relative}")
-            continue
-        shutil.copyfile(source, destination)
+        data = source.read_bytes()
+        if digest_bytes(data) != entry["sha256"]:
+            raise InstallerError(f"pre-existing content changed before backup: {relative}")
+        record_created(create_file(target, entry["path"], data))
 
 
 def pending_installation(plan: dict[str, Any]) -> dict[str, Any]:
@@ -602,11 +612,84 @@ def pending_installation(plan: dict[str, Any]) -> dict[str, Any]:
         "mode": plan["mode"],
         "host": plan["host"],
         "package_identity": plan["package_identity"],
-        "installer_owned_files": receipt["installer_owned_files"],
-        "installer_owned_backup_files": receipt["installer_owned_backup_files"],
+        "attempt_id": uuid.uuid4().hex,
+        "install_plan": json.loads(json.dumps(plan)),
+        "planned_files": receipt["installer_owned_files"],
+        "planned_backup_files": receipt["installer_owned_backup_files"],
+        "created_files": [],
         "global_writes": [],
         "recovery": "run recover-pending against the exact target",
     }
+
+
+def validate_pending_installation(target: Path, pending: Any) -> None:
+    """Validate the complete journal before it can authorize a recovery effect."""
+    if not isinstance(pending, dict) or pending.get("schema") != PENDING_SCHEMA:
+        raise InstallerError("unsupported pending installation schema")
+    try:
+        plan = pending["install_plan"]
+        if not isinstance(plan, dict):
+            raise InstallerError("pending original plan must be an object")
+        verify_plan(plan)
+        expected = install_receipt(plan, "installed")
+        require_valid_installation_receipt(expected)
+        require_receipt_target(target, expected)
+        if plan["mode"] != "existing_repository" or plan.get("status") != "ready":
+            raise InstallerError("pending journal requires an original ready existing-project plan")
+        for key in ("target", "plan_digest", "mode", "host", "package_identity"):
+            if pending.get(key) != expected[key]:
+                raise InstallerError("pending journal differs from original plan: " + key)
+        for key, receipt_key in (("planned_files", "installer_owned_files"),
+                                 ("planned_backup_files", "installer_owned_backup_files")):
+            if pending.get(key) != expected[receipt_key]:
+                raise InstallerError("pending journal differs from original plan: " + key)
+        attempt = pending.get("attempt_id")
+        if not isinstance(attempt, str) or uuid.UUID(hex=attempt).hex != attempt:
+            raise InstallerError("invalid pending attempt identity")
+        planned = {entry["path"]: entry for entry in
+                   pending["planned_files"] + pending["planned_backup_files"]}
+        records = pending.get("created_files")
+        if not isinstance(records, list):
+            raise InstallerError("pending created_files must be a list")
+        seen: set[str] = set()
+        for record in records:
+            if not isinstance(record, dict) or set(record) != {"path", "sha256", "file_identity"}:
+                raise InstallerError("invalid pending creation record")
+            path = record["path"]
+            if not isinstance(path, str) or path not in planned or path in seen:
+                raise InstallerError("pending creation must identify one unique planned file")
+            seen.add(path)
+            if record["sha256"] != planned[path]["sha256"]:
+                raise InstallerError("pending creation differs from planned content: " + path)
+            identity = record["file_identity"]
+            if identity is not None and (
+                not isinstance(identity, dict) or set(identity) != {"device", "inode", "time_basis", "time_ns"}
+                or identity["time_basis"] not in ("birthtime_ns", "ctime_ns")
+                or any(type(identity[k]) is not int or identity[k] < 0 for k in ("device", "inode", "time_ns"))
+                or not identity["inode"]
+            ):
+                raise InstallerError("invalid pending file identity: " + path)
+    except (KeyError, TypeError, ValueError, AttributeError) as exc:
+        raise InstallerError("invalid pending installation: " + str(exc)) from exc
+
+
+def begin_pending_installation(target: Path, pending: dict[str, Any]) -> None:
+    validate_pending_installation(target, pending)
+    create_file(target, ".maios/receipts/install/PENDING.json",
+                (json.dumps(pending, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode("utf-8"))
+
+
+def record_pending_creation(target: Path, pending: dict[str, Any], record: dict[str, Any]) -> None:
+    path = target / ".maios/receipts/install/PENDING.json"
+    if has_unsafe_ancestor(target, ".maios/receipts/install/PENDING.json") or path.is_symlink():
+        raise InstallerError("unsafe pending journal during creation recording")
+    if read_json(path) != pending:
+        raise InstallerError("pending journal changed before creation recording")
+    candidate = json.loads(json.dumps(pending))
+    candidate["created_files"].append(record)
+    validate_pending_installation(target, candidate)
+    write_json(path, candidate)
+    pending.update(candidate)
 
 
 def apply_plan(root: Path, plan: dict[str, Any]) -> dict[str, Any]:
@@ -628,8 +711,12 @@ def apply_plan(root: Path, plan: dict[str, Any]) -> dict[str, Any]:
         stage = target.parent / f".{target.name}.maios-stage-{plan['plan_digest'][:12]}"
         if stage.exists():
             raise InstallerError(f"attempt staging path already exists: {stage}")
+        # Acquire before the cleanup handler: a competing stage is not ours.
         try:
             stage.mkdir(parents=True)
+        except FileExistsError as exc:
+            raise InstallerError(f"attempt staging path already exists: {stage}") from exc
+        try:
             for entry in plan["entries"]:
                 copy_entry(root, stage, entry)
             receipt = install_receipt(plan, "installed")
@@ -652,27 +739,38 @@ def apply_plan(root: Path, plan: dict[str, Any]) -> dict[str, Any]:
     pending_path = target / ".maios" / "receipts" / "install" / "PENDING.json"
     if has_unsafe_ancestor(target, ".maios/receipts/install/PENDING.json") or pending_path.is_symlink():
         raise InstallerError("unsafe pending receipt path")
-    write_json(pending_path, pending_installation(plan))
+    pending = pending_installation(plan)
+    # An acquisition failure must never trigger recovery of another attempt.
+    begin_pending_installation(target, pending)
     try:
-        backup_identical(target, plan)
+        record_created = lambda record: record_pending_creation(target, pending, record)
+        backup_identical(target, plan, record_created)
         for entry in plan["entries"]:
             if entry["destination"] not in plan["creates"]:
                 continue
-            copy_entry(root, target, entry)
+            record_created(copy_entry(root, target, entry))
         receipt = install_receipt(plan, "installed")
         if has_unsafe_ancestor(target, ".maios/receipts/install/CURRENT.json") or receipt_path.is_symlink():
             raise InstallerError("unsafe installation receipt path")
+        if read_json(pending_path) != pending:
+            raise InstallerError("pending journal changed before installation commit")
         write_json(receipt_path, receipt)
-        if pending_path.is_file():
-            pending_path.unlink()
-        return receipt
     except Exception as exc:
-        recovery = recover_pending(target)
+        recovery = recover_pending(target, expected_attempt=pending["attempt_id"])
         if not recovery["complete"]:
             raise InstallerError(
-                f"install failed and automatic recovery preserved changed paths: {recovery['preserved_changed']}"
+                "install failed and automatic recovery preserved changed or uncertain paths: "
+                + str(recovery["preserved_changed"] + recovery["preserved_uncertain"])
             ) from exc
         raise
+    # CURRENT commits the installation. A cleanup failure must not roll it back.
+    if read_json(pending_path) != pending:
+        raise InstallerError("installation committed but pending journal changed")
+    try:
+        pending_path.unlink()
+    except OSError as exc:
+        raise InstallerError("installation committed; use recover-pending to finish journal cleanup") from exc
+    return receipt
 
 
 def verify_installation(target: Path, receipt: dict[str, Any]) -> dict[str, Any]:
@@ -720,21 +818,28 @@ def remove_empty_parents(path: Path, stop: Path) -> None:
         current = current.parent
 
 
-def recover_pending(target: Path) -> dict[str, Any]:
+def recover_pending(target: Path, expected_attempt: str | None = None) -> dict[str, Any]:
     target = target.resolve()
     path = target / ".maios" / "receipts" / "install" / "PENDING.json"
     if has_unsafe_ancestor(target, ".maios/receipts/install/PENDING.json") or path.is_symlink():
         raise InstallerError("unsafe pending installation receipt path")
     pending = read_json(path)
-    if pending.get("schema") != PENDING_SCHEMA:
-        raise InstallerError("unsupported pending installation schema")
-    if Path(pending.get("target", "")).resolve() != target:
-        raise InstallerError("pending installation target mismatch")
+    validate_pending_installation(target, pending)
+    if expected_attempt is not None and pending["attempt_id"] != expected_attempt:
+        raise InstallerError("pending installation belongs to another attempt")
+    receipt_path = target / ".maios/receipts/install/CURRENT.json"
+    installation_retained = False
+    if receipt_path.exists() or receipt_path.is_symlink():
+        committed = load_receipt(target, None)
+        if committed["install_plan"] != pending["install_plan"]:
+            raise InstallerError("current installation belongs to another plan; preserve pending journal")
+        installation_retained = True
     removed: list[str] = []
     preserved_changed: list[str] = []
+    preserved_uncertain: list[str] = []
     missing: list[str] = []
-    entries = list(pending.get("installer_owned_files", []))
-    entries.extend(pending.get("installer_owned_backup_files", []))
+    entries = [] if installation_retained else pending["planned_files"] + pending["planned_backup_files"]
+    created = {record["path"]: record for record in pending["created_files"]}
     for entry in reversed(entries):
         relative = entry.get("path")
         if not isinstance(relative, str):
@@ -744,24 +849,29 @@ def recover_pending(target: Path) -> dict[str, Any]:
             preserved_changed.append(relative)
         elif not candidate.exists():
             missing.append(relative)
-        elif not candidate.is_file() or digest_file(candidate) != entry.get("sha256"):
+        elif relative not in created or created[relative]["file_identity"] is None:
+            preserved_uncertain.append(relative)
+        elif not candidate.is_file() or file_identity(candidate.stat()) != created[relative]["file_identity"]:
+            preserved_uncertain.append(relative)
+        elif digest_file(candidate) != entry["sha256"]:
             preserved_changed.append(relative)
         else:
             candidate.unlink()
             removed.append(relative)
-            remove_empty_parents(candidate.parent, target)
-    complete = not preserved_changed
+            # Pre-existing empty directories do not become installer-owned.
+    complete = not preserved_changed and not preserved_uncertain
     if complete and path.is_file():
         path.unlink()
-        remove_empty_parents(path.parent, target)
     return {
-        "schema": "maios.pending-installation-recovery.v2",
+        "schema": "maios.pending-installation-recovery.v3",
         "target": str(target),
         "source_plan_digest": pending.get("plan_digest"),
         "removed": sorted(removed),
         "preserved_changed": sorted(preserved_changed),
+        "preserved_uncertain": sorted(preserved_uncertain),
         "already_missing": sorted(missing),
         "complete": complete,
+        "installation_retained": installation_retained,
         "global_writes": [],
     }
 

@@ -23,10 +23,25 @@ python install.py apply --plan install-plan.json
 adjacent staging directory atomically. `existing_repository` inventories every
 destination, preserves identical files, creates missing files, and refuses
 divergent or unsafe paths. Apply recomputes the target and package identity and
-refuses a stale plan. Existing-project apply writes a `PENDING` journal before
-the first file transition. After a process or machine interruption, run
-`python install.py recover-pending --target <target>` from `package/`; changed
-target bytes are preserved and reported.
+refuses a stale plan. Existing-project apply exclusively acquires a `PENDING`
+journal before the first file transition. It preserves the original plan and
+separately records completed exclusive creations, including backups, with the
+file identity obtained from the creating descriptor.
+
+After an interrupted writing attempt has stopped, run
+`python install.py recover-pending --target <target>` from `package/`. Recovery
+validates the complete journal before deleting anything, then removes only
+recorded creations whose identity and hash still match. Unrecorded, replaced,
+unidentifiable or changed files remain with the journal; `preserved_uncertain`
+and `preserved_changed` explain why recovery is incomplete. An interruption
+between creation and durable recording preserves the file for reconstruction.
+Empty directories are retained because the journal records file ownership.
+
+A competing journal or backup is never overwritten, even if its bytes match.
+If installation has already committed a valid `CURRENT.json` for the same
+original plan, recovery only finishes journal cleanup and retains the installed
+files. This is conservative local recovery, not serialization of arbitrary
+concurrent project writers or a crash-safe transaction across every file.
 
 Before planning, the installer verifies every distribution file against
 `PACKAGE_INVENTORY.json` and refuses missing, changed, symlinked or untracked

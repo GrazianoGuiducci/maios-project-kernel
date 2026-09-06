@@ -1,6 +1,6 @@
 # MAIOS Project Kernel
 
-Candidata per recensione: **3.0.3+continuum.3**, dalla release pubblica 3.0.3.
+Candidata per recensione: **3.0.3+continuum.4**, dalla release pubblica 3.0.3.
 Il numero della prossima release resta da scegliere. Questa candidata porta
 competenze come fonti vive di sapere e metodo: il contesto e l'intento evolvono
 attraverso il lavoro; apprendimenti diversi possono coesistere e quelli
@@ -15,6 +15,9 @@ originaria rispettando l'evoluzione locale. Il contatto con la sorgente
 conserva nello stato del progetto tentativi e osservazioni riuscite.
 Proprietà dei file e recupero usano ora una validazione comune legata al piano;
 lo stato generale usa i lettori canonici. I contratti incompatibili passano a v3.
+Il recupero ora distingue i file previsti da quelli effettivamente creati e
+conserva quelli di provenienza incerta. Un'installazione completata rimane
+intatta quando resta soltanto da rimuovere il giornale del tentativo.
 
 Per la recensione delle sorgenti, parti dalle [indicazioni di lettura](docs/REVIEW_CONTINUUM.md)
 e identifica il commit esatto che stai leggendo. Il numero della prossima release resta aperto.

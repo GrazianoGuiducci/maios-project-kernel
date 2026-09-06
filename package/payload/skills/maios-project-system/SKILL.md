@@ -117,3 +117,11 @@ serves every consumer; an inconsistent receipt requires reconstruction from
 qualified sources before changing files. General `status` reads the canonical
 configuration and operating owners, including their current contract identities.
 Do not infer a healthy state from a weaker duplicate of an owner's validation.
+
+For interrupted installation, let the pending recovery owner distinguish the
+plan, actual exclusive creations and present file identity. Identical content
+does not identify a creator. Preserve uncertain files and the journal so their
+provenance can be reconstructed; do not label an incomplete recovery complete.
+Once the installation receipt has committed, journal cleanup must retain that
+installed result. Apply this difference to backup and failure paths as well as
+the successful installation path.

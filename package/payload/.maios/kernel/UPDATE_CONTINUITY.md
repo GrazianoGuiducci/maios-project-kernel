@@ -26,6 +26,15 @@ use that relation. An inconsistent map stops recovery or reapplication before
 changing files or discarding the receipt; an intact baseline alone cannot
 establish which paths those operations may change.
 
+For an interrupted installation, `PENDING.json` v3 keeps the original plan
+separate from actual creation records. Recovery validates the whole journal
+and compares creation-time file identity and content before removal. A planned
+file with identical bytes can still belong to another writer; unrecorded or
+uncertain provenance requires preservation, including backups. If the same plan
+already has a valid committed installation receipt, only the pending journal
+is cleaned up. The original plan explains intended effects; recorded creation
+and present identity supply the additional evidence needed for recovery.
+
 The initial state contracts are `maios.configuration-state.v3` and
 `maios.operating-state.v3`, retained in `maios.installation-receipt.v3`.
 Their identities distinguish the new required structures from earlier shapes.

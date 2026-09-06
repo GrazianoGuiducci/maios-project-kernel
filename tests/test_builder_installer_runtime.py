@@ -537,11 +537,13 @@ class InstallerTests(DistributionFixture):
             self.distribution, target, "existing_repository", "generic"
         )
         pending_path = target / ".maios" / "receipts" / "install" / "PENDING.json"
-        installer.write_json(pending_path, installer.pending_installation(plan))
+        pending = installer.pending_installation(plan)
+        installer.begin_pending_installation(target, pending)
         first = next(
             entry for entry in plan["entries"] if entry["destination"] in plan["creates"]
         )
-        installer.copy_entry(self.distribution, target, first)
+        created = installer.copy_entry(self.distribution, target, first)
+        installer.record_pending_creation(target, pending, created)
         blocked = installer.make_plan(
             self.distribution, target, "existing_repository", "generic"
         )

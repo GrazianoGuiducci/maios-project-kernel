@@ -1,13 +1,22 @@
 # MAIOS Project Kernel current state
 
-updated: 2026-09-05
+updated: 2026-09-06
 active_surface: autonomous continuum candidate with receiving-review corrections
-status: receipt and status corrections implemented; 49 local tests pass
-development_build: 3.0.3+continuum.3
+status: pending recovery corrections implemented; 55 local tests pass
+development_build: 3.0.3+continuum.4
 public_release_baseline: 3.0.3
 next_public_release_number: open; 3.1.0 is the current proposal
 
 ## Current resultant
+
+The two reviews of cd744e2 exposed unbound pending-journal maps and recovery of
+files merely planned for creation. Both were reproduced in temporary targets.
+Pending journal v3 now retains the original plan and validates both planned maps
+separately from actual creation records. Payloads, backups and journals acquire
+their paths exclusively. Recorded descriptor identities and hashes govern
+recovery; uncertain files and the journal are preserved. Failed attempt
+acquisition cannot clean up another attempt. After CURRENT commits, recovery
+retains the installation and only finishes journal cleanup.
 
 The autonomous package carries competences as living sources of knowledge,
 reasons and method. Formation can follow intent, memory, successful work,
@@ -51,8 +60,14 @@ An unavailable source remains pending and does not overwrite the last success.
 
 ## Current evidence
 
-The previous candidate passed 46 local tests. Its cases exercise default reentry in a separate
-process, plural cross-owner genealogy and predecessor reopening, corrupt state
+Six focused recovery cases pass, including the two reported data-loss scenarios.
+They also exercise whole-journal rejection before any deletion, recorded and
+unrecorded creation, replaced/changed/unidentifiable files, competing journal
+and stage acquisition, and cleanup failure after commit. All 55 local tests
+pass. The suite also retains the earlier continuation and installation cases.
+
+Those cases exercise default reentry in a separate process, plural cross-owner
+genealogy and predecessor reopening, corrupt state
 rejection, missing organs, configured intent provenance, source-contact
 continuity and baseline integrity while local knowledge evolves. The matching
 candidate case also exercises selecting one useful aspect without forcing
@@ -61,7 +76,7 @@ other available learning to participate.
 Three further cases exercise corrupted receipt ownership through all consumers,
 configuration rejection through installed status and distinct first-user schema
 identities. The existing learning-corruption case now also exercises installed
-status. All 49 local tests pass on this revision.
+status.
 
 The generated package remains 58 files, 47 in the payload. Its manifest and
 inventory bind the current source identity. Metadata or source changes require
