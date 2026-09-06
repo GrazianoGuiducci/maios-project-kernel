@@ -1,9 +1,9 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-06
-active_surface: autonomous Project Kernel 3.1.3 publication readback
-status: 3.1.3 published; release tags immutable; receiving Form work remains next
-product_version: 3.1.3
+active_surface: situated coordination and shared-project continuation competence
+status: verified candidate selected for source publication and final review; numbered release remains 3.1.3
+product_version: 3.1.3+coordination.1
 current_public_release: v3.1.3
 release_commit: 2dc82936154e1b43417120a31f0403baf05d5e66
 release_ci: passed on Ubuntu/Python 3.10 and Windows/Python 3.10 and 3.13
@@ -12,8 +12,37 @@ release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/t
 
 ## Current resultant
 
-The 3.1.3 release is published at the immutable commit above. This main readback
-records publication and regenerates only source metadata; the installed payload
+The operator selected competence formation for a future continuation through
+OpenCode, Claude Code, Hermes or another harness, and the functional MMK/N0
+comparison with 3.1.2. The comparison also covers the current published 3.1.3.
+The existing delegation faculty previously reached generic composition, which
+did not teach its coordinating method. It now reaches the project coordination
+competence and the supporting shared-project host-adaptation knowledge.
+
+The candidate preserves common method, situated instance identity, direct
+responsibility, cognitive freedom, useful overview, return and learning. It
+knows how to form a real future connection and recognizes the current single
+selected-adapter state without presenting it as a permanent possibility limit.
+The current work does not configure another harness or change runtime state.
+Read docs/INSTANCE_COORDINATION.md for the source-bound functional comparison.
+
+The local suite ran 84 cases in 109.897 seconds: 82 passed, two symlink
+creation cases skipped for missing Windows privilege. The real junction case
+passed. The added installed-process case follows the delivered method link,
+observes a later body change and preserves existing state; unrelated work does
+not automatically recall coordination. Two equal builds and distribution
+verification cover 62 package files / 51 payload files. These checks do not
+prove a receiving model's use or assimilation. The released evidence below
+belongs to its stated 3.1.3 snapshot, not to these new knowledge bodies.
+The operator selected final review and source publication of this candidate.
+The review entry is docs/REVIEW_COORDINATION.md; use the exact supplied commit
+and its CI, since this source snapshot precedes its own publication readback.
+No new numbered release is selected here. Form remains a separate receiving front.
+
+## Published 3.1.3 baseline
+
+The 3.1.3 release is published at the immutable commit above. Its subsequent main readback
+recorded publication and regenerates only source metadata; the installed payload
 is identical to the release. Exact-commit CI passed on all three declared jobs.
 
 The review of 3.1.2 closes its six prior findings and reports two further P2

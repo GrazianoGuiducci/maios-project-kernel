@@ -46,6 +46,13 @@ eligible. It is a current projection, not a semantic router or permission.
 
 ## Movement record
 
+When another instance contributes or continues the project, use
+`skills/maios-project-coordination/SKILL.md` from the project root. It owns
+intent-preserving delegation, direct responsibilities and returned-result
+integration. Host adaptation supplies a different native entry if needed.
+These competences become pertinent through the situation; an ordinary movement
+does not need a coordinator, additional instance or prescribed handoff form.
+
 ```json
 {
   "circumstance": {

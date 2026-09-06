@@ -1,7 +1,7 @@
 {
   "schema": "maios.source-manifest.v2",
   "product": "MAIOS Project Kernel",
-  "version": "3.1.3",
+  "version": "3.1.3+coordination.1",
   "source_owner": "maios-project-kernel repository",
   "construction": "autonomous source-reconciled package with RepoKernel-generated functions translated into owner-native organs",
   "repokernel_plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",
@@ -50,6 +50,15 @@
       "used_for": ["competence levels", "portable competence formation", "reciprocal cultivation", "multi-owner learning", "composition", "owner-governed meta-evolution"],
       "source_shipped": false,
       "topology_imported": false
+    },
+    {
+      "id": "mmk-n0-situated-coordination",
+      "position": "non_shipped_competence_source",
+      "used_for": ["common semantic plane and situated instances", "intent-preserving delegation", "direct responsibility and useful overview", "returned-result reconciliation", "shared-project continuation knowledge"],
+      "public_incarnation": ["skills/maios-project-coordination/SKILL.md", "skills/maios-project-host-adaptation/references/shared-project-continuity.md"],
+      "source_shipped": false,
+      "topology_imported": false,
+      "claim_boundary": "functional competence transfer; private controller and historical schemas are not copied; real host use remains unobserved"
     },
     {
       "id": "repokernel-owner-contracts",

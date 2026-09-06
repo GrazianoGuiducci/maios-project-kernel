@@ -2,7 +2,7 @@
 
 ## Source owner
 
-The 3.1.3 product source is this `maios-project-kernel` repository. The autonomous 2.0
+The 3.1.3+coordination.1 product source is this `maios-project-kernel` repository. The autonomous 2.0
 Kernel remains its living base; reviewed RepoKernel functions are assimilated
 through a source-bound translation receipt. The generated
 `package/` projection

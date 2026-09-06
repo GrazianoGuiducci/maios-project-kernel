@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.1.3+coordination.1 — development candidate, 2026-09-06
+
+- Connect the existing delegation faculty to an operative coordination
+  competence: common semantic plane, situated identity, direct responsibility,
+  cognitive freedom in delegation, returned effects and reusable learning.
+- Give host adaptation the method for continuing a shared project through
+  another harness and forming the necessary connection from an actual case.
+- Preserve the current runtime; no additional host is configured and no
+  multi-instance state or coordination service is introduced.
+- Project both knowledge bodies into the installable package and exercise their
+  discovery, live readback and situational availability in an installed process.
+
 ## 3.1.3 — 2026-09-06
 
 - Reject only the two reserved history metadata fields before host/competence

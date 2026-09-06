@@ -10,6 +10,13 @@ that is present. The coder already knows how its own system works; use that
 knowledge together with the installed neutral sources instead of importing a
 second Kernel or treating one adapter table as a complete manual.
 
+When the same project must continue through another instance or harness, read
+[shared-project-continuity.md](references/shared-project-continuity.md). It
+supplies the method for forming the actual connection, preserving shared
+knowledge and situated identity, and evolving missing support when it becomes
+useful. Use `maios-project-coordination` when work or responsibility must return
+between instances. Merely knowing this possibility does not configure a host.
+
 ## Reconstruct The Host Relation
 
 Read `AGENTS.md`, `START_HERE.md`, `HOSTS.md`, the selected host projection and

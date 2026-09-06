@@ -224,12 +224,15 @@
         "delegation",
         "alternate_model",
         "parallel_agent",
-        "cross_context_handoff"
+        "cross_context_handoff",
+        "instance_handoff",
+        "shared_project_continuation",
+        "direct_coordination"
       ],
-      "material_when": "Another capable system can add cognition without inheriting source or effect authority.",
-      "entry": ".maios/kernel/COMPOSITION_PROTOCOL.md",
+      "material_when": "A handoff, shared-project continuation, direct responsibility or returned contribution can materially change the work.",
+      "entry": "skills/maios-project-coordination/SKILL.md",
       "result_contract": "DelegationPacket",
-      "proof": "The returned delta remains source-positioned and independently classified before local use."
+      "proof": "The contribution preserves intent and source/effect distinctions, changes the useful result and returns reusable learning to the competence that must act differently."
     }
   ]
 }

@@ -4,6 +4,14 @@ The installer selects one initial host profile. Every profile receives the
 same neutral Kernel and competence sources; paths and invocation names are
 host mechanics rather than different Kernel meanings.
 
+For later continuation through another instance or harness, use the
+`maios-project-host-adaptation` competence and its
+`references/shared-project-continuity.md`; use `maios-project-coordination`
+for a material handoff or intersecting work. The shared sources can teach the
+receiving assistant how to form the required connection when it is needed.
+Per-instance capability state and simultaneous-write coordination are not
+automatically established by installing an initial host profile.
+
 | Host | Initial native projection |
 | --- | --- |
 | ChatGPT / Codex coding agent | `.agents/skills/` contains the system entry and all portable competence owners |

@@ -27,6 +27,12 @@ the first interpretation does not decide the full horizon of relevance. Let
 `maios-project-host-adaptation` translate this relation when the present coder
 or harness needs another native incarnation.
 
+Let `maios-project-coordination` own a material handoff, direct coordination or
+return between instances. Shared Kernel knowledge remains reachable while
+each actor retains its context and responsibility. Host adaptation can form
+another native entry when that situation arises; ordinary single-instance work
+does not acquire an extra setup or coordination phase.
+
 `START_HERE.md` is the stable system boot: it restores the Kernel relation and
 the way the project enters it. The current context is not stored in that boot.
 It is reconstructed from the operator, real project sources, canonical

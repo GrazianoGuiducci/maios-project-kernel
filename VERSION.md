@@ -1,16 +1,17 @@
 # Version
 
-Product version: `3.1.3`.
-Previous numbered release: `3.1.2` at `295a1c7bb0589faf2b4f96524dce6410682e3d80`.
+Development candidate: `3.1.3+coordination.1`.
+Latest numbered release: `3.1.3` at `2dc82936154e1b43417120a31f0403baf05d5e66`.
 Shared Project Kernel family: `3.0.0`.
 
-This patch preserves accepted event bodies by reserving only the two internal
-history metadata names. Current host and competence-index state must match
-their latest terminal transition. Other input extensions, historical replay
-and independent evolution of living knowledge bodies remain available.
+This candidate adds situated coordination and shared-project continuation
+knowledge, connecting the existing delegation faculty to its operative method.
+It preserves the runtime and receipt/state guarantees of 3.1.3. The candidate
+does not configure another harness or introduce per-instance runtime state.
+See [the functional comparison](docs/INSTANCE_COORDINATION.md).
 
-Version 3.1 introduced the knowledge continuum and first-user v3 state contracts,
-with learning relations v2. Idempotent reapplication does not implement automatic
-cross-version migration. The Form and unified chat/harness product retain their
-own versions. Existing release tags remain immutable; v3.1.3 identifies this
-corrective snapshot when published.
+The build label distinguishes this evolving package from the published release.
+It does not publish a new numbered version or rewrite an existing tag.
+The later release number follows the selected complete delta. Idempotent
+reapplication is not an automatic cross-version migration. Form, site and
+the deferred unified chat/harness product retain their own current states.
