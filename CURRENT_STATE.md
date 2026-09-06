@@ -1,17 +1,20 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-06
-active_surface: autonomous Project Kernel 3.1.2 corrective patch
-status: corrective source prepared; 3.1.1 remains the published baseline
+active_surface: autonomous Project Kernel 3.1.2 publication readback
+status: 3.1.2 published; release tags immutable; receiving Form work remains next
 product_version: 3.1.2
-selected_corrective_version: 3.1.2
-current_public_release: v3.1.1
-release_commit: 872478246512491bc5d85fa27821786ff163ddd2
-release_ci: passed on Ubuntu and Windows
-release_ci_url: https://github.com/GrazianoGuiducci/maios-project-kernel/actions/runs/34021076826
-release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v3.1.1
+current_public_release: v3.1.2
+release_commit: 295a1c7bb0589faf2b4f96524dce6410682e3d80
+release_ci: passed on Ubuntu/Python 3.10 and Windows/Python 3.10 and 3.13
+release_ci_url: https://github.com/GrazianoGuiducci/maios-project-kernel/actions/runs/34024018243
+release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v3.1.2
 
 ## Current resultant
+
+The 3.1.2 release is published at the immutable commit above. This main readback
+records the completed effect and changes only current-state documentation and
+generated source-identity metadata. Its installed payload matches the release.
 
 The post-release review of 8724782 supplied six code-derived findings, with its
 proposed reproductions not yet executed. Local regression work reproduced all
@@ -111,10 +114,12 @@ reproduction and canonical comparisons in the injectors cover that seam.
 
 The shared helper is delivered from one source in both independent installer
 and runtime contexts. The package now contains 60 files / 49 payload files.
-CI runs Ubuntu/Python 3.10 and Windows/Python 3.10 and 3.13; read the exact
-commit's result for platform observations. Release publication is recorded
-only after it occurs. The local counts above precede the final last-receipt
-readback refinement, which is included in the focused rerun and release CI.
+CI passed on Ubuntu/Python 3.10 and Windows/Python 3.10 and 3.13, including
+suite, two builds and tracked-package verification. The final focused rerun
+also exercises host and competence late-failure rollback and successful retry
+inside isolated processes importing only installed modules. This is observed
+runtime delivery, not model-level semantic use or later assimilation. All
+release identities above were read back after publication.
 
 The previous six focused installer recovery cases pass, including the two reported data-loss scenarios.
 They also exercise whole-journal rejection before any deletion, recorded and
