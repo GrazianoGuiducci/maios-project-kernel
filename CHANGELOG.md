@@ -14,6 +14,8 @@
 - Preserve unrecorded directory ownership on existing projects across payload,
   backup, runtime-cache and receipt cleanup.
 - Align version metadata, package entry, citations and bilingual README with 3.1.0.
+- Hash individual source contracts with the same canonical line-ending bytes as
+  the source tree, so LF and CRLF checkouts produce identical package identities.
 - Add three reproduced uninstall regressions; the complete suite contains 58 tests.
 - Keep the shared family at 3.0.0. Native model use and later non-identical
   assimilation remain unobserved; Form and unified convergence retain their owners.

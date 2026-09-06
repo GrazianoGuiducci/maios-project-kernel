@@ -50,6 +50,11 @@ def source_identity_bytes(path: Path) -> bytes:
     return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
 
 
+def source_file_digest(path: Path) -> str:
+    """Use the same canonical source bytes for individual and tree identities."""
+    return digest_bytes(source_identity_bytes(path))
+
+
 def project_source_file(source: Path, destination: Path) -> None:
     """Project canonical bytes so checkout line endings cannot change artifacts."""
 
@@ -641,12 +646,12 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "source_identity": {
             "owner": "maios-project-kernel repository",
             "tree_sha256": tree_sha256,
-            "projection_sha256": digest_file(projection_path),
-            "source_manifest_sha256": digest_file(root / "sources" / "SOURCE_MANIFEST.json"),
-            "autonomous_entry_contract_sha256": digest_file(
+            "projection_sha256": source_file_digest(projection_path),
+            "source_manifest_sha256": source_file_digest(root / "sources" / "SOURCE_MANIFEST.json"),
+            "autonomous_entry_contract_sha256": source_file_digest(
                 root / "kernel" / "AUTONOMOUS_ENTRY_CONTRACT.json"
             ),
-            "repokernel_projection_receipt_sha256": digest_file(
+            "repokernel_projection_receipt_sha256": source_file_digest(
                 root / "release" / "repokernel" / "PROJECTION_RECEIPT.json"
             ),
             "revision_claim": "content_addressed_source_tree",

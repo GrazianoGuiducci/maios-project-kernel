@@ -62,13 +62,13 @@
     "recovery": "remove_only_unchanged_installer_owned_bytes"
   },
   "source_identity": {
-    "autonomous_entry_contract_sha256": "80e60c4c6e4a6815d5298c816d35da7a74879936e3fe105ded44b6b3567a5746",
+    "autonomous_entry_contract_sha256": "ac16de506a4818e96d988f6cb3e066d99ee64be69ada62e29703b082921eaf77",
     "owner": "maios-project-kernel repository",
-    "projection_sha256": "035a71f768cd35c536af1811a277381d5d45f135b09aafa405d9a60c0d277b82",
+    "projection_sha256": "f034132a0f812252d3259a1c8a640a1b527459a56126f1450efb20cb8d05dfea",
     "repokernel_projection_receipt_sha256": "d294756e66579e4094769e4e9aea9f190a5559d699843007912fd827c5b86697",
     "revision_claim": "content_addressed_source_tree",
-    "source_manifest_sha256": "f745a1877261ff7625491cef1a23001cb34f858b144b11d81093e76f6c092aa0",
-    "tree_sha256": "502a332505d24dbc4b3de9b576576f5314eda1761284a3ae79ae6a258e906735"
+    "source_manifest_sha256": "a25dc76c6bc23c00a6936100f4e31c7a59b3653c0083ca4a93e6c63dc1d86165",
+    "tree_sha256": "562018846dd03e6288b7f04924bbb15df9a493bd0cc1a7f68b23e7e934d8cced"
   },
   "target_modes": [
     "new_repository",

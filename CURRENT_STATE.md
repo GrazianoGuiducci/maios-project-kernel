@@ -17,6 +17,10 @@ were reproduced and corrected. Uninstall now binds a valid receipt to CURRENT
 before any deletion and rejects a missing, invalid or different current plan.
 Read-only verify exposes current_relation separately from historical receipt
 validity and file presence. Existing-project directory identities are retained.
+Release CI also exposed individual source-contract hashes using checkout bytes
+while the source-tree hash used canonical bytes. Both now use canonical source
+line endings; the existing checkout regression covers the whole manifest and
+inventory across LF and CRLF variants.
 
 The two reviews of cd744e2 exposed unbound pending-journal maps and recovery of
 files merely planned for creation. Both were reproduced in temporary targets.

@@ -233,6 +233,23 @@ class BuilderTests(DistributionFixture):
             source.write_bytes(b"first\r\nsecond\r\n")
             self.assertEqual(builder.source_tree_digest(root), lf_digest)
 
+        source_root = self.base / "source-line-endings"
+        for original in builder.source_tree_files(ROOT):
+            destination = source_root / original.relative_to(ROOT)
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_bytes(builder.source_identity_bytes(original))
+        lf_package = self.base / "lf-package"
+        builder.render_distribution(source_root, lf_package)
+        for relative in ("release/PROJECTION.json", "sources/SOURCE_MANIFEST.json",
+                         "kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
+                         "release/repokernel/PROJECTION_RECEIPT.json"):
+            path = source_root / relative
+            path.write_bytes(path.read_bytes().replace(b"\n", b"\r\n"))
+        crlf_package = self.base / "crlf-package"
+        builder.render_distribution(source_root, crlf_package)
+        for name in ("MANIFEST.json", "PACKAGE_INVENTORY.json"):
+            self.assertEqual((lf_package / name).read_bytes(), (crlf_package / name).read_bytes())
+
     def test_projected_text_bytes_are_independent_of_checkout_line_endings(self) -> None:
         source = self.base / "checkout-source.txt"
         destination = self.base / "projected.txt"

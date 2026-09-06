@@ -19,7 +19,9 @@ The accumulated changes include:
   exclusive creation evidence, qualified file identity and preservation of
   uncertainty, backups and already committed installations;
 - uninstall bound to the valid current plan, including explicit receipt copies,
-  and preservation of existing-project directory ownership.
+  and preservation of existing-project directory ownership;
+- canonical source-contract hashing, keeping the complete package identity
+  identical across LF and CRLF checkouts.
 
 Both reviews of continuum.4 close its two pending-recovery blockers. One also
 identified the stale uninstall receipt and empty-directory defects corrected
