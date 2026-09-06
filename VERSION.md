@@ -1,18 +1,15 @@
 # Version
 
-Development candidate: `3.1.3+coordination.2`.
-Latest numbered release: `3.1.3` at `2dc82936154e1b43417120a31f0403baf05d5e66`.
+Product version: `3.2.0`.
+Previous numbered release: `3.1.3` at `2dc82936154e1b43417120a31f0403baf05d5e66`.
 Shared Project Kernel family: `3.0.0`.
 
-This candidate adds situated coordination and shared-project continuation
+This minor release adds situated coordination and shared-project continuation
 knowledge, connecting the existing delegation faculty to its operative method.
-It preserves recovery and historical receipt relations, and checks initial
-owner claims before the first admission can incorporate them. The candidate
-does not configure another harness or introduce per-instance runtime state.
-See [the functional comparison](docs/INSTANCE_COORDINATION.md).
+It also preserves initial owner-state integrity and equivalent project-root
+spellings during receipt and journal readback. See [release notes](docs/RELEASE_3.2.0.md).
 
-The build label distinguishes this evolving package from the published release.
-It does not publish a new numbered version or rewrite an existing tag.
-The later release number follows the selected complete delta. Idempotent
-reapplication is not an automatic cross-version migration. Form, site and
-the deferred unified chat/harness product retain their own current states.
+The final review accepted `3.1.3+coordination.2` at
+`925ea8a4eee7188063adfbe649d97a6d8b347ccb` for numbered promotion. Version 3.2.0
+preserves that runtime and competence behavior with a distinct release identity.
+Idempotent reapplication is not an automatic cross-version migration.

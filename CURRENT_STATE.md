@@ -1,45 +1,35 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-06
-active_surface: initial owner-state integrity correction following accepted coordination review
-status: initial-state correction verified; source publication selected; numbered release remains 3.1.3
-product_version: 3.1.3+coordination.2
-current_public_release: v3.1.3
-release_commit: 2dc82936154e1b43417120a31f0403baf05d5e66
-release_ci: passed on Ubuntu/Python 3.10 and Windows/Python 3.10 and 3.13
-release_ci_url: https://github.com/GrazianoGuiducci/maios-project-kernel/actions/runs/34025987501
-release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v3.1.3
+active_surface: numbered promotion of the accepted autonomous package
+status: 3.2.0 release source prepared; publication is recorded by the immutable GitHub release
+product_version: 3.2.0
+release_target: v3.2.0
+release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v3.2.0
+previous_public_release: v3.1.3
+previous_release_commit: 2dc82936154e1b43417120a31f0403baf05d5e66
+accepted_candidate_commit: 925ea8a4eee7188063adfbe649d97a6d8b347ccb
+accepted_candidate_ci: https://github.com/GrazianoGuiducci/maios-project-kernel/actions/runs/34031691583
 
 ## Current resultant
 
-The review accepted the coordination delta at 7bd30bb58acfeeb8928f1dd8c53f4a34b4f50369
-in its declared scope and identified one pre-existing initial-state P2. The
-candidate .2 corrects that residue in both host and competence owners. An empty
-history cannot carry already-observed host stages/capabilities/evidence or
-already-admitted active competences. A first receipt cannot absorb such claims.
+The final returned review accepts coordination.2 for numbered promotion with
+no new blocking findings. Version 3.2.0 carries its runtime and competence
+behavior unchanged: situated coordination, shared-project continuation,
+initial owner-state integrity and equivalent project-root readback.
+The minor increment reflects the added operative competences since 3.1.3.
 
-Four installed-process regressions reproduce and close the defect. Incoherent
-files remain intact and recovery is visible at fresh reentry before any write.
-Harmless extensions, unknowns, represented competences, actual first failed
-observations and independently evolving bodies remain available. The coordination
-method and future harness readiness are retained; no other host is configured.
-Read docs/REVIEW_INITIAL_STATE.md for cause, evidence and the preserved freedom.
+At the accepted candidate, exact-commit CI passed all three declared jobs:
+89 cases on each job, 89 passed on Windows/Python 3.10 and 3.13, and 88 passed
+with one Windows-specific skip on Ubuntu/Python 3.10. The package contains
+62 files / 51 payload files; the family remains 3.0.0.
 
-The current suite has 89 cases and the package has 62 files / 51 payload files.
-The initial .2 source passed 88 local cases in 213.266 seconds: 86 passed and two
-symlink-privilege skips. CI then exposed a pre-existing root-alias mismatch in
-receipt/journal readers, made visible by the corrected stage readback. The
-readers now preserve the root/path pair until the shared confinement helper
-derives its relative path. Child traversal and linked descendants stay refused.
-The fifth regression covers both installed owner readers using equivalent
-root spellings. Eight relevant cases passed locally after this correction
-(seven passed, one symlink-privilege skip, real junction executed). Two equal
-builds and verification establish the source/package relation. Exact-commit CI
-executes the entire current 89-case suite on all three declared platform jobs.
-The next selected effect is source publication of this corrective candidate.
-The numbered release remains 3.1.3. No new global review is scheduled; Form,
-site and the deferred unified product retain their independent receiving fronts.
-Actual model use and assimilation remain unobserved.
+This file is the pre-publication source snapshot. Final identity verification
+and CI belong to the 3.2.0 commit; the GitHub release records their exact link
+when promotion completes. The previous tag is preserved. No further global
+kernel review is scheduled. Actual model use and later assimilation remain
+unobserved. Form, site and the unified chat/harness product retain their own
+receiving fronts. See docs/RELEASE_3.2.0.md and docs/REVIEW_INITIAL_STATE.md.
 
 ## Reviewed coordination.1 baseline
 
@@ -52,7 +42,7 @@ it did not observe actual receiving-model use. This evidence belongs to .1.
 
 ## Published 3.1.3 baseline
 
-The 3.1.3 release is published at the immutable commit above. Its subsequent main readback
+The 3.1.3 release is published at the previous release commit above. Its subsequent main readback
 recorded publication and regenerates only source metadata; the installed payload
 is identical to the release. Exact-commit CI passed on all three declared jobs.
 
@@ -176,8 +166,8 @@ intent; competence formation owns the generative and learning method; host
 adaptation owns native continuation. KNOWLEDGE_CONTINUUM.md and
 UPDATE_CONTINUITY.md explain the installed knowledge and update relations.
 
-Use the corrected artifact and docs/REVIEW_CONTINUUM.md for any material
-follow-up. The corrective version is 3.1.3; no earlier-installation migration
-is required because the new update standard begins with its first users.
+Use the 3.2.0 artifact and docs/RELEASE_3.2.0.md for any material follow-up.
+The update standard begins with the first installations; idempotent apply
+is not an automatic migration of an existing project.
 The shared family remains 3.0.0. Form follows through its own owners; unified
 chat/harness convergence remains separately preserved.

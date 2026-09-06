@@ -1,6 +1,6 @@
 # Start here — stable system boot
 
-This project contains MAIOS Project Kernel 3.1.3+coordination.2. It was installed through an
+This project contains MAIOS Project Kernel 3.2.0. It was installed through an
 explicit package plan; installation did not configure the project or prove
 that the current host has used its faculty.
 

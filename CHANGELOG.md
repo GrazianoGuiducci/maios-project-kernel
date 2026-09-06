@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.2.0 — 2026-09-06
+
+- Release situated coordination and shared-project harness continuation as
+  operative competences in the installable package.
+- Preserve initial owner-state integrity and equivalent root/path readback
+  while retaining living knowledge, historical replay and confinement.
+- Promote the accepted coordination.2 behavior with a distinct numbered
+  identity; retain family 3.0.0 and all previous release tags.
+- Include 89 regression cases and 62 package files / 51 payload files.
+  See [release notes](docs/RELEASE_3.2.0.md) for scope and evidence levels.
+
 ## 3.1.3+coordination.2 — initial-state integrity, 2026-09-06
 
 - Reject unrecorded initial host stages, observed capabilities and aggregate
