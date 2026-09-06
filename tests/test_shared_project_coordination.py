@@ -20,6 +20,9 @@ class SharedProjectCoordinationTests(base.DistributionFixture):
 
     def test_installed_handoff_reaches_live_method_without_configuring_another_host(self):
         target, _ = self.install("codex")
+        # Windows temporary roots may use a short-path alias. Compare resolved
+        # paths on both sides while retaining the project-confinement assertion.
+        target = target.resolve()
         state_paths = list((target / ".maios/state").glob("*.json"))
         before = {path: path.read_bytes() for path in state_paths}
         request = self.base / "circumstance.json"

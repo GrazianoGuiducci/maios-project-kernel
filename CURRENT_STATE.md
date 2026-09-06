@@ -38,6 +38,9 @@ The operator selected final review and source publication of this candidate.
 The review entry is docs/REVIEW_COORDINATION.md; use the exact supplied commit
 and its CI, since this source snapshot precedes its own publication readback.
 No new numbered release is selected here. Form remains a separate receiving front.
+The first candidate CI exposed a test-only path comparison between a resolved
+method and an unresolved Windows temporary-root alias. The test now resolves
+both sides and retains its confinement assertion; runtime code is unchanged.
 
 ## Published 3.1.3 baseline
 

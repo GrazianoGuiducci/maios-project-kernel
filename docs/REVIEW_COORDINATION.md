@@ -59,6 +59,11 @@ Due build identiche e la verifica della distribuzione coprono 62 file, di cui
 Ubuntu. La presenza e il readback non provano uso semantico o assimilazione da
 parte di un modello reale; questa osservazione resta dichiarata come mancante.
 
+La prima CI della candidata ha esposto nel nuovo test un confronto fra il
+percorso risolto del metodo e la radice temporanea Windows ancora espressa
+con un alias. Il test ora risolve anche la radice, mantenendo l'asserzione di
+confinamento. Questa correzione riguarda la prova; il runtime è invariato.
+
 Il risultato utile è un giudizio motivato di chiusura del pacchetto, con eventuali
 difetti materiali ancora aperti e miglioramenti separatamente proporzionati.
 Per un rilievo bastano sorgente, caso, primo punto causale, conseguenza e
