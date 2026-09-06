@@ -15,7 +15,8 @@ from maios_project_kernel import installer
 
 class PendingRecoveryTests(base.DistributionFixture):
     def prepare(self, name, with_backup=False):
-        target = self.base / name
+        # Match the installer's canonical paths, including Windows short-name aliases.
+        target = (self.base / name).resolve()
         target.mkdir()
         (target / "project-owned.txt").write_bytes(b"existing project knowledge\n")
         if with_backup:
@@ -168,7 +169,7 @@ class PendingRecoveryTests(base.DistributionFixture):
         with self.assertRaises(installer.InstallerError):
             installer.recover_pending(target, expected_attempt="another-attempt")
         self.assertTrue(self.journal(target).exists())
-        new_target = self.base / "new-competing-stage"
+        new_target = (self.base / "new-competing-stage").resolve()
         new_plan = installer.make_plan(self.distribution, new_target, "new_repository", "generic")
         stage = new_target.parent / f".{new_target.name}.maios-stage-{new_plan['plan_digest'][:12]}"
         mkdir = Path.mkdir
