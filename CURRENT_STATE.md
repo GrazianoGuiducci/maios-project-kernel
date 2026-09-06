@@ -1,17 +1,20 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-06
-active_surface: autonomous Project Kernel 3.1.3 corrective patch
-status: corrective source prepared; 3.1.2 remains the published baseline
+active_surface: autonomous Project Kernel 3.1.3 publication readback
+status: 3.1.3 published; release tags immutable; receiving Form work remains next
 product_version: 3.1.3
-selected_corrective_version: 3.1.3
-current_public_release: v3.1.2
-release_commit: 295a1c7bb0589faf2b4f96524dce6410682e3d80
+current_public_release: v3.1.3
+release_commit: 2dc82936154e1b43417120a31f0403baf05d5e66
 release_ci: passed on Ubuntu/Python 3.10 and Windows/Python 3.10 and 3.13
-release_ci_url: https://github.com/GrazianoGuiducci/maios-project-kernel/actions/runs/34024018243
-release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v3.1.2
+release_ci_url: https://github.com/GrazianoGuiducci/maios-project-kernel/actions/runs/34025987501
+release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v3.1.3
 
 ## Current resultant
+
+The 3.1.3 release is published at the immutable commit above. This main readback
+records publication and regenerates only source metadata; the installed payload
+is identical to the release. Exact-commit CI passed on all three declared jobs.
 
 The review of 3.1.2 closes its six prior findings and reports two further P2
 defects. Both were reproduced through the complete installed package for host
