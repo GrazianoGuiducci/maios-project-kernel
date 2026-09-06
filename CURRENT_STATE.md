@@ -1,15 +1,21 @@
 # MAIOS Project Kernel current state
 
 updated: 2026-09-06
-active_surface: autonomous Project Kernel 3.1.1 corrective patch
-status: correction source prepared; publication evidence remains separate
+active_surface: autonomous Project Kernel 3.1.1 publication readback
+status: 3.1.1 published; release tag immutable; receiving Form work remains next
 product_version: 3.1.1
-current_public_release: v3.1.0
-release_commit: 2e760d1613d28374dd6cf0e8dae66914d451c8a0
+current_public_release: v3.1.1
+release_commit: 872478246512491bc5d85fa27821786ff163ddd2
 release_ci: passed on Ubuntu and Windows
-selected_corrective_version: 3.1.1
+release_ci_url: https://github.com/GrazianoGuiducci/maios-project-kernel/actions/runs/34021076826
+release_url: https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v3.1.1
 
 ## Current resultant
+
+The 3.1.1 release is published at the immutable commit above. This living-main
+readback records the completed effect and next receiving movement; it changes
+only current-state documentation and the generated source-identity metadata.
+The released artifact stays attached to its tag.
 
 The post-release reviews close the three 3.1.0 corrections and expose distinct
 runtime and delivery defects. The 3.1.1 patch captures state/projection/receipt
@@ -86,12 +92,19 @@ An unavailable source remains pending and does not overwrite the last success.
 
 ## Current evidence
 
-Eight new regression cases bring the suite to 66 tests. They exercise installed
-CLI failure, late writes, incomplete rollback and fresh reentry, idempotent
-recovery continuity, the documented external-plan roundtrip, cache ownership
-and linked runtime organs. The real symlink case requires host permission;
-local Windows skips it when unavailable and Linux CI executes it. Exact test
-and release observations are recorded by the release owner after execution.
+The release commit passed all 66 tests on Ubuntu, including actual symbolic
+links, and the complete Windows CI job. Local Windows passed 65 cases and
+skipped the symlink case because this workstation lacks creation permission;
+the five final runtime regressions also passed locally after the last readback
+refinement. Two local builds were byte-identical and distribution verification
+passed for all 58 files / 47 payload files. Both CI jobs reproduced the
+committed package twice and verified its public boundary.
+
+Eight new cases cover installed CLI failure, late writes, incomplete rollback
+and fresh reentry, idempotent recovery continuity, the documented external-plan
+roundtrip, cache ownership and linked runtime organs. Exact source, release and
+CI identities are recorded above. Real model use and later non-identical
+assimilation still require their own observations.
 
 The previous six focused installer recovery cases pass, including the two reported data-loss scenarios.
 They also exercise whole-journal rejection before any deletion, recorded and
