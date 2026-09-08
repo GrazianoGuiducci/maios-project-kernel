@@ -22,3 +22,19 @@ The source-only package built at this consolidation is a reproducibility and
 compatibility result. Selecting the generated input as the default build is
 the following source increment, distinct from publishing a numbered release,
 changing a website or updating already installed projects.
+
+## Selected generated input
+
+The consolidation is `7c864c4220b7bc05584036ee3cea91058ec16f8e`; its normalized
+builder source identity is `44f5d2eaf8a9d623beef3e7e1eb8d37e16ca60572c1293e7531f0e334e6d04ce`.
+Every selected body was read from that commit, and the SourceManifest records
+its actual source path and normalized content hash. The next source increment
+adds the maintained generated selection and makes it the ordinary build default.
+Its current builder tree therefore has its own identity, separate from the
+corpus used to form the input. See [selection](../release/GENERATED_KERNEL_SELECTION.json).
+
+The retained plan has canonical SHA-256
+`84c96aebbd8043ba4239f78c3d21e270f4cbb6241dc75359b21ec32c363a26c1`.
+The compiler source is `69524c315919dbc48dd92c4362e76196a239ac7e`, version
+`0.4.0.dev5`. This selects the next release's generated input in ordinary source;
+it does not rename the existing 3.2.0 tag or publish new release assets.

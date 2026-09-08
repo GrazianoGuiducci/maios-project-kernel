@@ -127,6 +127,22 @@ class GeneratedKernelBuildTests(unittest.TestCase):
             builder.render_distribution(ROOT, self.root/"package", kernel_plan=path)
         self.assertFalse((self.root/"package").exists())
 
+    def test_default_build_uses_maintained_release_input_and_source_only_is_explicit(self):
+        output = self.root / "default"
+        builder.render_distribution(ROOT, output)
+        manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+        plan, selection = generated.selected_plan(ROOT)
+        self.assertEqual(manifest["generated_kernel"]["release_selection"], selection)
+        bodies, _ = generated.load(plan, selection["plan_sha256"])
+        for path, body in bodies.items():
+            self.assertEqual((output / path).read_bytes(), body.encode("utf-8"))
+        self.assertTrue(builder.verify_distribution(ROOT, output)["valid"])
+        compatibility = self.root / "source-only"
+        builder.render_distribution(ROOT, compatibility, source_only=True)
+        manifest = json.loads((compatibility / "MANIFEST.json").read_text(encoding="utf-8"))
+        self.assertNotIn("generated_kernel", manifest)
+        self.assertTrue(builder.verify_distribution(ROOT, compatibility)["valid"])
+
 
 if __name__ == "__main__":
     unittest.main()

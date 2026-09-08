@@ -15,6 +15,7 @@ from urllib.parse import quote
 
 RECORD = ".repokernel/knowledge/COMPETENCE_MATERIALIZATION.json"
 SCHEMA = "maios.generated-kernel-delivery.v1"
+SELECTION = "release/GENERATED_KERNEL_SELECTION.json"
 RESERVED_WINDOWS_NAMES = {
     "CON", "PRN", "AUX", "NUL", "CONIN$", "CONOUT$",
     *(f"COM{n}" for n in "123456789¹²³"),
@@ -29,6 +30,21 @@ def identity(value: object) -> str:
 
 def text_hash(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def selected_plan(root: Path) -> tuple[Path, dict] | None:
+    path = root / SELECTION
+    if not path.is_file():
+        return None
+    selection = json.loads(path.read_text(encoding="utf-8"))
+    if selection.get("schema") != "maios.generated-kernel-selection.v1":
+        raise ValueError("Unsupported generated kernel selection")
+    if not re.fullmatch(r"[0-9a-f]{40}", selection["source_basis"]["commit"]):
+        raise ValueError("Selection requires an actual source commit")
+    plan = root / safe_path(selection["plan"])
+    if not plan.resolve().is_relative_to(root.resolve()) or plan.is_symlink():
+        raise ValueError("Selected plan must belong to this source tree")
+    return plan, selection
 
 
 def safe_path(value: str) -> str:

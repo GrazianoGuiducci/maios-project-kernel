@@ -1,0 +1,42 @@
+{
+  "schema": "repokernel.seed-spec.v1",
+  "version": "repokernel.seed-spec.v1",
+  "seed_id": "maios-project-kernel-release",
+  "source_manifest_hash": "c7241ce3807be1249cdbfab7b3253fc959005f0cc574a1ac7c22a8fa7d92e60f",
+  "project_model_hash": "71af05fa660eeac7b7db4d0a3bd765aee122cb7858ed41741453844df6259cad",
+  "canonical_namespace": ".repokernel",
+  "project": {
+    "name": "MAIOS Project Kernel",
+    "intent": "Make the maintained kernel competences available in a self-configuring project package.",
+    "product": "A generated kernel with recipient context deferred to its first operating relation."
+  },
+  "target": {
+    "mode": "new_repository"
+  },
+  "readiness_level": "L1",
+  "authority_mode": "propose",
+  "review": {
+    "status": "accepted",
+    "accepted_by_role": "product-maintainer",
+    "accepted_at": "2026-09-08",
+    "review_cycle": "ordinary-generated-release-selection"
+  },
+  "compiler_compatibility": {
+    "package_version": "0.4.0.dev5"
+  },
+  "file_plan_policy": "stage_only",
+  "validation_plan": [
+    "validate-spec",
+    "plan",
+    "stage",
+    "guides",
+    "audit"
+  ],
+  "disclosure": {
+    "public": {
+      "name": true,
+      "intent": true,
+      "product": true
+    }
+  }
+}

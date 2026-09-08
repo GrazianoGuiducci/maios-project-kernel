@@ -544,12 +544,24 @@ def distribution_files(package_dir: Path, include_inventory: bool = True) -> lis
 
 def render_distribution(root: Path, package_dir: Path, *,
                         kernel_plan: Path | None = None,
-                        kernel_plan_sha256: str | None = None) -> dict[str, Any]:
+                        kernel_plan_sha256: str | None = None,
+                        source_only: bool = False) -> dict[str, Any]:
     root = root.resolve()
     from . import generated_kernel
     generated, generated_receipt = {}, None
     if (kernel_plan is None) != (kernel_plan_sha256 is None):
         raise BuildError("Select both kernel_plan and its canonical kernel_plan_sha256")
+    if source_only and kernel_plan is not None:
+        raise BuildError("source_only and an explicit generated plan are mutually exclusive")
+    selection = None
+    if kernel_plan is None and not source_only:
+        try:
+            selected = generated_kernel.selected_plan(root)
+            if selected is not None:
+                kernel_plan, selection = selected
+                kernel_plan_sha256 = selection["plan_sha256"]
+        except (ValueError, KeyError, TypeError, OSError) as exc:
+            raise BuildError(f"invalid kernel selection: {exc}") from exc
     if kernel_plan is not None:
         try:
             generated, generated_receipt = generated_kernel.load(kernel_plan, kernel_plan_sha256)
@@ -705,6 +717,8 @@ def render_distribution(root: Path, package_dir: Path, *,
     }
     if generated_receipt is not None:
         manifest["generated_kernel"] = generated_receipt
+        if selection is not None:
+            manifest["generated_kernel"]["release_selection"] = selection
     write_json(package_dir / "MANIFEST.json", manifest)
 
     inventory_rows = [
@@ -894,8 +908,21 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         errors.append(f"invalid project entry composition: {exc}")
     try:
         if manifest.get("generated_kernel") is not None:
-            from .generated_kernel import verification_errors
+            from .generated_kernel import verification_errors, selected_plan, load
             errors.extend(verification_errors(package_dir, manifest["generated_kernel"]))
+            selection = manifest["generated_kernel"].get("release_selection")
+            if selection is not None:
+                selected = selected_plan(root)
+                if selected is None or selected[1] != selection:
+                    errors.append("package differs from the maintained release selection")
+                elif manifest["generated_kernel"]["plan_sha256"] != selection["plan_sha256"]:
+                    errors.append("package plan differs from the release selection")
+                else:
+                    _, expected_receipt = load(selected[0], selection["plan_sha256"])
+                    actual = {k: v for k, v in manifest["generated_kernel"].items()
+                              if k != "release_selection"}
+                    if actual != expected_receipt:
+                        errors.append("package receipt differs from the selected generation")
         errors.extend(inventory_errors(package_dir))
     except (BuildError, ValueError, KeyError, TypeError, OSError) as exc:
         errors.append(str(exc))

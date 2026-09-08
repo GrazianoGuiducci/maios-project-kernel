@@ -1,0 +1,15 @@
+{
+  "schema": "maios.generated-kernel-selection.v1",
+  "source_basis": {
+    "repository": "GrazianoGuiducci/maios-project-kernel",
+    "commit": "7c864c4220b7bc05584036ee3cea91058ec16f8e",
+    "corpus_identity": "44f5d2eaf8a9d623beef3e7e1eb8d37e16ca60572c1293e7531f0e334e6d04ce",
+    "identity_scope": "source corpus at the selected commit, before release input selection"
+  },
+  "compiler": {
+    "version": "0.4.0.dev5",
+    "source_revision": "69524c315919dbc48dd92c4362e76196a239ac7e"
+  },
+  "plan": "release/generated/generation-plan.json",
+  "plan_sha256": "84c96aebbd8043ba4239f78c3d21e270f4cbb6241dc75359b21ec32c363a26c1"
+}

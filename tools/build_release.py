@@ -28,6 +28,8 @@ def parser() -> argparse.ArgumentParser:
                         help="Consume selected competence bodies from a RepoKernel GenerationPlan")
     result.add_argument("--kernel-plan-sha256",
                         help="Expected SHA-256 of canonical plan JSON, binding the selected result")
+    result.add_argument("--source-only", action="store_true",
+                        help="Explicit compatibility build without the maintained generated selection")
     return result
 
 
@@ -42,7 +44,8 @@ def main() -> int:
         shutil.rmtree(staging)
     try:
         build = render_distribution(ROOT, staging, kernel_plan=args.kernel_plan,
-                                    kernel_plan_sha256=args.kernel_plan_sha256)
+                                    kernel_plan_sha256=args.kernel_plan_sha256,
+                                    source_only=args.source_only)
         verification = verify_distribution(ROOT, staging)
         if not verification["valid"]:
             raise BuildError("; ".join(verification["errors"]))

@@ -23,3 +23,16 @@ Current operator intent and actual sources outrank stored continuity. Preserve
 reusable learning in the closest competence and maintain the state needed for
 reentry. Resolve a concrete effect from its current target and authorization;
 the package itself grants no external authority.
+
+## Generated competence selection
+
+The project system competence remains the operating entry. These methods
+and their resources belong to its available field; use them when pertinent.
+
+- [skills/maios-project-competence-formation/SKILL.md](skills/maios-project-competence-formation/SKILL.md)
+- [skills/maios-project-context/SKILL.md](skills/maios-project-context/SKILL.md)
+- [skills/maios-project-coordination/SKILL.md](skills/maios-project-coordination/SKILL.md)
+- [skills/maios-project-host-adaptation/SKILL.md](skills/maios-project-host-adaptation/SKILL.md)
+- [skills/maios-project-system/SKILL.md](skills/maios-project-system/SKILL.md)
+- [skills/maios-start-existing-project/SKILL.md](skills/maios-start-existing-project/SKILL.md)
+- [skills/maios-start-new-project/SKILL.md](skills/maios-start-new-project/SKILL.md)

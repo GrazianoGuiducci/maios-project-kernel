@@ -8,8 +8,10 @@
   generation provenance separately from historical profile translation.
 - Verify selected content identity, resource reachability and discovery;
   retain source-only builds and existing-project recovery behavior.
-- This increment implements the autonomous build consumer. Form integration,
-  release selection and receiving-model behavior remain distinct follow-through.
+- Select the generated input as the ordinary build default from corpus commit
+  `7c864c4`; retain its inputs, compiler identity and canonical plan hash.
+- Align Windows path identity with RepoKernel. Source-only compatibility is now
+  explicit. Numbered release publication and receiving-model use remain separate.
 
 ## 3.2.0 — 2026-09-06
 

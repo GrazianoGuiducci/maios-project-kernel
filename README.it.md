@@ -1,6 +1,6 @@
 # MAIOS Project Kernel
 
-Per i manutentori è disponibile la [costruzione ordinaria da una selezione RepoKernel](docs/GENERATED_KERNEL_BUILD.md).
+La build predefinita per i manutentori usa la [costruzione ordinaria da una selezione RepoKernel](docs/GENERATED_KERNEL_BUILD.md).
 Il risultato generato identificato fornisce corpi e risorse delle competenze;
 il prodotto conserva installazione e consegna. La capacità è nelle sorgenti,
 non ancora promossa in una release, e non aggiorna i progetti installati.

@@ -1,6 +1,12 @@
 # Build from a generated kernel selection
 
-The ordinary product builder can consume an identified RepoKernel GenerationPlan:
+The ordinary product build consumes the maintained selection in
+[GENERATED_KERNEL_SELECTION.json](../release/GENERATED_KERNEL_SELECTION.json).
+It retains the actual corpus commit, compiler revision and canonical plan hash.
+Run `python tools/build_release.py` to build that selection. No generator checkout
+is required for this build; the exported result is part of the source repository.
+
+To deliberately override it with another identified RepoKernel GenerationPlan:
 
 ```powershell
 python tools/build_release.py --kernel-plan /path/to/generation-plan.json --kernel-plan-sha256 CANONICAL_PLAN_SHA256 --package-dir /path/to/candidate
@@ -61,11 +67,23 @@ through the ordinary installer. Existing project conflict refusal and recovery
 remain installer-owned. A retrofit plan for a particular repository is a different
 input relation and is not repurposed as an autonomous distribution.
 
-The source-only build remains available by omitting both generation arguments.
-This change provides a maintained ordinary build path; it does not make an
-external selection the default release input or publish a new product release.
-Release selection must retain its actual inputs and regenerate the package,
-version and applicable product documentation through the owner release process.
+The compatibility source-only build is explicit: `python tools/build_release.py
+--source-only`. The default is now the generated selection. An override must
+supply both plan and canonical hash. Numbered release publication remains separate.
+
+The [retained inputs](../release/generated/seed-spec.json) bind SourceManifest and
+ProjectModel. To regenerate with the compiler revision recorded in the selection,
+run its ordinary CLI from that checkout:
+
+```powershell
+python -m repokernel.cli plan --source-manifest /product/release/generated/source-manifest.json --project-model /product/release/generated/project-model.json --seed-spec /product/release/generated/seed-spec.json
+```
+
+When evolving the methods, form these inputs from the newly selected source
+commit through RepoKernel's native competences. Preserve their real source hashes;
+update the selection only from the resulting plan. The historical local corpus,
+the source commit that consolidates it and the later build source tree are
+separate identities; see [source basis](RELEASE_SOURCE_SELECTION.md).
 
 The Form delivery remains owned by MAIOS_CLIENT_SETUP. Its accepted context,
 generation inputs and package consumer need their own integration of the same

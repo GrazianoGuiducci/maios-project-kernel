@@ -2,21 +2,20 @@
 
 ## Current implementation increment — 2026-09-08
 
-The selected next release basis is the consolidated current local corpus,
-including the already exercised context refinement. It is distinct from the
-earlier published ancestor 5fac85c; see
-[source selection](docs/RELEASE_SOURCE_SELECTION.md). The release selection will
-bind the actual consolidation commit, rather than attributing these source bytes
-to their older ancestor. Windows device-path policy is aligned with the generator.
+The default ordinary build now consumes the retained RepoKernel selection:
+[release selection](release/GENERATED_KERNEL_SELECTION.json), formed from source
+commit `7c864c4220b7bc05584036ee3cea91058ec16f8e` by compiler `69524c3` / 0.4.0.dev5.
+That commit consolidates the selected local corpus and its acquired context
+refinement; it is not the earlier published ancestor `5fac85c`.
+The [source basis](docs/RELEASE_SOURCE_SELECTION.md) retains that distinction.
 
-The ordinary builder now accepts an identified RepoKernel GenerationPlan through
-`--kernel-plan` and `--kernel-plan-sha256`. The generator's selected materialization
-supplies the method bodies and resources; product delivery retains its own
-contracts, semantic owner, adapters, installer and deferred state. The
-[build contract](docs/GENERATED_KERNEL_BUILD.md) records the interface, provenance,
-compatibility and continuation. This is the first maintained autonomous consumer;
-the Form consumer and release selection remain distinct work. Model use is not
-claimed. The source-only build remains supported.
+The generated package contains 62 files, 51 in the payload, with 7 selected
+competences and 18 bodies/resources. Ordinary building requires no flags or
+runtime patch. `--source-only` preserves explicit compatibility building.
+Windows path identity matches the generator, including console devices,
+superscript COM/LPT digits, DEL and spaces before device extensions.
+The 96-test suite passes (2 environment-dependent skips); this is source and
+package evidence. No new numbered release or installed-project update is claimed.
 
 The chronology below preserves the earlier product work and its evidence; it does
 not select another experiment in place of continuing the common-generation goal.

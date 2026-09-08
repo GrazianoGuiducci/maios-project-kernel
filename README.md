@@ -1,9 +1,9 @@
 # MAIOS Project Kernel
 
-Maintainers can now use the [ordinary build from a RepoKernel selection](docs/GENERATED_KERNEL_BUILD.md).
+The default maintainer build now uses the [ordinary build from a RepoKernel selection](docs/GENERATED_KERNEL_BUILD.md).
 The identified generated result supplies competence bodies and resources;
 the product retains installation and delivery. This source capability is unreleased
-and does not change installed projects or select the next published package.
+and does not change installed projects or publish new release assets.
 
 Version **3.2.0** adds [shared-project coordination and harness-continuation knowledge](docs/INSTANCE_COORDINATION.md): a shared semantic plane, situated delegation and a method for continuing work through another harness when the actual case calls for it.
 

@@ -22,9 +22,9 @@
       "sha256": "a8da72c4929df6cd9498a7f2f3900a280dd2898097c4a17a5cbf84c4996fc1cd"
     },
     {
-      "bytes": 2761,
+      "bytes": 11663,
       "path": "MANIFEST.json",
-      "sha256": "e8a6914165f1f530f1a9f39e2759de1a0f856aaff12e1039688455d404755a20"
+      "sha256": "4505f772cc453193ecd46cf6a24359ec4fdf52a28b9385586c5e4258ee637906"
     },
     {
       "bytes": 1047,
@@ -177,9 +177,9 @@
       "sha256": "c63bec019a4c8536dd80e064c5a49bafba20d9deb842390b8e3da6e56412f4a1"
     },
     {
-      "bytes": 1415,
+      "bytes": 2236,
       "path": "payload/AGENTS.md",
-      "sha256": "a37c2603a899dafb9dfb6c51f35e733d5ec9518c9937baa05acdcc7eec23c682"
+      "sha256": "bf72fa28a7ceb90270b14bf12ea40aa35acf25f1f69c083952f642bbbc574922"
     },
     {
       "bytes": 570,
