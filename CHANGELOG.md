@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — generated kernel build integration
+
+- Let the ordinary builder consume an identified RepoKernel GenerationPlan,
+  delivering its selected methods and resources without a runtime function patch.
+- Preserve product-owned entry, installation and state while recording current
+  generation provenance separately from historical profile translation.
+- Verify selected content identity, resource reachability and discovery;
+  retain source-only builds and existing-project recovery behavior.
+- This increment implements the autonomous build consumer. Form integration,
+  release selection and receiving-model behavior remain distinct follow-through.
+
 ## 3.2.0 — 2026-09-06
 
 - Release situated coordination and shared-project harness continuation as

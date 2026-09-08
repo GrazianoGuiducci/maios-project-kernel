@@ -557,8 +557,19 @@ def distribution_files(package_dir: Path, include_inventory: bool = True) -> lis
     return result
 
 
-def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
+def render_distribution(root: Path, package_dir: Path, *,
+                        kernel_plan: Path | None = None,
+                        kernel_plan_sha256: str | None = None) -> dict[str, Any]:
     root = root.resolve()
+    from . import generated_kernel
+    generated, generated_receipt = {}, None
+    if (kernel_plan is None) != (kernel_plan_sha256 is None):
+        raise BuildError("Select both kernel_plan and its canonical kernel_plan_sha256")
+    if kernel_plan is not None:
+        try:
+            generated, generated_receipt = generated_kernel.load(kernel_plan, kernel_plan_sha256)
+        except (ValueError, KeyError, TypeError) as exc:
+            raise BuildError(f"invalid generated kernel: {exc}") from exc
     if package_dir.expanduser().is_symlink():
         raise BuildError("distribution target must not be a symlink")
     package_dir = package_dir.resolve()
@@ -584,6 +595,8 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
 
     destinations: set[str] = set()
     for item in projection.get("files", []):
+        if generated_receipt is not None and generated_kernel.owns_source(item):
+            continue
         source_rel = item.get("source")
         destination_rel = item.get("destination")
         if not isinstance(source_rel, str) or not isinstance(destination_rel, str):
@@ -598,6 +611,23 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             raise BuildError(f"projection source is missing or unsafe: {source_rel}")
         destination = native(package_dir, destination_rel)
         project_source_file(source, destination)
+
+    if generated_receipt is not None:
+        reserved = destinations | {"payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
+                                   "payload/.maios/kernel/PROJECT_META_FACULTY.json",
+                                   "payload/.maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json",
+                                   "payload/.maios/config/HOST_ADAPTERS.json"}
+        for rel in generated:
+            if any(rel.casefold() == old.casefold() or rel.casefold().startswith(old.casefold()+"/")
+                   or old.casefold().startswith(rel.casefold()+"/") for old in reserved):
+                raise BuildError(f"generated content collides with product-owned delivery: {rel}")
+        for rel, content in generated.items():
+            target = native(package_dir, rel)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(content, encoding="utf-8", newline="\n")
+        entry = package_dir / "payload/AGENTS.md"
+        entry.write_text(entry.read_text(encoding="utf-8") + generated_kernel.discovery(generated_receipt),
+                         encoding="utf-8", newline="\n")
 
     meta_faculty, project_entity, repokernel_receipt = repokernel_projection_inputs(
         root
@@ -697,6 +727,8 @@ def render_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "contains_lifecycle_hooks": False,
         "global_writes": [],
     }
+    if generated_receipt is not None:
+        manifest["generated_kernel"] = generated_receipt
     write_json(package_dir / "MANIFEST.json", manifest)
 
     inventory_rows = [
@@ -936,8 +968,11 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     except (BuildError, KeyError, TypeError) as exc:
         errors.append(f"invalid RepoKernel package composition: {exc}")
     try:
+        if manifest.get("generated_kernel") is not None:
+            from .generated_kernel import verification_errors
+            errors.extend(verification_errors(package_dir, manifest["generated_kernel"]))
         errors.extend(inventory_errors(package_dir))
-    except BuildError as exc:
+    except (BuildError, ValueError, KeyError, TypeError, OSError) as exc:
         errors.append(str(exc))
 
     try:

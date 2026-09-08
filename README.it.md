@@ -1,5 +1,10 @@
 # MAIOS Project Kernel
 
+Per i manutentori è disponibile la [costruzione ordinaria da una selezione RepoKernel](docs/GENERATED_KERNEL_BUILD.md).
+Il risultato generato identificato fornisce corpi e risorse delle competenze;
+il prodotto conserva installazione e consegna. La capacità è nelle sorgenti,
+non ancora promossa in una release, e non aggiorna i progetti installati.
+
 La versione **3.2.0** aggiunge [coordinamento e continuità fra harness](docs/INSTANCE_COORDINATION.md): un piano semantico condiviso, delega situata e una competenza per continuare il lavoro attraverso un altro harness quando il caso concreto lo richiede.
 
 Conserva inoltre la coerenza dello stato iniziale di host e competenze e gestisce

@@ -1,5 +1,21 @@
 # MAIOS Project Kernel current state
 
+## Current implementation increment — 2026-09-08
+
+The ordinary builder now accepts an identified RepoKernel GenerationPlan through
+`--kernel-plan` and `--kernel-plan-sha256`. The generator's selected materialization
+supplies the method bodies and resources; product delivery retains its own
+contracts, semantic owner, adapters, installer and deferred state. The
+[build contract](docs/GENERATED_KERNEL_BUILD.md) records the interface, provenance,
+compatibility and continuation. This is the first maintained autonomous consumer;
+the Form consumer and release selection remain distinct work. Model use is not
+claimed. The source-only build remains supported.
+
+The chronology below preserves the earlier product work and its evidence; it does
+not select another experiment in place of continuing the common-generation goal.
+
+## Earlier product state
+
 updated: 2026-09-06
 active_surface: numbered promotion of the accepted autonomous package
 status: 3.2.0 release source prepared; publication is recorded by the immutable GitHub release

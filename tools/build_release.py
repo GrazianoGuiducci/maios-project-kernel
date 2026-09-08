@@ -24,6 +24,10 @@ from maios_project_kernel.builder import (  # noqa: E402
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser()
     result.add_argument("--package-dir", type=Path, default=ROOT / "package")
+    result.add_argument("--kernel-plan", type=Path,
+                        help="Consume selected competence bodies from a RepoKernel GenerationPlan")
+    result.add_argument("--kernel-plan-sha256",
+                        help="Expected SHA-256 of canonical plan JSON, binding the selected result")
     return result
 
 
@@ -37,7 +41,8 @@ def main() -> int:
             return 2
         shutil.rmtree(staging)
     try:
-        build = render_distribution(ROOT, staging)
+        build = render_distribution(ROOT, staging, kernel_plan=args.kernel_plan,
+                                    kernel_plan_sha256=args.kernel_plan_sha256)
         verification = verify_distribution(ROOT, staging)
         if not verification["valid"]:
             raise BuildError("; ".join(verification["errors"]))
