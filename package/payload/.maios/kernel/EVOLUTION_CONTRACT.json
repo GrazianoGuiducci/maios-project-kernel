@@ -5,16 +5,25 @@
   "human_projection": "project/CURRENT_STATE.md",
   "semantic_source": ".maios/kernel/SYSTEM_KERNEL.md",
   "semantic_owner": "skills/maios-project-system/SKILL.md",
-  "compiled_meta_faculty": ".maios/kernel/PROJECT_META_FACULTY.json",
   "project_entity_profile": ".maios/kernel/PROJECT_ENTITY_PROFILE.json",
-  "repokernel_projection_receipt": ".maios/REPOKERNEL_PROJECTION.json",
   "competence_state_owner": ".maios/competences/INDEX.json",
   "operating_state_owner": ".maios/state/OPERATING_STATE.json",
   "operating_context_projection": ".maios/context/OPERATING_CONTEXT.json",
   "resultant_readback_schema": ".maios/schemas/RESULTANT_READBACK.schema.json",
   "effect_authority_default": "none",
-  "faculty_states": ["potential", "emergent", "realized", "verified"],
-  "result_classifications": ["verified_improvement", "no_change", "regression", "tradeoff", "unverified"],
+  "faculty_states": [
+    "potential",
+    "emergent",
+    "realized",
+    "verified"
+  ],
+  "result_classifications": [
+    "verified_improvement",
+    "no_change",
+    "regression",
+    "tradeoff",
+    "unverified"
+  ],
   "delta_kinds": [
     "project_state",
     "memory_delta",
@@ -27,7 +36,7 @@
   "retention_rule": "Preserve the smallest owner-bound causal relation that changes future behavior, proof, recovery, or reentry, including what happened and why.",
   "source_rule": "Keep operator source, evidence, inference, unknown, invalidator, and supersession distinguishable.",
   "acceptance_rule": "Learning from the actual resultant enters the closest owner immediately; optional classifications, wider propagation, assimilation claims, and material effects keep their own evidence or authority boundary.",
-  "resultant_rule": "A terminal resultant becomes durable through a source-positioned readback that preserves pre-projection correction, actual result, possibility impact, the compact causal margin, open-front transitions, next movement, zero or more distinct owner-bound learning relations, effect state, and causal input concurrency.",
+  "resultant_rule": "Preserve changed knowledge in the closest competence. When a result changes coupled runtime state, use a source-positioned readback to update configuration, operating continuity, learning and projections together.",
   "learning_rule": "For every changed owner, what happened, its causal delta, why it matters, future behavior, sources, activation relations, invalidator, and reentry become reachable in the next field; later non-identical use remains the assimilation evidence and may revise each relation.",
   "continuity_rule": "Preserve only the live causal margin needed to continue and every still-open front; current operator intent and verified project reality supersede stale stored continuity.",
   "reciprocal_work_rule": "Concrete work tests the competence that enables it; causal readback improves the owning relation; the changed relation must alter a later movement to support assimilation.",
@@ -49,5 +58,6 @@
     "credentials",
     "temporary_runtime_state",
     "unattributed_inference_as_fact"
-  ]
+  ],
+  "faculty_field": ".maios/kernel/FACULTY_FIELD.json"
 }

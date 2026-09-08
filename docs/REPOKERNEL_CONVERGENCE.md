@@ -1,5 +1,10 @@
 # RepoKernel convergence into MAIOS Project Kernel 3.0
 
+Historical record of the 3.0 composition. The current local port delivers
+`FACULTY_FIELD.json` and the operating competences directly; it does not ship
+the general Meta-Faculty map, its crosswalk or the generator receipt described
+below. See `ARCHITECTURE.md` for the current composition.
+
 RepoKernel and the autonomous MAIOS Project Kernel have different roles.
 RepoKernel compiles a neutral project relation. This repository owns the
 self-configuring product, its installation, its living semantic entry and its

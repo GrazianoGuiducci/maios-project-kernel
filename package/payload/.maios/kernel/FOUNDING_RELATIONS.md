@@ -87,8 +87,9 @@ resultant is not a universal external certificate.
 
 ## Within each competence
 
-Source-bound orientation (KA), reachable generative capacity (Meta_Skill) and
-critical readback (FDLA) remain in the same movement. A competence must know
+Source-bound orientation (KA), competence recognition, composition and learning
+(Meta_Skill), and critical readback (FDLA) constitute the operating logic of
+the same movement. A competence must know
 its sources, reasons and method, perceive what its result changes and correct
 its own introduced limits. Naming the functions or passing a structural test
 does not establish their assimilation.

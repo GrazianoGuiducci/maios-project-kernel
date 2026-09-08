@@ -63,9 +63,10 @@ tracking while retaining the installer-owned semantic and adaptation skills.
 Do not copy a global Hermes `.env` or profile into the project. Provider and
 credential selection remain a separate user-owned host decision.
 
-Projection proves installed bytes only. A fresh host must independently show
-that it discovered the skill, read current state, used the relevant logic, and
-could reenter from the resulting state. `python maios.py host-status` keeps
-these claim levels separate. Reviewed observations can be validated and
-admitted through `validate-host-attestation` and `admit-host-attestation`;
-receipts do not self-certify the evidence they reference.
+Projection establishes which files were installed. When it matters whether a
+host discovered, read, used or resumed from them, retain the actual observation
+and its evidence. `python maios.py host-status` keeps these claims separate.
+`admit-host-attestation` records an observation and checks its input; use
+`validate-host-attestation` when inspecting the input helps. A separate reviewer
+is not required to record directly observed behavior. Recording does not
+replace evidence or require every stage to be demonstrated at each entry.

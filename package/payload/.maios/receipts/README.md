@@ -10,7 +10,7 @@ Their receipt binds the readback digest, before/after operating and
 configuration hashes, operating-context hash, nested configuration receipt,
 and explicit non-effect claim. It proves the deterministic local transition
 only; optional classifications need their referenced evidence, and any
-external effect requires its own terminal receipt.
+external effect retains the evidence appropriate to the action and its claims.
 
 A resultant receipt may name several created learning relations and any
 older relations exercised by that movement. These fields prove only the

@@ -18,11 +18,11 @@ project or system, `maios-start-existing-project` first preserves its identity,
 sources, conventions and live movement, then finds the smallest useful Kernel
 contribution. Both continue through `maios-project-context`.
 
-`START_HERE.md` is a stable system boot rather than a mutable copy of the
-project context. It reactivates the Kernel relation and its entrances. The
-operator, project sources, canonical configuration and pertinent competences
-reconstruct the living context; durable state changes only when the resulting
-causal difference changes later behavior or reentry.
+`START_HERE.md` orients the coder at startup and reentry. `AGENTS.md` connects the
+host to the system competence, which owns the operating entry. The operator,
+project sources, canonical configuration and pertinent competences reconstruct
+the living context; durable state changes when the resulting causal difference
+changes later behavior or reentry.
 
 This repository package is the `self_configuring` entry. It does not import Form state,
 P1-P5 answers, a Terminal Context Field, or an accepted external case. A Form
@@ -46,11 +46,10 @@ The first useful configuration preserves:
 - the person's current intent and point of view;
 - the real work, problem, or desired change;
 - facts, hypotheses, contradictions, unknowns, and source references;
-- possibilities with reasons, smallest proof, invalidator, and reentry
-  condition;
+- possibilities with their reasons and what could change them;
 - the selected or still-open direction and its review state;
-- the result to produce, beneficiary, value mechanism, smallest deliverable,
-  and falsifiable first proof;
+- the result to produce; beneficiary, value mechanism, deliverable and an
+  experiment when those relations help the particular project;
 - people, responsibilities, environment, and observed host capabilities;
 - the project-local data boundary, private fields, any explicitly allowed
   external projection, and provider consent kept separate from project intent;
@@ -74,6 +73,9 @@ interaction, not the semantic review of the proposed direction.
 Configuration becomes `configured` when the project has a concrete case,
 first useful result, attributable sources, selected
 movement, and recoverable reentry. It does not require every unknown to close.
+An experiment or a reviewer is not a condition for a project to be configured.
+When a hypothesis calls for a proof plan, preserve that plan and its observed
+status without treating it as the form of every useful result.
 External execution, publication, installation of other software, provider use,
 or runtime action remains separately governed.
 
@@ -105,9 +107,10 @@ eligible and blocked local movements, uncertainty count, and authority ceiling.
 The operating context is invalidatable and never replaces configuration, host,
 competence, faculty, or operating-history owners.
 
-When deterministic support is available, use `python maios.py
-validate-configuration --candidate <json>` before `apply-configuration`; apply
-requires the exact current-state digest, creates a project-local backup and
+Use `apply-configuration` when a selected configuration change needs its
+coupled state and projections updated. It checks the candidate internally;
+`validate-configuration --candidate <json>` is available to inspect an input
+without applying it. Application requires the exact current-state digest, creates a project-local backup and
 receipt, regenerates every projection, and makes no global or external write.
 `recover-configuration` refuses recovery if the canonical state evolved after
 the receipt.

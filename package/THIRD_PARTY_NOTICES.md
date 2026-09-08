@@ -33,15 +33,6 @@ Its repository currently carries the PolyForm Noncommercial License 1.0.0.
 That license governs the seed repository itself and does not replace the MIT
 License of this distribution.
 
-## RepoKernel
-
-RepoKernel owner contracts and its source-bound compiler generated the neutral
-Project Meta-Faculty and Project Entity relations identified by the packaged
-projection receipt. This repository translates those reviewed functions into
-owner-native organs and generates the 3.2.0 distribution. RepoKernel source,
-runtime and fixed selection topology are not included here. Its own repository
-and license remain separate from the MIT License of this distribution.
-
 ## KA, FDLA and Meta_Skill
 
 Owner-native KA, FDLA and Meta_Skill competences supplied non-shipped causal

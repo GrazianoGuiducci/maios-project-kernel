@@ -25,28 +25,22 @@ this owner split; the Form lane is not rewritten by an autonomous patch.
 
 ## RepoKernel generation and MAIOS composition
 
-RepoKernel supplies a reviewed Project Entity relation and a general Project
-Meta-Faculty coverage map. The package builder verifies their source bundle and
-plan receipt, then translates them as:
+The source archive retains the neutral generation used to form this product.
+The builder translates its Project Entity relation for autonomous startup.
+The installed functional field is maintained directly with its competences:
 
 ```text
 RepoKernel neutral generation
 -> PROJECT_ENTITY_PROFILE.json: open deferred direct-package entry
--> PROJECT_META_FACULTY.json: open functional coverage
--> one invocation rebind to skills/maios-project-system/SKILL.md
--> MAIOS-native FACULTY_FIELD and closest operating competences
+MAIOS living source
+-> FACULTY_FIELD.json: represented functions and knowledge entries
+-> skills/maios-project-system/SKILL.md and pertinent competences
 ```
 
-`PROJECT_META_FACULTY_CROSSWALK.json` makes this consolidation inspectable. It
-maps every neutral source family to existing MAIOS faculty ids; build and
-runtime validation resolve those ids to real installed files and Markdown
-anchors without creating another router or semantic owner.
-
-The translated profiles are organs of the installed Kernel, not another kernel
-or router. The fixed generated primary/support palette does not cross the
-boundary. RepoKernel implementation source, staging namespace and runtime are
-not shipped. `REPOKERNEL_PROJECTION.json` preserves the exact one-time source
-and translation relation.
+The historical general map and its crosswalk remain source material. They are
+not delivered or required by installed status. Entry checks resolve the actual
+faculty field's files and anchors directly. The generator's source receipt and
+private implementation do not enter the installed project.
 
 ## Public knowledge and competence field
 
@@ -92,12 +86,14 @@ projection cannot decide meaning, relevance, quality, or authority.
 
 ## Stable boot and living context
 
-`START_HERE.md` is a stable system boot: it restores what the Kernel is, its
-operating relation, and the entrances from which work can begin. It is not the
-owner of the changing project situation. The current operator relation,
-project sources, configuration state, recent resultants, and reachable
-competences reconstruct the living context. The boot changes only when that
-stable system relation changes; ordinary work evolves context and competences.
+`AGENTS.md` connects the host to the system competence and its permanent relation.
+`START_HERE.md` orients the coder at startup and reentry; the system skill owns
+operation. The existing `SYSTEM_KERNEL.md` is the coder's operating compendium,
+with meaning, knowledge owners and maintenance examples. Deeper methods remain
+in the pertinent competences and technical references. The current operator
+relation, project sources, configuration state, recent results and reachable
+competences reconstruct living context. Ordinary work evolves that context and
+its knowledge rather than sending the coder through all entries again.
 
 For an existing project, `maios-start-existing-project` reads the project as it
 already is, forms the first useful Kernel contribution, and lets intent,
@@ -153,13 +149,13 @@ project-local readers that reject linked source organs and crosswalk targets.
 
 ## Reciprocal competence cultivation
 
-Concrete work and its enabling competence advance together. Existing faculties
-are reused or composed first; a real gap may form the smallest truthful local
-competence relation. A causal correction is preserved at its closest owner and
+Concrete work and its enabling competence advance together. Reuse, composition
+and formation follow the situation, including intent, knowledge, memory or a
+new possibility. A causal correction is preserved at its closest owner and
 can change the next matching movement. Later non-identical use supplies the
-behavioral readback and may revise or invalidate it. The reviewed competence
-index remains a separate deliberate owner surface, not a prerequisite for
-learning. Another meta-level is added only when it changes comprehension,
+behavioral readback and may revise or invalidate it. The optional competence
+index preserves discovery and revision history without requiring an independent
+review or a claim of improvement. Another meta-level is added only when it changes comprehension,
 execution, proof, recovery, or reentry.
 
 ## Authority and proof

@@ -88,23 +88,13 @@ class BuilderTests(DistributionFixture):
         )
         self.assertEqual(manifest["project_kernel_family_version"], "3.0.0")
 
-    def test_repokernel_profiles_are_composed_under_one_semantic_owner(self) -> None:
-        meta = builder.read_json(
-            self.distribution
-            / "payload"
-            / ".maios"
-            / "kernel"
-            / "PROJECT_META_FACULTY.json"
-        )
+    def test_project_profiles_are_composed_under_one_semantic_owner(self) -> None:
         entity = builder.read_json(
             self.distribution
             / "payload"
             / ".maios"
             / "kernel"
             / "PROJECT_ENTITY_PROFILE.json"
-        )
-        receipt = builder.read_json(
-            self.distribution / "payload" / ".maios" / "REPOKERNEL_PROJECTION.json"
         )
         family_contract = builder.read_json(
             self.distribution
@@ -120,25 +110,12 @@ class BuilderTests(DistributionFixture):
             / "kernel"
             / "AUTONOMOUS_ENTRY_CONTRACT.json"
         )
-        crosswalk = builder.read_json(
-            self.distribution
-            / "payload"
-            / ".maios"
-            / "kernel"
-            / "PROJECT_META_FACULTY_CROSSWALK.json"
-        )
         manifest = builder.read_json(self.distribution / "MANIFEST.json")
 
-        self.assertTrue(meta["open_world"])
-        self.assertEqual(meta["effect_authority"], "none")
-        self.assertEqual(len(meta["function_families"]), 18)
-        self.assertEqual(
-            meta["invocation"]["entry"], "skills/maios-project-system/SKILL.md"
-        )
         self.assertEqual(entity["role"]["startup_interview"], "discretionary")
         self.assertEqual(
             family_contract["lanes"]["autonomous"]["startup_interview"],
-            "required",
+            "discretionary",
         )
         self.assertEqual(
             autonomous_entry["family_relation"]["startup_context_requirement"],
@@ -160,10 +137,6 @@ class BuilderTests(DistributionFixture):
             entity["source_catalogs"][0]["installed_registry_path"],
             ".maios/kernel/FACULTY_FIELD.json",
         )
-        self.assertEqual(
-            entity["source_catalogs"][0]["source_registry_path"],
-            "kernel/FACULTY_FIELD.json",
-        )
         self.assertNotIn("registry_path", entity["source_catalogs"][0])
         requirements = {
             item["id"]: item for item in entity["environment_readiness"]["requirements"]
@@ -173,30 +146,17 @@ class BuilderTests(DistributionFixture):
         self.assertTrue(requirements["python-runtime"]["required"])
         self.assertTrue(requirements["version-control-and-repository"]["recommended"])
         self.assertFalse(requirements["remote-infrastructure"]["required"])
-        self.assertEqual(receipt["version"], "3.0.0")
-        self.assertEqual(len(crosswalk["mappings"]), 18)
         self.assertEqual(
-            {item["source_id"] for item in crosswalk["mappings"]},
-            {item["id"] for item in meta["function_families"]},
-        )
-        self.assertFalse(
-            receipt["composition"]["fixed_generated_palette_transferred"]
-        )
-        self.assertEqual(
-            receipt["composition"]["configuration_state"],
-            "deferred_to_first_operator_relation",
-        )
-        self.assertEqual(
-            manifest["repokernel_projection"]["semantic_owner"],
+            manifest["project_kernel"]["semantic_owner"],
             "payload/skills/maios-project-system/SKILL.md",
         )
         self.assertEqual(
-            manifest["repokernel_projection"]["startup_interview"],
+            manifest["project_kernel"]["startup_interview"],
             "discretionary",
         )
-        self.assertFalse(manifest["contains_repokernel_source"])
+        self.assertFalse(manifest["contains_private_generator_source"])
         self.assertEqual(
-            manifest["repokernel_projection"]["autonomous_entry_contract"],
+            manifest["project_kernel"]["autonomous_entry_contract"],
             "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
         )
 
@@ -452,6 +412,18 @@ class InstallerTests(DistributionFixture):
                 )
                 self.assertEqual(state["selected_adapter"], host_id)
                 canonical = target / "skills" / "maios-project-system" / "SKILL.md"
+                # The native entry resolves references through the living owner.
+                # Check delivery through the complete package/installation path.
+                knowledge_relative = "references/ka-operating-knowledge.md"
+                knowledge = canonical.parent / knowledge_relative
+                self.assertIn(
+                    f"]({knowledge_relative})",
+                    canonical.read_text(encoding="utf-8"),
+                )
+                self.assertEqual(
+                    knowledge.read_bytes(),
+                    (ROOT / "skills" / "maios-project-system" / knowledge_relative).read_bytes(),
+                )
                 if host_id in native_paths:
                     self.assertEqual(
                         target.joinpath(*Path(native_paths[host_id]).parts).read_bytes(),
@@ -596,8 +568,6 @@ class RuntimeTests(DistributionFixture):
         cases = (
             (".maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json", "remove"),
             (".maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json", "corrupt"),
-            (".maios/kernel/PROJECT_META_FACULTY.json", "corrupt"),
-            (".maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json", "corrupt"),
             (".maios/config/HOST_ADAPTERS.json", "corrupt"),
             (".maios/runtime/host.py", "remove"),
             (".maios/state/HOST_STATE.json", "corrupt"),
@@ -1219,7 +1189,7 @@ class RuntimeTests(DistributionFixture):
             },
         }
 
-    def test_reviewed_competence_delta_is_admitted_and_self_approval_is_refused(self) -> None:
+    def test_competence_registration_preserves_history_without_requiring_review(self) -> None:
         target, _ = self.install()
         knowledge_entry = target / "skills" / "source-reconciliation" / "SKILL.md"
         knowledge_entry.parent.mkdir(parents=True)
@@ -1273,13 +1243,14 @@ class RuntimeTests(DistributionFixture):
         )
         self.assertEqual(revised_status["history_count"], 2)
 
-        self_approved = self.competence_delta()
-        self_approved["event_id"] = "case-02-v1"
-        self_approved["competence_id"] = "unreviewed"
-        self_approved["review"]["producer_is_reviewer"] = True
-        invalid = runtime.validate_competence_delta(self_approved)
-        self.assertFalse(invalid["valid"])
-        self.assertTrue(any("cannot approve" in error for error in invalid["errors"]))
+        local_delta = self.competence_delta()
+        local_delta["event_id"] = "case-02-v1"
+        local_delta["competence_id"] = "local-learning"
+        local_delta.pop("review")
+        local_delta["observed_delta"].pop("classification")
+        local_delta["evidence_refs"] = []
+        validation = runtime.validate_competence_delta(local_delta)
+        self.assertTrue(validation["valid"], validation["errors"])
 
     def test_configuration_apply_derives_hash_linked_state_and_recovers(self) -> None:
         target, _ = self.install()
@@ -1379,7 +1350,7 @@ class RuntimeTests(DistributionFixture):
             },
         }
 
-    def test_host_claims_advance_only_from_reviewed_observation_dependencies(self) -> None:
+    def test_host_claims_advance_from_observation_dependencies_without_required_review(self) -> None:
         target, _ = self.install("codex")
         initial = host.host_status(target)
         premature = self.host_attestation("host-early", "behavioral_activation")
@@ -1396,6 +1367,7 @@ class RuntimeTests(DistributionFixture):
             ("host-reentry", "maintained_reentry"),
         ):
             attestation = self.host_attestation(event_id, stage)
+            attestation.pop("review")
             validation = host.validate_host_attestation(target, attestation)
             self.assertTrue(validation["valid"], validation["errors"])
             receipt = host.admit_host_attestation(

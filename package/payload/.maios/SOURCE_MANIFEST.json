@@ -1,80 +1,8 @@
 {
-  "schema": "maios.source-manifest.v2",
   "product": "MAIOS Project Kernel",
-  "version": "3.2.0",
+  "repository": "https://github.com/GrazianoGuiducci/maios-project-kernel",
+  "schema": "maios.source-manifest.v2",
+  "semantic_owner": "skills/maios-project-system/SKILL.md",
   "source_owner": "maios-project-kernel repository",
-  "construction": "autonomous source-reconciled package with RepoKernel-generated functions translated into owner-native organs",
-  "repokernel_plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",
-  "sources": [
-    {
-      "id": "competence-continuum-transfer",
-      "position": "maintained_competence",
-      "used_for": ["living knowledge bodies", "generative formation", "revisable context and intent", "sustainable reentry", "explicit learning succession"],
-      "public_incarnation": ["kernel/KNOWLEDGE_CONTINUUM.md", "kernel/FOUNDING_RELATIONS.md", "kernel/UPDATE_CONTINUITY.md"],
-      "claim_boundary": "source-informed local incarnation; later host use and assimilation remain unobserved"
-    },
-    {
-      "id": "operator-direction",
-      "position": "operator_source",
-      "used_for": ["complete replacement", "open circumstance-driven composition", "possibility preservation"]
-    },
-    {
-      "id": "project-kernel-family-method",
-      "position": "maintained_competence",
-      "used_for": ["functional coverage", "self-installation", "adaptive entry", "open composition", "causal-margin reentry", "plural owner-bound learning", "operating readback", "contamination control"]
-    },
-    {
-      "id": "autonomous-entry-contract",
-      "position": "product_owned_contract",
-      "used_for": ["discretionary coder entry", "direct start option", "material expanded entry", "non-empty semantic handoff"],
-      "family_contract_unchanged": true,
-      "form_lane_unchanged": true
-    },
-    {
-      "id": "ka",
-      "position": "non_shipped_competence_source",
-      "used_for": ["source distinction", "difference preservation", "retained unknowns", "causal invalidation", "reversibility"],
-      "source_shipped": false,
-      "topology_imported": false
-    },
-    {
-      "id": "fdla",
-      "position": "non_shipped_competence_source",
-      "used_for": ["pre-projection correction", "assistant-deformation readback", "semantic sensitivity", "reusable causal learning"],
-      "source_shipped": false,
-      "topology_imported": false
-    },
-    {
-      "id": "meta-skill-architecture",
-      "position": "non_shipped_architecture_source",
-      "used_for": ["competence levels", "portable competence formation", "reciprocal cultivation", "multi-owner learning", "composition", "owner-governed meta-evolution"],
-      "source_shipped": false,
-      "topology_imported": false
-    },
-    {
-      "id": "mmk-n0-situated-coordination",
-      "position": "non_shipped_competence_source",
-      "used_for": ["common semantic plane and situated instances", "intent-preserving delegation", "direct responsibility and useful overview", "returned-result reconciliation", "shared-project continuation knowledge"],
-      "public_incarnation": ["skills/maios-project-coordination/SKILL.md", "skills/maios-project-host-adaptation/references/shared-project-continuity.md"],
-      "source_shipped": false,
-      "topology_imported": false,
-      "claim_boundary": "functional competence transfer; private controller and historical schemas are not copied; real host use remains unobserved"
-    },
-    {
-      "id": "repokernel-owner-contracts",
-      "position": "non_shipped_compiler_source",
-      "used_for": ["Project Kernel neutrality", "claim levels", "target ownership", "Project Entity Profile", "Project Meta-Faculty coverage"],
-      "source_shipped": false,
-      "runtime_dependency": false,
-      "generated_projection_receipt": ".maios/REPOKERNEL_PROJECTION.json"
-    }
-  ],
-  "excluded": [
-    "MAIOS Form state or package",
-    "private D-ND or TMx topology",
-    "credentials and runtime state",
-    "old lifecycle hooks and bootstrap packets",
-    "historical reconstruction receipts or candidate schemas"
-  ],
-  "effect_authority": "none"
+  "version": "3.2.0"
 }

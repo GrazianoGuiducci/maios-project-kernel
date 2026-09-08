@@ -24,9 +24,8 @@ material,
 let `maios-project-host-adaptation` connect the current coder when needed, then
 let `maios-project-context` form or refine the living context. Return the first
 correctable useful result and prepare owner-specific competence handoffs. In
-an existing project, compose current competences first and let
-`maios-project-competence-formation` create only a capability that real work
-still needs.
+an existing project, let the real work determine reuse, composition or
+formation through `maios-project-competence-formation`.
 
 ## Boundary
 
@@ -37,7 +36,8 @@ Project-local reversible configuration only. No external effect authority.
 Do not treat installation, a host skill path, a generated candidate, or this
 state file as proof that the related capability acted.
 
-## Validation needed
+## Observations to preserve when relevant
 
-First useful result, owner review, native host discovery, state use, behavioral
-delta, and later reentry.
+Preserve what the current work actually shows about its useful result, host
+use and later reentry. These are distinct observations, not a checklist that
+must be completed before the project can work.

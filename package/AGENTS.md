@@ -1,8 +1,9 @@
 # MAIOS Project Kernel distribution entry
 
 Use `maios-project-integration` as the owner of this repository package.
-Read `README.md`, `INSTALL.md`, `MANIFEST.json` and the selected target project
-before proposing an installation.
+Use the selected target and the package's relevant sources: `README.md` for
+orientation, `INSTALL.md` for installation mechanics, and `MANIFEST.json` for
+identity or compatibility. Read to the depth that changes the proposed effect.
 
 Begin from the operator's intended project, the selected target and the coder
 already acting. When target, mode, effect and recovery are sufficiently clear,

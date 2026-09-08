@@ -484,16 +484,26 @@ def validate_movement(root: Path, movement: Any) -> dict[str, Any]:
         selected = []
     try:
         projection = compose(root, circumstance)
+        known = {item["id"] for item in projection["known_candidates"]}
+        known.update(item["id"] for item in projection["silent_invariants"])
+        # Semantic relevance can select any known entry without a matching label.
+        known.update(item["id"] for item in _faculty_field(root).get("families", []))
+        index = _competence_index(root)
+        known.update(index.get("represented", {}))
+        known.update(index.get("active", {}))
+        known.update(
+            item["relation_id"]
+            for item in read_operating_state(root).get("learning_relations", [])
+        )
     except OperatingStateError as exc:
         errors.append(str(exc))
+        known = set()
         projection = {
             "circumstance_digest": None,
             "known_candidates": [],
             "silent_invariants": [],
             "unmatched_relations": [],
         }
-    known = {item["id"] for item in projection["known_candidates"]}
-    known.update(item["id"] for item in projection["silent_invariants"])
     seen: set[str] = set()
     for item in selected:
         if not isinstance(item, dict) or not _nonempty(item.get("id")):
@@ -820,13 +830,8 @@ def _operating_status(
                 "reason": "let the current source-qualified resultant form canonical continuity and the next field",
             },
         ],
-        "blocked_actions": [
-            {
-                "id": "external_material_effect",
-                "reason": "the project configuration grants no standing effect authority",
-                "reentry_condition": "an exact effect relation resolves source, target, controller, authority, receipt, and recovery",
-            }
-        ],
+        "blocked_actions": [],
+        "effect_authority_note": "Resolve each concrete effect from the current operator authorization and target; this state projection neither grants authority nor cancels authority already supplied.",
         "authority_ceiling": configuration.get("effect_authority", "none"),
         "uncertainty": uncertainty,
         "expected_effects": {

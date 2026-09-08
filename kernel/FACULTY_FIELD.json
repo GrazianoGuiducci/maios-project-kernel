@@ -81,10 +81,10 @@
         "proof_required",
         "value_form_unclear"
       ],
-      "material_when": "The field must become one recognizable correctable result and falsifiable first proof.",
+      "material_when": "The situation calls for a useful result; a product hypothesis or comparative claim may also call for an experiment.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#possibility-horizon-and-result-formation",
       "result_contract": "ProductServiceHypothesisAndFirstProof",
-      "proof": "The result names beneficiary, change, smallest deliverable, and a test capable of falsification."
+      "proof": "The result serves the actual intent. When a hypothesis needs an experiment, its beneficiary, expected change and falsifying case make the claim assessable."
     },
     {
       "id": "situated-faculty-composition",
@@ -198,7 +198,7 @@
       "material_when": "The first incorrect owning seam must be found before repair.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#result-evaluation-and-failure-localization",
       "result_contract": "FailureLocalization",
-      "proof": "Positive, counterexample, and injected-failure evidence isolate the seam and recovery."
+      "proof": "The observed failure and the evidence pertinent to its cause identify where the correction must act and what recovery is needed."
     },
     {
       "id": "attention-learning-and-reentry",

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://maios.it/schemas/competence-delta.v2.json",
-  "title": "MAIOS reviewed competence delta",
+  "title": "MAIOS local competence registration",
   "type": "object",
   "required": [
     "schema",
@@ -14,44 +14,133 @@
     "observed_delta",
     "evidence_refs",
     "invalidator",
-    "reentry_condition",
-    "review"
+    "reentry_condition"
   ],
   "properties": {
     "sequence": false,
     "event_digest": false,
-    "schema": {"const": "maios.competence-delta.v2"},
-    "event_id": {"type": "string", "minLength": 1, "not": {"pattern": "^[Pp][Ee][Nn][Dd][Ii][Nn][Gg]$"}, "description": "PENDING in every case spelling is reserved for transaction control."},
-    "competence_id": {"type": "string", "minLength": 1},
-    "disposition": {
-      "enum": ["retain", "revise", "supersede", "retire", "evaluate"]
+    "schema": {
+      "const": "maios.competence-delta.v2"
     },
-    "work_relation": {"type": "string", "minLength": 1},
-    "knowledge_entry": {"type": "string", "minLength": 1},
-    "activation_relations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
-    "source_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
-    "expected_delta": {"type": "string", "minLength": 1},
+    "event_id": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^[Pp][Ee][Nn][Dd][Ii][Nn][Gg]$"
+      },
+      "description": "PENDING in every case spelling is reserved for transaction control."
+    },
+    "competence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "disposition": {
+      "enum": [
+        "retain",
+        "revise",
+        "supersede",
+        "retire",
+        "evaluate"
+      ]
+    },
+    "work_relation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "knowledge_entry": {
+      "type": "string",
+      "minLength": 1
+    },
+    "activation_relations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "expected_delta": {
+      "type": "string",
+      "minLength": 1
+    },
     "observed_delta": {
       "type": "object",
-      "required": ["classification", "description"],
+      "required": [
+        "description"
+      ],
       "properties": {
-        "classification": {"enum": ["verified_improvement", "no_change", "regression", "tradeoff", "unverified"]},
-        "description": {"type": "string", "minLength": 1}
+        "classification": {
+          "enum": [
+            "verified_improvement",
+            "no_change",
+            "regression",
+            "tradeoff",
+            "unverified"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
       },
       "additionalProperties": true
     },
-    "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
-    "invalidator": {"type": "string", "minLength": 1},
-    "reentry_condition": {"type": "string", "minLength": 1},
-    "supersedes_event_id": {"type": ["string", "null"]},
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "invalidator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reentry_condition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supersedes_event_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "review": {
       "type": "object",
-      "required": ["status", "reviewer", "reviewer_relation", "producer_is_reviewer"],
+      "required": [
+        "status"
+      ],
       "properties": {
-        "status": {"enum": ["pending", "accepted", "rejected"]},
-        "reviewer": {"type": "string", "minLength": 1},
-        "reviewer_relation": {"enum": ["operator", "owner", "independent_reviewer"]},
-        "producer_is_reviewer": {"const": false}
+        "status": {
+          "enum": [
+            "pending",
+            "accepted",
+            "rejected"
+          ]
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewer_relation": {
+          "enum": [
+            "operator",
+            "owner",
+            "independent_reviewer"
+          ]
+        },
+        "producer_is_reviewer": {
+          "type": "boolean"
+        }
       },
       "additionalProperties": true
     }
@@ -60,12 +149,23 @@
     {
       "if": {
         "properties": {
-          "disposition": {"enum": ["retain", "revise", "supersede"]}
+          "disposition": {
+            "enum": [
+              "retain",
+              "revise",
+              "supersede"
+            ]
+          }
         },
-        "required": ["disposition"]
+        "required": [
+          "disposition"
+        ]
       },
       "then": {
-        "required": ["knowledge_entry", "activation_relations"]
+        "required": [
+          "knowledge_entry",
+          "activation_relations"
+        ]
       }
     }
   ],

@@ -1,95 +1,41 @@
-# Start here — stable system boot
+# Start here — coder startup and reentry
 
-This project contains MAIOS Project Kernel 3.2.0. It was installed through an
-explicit package plan; installation did not configure the project or prove
-that the current host has used its faculty.
+This project contains MAIOS Project Kernel 3.2.0. This entry orients the coder
+to the kernel and the current project; the person can read it too.
 
-This boot remains compact and stable. It restores what the Kernel is, how the
-project enters it and which competences own startup, context, host adaptation,
-work and learning. The changing context remains with the operator, actual
-project sources, `setup/CONFIGURATION_STATE.json`, `project/CURRENT_STATE.md`
-and the competences that act. A fresh reentry therefore recovers the current
-field without continually rewriting the boot.
+KA, FDLA and Meta_Skill constitute the kernel's operating logic. Understand the
+actual situation and sources through KA, preserve causal coherence and correct
+introduced distortions through FDLA, and let Meta_Skill make pertinent
+competences act, compose and learn. These relations participate in the work;
+the situation determines the concrete capacities and depth of knowledge needed.
 
-At a new session, recover the relevant present. A boot-only request pauses
-for the task; an already selected movement continues after orientation. A stored
-open front does not select itself. Sources and project trajectory may supply
-a useful correctable intent without requiring another prompt.
+## Enter the current project
 
-Ask the current assistant:
+Use `skills/maios-project-system/SKILL.md` as the operating competence. Begin
+from the current operator relation and relevant project sources. Use knowledge
+already understood; deepen the KA/FDLA references and formation knowledge when
+needed to understand and conduct the work. A clear current movement can continue
+directly. At reentry, recover the useful causal margin and what has changed.
 
-```text
-Read START_HERE.md, determine whether this is a new or existing project, and
-use the corresponding MAIOS startup competence. Begin directly from what I
-have already said or placed here and give me the first useful correctable
-result. Expand the entry only if a missing relation materially changes it.
-```
+A new project forms its initial context. An existing project keeps its own
+identity, conventions, sources and work. Involve the corresponding startup
+competence when that contribution is needed. Explain what you understand and
+produce the useful result supported by the situation; ask for a missing relation
+when it would change faithful work.
 
-The assistant builds context from your relation, actual project files, work
-and consequences. It derives a correctable intent and lets competences produce
-useful solutions. `setup/CONFIGURATION_STATE.json` retains a projection of this
-understanding; results can revise it throughout the work. A new project forms its first context; an
-existing project preserves its current identity and work. The context
-competence shows a useful interpretation and possibilities before requesting
-non-decisive detail, then prepares the working projections needed by the
-competences that will act.
+## Knowledge and continuation
 
-If this coder uses another harness incarnation, `maios-project-host-adaptation`
-connects the same neutral Kernel relation to that host's instruction, skill,
-tool and reentry conventions. The coder's current knowledge of its own system
-is part of that adaptation.
+- `skills/maios-project-system/SKILL.md` connects the acting competences.
+- `.maios/kernel/SYSTEM_KERNEL.md` is the compendium for understanding and
+  maintaining this kernel's meaning, knowledge, mechanisms and evolution.
+- Competences carry their practical knowledge under `skills/` and their
+  references. Teach reusable learning to the competence that must act differently.
+- Actual sources and `setup/CONFIGURATION_STATE.json` supply project context;
+  `project/CURRENT_STATE.md` and `project/PROJECT_BRIEF.md` are readable projections.
+- `HOSTS.md` and host adaptation supply another native entry when needed.
 
-At first entry, the coder also checks
-`.maios/kernel/PROJECT_ENTITY_PROFILE.json#environment_readiness`. It explains
-and helps prepare only a material missing condition. The already acting coder,
-harness and model access are observed rather than re-asked; Python 3.10 or later
-is checked before deterministic helpers, while version control and remote
-infrastructure remain situated options. The profile does not select providers, create
-accounts, install global software or receive credentials by itself.
-
-`maios-project-competence-formation` forms, composes or evolves capacities from
-intent, memory, knowledge, learning, successful composition and emerging
-possibilities. Initial context, setup and useful work already happen through
-competences. They carry practical knowledge, reasons, critical self-correction
-and the capacity to learn. The assistant explains their contribution when it
-helps you understand or correct the work. Read
-`.maios/kernel/KNOWLEDGE_CONTINUUM.md` for a practical example and
-`.maios/kernel/FOUNDING_RELATIONS.md` when deeper operating reasons matter.
-
-The canonical semantic sources are:
-
-- `.maios/kernel/SYSTEM_KERNEL.md`;
-- `.maios/kernel/FACULTY_FIELD.json`;
-- `.maios/kernel/COMPOSITION_PROTOCOL.md`;
-- `setup/CONFIGURATION_STATE.json`;
-- `project/CURRENT_STATE.md`.
-
-The package also includes `.maios/kernel/PROJECT_ENTITY_PROFILE.json` and
-`.maios/kernel/PROJECT_META_FACULTY.json`, generated once from the accepted
-neutral RepoKernel relation. They describe deferred startup and general
-functional coverage, but do not create another kernel or runtime dependency.
-`maios-project-system` composes them through the MAIOS-native faculty field.
-
-`python maios.py status` checks the installed structure. `python maios.py
-compose --circumstance <file.json>` can project represented package
-competences, project-local competences, reachable learning and known faculty
-families for a declared circumstance, but the output is not semantic selection
-or proof.
-`python maios.py configuration-status` distinguishes pending, accepted, stale,
-and hash-linked configuration projections. `competence-status` shows separately
-governed project-local competence history without claiming later assimilation.
-`learning-status` shows causal learning that is immediately reachable in a
-matching circumstance, while keeping persistence distinct from assimilation.
-`operating-status` exposes the current project relation when durable state or
-reentry needs it. After a real result is inspected, `validate-resultant` and
-`apply-resultant` can couple that terminal readback to configuration, evolution,
-learning, projections, and reentry without granting an external effect.
-Distinct causal learning deltas can enter the next matching movement
-immediately. The readback also preserves the compact causal margin and all open
-fronts needed for reentry; later non-identical behavior is still needed to
-support assimilation.
-
-Project-local, reversible configuration is allowed when you asked to initialize
-or use the project. An external, public, destructive, credentialed, or runtime
-effect remains a separate exact decision. Current intent and verified reality
-outrank stored continuity on every reentry.
+Keep current operator intent and actual sources ahead of stale continuity.
+Preserve the knowledge and state needed to resume; use managed state helpers
+when coupled projections need to change. Resolve the authorization of the
+concrete action. Installation, actual use and later assimilation remain distinct
+observations; recording one does not establish the others.

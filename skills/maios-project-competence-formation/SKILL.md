@@ -53,6 +53,21 @@ entity, competence, meta-competence or kernel may carry several functions;
 one function can also span cooperating owners. These are open possibilities,
 not exclusive types, required levels or a catalogue ceiling.
 
+Make awareness of the situation operative in the method being formed: the
+competence understands its actual object, the meaning of its sources and the
+consequences of its movement while choosing how to act. Draw on the permanent
+system competence's project-local KA knowledge and teach the relevant
+distinctions in the new competence's own domain. A reference to KA alone does
+not supply that understanding, and a common preliminary checklist does not
+replace it.
+
+Carry FDLA in that method too: when a source, result or operator correction
+reveals that the competence's own framing changed the object, let the recovered
+meaning change how it works. The system competence's local
+`references/fdla-operating-knowledge.md` supplies the causal distinctions.
+Meta_Skill's function here includes learning how to form better competences
+from the consequences of those already formed.
+
 Form enough know-how for the next capable assistant to conduct the work:
 
 - the situation and change the competence can understand;
@@ -94,6 +109,13 @@ reconstruct. Relevance may emerge during comprehension and change the question,
 attention or source selection. None of the examples above is a closed origin
 or form catalogue.
 
+Locate the difference that prevents useful work. Acquire missing knowledge;
+deepen a body that names a function without teaching its method; reconnect an
+entry that misses existing knowledge. If the assistant understood the method
+but displaced it with its own framing, correct that use and preserve any
+reusable learning in the responsible competence. These differences determine
+the useful change; they do not require a diagnostic form or a new skill.
+
 Use the project-owned body as the living source. Native entries point back to
 it; resolve its references from that source directory. When learned knowledge
 changes invocation or ownership, update the pertinent description, discovery
@@ -115,11 +137,17 @@ learned earlier. Return a general formation difference to this generative
 faculty; return a domain difference to its domain owner. The context determines
 whether new structure, absorption, a temporary form or no durable change helps.
 
-Read the result as a changed field: acquire what the first movement missed,
-then refine the result and the method that must continue. This is the meaning
-of standard 99,99%; it is not a numerical guarantee or a prescribed number of
-reviews. A deeper discovery can reopen the framing while a sound determination
-remains part of the present. A reusable formation discovery returns here too.
+Learning may change what a competence notices, how it relates concepts, which
+sources or collaborators become pertinent, and how its method is organized.
+Update those relations where the next use actually reads them. Preserve the
+useful capability when its representation changes; explain the shared meaning
+once and let each affected competence carry its own practical consequence.
+
+Read the result as a changed field. When it reveals a material missing relation,
+acquire that knowledge and refine the result and the method that must continue.
+A deeper discovery can reopen the framing while a sound determination remains
+part of the present. A reusable formation discovery returns here too; its
+purpose is the actual improvement in understanding and work.
 
 At useful moments explain what a competence contributes, why it is being
 reused, composed or formed and what a result actually taught it. Match the

@@ -100,10 +100,7 @@ def validate_project(root: Path) -> dict[str, Any]:
         ".maios/kernel/EVOLUTION_CONTRACT.json",
         ".maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json",
         ".maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
-        ".maios/kernel/PROJECT_META_FACULTY.json",
-        ".maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json",
         ".maios/kernel/PROJECT_ENTITY_PROFILE.json",
-        ".maios/REPOKERNEL_PROJECTION.json",
         ".maios/SOURCE_MANIFEST.json",
         ".maios/config/HOST_ADAPTERS.json",
         ".maios/competences/INDEX.json",
@@ -206,6 +203,8 @@ def validate_project(root: Path) -> dict[str, Any]:
             or family_relation.get("configuration_state")
             != family_lane.get("configuration_state")
             or family_relation.get("startup_context_requirement")
+            != family_lane.get("startup_context_requirement")
+            or entry_policy.get("startup_interview")
             != family_lane.get("startup_interview")
         ):
             errors.append("autonomous entry contract lost its family relation")
@@ -213,30 +212,6 @@ def validate_project(root: Path) -> dict[str, Any]:
             errors.append("autonomous entry policy must remain discretionary")
     except Exception as exc:
         errors.append(f"invalid autonomous entry contract: {exc}")
-    meta: dict[str, Any] = {}
-    try:
-        meta = read_json(root / ".maios" / "kernel" / "PROJECT_META_FACULTY.json")
-        family_ids = [item.get("id") for item in meta.get("function_families", [])]
-        expected_ids = family.get("meta_faculty", {}).get(
-            "required_function_families", []
-        )
-        if meta.get("schema") != "repokernel.project-meta-faculty.v1":
-            errors.append("unsupported Project Meta-Faculty schema")
-        if meta.get("open_world") is not True or meta.get("effect_authority") != "none":
-            errors.append("Project Meta-Faculty must remain open and effect-neutral")
-        if (
-            not family_ids
-            or None in family_ids
-            or len(family_ids) != len(set(family_ids))
-            or sorted(family_ids) != sorted(expected_ids)
-        ):
-            errors.append("Project Meta-Faculty functional coverage is inconsistent")
-        if meta.get("invocation", {}).get("entry") != (
-            "skills/maios-project-system/SKILL.md"
-        ):
-            errors.append("Project Meta-Faculty semantic owner mismatch")
-    except Exception as exc:
-        errors.append(f"invalid Project Meta-Faculty: {exc}")
     try:
         entity = read_json(root / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json")
         entry_contract = family.get("entry_profile", {})
@@ -270,79 +245,38 @@ def validate_project(root: Path) -> dict[str, Any]:
     except Exception as exc:
         errors.append(f"invalid Project Entity Profile: {exc}")
     try:
-        crosswalk = read_json(
-            root
-            / ".maios"
-            / "kernel"
-            / "PROJECT_META_FACULTY_CROSSWALK.json"
-        )
-        source_ids = [
-            item.get("id") for item in meta.get("function_families", [])
-        ]
-        target_by_id = {
-            item.get("id"): item for item in registry.get("families", [])
-        }
-        mappings = crosswalk.get("mappings", [])
-        mapped_sources = [
-            item.get("source_id") for item in mappings if isinstance(item, dict)
-        ]
-        resolved_targets: set[str] = set()
-        if (
-            crosswalk.get("schema") != "maios.project-meta-faculty-crosswalk.v1"
-            or crosswalk.get("source_schema") != meta.get("schema")
-            or crosswalk.get("target_schema") != registry.get("schema")
-            or crosswalk.get("semantic_owner") != "skills/maios-project-system/SKILL.md"
-            or crosswalk.get("open_world") is not True
-            or len(mapped_sources) != len(mappings)
-            or len(mapped_sources) != len(set(mapped_sources))
-            or sorted(mapped_sources) != sorted(source_ids)
-        ):
-            errors.append("Project Meta-Faculty crosswalk identity or coverage mismatch")
-        for mapping in mappings:
-            if not isinstance(mapping, dict):
+        for target in registry.get("families", []):
+            target_id = target.get("id")
+            entry = target.get("entry")
+            if not isinstance(entry, str):
+                errors.append(f"faculty has no entry: {target_id}")
                 continue
-            target_ids = mapping.get("target_faculty_ids")
-            if not isinstance(target_ids, list) or not target_ids:
-                errors.append("Project Meta-Faculty crosswalk mapping has no target")
+            path_text, separator, anchor = entry.partition("#")
+            entry_path = PurePosixPath(path_text)
+            if (
+                entry_path.is_absolute()
+                or ".." in entry_path.parts
+                or not project_local_file(root, root.joinpath(*entry_path.parts)).is_file()
+            ):
+                errors.append(f"faculty entry is missing: {target_id}")
                 continue
-            for target_id in target_ids:
-                target = target_by_id.get(target_id)
-                if target is None:
-                    errors.append(f"Project Meta-Faculty target is missing: {target_id}")
-                    continue
-                resolved_targets.add(target_id)
-                entry = target.get("entry")
-                if not isinstance(entry, str):
-                    errors.append(f"Project Meta-Faculty target has no entry: {target_id}")
-                    continue
-                path_text, separator, anchor = entry.partition("#")
-                entry_path = PurePosixPath(path_text)
-                if (
-                    entry_path.is_absolute()
-                    or ".." in entry_path.parts
-                    or not project_local_file(root, root.joinpath(*entry_path.parts)).is_file()
-                ):
-                    errors.append(f"Project Meta-Faculty target entry is missing: {target_id}")
-                    continue
-                if separator:
-                    headings = []
-                    for line in root.joinpath(*entry_path.parts).read_text(
-                        encoding="utf-8"
-                    ).splitlines():
-                        if line.startswith("#"):
-                            heading = line.lstrip("#").strip().lower()
-                            heading = re.sub(r"[^\w\s-]", "", heading)
-                            headings.append(
-                                re.sub(r"[\s-]+", "-", heading).strip("-")
-                            )
-                    if anchor not in headings:
-                        errors.append(
-                            f"Project Meta-Faculty target anchor is missing: {target_id}"
+            if separator:
+                headings = []
+                for line in root.joinpath(*entry_path.parts).read_text(
+                    encoding="utf-8"
+                ).splitlines():
+                    if line.startswith("#"):
+                        heading = line.lstrip("#").strip().lower()
+                        heading = re.sub(r"[^\w\s-]", "", heading)
+                        headings.append(
+                            re.sub(r"[\s-]+", "-", heading).strip("-")
                         )
-        if resolved_targets != set(target_by_id):
-            errors.append("Project Meta-Faculty crosswalk does not resolve every faculty")
+                if anchor not in headings:
+                    errors.append(
+                        f"faculty anchor is missing: {target_id}"
+                    )
     except Exception as exc:
-        errors.append(f"invalid Project Meta-Faculty crosswalk: {exc}")
+        errors.append(f"invalid faculty entry: {exc}")
     try:
         evolution = read_json(root / ".maios" / "kernel" / "EVOLUTION_CONTRACT.json")
         if evolution.get("schema") != "maios.project-evolution-contract.v3":
@@ -357,20 +291,6 @@ def validate_project(root: Path) -> dict[str, Any]:
             errors.append("evolution contract competence owner mismatch")
     except Exception as exc:
         errors.append(f"invalid evolution contract: {exc}")
-    try:
-        receipt = read_json(root / ".maios" / "REPOKERNEL_PROJECTION.json")
-        boundaries = receipt.get("boundaries", {})
-        if receipt.get("schema") != "maios.repokernel-projection-receipt.v1":
-            errors.append("unsupported RepoKernel projection receipt")
-        if (
-            boundaries.get("contains_repokernel_source") is not False
-            or boundaries.get("runtime_dependency_on_repokernel") is not False
-            or boundaries.get("creates_second_semantic_owner") is not False
-            or boundaries.get("effect_authority") != "none"
-        ):
-            errors.append("RepoKernel projection boundary mismatch")
-    except Exception as exc:
-        errors.append(f"invalid RepoKernel projection receipt: {exc}")
     source_bound = len(errors) == source_error_start and not unsafe
     host_readable = True
     try:
@@ -495,7 +415,7 @@ def competence_status(root: Path) -> dict[str, Any]:
         "active": index.get("active", {}),
         "history_count": len(index.get("history", [])),
         "retained_unknowns": index.get("retained_unknowns", []),
-        "claim_boundary": "indexed or reviewed is not behavioral activation or maintained assimilation",
+        "claim_boundary": "an indexed entry is available knowledge; actual use and assimilation are separate",
     }
 
 
@@ -550,32 +470,22 @@ def validate_competence_delta(delta: Any) -> dict[str, Any]:
     if not isinstance(observed, dict):
         errors.append("observed_delta must be an object")
     else:
-        if observed.get("classification") not in RESULT_CLASSIFICATIONS:
+        if observed.get("classification") is not None and observed.get("classification") not in RESULT_CLASSIFICATIONS:
             errors.append("unsupported observed delta classification")
         if not isinstance(observed.get("description"), str) or not observed["description"].strip():
             errors.append("observed_delta.description must be non-empty")
     review = delta.get("review")
-    if not isinstance(review, dict):
-        errors.append("review must be an object")
-    else:
-        if review.get("status") not in {"pending", "accepted", "rejected"}:
-            errors.append("unsupported review status")
-        if not isinstance(review.get("reviewer"), str) or not review["reviewer"].strip():
-            errors.append("review.reviewer must be non-empty")
-        if review.get("reviewer_relation") not in {
-            "operator",
-            "owner",
-            "independent_reviewer",
-        }:
-            errors.append("unsupported reviewer relation")
-        if review.get("producer_is_reviewer") is not False:
-            errors.append("the producing assistant cannot approve its own competence delta")
+    if review is not None:
+        if not isinstance(review, dict) or review.get("status") not in {"pending", "accepted", "rejected"}:
+            errors.append("optional review must describe a pending, accepted or rejected review")
+    if isinstance(observed, dict) and observed.get("classification") not in {None, "unverified"} and not delta.get("evidence_refs"):
+        errors.append("a classified observed delta requires evidence")
     return {
         "schema": "maios.competence-delta-validation.v2",
         "valid": not errors,
         "errors": errors,
         "event_digest": digest(delta) if not errors else None,
-        "claim_boundary": "shape validity is not semantic review, improvement, or assimilation proof",
+        "claim_boundary": "shape validity is not observed improvement or assimilation",
     }
 
 
@@ -587,16 +497,13 @@ def admit_competence_delta(
     validation = validate_competence_delta(delta)
     if not validation["valid"]:
         raise ValueError("invalid competence delta: " + "; ".join(validation["errors"]))
-    if delta["review"]["status"] != "accepted":
-        raise ValueError("only an explicitly accepted review can be admitted")
-
     index = read_competence_index(root)
     coherence = configuration_engine.owner_state_receipt_errors(root, "competence", index)
     if coherence:
         raise ValueError("; ".join(coherence))
     before_sha256 = digest(index)
     if expected_index_sha256 != before_sha256:
-        raise ValueError("competence index changed after review; re-read and re-evaluate")
+        raise ValueError("competence index changed before recording; re-read the current index")
 
     history = list(index.get("history", []))
     event_id = delta["event_id"]
@@ -625,14 +532,7 @@ def admit_competence_delta(
         if supersedes != current.get("event_id"):
             raise ValueError("supersedes_event_id must identify the active competence event")
 
-    classification = delta["observed_delta"]["classification"]
-    activation_allowed = classification in {"verified_improvement", "tradeoff"}
-    if disposition in {"retain", "revise", "supersede"} and not activation_allowed:
-        raise ValueError("active competence requires verified_improvement or reviewed tradeoff")
-    if disposition in {"retain", "revise", "supersede", "retire"} and not delta[
-        "evidence_refs"
-    ]:
-        raise ValueError("a competence disposition that changes routing requires evidence")
+    classification = delta["observed_delta"].get("classification")
     if disposition in {"retain", "revise", "supersede"}:
         competence_knowledge_path(root, delta["knowledge_entry"])
 
@@ -673,7 +573,7 @@ def admit_competence_delta(
         "after_index_sha256": after_sha256,
         "revision": updated["revision"],
         "global_writes": [],
-        "claim_boundary": "admission records reviewed local state; later behavior is separate proof",
+        "claim_boundary": "registration preserves local discovery and revision history; later behavior supplies evidence of improvement",
     }
     receipt_path = root / ".maios" / "receipts" / "competence" / f"{event_id}.json"
     ensure_project_local(root, receipt_path)

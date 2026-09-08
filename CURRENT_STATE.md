@@ -2,6 +2,13 @@
 
 ## Current implementation increment — 2026-09-08
 
+The selected next release basis is the consolidated current local corpus,
+including the already exercised context refinement. It is distinct from the
+earlier published ancestor 5fac85c; see
+[source selection](docs/RELEASE_SOURCE_SELECTION.md). The release selection will
+bind the actual consolidation commit, rather than attributing these source bytes
+to their older ancestor. Windows device-path policy is aligned with the generator.
+
 The ordinary builder now accepts an identified RepoKernel GenerationPlan through
 `--kernel-plan` and `--kernel-plan-sha256`. The generator's selected materialization
 supplies the method bodies and resources; product delivery retains its own
@@ -17,6 +24,165 @@ not select another experiment in place of continuing the common-generation goal.
 ## Earlier product state
 
 updated: 2026-09-06
+active_surface: autonomous package core transfer, step 1 of the operator's sequence
+status: local package organized for use; knowledge flow integrated in existing operating competences
+product_version: 3.2.0
+source_base: 8e67d837b2c08ef3ef58691a418f5191132ff9fb
+
+## Current work
+
+The operator selected organizing the knowledge needed for a functioning kernel,
+while preserving openness in comprehension and judgment.
+The context competence now carries information into usable meaning and a
+consequence for the pertinent competence; formation updates the method,
+recognition or composition that must change; knowledge continuity retains the
+form needed for later use. Existing bodies and references own this flow.
+No new competence, registry, mandatory pipeline or runtime mechanism is added.
+The context skill's remaining broad resultant-transition wording is corrected:
+direct knowledge learning does not require a coupled managed-state transition.
+The selected methods are integrated for use. The present work can reveal new
+relations and possibilities as well as failures; recorded continuity does not
+restrict that field or select a move to another product on the operator's behalf.
+
+The source-to-recipient comparison now supplies two practical continuations
+that were only broadly expressed: preserving the live task before context loss,
+and retaining source-bound kernel understanding beyond immediate skill learning.
+KNOWLEDGE_CONTINUUM owns those methods, reached from the system competence and
+compendium. Generated CURRENT_STATE/PROJECT_BRIEF views are explicitly distinct
+from the living knowledge they cannot safely own. No new state mechanism or
+competence is introduced; the existing package projection carries the changes.
+Source comparison also deepened the existing field-illumination and possibility
+sections: reform the question and source filter when they hide the relation,
+and understand the possibilities of the resulting system, not only its immediate
+output. Their existing FACULTY_FIELD entries already reach these methods.
+This is a source-method correction, not observed model assimilation or a claim
+that every source function has now been exhaustively compared.
+
+The maios-kernel-study competence and knowledge/KERNEL.md now supply source
+understanding of the complete operating path. That understanding has informed
+the selected entry consolidation: AGENTS connects the host, START_HERE orients
+the coder at startup/reentry, and maios-project-system owns operation. The existing
+SYSTEM_KERNEL is the recipient's compendium for meaning, knowledge ownership,
+state services and maintenance. No extra study skill or compendium file is
+added to the payload. Source-contact details are preserved in UPDATE_CONTINUITY
+and remain reachable from the system skill. The operator corrected an assistant
+misinterpretation of START_HERE as a human guide: it is the coder's entry, also
+readable by the person. KA, FDLA and Meta_Skill supply constitutive operating
+logic, not optional features; deeper source reads remain situated. The local
+package is regenerated from this organization;
+described source behavior is not a claim of observed use in a receiving host.
+The semantic readback also corrected prose that described Meta_Skill as only
+reachable, distinguished immediate correction from later assimilation, and
+removed a sequential activation reading from the public study diagram. The
+formation method retains useful refinement without the unexplained 99.99% label.
+
+Continue in this canonical repository from the KA knowledge already integrated.
+The core selected by the operator is KA, FDLA and Meta_Skill, together with the
+system functions and competences needed for complete autonomous recipients.
+FDLA now has local operating knowledge, reachable through the permanent entry
+and competence formation. Context, knowledge acquisition, formation, learning,
+continuity, host adaptation and coordination remain available. Recovery detail
+has moved from the permanent entry to its reachable technical reference.
+General result formation now follows the situation; comparative experiments
+and coupled runtime readbacks retain their concrete purpose.
+
+The operator asks for source work without test suites or validation cycles.
+The existing renderer regenerates package/ from the selected local sources.
+No test suite or distribution validation command has been run for this delta. Earlier results
+below belong to the previous change and do not validate this work.
+
+## Following sequence
+
+1. The autonomous package no longer delivers the historical generator receipt
+   or requires it in installed status. FACULTY_FIELD is the single operating
+   map; PROJECT_META_FACULTY and its crosswalk are no longer delivered. The
+   the installed source manifest retains the MAIOS product, version, repository
+   and entry. The installed family contract describes the autonomous project,
+   without the Form lane or the producer's update workflow. The source catalog
+   points to the installed field rather than a build-time source path.
+   Generator genealogy remains in the source builder. The historical RepoKernel
+   paragraph has also been removed from the distributed attribution notices;
+   the distribution's MIT license and copyright notice remain unchanged.
+   Existing distribution assertions were aligned with these changed fields;
+   no tests or distribution validator were executed. This is a local source
+   update over 3.2.0, not a new published release.
+   Competence registration retains local discovery/history without requiring
+   review, independent approval or a verified-improvement classification.
+   Known competences may participate in a recorded movement without an exact
+   activation-label match. Resultant transactions serve coupled runtime state;
+   ordinary learning changes the relevant knowledge body directly. The status
+   projection no longer declares all external actions blocked by default.
+   Configuration can describe a useful project without a mandatory experiment,
+   beneficiary, deliverable format or reviewer. Optional claims still retain
+   evidence, and actual external effects retain their current authorization.
+   Result-first readback also corrected the generated entry profile and fresh
+   reentry templates: the installed family now distinguishes required context
+   from discretionary interview; available competences come from the actual
+   payload projection, including coordination. The entry completion no longer
+   inherits a universal falsifiable-proof condition. Optional proof, review and
+   product fields are not rendered as pending tasks when absent. Configuration
+   application performs its own input check without a required separate command.
+   Failure diagnosis uses reproductions or regression tests when pertinent.
+   Host observation recording likewise no longer requires a separate reviewer;
+   concrete observation evidence, stage meaning and state integrity remain.
+   Distribution entry reads documents by their current purpose, and integration
+   uses the selected host rather than always prescribing the Codex profile.
+2. Use that result to update the Form package and revisit its generator.
+3. Use the package to update tm7/chatgpt if needed and its kernel_chat port.
+
+Current work grants local source/package changes and competence continuity.
+No publication, deployment or remote host update has been performed.
+The live transfer competence is understand-maios-kernel-transfer in the local
+Codex skills. It carries the operator corrections and exact next movement.
+
+## Previous local work and release history
+
+# MAIOS Project Kernel current state
+
+updated: 2026-09-06
+active_surface: self-contained KA function transfer in canonical source
+status: implemented locally; source publication pending
+product_version: 3.2.0
+source_base: 8e67d837b2c08ef3ef58691a418f5191132ff9fb
+release_disposition: source delta over 3.2.0; no new numbered release
+
+## Current resultant
+
+The permanent maios-project-system competence now carries self-contained KA
+operating knowledge in references/ka-operating-knowledge.md. The project entry,
+START_HERE, system knowledge and competence formation make it reachable in the
+recipient's own context. The package contains that knowledge without requiring
+the originating private KA repository. Existing founding relations and runtime
+mechanisms are preserved.
+
+The knowledge covers awareness of the situation while forming action, source
+attribution, recovery of meaning versus bytes, correction of a narrowing method,
+preservation of an emerged determination, latency and competence learning.
+The example explains the intended capability; it is not an observed model trial.
+
+The selected change was verified in an isolated checkout of the same source
+base, then integrated here after checking that canonical and authenticated
+origin/main still identified that base and that this checkout was clean.
+This repository is the continuing source owner; the earlier local archive is
+only an isolated preparation artifact, not a parallel product source.
+
+Validation of the transferred source: 89 tests ran; 87 passed and two were
+skipped because the Windows host lacks symlink creation privileges. All eight
+adapter installation paths deliver the new knowledge through the living
+semantic owner. Fresh-process package installation/runtime verification passed
+without source imports. Build and distribution verification cover 63 package
+files / 52 payload files. They establish delivery and mechanics, not behavioral
+assimilation. Regenerate from this source to obtain its exact package identity.
+
+Source publication is pending. No new numbered release, Form update,
+kernel_chat change or production installation is part of this source delta.
+The next source movement continues here; later real use can deepen the
+competence's knowledge without substituting a new founding definition of KA.
+
+## Earlier release state — history
+
+
+updated: 2026-09-06
 active_surface: numbered promotion of the accepted autonomous package
 status: 3.2.0 release source prepared; publication is recorded by the immutable GitHub release
 product_version: 3.2.0
@@ -27,7 +193,7 @@ previous_release_commit: 2dc82936154e1b43417120a31f0403baf05d5e66
 accepted_candidate_commit: 925ea8a4eee7188063adfbe649d97a6d8b347ccb
 accepted_candidate_ci: https://github.com/GrazianoGuiducci/maios-project-kernel/actions/runs/34031691583
 
-## Current resultant
+### Release resultant
 
 The final returned review accepts coordination.2 for numbered promotion with
 no new blocking findings. Version 3.2.0 carries its runtime and competence

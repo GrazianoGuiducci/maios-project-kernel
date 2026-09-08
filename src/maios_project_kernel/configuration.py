@@ -384,26 +384,12 @@ def validate_configuration(value: Any) -> dict[str, Any]:
             missing_decisions.append("operator_relation.direction_status")
         if not _nonempty(result.get("current")):
             missing_decisions.append("result.current")
-        if not _nonempty(result.get("beneficiary")):
-            missing_decisions.append("result.beneficiary")
-        if not _nonempty(result.get("smallest_deliverable")):
-            missing_decisions.append("result.smallest_deliverable")
-        if result.get("owner_review") != "accepted":
-            missing_decisions.append("result.owner_review=accepted")
-        if not _nonempty(proof.get("statement")):
-            missing_decisions.append("first_proof.statement")
-        if not _nonempty(proof.get("falsifiable_test")):
-            missing_decisions.append("first_proof.falsifiable_test")
-        if not _nonempty(proof.get("reviewer")):
-            missing_decisions.append("first_proof.reviewer")
-        if proof.get("result") not in {
-            "unverified",
-            "verified_improvement",
-            "no_change",
-            "regression",
-            "tradeoff",
+        # A proof plan is optional: configuration also serves explanations,
+        # methods and open inquiry, not only hypotheses requiring an experiment.
+        if proof.get("result") is not None and proof.get("result") not in {
+            "unverified", "verified_improvement", "no_change", "regression", "tradeoff"
         }:
-            missing_decisions.append("first_proof.result")
+            errors.append("unsupported first_proof.result")
         if not _nonempty(value.get("current_next")):
             missing_decisions.append("current_next")
         if data_boundary.get("provider_consent") not in {
@@ -647,7 +633,7 @@ def current_state_markdown(state: dict[str, Any]) -> str:
         f"living_intent: {state['operator_relation'].get('current_intent') or 'pending'}",
         f"intent_source: {state['operator_relation'].get('intent_source') or 'not yet qualified'}",
         f"current_result: {result.get('current') or 'pending'}",
-        f"owner_review: {result.get('owner_review') or 'pending'}",
+        *([f"owner_review: {result['owner_review']}"] if result.get("owner_review") else []),
         f"effect_authority: {state.get('effect_authority')}",
         f"current_next: {state.get('current_next') or 'pending'}",
         "",
@@ -669,11 +655,17 @@ def project_brief_markdown(state: dict[str, Any]) -> str:
             f"Intent: {state['operator_relation'].get('current_intent') or 'pending'}",
             f"Intent source: {state['operator_relation'].get('intent_source') or 'not yet qualified'}",
             f"Result: {result.get('current') or 'pending'}",
-            f"Beneficiary: {result.get('beneficiary') or 'pending'}",
-            f"Value mechanism: {result.get('value_mechanism') or 'pending'}",
-            f"Smallest deliverable: {result.get('smallest_deliverable') or 'pending'}",
-            f"First proof: {proof.get('statement') or 'pending'}",
-            f"Falsifiable test: {proof.get('falsifiable_test') or 'pending'}",
+            *[
+                f"{label}: {value}"
+                for label, value in (
+                    ("Beneficiary", result.get("beneficiary")),
+                    ("Value mechanism", result.get("value_mechanism")),
+                    ("Smallest deliverable", result.get("smallest_deliverable")),
+                    ("First proof", proof.get("statement")),
+                    ("Falsifiable test", proof.get("falsifiable_test")),
+                )
+                if value
+            ],
             f"Current next: {state.get('current_next') or 'pending'}",
             "",
             "This is a projection of setup/CONFIGURATION_STATE.json, not a second state owner.",

@@ -5,9 +5,9 @@ description: Start a newly created or still-unformed project with MAIOS Project 
 
 # Start A New Project
 
-Own the first situated movement of a new project. Read `START_HERE.md`,
-`setup/CONFIGURATION_STATE.json`, `project/CURRENT_STATE.md`, the real project
-files already present and the operator's current contribution.
+Own the first situated movement of a new project. Begin with the operator's
+contribution and real project files; read `setup/CONFIGURATION_STATE.json` and
+`project/CURRENT_STATE.md` to the depth that changes the initial movement.
 
 Establish only the identity and context needed to make a useful movement now.
 Let `maios-project-context` build living context and derive a correctable intent
@@ -23,4 +23,3 @@ Return the result before asking for non-decisive detail. When the operator
 corrects the interpretation, preserve the causal difference with this
 competence as owner when it changes later new-project startup. Durable state is
 updated only when it changes project behavior or fresh reentry.
-

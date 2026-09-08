@@ -7,6 +7,12 @@ it; the result can improve that same competence and the way new competences
 are formed. Instructions are an entrance into this knowledge, not a substitute
 for comprehension.
 
+The permanent system competence carries KA's practical operating knowledge in
+`skills/maios-project-system/references/ka-operating-knowledge.md`, relative to
+the project root. Its source distinctions and learned corrections participate
+while other competences work. The installed body provides the knowledge needed
+for that function; private upstream source access is not a runtime dependency.
+
 For example, a project begins with scattered notes and an existing prototype.
 The context competence connects those sources and derives a correctable intent.
 A design competence produces a useful change. Work may reveal a reusable
@@ -23,6 +29,15 @@ prove that a later assistant used it.
 
 Keep what affects the present in active attention and retain pointers to
 deeper sources. Cool obsolete routes with their reason and recovery condition.
+
+Let the knowledge's future use determine how it continues. An event may need
+its occurrence and source; an explanation its meaning and reasons; a method
+its practical distinctions; a relationship the connected concepts; a pending
+possibility the condition that makes it pertinent again. One competence can
+carry several of these forms in its existing body and references. They need
+no separate stores or fixed classification. At reentry, recover the form that
+lets the present work continue, with deeper relations still reachable.
+
 Several still-useful learnings can coexist, including for the same competence;
 rare use is not evidence of obsolescence. A new situation may change relevance,
 the question or the organization of knowledge itself.
@@ -56,3 +71,46 @@ Their forms remain revisable within the founding D-ND reference. The public
 provides further study through `knowledge/KERNEL.md` and contribution guidance.
 If a remote source is unavailable, continue with the available qualified
 knowledge and retain any material missing relation.
+
+## Preserve the movement before context is lost
+
+When a long task, interruption or compact could lose a consequential relation,
+preserve the live margin before expanding more sources. Retain the selected
+object, current intent and its source, what was established and why it changes
+the work, changes already made, remaining uncertainty and the next useful
+movement. Distinguish a proposal from an authorized action and an action already
+performed. Preserve concise reasons and source pointers, not a transcript.
+
+Update the task's existing project-owned continuity note when there is one;
+otherwise choose the nearest authorized knowledge owner and keep its entry
+reachable. One live margin can point to deeper knowledge. Refresh it when a
+material relation changes, not after every operation. At reentry, reconcile
+that margin with the current operator signal and materially changed sources,
+then resume from the last faithful result without repeating completed work.
+When the task ends, retire its active margin while retaining knowledge and
+unresolved relations that still matter.
+
+`project/CURRENT_STATE.md` and `project/PROJECT_BRIEF.md` are regenerated from
+configuration. Do not leave the only copy of a learned method or task reasoning
+in those projections. Use the configuration source and its supported update
+for managed project facts; keep deeper task and competence knowledge in its
+living body or references. When a managed resultant uses those bodies,
+`knowledge_refs` can retain their paths for reentry. If writing is unavailable
+or the task is read-only, return the compact continuation through the current
+conversation or authorized handoff surface.
+
+## Preserve understanding beyond the current task
+
+An operator explanation, a discovered relation or a future possibility may
+change how this kernel should be understood without immediately changing a
+competence's method. Preserve that knowledge with its source, meaning, reason
+and present or prospective consequence. Keep operator formulations, learned
+interpretations, observed behavior and open hypotheses distinguishable.
+
+Place domain knowledge with its domain competence. Place understanding of this
+kernel's own relations in the relevant part of `SYSTEM_KERNEL.md`, with deeper
+sources in the system competence's references when useful. Keep the live task
+margin short and point to that depth. Later explanations, adaptations and new
+competences can use the same knowledge without reconstructing the conversation.
+Revise or supersede it with the reason preserved when later work changes the
+understanding; a saved possibility does not become a demonstrated capability.

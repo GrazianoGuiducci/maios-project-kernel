@@ -65,3 +65,37 @@ and conflict-preserving recovery. It is not a cross-version merge engine.
 This standard begins with the release that carries it; no migration adapter
 for earlier installations is presumed. There is no updater, scheduler, remote
 write or background execution implied by source contact or this method.
+
+## Keep a light source contact
+
+At an ordinary active reentry, use `maios.py source-contact-status` when the
+source-contact relation is pertinent. Its durable owner is
+`setup/CONFIGURATION_STATE.json#source_contact`. With no recorded attempt, or
+when seven days have elapsed since the last attempt, inspect the canonical
+[MAIOS Project Kernel repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
+in read-only mode for changes that can improve this project's Kernel,
+competences or capacity to evolve. Begin with the installed identity in
+`.maios/SOURCE_MANIFEST.json`, then the repository `VERSION.md`, `CHANGELOG.md`
+and current Release; read deeper only when a material useful relation appears.
+If the source is unavailable, continue ordinary work and leave the check
+pending without blocking the project.
+
+Treat upstream changes as source-qualified improvement possibilities, not
+update commands. Preserve project-owned evolution, report a useful delta to
+the operator and let a separately selected local improvement or future update
+movement own any material effect. Never download, install, overwrite, migrate
+or contact third parties by implication. Record every completed contact,
+including one with no useful difference, through `maios.py record-source-contact
+--observation <project-local-json> --expected-state-sha256 <configuration-hash>`.
+The observation contains `observed_at` (timestamp with timezone), `status`
+(`observed` or `unavailable`), `source_identity` (exact observed revision, or
+null when unavailable), and a short `summary`. The status command supplies the
+current configuration hash. Recording uses the existing configuration owner
+and its recovery; it performs no network action.
+
+`last_attempt` preserves the current outcome; `last_success` advances only for
+an observed source. An unavailable source remains pending and does not become
+a successful refresh. The ordinary cadence prevents repeated identical
+attempts at every boot; a changed access condition or a material source signal
+can make an earlier contact useful. No background process or mandatory startup
+check is created. Continue ordinary work after recording the compact result.

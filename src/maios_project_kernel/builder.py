@@ -62,6 +62,35 @@ def project_source_file(source: Path, destination: Path) -> None:
     destination.write_bytes(source_identity_bytes(source))
 
 
+def project_recipient_file(root: Path, source_rel: str, destination: Path) -> None:
+    """Deliver the recipient's contracts, leaving build genealogy at source."""
+    source = native(root, source_rel)
+    if source_rel == "sources/SOURCE_MANIFEST.json":
+        original = read_json(source)
+        value = {
+            key: original[key]
+            for key in ("schema", "product", "version", "source_owner")
+        }
+        value["repository"] = "https://github.com/GrazianoGuiducci/maios-project-kernel"
+        value["semantic_owner"] = PACKAGED_SEMANTIC_OWNER
+    elif source_rel == "kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json":
+        value = read_json(source)
+        value.pop("meta_faculty", None)
+        value["faculty_field"] = ".maios/kernel/FACULTY_FIELD.json"
+        value["lanes"] = {"autonomous": value["lanes"]["autonomous"]}
+        value["lanes"]["autonomous"].pop("contains_repokernel_source", None)
+        entry = read_json(root / "kernel" / "AUTONOMOUS_ENTRY_CONTRACT.json")
+        value["lanes"]["autonomous"]["startup_context_requirement"] = entry["family_relation"]["startup_context_requirement"]
+        value["lanes"]["autonomous"]["startup_interview"] = entry["entry_policy"]["startup_interview"]
+        value.pop("update_protocol", None)
+        value.pop("transfer_rule", None)
+        value["purpose"] = "Describe this project's functional coverage, entry and evolution."
+    else:
+        project_source_file(source, destination)
+        return
+    write_json(destination, value)
+
+
 def read_json(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -252,80 +281,38 @@ def installed_host_catalog(root: Path) -> dict[str, Any]:
     }
 
 
-def project_meta_crosswalk_errors(
-    crosswalk: Any,
-    meta_faculty: dict[str, Any],
-    faculty_field: dict[str, Any],
-    payload_root: Path,
-) -> list[str]:
+def faculty_field_errors(faculty_field: dict[str, Any], payload_root: Path) -> list[str]:
+    """Check the one operating field's readable entries, without a second map."""
     errors: list[str] = []
-    if not isinstance(crosswalk, dict) or crosswalk.get("schema") != (
-        "maios.project-meta-faculty-crosswalk.v1"
-    ):
-        return ["unsupported Project Meta-Faculty crosswalk"]
-    if (
-        crosswalk.get("source_schema") != meta_faculty.get("schema")
-        or crosswalk.get("target_schema") != faculty_field.get("schema")
-        or crosswalk.get("semantic_owner") != PACKAGED_SEMANTIC_OWNER
-        or crosswalk.get("open_world") is not True
-    ):
-        errors.append("Project Meta-Faculty crosswalk owner or schema mismatch")
-    source_ids = [
-        item.get("id") for item in meta_faculty.get("function_families", [])
-    ]
-    target_by_id = {
-        item.get("id"): item for item in faculty_field.get("families", [])
-    }
-    mappings = crosswalk.get("mappings", [])
-    mapping_source_ids = [
-        item.get("source_id") for item in mappings if isinstance(item, dict)
-    ]
-    if (
-        len(mapping_source_ids) != len(mappings)
-        or None in mapping_source_ids
-        or len(mapping_source_ids) != len(set(mapping_source_ids))
-        or sorted(mapping_source_ids) != sorted(source_ids)
-    ):
-        errors.append("Project Meta-Faculty crosswalk source coverage is incomplete")
-    resolved_target_ids: set[str] = set()
-    for mapping in mappings:
-        if not isinstance(mapping, dict):
+    families = faculty_field.get("families", [])
+    ids = [item.get("id") for item in families]
+    if faculty_field.get("open_world") is not True or None in ids or len(ids) != len(set(ids)):
+        errors.append("faculty field must remain open with unique named entries")
+    for target in families:
+        target_id = target.get("id")
+        entry = target.get("entry")
+        if not isinstance(entry, str) or not entry:
+            errors.append(f"faculty has no entry: {target_id}")
             continue
-        target_ids = mapping.get("target_faculty_ids")
-        if not isinstance(target_ids, list) or not target_ids:
-            errors.append(f"crosswalk mapping has no targets: {mapping.get('source_id')}")
+        path_text, separator, anchor = entry.partition("#")
+        try:
+            entry_path = native(payload_root, path_text)
+        except BuildError:
+            errors.append(f"faculty entry is unsafe: {target_id}")
             continue
-        for target_id in target_ids:
-            target = target_by_id.get(target_id)
-            if target is None:
-                errors.append(f"crosswalk target does not exist: {target_id}")
-                continue
-            resolved_target_ids.add(target_id)
-            entry = target.get("entry")
-            if not isinstance(entry, str) or not entry:
-                errors.append(f"crosswalk target has no entry: {target_id}")
-                continue
-            path_text, separator, anchor = entry.partition("#")
-            try:
-                entry_path = native(payload_root, path_text)
-            except BuildError:
-                errors.append(f"crosswalk target entry is unsafe: {target_id}")
-                continue
-            if not entry_path.is_file():
-                errors.append(f"crosswalk target entry is missing: {target_id}")
-                continue
-            if separator:
-                headings = []
-                for line in entry_path.read_text(encoding="utf-8").splitlines():
-                    if not line.startswith("#"):
-                        continue
-                    heading = line.lstrip("#").strip().lower()
-                    heading = re.sub(r"[^\w\s-]", "", heading)
-                    headings.append(re.sub(r"[\s-]+", "-", heading).strip("-"))
-                if anchor not in headings:
-                    errors.append(f"crosswalk target anchor is missing: {target_id}")
-    if resolved_target_ids != set(target_by_id):
-        errors.append("Project Meta-Faculty crosswalk does not resolve every MAIOS faculty")
+        if not entry_path.is_file():
+            errors.append(f"faculty entry is missing: {target_id}")
+            continue
+        if separator:
+            headings = []
+            for line in entry_path.read_text(encoding="utf-8").splitlines():
+                if not line.startswith("#"):
+                    continue
+                heading = line.lstrip("#").strip().lower()
+                heading = re.sub(r"[^\w\s-]", "", heading)
+                headings.append(re.sub(r"[\s-]+", "-", heading).strip("-"))
+            if anchor not in headings:
+                errors.append(f"faculty anchor is missing: {target_id}")
     return errors
 
 
@@ -436,25 +423,25 @@ def repokernel_projection_inputs(
     return meta_faculty, project_entity, receipt
 
 
-def composed_project_meta_faculty(
-    meta_faculty: dict[str, Any], receipt: dict[str, Any]
-) -> dict[str, Any]:
-    """Rebind the generated neutral map to the one living MAIOS semantic owner."""
-
-    result = json.loads(json.dumps(meta_faculty))
-    result["invocation"]["entry"] = receipt["composition"]["semantic_owner"]
-    return result
-
-
 def composed_project_entry_profile(
     project_entity: dict[str, Any],
     receipt: dict[str, Any],
     family_contract: dict[str, Any],
     entry_contract: dict[str, Any],
+    root: Path,
 ) -> dict[str, Any]:
     """Translate RepoKernel's generated entity into the open MAIOS entry relation."""
 
-    capabilities = project_entity.get("capability_requirements", [])
+    capabilities = [
+        {
+            "id": PurePosixPath(item["destination"]).parent.name,
+            "knowledge_entry": item["destination"][len("payload/"):],
+            "availability": "packaged_knowledge",
+        }
+        for item in read_json(root / "release" / "PROJECTION.json")["files"]
+        if item["destination"].startswith("payload/skills/")
+        and item["destination"].endswith("/SKILL.md")
+    ]
     source_catalogs: list[dict[str, Any]] = []
     for source_catalog in project_entity.get("source_catalogs", []):
         if not isinstance(source_catalog, dict):
@@ -462,7 +449,6 @@ def composed_project_entry_profile(
         translated = json.loads(json.dumps(source_catalog))
         registry_path = translated.pop("registry_path", None)
         if registry_path == "kernel/FACULTY_FIELD.json":
-            translated["source_registry_path"] = registry_path
             translated["installed_registry_path"] = (
                 ".maios/kernel/FACULTY_FIELD.json"
             )
@@ -473,14 +459,6 @@ def composed_project_entry_profile(
         "schema": family_contract["entry_profile"]["schema"],
         "product": "MAIOS Project Kernel",
         "version": family_contract["family_version"],
-        "source_relation": {
-            "kind": "repokernel_generated_function_translated_to_owner_native_form",
-            "plan_id": receipt["repokernel"]["plan_id"],
-            "source_schema": project_entity["schema"],
-            "source_profile_sha256": receipt["generated_source"][
-                "project_entity_profile_sha256"
-            ],
-        },
         "role": {
             **project_entity["role"],
             "startup_interview": entry_contract["entry_policy"][
@@ -537,10 +515,17 @@ def composed_project_entry_profile(
             ],
             "credential_boundary": "Explain and request access when needed; never embed credentials in the package.",
         },
-        "capability_requirements": capabilities,
+        "available_competences": capabilities,
         "source_catalogs": source_catalogs,
-        "requested_bundle_ids": project_entity.get("requested_bundle_ids", []),
-        "completion": project_entity.get("completion", {}),
+        "completion": {
+            "success_condition": "The project can use its Kernel from the real context, produce a useful result and resume from preserved knowledge and state.",
+            "evidence": [
+                "installation identity when discussing installation",
+                "situated context and the actual useful result",
+                "an experiment when a hypothesis or comparative claim calls for it",
+                "preserved knowledge and observed reentry when making a continuity claim",
+            ],
+        },
     }
 
 
@@ -610,7 +595,7 @@ def render_distribution(root: Path, package_dir: Path, *,
         if not source.is_file() or source.is_symlink():
             raise BuildError(f"projection source is missing or unsafe: {source_rel}")
         destination = native(package_dir, destination_rel)
-        project_source_file(source, destination)
+        project_recipient_file(root, source_rel, destination)
 
     if generated_receipt is not None:
         reserved = destinations | {"payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
@@ -629,17 +614,13 @@ def render_distribution(root: Path, package_dir: Path, *,
         entry.write_text(entry.read_text(encoding="utf-8") + generated_kernel.discovery(generated_receipt),
                          encoding="utf-8", newline="\n")
 
-    meta_faculty, project_entity, repokernel_receipt = repokernel_projection_inputs(
+    _, project_entity, repokernel_receipt = repokernel_projection_inputs(
         root
-    )
-    write_json(
-        package_dir / "payload" / ".maios" / "kernel" / "PROJECT_META_FACULTY.json",
-        composed_project_meta_faculty(meta_faculty, repokernel_receipt),
     )
     write_json(
         package_dir / "payload" / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json",
         composed_project_entry_profile(
-            project_entity, repokernel_receipt, family_contract, entry_contract
+            project_entity, repokernel_receipt, family_contract, entry_contract, root
         ),
     )
 
@@ -681,9 +662,6 @@ def render_distribution(root: Path, package_dir: Path, *,
             "autonomous_entry_contract_sha256": source_file_digest(
                 root / "kernel" / "AUTONOMOUS_ENTRY_CONTRACT.json"
             ),
-            "repokernel_projection_receipt_sha256": source_file_digest(
-                root / "release" / "repokernel" / "PROJECTION_RECEIPT.json"
-            ),
             "revision_claim": "content_addressed_source_tree",
         },
         "payload_file_count": payload_count,
@@ -709,10 +687,8 @@ def render_distribution(root: Path, package_dir: Path, *,
             "producer_self_approval": False,
             "behavioral_proof_separate": True,
         },
-        "repokernel_projection": {
-            "plan_id": repokernel_receipt["repokernel"]["plan_id"],
-            "receipt": "payload/.maios/REPOKERNEL_PROJECTION.json",
-            "project_meta_faculty": "payload/.maios/kernel/PROJECT_META_FACULTY.json",
+        "project_kernel": {
+            "faculty_field": "payload/.maios/kernel/FACULTY_FIELD.json",
             "project_entity_profile": "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
             "autonomous_entry_contract": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
             "semantic_owner": f"payload/{PACKAGED_SEMANTIC_OWNER}",
@@ -721,7 +697,7 @@ def render_distribution(root: Path, package_dir: Path, *,
             ],
             "configuration_state": "deferred_to_first_operator_relation",
         },
-        "contains_repokernel_source": False,
+        "contains_private_generator_source": False,
         "contains_form_state": False,
         "contains_private_topology": False,
         "contains_lifecycle_hooks": False,
@@ -801,12 +777,9 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         "payload/.maios/runtime/operating.py",
         "payload/.maios/kernel/SYSTEM_KERNEL.md",
         "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
-        "payload/.maios/kernel/PROJECT_META_FACULTY.json",
-        "payload/.maios/kernel/PROJECT_META_FACULTY_CROSSWALK.json",
         "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
         "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
         "payload/.maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json",
-        "payload/.maios/REPOKERNEL_PROJECTION.json",
         "payload/.maios/competences/INDEX.json",
         "payload/.maios/schemas/RESULTANT_READBACK.schema.json",
         "payload/.maios/state/OPERATING_STATE.json",
@@ -850,7 +823,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         if manifest.get("payload_file_count") != actual_payload_count:
             errors.append("manifest payload_file_count is incorrect")
         for flag in (
-            "contains_repokernel_source",
+            "contains_private_generator_source",
             "contains_form_state",
             "contains_private_topology",
             "contains_lifecycle_hooks",
@@ -861,13 +834,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         errors.append(str(exc))
 
     try:
-        source_meta, source_entity, source_receipt = repokernel_projection_inputs(root)
-        packaged_receipt = read_json(
-            package_dir / "payload" / ".maios" / "REPOKERNEL_PROJECTION.json"
-        )
-        packaged_meta = read_json(
-            package_dir / "payload" / ".maios" / "kernel" / "PROJECT_META_FACULTY.json"
-        )
+        _, source_entity, source_receipt = repokernel_projection_inputs(root)
         packaged_entity = read_json(
             package_dir / "payload" / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json"
         )
@@ -878,54 +845,17 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             / "kernel"
             / "AUTONOMOUS_ENTRY_CONTRACT.json"
         )
-        packaged_crosswalk = read_json(
-            package_dir
-            / "payload"
-            / ".maios"
-            / "kernel"
-            / "PROJECT_META_FACULTY_CROSSWALK.json"
-        )
         packaged_faculty_field = read_json(
             package_dir / "payload" / ".maios" / "kernel" / "FACULTY_FIELD.json"
         )
-        expected_meta = composed_project_meta_faculty(source_meta, source_receipt)
         expected_entity = composed_project_entry_profile(
-            source_entity, source_receipt, family_contract, entry_contract
+            source_entity, source_receipt, family_contract, entry_contract, root
         )
-        if packaged_receipt != source_receipt:
-            errors.append("packaged RepoKernel projection receipt drifted from source")
-        if packaged_meta != expected_meta:
-            errors.append("packaged Project Meta-Faculty is not the composed source projection")
         if packaged_entity != expected_entity:
             errors.append("packaged Project Entity Profile is not the owner-native translation")
         if packaged_entry_contract != entry_contract:
             errors.append("packaged autonomous entry contract drifted from source")
-        errors.extend(
-            project_meta_crosswalk_errors(
-                packaged_crosswalk,
-                packaged_meta,
-                packaged_faculty_field,
-                package_dir / "payload",
-            )
-        )
-        family_ids = [
-            item.get("id") for item in packaged_meta.get("function_families", [])
-        ]
-        expected_family_ids = family_contract["meta_faculty"][
-            "required_function_families"
-        ]
-        if (
-            packaged_meta.get("open_world")
-            is not family_contract["meta_faculty"]["open_world"]
-            or packaged_meta.get("effect_authority")
-            != family_contract["meta_faculty"]["effect_authority"]
-            or sorted(family_ids) != sorted(expected_family_ids)
-            or None in family_ids
-            or len(family_ids) != len(set(family_ids))
-        ):
-            errors.append("packaged Project Meta-Faculty lost neutral functional coverage")
-        if packaged_meta.get("invocation", {}).get("entry") != PACKAGED_SEMANTIC_OWNER:
-            errors.append("packaged Project Meta-Faculty does not use the semantic owner")
+        errors.extend(faculty_field_errors(packaged_faculty_field, package_dir / "payload"))
         if (
             packaged_entity.get("role", {}).get("startup_interview")
             != entry_contract["entry_policy"]["startup_interview"]
@@ -944,17 +874,12 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             errors.append("packaged Project Entity Profile lost its open owner-native relation")
         for catalog in packaged_entity.get("source_catalogs", []):
             installed_path = catalog.get("installed_registry_path")
-            source_path = catalog.get("source_registry_path")
             if not isinstance(installed_path, str) or not native(
                 package_dir / "payload", installed_path
             ).is_file():
                 errors.append("Project Entity Profile contains an unresolved installed catalog")
-            if not isinstance(source_path, str) or not native(root, source_path).is_file():
-                errors.append("Project Entity Profile contains an unresolved source catalog")
         expected_projection = {
-            "plan_id": source_receipt["repokernel"]["plan_id"],
-            "receipt": "payload/.maios/REPOKERNEL_PROJECTION.json",
-            "project_meta_faculty": "payload/.maios/kernel/PROJECT_META_FACULTY.json",
+            "faculty_field": "payload/.maios/kernel/FACULTY_FIELD.json",
             "project_entity_profile": "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
             "autonomous_entry_contract": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
             "semantic_owner": f"payload/{PACKAGED_SEMANTIC_OWNER}",
@@ -963,10 +888,10 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             ],
             "configuration_state": "deferred_to_first_operator_relation",
         }
-        if manifest.get("repokernel_projection") != expected_projection:
-            errors.append("distribution manifest does not bind the RepoKernel projection")
+        if manifest.get("project_kernel") != expected_projection:
+            errors.append("distribution manifest does not identify the Project Kernel")
     except (BuildError, KeyError, TypeError) as exc:
-        errors.append(f"invalid RepoKernel package composition: {exc}")
+        errors.append(f"invalid project entry composition: {exc}")
     try:
         if manifest.get("generated_kernel") is not None:
             from .generated_kernel import verification_errors

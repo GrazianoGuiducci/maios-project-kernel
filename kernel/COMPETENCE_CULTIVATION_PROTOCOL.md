@@ -35,9 +35,9 @@ become useful; what difference it can make; and any exact material effect.
 Intent, memory, knowledge acquisition, successful composition and emerging
 possibility can initiate formation before a failure or capability gap.
 
-Do not create a skill merely because a topic is unfamiliar. First reuse,
-compose, adapt, illuminate, or preserve explicit non-collapse. If a material
-gap remains, address it; formation can also follow the other causes above.
+An unfamiliar topic alone does not determine the capacity needed. Reuse,
+composition, adaptation, illumination and formation are possibilities whose
+pertinence follows the situation; they do not form a required sequence.
 Let the relation determine a useful owner and form: memory, method, function,
 reference, skill, entity, competence, meta-competence or kernel. These can
 coexist and develop internal depth without becoming a mandatory taxonomy.
@@ -53,15 +53,17 @@ or formed, and the learned difference now available. Short explanations during
 work let the person understand and correct the method. Do not claim a planned
 or unsaved improvement as preserved learning.
 
-Use the deterministic transition below when its helpers are available. When a helper is unavailable,
-retain actual work, sources, changed competence bodies and the unresolved
-state transition in project continuity without inventing a helper receipt. With read-only access,
-return that continuation to the person and state where preservation is pending.
+Preserve reusable learning in the competence's actual knowledge body and its
+reachable references. Use the deterministic transition below when a result
+also changes coupled runtime state. The presence of a helper does not require
+its use. When a needed state transition is unavailable, retain the unresolved
+change in project continuity. With read-only access, return the learned change
+and its destination to the person for preservation.
 
 ## Forward-resultant learning
 
-When the actual movement exposes reusable causal corrections, preserve each
-closest owner as one entry in `learning_deltas` in the terminal readback:
+When a selected runtime transition carries reusable causal corrections,
+preserve each closest owner as one entry in `learning_deltas`:
 
 - owner kind, id, and owner surface;
 - what happened and the causal change;
@@ -110,11 +112,14 @@ remain claims and require attributable evidence. Material external effects
 retain their exact source, target, controller, authority, receipt, and recovery
 boundary.
 
-`.maios/competences/INDEX.json` remains a separate owner-governed surface for a
-deliberate durable competence entry. `validate-competence-delta` and
-`admit-competence-delta` govern that publication-like change; they are not a
-prerequisite for causal learning to influence the project. Do not route every
-learning relation through that index.
+`.maios/competences/INDEX.json` optionally records competence entries for later
+discovery and retains their revision history. `admit-competence-delta` records
+the local change and checks file references and concurrent state; the command
+name does not require semantic admission by another actor. Review and observed
+improvement classifications are optional information. A usable body can be
+recorded and used before a later situation supplies evidence of improvement.
+Use `validate-competence-delta` only when inspecting an input helps. Ordinary
+learning remains in the closest knowledge body without an extra index step.
 
 ## Stop and openness
 

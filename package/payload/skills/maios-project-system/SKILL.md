@@ -1,184 +1,97 @@
 ---
 name: maios-project-system
-description: Operate or resume a project through the permanent MAIOS Project Kernel relation, letting the pertinent startup, context, project, and learning competences act from the current operator signal and real sources; use at first contact, reentry, changed circumstances, capability gaps, or a result that changes continuity.
+description: Operate or resume a project through the permanent MAIOS Project Kernel relation, involving the competences made useful by the real situation; understand and maintain the kernel itself when its knowledge, behavior or structure needs to evolve.
 ---
 
 # MAIOS Project System
 
-This is the permanent project-level entry. It keeps the current operator,
-project sources, possibility horizon, pertinent competences, result, learning
-and reentry in one living relation without performing every competence's work.
+KA, FDLA and Meta_Skill constitute the operating logic through which this
+kernel understands, acts, forms competences and learns. Their participation
+is constitutive; the situation determines which concrete competences act and
+which knowledge needs to be deepened.
 
-Read `START_HERE.md`, `setup/CONFIGURATION_STATE.json` and
-`project/CURRENT_STATE.md` only to the depth that can change the present
-movement. At first contact, changed configuration, unfamiliar work, a
-competence gap, material effect, failure or handoff, also use
-`.maios/kernel/PROJECT_ENTITY_PROFILE.json` and
-`.maios/kernel/PROJECT_META_FACULTY.json` as compiled maps when they can change
-coverage or routing. They do not create another semantic owner: this competence
-remains the single operating entry and `FACULTY_FIELD.json` remains its
-MAIOS-native situated field. Let `maios-start-new-project`,
-`maios-start-existing-project` and
-`maios-project-context` own their respective behavior. Let
-`maios-project-competence-formation` own the capacity that intent, knowledge,
-memory, successful work, correction or an emerging possibility makes useful.
-The competences supply source-bound awareness and evolve through their results;
-the first interpretation does not decide the full horizon of relevance. Let
-`maios-project-host-adaptation` translate this relation when the present coder
-or harness needs another native incarnation.
+Understand the actual operator relation, project sources and consequences while
+forming the work. KA keeps the present possibility field open; FDLA notices
+and corrects changes of object, meaning or intent introduced by the assistant.
+These relations participate in every competence, including tool choice and
+formation. Meta_Skill makes useful capacities reachable, composable and able
+to learn from what happens.
 
-Let `maios-project-coordination` own a material handoff, direct coordination or
-return between instances. Shared Kernel knowledge remains reachable while
-each actor retains its context and responsibility. Host adaptation can form
-another native entry when that situation arises; ordinary single-instance work
-does not acquire an extra setup or coordination phase.
+Carry the practical [KA knowledge](references/ka-operating-knowledge.md) and
+[FDLA knowledge](references/fdla-operating-knowledge.md) into this work. Use the
+understanding already acquired; expand a reference when its meaning can change
+the present result. Their presence is continuous, without a repeated reading
+procedure.
 
-`START_HERE.md` is the stable system boot: it restores the Kernel relation and
-the way the project enters it. The current context is not stored in that boot.
-It is reconstructed from the operator, real project sources, canonical
-configuration, current state and pertinent competences. Update durable state
-only when a causal difference changes later behavior or reentry.
+## Let the situation make the competence pertinent
 
-## Let the field act
+Begin from the current intent and real project sources. A clear movement can
+continue directly. An unfamiliar project or reentry may need its current
+context and `project/CURRENT_STATE.md`; `setup/CONFIGURATION_STATE.json` owns
+the structured configuration. `START_HERE.md` orients the coder at startup and
+reentry, leading here. Once that orientation is understood, continue the work.
 
-Start from the current request and real project sources. Recover only relations
-that change meaning, owner, result or reentry. Compose represented package
-competences, project-local competences, reachable learning and unmatched
-source-native relations when each changes the result. Do not require one
-primary faculty, a fixed catalogue or a visible routing stage.
+The following entries are relative to the project root. Involve each through
+its actual contribution, including when a result reveals another useful relation.
 
-Produce the first useful correctable result as soon as the field is sufficient.
-Ask only for a missing relation that would make that result materially
-different. A material effect carries its own exact source, target, controller
-and recovery relation.
+| Present need | Operating knowledge |
+| --- | --- |
+| Form the first movement in a new project | `skills/maios-start-new-project/SKILL.md` |
+| Join an existing project's work | `skills/maios-start-existing-project/SKILL.md` |
+| Understand context, intent or changed circumstances | `skills/maios-project-context/SKILL.md` |
+| Form, compose or evolve a capacity, including another kernel | `skills/maios-project-competence-formation/SKILL.md` |
+| Connect a different host or native entry | `skills/maios-project-host-adaptation/SKILL.md` |
+| Coordinate instances or integrate a contribution | `skills/maios-project-coordination/SKILL.md` |
 
-## Keep a light source contact
+Project-local competences and useful knowledge beyond these entries remain
+reachable. `.maios/kernel/FACULTY_FIELD.json` helps locate represented functions
+when discovery is needed. A known competence can act without another map read
+or a matching label. Ask only for missing information that changes faithful
+work; let the actual result and consequences correct context and method.
 
-At an ordinary active reentry, use `maios.py source-contact-status` when the
-source-contact relation is pertinent. Its durable owner is
-`setup/CONFIGURATION_STATE.json#source_contact`. With no recorded attempt, or
-when seven days have elapsed since the last attempt, inspect the canonical
-[MAIOS Project Kernel repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
-in read-only mode for changes that can improve this project's Kernel,
-competences or capacity to evolve. Begin with the installed identity in
-`.maios/SOURCE_MANIFEST.json`, then the repository `VERSION.md`, `CHANGELOG.md`
-and current Release; read deeper only when a material useful relation appears.
-If the source is unavailable, continue ordinary work and leave the check
-pending without blocking the project.
+## Preserve what changes the next movement
 
-Treat upstream changes as source-qualified improvement possibilities, not
-update commands. Preserve project-owned evolution, report a useful delta to
-the operator and let a separately selected local improvement or future update
-movement own any material effect. Never download, install, overwrite, migrate
-or contact third parties by implication. Record every completed contact,
-including one with no useful difference, through `maios.py record-source-contact
---observation <project-local-json> --expected-state-sha256 <configuration-hash>`.
-The observation contains `observed_at` (timestamp with timezone), `status`
-(`observed` or `unavailable`), `source_identity` (exact observed revision, or
-null when unavailable), and a short `summary`. The status command supplies the
-current configuration hash. Recording uses the existing configuration owner
-and its recovery; it performs no network action.
+Teach reusable understanding to the closest competence's knowledge body and
+references. Formation can arise from intent, knowledge, memory, success or a
+new possibility as well as a gap. The changed knowledge can participate now;
+an optional index helps later discovery without admitting its meaning.
 
-`last_attempt` preserves the current outcome; `last_success` advances only for
-an observed source. An unavailable source remains pending and does not become
-a successful refresh. The ordinary cadence prevents repeated identical
-attempts at every boot; a changed access condition or a material source signal
-can make an earlier contact useful. No background process or mandatory startup
-check is created. Continue ordinary work after recording the compact result.
+Keep the live causal margin and still-open fronts needed to resume. Current
+operator intent and real sources can supersede saved state. Use
+`maios.py operating-status` when the managed state matters; use `apply-resultant`
+when a result changes coupled runtime state and its projections. Ordinary
+knowledge edits do not acquire a terminal recording ritual. Recording learning,
+actual use and later assimilation remain different observations.
 
-## Continue through the resultant
+When context loss or a handoff makes continuity material, use
+`.maios/kernel/KNOWLEDGE_CONTINUUM.md#preserve-the-movement-before-context-is-lost`
+to preserve the task's reasons and next movement in their living owner before
+more source expansion. That knowledge also explains where to retain operator
+explanations and kernel understanding beyond the current task. Generated project
+views must not be the only place carrying what the next instance needs to know.
 
-When work exposes reusable learning, return it to the closest competence owner
-with what happened, the causal difference, future behavior, activation,
-sources, invalidator and reentry. Matching learning can participate in the next
-movement immediately.
+Resolve a material effect from the actual target, controller and current
+authorization. The package does not grant external authority or cancel what
+the operator has already authorized.
 
-Use `maios.py operating-status` when current durable state or reentry changes
-the result. Use the resultant transition when an inspected result must update
-project continuity, its compact causal margin, open fronts, working projections
-or one or more owner-bound learning relations. Ordinary work does not need a
-terminal state ritual. Preserve every still-live front and change the explicit
-focus only when the resultant actually changes it.
+## Understand and maintain this kernel
 
-Current operator intent and verified project reality outrank stored continuity.
-Representation, installation, discovery, use, observed improvement and later
-assimilation remain distinct states.
+When explaining the kernel, changing its structure or understanding a problem
+in its own behavior, use `.maios/kernel/SYSTEM_KERNEL.md` as the compendium.
+It connects the operating relation, actual knowledge owners, state mechanisms
+and examples of maintenance. Let the responsible competence correct the cause
+and follow the changed meaning into the entries and projections that use it.
 
-## Awareness and continuation
+Knowledge lives in the competences; host-native entries point to those bodies.
+Keep both the current causal margin and deeper reasons reachable. Consult
+`.maios/kernel/KNOWLEDGE_CONTINUUM.md` for knowledge continuity and
+`.maios/kernel/COMPOSITION_PROTOCOL.md` for represented movements and runtime
+readbacks when those mechanisms are pertinent.
 
-Use `.maios/kernel/KNOWLEDGE_CONTINUUM.md` when understanding how competences
-carry knowledge and reasons can change the present movement or help the person.
-Teach reusable understanding to the acting competence and follow it into the
-entries that must read it. Keep the live causal margin compact and deeper
-knowledge reachable; preserve the possibility of changing the question itself.
-
-When an upstream or local structural update is selected, use
-`.maios/kernel/UPDATE_CONTINUITY.md` with formation and host adaptation.
-Its installation baseline supports comparison and recovery; source contact
-alone does not apply an update.
-
-When installation or recovery becomes material, keep the receipt's ownership
-and backup maps coupled to its original plan. The installed receipt validator
-serves every consumer; an inconsistent receipt requires reconstruction from
-qualified sources before changing files. General `status` reads the canonical
-configuration and operating owners, including their current contract identities.
-Do not infer a healthy state from a weaker duplicate of an owner's validation.
-
-For interrupted installation, let the pending recovery owner distinguish the
-plan, actual exclusive creations and present file identity. Identical content
-does not identify a creator. Preserve uncertain files and the journal so their
-provenance can be reconstructed; do not label an incomplete recovery complete.
-Once the installation receipt has committed, journal cleanup must retain that
-installed result. Apply this difference to backup and failure paths as well as
-the successful installation path.
-
-Before uninstall, relate the receipt to the installation currently governing
-that target. A valid archived plan does not authorize effects on a later plan
-at the same path. If CURRENT is different, invalid or absent, preserve the
-project and use the historical receipt for investigation, not normal removal.
-Separate historical consistency, present file evidence and current authority
-in the readback. File ownership also does not establish directory ownership:
-existing-project empty directories remain unless their ownership is known.
-
-Apply the same distinction to Python caches: matching a module name does not
-prove ownership. Keep transient plan and CLI receipt outputs outside the
-verified package, source checkout and target. Use a temporary path in examples.
-
-For a coupled state transition, recovery must exist before its first mutation,
-not depend on a receipt returned after a child function completes. Preserve
-canonical states, derived projections and the previous recoverable receipt as
-one relation. A no-op must retain that relation. If rollback cannot finish,
-keep its PENDING evidence visible and reconcile the affected owner before
-another apply. An individually valid configuration and operating state can
-still disagree on the present event; read their relation at fresh reentry.
-Runtime source organs must be real project-local files, including their ancestors.
-
-Follow an effect invariant through every owner that exercises it. Host and
-competence state need the same acquired recovery, terminal receipt and fresh
-reentry relation as configuration and resultants. A duplicate request, a
-recorded event and coherent terminal evidence are different facts. Recompute
-the stored body's digest against its history; preserve historical evidence
-after legitimate evolution without judging old choices against today's field.
-
-Atomic promotion does not establish ownership of a temporary pathname. Acquire
-the temporary exclusively, write through its descriptor, and clean only its
-qualified current identity. Protect control paths from filesystem-equivalent
-event names. Share path confinement across installer and runtime, including
-Windows junctions on the minimum supported Python version. Follow the source
-helper into both installed contexts; clone imports alone do not prove delivery.
-
-Keep an accepted event body reconstructible without loss: reserve only actual
-history metadata names before admission, leaving other extensions open. A
-coherent historical event is a different relation from coherent current owner
-state. Bind only the latest host/index transition to its current projection;
-qualify divergence at status and replay without freezing living knowledge
-bodies or rejudging historical movements against later circumstances.
-
-The zero-transition state has its own causal meaning. Without recorded host
-attestations, stages, observed capabilities and their evidence cannot describe
-observations already performed. Without index admission history, `active`
-cannot describe admitted competences. A first receipt must not legitimize such
-earlier claims merely by including them in its after-state hash. Preserve an
-incoherent file for owner recovery while leaving unknown capabilities, harmless
-extensions, represented methods and living knowledge available. A future
-qualified origin needs its own explicit owner relation; a label alone is not it.
+At active reentry, when source contact is pertinent, `maios.py source-contact-status`
+shows its recorded state and ordinary cadence. The method is in
+`.maios/kernel/UPDATE_CONTINUITY.md#keep-a-light-source-contact`. That reference
+also explains how a selected update preserves local knowledge and state.
+For installation, removal or runtime recovery, use the
+[recovery knowledge](references/runtime-recovery.md) with the relevant helper.
+These references supply depth when it changes the work.

@@ -14,8 +14,8 @@
   },
   "contains_form_state": false,
   "contains_lifecycle_hooks": false,
+  "contains_private_generator_source": false,
   "contains_private_topology": false,
-  "contains_repokernel_source": false,
   "distribution_entry": {
     "codex_projection": ".agents/skills/maios-project-integration/SKILL.md",
     "instructions": "AGENTS.md",
@@ -37,17 +37,15 @@
   "payload_file_count": 51,
   "product": "MAIOS Project Kernel",
   "project_entrypoint": "payload/START_HERE.md",
-  "project_kernel_family_version": "3.0.0",
-  "repokernel_projection": {
+  "project_kernel": {
     "autonomous_entry_contract": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
     "configuration_state": "deferred_to_first_operator_relation",
-    "plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",
+    "faculty_field": "payload/.maios/kernel/FACULTY_FIELD.json",
     "project_entity_profile": "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json",
-    "project_meta_faculty": "payload/.maios/kernel/PROJECT_META_FACULTY.json",
-    "receipt": "payload/.maios/REPOKERNEL_PROJECTION.json",
     "semantic_owner": "payload/skills/maios-project-system/SKILL.md",
     "startup_interview": "discretionary"
   },
+  "project_kernel_family_version": "3.0.0",
   "runtime_requirements": {
     "python": ">=3.10",
     "third_party_python_packages": []
@@ -64,11 +62,10 @@
   "source_identity": {
     "autonomous_entry_contract_sha256": "4de52860690f59ea1106962c01c1e95da011c93bc5ce747bdcc56ef1ae470ec9",
     "owner": "maios-project-kernel repository",
-    "projection_sha256": "22c33eb6d326ed666cca8880666b0db677a21dfc02ceb7b1ae09ced474fe9b2d",
-    "repokernel_projection_receipt_sha256": "d294756e66579e4094769e4e9aea9f190a5559d699843007912fd827c5b86697",
+    "projection_sha256": "132bc2b3c1862570700540d22148d7d64105a65c61e2a79f637c85daa5dfebd0",
     "revision_claim": "content_addressed_source_tree",
     "source_manifest_sha256": "b17a92fe731278930dbcc793b22fa675ecf8d60cbd56a92f656db820189f657b",
-    "tree_sha256": "5b78b42f43ae73d6ad17aad6d388a6b7d90e41071e87b716170b671d8d1e4d01"
+    "tree_sha256": "44f5d2eaf8a9d623beef3e7e1eb8d37e16ca60572c1293e7531f0e334e6d04ce"
   },
   "target_modes": [
     "new_repository",

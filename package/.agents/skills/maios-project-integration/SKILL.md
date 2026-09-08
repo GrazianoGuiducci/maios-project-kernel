@@ -10,8 +10,11 @@ target-owned Project Kernel installation. It acts before project startup.
 
 ## Choose the smallest entry
 
-Read `README.md`, `INSTALL.md`, `MANIFEST.json`, `PACKAGE_INVENTORY.json`, the
-operator's current request and the selected target project. Treat the active
+Start from the operator's request, the selected target and `README.md` when the
+package is unfamiliar. Use `INSTALL.md` for the needed installation mechanics
+and `MANIFEST.json` for package identity or compatibility. The installer reads
+the inventory; inspect `PACKAGE_INVENTORY.json` when an exact file question
+needs it. Treat the active
 coder or harness and its model access as observed when they are already acting;
 do not ask the operator to reconfirm them. Infer new or existing mode and the
 native host from target evidence when reliable, while keeping correction free.
@@ -66,9 +69,9 @@ This boundary does not prescribe the form of a future migration competence.
 
 ## Integrate
 
-For Codex, use the native package instructions and repository skill
-projections. Produce the deterministic preview for the accepted target, mode
-and `codex` host. Read the plan's creates, preserved-identical paths and
+Use the native package instructions and the profile of the selected host.
+Produce the deterministic preview for the accepted target, mode and host
+(`codex` when using Codex). Read the plan's creates, preserved-identical paths and
 conflicts as the actual integration relation.
 
 Apply the exact plan when that integration movement is accepted. If the plan

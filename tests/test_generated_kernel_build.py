@@ -112,6 +112,15 @@ class GeneratedKernelBuildTests(unittest.TestCase):
         self.assertEqual(generated.destination(".repokernel/skills/new-method/references/guide.md"),
                          "payload/skills/new-method/references/guide.md")
 
+    def test_windows_device_identity_matches_generator_policy(self):
+        for name in ("CONIN$", "conout$.md", "CON .txt", "COM1 .md", "COM¹.txt",
+                     "LPT².md", "lpt³", "name\x7f.md"):
+            with self.subTest(name=name), self.assertRaises(ValueError):
+                generated.safe_path("payload/skills/method/" + name)
+        for name in ("console.md", "COM10.md", "contribution.md"):
+            self.assertEqual(generated.safe_path("payload/resources/" + name),
+                             "payload/resources/" + name)
+
     def test_result_hash_is_mandatory_when_selecting_generation(self):
         path, _ = self.save()
         with self.assertRaises(builder.BuildError):

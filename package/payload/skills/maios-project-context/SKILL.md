@@ -51,6 +51,41 @@ result, failure, new source or opportunity can revise the intent even after
 setup is complete. Update the affected relations; preserve sound determinations
 and history without treating either as a timeless instruction.
 
+## Turn information into working knowledge
+
+When a source changes the situation, understand which relation it changes and
+what follows for the work. Keep its statement distinct from your interpretation.
+A changed relationship can alter the meaning of facts already known: two
+apparently conflicting observations may concern different times, scales or
+conditions. Resolve that difference where the sources allow it; preserve the
+uncertainty where they do not. Let the revised meaning change the question or
+method when needed, while retaining the operator's actual direction.
+
+Pass the pertinent competence the useful distinction, its reason and its
+consequence for action. A topic label or a collected excerpt alone does not
+supply that knowledge. If the result changes another competence's context,
+continue through that relation. Reusable understanding returns to the acting
+competence through formation; a current fact remains in project context.
+
+## Ground names in the system they describe
+
+When understanding a system or choosing an intervention depends on the identity
+of its elements, connect the names in use with actual sources, components and
+functions. Distinguish a source-defined name from an assistant's descriptive
+shorthand. Explain unfamiliar shorthand and preserve the source name that lets
+the person or next instance recover the real element.
+
+A function need not be a separate component; derivation does not establish a
+runtime dependency; understanding does not grant mutation authority; a new
+distribution does not establish that installed instances changed. Resolve the
+actual relation from the present sources before letting a label select work.
+
+If your representation led to an unsupported component, dependency or effect,
+correct both the explanation and the decisions that relied on it. Return the
+reusable distinction to the pertinent knowledge and reentry guide. Use this
+relation when it changes understanding or action, without requiring a full map,
+glossary or extra startup procedure.
+
 ## Project useful solutions through competences
 
 Let the competences that understand the emerging intent shape the useful
@@ -92,7 +127,8 @@ Competences may act separately or compose when each changes the result.
 Editorial, business, implementation, research and other owners keep their own
 knowledge while sharing the situated context.
 
-When a result exposes reusable learning, attach it to the closest competence
-owner. Use the project-local resultant transition only when continuity or
-future behavior actually changes; matching learning must be reachable at the
-next invocation without reconstructing the transcript.
+When a result exposes reusable learning, teach the closest competence's body
+or references what must change and why. Use the project-local resultant
+transition when coupled managed state and its projections need to change.
+Direct knowledge learning remains available without that transition and must
+be reachable at the next pertinent use without reconstructing the transcript.

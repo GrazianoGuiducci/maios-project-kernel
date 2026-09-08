@@ -8,7 +8,8 @@ To be formed from the person's current relation and project sources.
 
 ## First useful result
 
-To be made recognizable, bounded, correctable, and falsifiable.
+To be formed from the real intent and context, with an appropriate way to
+understand whether it is useful. An experiment belongs here when needed.
 
 ## People, sources, and environment
 
@@ -22,5 +23,5 @@ Preserve any unmatched material relation as a sourced extension.
 
 ## First movement and reentry
 
-Update with the reviewed result and the smallest next movement that a fresh
+Update with the actual result and the smallest next movement that a fresh
 session can recover without the transcript.

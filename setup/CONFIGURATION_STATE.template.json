@@ -55,7 +55,7 @@
     "beneficiary": null,
     "value_mechanism": null,
     "smallest_deliverable": null,
-    "owner_review": "pending"
+    "owner_review": null
   },
   "first_proof": {
     "statement": null,

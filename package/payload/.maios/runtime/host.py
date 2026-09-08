@@ -166,21 +166,11 @@ def validate_host_attestation(root: Path, value: Any) -> dict[str, Any]:
           and set(invalidated) & set(capabilities)):
         errors.append("a capability cannot be verified and invalidated in the same observation")
     review = value.get("review")
-    if not isinstance(review, dict):
-        errors.append("review must be an object")
-    else:
-        if review.get("status") != "accepted":
-            errors.append("host attestation must be explicitly accepted")
-        if not isinstance(review.get("reviewer"), str) or not review["reviewer"].strip():
-            errors.append("reviewer must be non-empty")
-        if review.get("reviewer_relation") not in {
-            "operator",
-            "owner",
-            "independent_observer",
+    if review is not None:
+        if not isinstance(review, dict) or review.get("status") not in {
+            "pending", "accepted", "rejected"
         }:
-            errors.append("unsupported reviewer relation")
-        if review.get("producer_is_reviewer") is not False:
-            errors.append("the producer cannot approve its own host attestation")
+            errors.append("optional review must describe a pending, accepted or rejected review")
     return {
         "schema": "maios.host-attestation-validation.v2",
         "valid": not errors,
@@ -206,7 +196,7 @@ def admit_host_attestation(
         raise HostAttestationError("; ".join(coherence))
     before_sha256 = digest(state)
     if expected_state_sha256 != before_sha256:
-        raise HostAttestationError("host state changed after review")
+        raise HostAttestationError("host state changed before recording the observation")
     if attestation.get("host") != state["selected_adapter"]:
         raise HostAttestationError("attestation host does not match installed adapter")
 

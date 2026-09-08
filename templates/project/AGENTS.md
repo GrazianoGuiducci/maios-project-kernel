@@ -1,47 +1,25 @@
-# MAIOS Project Kernel — generated host instruction
+# MAIOS Project Kernel — host entry
 
-Use `maios-project-system` as the permanent semantic entry. Let
-`maios-start-new-project` own a genuinely new target,
-`maios-start-existing-project` own a project that already has sources or active
-work, and `maios-project-context` form or refine the living context. Let
-`maios-project-competence-formation` act when intent, knowledge, memory,
-composition, correction or an emerging possibility calls for formation or
-evolution. Competences carry the learned understanding from which work resumes. Let
-`maios-project-host-adaptation` translate these relations when the present
-coder needs another native instruction, skill or state form. Read
-`START_HERE.md`, `setup/CONFIGURATION_STATE.json`, and
-`project/CURRENT_STATE.md` only to the depth that changes the present result.
+KA, FDLA and Meta_Skill constitute this kernel's operating logic. Use
+`skills/maios-project-system/SKILL.md` as the operating entry. Exercise KA
+through source-bound understanding of the actual situation and keep FDLA's
+causal correction present while interpreting, choosing and acting. The current
+instruction, tool or representation does not exhaust the possibility field.
+Meta_Skill makes pertinent competences reachable and lets useful experience
+form or evolve their knowledge.
 
-`START_HERE.md` is the stable system boot. It restores the Kernel identity,
-operating relation and entrances; it does not attempt to contain the changing
-project context. Current operator intent, real sources, configuration, state
-and pertinent competences reconstruct that context during work and reentry.
+Begin from the current operator relation and real project sources. Continue a
+clear movement directly; recover the relevant state when resuming. The system
+competence owns how to involve startup, context, formation, adaptation and
+coordination. Use knowledge already understood; expand its references when
+what they teach can change the work.
 
-Build living context from the operator relation, project sources, work and
-consequences. Derive a correctable intent and let competences project useful
-results; their consequences revise context, intent and method. Do not run a fixed interview or a fixed skill sequence. Form an open
-faculty field, keep the permanent source/aperture and self-correction relations
-silent, and compose only faculties whose expected delta changes the current
-result, proof, recovery, or reentry. A material relation outside the registry
-may enter as a sourced extension; the registry is not a ceiling.
+`START_HERE.md` orients the coder at startup and reentry and is also readable
+by the person. It leads into the same system competence.
+`.maios/kernel/SYSTEM_KERNEL.md` is the coder's
+compendium for understanding and maintaining the kernel when that is pertinent.
 
-`setup/CONFIGURATION_STATE.json` is the structured state owner.
-`project/CURRENT_STATE.md` is its compact human projection. Update them only
-when a causal delta changes future behavior, evidence, recovery, or reentry.
-Do not store the transcript as authority.
-
-`.maios/state/OPERATING_STATE.json` owns terminal-result history and reachable
-learning relations;
-`.maios/context/OPERATING_CONTEXT.json` is only a derived, invalidatable
-projection. Re-derive it when a durable state transition or reentry depends on
-its currency. A real inspected result preserves the compact causal margin and
-may preserve several distinct owner-bound entries in `learning_deltas`; every
-matching relation becomes immediately reachable as a candidate. Its meaning
-contributes when it materially changes the present movement; a label match
-does not select it. Availability remains distinct from later assimilation
-evidence. Keep all still-open fronts and one explicit
-focus rather than flattening continuity into a transcript summary.
-
-Installation, discovery, use, and maintained behavior are different claims.
-The package grants no global host, provider, network, publication, deployment,
-credential, deletion, or external-effect authority.
+Current operator intent and actual sources outrank stored continuity. Preserve
+reusable learning in the closest competence and maintain the state needed for
+reentry. Resolve a concrete effect from its current target and authorization;
+the package itself grants no external authority.

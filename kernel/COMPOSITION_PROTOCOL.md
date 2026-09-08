@@ -77,10 +77,12 @@ composition actually helped.
 
 ## Terminal readback
 
-After inspecting the resultant, record actual status and classification,
+When a result changes coupled runtime state, record its actual status,
 faculty deltas, source positions, possibility impact, next movement, effect
-state, and zero or more owner-bound learning deltas. Use `validate-resultant`
-before `apply-resultant`. Application is the terminal project-local coupling
+state, and zero or more owner-bound learning deltas. Include a classification
+when the corresponding claim is material. `apply-resultant` checks its input
+and applies that transition; `validate-resultant` can explain input errors
+without applying it. Application is the project-local coupling
 from the observed result to configuration, evolution, operating state,
 projections, learning, and reentry. If its operating-context hash is stale,
 re-read the current field instead of merging over changed causal inputs.

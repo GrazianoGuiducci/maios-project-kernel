@@ -15,6 +15,11 @@ from urllib.parse import quote
 
 RECORD = ".repokernel/knowledge/COMPETENCE_MATERIALIZATION.json"
 SCHEMA = "maios.generated-kernel-delivery.v1"
+RESERVED_WINDOWS_NAMES = {
+    "CON", "PRN", "AUX", "NUL", "CONIN$", "CONOUT$",
+    *(f"COM{n}" for n in "123456789¹²³"),
+    *(f"LPT{n}" for n in "123456789¹²³"),
+}
 
 
 def identity(value: object) -> str:
@@ -33,8 +38,8 @@ def safe_path(value: str) -> str:
         raise ValueError("Delivery path must stay inside its product root")
     for part in value.split("/"):
         if (not part or part.endswith((".", " ")) or part.casefold() == ".git"
-                or re.search(r'[<>:"\\|?*\x00-\x1f]', part)
-                or re.fullmatch(r'(?i:con|prn|aux|nul|com[1-9]|lpt[1-9])', part.split('.')[0])):
+                or re.search(r'[<>:"\\|?*\x00-\x1f\x7f]', part)
+                or part.split(".", 1)[0].rstrip(" ").upper() in RESERVED_WINDOWS_NAMES):
             raise ValueError("Delivery path is not portable")
     return value
 
