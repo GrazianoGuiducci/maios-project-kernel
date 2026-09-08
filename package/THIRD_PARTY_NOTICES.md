@@ -1,6 +1,6 @@
 # Third-party sources and generated-output boundary
 
-MAIOS Project Kernel 3.2.0 is generated from the living sources in this
+MAIOS Project Kernel 4.0.0 is generated from the living sources in this
 repository. External repositories and owner-native competences listed below
 were consulted as historical evidence, design references or conceptual
 sources. Their code, private topology and authority are not imported into the

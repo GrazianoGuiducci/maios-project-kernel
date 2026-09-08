@@ -1,7 +1,9 @@
 # Changelog
 
-## Unreleased — generated kernel build integration
+## 4.0.0 — 2026-09-08
 
+- Refuse a missing ordinary generated selection before replacing the package;
+  preserve explicit source-only compatibility and the complete existing onboarding.
 - Let the ordinary builder consume an identified RepoKernel GenerationPlan,
   delivering its selected methods and resources without a runtime function patch.
 - Preserve product-owned entry, installation and state while recording current

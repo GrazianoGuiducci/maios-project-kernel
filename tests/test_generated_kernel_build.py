@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import copy
 import json
+import shutil
+import subprocess
 from pathlib import Path
 import sys
 import tempfile
@@ -142,6 +144,26 @@ class GeneratedKernelBuildTests(unittest.TestCase):
         manifest = json.loads((compatibility / "MANIFEST.json").read_text(encoding="utf-8"))
         self.assertNotIn("generated_kernel", manifest)
         self.assertTrue(builder.verify_distribution(ROOT, compatibility)["valid"])
+
+    def test_missing_selection_stops_complete_checkout_build_and_preserves_package(self):
+        checkout = self.root / "complete-checkout"
+        shutil.copytree(ROOT, checkout, ignore=shutil.ignore_patterns(
+            ".git", "__pycache__", ".pytest_cache", ".package.*"))
+        (checkout / generated.SELECTION).unlink()
+        package = checkout / "package"
+        before = {p.relative_to(package).as_posix(): p.read_bytes()
+                  for p in package.rglob("*") if p.is_file()}
+        command = [sys.executable, "-B", str(checkout / "tools/build_release.py")]
+        result = subprocess.run(command, cwd=checkout, capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Missing generated kernel selection", result.stderr)
+        self.assertEqual(before, {p.relative_to(package).as_posix(): p.read_bytes()
+                                 for p in package.rglob("*") if p.is_file()})
+        self.assertFalse((checkout / ".package.staging").exists())
+        result = subprocess.run(command + ["--source-only"], cwd=checkout,
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertNotIn("generated_kernel", json.loads((package / "MANIFEST.json").read_text()))
 
 
 if __name__ == "__main__":

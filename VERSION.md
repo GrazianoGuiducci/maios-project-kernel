@@ -1,15 +1,15 @@
 # Version
 
-Product version: `3.2.0`.
-Previous numbered release: `3.1.3` at `2dc82936154e1b43417120a31f0403baf05d5e66`.
-Shared Project Kernel family: `3.0.0`.
+Product version: `4.0.0`.
+Previous numbered release: `3.2.0`.
+Shared Project Kernel family: `3.0.0` (unchanged).
 
-This minor release adds situated coordination and shared-project continuation
-knowledge, connecting the existing delegation faculty to its operative method.
-It also preserves initial owner-state integrity and equivalent project-root
-spellings during receipt and journal readback. See [release notes](docs/RELEASE_3.2.0.md).
+The ordinary build now consumes the maintained RepoKernel-generated selection.
+Its absence stops generation; `--source-only` selects compatibility explicitly.
+The complete acquisition, environment preparation, preview/application and
+project startup relation remains owned by the existing integration and startup
+competences. See [4.0.0 release notes](docs/RELEASE_4.0.0.md).
 
-The final review accepted `3.1.3+coordination.2` at
-`925ea8a4eee7188063adfbe649d97a6d8b347ccb` for numbered promotion. Version 3.2.0
-preserves that runtime and competence behavior with a distinct release identity.
-Idempotent reapplication is not an automatic cross-version migration.
+The selected method corpus is source commit `7c864c4`, while this release commit
+owns product delivery, builder and version metadata. These are distinct identities.
+No automatic in-place migration of previous installed versions is introduced.

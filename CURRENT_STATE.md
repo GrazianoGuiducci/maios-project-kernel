@@ -1,6 +1,16 @@
 # MAIOS Project Kernel current state
 
-## Current implementation increment — 2026-09-08
+## Release 4.0.0 — 2026-09-08
+
+The complete-checkout missing-selection case is reproduced and corrected.
+The ordinary build now fails before replacing its package when the maintained
+selection is absent; `--source-only` remains explicit. Existing preinstallation
+integration, environment preparation, preview/apply and project startup/context
+methods are preserved. [Release notes](docs/RELEASE_4.0.0.md) carry the complete
+onboarding and evidence distinction. The GitHub v4.0.0 tag and release identify
+the promoted commit; source inspection alone does not establish publication.
+
+## Acquired implementation increment — 2026-09-08
 
 The default ordinary build now consumes the retained RepoKernel selection:
 [release selection](release/GENERATED_KERNEL_SELECTION.json), formed from source

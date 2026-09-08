@@ -3,7 +3,9 @@
 The ordinary product build consumes the maintained selection in
 [GENERATED_KERNEL_SELECTION.json](../release/GENERATED_KERNEL_SELECTION.json).
 It retains the actual corpus commit, compiler revision and canonical plan hash.
-Run `python tools/build_release.py` to build that selection. No generator checkout
+Run `python tools/build_release.py` to build that selection. If the selection
+is missing, ordinary building stops before replacing the package; it never
+falls back to the source projection. No generator checkout
 is required for this build; the exported result is part of the source repository.
 
 To deliberately override it with another identified RepoKernel GenerationPlan:

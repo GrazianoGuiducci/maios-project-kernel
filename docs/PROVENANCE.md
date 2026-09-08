@@ -2,7 +2,7 @@
 
 ## Source owner
 
-The 3.2.0 product source is this `maios-project-kernel` repository. The autonomous 2.0
+The 4.0.0 product source is this `maios-project-kernel` repository. The autonomous 2.0
 Kernel remains its living base; reviewed RepoKernel functions are assimilated
 through a source-bound translation receipt. The generated
 `package/` projection

@@ -556,10 +556,8 @@ def render_distribution(root: Path, package_dir: Path, *,
     selection = None
     if kernel_plan is None and not source_only:
         try:
-            selected = generated_kernel.selected_plan(root)
-            if selected is not None:
-                kernel_plan, selection = selected
-                kernel_plan_sha256 = selection["plan_sha256"]
+            kernel_plan, selection = generated_kernel.selected_plan(root)
+            kernel_plan_sha256 = selection["plan_sha256"]
         except (ValueError, KeyError, TypeError, OSError) as exc:
             raise BuildError(f"invalid kernel selection: {exc}") from exc
     if kernel_plan is not None:
@@ -913,7 +911,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             selection = manifest["generated_kernel"].get("release_selection")
             if selection is not None:
                 selected = selected_plan(root)
-                if selected is None or selected[1] != selection:
+                if selected[1] != selection:
                     errors.append("package differs from the maintained release selection")
                 elif manifest["generated_kernel"]["plan_sha256"] != selection["plan_sha256"]:
                     errors.append("package plan differs from the release selection")

@@ -32,10 +32,10 @@ def text_hash(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
-def selected_plan(root: Path) -> tuple[Path, dict] | None:
+def selected_plan(root: Path) -> tuple[Path, dict]:
     path = root / SELECTION
     if not path.is_file():
-        return None
+        raise ValueError("Missing generated kernel selection; use --source-only for an explicit compatibility build")
     selection = json.loads(path.read_text(encoding="utf-8"))
     if selection.get("schema") != "maios.generated-kernel-selection.v1":
         raise ValueError("Unsupported generated kernel selection")

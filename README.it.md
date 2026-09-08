@@ -1,9 +1,9 @@
 # MAIOS Project Kernel
 
-La build predefinita per i manutentori usa la [costruzione ordinaria da una selezione RepoKernel](docs/GENERATED_KERNEL_BUILD.md).
-Il risultato generato identificato fornisce corpi e risorse delle competenze;
-il prodotto conserva installazione e consegna. La capacità è nelle sorgenti,
-non ancora promossa in una release, e non aggiorna i progetti installati.
+La versione **4.0.0** usa la selezione RepoKernel nella build ordinaria.
+Se manca, la build si interrompe; `--source-only` resta una scelta esplicita.
+L'onboarding completo è raggiungibile prima dell'installazione e prosegue nel
+progetto destinatario. Leggi le [note della 4.0.0](docs/RELEASE_4.0.0.md).
 
 La versione **3.2.0** aggiunge [coordinamento e continuità fra harness](docs/INSTANCE_COORDINATION.md): un piano semantico condiviso, delega situata e una competenza per continuare il lavoro attraverso un altro harness quando il caso concreto lo richiede.
 

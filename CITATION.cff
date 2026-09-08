@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If this project supports your work, cite this repository and its exact release."
 title: "MAIOS Project Kernel"
 type: software
-version: 3.2.0
-date-released: 2026-09-06
+version: 4.0.0
+date-released: 2026-09-08
 authors:
   - family-names: "Guiducci"
     given-names: "Graziano"

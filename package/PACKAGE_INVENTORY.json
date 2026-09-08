@@ -14,7 +14,7 @@
     {
       "bytes": 4655,
       "path": "INSTALL.md",
-      "sha256": "90788940a23a86d570338c104c97bec691e36a2d217ab4e0216fca4bc98d07b2"
+      "sha256": "bdc710872a5668a4cffc18f52dab6813fcc7494aa6f70a314afddf44f42f17d7"
     },
     {
       "bytes": 1074,
@@ -24,17 +24,17 @@
     {
       "bytes": 11663,
       "path": "MANIFEST.json",
-      "sha256": "4505f772cc453193ecd46cf6a24359ec4fdf52a28b9385586c5e4258ee637906"
+      "sha256": "83ca1f9dedfc2abb2d7de888894938d8b2fe475728bee42e19d47856bc9f562b"
     },
     {
       "bytes": 1047,
       "path": "README.md",
-      "sha256": "3622efb4f5c252637541cff8ad8485d5c99eae78652ddaacef676b1fe3f9ca5f"
+      "sha256": "bfb650296097da1f5aef049c8d74488b5090f4459d4dd27bea45df921ec4df6c"
     },
     {
       "bytes": 2018,
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "8c17f84cce0b1fae3085efa5e721082da123ae77bccafa1a451bb306d7a2bf67"
+      "sha256": "01ffdcca18afbf95bc0ebede02cdb3d4269d459ac472e320546bdf917b9f4533"
     },
     {
       "bytes": 5341,
@@ -49,7 +49,7 @@
     {
       "bytes": 291,
       "path": "payload/.maios/SOURCE_MANIFEST.json",
-      "sha256": "ca0d3679a1eec2c64da551847ca920853df2308bcf4b27f71c76e3fb24001fed"
+      "sha256": "cf4aada9a85a59a3a5df87698f577d246e8647ad4dc733141a4d7150de2081d2"
     },
     {
       "bytes": 1762,
@@ -74,7 +74,7 @@
     {
       "bytes": 1356,
       "path": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
-      "sha256": "4de52860690f59ea1106962c01c1e95da011c93bc5ce747bdcc56ef1ae470ec9"
+      "sha256": "63926c007da74573a363d4e53f989a96dd8de252fd249627e11251eb2b48dd39"
     },
     {
       "bytes": 7097,
@@ -199,12 +199,12 @@
     {
       "bytes": 2363,
       "path": "payload/START_HERE.md",
-      "sha256": "a6a8e11a18f7bfeacfca72ebe5966ab44c14fbc2da59fc859ef4855727d563fe"
+      "sha256": "bd4283b184c43877ee1b0bb8e06dcbf437806cf65d27f64b071877c44ec22e77"
     },
     {
       "bytes": 2018,
       "path": "payload/THIRD_PARTY_NOTICES.md",
-      "sha256": "8c17f84cce0b1fae3085efa5e721082da123ae77bccafa1a451bb306d7a2bf67"
+      "sha256": "01ffdcca18afbf95bc0ebede02cdb3d4269d459ac472e320546bdf917b9f4533"
     },
     {
       "bytes": 295,
@@ -224,7 +224,7 @@
     {
       "bytes": 1587,
       "path": "payload/project/CURRENT_STATE.md",
-      "sha256": "a7d6fb3e3ba22f05a6b3ac1cc1bc1ec1abcb575028cfb014354549f110bb8c76"
+      "sha256": "2e381da08e32df88e545f47d9943d2a7a9b4e1335999ec9e04a126ea72fc2f0c"
     },
     {
       "bytes": 783,
