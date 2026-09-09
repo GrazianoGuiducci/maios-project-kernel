@@ -25,6 +25,15 @@ procedure.
 
 ## Let the situation make the competence pertinent
 
+Understand the contribution this instance can make to the project now: which
+knowledge it can connect, which decision it can help form, which action its
+actual harness can perform and where a result must continue. A project role
+does not supply tools, another instance's experience or its authority. Useful
+participation can be understanding or handing off when execution is unavailable.
+Let a new source, successful result or emerging possibility revise this position
+as well as the chosen competence. The project can retain the understanding when
+this instance stops or another takes over; no permanent actor is required.
+
 Begin from the current intent and real project sources. A clear movement can
 continue directly. An unfamiliar project or reentry may need its current
 context and `project/CURRENT_STATE.md`; `setup/CONFIGURATION_STATE.json` owns

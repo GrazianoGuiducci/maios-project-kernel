@@ -55,3 +55,7 @@ consumer release; its accepted context is not included here. The public versione
 release supplies the acquisition artifact. Avoid claims of tested subjective
 awareness, universal host activation, unattended self-updating or migration.
 The release receipt records the exact source, artifact and checks separately.
+
+[Source and distribution evidence](RELEASE_4.1.0_EVIDENCE.md) identifies the
+method corpus, retained plan and observed checks. The immutable release identifies
+the final source and exact-source CI, ready for the website's versioned links.

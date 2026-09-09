@@ -53,6 +53,15 @@ and history without treating either as a timeless instruction.
 
 ## Turn information into working knowledge
 
+Include the position from which the present interpretation is formed. Separate
+what this instance observed from what it recovered in a source or inferred from
+another actor's record. Relate that knowledge to the current means and the
+project's purpose; a named host or role is not evidence of available execution.
+Relations can change pertinence before any failure occurs: a successful outcome,
+an accepted choice or a newly reachable source may reveal a more useful question.
+Follow that difference when it changes the work; an existing category must not
+hide knowledge that would change the category itself.
+
 When a source changes the situation, understand which relation it changes and
 what follows for the work. Keep its statement distinct from your interpretation.
 A changed relationship can alter the meaning of facts already known: two

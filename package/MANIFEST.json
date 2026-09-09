@@ -22,151 +22,158 @@
     "neutral_competence": "skills/maios-project-integration/SKILL.md"
   },
   "distribution_file_count": 62,
+  "entity_profile_provenance": {
+    "compiler_version": "0.4.0.dev0",
+    "method_selection_is_separate": true,
+    "plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",
+    "source_revision": "9192fe64035cc67207eb289b5677173d1df8ac82",
+    "translation": "historical entity inputs combined with current product entry and family contracts"
+  },
   "entrypoint": "install.py",
   "generated_kernel": {
     "artifacts": [
       {
-        "id": "maios-artifact-2",
+        "id": "body-2",
         "path": "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
         "sha256": "065e190a5182be7b7e47aa85e6fdc321e3e51a9d435158f69f227440ac7009de",
         "source_refs": [
-          "maios-source-2"
+          "source-2"
         ]
       },
       {
-        "id": "maios-artifact-1",
+        "id": "body-1",
         "path": "payload/.maios/kernel/COMPOSITION_PROTOCOL.md",
         "sha256": "530085d6cc57303de1657a761115298496ae4aa473483ba60ff97f9c42477492",
         "source_refs": [
-          "maios-source-1"
+          "source-1"
         ]
       },
       {
-        "id": "maios-artifact-15",
+        "id": "body-15",
         "path": "payload/.maios/kernel/FOUNDING_RELATIONS.md",
         "sha256": "dec8266608785a4889d4eef17b0d08271cb8d1ffd99f566f5bd7cee34703be27",
         "source_refs": [
-          "maios-source-15"
+          "source-15"
         ]
       },
       {
-        "id": "maios-artifact-17",
+        "id": "body-17",
         "path": "payload/.maios/kernel/KNOWLEDGE_CONTINUUM.md",
-        "sha256": "2e2e7f681e9014372d405186b8b01b1735d632ae3a6f23531b44d3aa3df1b582",
+        "sha256": "1266b225765c0ee968941d53eaa8f8f6b042425e2212768af9626f6bb0c3cd0a",
         "source_refs": [
-          "maios-source-17"
+          "source-17"
         ]
       },
       {
-        "id": "maios-artifact-0",
+        "id": "body-0",
         "path": "payload/.maios/kernel/SYSTEM_KERNEL.md",
         "sha256": "9839b9cbf7f73e10996fe00e9ce5422d31611dc2ec2286689d170f103707df08",
         "source_refs": [
-          "maios-source-0"
+          "source-0"
         ]
       },
       {
-        "id": "maios-artifact-16",
+        "id": "body-16",
         "path": "payload/.maios/kernel/UPDATE_CONTINUITY.md",
         "sha256": "b6cbb92438a6f9ac47dd369fd680fb9a940ddea44307ff259390bf44f6f2b66c",
         "source_refs": [
-          "maios-source-16"
+          "source-16"
         ]
       },
       {
-        "id": "maios-artifact-10",
+        "id": "body-10",
         "path": "payload/skills/maios-project-competence-formation/SKILL.md",
-        "sha256": "88aec0e902ee6fd7a9dc8a9cfc7e6ad7e718573632bc249336f8293dabfbe051",
+        "sha256": "c4c58a96132cd9545cd6a56fa2c5b68a0a87bdfd6541f94c4fc5e249ca16913c",
         "source_refs": [
-          "maios-source-10"
+          "source-10"
         ]
       },
       {
-        "id": "maios-artifact-9",
+        "id": "body-9",
         "path": "payload/skills/maios-project-context/SKILL.md",
-        "sha256": "1dcf137d43595b892f9f6889b0da46ce2542d260d6ec9724613d44e294a647ee",
+        "sha256": "86ea3920d8321e9a76b632f285fa52db7bb6a5155bbc0a79f36855cf96b8cc27",
         "source_refs": [
-          "maios-source-9"
+          "source-9"
         ]
       },
       {
-        "id": "maios-artifact-13",
+        "id": "body-13",
         "path": "payload/skills/maios-project-coordination/SKILL.md",
         "sha256": "e5fb2722efeaf8cad72f5410ec07fe0083b38315b4c9cd5104b415370bdbc193",
         "source_refs": [
-          "maios-source-13"
+          "source-13"
         ]
       },
       {
-        "id": "maios-artifact-11",
+        "id": "body-11",
         "path": "payload/skills/maios-project-host-adaptation/SKILL.md",
         "sha256": "452b97891d8157da40a53cfca8ae2fca4369305b537eab6bc5bf18cc99fdf8d7",
         "source_refs": [
-          "maios-source-11"
+          "source-11"
         ]
       },
       {
-        "id": "maios-artifact-12",
+        "id": "body-12",
         "path": "payload/skills/maios-project-host-adaptation/references/shared-project-continuity.md",
         "sha256": "e59c6ccc4586d7e7c7e451881795c1d958bde3d1173a8e8a7dd23836f0fbfc29",
         "source_refs": [
-          "maios-source-12"
+          "source-12"
         ]
       },
       {
-        "id": "maios-artifact-3",
+        "id": "body-3",
         "path": "payload/skills/maios-project-system/SKILL.md",
-        "sha256": "94bfa1dcd20c5fa1825a54cc2a26446db2efb6e116eca44ddeda586ce4c59470",
+        "sha256": "3f52953775b5bb318d2d21107baff53d113c066fcbf18b95a11b5dc92930f1d3",
         "source_refs": [
-          "maios-source-3"
+          "source-3"
         ]
       },
       {
-        "id": "maios-artifact-14",
+        "id": "body-14",
         "path": "payload/skills/maios-project-system/adapters/hermes.gitignore",
         "sha256": "40317baa8eadbce068066d02abcdb685a364fa7c67324c4a3c9561e5e228aac0",
         "source_refs": [
-          "maios-source-14"
+          "source-14"
         ]
       },
       {
-        "id": "maios-artifact-5",
+        "id": "body-5",
         "path": "payload/skills/maios-project-system/references/fdla-operating-knowledge.md",
         "sha256": "d152faecd2225c3bfd7c4c6ace8213b1cbafa12e44f0d8adf75c516da110ff9a",
         "source_refs": [
-          "maios-source-5"
+          "source-5"
         ]
       },
       {
-        "id": "maios-artifact-4",
+        "id": "body-4",
         "path": "payload/skills/maios-project-system/references/ka-operating-knowledge.md",
         "sha256": "40b8e02c08c877d61726bab75e86d1a382bd4ee4d86c7c36a76328f740f0c429",
         "source_refs": [
-          "maios-source-4"
+          "source-4"
         ]
       },
       {
-        "id": "maios-artifact-6",
+        "id": "body-6",
         "path": "payload/skills/maios-project-system/references/runtime-recovery.md",
         "sha256": "4d97b00a874418dbefef77d472eecd53fe51483b017bda60feb783047f32459c",
         "source_refs": [
-          "maios-source-6"
+          "source-6"
         ]
       },
       {
-        "id": "maios-artifact-8",
+        "id": "body-8",
         "path": "payload/skills/maios-start-existing-project/SKILL.md",
         "sha256": "87fa1f7a73e2c4af51300a433cec1dcf3ce34a591fa8467ece35c9a0158b78c0",
         "source_refs": [
-          "maios-source-8"
+          "source-8"
         ]
       },
       {
-        "id": "maios-artifact-7",
+        "id": "body-7",
         "path": "payload/skills/maios-start-new-project/SKILL.md",
         "sha256": "1ea1b1fc7e236e7bea1efc5c735a9ee310e4c0d34a65a0b80fcf328c4a298c46",
         "source_refs": [
-          "maios-source-7"
+          "source-7"
         ]
       }
     ],
@@ -236,25 +243,25 @@
     "compiler_version": "0.4.0.dev5",
     "identity_scope": "selected generated content; product source identity describes the builder base",
     "input_hashes": {
-      "project_model_hash": "71af05fa660eeac7b7db4d0a3bd765aee122cb7858ed41741453844df6259cad",
-      "seed_spec_hash": "be6809324d8f64ef8c8e5a8b0452790db08f33331b5264acaa1ec3720e502899",
-      "source_manifest_hash": "c7241ce3807be1249cdbfab7b3253fc959005f0cc574a1ac7c22a8fa7d92e60f"
+      "project_model_hash": "e4b34101c23137fb0e37325d0bce99cbdaefaabec2a1232f5cb42b66a668c7ca",
+      "seed_spec_hash": "af19dcf6c78b64c471d838adbef71ae35592c2c2943f0a4f46ecec2b1b3c5080",
+      "source_manifest_hash": "a1cd77c88f03f006ec4923650fe9b392a027ec982a8a6b236b6b3feb51435a69"
     },
     "model_use_observed": false,
-    "plan_id": "5218e2cbc25f482ef3fd386a6693cf0030e9a588f75b6981f4ff0a1a4d354110",
-    "plan_sha256": "84c96aebbd8043ba4239f78c3d21e270f4cbb6241dc75359b21ec32c363a26c1",
+    "plan_id": "029d66258dd669ffba2ef5140b8257a565199fd41753a0fb365cde41ba690137",
+    "plan_sha256": "5eed25d1c609e982b73c0f3ffd752c3f4d4f14c5a94beadcce16c591dc6af508",
     "release_selection": {
       "compiler": {
-        "source_revision": "69524c315919dbc48dd92c4362e76196a239ac7e",
+        "source_revision": "334a9d33c12d61ba826d41b25f604af18441e967",
         "version": "0.4.0.dev5"
       },
       "plan": "release/generated/generation-plan.json",
-      "plan_sha256": "84c96aebbd8043ba4239f78c3d21e270f4cbb6241dc75359b21ec32c363a26c1",
+      "plan_sha256": "5eed25d1c609e982b73c0f3ffd752c3f4d4f14c5a94beadcce16c591dc6af508",
       "schema": "maios.generated-kernel-selection.v1",
       "source_basis": {
-        "commit": "7c864c4220b7bc05584036ee3cea91058ec16f8e",
-        "corpus_identity": "44f5d2eaf8a9d623beef3e7e1eb8d37e16ca60572c1293e7531f0e334e6d04ce",
-        "identity_scope": "source corpus at the selected commit, before release input selection",
+        "commit": "5d84e63c41d4c1e093725689f8d3d1e7f4adc17e",
+        "corpus_identity": "964a5f33a1722b9016b485c07239b1906cc581ed017a3aea47a8bf0019461519",
+        "identity_scope": "canonical path and normalized body hashes of selected committed methods",
         "repository": "GrazianoGuiducci/maios-project-kernel"
       }
     },
@@ -297,16 +304,16 @@
     "recovery": "remove_only_unchanged_installer_owned_bytes"
   },
   "source_identity": {
-    "autonomous_entry_contract_sha256": "63926c007da74573a363d4e53f989a96dd8de252fd249627e11251eb2b48dd39",
+    "autonomous_entry_contract_sha256": "6c051dc2b7688028ce79144b042b7ac8c93f4c9f06bc3a42560129944f9d42b4",
     "owner": "maios-project-kernel repository",
-    "projection_sha256": "120a3af87e358622ab6add32ea4d441bc239645af9e399c483a49eb80b6679a3",
+    "projection_sha256": "9b684a117e83a7a9496ce130463495a1bd8b47f804c9b8a0de7e5e35630d0a3d",
     "revision_claim": "content_addressed_source_tree",
-    "source_manifest_sha256": "8aed122c48016c2889bbe430219d706476c5cb74aeb5b7b7ffc7df2eccb14269",
-    "tree_sha256": "40e71d02f999d0d89e398fc17bd3c93cc2b99b4bee2938618d3db982e9e479ee"
+    "source_manifest_sha256": "1832ec98496bad61fba9aabe23e06822fda5f610e163fbf8e3b9e25928a787c6",
+    "tree_sha256": "3642fb782bd80069d0873f615effe5b2b34acaaebeff5c6850d821394dc978da"
   },
   "target_modes": [
     "new_repository",
     "existing_repository"
   ],
-  "version": "4.0.0"
+  "version": "4.1.0"
 }

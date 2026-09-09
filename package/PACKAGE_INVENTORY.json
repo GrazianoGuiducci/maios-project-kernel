@@ -14,7 +14,7 @@
     {
       "bytes": 4655,
       "path": "INSTALL.md",
-      "sha256": "bdc710872a5668a4cffc18f52dab6813fcc7494aa6f70a314afddf44f42f17d7"
+      "sha256": "42248f8ec641b51eb794f12c0e9bafebbe2638d39cf512e09af4814359f2e20b"
     },
     {
       "bytes": 1074,
@@ -22,19 +22,19 @@
       "sha256": "a8da72c4929df6cd9498a7f2f3900a280dd2898097c4a17a5cbf84c4996fc1cd"
     },
     {
-      "bytes": 11663,
+      "bytes": 11749,
       "path": "MANIFEST.json",
-      "sha256": "83ca1f9dedfc2abb2d7de888894938d8b2fe475728bee42e19d47856bc9f562b"
+      "sha256": "b0628d977d94b2c6ef572bfaa982c1db2d776e66462387bc15ce9d50e180b2ff"
     },
     {
       "bytes": 1047,
       "path": "README.md",
-      "sha256": "bfb650296097da1f5aef049c8d74488b5090f4459d4dd27bea45df921ec4df6c"
+      "sha256": "15bb0714fb9311b2c387928c94cce45a174c1eecb5b6e6ca3bbe2f8b44052a2e"
     },
     {
       "bytes": 2018,
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "01ffdcca18afbf95bc0ebede02cdb3d4269d459ac472e320546bdf917b9f4533"
+      "sha256": "aaa66459c3180ccae86bfcb1de31c1613fe562dbf1c9a826632cf40010292081"
     },
     {
       "bytes": 5341,
@@ -49,7 +49,7 @@
     {
       "bytes": 291,
       "path": "payload/.maios/SOURCE_MANIFEST.json",
-      "sha256": "cf4aada9a85a59a3a5df87698f577d246e8647ad4dc733141a4d7150de2081d2"
+      "sha256": "381c32e0b8e161318c06b67e6b8f303e6caf106de46e2891d6f48c2774bd5336"
     },
     {
       "bytes": 1762,
@@ -74,7 +74,7 @@
     {
       "bytes": 1356,
       "path": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
-      "sha256": "63926c007da74573a363d4e53f989a96dd8de252fd249627e11251eb2b48dd39"
+      "sha256": "6c051dc2b7688028ce79144b042b7ac8c93f4c9f06bc3a42560129944f9d42b4"
     },
     {
       "bytes": 7097,
@@ -102,9 +102,9 @@
       "sha256": "dec8266608785a4889d4eef17b0d08271cb8d1ffd99f566f5bd7cee34703be27"
     },
     {
-      "bytes": 7194,
+      "bytes": 8216,
       "path": "payload/.maios/kernel/KNOWLEDGE_CONTINUUM.md",
-      "sha256": "2e2e7f681e9014372d405186b8b01b1735d632ae3a6f23531b44d3aa3df1b582"
+      "sha256": "1266b225765c0ee968941d53eaa8f8f6b042425e2212768af9626f6bb0c3cd0a"
     },
     {
       "bytes": 4541,
@@ -199,12 +199,12 @@
     {
       "bytes": 2363,
       "path": "payload/START_HERE.md",
-      "sha256": "bd4283b184c43877ee1b0bb8e06dcbf437806cf65d27f64b071877c44ec22e77"
+      "sha256": "3d4b5dcf59de1b20b840405d0b0fb358149c1ec3c82a9adaab8674e3e4d5fc0f"
     },
     {
       "bytes": 2018,
       "path": "payload/THIRD_PARTY_NOTICES.md",
-      "sha256": "01ffdcca18afbf95bc0ebede02cdb3d4269d459ac472e320546bdf917b9f4533"
+      "sha256": "aaa66459c3180ccae86bfcb1de31c1613fe562dbf1c9a826632cf40010292081"
     },
     {
       "bytes": 295,
@@ -224,7 +224,7 @@
     {
       "bytes": 1587,
       "path": "payload/project/CURRENT_STATE.md",
-      "sha256": "2e381da08e32df88e545f47d9943d2a7a9b4e1335999ec9e04a126ea72fc2f0c"
+      "sha256": "57f2416758bab6214a4f830d6807a7083539496ed9e36d0654de84bbd1af270b"
     },
     {
       "bytes": 783,
@@ -242,14 +242,14 @@
       "sha256": "02e3fee6816a783b67105079c147cbe45d94e434fa08aa4c9e5015299a29aaad"
     },
     {
-      "bytes": 11000,
+      "bytes": 11554,
       "path": "payload/skills/maios-project-competence-formation/SKILL.md",
-      "sha256": "88aec0e902ee6fd7a9dc8a9cfc7e6ad7e718573632bc249336f8293dabfbe051"
+      "sha256": "c4c58a96132cd9545cd6a56fa2c5b68a0a87bdfd6541f94c4fc5e249ca16913c"
     },
     {
-      "bytes": 7308,
+      "bytes": 7919,
       "path": "payload/skills/maios-project-context/SKILL.md",
-      "sha256": "1dcf137d43595b892f9f6889b0da46ce2542d260d6ec9724613d44e294a647ee"
+      "sha256": "86ea3920d8321e9a76b632f285fa52db7bb6a5155bbc0a79f36855cf96b8cc27"
     },
     {
       "bytes": 6685,
@@ -267,9 +267,9 @@
       "sha256": "e59c6ccc4586d7e7c7e451881795c1d958bde3d1173a8e8a7dd23836f0fbfc29"
     },
     {
-      "bytes": 5656,
+      "bytes": 6281,
       "path": "payload/skills/maios-project-system/SKILL.md",
-      "sha256": "94bfa1dcd20c5fa1825a54cc2a26446db2efb6e116eca44ddeda586ce4c59470"
+      "sha256": "3f52953775b5bb318d2d21107baff53d113c066fcbf18b95a11b5dc92930f1d3"
     },
     {
       "bytes": 177,
