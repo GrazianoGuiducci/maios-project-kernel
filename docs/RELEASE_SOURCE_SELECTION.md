@@ -1,5 +1,16 @@
 # Source basis for the next generated release
 
+## Maintained renewal from 4.1.0
+
+Use [RENEW_KERNEL_SELECTION.md](RENEW_KERNEL_SELECTION.md) and the exact current
+`release/GENERATED_KERNEL_SELECTION.json`. The renewal reads committed product
+bodies and invokes the pinned compiler; its selected-corpus identity is distinct
+from the current builder's whole-source digest. The current compiler adoption is
+334a9d33c12d61ba826d41b25f604af18441e967. The previous consolidation below retains
+its historical identity and does not select the current release input.
+
+## Historical consolidation for 4.0.0
+
 The next production input is formed from the current living source corpus,
 including the context-method refinement already exercised through generation
 and installation. It is not formed by relabeling the earlier published commit

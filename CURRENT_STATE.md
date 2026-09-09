@@ -1,5 +1,22 @@
 # MAIOS Project Kernel current state
 
+## Current 4.1.0 source — 2026-09-09
+
+The native system, context, competence-formation and knowledge-continuity methods
+now carry situated contribution and the relation between reasons, decisions and
+consequences. [Release meaning and website handoff](docs/RELEASE_4.1.0.md).
+
+The ordinary renewal command reads committed bodies and uses the exact selected
+RepoKernel; [the owner method](docs/RENEW_KERNEL_SELECTION.md) makes the next
+renewal repeatable. `release/GENERATED_KERNEL_SELECTION.json` identifies the
+actual method corpus and compiler. Entity-profile historical provenance is
+separate and retained in the package manifest. Onboarding, host adaptation,
+family 3.0.0 and the existing update-continuity method remain intact.
+
+The implementation is selected for release 4.1.0. The immutable tag and release
+receipt establish publication; this source description does not claim receiving
+LLM use. Earlier current-state fields below are historical.
+
 ## Release 4.0.0 — 2026-09-08
 
 The complete-checkout missing-selection case is reproduced and corrected.

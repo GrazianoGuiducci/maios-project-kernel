@@ -1,9 +1,10 @@
 # MAIOS Project Kernel
 
-La versione **4.0.0** usa la selezione RepoKernel nella build ordinaria.
-Se manca, la build si interrompe; `--source-only` resta una scelta esplicita.
-L'onboarding completo è raggiungibile prima dell'installazione e prosegue nel
-progetto destinatario. Leggi le [note della 4.0.0](docs/RELEASE_4.0.0.md).
+La versione **4.1.0** approfondisce comprensione situata e continuità nelle
+competenze native e rende ripetibile il rinnovo della selezione RepoKernel.
+Restano completi acquisizione, preparazione dell'ambiente, anteprima,
+applicazione e avvio nel progetto. Leggi le [note della 4.1.0](docs/RELEASE_4.1.0.md)
+e il [metodo di rinnovo](docs/RENEW_KERNEL_SELECTION.md).
 
 La versione **3.2.0** aggiunge [coordinamento e continuità fra harness](docs/INSTANCE_COORDINATION.md): un piano semantico condiviso, delega situata e una competenza per continuare il lavoro attraverso un altro harness quando il caso concreto lo richiede.
 

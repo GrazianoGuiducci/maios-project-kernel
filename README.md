@@ -1,9 +1,9 @@
 # MAIOS Project Kernel
 
-Version **4.0.0** uses the maintained RepoKernel selection in the ordinary build.
-Missing selection stops the build; `--source-only` is explicit. The complete
-onboarding remains reachable before installation and continues inside the target
-project. See [4.0.0 release notes](docs/RELEASE_4.0.0.md).
+Version **4.1.0** deepens situated understanding and continuity in the native
+competences and makes renewal of the RepoKernel method selection repeatable.
+The complete acquisition, environment preparation, preview/application and
+project startup remain available. See [4.1.0 release notes](docs/RELEASE_4.1.0.md).
 
 Version **3.2.0** adds [shared-project coordination and harness-continuation knowledge](docs/INSTANCE_COORDINATION.md): a shared semantic plane, situated delegation and a method for continuing work through another harness when the actual case calls for it.
 
@@ -412,6 +412,7 @@ python -B tools\verify_distribution.py
 ```
 
 The builder regenerates `package/`, its manifest, and its exact inventory.
+For compiler and method updates, use the [selection renewal method](docs/RENEW_KERNEL_SELECTION.md).
 
 ## Current evidence and limits
 

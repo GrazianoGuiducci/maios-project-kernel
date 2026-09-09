@@ -47,6 +47,14 @@ possibility; it is not a compulsory research phase or limited to fixing failure.
 
 ## Give the capacity an operating body
 
+Let the forming competence understand its situated contribution, including the
+sources and means it can actually use and the owner that receives its result.
+Carry the reason for a method choice into its expected consequences, preserving
+observations, conditional consequences, expectations and open possibilities as
+different knowledge. When later work changes that relation, evolve the method
+and the native entry that must reach it. Use the same understanding to correct
+this formation competence; its current template or framing can also be partial.
+
 Let the useful relation determine its owner and depth. Reuse, composition,
 extension and a new body can participate together. A memory, method, function,
 entity, competence, meta-competence or kernel may carry several functions;

@@ -74,6 +74,21 @@ knowledge and retain any material missing relation.
 
 ## Preserve the movement before context is lost
 
+Connect each useful decision to the source-bound reason that made it pertinent
+and to what its result changes in the following situation. Keep observed effects,
+consequences under stated conditions, expectations and open possibilities
+distinct. An event occurring later is not by itself a causal explanation; an
+expected event not yet seen is not an observed failure without relevant coverage.
+Use the actual clock, log or callback when that relation matters to the work.
+
+At reentry, recover which reason remains valid and which has changed, not just
+the previous next action. Another instance can continue the project's knowledge
+without claiming to remember an experience it did not have. Keep its actual
+context, means and contribution situated while retaining shared project meaning.
+The resulting understanding may change the next question or competence, even
+when the previous work succeeded. These relations belong in the existing living
+knowledge and task owners; they do not require a parallel state mechanism.
+
 When a long task, interruption or compact could lose a consequential relation,
 preserve the live margin before expanding more sources. Retain the selected
 object, current intent and its source, what was established and why it changes

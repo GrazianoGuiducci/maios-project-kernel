@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.1.0 — 2026-09-09
+
+- Deepen situated contribution in system and context knowledge, and carry the
+  relation between reasons, decisions and consequences through formation and reentry.
+- Renew the generated method selection from committed product sources and an
+  exact RepoKernel checkout through a maintained product command.
+- Keep historical entity-profile provenance distinct from the current method
+  compiler; retain its current open-entry product translation.
+- Preserve the complete onboarding, native host adapters, family 3.0.0 and
+  knowledge-preserving update method. No automatic cross-version migration.
+
 ## 4.0.0 — 2026-09-08
 
 - Refuse a missing ordinary generated selection before replacing the package;

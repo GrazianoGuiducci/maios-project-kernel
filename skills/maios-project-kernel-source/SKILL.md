@@ -11,6 +11,15 @@ as an input or cleanup target for the current source.
 
 Keep one vertical connected:
 
+For a maintained compiler adoption, use
+[the source-selection renewal method](../../docs/RENEW_KERNEL_SELECTION.md).
+Acquire useful knowledge in the native bodies first, consolidate the source,
+then form the selected plan from the exact corpus and compiler commits. The
+ordinary builder consumes that plan. Preserve the separately retained entity
+profile provenance and its current product translation; a new method compiler
+does not relabel every historical input. Later installed-project updates remain
+owned by the existing UPDATE_CONTINUITY method and preserve local learning.
+
 ```text
 living source -> generated package inventory -> install plan -> target receipt
 -> host discovery -> behavioral use -> maintained reentry
