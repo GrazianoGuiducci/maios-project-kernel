@@ -81,6 +81,33 @@ version is not an automatic migration. The
 [update-continuity method](kernel/UPDATE_CONTINUITY.md) relates the installation
 baseline, local evolution and a proposed update.
 
+## Test, feedback and updates
+
+Real testers are valuable to the Kernel's evolution. A first-use impression can
+show unclear entry, unnecessary latency, missing context, unexpected strengths
+or a new possibility even when no technical bug exists.
+
+The installed Project Kernel already keeps a light source contact: during
+active use, an upstream check becomes pertinent when no attempt is recorded or
+roughly seven days have elapsed since the last attempt, and sooner when a
+current problem may already have been corrected upstream. The check is
+read-only and non-blocking; a newer source is a possibility to understand, not
+an automatic update. See
+[`kernel/UPDATE_CONTINUITY.md`](kernel/UPDATE_CONTINUITY.md#keep-a-light-source-contact).
+
+When real use produces an informative observation, ask your coder to prepare an
+**Evolution Feedback**. The coder should show you the public-safe feedback and
+ask for your consent before submitting it. Use a GitHub Issue for experience,
+friction, questions, unexpected success or a possible improvement; use a fork
+and focused Pull Request for a concrete source correction. Testers do not need
+and should not receive direct write access to upstream `main` merely to
+contribute.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and the
+[GitHub Evolution Feedback template](.github/ISSUE_TEMPLATE/evolution-feedback.md).
+Feedback is evidence for maintainers, not automatic authority to change the
+Kernel or the tester's project.
+
 ## Coding hosts and evidence
 
 The package provides profiles for `codex`, `claude`, `opencode`, `hermes`,
@@ -108,6 +135,7 @@ competence helps turn that work into a contribution grounded in its sources.
 | --- | --- |
 | Use and maintain a project | [Usage](docs/USAGE.md) · [Installation](docs/INSTALLATION.md) |
 | Understand the Kernel | [Knowledge](knowledge/KERNEL.md) · [Architecture](docs/ARCHITECTURE.md) |
+| Send real-use feedback | [Contributing](CONTRIBUTING.md) · [Evolution Feedback template](.github/ISSUE_TEMPLATE/evolution-feedback.md) |
 | Work on this repository | [Documentation map](docs/README.md) · [Build](docs/GENERATED_KERNEL_BUILD.md) · [Provenance](docs/PROVENANCE.md) |
 | Explore the research | [System Semantic Kernel working paper](https://github.com/GrazianoGuiducci/maios-ssk-paper), a separate academic corpus |
 | Follow changes | [Changelog](CHANGELOG.md) · [Current source state](CURRENT_STATE.md) |

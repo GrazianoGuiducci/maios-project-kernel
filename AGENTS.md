@@ -6,10 +6,10 @@ source, architecture, package, test, or release files that can change the
 current movement.
 
 Use `README.md` as the repository homepage and reading map. For package entry,
-its first readback tells the operator the value and possibilities visible in
-the actual target, the complete functional integration relation, the exact
-effect and recovery, and the proof levels still unobserved. Contract that
-readback into a direct start when target and effect are already clear.
+its first readback tells the operator the value and possibilities visible in the
+actual target, the complete functional integration relation, the exact effect
+and recovery, and the proof levels still unobserved. Contract that readback into
+a direct start when target and effect are already clear.
 
 ## Product identity
 
@@ -36,21 +36,39 @@ prove installation, discovery, behavioral use, or maintained reentry.
 - `maios_it` is a later distribution surface. Source work here grants no push,
   release, publication, runtime, or public-site authority.
 
-## Public knowledge and contribution field
+## Public knowledge, testing and contribution field
 
-A coder entering the repository can also study and evolve the public Kernel
-source without installing the package.
+A coder entering the repository can study and evolve the public Kernel source
+without installing the package. Real testers are also useful source evidence:
+first impressions can reveal unclear entry, avoidable latency, missing context,
+unexpected strengths or possibilities that maintainers no longer see as easily.
 
 - For Kernel study or explanation, read `knowledge/KERNEL.md` and
   `skills/maios-kernel-study/SKILL.md`.
-- For a human or model contribution, read `contributions/README.md` and
-  `skills/maios-kernel-contribution/SKILL.md`.
+- For a human or model contribution, read `CONTRIBUTING.md`,
+  `contributions/README.md` and `skills/maios-kernel-contribution/SKILL.md`.
+- For real-use observations, prepare an Evolution Feedback using
+  `.github/ISSUE_TEMPLATE/evolution-feedback.md`.
 
-These are repository-native competences. They are intentionally outside
-`release/PROJECTION.json`; do not infer that opening the clone installs them in
-another project or that a contribution changes the generated package. If real
-use later makes package inclusion material, select and validate that product
-effect explicitly.
+A coder may prepare feedback from an operator's real session, but public
+submission requires the operator's consent. Remove private project material,
+credentials, personal data, private logs and hidden runtime state. Use a GitHub
+Issue for observed feedback; use a fork and focused Pull Request for a concrete
+source correction. Do not infer direct write authority over upstream `main`.
+
+The distributed Project Kernel already owns its light upstream cadence in
+`kernel/UPDATE_CONTINUITY.md`: during active use it checks source contact when
+there is no recorded attempt or roughly seven days have elapsed, and sooner
+when a current problem may already have been corrected upstream. Do not add a
+second timer, scheduler or startup ritual here. A source check is read-only;
+new upstream material is a possibility to understand and propose, not an
+automatic update.
+
+These public study/contribution competences are repository-native. They are
+intentionally outside `release/PROJECTION.json`; do not infer that opening the
+clone installs them in another project or that a contribution changes the
+generated package. If real use later makes package inclusion material, select
+and validate that product effect explicitly.
 
 The current source describes the product that is built now. Version history
 belongs to Git and `CHANGELOG.md`; it does not remain as a second startup,

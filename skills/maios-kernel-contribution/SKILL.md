@@ -1,12 +1,13 @@
 ---
 name: maios-kernel-contribution
-description: Turn a human or AI idea, method, correction, evidence item, or working practice into a source-bound contribution to the public MAIOS Project Kernel competence field while keeping merge, package, release, and external authority as separate effects.
+description: Turn a human or AI idea, method, correction, evidence item, real-use feedback, or working practice into a source-bound contribution to the public MAIOS Project Kernel competence field while keeping issue, merge, package, release, and external authority as separate effects.
 ---
 
 # MAIOS Kernel Contribution
 
-Use `contributions/README.md` and the contribution template. Read the public
-Kernel knowledge and the closest owner source needed by the proposed change.
+Use `CONTRIBUTING.md`, `contributions/README.md` and the contribution template.
+Read the public Kernel knowledge and the closest owner source needed by the
+proposed change.
 
 The canonical contribution law is functional:
 
@@ -20,9 +21,32 @@ KA keeps the possibility field open
 -> later use may refine, invalidate or assimilate it.
 ```
 
-A contributor may be a person, GPT Pro, Codex or another capable model. Record
-the source relation and model involvement when present; contributor identity
-does not establish truth or effect authority.
+A contributor may be a person, tester, GPT Pro, Codex or another capable model.
+Record the source relation and model involvement when present; contributor
+identity does not establish truth or effect authority.
+
+## Real-use feedback versus source change
+
+A first-use impression can be useful evidence even without a bug. When real use
+exposes informative friction, confusion, missing context, unexpected success or
+a new possibility, prepare a compact Evolution Feedback using
+`.github/ISSUE_TEMPLATE/evolution-feedback.md`.
+
+If the feedback comes from a user's project or support session, ask the operator
+for permission before publishing it. Remove private project contents,
+credentials, personal data, private logs and hidden runtime state.
+
+```text
+observed experience / question / possibility
+-> GitHub Issue
+
+concrete source correction
+-> fork / focused Pull Request
+```
+
+Do not create a source patch merely to make an observation look more complete,
+and do not treat a tester report as authority. Let maintainers reconcile the
+evidence with the current source and other returns.
 
 Create the smallest owner-native change that can alter a later result. It may
 be a competence, reference, method, test, falsifier, research delta or source

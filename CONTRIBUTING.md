@@ -13,6 +13,52 @@ Fork the repository, create a focused branch in your fork, and open a pull
 request against the original `main` branch. Keep each proposal tied to one
 observable project condition and result.
 
+## Evolution Feedback from real use
+
+Testers are part of the evolution field. First-use impressions are valuable even
+when nothing is technically broken: a new operator or coder can expose unclear
+entry, unnecessary latency, missing context, unexpected strengths and new
+possibilities that become harder to notice once the system is familiar.
+
+For observed experience, use a GitHub Issue with the repository's
+`.github/ISSUE_TEMPLATE/evolution-feedback.md` template. Useful feedback can
+include:
+
+```text
+product version / revision
+host and coder or model
+what you were trying to do
+first impression
+what helped
+what was confusing or missing
+what failed or worked unexpectedly well
+new possibility noticed
+suggested improvement
+observed evidence / uncertainty
+```
+
+A coder may prepare this feedback from real work, but must ask the operator for
+permission before publishing it. Do not turn a private project or support
+session into public evidence without consent. Remove credentials, private
+project contents, client material, personal data, private logs and hidden
+runtime state.
+
+Use the light source-contact relation already distributed in
+`kernel/UPDATE_CONTINUITY.md`: during active use, an upstream check becomes
+pertinent with no recorded contact or at roughly seven days since the last
+attempt, and sooner when a current problem may already have been corrected
+upstream. That check is read-only and does not authorize an update. When it
+exposes a material difference, explain it to the operator and let a separately
+selected adoption movement own any effect.
+
+Observed feedback belongs in an Issue. A concrete source correction belongs in
+a fork + focused Pull Request. Tester status does not imply direct write access
+to upstream `main`.
+
+Feedback is evidence, not authority. Preserve only a return that can improve
+future understanding, behavior, safety, usability or attainable results; do not
+submit reports merely to satisfy a cadence.
+
 ## Contribute a competence
 
 Read [`contributions/README.md`](contributions/README.md) and use the

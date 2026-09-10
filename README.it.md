@@ -84,6 +84,34 @@ una versione diversa non produce una migrazione automatica. Il
 [metodo di continuità degli aggiornamenti](kernel/UPDATE_CONTINUITY.md)
 collega la base d'installazione, l'evoluzione locale e una proposta di aggiornamento.
 
+## Test, feedback e aggiornamenti
+
+I tester reali sono preziosi per l'evoluzione del Kernel. Una prima impressione
+può mostrare un ingresso poco chiaro, latenza evitabile, contesto mancante,
+punti di forza inattesi o una nuova possibilità anche quando non esiste un bug
+tecnico.
+
+Il Project Kernel installato mantiene già un contatto leggero con la sorgente:
+durante l'uso attivo il controllo upstream diventa pertinente quando non è
+registrato alcun tentativo o sono trascorsi circa sette giorni dall'ultimo, e
+prima se il problema corrente potrebbe essere già stato corretto upstream. Il
+controllo è read-only e non blocca il lavoro; una sorgente più nuova è una
+possibilità da comprendere, non un aggiornamento automatico. Vedi
+[`kernel/UPDATE_CONTINUITY.md`](kernel/UPDATE_CONTINUITY.md#keep-a-light-source-contact).
+
+Quando l'uso reale produce un'osservazione informativa, chiedi al coder di
+preparare un **Evolution Feedback**. Il coder deve mostrarti il feedback sicuro
+per la pubblicazione e chiedere il tuo consenso prima di inviarlo. Usa una
+GitHub Issue per esperienza, attrito, domande, successo inatteso o possibile
+miglioramento; usa un fork e una Pull Request mirata per una correzione concreta
+della sorgente. I tester non hanno bisogno e non devono ricevere implicitamente
+accesso diretto in scrittura a `main` upstream per contribuire.
+
+Vedi [CONTRIBUTING.md](CONTRIBUTING.md) e il
+[template GitHub Evolution Feedback](.github/ISSUE_TEMPLATE/evolution-feedback.md).
+Il feedback è evidenza per i maintainer, non autorità automatica per modificare
+il Kernel o il progetto del tester.
+
 ## Host ed evidenze
 
 Il pacchetto offre profili per `codex`, `claude`, `opencode`, `hermes`,
@@ -113,6 +141,7 @@ aiuta a trasformare quel lavoro in un contributo fondato sulle sue fonti.
 | --- | --- |
 | Usare e mantenere un progetto | [Uso](docs/USAGE.it.md) · [Installazione](docs/INSTALLATION.md) |
 | Comprendere il Kernel | [Conoscenza](knowledge/KERNEL.md) · [Architettura](docs/ARCHITECTURE.md) |
+| Inviare feedback dall'uso reale | [Contributi](CONTRIBUTING.md) · [Template Evolution Feedback](.github/ISSUE_TEMPLATE/evolution-feedback.md) |
 | Lavorare sulla repository | [Mappa documentale](docs/README.md) · [Build](docs/GENERATED_KERNEL_BUILD.md) · [Provenienza](docs/PROVENANCE.md) |
 | Esplorare la ricerca | [System Semantic Kernel working paper](https://github.com/GrazianoGuiducci/maios-ssk-paper), corpus accademico distinto |
 | Seguire le modifiche | [Changelog](CHANGELOG.md) · [Stato sorgente corrente](CURRENT_STATE.md) |
