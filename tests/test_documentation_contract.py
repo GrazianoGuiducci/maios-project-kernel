@@ -10,11 +10,26 @@ ROOT = Path(__file__).resolve().parents[1]
 class DocumentationContractTests(unittest.TestCase):
     def test_reader_routes_reach_their_source_documents(self):
         routes = {
-            'README.md': ['package/', 'docs/USAGE.md', 'docs/GENERATED_KERNEL_BUILD.md'],
-            'README.it.md': ['package/', 'docs/USAGE.it.md', 'docs/GENERATED_KERNEL_BUILD.md'],
+            'README.md': [
+                'package/',
+                'docs/USAGE.md',
+                'docs/GENERATED_KERNEL_BUILD.md',
+                'CONTRIBUTING.md',
+                '.github/ISSUE_TEMPLATE/evolution-feedback.md',
+            ],
+            'README.it.md': [
+                'package/',
+                'docs/USAGE.it.md',
+                'docs/GENERATED_KERNEL_BUILD.md',
+                'CONTRIBUTING.md',
+                '.github/ISSUE_TEMPLATE/evolution-feedback.md',
+            ],
             'docs/USAGE.md': ['../README.md'],
             'docs/USAGE.it.md': ['../README.it.md'],
-            'CONTRIBUTING.md': ['docs/GENERATED_KERNEL_BUILD.md', 'docs/RENEW_KERNEL_SELECTION.md'],
+            'CONTRIBUTING.md': [
+                'docs/GENERATED_KERNEL_BUILD.md',
+                'docs/RENEW_KERNEL_SELECTION.md',
+            ],
         }
         for path, destinations in routes.items():
             document = ROOT / path
@@ -24,6 +39,20 @@ class DocumentationContractTests(unittest.TestCase):
                 with self.subTest(path=path, destination=destination):
                     self.assertIn(destination, links)
                     self.assertTrue((document.parent / destination).exists())
+
+    def test_evolution_feedback_keeps_public_submission_owner_gated(self):
+        template = (ROOT / '.github/ISSUE_TEMPLATE/evolution-feedback.md').read_text(
+            encoding='utf-8'
+        )
+        contributing = (ROOT / 'CONTRIBUTING.md').read_text(encoding='utf-8')
+        self.assertIn('operator_approved_public_submission', template)
+        self.assertIn('private_data_included: no', template)
+        self.assertIn('credentials_or_tokens_included: no', template)
+        self.assertIn('permission before publishing', contributing)
+        self.assertIn('GitHub Issue', contributing)
+        self.assertIn('Pull Request', contributing)
+        self.assertIn('seven days', contributing)
+        self.assertIn('read-only', contributing)
 
     def test_current_entry_facts_match_distribution(self):
         manifest = json.loads((ROOT / 'package/MANIFEST.json').read_text(encoding='utf-8'))
