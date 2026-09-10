@@ -1,14 +1,40 @@
 # MAIOS Project Kernel current state
 
-## 4.1.1 production renewal â€” 2026-09-11
+## 4.1.1 production renewal completed — 2026-09-11
 
-Consume candidate 0d9b58f through the pinned production compiler. Deliver the
-feedback return in the installed system and update methods; compare the actual
-packaged bodies, not only source markers or inventory hashes. Product 4.1.1
-retains family 3.0.0. Release, site projection and host adoption are separate
-effects; no automatic migration is supplied. Historical fields below remain dated.
+Release `v4.1.1` is published at
+`ab17e375d20cfc3695803c40bc04799ef804d009`; product family remains `3.0.0`.
+Candidate `0d9b58f` has been consumed through the pinned production compiler.
+The distributed UPDATE_CONTINUITY and maios-project-system bodies are verified
+equal to their native owners. CI passed on Ubuntu Python 3.10 and Windows
+Python 3.10/3.13, including the deterministic build and distribution checks.
+See [release evidence](docs/RELEASE_4.1.1_EVIDENCE.md).
 
-## Documentation refinement â€” 2026-09-10
+The separate maios.it projection is complete: public-content commit `0c420fd`,
+publication evidence commit `7f0f476`, with 18 live resources matching Git blobs.
+Existing installations are unchanged; publication does not establish host
+adoption or assimilation. No production renewal remains open.
+
+This documentation-only correction preserves the released package and selection.
+Because CURRENT_STATE.md participates in the whole-source digest, verification
+against this later source reports `manifest source tree identity is stale`.
+That metadata difference does not reopen method renewal; package metadata
+refresh is outside this two-file correction. The release validation above
+belongs to the immutable release commit, not this later documentation revision.
+
+## Current next
+
+Resume from a concrete observation in real use, informative feedback, or a newly
+selected source change. Compare it with the released 4.1.1 result and follow the
+owning method only where that difference requires work. This state correction
+does not select another renewal, release, site update or installation.
+
+## Historical chronology
+
+All dated sections below retain their original scope. Their then-current next
+steps describe past work and do not reopen a completed movement.
+
+## Documentation refinement — 2026-09-10
 
 Base: `1d41bd7ca541a52f870e64c7cc0f39d7d31899c4`. The bilingual README prompts
 now identify `package/` even when copied alone. The usage guides distinguish
@@ -29,7 +55,7 @@ Validation: 99 local tests passed with two Windows symlink-permission skips;
 verify the generated source-identity metadata; all payload and installation
 entry files remain unchanged. The commit-specific CI run provides remote checks.
 
-## Documentation reentry â€” 2026-09-10
+## Documentation reentry — 2026-09-10
 
 The public EN/IT entry now describes the current product and first useful action.
 Detailed operating guidance remains in `docs/USAGE.md` and `docs/USAGE.it.md`;
@@ -51,7 +77,7 @@ the distribution. Ordinary build and distribution verification pass. The
 generated delta is confined to source identity in the manifest and its inventory
 hash; all 51 payload files and installation entry files remain unchanged.
 
-## Current 4.1.0 source â€” 2026-09-09
+## Current 4.1.0 source — 2026-09-09
 
 The native system, context, competence-formation and knowledge-continuity methods
 now carry situated contribution and the relation between reasons, decisions and
@@ -68,7 +94,7 @@ The implementation is selected for release 4.1.0. The immutable tag and release
 receipt establish publication; this source description does not claim receiving
 LLM use. Earlier current-state fields below are historical.
 
-## Release 4.0.0 â€” 2026-09-08
+## Release 4.0.0 — 2026-09-08
 
 The complete-checkout missing-selection case is reproduced and corrected.
 The ordinary build now fails before replacing its package when the maintained
@@ -78,7 +104,7 @@ methods are preserved. [Release notes](docs/RELEASE_4.0.0.md) carry the complete
 onboarding and evidence distinction. The GitHub v4.0.0 tag and release identify
 the promoted commit; source inspection alone does not establish publication.
 
-## Acquired implementation increment â€” 2026-09-08
+## Acquired implementation increment — 2026-09-08
 
 The default ordinary build now consumes the retained RepoKernel selection:
 [release selection](release/GENERATED_KERNEL_SELECTION.json), formed from source
@@ -214,15 +240,12 @@ Codex skills. It carries the operator corrections and exact next movement.
 
 ## Previous local work and release history
 
-# MAIOS Project Kernel current state
+### Superseded renewal instruction — 2026-09-11
 
-## 4.1.1 production renewal â€” 2026-09-11
-
-Consume candidate 0d9b58f through the pinned production compiler. Deliver the
-feedback return in the installed system and update methods; compare the actual
-packaged bodies, not only source markers or inventory hashes. Product 4.1.1
-retains family 3.0.0. Release, site projection and host adoption are separate
-effects; no automatic migration is supplied. Historical fields below remain dated.
+The earlier instruction selected candidate `0d9b58f` for production renewal,
+actual packaged-body comparison and product 4.1.1 with family 3.0.0. That
+movement is complete, as recorded at the top of this file; this historical
+record does not request another compiler run.
 
 updated: 2026-09-06
 active_surface: self-contained KA function transfer in canonical source
@@ -264,7 +287,7 @@ kernel_chat change or production installation is part of this source delta.
 The next source movement continues here; later real use can deepen the
 competence's knowledge without substituting a new founding definition of KA.
 
-## Earlier release state â€” history
+## Earlier release state — history
 
 
 updated: 2026-09-06
