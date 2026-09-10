@@ -55,8 +55,8 @@ class DocumentationContractTests(unittest.TestCase):
         self.assertIn('read-only', contributing)
 
     def test_native_update_continuity_can_return_feedback_without_claiming_submission(self):
-        update = (ROOT / 'kernel/UPDATE_CONTINUITY.md').read_text(encoding='utf-8')
-        system = (ROOT / 'skills/maios-project-system/SKILL.md').read_text(encoding='utf-8')
+        update = ' '.join((ROOT / 'kernel/UPDATE_CONTINUITY.md').read_text(encoding='utf-8').split())
+        system = ' '.join((ROOT / 'skills/maios-project-system/SKILL.md').read_text(encoding='utf-8').split())
         self.assertIn('Return useful experience upstream', update)
         self.assertIn('first meaningful use', update)
         self.assertIn('Evolution Feedback', update)
