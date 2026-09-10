@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.1.1 — 2026-09-11
+
+- Deliver informative first-use and later feedback through the installed system
+  and update-continuity methods, with operator consent before submission and a
+  prepared-text fallback when the host cannot send.
+- Include upstream main in source freshness so changes before a tag remain
+  visible; retain the existing cadence without automatic updates or reports.
+- Renew the exported methods, preserving runtime and family 3.0.0.
+
 ## 4.1.0 — 2026-09-09
 
 - Deepen situated contribution in system and context knowledge, and carry the

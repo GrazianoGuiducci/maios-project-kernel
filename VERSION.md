@@ -1,13 +1,10 @@
 # Version
 
-Product version: `4.1.0`.
-Previous numbered release: `4.0.0`.
+Product version: `4.1.1`.
+Previous numbered release: `4.1.0`.
 Shared Project Kernel family: `3.0.0` (unchanged).
 
-The native competences deepen situated participation and continuity of reasons,
-decisions and consequences. The maintained method selection is renewed through
-the maintained production interface. See [release notes](docs/RELEASE_4.1.0.md)
-and [source renewal](docs/RENEW_KERNEL_SELECTION.md).
-
-Selected method corpus, compiler revision and current builder content retain
-distinct identities. No automatic cross-version migration is introduced.
+Installed methods can prepare useful real-use feedback for operator-approved
+submission upstream and inspect main for source-only changes. The renewed
+selection delivers these methods through the existing operating entries.
+See [release notes](docs/RELEASE_4.1.1.md). No automatic migration is introduced.

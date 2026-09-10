@@ -2,7 +2,7 @@
 
 ## Source owner
 
-The 4.1.0 product source is this `maios-project-kernel` repository. Native
+The 4.1.1 product source is this `maios-project-kernel` repository. Native
 methods and retained generated inputs are composed through explicit product
 mappings and source-bound receipts. The generated `package/` projection does
 not import a prepared website payload, Form state, private compiler source,

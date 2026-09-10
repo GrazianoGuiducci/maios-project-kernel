@@ -1,5 +1,13 @@
 # MAIOS Project Kernel current state
 
+## 4.1.1 production renewal — 2026-09-11
+
+Consume candidate 0d9b58f through the pinned production compiler. Deliver the
+feedback return in the installed system and update methods; compare the actual
+packaged bodies, not only source markers or inventory hashes. Product 4.1.1
+retains family 3.0.0. Release, site projection and host adoption are separate
+effects; no automatic migration is supplied. Historical fields below remain dated.
+
 ## Documentation refinement — 2026-09-10
 
 Base: `1d41bd7ca541a52f870e64c7cc0f39d7d31899c4`. The bilingual README prompts
@@ -207,6 +215,14 @@ Codex skills. It carries the operator corrections and exact next movement.
 ## Previous local work and release history
 
 # MAIOS Project Kernel current state
+
+## 4.1.1 production renewal — 2026-09-11
+
+Consume candidate 0d9b58f through the pinned production compiler. Deliver the
+feedback return in the installed system and update methods; compare the actual
+packaged bodies, not only source markers or inventory hashes. Product 4.1.1
+retains family 3.0.0. Release, site projection and host adoption are separate
+effects; no automatic migration is supplied. Historical fields below remain dated.
 
 updated: 2026-09-06
 active_surface: self-contained KA function transfer in canonical source

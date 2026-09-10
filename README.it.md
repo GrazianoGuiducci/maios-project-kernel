@@ -8,7 +8,7 @@ Il progetto conserva le ragioni delle decisioni, le fonti che le sostengono e
 il sapere acquisito nel lavoro. Un'altra istanza può recuperare quel contesto
 e proseguire senza attribuirsi l'esperienza della precedente come memoria personale.
 
-Versione del prodotto: **[4.1.0](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
+Versione del prodotto: **[4.1.1](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
 Python **3.10 o successivo** · [Licenza MIT](LICENSE)
 
 [English](README.md)
@@ -123,8 +123,8 @@ osservato da parte di ogni host o modello.
 Test sorgente e verifica della distribuzione coprono integrità del pacchetto,
 meccaniche di installazione e recupero, instradamento e contratti dello stato
 locale. Non dimostrano che il modello destinatario comprenda, usi o assimili
-i metodi. Le [evidenze della 4.1.0](docs/RELEASE_4.1.0_EVIDENCE.md) conservano
-le osservazioni datate; le [note di release](docs/RELEASE_4.1.0.md) ne spiegano
+i metodi. Le [evidenze della 4.1.1](docs/RELEASE_4.1.1_EVIDENCE.md) conservano
+le osservazioni datate; le [note di release](docs/RELEASE_4.1.1.md) ne spiegano
 le novità.
 
 ## Studiare, contribuire o costruire

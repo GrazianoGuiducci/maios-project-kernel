@@ -9,7 +9,7 @@ them and the knowledge acquired through work. A later agent can recover that
 context and continue from it without treating another instance's experience as
 its own personal memory.
 
-Product version: **[4.1.0](VERSION.md)** · Project Kernel family: **3.0.0** ·
+Product version: **[4.1.1](VERSION.md)** · Project Kernel family: **3.0.0** ·
 Python **3.10 or later** · [MIT License](LICENSE)
 
 [Versione italiana](README.it.md)
@@ -119,8 +119,8 @@ use by every host or model.
 Source tests and distribution verification cover package integrity, installer
 and recovery mechanics, routing and local state contracts. They do not prove
 that a receiving model understands, uses or assimilates the methods. See the
-[4.1.0 evidence](docs/RELEASE_4.1.0_EVIDENCE.md) for dated observations and
-[release notes](docs/RELEASE_4.1.0.md) for the version's changes.
+[4.1.1 evidence](docs/RELEASE_4.1.1_EVIDENCE.md) for dated observations and
+[release notes](docs/RELEASE_4.1.1.md) for the version's changes.
 
 ## Study, contribute or build
 

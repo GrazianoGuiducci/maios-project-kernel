@@ -8,6 +8,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class DocumentationContractTests(unittest.TestCase):
+    def test_feedback_methods_are_delivered_from_current_native_sources(self):
+        for source, delivered in [
+            ('kernel/UPDATE_CONTINUITY.md', 'package/payload/.maios/kernel/UPDATE_CONTINUITY.md'),
+            ('skills/maios-project-system/SKILL.md', 'package/payload/skills/maios-project-system/SKILL.md'),
+        ]:
+            with self.subTest(source=source):
+                self.assertEqual((ROOT / source).read_text(encoding='utf-8'),
+                                 (ROOT / delivered).read_text(encoding='utf-8'))
+
     def test_reader_routes_reach_their_source_documents(self):
         routes = {
             'README.md': [

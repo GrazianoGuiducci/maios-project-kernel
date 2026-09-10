@@ -37,7 +37,7 @@ when source study is useful.
 [CURRENT_STATE.md](../CURRENT_STATE.md) identifies current source work.
 [CHANGELOG.md](../CHANGELOG.md) and numbered release notes preserve version history;
 their old claims describe their stated versions, not the current product.
-[4.1.0 notes](RELEASE_4.1.0.md) and [evidence](RELEASE_4.1.0_EVIDENCE.md) are the
+[4.1.1 notes](RELEASE_4.1.1.md) and [evidence](RELEASE_4.1.1_EVIDENCE.md) are the
 current numbered release's explanation and dated observations.
 
 Historical transfer and review files remain available for a source comparison.
