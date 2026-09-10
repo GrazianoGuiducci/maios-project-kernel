@@ -63,7 +63,7 @@ class DocumentationContractTests(unittest.TestCase):
         self.assertIn('explicit consent', update)
         self.assertIn('GitHub Issue', update)
         self.assertIn('focused Pull Request', update)
-        self.assertIn('return the prepared feedback to the operator instead of claiming submission', update)
+        self.assertIn('prepared feedback to the operator instead of claiming submission', update)
         self.assertIn('useful real-world experience can return to the upstream Kernel', system)
         self.assertIn('ask for consent before any external submission', system)
         self.assertIn('Source contact, feedback preparation and public submission remain distinct effects', system)
