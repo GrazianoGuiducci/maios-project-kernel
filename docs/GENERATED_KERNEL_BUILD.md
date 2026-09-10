@@ -22,8 +22,8 @@ from the generator's retained output and reasons. It is an integrity binding, no
 a signature or an independent endorsement of the selected methods.
 
 Production competences form the SourceManifest, ProjectModel and SeedSpec.
-Its normal `plan` command produces the result consumed here. This builder does not
-decide competence contents from a hidden template or invoke a language model. The
+The production compiler’s normal `plan` command produces the result consumed
+here. This builder does not decide competence contents from a hidden template or invoke a language model. The
 existing materialization record selects the artifact bodies and competence/resource
 relations; unselected scaffold, generic entry and private source atlas stay outside
 the product. The generator source is not required to build from an exported plan,

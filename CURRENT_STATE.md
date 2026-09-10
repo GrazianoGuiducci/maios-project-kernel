@@ -1,5 +1,26 @@
 # MAIOS Project Kernel current state
 
+## Documentation refinement — 2026-09-10
+
+Base: `1d41bd7ca541a52f870e64c7cc0f39d7d31899c4`. The bilingual README prompts
+now identify `package/` even when copied alone. The usage guides distinguish
+ordinary package entry from entry through the source repository; the document
+map connects both. README and CONTRIBUTING reach the distinction between a
+public native method change, its retained exported body and production renewal.
+The build guide identifies the compiler as the producer of the plan.
+
+The GitHub description now describes shared context, evolving competences and
+knowledge continuity across sessions, without limiting the product to a host list.
+Documentation tests check reachable reader routes without fixing their wording.
+The ordinary builder refreshes source identity; product 4.1.0, family 3.0.0,
+selected methods and runtime remain unchanged. No numbered release or migration
+is selected. Continue from a concrete reader ambiguity or changed product source.
+
+Validation: 99 local tests passed with two Windows symlink-permission skips;
+178 local links in the changed documents resolve. Build and distribution checks
+verify the generated source-identity metadata; all payload and installation
+entry files remain unchanged. The commit-specific CI run provides remote checks.
+
 ## Documentation reentry — 2026-09-10
 
 The public EN/IT entry now describes the current product and first useful action.

@@ -8,6 +8,23 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class DocumentationContractTests(unittest.TestCase):
+    def test_reader_routes_reach_their_source_documents(self):
+        routes = {
+            'README.md': ['package/', 'docs/USAGE.md', 'docs/GENERATED_KERNEL_BUILD.md'],
+            'README.it.md': ['package/', 'docs/USAGE.it.md', 'docs/GENERATED_KERNEL_BUILD.md'],
+            'docs/USAGE.md': ['../README.md'],
+            'docs/USAGE.it.md': ['../README.it.md'],
+            'CONTRIBUTING.md': ['docs/GENERATED_KERNEL_BUILD.md', 'docs/RENEW_KERNEL_SELECTION.md'],
+        }
+        for path, destinations in routes.items():
+            document = ROOT / path
+            links = {url.split('#', 1)[0] for url in re.findall(
+                r'\[[^\]]*\]\(([^)]+)\)', document.read_text(encoding='utf-8'))}
+            for destination in destinations:
+                with self.subTest(path=path, destination=destination):
+                    self.assertIn(destination, links)
+                    self.assertTrue((document.parent / destination).exists())
+
     def test_current_entry_facts_match_distribution(self):
         manifest = json.loads((ROOT / 'package/MANIFEST.json').read_text(encoding='utf-8'))
         projection = json.loads((ROOT / 'release/PROJECTION.json').read_text(encoding='utf-8'))

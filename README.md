@@ -35,11 +35,11 @@ act together through the agent and the project's sources. The
 
 Clone or download this repository and open its [`package/`](package/) folder
 with your coding agent. The installable distribution is already included;
-building it yourself is optional. Ask the agent:
+you do not need to run a build to use it. Ask the agent:
 
 ```text
-Read AGENTS.md and use maios-project-integration. I want to use MAIOS in
-[target project]. Understand the project and my current intent, explain the
+Inside package/, read AGENTS.md and use maios-project-integration.
+I want to use MAIOS in [target project]. Understand the project and my current intent, explain the
 useful contribution you can make, and show the installation changes and
 recovery before applying them. Use what is already clear; ask only for missing
 information that changes the integration.
@@ -113,7 +113,9 @@ competence helps turn that work into a contribution grounded in its sources.
 | Follow changes | [Changelog](CHANGELOG.md) · [Current source state](CURRENT_STATE.md) |
 
 The repository owns the product source. `package/` is its generated installable
-distribution; changes belong in the source files that produce it.
+distribution; do not edit it directly. Public source changes and renewal of
+exported method bodies follow the distinct paths in the
+[build guide](docs/GENERATED_KERNEL_BUILD.md).
 
 Software and documentation are under the [MIT License](LICENSE). See
 [third-party notices](THIRD_PARTY_NOTICES.md) and [names and trademarks](TRADEMARKS.md).

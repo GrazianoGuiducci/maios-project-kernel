@@ -2,6 +2,11 @@
 
 [Product overview](../README.md) · [Presentazione italiana](../README.it.md)
 
+The root README provides the product overview and ordinary quick start in
+[English](../README.md) and [Italian](../README.it.md). The usage guides provide
+the detailed operating reference, including entry through the source repository
+when source study is useful.
+
 ## Use the package
 
 - [Usage](USAGE.md) / [Guida d'uso](USAGE.it.md): integration, project startup,

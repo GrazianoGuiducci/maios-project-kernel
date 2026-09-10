@@ -2,6 +2,12 @@
 
 [Product overview](../README.md) · [Versione italiana](USAGE.it.md)
 
+For ordinary use and installation, follow the [product quick start](../README.md#start-with-your-project)
+and open `package/` directly. Open the repository root when studying source,
+evidence or build relations can help you decide how to integrate or contribute.
+This guide is the detailed reference for both routes; reading all of it is not
+an installation prerequisite.
+
 ## Start here: operator and AI coder
 
 This guide connects the first integration to ongoing work for people and AI coders. It
@@ -44,8 +50,8 @@ what is useful and possible.
 
 ### Capability and value map
 
-The following map is the quickest way for an AI to understand the whole
-product without eagerly loading every competence:
+The following map connects product functions to their sources so an AI can
+find the relevant knowledge without loading every competence:
 
 | Product relation | Value in the project | Decisive owner sources |
 | --- | --- | --- |
@@ -85,7 +91,7 @@ all skills into context or all future decisions into the first plan. The real
 project and the operator remain the owners of situated configuration and later
 evolution.
 
-### First available action
+### Entry through the source repository
 
 Clone the repository, open its root with your coder, and say:
 

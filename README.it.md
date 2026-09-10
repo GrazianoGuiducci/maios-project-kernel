@@ -35,11 +35,11 @@ significato e funzionamento.
 
 Clona o scarica questa repository e apri la cartella [`package/`](package/)
 con il tuo coder AI. La distribuzione installabile è già inclusa;
-costruirla dalla sorgente è facoltativo. Chiedi al coder:
+per usarla non serve eseguire una build. Chiedi al coder:
 
 ```text
-Leggi AGENTS.md e usa maios-project-integration. Voglio usare MAIOS in
-[progetto destinatario]. Comprendi il progetto e il mio intento attuale,
+Dentro package/, leggi AGENTS.md e usa maios-project-integration.
+Voglio usare MAIOS in [progetto destinatario]. Comprendi il progetto e il mio intento attuale,
 spiega il contributo utile che puoi dare e mostrami le modifiche previste
 dall'installazione e il recupero prima di applicarle. Usa ciò che è già chiaro;
 chiedi soltanto le informazioni mancanti che cambiano l'integrazione.
@@ -118,7 +118,9 @@ aiuta a trasformare quel lavoro in un contributo fondato sulle sue fonti.
 | Seguire le modifiche | [Changelog](CHANGELOG.md) · [Stato sorgente corrente](CURRENT_STATE.md) |
 
 La repository possiede la sorgente del prodotto. `package/` è la distribuzione
-installabile generata; le modifiche si fanno nei file sorgente che la producono.
+installabile generata: non modificarla direttamente. Le modifiche alle sorgenti
+pubbliche e il rinnovo dei corpi esportati seguono i percorsi distinti descritti
+nella [guida di build](docs/GENERATED_KERNEL_BUILD.md).
 
 Software e documentazione sono sotto [licenza MIT](LICENSE). Consulta le
 [note di terze parti](THIRD_PARTY_NOTICES.md) e le [indicazioni su nomi e marchi](TRADEMARKS.md).

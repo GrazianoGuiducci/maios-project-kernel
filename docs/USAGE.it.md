@@ -2,6 +2,12 @@
 
 [Presentazione del prodotto](../README.it.md) · [English](USAGE.md)
 
+Per usare e installare il pacchetto, segui [l’avvio nel README](../README.it.md#inizia-dal-tuo-progetto)
+e apri direttamente `package/`. Apri la radice della repository quando studiare
+sorgenti, evidenze o relazioni di build aiuta a decidere come integrare o contribuire.
+Questa guida è il riferimento approfondito per entrambi i percorsi; leggerla
+interamente non è un requisito di installazione.
+
 ## Inizia qui: operatore e coder AI
 
 Questa guida collega la prima integrazione al lavoro continuativo di persone
@@ -46,8 +52,8 @@ prima che il Kernel abbia mostrato cosa è utile e possibile.
 
 ### Mappa di capacità e valore
 
-Questa mappa è il modo più rapido con cui un'AI può comprendere l'intero
-prodotto senza caricare preventivamente ogni competenza:
+Questa mappa collega le funzioni del prodotto alle loro sorgenti, così un'AI
+può raggiungere il sapere pertinente senza caricare ogni competenza:
 
 | Relazione del prodotto | Valore nel progetto | Sorgenti proprietarie decisive |
 | --- | --- | --- |
@@ -88,12 +94,12 @@ non forza tutte le skill nel contesto né tutte le decisioni future nel primo
 piano. Il progetto reale e l'operatore restano proprietari della configurazione
 situata e dell'evoluzione successiva.
 
-### Prima azione disponibile
+### Ingresso attraverso la repository sorgente
 
 Clona la repository, apri la sua radice con il coder e digli:
 
 ```text
-Leggi AGENTS.md e la competenza maios-project-integration. Usa il README della repository
+Leggi AGENTS.md e la competenza maios-project-integration. Usa il README
 come mappa della repository. Dimmi cosa questo Kernel può rendere possibile qui
 e il movimento completo di integrazione posseduto dal target. Se target ed
 effetto sono già chiari, proponi l'avvio diretto; altrimenti spiega soltanto la
