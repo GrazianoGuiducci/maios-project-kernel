@@ -30,9 +30,9 @@ prove installation, discovery, behavioral use, or maintained reentry.
 - This repository owns the autonomous self-configuring package and its builder.
 - `MAIOS_CLIENT_SETUP` owns the later Form-generated route. It will preconfigure
   the same Kernel family but is not an input to this autonomous build.
-- RepoKernel is a neutral design and generation source. Reviewed functions are
-  translated into owner-native package organs; its private source is not
-  shipped and it does not own this package build.
+- Exported generation plans supply selected methods. This repository owns
+  their product integration and build; the private production compiler is not
+  required for ordinary builds or installation. See docs/GENERATED_KERNEL_BUILD.md.
 - `maios_it` is a later distribution surface. Source work here grants no push,
   release, publication, runtime, or public-site authority.
 

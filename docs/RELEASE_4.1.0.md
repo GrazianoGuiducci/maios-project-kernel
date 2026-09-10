@@ -17,8 +17,8 @@ process is installed.
 
 `tools/renew_kernel_selection.py` forms the maintained generation inputs and
 plan from explicit product and compiler commits, then the existing ordinary
-builder produces the package. The selected compiler is RepoKernel
-`334a9d33c12d61ba826d41b25f604af18441e967`, 0.4.0.dev5.
+builder produces the package. The exact compiler identity remains in the generation selection and
+[dated build evidence](RELEASE_4.1.0_EVIDENCE.md).
 The exact method corpus is recorded in `release/GENERATED_KERNEL_SELECTION.json`.
 Read [the renewal method](RENEW_KERNEL_SELECTION.md) for future updates.
 
@@ -37,7 +37,7 @@ to preserve conflicting content. Host discovery uses the existing native
 adapters and living skill pointers.
 
 A receiving project needs a capable agentic harness and Python 3.10 or later
-for installation and deterministic helpers; it does not need RepoKernel or
+for installation and deterministic helpers; it does not need the production compiler or
 third-party Python packages. Package generation and integrity do not establish
 receiving-model use or assimilation. The current operator can continue from
 the available evidence and learn from actual use without another prescribed

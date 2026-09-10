@@ -23,14 +23,14 @@ organ: it binds the family-required deferred context to a discretionary direct
 entry policy. Builder, packaged profile, runtime and family synchronizer check
 this owner split; the Form lane is not rewritten by an autonomous patch.
 
-## RepoKernel generation and MAIOS composition
+## Generated inputs and product composition
 
 The source archive retains the neutral generation used to form this product.
 The builder translates its Project Entity relation for autonomous startup.
 The installed functional field is maintained directly with its competences:
 
 ```text
-RepoKernel neutral generation
+Retained neutral generation
 -> PROJECT_ENTITY_PROFILE.json: open deferred direct-package entry
 MAIOS living source
 -> FACULTY_FIELD.json: represented functions and knowledge entries
@@ -193,7 +193,7 @@ An open `supersession_context` explains cross-owner and further plural
 continuations. Reading stored learning validates IDs, owners, reference
 symmetry, event chronology and use summaries without certifying their meaning.
 
-The historical RepoKernel generation uses its preserved input snapshot. The
+The historical profile generation uses its preserved input snapshot. The
 living faculty field can evolve without falsifying that historical receipt.
 New installations retain an exact file baseline and state identities for the
 update method in `UPDATE_CONTINUITY.md`. There is no automatic migration engine.

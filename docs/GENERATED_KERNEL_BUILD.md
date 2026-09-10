@@ -8,7 +8,7 @@ is missing, ordinary building stops before replacing the package; it never
 falls back to the source projection. No generator checkout
 is required for this build; the exported result is part of the source repository.
 
-To deliberately override it with another identified RepoKernel GenerationPlan:
+To deliberately override it with another identified generation plan:
 
 ```powershell
 python tools/build_release.py --kernel-plan /path/to/generation-plan.json --kernel-plan-sha256 CANONICAL_PLAN_SHA256 --package-dir /path/to/candidate
@@ -21,7 +21,7 @@ the selected complete plan, not merely the producer's reported plan ID. Select i
 from the generator's retained output and reasons. It is an integrity binding, not
 a signature or an independent endorsement of the selected methods.
 
-RepoKernel's native competences form the SourceManifest, ProjectModel and SeedSpec.
+Production competences form the SourceManifest, ProjectModel and SeedSpec.
 Its normal `plan` command produces the result consumed here. This builder does not
 decide competence contents from a hidden template or invoke a language model. The
 existing materialization record selects the artifact bodies and competence/resource
@@ -58,7 +58,7 @@ distribution bytes. Verification checks generated bodies, resource presence and
 entry reachability as well as the existing product contracts. These checks do not
 establish model use, comprehension, assimilation or authenticity of the producer.
 
-## Compatibility and continuation
+## Retained contract compatibility
 
 This consumer supports `repokernel.generation-plan.v1` with
 `repokernel.competence-materialization-record.v1`. The actual producer exercised
@@ -73,22 +73,16 @@ The compatibility source-only build is explicit: `python tools/build_release.py
 --source-only`. The default is now the generated selection. An override must
 supply both plan and canonical hash. Numbered release publication remains separate.
 
-The [retained inputs](../release/generated/seed-spec.json) bind SourceManifest and
-ProjectModel. To regenerate with the compiler revision recorded in the selection,
-run its ordinary CLI from that checkout:
+## Evolving the source
 
-```powershell
-python -m repokernel.cli plan --source-manifest /product/release/generated/source-manifest.json --project-model /product/release/generated/project-model.json --seed-spec /product/release/generated/seed-spec.json
-```
+Public contributors can change native product sources and propose method changes
+in a pull request. The ordinary build consumes the retained method selection:
+editing a selected source body alone does not replace its exported counterpart.
+Maintainers renew that selection through the [production method](RENEW_KERNEL_SELECTION.md).
+That operation requires the private compiler and is separate from the public
+build above. A contributor does not need access to it to study, test or propose
+changes to this repository.
 
-When evolving the methods, form these inputs from the newly selected source
-commit through RepoKernel's native competences. Preserve their real source hashes;
-update the selection only from the resulting plan. The historical local corpus,
-the source commit that consolidates it and the later build source tree are
-separate identities; see [source basis](RELEASE_SOURCE_SELECTION.md).
-
-The Form delivery remains owned by MAIOS_CLIENT_SETUP. Its accepted context,
-generation inputs and package consumer need their own integration of the same
-generative selection. This autonomous consumer does not implement or deploy that
-second route. Experience from either receiver can refine RepoKernel's native
-formation and transfer competences without making RepoKernel depend on MAIOS.
+Use `--source-only` explicitly to inspect the native-source projection when
+appropriate. It is a compatibility candidate, not an equivalent reconstruction
+of the maintained generated distribution. Keep package disposition explicit.

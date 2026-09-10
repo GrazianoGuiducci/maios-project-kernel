@@ -1,6 +1,6 @@
 # MAIOS Project Kernel 4.0.0
 
-This release makes the maintained RepoKernel-generated competence selection the
+This release makes the maintained generated competence selection the
 ordinary build input. Its source corpus is commit `7c864c4`; the retained plan,
 inputs and compiler revision are identified by
 [the release selection](../release/GENERATED_KERNEL_SELECTION.json).

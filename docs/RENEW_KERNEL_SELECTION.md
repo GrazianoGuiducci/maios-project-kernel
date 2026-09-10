@@ -1,4 +1,8 @@
-# Renew the generated method selection
+# Production maintenance: renew the method selection
+
+This procedure is for maintainers with access to the private production compiler.
+It is not required to install, use, or rebuild the included distribution.
+Public contributors start with [the public build path](GENERATED_KERNEL_BUILD.md).
 
 The source competence owns this repeatable production movement. Begin with the
 meaning to transfer and the native competences that must act differently.

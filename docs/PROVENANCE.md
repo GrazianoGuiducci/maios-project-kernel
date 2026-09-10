@@ -2,16 +2,15 @@
 
 ## Source owner
 
-The 4.1.0 product source is this `maios-project-kernel` repository. The autonomous 2.0
-Kernel remains its living base; reviewed RepoKernel functions are assimilated
-through a source-bound translation receipt. The generated
-`package/` projection
-does not import a prepared payload from `maios_it`, MAIOS Form state, private
-RepoKernel source, D-ND/TMx topology, credentials, runtime state, or lifecycle
+The 4.1.0 product source is this `maios-project-kernel` repository. Native
+methods and retained generated inputs are composed through explicit product
+mappings and source-bound receipts. The generated `package/` projection does
+not import a prepared website payload, Form state, private compiler source,
+production-environment configuration, credentials, runtime state or lifecycle
 hooks. Version history remains in Git and `CHANGELOG.md`, outside the living
 package topology.
 
-The RepoKernel Project Meta-Faculty is retained as an open functional coverage
+The retained Project Meta-Faculty supplies an open functional coverage
 map. Its generated entity profile is translated into the package's open,
 deferred owner-native entry relation; its fixed primary/support palette is not
 copied into the living competence field. The owner-native crosswalk binds all
@@ -48,8 +47,8 @@ They do not prove installation, native host discovery, semantic use, external
 effects, useful behavior, maintained reentry, or human acceptance. Those states
 must point to their own receipts or observations.
 
-The living faculty field evolves independently of the original RepoKernel
-generation input. `release/repokernel/input-snapshots/FACULTY_FIELD.json` keeps
+The living faculty field evolves independently of the original profile-generation
+input. `release/repokernel/input-snapshots/FACULTY_FIELD.json` keeps
 that exact historical input; its binding is in the projection receipt.
 `FOUNDING_RELATIONS.md` is the complete qualified A0-A11 operating reference
 used for this transfer, not a claim to contain the whole D-ND model.

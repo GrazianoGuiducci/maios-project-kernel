@@ -1,5 +1,27 @@
 # MAIOS Project Kernel current state
 
+## Documentation reentry — 2026-09-10
+
+The public EN/IT entry now describes the current product and first useful action.
+Detailed operating guidance remains in `docs/USAGE.md` and `docs/USAGE.it.md`;
+`docs/README.md` connects use, source study, contribution and production maintenance.
+The public build consumes the retained method selection. Private compiler access
+is required only for its production renewal; public entry text does not make that
+generator part of the user's product journey. Literal contracts and historical
+provenance remain intact. Product version 4.1.0 and family 3.0.0 are unchanged.
+
+Continue documentation work from the reader's actual use and the owning source.
+The generated distribution is refreshed through the ordinary builder for source
+identity; this documentation revision does not select a new numbered release or
+an installed-project update. Earlier dated evidence keeps its original scope.
+
+Validation: 98 local tests completed successfully with two Windows symlink
+permission skips; 185 local documentation links resolve. The documentation
+contract checks current bilingual product/family/Python declarations against
+the distribution. Ordinary build and distribution verification pass. The
+generated delta is confined to source identity in the manifest and its inventory
+hash; all 51 payload files and installation entry files remain unchanged.
+
 ## Current 4.1.0 source — 2026-09-09
 
 The native system, context, competence-formation and knowledge-continuity methods
@@ -7,7 +29,7 @@ now carry situated contribution and the relation between reasons, decisions and
 consequences. [Release meaning and website handoff](docs/RELEASE_4.1.0.md).
 
 The ordinary renewal command reads committed bodies and uses the exact selected
-RepoKernel; [the owner method](docs/RENEW_KERNEL_SELECTION.md) makes the next
+production compiler; [the owner method](docs/RENEW_KERNEL_SELECTION.md) makes the next
 renewal repeatable. `release/GENERATED_KERNEL_SELECTION.json` identifies the
 actual method corpus and compiler. Entity-profile historical provenance is
 separate and retained in the package manifest. Onboarding, host adaptation,

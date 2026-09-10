@@ -5,7 +5,7 @@
 - Deepen situated contribution in system and context knowledge, and carry the
   relation between reasons, decisions and consequences through formation and reentry.
 - Renew the generated method selection from committed product sources and an
-  exact RepoKernel checkout through a maintained product command.
+  identified production compiler through a maintained product command.
 - Keep historical entity-profile provenance distinct from the current method
   compiler; retain its current open-entry product translation.
 - Preserve the complete onboarding, native host adapters, family 3.0.0 and
@@ -15,7 +15,7 @@
 
 - Refuse a missing ordinary generated selection before replacing the package;
   preserve explicit source-only compatibility and the complete existing onboarding.
-- Let the ordinary builder consume an identified RepoKernel GenerationPlan,
+- Let the ordinary builder consume an identified generation plan,
   delivering its selected methods and resources without a runtime function patch.
 - Preserve product-owned entry, installation and state while recording current
   generation provenance separately from historical profile translation.
@@ -23,7 +23,7 @@
   retain source-only builds and existing-project recovery behavior.
 - Select the generated input as the ordinary build default from corpus commit
   `7c864c4`; retain its inputs, compiler identity and canonical plan hash.
-- Align Windows path identity with RepoKernel. Source-only compatibility is now
+- Align Windows path identity between generation and consumption. Source-only compatibility is now
   explicit. Numbered release publication and receiving-model use remain separate.
 
 ## 3.2.0 — 2026-09-06
@@ -256,7 +256,7 @@ and later non-identical assimilation remain separate evidence.
   source-owned host catalogue; all eight declared adapters now complete the
   same installed status and operating-readback path.
 - Added semantic validation for the installed family contract, Project
-  Meta-Faculty, Project Entity Profile, evolution and RepoKernel receipts,
+  Meta-Faculty, Project Entity Profile, evolution and generation receipts,
   host catalogue/state, operating state, runtime and host-adaptation owner.
 - Bound explicit and automatically discovered installation receipts to their
   exact target, including planning and idempotent apply paths, and limited
@@ -270,14 +270,14 @@ and later non-identical assimilation remain separate evidence.
 
 ## 3.0.0 - 2026-08-28
 
-- Preserved the autonomous 2.0 Kernel while assimilating RepoKernel's neutral
+- Preserved the autonomous 2.0 Kernel while assimilating neutral generated
   Project Meta-Faculty coverage and Project Entity entry relations without
-  making the package a RepoKernel input or runtime.
-- Translated RepoKernel's fixed primary/support palette into MAIOS's open
+  making the package a generator input or runtime.
+- Translated the generated fixed primary/support palette into MAIOS's open
   `material_relation_and_observed_delta` competence field.
 - Added coder-led environment readiness for harness, model access, Python,
   repository/version control and optional remote infrastructure.
-- Bound the generated relations to the exact RepoKernel source and deterministic
+- Bound the generated relations to the exact generation source and deterministic
   package projection while keeping the Form package as a distinct later lane.
 
 ## 2.0.0 - 2026-08-27
