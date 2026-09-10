@@ -1,6 +1,6 @@
 # MAIOS Project Kernel current state
 
-## 4.1.1 production renewal — 2026-09-11
+## 4.1.1 production renewal â€” 2026-09-11
 
 Consume candidate 0d9b58f through the pinned production compiler. Deliver the
 feedback return in the installed system and update methods; compare the actual
@@ -8,7 +8,7 @@ packaged bodies, not only source markers or inventory hashes. Product 4.1.1
 retains family 3.0.0. Release, site projection and host adoption are separate
 effects; no automatic migration is supplied. Historical fields below remain dated.
 
-## Documentation refinement — 2026-09-10
+## Documentation refinement â€” 2026-09-10
 
 Base: `1d41bd7ca541a52f870e64c7cc0f39d7d31899c4`. The bilingual README prompts
 now identify `package/` even when copied alone. The usage guides distinguish
@@ -29,7 +29,7 @@ Validation: 99 local tests passed with two Windows symlink-permission skips;
 verify the generated source-identity metadata; all payload and installation
 entry files remain unchanged. The commit-specific CI run provides remote checks.
 
-## Documentation reentry — 2026-09-10
+## Documentation reentry â€” 2026-09-10
 
 The public EN/IT entry now describes the current product and first useful action.
 Detailed operating guidance remains in `docs/USAGE.md` and `docs/USAGE.it.md`;
@@ -51,7 +51,7 @@ the distribution. Ordinary build and distribution verification pass. The
 generated delta is confined to source identity in the manifest and its inventory
 hash; all 51 payload files and installation entry files remain unchanged.
 
-## Current 4.1.0 source — 2026-09-09
+## Current 4.1.0 source â€” 2026-09-09
 
 The native system, context, competence-formation and knowledge-continuity methods
 now carry situated contribution and the relation between reasons, decisions and
@@ -68,7 +68,7 @@ The implementation is selected for release 4.1.0. The immutable tag and release
 receipt establish publication; this source description does not claim receiving
 LLM use. Earlier current-state fields below are historical.
 
-## Release 4.0.0 — 2026-09-08
+## Release 4.0.0 â€” 2026-09-08
 
 The complete-checkout missing-selection case is reproduced and corrected.
 The ordinary build now fails before replacing its package when the maintained
@@ -78,7 +78,7 @@ methods are preserved. [Release notes](docs/RELEASE_4.0.0.md) carry the complete
 onboarding and evidence distinction. The GitHub v4.0.0 tag and release identify
 the promoted commit; source inspection alone does not establish publication.
 
-## Acquired implementation increment — 2026-09-08
+## Acquired implementation increment â€” 2026-09-08
 
 The default ordinary build now consumes the retained RepoKernel selection:
 [release selection](release/GENERATED_KERNEL_SELECTION.json), formed from source
@@ -216,7 +216,7 @@ Codex skills. It carries the operator corrections and exact next movement.
 
 # MAIOS Project Kernel current state
 
-## 4.1.1 production renewal — 2026-09-11
+## 4.1.1 production renewal â€” 2026-09-11
 
 Consume candidate 0d9b58f through the pinned production compiler. Deliver the
 feedback return in the installed system and update methods; compare the actual
@@ -264,7 +264,7 @@ kernel_chat change or production installation is part of this source delta.
 The next source movement continues here; later real use can deepen the
 competence's knowledge without substituting a new founding definition of KA.
 
-## Earlier release state — history
+## Earlier release state â€” history
 
 
 updated: 2026-09-06

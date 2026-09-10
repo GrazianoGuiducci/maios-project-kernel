@@ -75,10 +75,13 @@ when seven days have elapsed since the last attempt, inspect the canonical
 [MAIOS Project Kernel repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
 in read-only mode for changes that can improve this project's Kernel,
 competences or capacity to evolve. Begin with the installed identity in
-`.maios/SOURCE_MANIFEST.json`, then the repository `VERSION.md`, `CHANGELOG.md`
-and current Release; read deeper only when a material useful relation appears.
-If the source is unavailable, continue ordinary work and leave the check
-pending without blocking the project.
+`.maios/SOURCE_MANIFEST.json`, then observe the current upstream source revision
+or `main` head when the host can resolve it, together with repository
+`VERSION.md`, `CHANGELOG.md` and the current Release. Version and release are
+signals, not the whole freshness relation: a source-only delta can be newer
+without a numbered release. Read deeper only when an observed difference can
+materially change this project's work. If the source is unavailable, continue
+ordinary work and leave the check pending without blocking the project.
 
 Treat upstream changes as source-qualified improvement possibilities, not
 update commands. Preserve project-owned evolution, report a useful delta to
@@ -99,3 +102,41 @@ a successful refresh. The ordinary cadence prevents repeated identical
 attempts at every boot; a changed access condition or a material source signal
 can make an earlier contact useful. No background process or mandatory startup
 check is created. Continue ordinary work after recording the compact result.
+
+## Return useful experience upstream
+
+Source contact is bidirectional only when real use has produced something worth
+returning. A first meaningful use can expose valuable evidence before seven days
+have elapsed; a later source-contact reentry is also a natural point to notice
+whether accumulated experience contains an informative difference.
+
+Useful return material can include:
+
+```text
+first impression that changes understanding of entry or usability;
+repeated friction or avoidable latency;
+missing or misleading context;
+a failure or unsafe/unclear boundary;
+an unexpectedly successful behavior worth preserving;
+a new possibility made visible by using the Kernel;
+a concrete source correction supported by observed evidence.
+```
+
+Do not manufacture feedback merely because a source-contact check occurred.
+When a useful observation exists, prepare a compact **Evolution Feedback** that
+separates installed/source identity, host or coder, goal, observation, evidence,
+uncertainty and suggested improvement. Show the public-safe form to the operator
+and ask for explicit consent before sending anything outside the project.
+
+With operator consent, observed feedback belongs in a GitHub Issue on the
+canonical MAIOS Project Kernel repository, using its `Evolution Feedback`
+template when available. A concrete source correction belongs in a fork and a
+focused Pull Request. Do not infer direct write authority over upstream `main`,
+and do not publish private project contents, credentials, client material,
+personal data, private logs or hidden runtime state.
+
+If the current host cannot create a GitHub Issue or Pull Request, return the
+prepared feedback to the operator instead of claiming submission. A submitted
+report is evidence for the upstream maintainers, not authority to change either
+the public Kernel or this project. A later upstream change can return through
+the ordinary source-contact relation above.

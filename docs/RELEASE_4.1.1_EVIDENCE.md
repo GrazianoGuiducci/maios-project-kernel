@@ -15,3 +15,15 @@ against their native sources, in addition to ordinary distribution verification.
 No receiving-model use, real feedback submission or installed-project migration
 is claimed by these mechanical checks. The historical entity-profile input is
 unchanged and remains separately identified by the manifest.
+
+## Observed 2026-09-11
+
+- Selected method corpus: `3ca6ec85e80fbc69838d4a063a81edb079b2803c`.
+- Plan SHA-256: `c7abc80bcc8fdf83085ab3a1800818c2545135f791c3508f45fe55d6365f36b4`.
+- Local suite: 102 tests successful, with two Windows symlink-permission skips.
+- The two packaged feedback methods equal their native source bodies.
+- Distribution: 62 files, 51 payload files, seven competences, eighteen bodies.
+- Functional changes are limited to system and update-continuity methods;
+  other package changes identify version 4.1.1 and the new source/inventory.
+- Ordinary build and distribution verification pass. The immutable release
+  commit's GitHub workflow verifies repeatability on Linux and Windows.

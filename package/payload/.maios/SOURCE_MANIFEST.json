@@ -4,5 +4,5 @@
   "schema": "maios.source-manifest.v2",
   "semantic_owner": "skills/maios-project-system/SKILL.md",
   "source_owner": "maios-project-kernel repository",
-  "version": "4.1.0"
+  "version": "4.1.1"
 }

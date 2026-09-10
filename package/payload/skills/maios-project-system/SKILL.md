@@ -100,7 +100,20 @@ readbacks when those mechanisms are pertinent.
 At active reentry, when source contact is pertinent, `maios.py source-contact-status`
 shows its recorded state and ordinary cadence. The method is in
 `.maios/kernel/UPDATE_CONTINUITY.md#keep-a-light-source-contact`. That reference
-also explains how a selected update preserves local knowledge and state.
+also explains how a selected update preserves local knowledge and state and how
+useful real-world experience can return to the upstream Kernel without becoming
+a reporting ritual.
+
+A first meaningful use or a later source-contact reentry can expose feedback
+that matters: friction, confusion, a failure, an unexpectedly useful behavior
+or a new possibility. When it does, prepare the smallest public-safe Evolution
+Feedback, show it to the operator and ask for consent before any external
+submission. With consent, observed feedback can go to the canonical repository
+as a GitHub Issue; a concrete source correction belongs in a fork and focused
+Pull Request. If the current host lacks that capability, return the prepared
+feedback to the operator rather than claiming it was sent. Source contact,
+feedback preparation and public submission remain distinct effects.
+
 For installation, removal or runtime recovery, use the
 [recovery knowledge](references/runtime-recovery.md) with the relevant helper.
 These references supply depth when it changes the work.
