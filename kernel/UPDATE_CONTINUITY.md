@@ -75,10 +75,13 @@ when seven days have elapsed since the last attempt, inspect the canonical
 [MAIOS Project Kernel repository](https://github.com/GrazianoGuiducci/maios-project-kernel)
 in read-only mode for changes that can improve this project's Kernel,
 competences or capacity to evolve. Begin with the installed identity in
-`.maios/SOURCE_MANIFEST.json`, then the repository `VERSION.md`, `CHANGELOG.md`
-and current Release; read deeper only when a material useful relation appears.
-If the source is unavailable, continue ordinary work and leave the check
-pending without blocking the project.
+`.maios/SOURCE_MANIFEST.json`, then observe the current upstream source revision
+or `main` head when the host can resolve it, together with repository
+`VERSION.md`, `CHANGELOG.md` and the current Release. Version and release are
+signals, not the whole freshness relation: a source-only delta can be newer
+without a numbered release. Read deeper only when an observed difference can
+materially change this project's work. If the source is unavailable, continue
+ordinary work and leave the check pending without blocking the project.
 
 Treat upstream changes as source-qualified improvement possibilities, not
 update commands. Preserve project-owned evolution, report a useful delta to
