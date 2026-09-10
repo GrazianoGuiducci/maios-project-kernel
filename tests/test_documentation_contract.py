@@ -54,6 +54,20 @@ class DocumentationContractTests(unittest.TestCase):
         self.assertIn('seven days', contributing)
         self.assertIn('read-only', contributing)
 
+    def test_native_update_continuity_can_return_feedback_without_claiming_submission(self):
+        update = (ROOT / 'kernel/UPDATE_CONTINUITY.md').read_text(encoding='utf-8')
+        system = (ROOT / 'skills/maios-project-system/SKILL.md').read_text(encoding='utf-8')
+        self.assertIn('Return useful experience upstream', update)
+        self.assertIn('first meaningful use', update)
+        self.assertIn('Evolution Feedback', update)
+        self.assertIn('explicit consent', update)
+        self.assertIn('GitHub Issue', update)
+        self.assertIn('focused Pull Request', update)
+        self.assertIn('return the prepared feedback to the operator instead of claiming submission', update)
+        self.assertIn('useful real-world experience can return to the upstream Kernel', system)
+        self.assertIn('ask for consent before any external submission', system)
+        self.assertIn('Source contact, feedback preparation and public submission remain distinct effects', system)
+
     def test_current_entry_facts_match_distribution(self):
         manifest = json.loads((ROOT / 'package/MANIFEST.json').read_text(encoding='utf-8'))
         projection = json.loads((ROOT / 'release/PROJECTION.json').read_text(encoding='utf-8'))
