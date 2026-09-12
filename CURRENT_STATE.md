@@ -1,5 +1,35 @@
 # MAIOS Project Kernel current state
 
+## Installation entry simplification — 2026-09-12
+
+The operator's OpenCode first-use feedback exposed unnecessary conversation
+scripting in the installation entry. RepoKernel setup stewardship supplies
+the correction: package identity and technical knowledge let the coder conduct
+the work. Distribution AGENTS/README/INSTALL, the integration competence and
+bilingual repository/usage entry now remove prescribed preliminary maps,
+readbacks, direct-start offers and clarification sequences.
+
+The autonomous entry contract retains its product/family relation and optional
+interview property. Its four conversation-policy prose fields are removed;
+the builder no longer requires them. Installation commands, file protection,
+recovery and the retained generated kernel methods are unchanged. The ordinary
+builder delivers the entry changes; no compiler renewal is needed for these
+consumer-owned files. Product identity remains 4.1.1 in main; the immutable
+v4.1.1 release and existing installations are separate and unchanged.
+
+The configuration validator/reader mismatches observed in the same test remain
+open. This entry change does not repair those runtime defects or establish
+receiving-model behavior. Continue their semantic and technical correction
+through RepoKernel stewardship and the corresponding consumer owners.
+
+Validation: 103 local tests completed with no failures and two skips, including
+the minimal entry-contract case and preserved required contract checks.
+The ordinary build and distribution verification pass; 165 local links in
+changed Markdown documents resolve. The sole installed-payload change is the
+autonomous entry contract; installer/runtime code and generated method selection
+are unchanged. The pre-existing untracked staging residue is preserved.
+
+
 ## 4.1.1 production renewal completed — 2026-09-11
 
 Release `v4.1.1` is published at

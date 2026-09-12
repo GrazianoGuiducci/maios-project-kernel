@@ -1,99 +1,42 @@
 ---
 name: maios-project-integration
-description: Recognize, preview, and integrate the MAIOS Project Kernel repository package into a selected new or existing project, beginning directly when target and effect are already clear and expanding entry only when a material relation is missing.
+description: Package knowledge for installing MAIOS Project Kernel: purpose, requirements, installer modes, coding host profiles, verification, recovery and the installed entry.
 ---
 
 # MAIOS Project Integration
 
-This competence owns the movement from the tracked `package/` projection to one
-target-owned Project Kernel installation. It acts before project startup.
+MAIOS Project Kernel gives a project and its AI coding agent shared context,
+competences and knowledge that continues across sessions. The ready-to-install
+distribution is the repository's `package/` folder.
 
-## Choose the smallest entry
+## Installation reference
 
-Start from the operator's request, the selected target and `README.md` when the
-package is unfamiliar. Use `INSTALL.md` for the needed installation mechanics
-and `MANIFEST.json` for package identity or compatibility. The installer reads
-the inventory; inspect `PACKAGE_INVENTORY.json` when an exact file question
-needs it. Treat the active
-coder or harness and its model access as observed when they are already acting;
-do not ask the operator to reconfirm them. Infer new or existing mode and the
-native host from target evidence when reliable, while keeping correction free.
+- `INSTALL.md` documents the `install.py` commands, conflicts and recovery.
+- `MANIFEST.json` identifies the product and requirements;
+  `PACKAGE_INVENTORY.json` is the file inventory verified by the installer.
+- `adapters/ADAPTERS.json` lists coding hosts and their native entry paths.
+- Python 3.10 or later runs the installer and installed helpers, using only
+  the standard library.
 
-When target, intended change and material effect are sufficiently clear, offer
-the direct start: state the selected target and mode, summarize the files and
-effects the preview can create or preserve, state recovery, and make the exact
-preview available. Explanation is an available option, not a mandatory phase.
+The installer takes a target folder, mode and host. `new_repository` accepts
+an absent or empty folder. `existing_repository` adds files to a non-empty
+folder, preserves identical files and reports conflicting content. These modes
+describe filesystem handling; project intent comes from the actual work.
 
-Expand the entry only when a missing relation can change the target, mode,
-meaning, effect, recovery or first useful result, or when the operator asks to
-explore. Then return a concise, correctable explanation of:
+`preview` produces the exact file plan and `apply` applies it. Plan files and
+optional CLI receipt outputs belong outside the package, source checkout and
+target; the examples use the system temporary directory. Installation affects
+project-local paths, including the selected host's entry.
 
-- what the Kernel can contribute to this project;
-- how the package fits the current coder or harness;
-- whether the target is new or already operating;
-- which paths the package proposes to add or preserve;
-- how startup and context formation continue after installation.
+Verification, interrupted-install recovery and uninstall are documented in
+`INSTALL.md`. Reapplying the same artifact to its unchanged installation is
+idempotent. A different version requires an update comparison with local work;
+the installer does not implement cross-version migration.
 
-Let the operator correct the target, mode, interpretation or desired movement.
-Ask at most for the missing material relation; do not turn technical flags into
-questions when the target sources already answer them.
+## Installed kernel
 
-## Prepare the operating environment
-
-Before running deterministic helpers, verify Python 3.10 or later. Observe the
-already acting coder, harness and model access instead of making them an intake
-gate. Explain only a material missing relation and help establish it in the
-form suited to the selected project. Model access may come from a provider
-account, API or local model. Git and a repository service are suggested when
-they improve collaboration and recovery; a VPS or dedicated stack is
-introduced only when the work needs it.
-
-If no harness is present yet, treat that state as `not_present_yet`: explain
-the available host families and help the operator prepare one before applying
-the Project Kernel. Never embed credentials, choose a paid provider silently or
-turn common examples into mandatory infrastructure.
-
-## Distinguish reinstallation from migration
-
-Compare the selected package manifest with an installed
-`.maios/SOURCE_MANIFEST.json` when the target already contains a Project
-Kernel. Reapplying the exact same artifact to its unchanged installation may be
-idempotent. A different product version is a different relation: the current
-installer does not claim an in-place migration.
-
-Do not present an `existing_repository` preview as an upgrade merely because
-some paths are identical. Preserve the target and its evolved files, state the
-version boundary, and let a separately selected target-owned migration
-movement inventory compatibility, effect, and recovery if that need emerges.
-This boundary does not prescribe the form of a future migration competence.
-
-## Integrate
-
-Use the native package instructions and the profile of the selected host.
-Produce the deterministic preview for the accepted target, mode and host
-(`codex` when using Codex). Read the plan's creates, preserved-identical paths and
-conflicts as the actual integration relation.
-
-Apply the exact plan when that integration movement is accepted. If the plan
-reports conflicts, preserve the target and return the smallest owner-correct
-merge or placement movement; do not overwrite or treat refusal as the end of
-the package's usefulness.
-
-When the first project movement benefits from durable context, use the
-installed configuration owner to preserve one optional `integration_handoff`
-containing only the active object, desired result, source references, retained
-unknowns, expected contribution, effect boundary and return relation. Apply it
-through the reversible configuration transition. Never put dialogue, provider
-credentials or semantic state in the installer plan or receipt.
-
-After application, open the target project and let `maios-start-new-project`
-or `maios-start-existing-project` act from the installed state. Another harness
-may read this neutral competence and the host guide; its native projection is a
-later adapter movement and does not change the Kernel meaning.
-
-The first installation carrying the new update standard records its exact
-baseline in `.maios/receipts/install/CURRENT.json`. Future selected updates use
-`.maios/kernel/UPDATE_CONTINUITY.md` to compare original distribution, local
-learning and proposed source, preserve state compatibility and recover the
-affected files. The standard starts here; no earlier-installation migration
-adapter is required.
+`START_HERE.md` introduces the kernel and the project's current context.
+The installed configuration helpers maintain state and its readable views.
+`integration_handoff` is an optional configuration field for useful installation
+context. `.maios/kernel/UPDATE_CONTINUITY.md` explains how the saved installation
+baseline, local learning and later upstream changes relate.

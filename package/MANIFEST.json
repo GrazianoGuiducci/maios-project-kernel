@@ -304,12 +304,12 @@
     "recovery": "remove_only_unchanged_installer_owned_bytes"
   },
   "source_identity": {
-    "autonomous_entry_contract_sha256": "47c11a42be69d590a1f8a4f0f82efe648068add7a4bef345e7e9b9f131a3127a",
+    "autonomous_entry_contract_sha256": "871ba4e66e72069d463574f5957664e56e5f2ac2f0be27e3772c9a8d01f66cf5",
     "owner": "maios-project-kernel repository",
     "projection_sha256": "4538a667c51c70929b4d4722406bf152b4e9adb6ca48aaece2868669d6e43767",
     "revision_claim": "content_addressed_source_tree",
     "source_manifest_sha256": "272ce22cb34027ac964342ab2b508c09fa4c414628e4e63512ed7b4a3d263eac",
-    "tree_sha256": "e0e250102b94d5d5a18cc163731a4e340feeb7b12d1dbc48adfb18b40ebb3b59"
+    "tree_sha256": "d6d0dd35489a687c0e67a5377d60d24a4bf33c7fc6cbe6f6460a5ac9ce4f56bd"
   },
   "target_modes": [
     "new_repository",

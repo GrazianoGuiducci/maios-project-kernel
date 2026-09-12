@@ -160,6 +160,23 @@ class BuilderTests(DistributionFixture):
             "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
         )
 
+    def test_autonomous_entry_needs_product_contract_not_conversation_script(self) -> None:
+        source = self.base / "entry-contract"
+        (source / "kernel").mkdir(parents=True)
+        contract = builder.read_json(ROOT / "kernel" / "AUTONOMOUS_ENTRY_CONTRACT.json")
+        family = builder.read_json(ROOT / "kernel" / "PROJECT_KERNEL_FAMILY_CONTRACT.json")
+        contract["entry_policy"] = {"startup_interview": "discretionary"}
+        path = source / "kernel" / "AUTONOMOUS_ENTRY_CONTRACT.json"
+        builder.write_json(path, contract)
+        self.assertEqual(
+            builder.autonomous_entry_contract(source, family, contract["product_version"]),
+            contract,
+        )
+        contract["entry_policy"]["startup_interview"] = "required"
+        builder.write_json(path, contract)
+        with self.assertRaisesRegex(builder.BuildError, "must remain discretionary"):
+            builder.autonomous_entry_contract(source, family, contract["product_version"])
+
     def test_builder_rejects_unknown_autonomous_contract_version(self) -> None:
         source = self.base / "source"
         kernel = source / "kernel"

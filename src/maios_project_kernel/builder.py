@@ -154,14 +154,6 @@ def autonomous_entry_contract(
         raise BuildError("autonomous entry contract lost its family relation")
 
     policy = contract.get("entry_policy", {})
-    for field in (
-        "normal_movement",
-        "expanded_entry_condition",
-        "operator_correction_rule",
-        "future_form_rule",
-    ):
-        if not isinstance(policy.get(field), str) or not policy[field].strip():
-            raise BuildError(f"autonomous entry contract has no {field}")
     if policy.get("startup_interview") != "discretionary":
         raise BuildError("autonomous product entry must remain discretionary")
     return contract

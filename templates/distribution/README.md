@@ -1,15 +1,14 @@
 # MAIOS Project Kernel 4.1.1 — installable package projection
 
-Open this tracked `package/` folder with your coder and ask it to read `AGENTS.md` and
-use `maios-project-integration`. If the target and intended change are already
-clear, the coder can offer the direct project start with a concise effect and
-recovery preview. A wider explanation remains available when something
-material is ambiguous or you request it.
+MAIOS Project Kernel gives a project and its AI coding agent shared context,
+evolving competences and knowledge that carries work across sessions.
 
-Then use `install.py` and follow `INSTALL.md`.
-`payload/` is the source-bound project tree; do not copy its files manually.
-`MANIFEST.json` and `PACKAGE_INVENTORY.json` bind the exact artifact, while the
-installer produces an exact target plan and recovery-bearing receipt.
+This `package/` folder is ready to install. `INSTALL.md` documents `install.py`;
+`maios-project-integration` provides the package reference for the coder.
+`payload/` contains the project files installed by `install.py`. `MANIFEST.json`
+and `PACKAGE_INVENTORY.json` identify their source and integrity. The installer
+previews changes, applies the resulting plan and records recovery information.
+After installation, `START_HERE.md` is the entry for using the kernel.
 
 Idempotent reapplication covers only this exact artifact on its unchanged
 installation. It is not an in-place migration from a project installed by a

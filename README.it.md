@@ -33,30 +33,17 @@ significato e funzionamento.
 
 ## Inizia dal tuo progetto
 
-Clona o scarica questa repository e apri la cartella [`package/`](package/)
-con il tuo coder AI. La distribuzione installabile è già inclusa;
-per usarla non serve eseguire una build. Chiedi al coder:
+La distribuzione pronta da installare è in [`package/`](package/). Chiedi al coder:
 
 ```text
-Dentro package/, leggi AGENTS.md e usa maios-project-integration.
-Voglio usare MAIOS in [progetto destinatario]. Comprendi il progetto e il mio intento attuale,
-spiega il contributo utile che puoi dare e mostrami le modifiche previste
-dall'installazione e il recupero prima di applicarle. Usa ciò che è già chiaro;
-chiedi soltanto le informazioni mancanti che cambiano l'integrazione.
+Aiutami a installare MAIOS Project Kernel in [cartella destinazione].
+Il pacchetto e le istruzioni di installazione sono in package/.
+Poi leggi lo START_HERE.md installato e accompagnami nel primo utilizzo.
 ```
 
-Aprire la cartella non installa nulla. Il coder identifica progetto e host,
-prepara i requisiti mancanti, mostra le modifiche esatte e applica il piano
-accettato. Dopo l'installazione, apri il progetto destinatario, chiedigli di
-leggere `START_HERE.md` e prosegui con il lavoro reale.
-
-**Progetto nuovo:** l'installer accetta una destinazione assente o vuota.
-Il coder forma il contesto condiviso sufficiente per iniziare un lavoro utile
-e lo sviluppa durante il percorso.
-
-**Progetto esistente:** il coder legge istruzioni, fonti e lavoro presenti.
-L'installer conserva i file identici, aggiunge quelli mancanti e segnala i
-contenuti in conflitto perché siano riconciliati esplicitamente.
+`install.py` mostra un'anteprima e applica l'installazione. Supporta cartelle
+vuote e non vuote e preserva il lavoro presente. Lo `START_HERE.md` installato
+introduce il kernel e il contesto corrente del progetto.
 
 Installer e strumenti locali richiedono Python 3.10 o successivo e nessun
 pacchetto Python di terze parti. La guida di

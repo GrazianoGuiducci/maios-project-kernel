@@ -16,10 +16,9 @@ possibile e come preparare un'integrazione completa ma posseduta dal target,
 senza scambiare l'albero dei file per il prodotto né trasformare il setup in
 un'intervista generica.
 
-Un coder AI ricostruisce prima la relazione corrente del prodotto, poi sceglie
-soltanto il percorso di lettura che può cambiare il risultato presente:
+Riferimenti per installazione, lavoro nel progetto e studio delle sorgenti:
 
-| Necessità | Leggere poi | Cosa il coder deve comprendere o restituire |
+| Necessità | Riferimenti | Contenuto |
 | --- | --- | --- |
 | Stabilire la verità corrente | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Versione prodotto `4.1.1`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
 | Comprendere valore e possibilità | [`knowledge/KERNEL.md`](../knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md), [working paper System Semantic Kernel (SSK)](https://github.com/GrazianoGuiducci/maios-ssk-paper) | Cosa cambia il Kernel in un progetto, quali possibilità restano aperte e il relativo contesto accademico; il Paper è facoltativo e non dimostra il comportamento del prodotto |
@@ -27,28 +26,6 @@ soltanto il percorso di lettura che può cambiare il risultato presente:
 | Configurare e usare il Kernel installato | [`START_HERE.md`](../package/payload/START_HERE.md), [`maios-project-system`](../package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](../package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](../package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | Come contesto, competenze, risultato, apprendimento, rilettura semantica e nuovo rientro restano connessi |
 | Adattarsi al coder attivo | [`adapters/ADAPTERS.json`](../adapters/ADAPTERS.json), [`maios-project-host-adaptation`](../skills/maios-project-host-adaptation/SKILL.md), [`docs/COMPATIBILITY.md`](../docs/COMPATIBILITY.md) | Quale proiezione nativa è disponibile, cosa è soltanto impacchettato e cosa richiede ancora osservazione sull'host |
 | Studiare o contribuire senza installare | [`contributions/README.md`](../contributions/README.md), [`maios-kernel-study`](../skills/maios-kernel-study/SKILL.md), [`maios-kernel-contribution`](../skills/maios-kernel-contribution/SKILL.md) | Una spiegazione, correzione, falsificatore, competenza, test o contributo legato alle fonti, senza effetti impliciti su pacchetto o release |
-
-### Prima restituzione all'operatore
-
-Prima di cambiare il target, il coder deve poter restituire all'operatore una
-sola lettura compatta e legata alle evidenze:
-
-- cosa MAIOS Project Kernel può rendere possibile in questo progetto e perché;
-- l'identità esatta di prodotto, famiglia, pacchetto e sorgente ispezionata;
-- target, modalità `new_repository` o `existing_repository` e host attivo
-  ricavati da evidenze reali;
-- se l'avvio diretto è già disponibile oppure quale unica relazione mancante
-  cambierebbe materialmente integrazione, effetto o recupero;
-- una mappa completa del trasferimento funzionale che includa Kernel, contesto,
-  competenze, stato, proiezione host, risultato, apprendimento, rientro,
-  verifica e recupero;
-- file ed effetti esatti proposti, ciò che resta intatto, percorso di recupero
-  e ogni livello di prova ancora non osservato.
-
-Quando target ed effetto sono già chiari, questa restituzione si contrae in una
-proposta di avvio diretto. Non deve diventare una spiegazione obbligatoria,
-ripetere contesto già noto o chiedere all'operatore di progettare la soluzione
-prima che il Kernel abbia mostrato cosa è utile e possibile.
 
 ### Mappa di capacità e valore
 
@@ -72,39 +49,13 @@ orientamento, non un catalogo chiuso: una sorgente, competenza, host o schema
 presente non deve diventare il limite di ciò che il lavoro futuro può rendere
 raggiungibile.
 
-### Preparare il movimento completo di integrazione
-
-Prima di agire, il coder connette internamente l'intera relazione di consegna:
-
-```text
-identità della repository ed evidenze del target
--> mappa funzionale completa e ignoti materiali
--> avvio diretto o un solo chiarimento che cambia il risultato
--> anteprima esatta di percorsi, effetti, superfici immutate e recupero
--> applicazione posseduta dal target
--> scoperta nativa di START_HERE e delle competenze pertinenti
--> primo risultato utile e correggibile
--> apprendimento proprio degli owner e rientro compatto
--> restituzione legata alle evidenze di ciò che è rappresentato, installato,
-   scoperto, esercitato, cambiato e ancora non osservato.
-```
-
-Questa preparazione mantiene raggiungibili tutte le funzioni del prodotto, ma
-non forza tutte le skill nel contesto né tutte le decisioni future nel primo
-piano. Il progetto reale e l'operatore restano proprietari della configurazione
-situata e dell'evoluzione successiva.
-
 ### Ingresso attraverso la repository sorgente
 
-Clona la repository, apri la sua radice con il coder e digli:
+La distribuzione pronta da installare è già in `package/`:
 
 ```text
-Leggi AGENTS.md e la competenza maios-project-integration. Usa il README
-come mappa della repository. Dimmi cosa questo Kernel può rendere possibile qui
-e il movimento completo di integrazione posseduto dal target. Se target ed
-effetto sono già chiari, proponi l'avvio diretto; altrimenti spiega soltanto la
-relazione mancante che cambierebbe materialmente integrazione, effetto o
-recupero.
+Aiutami a installare MAIOS Project Kernel in [cartella destinazione].
+Leggi le istruzioni di installazione in package/ e poi lo START_HERE.md installato.
 ```
 
 Nulla viene installato solo perché la repository è stata aperta. Dopo

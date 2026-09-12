@@ -5,11 +5,10 @@ MAIOS Project Kernel package. Start from `CURRENT_STATE.md`, then read only the
 source, architecture, package, test, or release files that can change the
 current movement.
 
-Use `README.md` as the repository homepage and reading map. For package entry,
-its first readback tells the operator the value and possibilities visible in the
-actual target, the complete functional integration relation, the exact effect
-and recovery, and the proof levels still unobserved. Contract that readback into
-a direct start when target and effect are already clear.
+Use `README.md` as the repository homepage and reading map. The ready-to-install
+distribution is in `package/`; its `INSTALL.md` documents the installer and
+`maios-project-integration` supplies package-specific knowledge. The installed
+`START_HERE.md` is the entry for project work.
 
 ## Product identity
 

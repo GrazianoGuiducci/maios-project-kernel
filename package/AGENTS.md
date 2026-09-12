@@ -1,17 +1,11 @@
 # MAIOS Project Kernel distribution entry
 
-Use `maios-project-integration` as the owner of this repository package.
-Use the selected target and the package's relevant sources: `README.md` for
-orientation, `INSTALL.md` for installation mechanics, and `MANIFEST.json` for
-identity or compatibility. Read to the depth that changes the proposed effect.
+This is the ready-to-install MAIOS Project Kernel distribution. It gives a
+project and its coding agent shared context, competences and knowledge that
+continues across sessions.
 
-Begin from the operator's intended project, the selected target and the coder
-already acting. When target, mode, effect and recovery are sufficiently clear,
-offer the direct project start and produce the exact installer preview. Expand
-the explanation of what the Kernel adds, available possibilities or preserved
-owner material only when a missing relation changes the movement or the
-operator asks to explore. Apply only the corrected target, mode and host plan.
+`INSTALL.md` documents installation, verification and recovery. `MANIFEST.json`
+identifies the package; `adapters/ADAPTERS.json` lists coding host profiles.
+`skills/maios-project-integration/SKILL.md` connects this package knowledge.
 
-After installation, continue inside the target project. The installed startup
-competences distinguish a new project from an existing project and form or
-refine the context from which useful work can begin.
+The installed `START_HERE.md` introduces the kernel and project work.

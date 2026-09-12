@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Simplify installation entry into package knowledge and technical references;
+  remove prescribed conversation flows from the package and EN/IT usage docs.
+- Allow the autonomous entry contract without conversation-policy prose while
+  retaining product, family and discretionary-interview validation.
+
 ## 4.1.1 — 2026-09-11
 
 - Deliver informative first-use and later feedback through the installed system

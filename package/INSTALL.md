@@ -1,11 +1,8 @@
 # Install MAIOS Project Kernel 4.1.1 — repository package
 
-The tracked `package/` projection is self-installing, not self-executing. Open
-it with the coder. When the target and intended change are already clear, the
-coder can infer the likely mode and host, show a concise effect and recovery
-preview, and offer the exact project start. Ask for explanation or exploration
-when useful; it is not a mandatory installation phase. Correct target, mode or
-host if needed, then preview the transition and apply that exact plan.
+The ready-to-install distribution is in `package/`. Run `install.py` from this
+directory. `preview` creates a plan for a target folder and coding host;
+`apply` installs that plan. Opening or downloading the package does not execute it.
 
 ## Requirement
 
@@ -16,7 +13,7 @@ Keep plans and CLI output receipts outside this package, the source repository
 and the target. The examples use the system temporary directory. The CLI checks
 this before any output or removal effect; the package inventory stays immutable.
 
-## New project
+## Absent or empty target folder
 
 ```powershell
 $maiosPlan = Join-Path $env:TEMP "maios-install-plan.json"
@@ -29,7 +26,7 @@ the complete target in an adjacent attempt-owned directory and atomically moves
 it into place. Reapplying the same artifact to its unchanged installed target
 is idempotent.
 
-## Existing project
+## Non-empty target folder
 
 ```powershell
 $maiosPlan = Join-Path $env:TEMP "maios-install-plan.json"

@@ -4,7 +4,7 @@
   "product": "MAIOS Project Kernel",
   "product_version": "4.1.1",
   "owner": "maios-project-kernel",
-  "purpose": "Own the post-acquisition entry policy of the autonomous product without changing the transferable Project Kernel family contract or the Form-preconfigured lane.",
+  "purpose": "Identify the autonomous product's initial configuration and its relation to the Project Kernel family.",
   "family_relation": {
     "lane": "autonomous",
     "family_version": "3.0.0",
@@ -12,11 +12,7 @@
     "startup_context_requirement": "required"
   },
   "entry_policy": {
-    "startup_interview": "discretionary",
-    "normal_movement": "When package, target and capable coder are recognizable, offer the available project start with the smallest truthful effect and recovery preview.",
-    "expanded_entry_condition": "Explain possibilities or ask a bounded question only when a missing or corrected relation changes the proposed integration or first useful movement.",
-    "operator_correction_rule": "Preserve a correction only when it materially changes target-owned startup; do not create an empty semantic handoff.",
-    "future_form_rule": "The current direct action, dialogue, skill, harness and technology are owner-native incarnations, not limits on future entry forms."
+    "startup_interview": "discretionary"
   },
   "contains_form_state": false,
   "effect_authority": "none"

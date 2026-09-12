@@ -15,10 +15,9 @@ shows where each kind of truth lives, what the product can make possible, and
 how to prepare one complete but target-owned integration without treating the
 file tree as the product or turning setup into a generic interview.
 
-An AI coder should first recover the current product relation, then choose only
-the reading route that can change the present result:
+References for installation, project work and source study:
 
-| Need | Read next | What the coder should understand or return |
+| Need | References | Contents |
 | --- | --- | --- |
 | Establish current truth | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Product version `4.1.1`, family `3.0.0`, current evidence, boundaries, and the selected movement |
 | Understand value and possibility | [`knowledge/KERNEL.md`](../knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md), [System Semantic Kernel (SSK) working paper](https://github.com/GrazianoGuiducci/maios-ssk-paper) | What the Kernel changes for a project, which possibilities remain open, and the related academic context; the Paper is optional and does not prove product behaviour |
@@ -26,27 +25,6 @@ the reading route that can change the present result:
 | Configure and operate the installed Kernel | [`START_HERE.md`](../package/payload/START_HERE.md), [`maios-project-system`](../package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](../package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](../package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | How context, competences, result, learning, semantic readback, and fresh reentry stay connected |
 | Adapt to the active coder | [`adapters/ADAPTERS.json`](../adapters/ADAPTERS.json), [`maios-project-host-adaptation`](../skills/maios-project-host-adaptation/SKILL.md), [`docs/COMPATIBILITY.md`](../docs/COMPATIBILITY.md) | Which native projection is available, what has only been packaged, and what still needs host observation |
 | Study or contribute without installation | [`contributions/README.md`](../contributions/README.md), [`maios-kernel-study`](../skills/maios-kernel-study/SKILL.md), [`maios-kernel-contribution`](../skills/maios-kernel-contribution/SKILL.md) | A source-bound explanation, correction, falsifier, competence, test, or contribution with no implied package or release effect |
-
-### First readback to the operator
-
-Before changing the target, the coder should be able to give the operator one
-compact, evidence-bound readback:
-
-- what MAIOS Project Kernel can make possible in this specific project and why;
-- the exact product, family, package, and source identity it inspected;
-- the target, `new_repository` or `existing_repository` mode, and active host
-  inferred from real evidence;
-- whether direct start is already available or which one missing relation would
-  materially change integration, effect, or recovery;
-- a complete functional transfer map covering Kernel, context, competences,
-  state, host projection, result, learning, reentry, verification, and recovery;
-- the exact files and effects proposed, what remains untouched, the recovery
-  path, and every proof level that remains unobserved.
-
-When target and effect are already clear, this readback contracts into a direct
-start offer. It must not become a mandatory explanation phase, repeat known
-context, or ask the operator to design the solution before the Kernel has shown
-what is useful and possible.
 
 ### Capability and value map
 
@@ -69,38 +47,13 @@ These relations are one Kernel in motion. The table is an orientation map, not
 a closed feature catalogue: a present source, competence, host, or schema must
 not become the limit of what later project work can make reachable.
 
-### Prepare the complete integration movement
-
-Before acting, the coder should internally connect the whole delivery relation:
-
-```text
-repository identity and target evidence
--> complete functional map and material unknowns
--> direct start or one result-changing clarification
--> exact preview of paths, effects, unchanged surfaces, and recovery
--> target-owned apply
--> native discovery of START_HERE and the pertinent competences
--> first useful correctable result
--> owner-native learning and compact reentry
--> evidence-bound report of what is represented, installed, discovered,
-   exercised, changed, and still unobserved.
-```
-
-This preparation keeps all product functions reachable, but it does not force
-all skills into context or all future decisions into the first plan. The real
-project and the operator remain the owners of situated configuration and later
-evolution.
-
 ### Entry through the source repository
 
-Clone the repository, open its root with your coder, and say:
+The ready-to-install distribution is already in `package/`:
 
 ```text
-Read AGENTS.md and the maios-project-integration competence. Use the root README as
-the repository map. Tell me what this Kernel can make possible here and the
-complete target-owned integration movement. If target and effect are already
-clear, offer the direct start; otherwise explain only the missing relation that
-would materially change integration, effect, or recovery.
+Help me install MAIOS Project Kernel in [target folder].
+Read the installation instructions in package/ and then the installed START_HERE.md.
 ```
 
 Nothing installs merely because the repository was opened. After the exact

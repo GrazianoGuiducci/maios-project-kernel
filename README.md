@@ -33,29 +33,17 @@ act together through the agent and the project's sources. The
 
 ## Start with your project
 
-Clone or download this repository and open its [`package/`](package/) folder
-with your coding agent. The installable distribution is already included;
-you do not need to run a build to use it. Ask the agent:
+The ready-to-install distribution is in [`package/`](package/). Ask your coder:
 
 ```text
-Inside package/, read AGENTS.md and use maios-project-integration.
-I want to use MAIOS in [target project]. Understand the project and my current intent, explain the
-useful contribution you can make, and show the installation changes and
-recovery before applying them. Use what is already clear; ask only for missing
-information that changes the integration.
+Help me install MAIOS Project Kernel in [target folder].
+The package and installation instructions are in package/.
+Then read the installed START_HERE.md and help me use it.
 ```
 
-Opening the folder does not install anything. The agent identifies the target
-and host, prepares missing requirements, previews the exact changes, and applies
-the accepted plan. After installation, open the target project and ask it to
-read `START_HERE.md`, then continue with your actual work.
-
-**New project:** the installer accepts an absent or empty target. The agent
-forms enough shared context to begin useful work and develops it along the way.
-
-**Existing project:** the agent reads existing instructions, sources and work.
-The installer preserves identical files, adds missing ones and refuses
-conflicting content for explicit reconciliation.
+`install.py` previews and applies the installation. It supports empty and
+non-empty target folders and preserves existing work. The installed
+`START_HERE.md` introduces the kernel and the project's current context.
 
 The installer and local helpers require Python 3.10 or later and no third-party
 Python packages. See [installation and recovery](docs/INSTALLATION.md) for
