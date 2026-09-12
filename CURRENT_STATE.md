@@ -10,10 +10,14 @@ skipped this test because symlink creation requires a privilege unavailable here
 
 The test now accepts either the specific path-confinement exception or that
 structured refusal, checking the link diagnostic and blocked resultant action.
-This is a test-only contract correction; installer, runtime, generated package,
-tag and release assets retain their exact 4.1.2 bytes. The follow-up source CI
-must establish the real symlink cases; the failed tagged runs remain historical
-evidence and must not be described as passing.
+This is a test-only contract correction; installer, runtime, tag and release
+assets retain their exact 4.1.2 bytes. All 111 tests pass in the follow-up Linux
+job, including real symlink cases. That run then caught the required source-hash
+refresh: the builder fingerprints tests and documentation as well as product
+code. The current source package therefore refreshes only MANIFEST provenance
+and its PACKAGE_INVENTORY hash, preserving every installed payload byte.
+The failed tagged runs remain historical evidence and must not be described
+as passing; the corrected source workflow supplies the follow-up verification.
 
 ## Current movement — simpler installation, 4.1.2, 2026-09-12
 
