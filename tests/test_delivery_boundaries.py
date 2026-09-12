@@ -7,7 +7,7 @@ import subprocess
 import sys
 
 import test_builder_installer_runtime as base
-from maios_project_kernel import installer, operating, runtime
+from maios_project_kernel import configuration, installer, operating, runtime
 
 
 class DeliveryBoundaryTests(base.DistributionFixture):
@@ -89,8 +89,20 @@ class DeliveryBoundaryTests(base.DistributionFixture):
                 self.skipTest("host does not permit creating symlinks: " + str(exc))
             try:
                 self.assertFalse(runtime.validate_project(target)["valid"])
-                with self.assertRaises(Exception):
-                    operating.operating_status(target)
+                # Status readers may expose a structured refusal instead of
+                # raising; neither outcome may make linked organs actionable.
+                try:
+                    status = operating.operating_status(target)
+                except configuration.ConfigurationError as exc:
+                    self.assertIn("symlink or junction", str(exc))
+                else:
+                    self.assertFalse(status["valid"])
+                    self.assertTrue(status["recovery_required"])
+                    self.assertEqual(status["eligible_actions"], [])
+                    self.assertTrue(any("symlink or junction" in error
+                                        for error in status["errors"]))
+                    self.assertIn("apply_resultant", {
+                        action["id"] for action in status["blocked_actions"]})
             finally:
                 # Remove only the link; the temporary fixture owns both paths.
                 path.unlink()

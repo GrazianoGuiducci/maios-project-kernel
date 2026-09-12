@@ -1,5 +1,20 @@
 # MAIOS Project Kernel current state
 
+## Release readback — 2026-09-12
+
+The published v4.1.2 package is unchanged. Its GitHub workflows subsequently
+failed one boundary test on Linux and Windows: it expected every linked-organ
+status read to raise, although the repaired status reader can return an explicit
+invalid/recovery response with no eligible actions. The local Windows run had
+skipped this test because symlink creation requires a privilege unavailable here.
+
+The test now accepts either the specific path-confinement exception or that
+structured refusal, checking the link diagnostic and blocked resultant action.
+This is a test-only contract correction; installer, runtime, generated package,
+tag and release assets retain their exact 4.1.2 bytes. The follow-up source CI
+must establish the real symlink cases; the failed tagged runs remain historical
+evidence and must not be described as passing.
+
 ## Current movement — simpler installation, 4.1.2, 2026-09-12
 
 The operator selected a new testable release with the easiest practical coder
