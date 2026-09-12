@@ -15,19 +15,23 @@ publication evidence commit `7f0f476`, with 18 live resources matching Git blobs
 Existing installations are unchanged; publication does not establish host
 adoption or assimilation. No production renewal remains open.
 
-This documentation-only correction preserves the released package and selection.
-Because CURRENT_STATE.md participates in the whole-source digest, verification
-against this later source reports `manifest source tree identity is stale`.
-That metadata difference does not reopen method renewal; package metadata
-refresh is outside this two-file correction. The release validation above
-belongs to the immutable release commit, not this later documentation revision.
+## Source metadata alignment — 2026-09-12
+
+The earlier two-file reentry correction changed the whole-source digest while
+preserving the released package, so verification reported stale source identity.
+The ordinary builder now refreshes that identity and its inventory entry from
+this final source state. The installed payload, entry files, retained method
+selection, product version 4.1.1 and immutable release remain unchanged.
+This resolves source/package metadata continuity without another compiler renewal.
+The GitHub workflow checks the committed projection and must remain effective;
+its prior failure belongs to the earlier documentation-only revision.
 
 ## Current next
 
 Resume from a concrete observation in real use, informative feedback, or a newly
 selected source change. Compare it with the released 4.1.1 result and follow the
-owning method only where that difference requires work. This state correction
-does not select another renewal, release, site update or installation.
+owning method only where that difference requires work. No renewal, release, site update or installation remains selected by this
+metadata alignment.
 
 ## Historical chronology
 
