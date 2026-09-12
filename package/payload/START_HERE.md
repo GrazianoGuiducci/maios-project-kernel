@@ -1,6 +1,6 @@
 # Start here — coder startup and reentry
 
-This project contains MAIOS Project Kernel 4.1.1. This entry orients the coder
+This project contains MAIOS Project Kernel 4.1.2. This entry orients the coder
 to the kernel and the current project; the person can read it too.
 
 KA, FDLA and Meta_Skill constitute the kernel's operating logic. Understand the

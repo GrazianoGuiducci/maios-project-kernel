@@ -2,7 +2,7 @@
   "schema": "maios.autonomous-entry-contract.v1",
   "contract_version": "1.0.0",
   "product": "MAIOS Project Kernel",
-  "product_version": "4.1.1",
+  "product_version": "4.1.2",
   "owner": "maios-project-kernel",
   "purpose": "Identify the autonomous product's initial configuration and its relation to the Project Kernel family.",
   "family_relation": {

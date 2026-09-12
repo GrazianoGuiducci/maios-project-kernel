@@ -8,7 +8,7 @@ Il progetto conserva le ragioni delle decisioni, le fonti che le sostengono e
 il sapere acquisito nel lavoro. Un'altra istanza può recuperare quel contesto
 e proseguire senza attribuirsi l'esperienza della precedente come memoria personale.
 
-Versione del prodotto: **[4.1.1](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
+Versione del prodotto: **[4.1.2](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
 Python **3.10 o successivo** · [Licenza MIT](LICENSE)
 
 [English](README.md)
@@ -41,8 +41,8 @@ Il pacchetto e le istruzioni di installazione sono in package/.
 Poi leggi lo START_HERE.md installato e accompagnami nel primo utilizzo.
 ```
 
-`install.py` mostra un'anteprima e applica l'installazione. Supporta cartelle
-vuote e non vuote e preserva il lavoro presente. Lo `START_HERE.md` installato
+`install.py` mostra un'anteprima e applica l'installazione. Riconosce automaticamente
+come gestire la cartella scelta e preserva il lavoro presente. Lo `START_HERE.md` installato
 introduce il kernel e il contesto corrente del progetto.
 
 Installer e strumenti locali richiedono Python 3.10 o successivo e nessun
@@ -110,8 +110,8 @@ osservato da parte di ogni host o modello.
 Test sorgente e verifica della distribuzione coprono integrità del pacchetto,
 meccaniche di installazione e recupero, instradamento e contratti dello stato
 locale. Non dimostrano che il modello destinatario comprenda, usi o assimili
-i metodi. Le [evidenze della 4.1.1](docs/RELEASE_4.1.1_EVIDENCE.md) conservano
-le osservazioni datate; le [note di release](docs/RELEASE_4.1.1.md) ne spiegano
+i metodi. Le [evidenze della 4.1.2](docs/RELEASE_4.1.2_EVIDENCE.md) conservano
+le osservazioni datate; le [note di release](docs/RELEASE_4.1.2.md) ne spiegano
 le novità.
 
 ## Studiare, contribuire o costruire

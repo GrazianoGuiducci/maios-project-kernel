@@ -1,6 +1,9 @@
 # Changelog
 
-## Unreleased
+## 4.1.2 — 2026-09-12
+
+- Select installation mode automatically from the target folder; preserve the
+  original mode on reapplication, conflict protection and stale-plan checks.
 
 - Reject malformed resultant-event references before configuration writes and
   preserve committed references during ordinary configuration updates.

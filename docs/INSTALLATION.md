@@ -16,9 +16,14 @@ Opening the repository does not install or execute the package. From
 
 ```powershell
 $maiosPlan = Join-Path $env:TEMP "maios-install-plan.json"
-python install.py preview --target C:\Projects\MyProject --mode new_repository --host codex --plan-out $maiosPlan
+python install.py preview --target C:\Projects\MyProject --host codex --plan-out $maiosPlan
 python install.py apply --plan $maiosPlan
 ```
+
+`--mode auto` is the default: it derives the filesystem mode from the target
+folder and preserves the original mode when reapplying the same package and host.
+An explicit `--mode new_repository` or `--mode existing_repository` is optional.
+After applying, read `START_HERE.md` in the target folder for kernel use.
 
 `new_repository` requires an absent or empty target and promotes a complete
 adjacent staging directory atomically. `existing_repository` inventories every

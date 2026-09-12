@@ -1,5 +1,36 @@
 # MAIOS Project Kernel current state
 
+## Current movement — simpler installation, 4.1.2, 2026-09-12
+
+The operator selected a new testable release with the easiest practical coder
+installation. Preview now selects its filesystem mode automatically from the
+target; the chosen folder may be absent, empty or contain the source clone.
+The original mode survives same-package/host reapplication. Explicit overrides,
+conflict refusal, exact-plan revalidation and recovery are retained.
+
+The installation reference presents one preview/apply path and then the target's
+START_HERE.md and operating competence. Existing/new project context remains a
+startup concern, separate from whether the folder already contains files.
+The product-owned installer and integration knowledge carry this change; no
+RepoKernel generation defect is selected and no method selection is renewed.
+
+Version 4.1.2 includes the earlier configuration-reader repairs and simplified
+entry. The generated method corpus, compiler and family 3.0.0 are unchanged.
+The receiving-model OpenCode retest remains the next behavioral observation.
+The original test installation and pre-existing staging residue are preserved.
+
+Local validation exercised 111 tests with two platform skips. The documentation
+check first caught the old package version, then Windows newlines in the edited
+template. Rebuilding and normalizing the source resolved both; all five
+documentation checks pass. No runtime or installation test failed.
+The new CLI cases passed: absent, empty and source-clone targets, idempotent
+reapplication, conflict preservation and rejection of changes after preview.
+Ordinary build, inventory verification and the immutable commit's Linux/Windows
+workflow establish delivery identity separately from coder understanding.
+
+## Previous work and observations
+
+
 ## Current movement — configuration repair and package preparation, 2026-09-12
 
 The OpenCode feedback correction now reaches the product runtime and its

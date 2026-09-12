@@ -335,6 +335,17 @@ def make_plan(root: Path, target: Path, mode: str, host: str) -> dict[str, Any]:
     target = canonical_target(target)
     identity = package_identity(root)
     entries = source_entries(root, host)
+    prior = current_receipt(target)
+    if mode == "auto":
+        if (prior and prior.get("package_identity") == identity
+                and prior.get("host") == host
+                and prior.get("mode") in {"new_repository", "existing_repository"}):
+            mode = prior["mode"]
+        else:
+            mode = ("existing_repository" if target.is_dir()
+                    and next(target.iterdir(), None) is not None else "new_repository")
+    if mode not in {"new_repository", "existing_repository"}:
+        raise InstallerError("unsupported installation mode")
     creates: list[str] = []
     identical: list[str] = []
     conflicts: list[dict[str, str]] = []
@@ -360,7 +371,6 @@ def make_plan(root: Path, target: Path, mode: str, host: str) -> dict[str, Any]:
         None if mode == "new_repository" else [entry["destination"] for entry in entries],
     )
 
-    prior = current_receipt(target)
     exact_prior = bool(
         prior
         and prior.get("package_identity") == identity
@@ -1046,7 +1056,8 @@ def parser() -> argparse.ArgumentParser:
     preview = sub.add_parser("preview")
     preview.add_argument("--target", type=Path, required=True)
     preview.add_argument(
-        "--mode", choices=("new_repository", "existing_repository"), required=True
+        "--mode", choices=("auto", "new_repository", "existing_repository"),
+        default="auto", help="Select from the target folder automatically (default)"
     )
     preview.add_argument("--host", required=True, metavar="ADAPTER_ID")
     preview.add_argument("--plan-out", type=Path)

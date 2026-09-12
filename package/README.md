@@ -1,4 +1,4 @@
-# MAIOS Project Kernel 4.1.1 — installable package projection
+# MAIOS Project Kernel 4.1.2 — installable package projection
 
 MAIOS Project Kernel gives a project and its AI coding agent shared context,
 evolving competences and knowledge that carries work across sessions.

@@ -1,4 +1,4 @@
-# Install MAIOS Project Kernel 4.1.1 — repository package
+# Install MAIOS Project Kernel 4.1.2 — repository package
 
 The ready-to-install distribution is in `package/`. Run `install.py` from this
 directory. `preview` creates a plan for a target folder and coding host;
@@ -13,28 +13,39 @@ Keep plans and CLI output receipts outside this package, the source repository
 and the target. The examples use the system temporary directory. The CLI checks
 this before any output or removal effect; the package inventory stays immutable.
 
-## Absent or empty target folder
+## Install in the selected folder
+
+From `package/`, set the target to the folder where the kernel will be used.
+The target may be empty, contain an existing project, or contain this source
+clone. Use the current coder's host id: `opencode`, `codex`, `claude`, `hermes`,
+`openclaw`, `pi`, `dsh`, or `generic` (see `adapters/ADAPTERS.json`).
 
 ```powershell
+$maiosTarget = "C:\Projects\MyProject"
+$maiosHost = "opencode"
 $maiosPlan = Join-Path $env:TEMP "maios-install-plan.json"
-python install.py preview --target C:\Projects\MyProject --mode new_repository --host codex --plan-out $maiosPlan
+python install.py preview --target $maiosTarget --host $maiosHost --plan-out $maiosPlan
 python install.py apply --plan $maiosPlan
 ```
 
-`new_repository` accepts only an absent or empty target. The first apply builds
-the complete target in an adjacent attempt-owned directory and atomically moves
-it into place. Reapplying the same artifact to its unchanged installed target
-is idempotent.
+The preview reports the selected folder, host, changes and any conflicts.
+`apply` uses that exact plan. After installation, read `START_HERE.md` **in the
+target folder** and continue through `skills/maios-project-system/SKILL.md`.
+That is the operating entry for understanding and using the kernel in context.
 
-## Non-empty target folder
+## Automatic folder handling
 
-```powershell
-$maiosPlan = Join-Path $env:TEMP "maios-install-plan.json"
-python install.py preview --target C:\Projects\Existing --mode existing_repository --host codex --plan-out $maiosPlan
-python install.py apply --plan $maiosPlan
-```
+The default `--mode auto` selects `new_repository` for an absent or empty
+folder and `existing_repository` for a non-empty folder. These are filesystem
+modes, not questions about the user's project. Reapplying the same package and
+host preserves the original installation mode. An explicit `--mode` remains
+available when a particular filesystem behavior is needed.
 
-This mode inventories the existing project, classifies every destination as
+`new_repository` builds the complete target in an adjacent attempt-owned
+directory and atomically moves it into place. Reapplying the same artifact to
+its unchanged installed target is idempotent.
+
+`existing_repository` inventories the existing project, classifies every destination as
 create, preserve-identical, or conflict, and refuses divergent content. It
 backs up pre-existing identical target paths and never performs a semantic
 merge or hidden overwrite. A changed target invalidates the plan. Before its

@@ -24,6 +24,14 @@ an installed copy alone updates this delivery. In the production environment,
 RepoKernel's native setup stewardship retains the generative learning; this
 competence carries the product implementation through to the usable package.
 
+The installation feedback distinguished filesystem handling from project intent.
+A source clone can make a new project's folder non-empty; that does not make
+the user's project an established one. The installer now derives its filesystem
+mode from the target while retaining explicit overrides, the exact plan and
+existing-file protection. Startup competences interpret project context after
+installation. Package instructions explain these mechanics and reach the
+operating entry without requiring the coder to turn flags into a questionnaire.
+
 Keep one vertical connected:
 
 For a maintained compiler adoption, use

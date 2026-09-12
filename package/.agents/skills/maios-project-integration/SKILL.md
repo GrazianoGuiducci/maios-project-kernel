@@ -18,7 +18,9 @@ distribution is the repository's `package/` folder.
 - Python 3.10 or later runs the installer and installed helpers, using only
   the standard library.
 
-The installer takes a target folder, mode and host. `new_repository` accepts
+The installer takes a target folder and host. Its default `--mode auto` derives
+folder handling and preserves the mode of an unchanged same-package installation.
+An explicit mode is optional. `new_repository` accepts
 an absent or empty folder. `existing_repository` adds files to a non-empty
 folder, preserves identical files and reports conflicting content. These modes
 describe filesystem handling; project intent comes from the actual work.

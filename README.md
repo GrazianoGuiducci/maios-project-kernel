@@ -9,7 +9,7 @@ them and the knowledge acquired through work. A later agent can recover that
 context and continue from it without treating another instance's experience as
 its own personal memory.
 
-Product version: **[4.1.1](VERSION.md)** · Project Kernel family: **3.0.0** ·
+Product version: **[4.1.2](VERSION.md)** · Project Kernel family: **3.0.0** ·
 Python **3.10 or later** · [MIT License](LICENSE)
 
 [Versione italiana](README.it.md)
@@ -41,8 +41,8 @@ The package and installation instructions are in package/.
 Then read the installed START_HERE.md and help me use it.
 ```
 
-`install.py` previews and applies the installation. It supports empty and
-non-empty target folders and preserves existing work. The installed
+`install.py` previews and applies the installation. It chooses folder handling
+automatically from the selected target and preserves existing work. The installed
 `START_HERE.md` introduces the kernel and the project's current context.
 
 The installer and local helpers require Python 3.10 or later and no third-party
@@ -107,8 +107,8 @@ use by every host or model.
 Source tests and distribution verification cover package integrity, installer
 and recovery mechanics, routing and local state contracts. They do not prove
 that a receiving model understands, uses or assimilates the methods. See the
-[4.1.1 evidence](docs/RELEASE_4.1.1_EVIDENCE.md) for dated observations and
-[release notes](docs/RELEASE_4.1.1.md) for the version's changes.
+[4.1.2 evidence](docs/RELEASE_4.1.2_EVIDENCE.md) for dated observations and
+[release notes](docs/RELEASE_4.1.2.md) for the version's changes.
 
 ## Study, contribute or build
 
