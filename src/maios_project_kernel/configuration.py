@@ -299,6 +299,12 @@ def _nonempty(value: Any) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
 
+def valid_possibility_list(value: Any) -> bool:
+    return isinstance(value, list) and all(
+        _nonempty(item) or isinstance(item, dict) for item in value
+    )
+
+
 def validate_configuration(value: Any) -> dict[str, Any]:
     errors: list[str] = []
     missing_decisions: list[str] = []
@@ -343,6 +349,20 @@ def validate_configuration(value: Any) -> dict[str, Any]:
     ):
         if not isinstance(item, dict):
             errors.append(f"{name} must be an object")
+
+    if isinstance(composition, dict):
+        readback = composition.get("last_readback")
+        if readback is not None:
+            if not isinstance(readback, dict):
+                errors.append("faculty_composition.last_readback must be null or an event reference object")
+            elif (not valid_event_id(readback.get("event_id"))
+                  or readback.get("receipt") !=
+                  f".maios/receipts/resultant/{readback.get('event_id')}.json"):
+                errors.append("faculty_composition.last_readback requires an event_id and its resultant receipt")
+    if isinstance(possibility, dict):
+        for name in ("candidates", "opened", "preserved", "constrained", "eliminated"):
+            if name in possibility and not valid_possibility_list(possibility[name]):
+                errors.append(f"possibility_field.{name} must be a list of strings or objects")
 
     if integration_handoff is not None:
         if not isinstance(integration_handoff, dict):
@@ -696,7 +716,13 @@ def project_state(root: Path, state: dict[str, Any]) -> dict[str, str]:
 
 def configuration_status(root: Path) -> dict[str, Any]:
     root = root.resolve()
-    state = current_configuration(root)
+    try:
+        state = current_configuration(root)
+    except ConfigurationError as exc:
+        return {"schema": "maios.configuration-status.v2", "valid": False,
+                "errors": [str(exc)], "handoff_ready": False,
+                "recovery_required": True, "configuration_sha256": None,
+                "pending_journals": pending_transitions(root)}
     validation = validate_configuration(state)
     capsule_path = root / ".maios" / "context" / "CONTEXT_CAPSULE.json"
     spec_path = root / ".maios" / "context" / "SETUP_SPEC.json"
@@ -739,6 +765,10 @@ def apply_configuration(
     before_sha256 = digest(current)
     if expected_state_sha256 != before_sha256:
         raise ConfigurationError("configuration changed after review; re-read and re-evaluate")
+    if (not _within_resultant
+            and candidate["faculty_composition"].get("last_readback")
+            != current["faculty_composition"].get("last_readback")):
+        raise ConfigurationError("last_readback is maintained by apply-resultant; preserve the current event reference")
     after_sha256 = digest(candidate)
     if after_sha256 == before_sha256:
         return {"schema": RECEIPT_SCHEMA, "status": "idempotent",
@@ -801,7 +831,10 @@ def recover_configuration(root: Path, receipt: Any) -> dict[str, Any]:
         ".maios/backups/configuration/"
     ):
         raise ConfigurationError("receipt has no recoverable backup")
-    current = current_configuration(root)
+    # An older validator may have accepted the exact state being recovered.
+    # The receipt still binds its bytes; ordinary edits retain strict reading.
+    ensure_project_local(root, configuration_path(root))
+    current = read_json(configuration_path(root))
     if digest(current) != receipt.get("after_state_sha256"):
         raise ConfigurationError("current configuration evolved after the receipt")
     backup_parts = safe_receipt_relative(backup_rel)
@@ -812,6 +845,9 @@ def recover_configuration(root: Path, receipt: Any) -> dict[str, Any]:
     prior = read_json(backup)
     if digest(prior) != receipt.get("before_state_sha256"):
         raise ConfigurationError("configuration backup digest mismatch")
+    validation = validate_configuration(prior)
+    if not validation["valid"]:
+        raise ConfigurationError("invalid recovery configuration: " + "; ".join(validation["errors"]))
     outputs = (*CONFIGURATION_OUTPUTS, ".maios/receipts/configuration/RECOVERY.json")
     with state_transaction(root, "configuration", outputs):
         ensure_project_local(root, configuration_path(root))

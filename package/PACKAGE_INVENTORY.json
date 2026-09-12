@@ -24,7 +24,7 @@
     {
       "bytes": 11749,
       "path": "MANIFEST.json",
-      "sha256": "730ac125e52a888590ce289d9a286552b53e3e26af9a7856e897bcc83fa7cebc"
+      "sha256": "7cb9fdb6063ee0b68a80f3e5990015e8c14073515cd334ffe45700a281c34ad3"
     },
     {
       "bytes": 1030,
@@ -132,9 +132,9 @@
       "sha256": "afef17b5334eb3243b0a49199d733420740835c891283c134f97c323a7a390ca"
     },
     {
-      "bytes": 38070,
+      "bytes": 40148,
       "path": "payload/.maios/runtime/configuration.py",
-      "sha256": "04b1eccd14198c913f9838273326a4f28dd107e699ddec579a91c14c9b6840df"
+      "sha256": "4e69511e8318df9c72222e53c4e083d99472ea3874e84de4af00b2079cd97998"
     },
     {
       "bytes": 12157,
@@ -152,9 +152,9 @@
       "sha256": "4e89b896694893eee9c992e671838911ac8724a45993897dd4d9442af5357296"
     },
     {
-      "bytes": 75939,
+      "bytes": 76710,
       "path": "payload/.maios/runtime/operating.py",
-      "sha256": "537e61058e9acf03ec3ce45457c8982129f2a90db29448c5d5800caa88829b8d"
+      "sha256": "58c62bb16411dae908d786820cf590e38161183f43654e519e385b22c9cb68de"
     },
     {
       "bytes": 3447,
@@ -162,9 +162,9 @@
       "sha256": "7489667202b9a7eb47be63ccb7a35bd0b7bcb4d479e5289a71a9230fdc8a0cd9"
     },
     {
-      "bytes": 9315,
+      "bytes": 9549,
       "path": "payload/.maios/schemas/RESULTANT_READBACK.schema.json",
-      "sha256": "690a321d4b1b6577471294fb93c6c47f8aa4e9fa4225165f10edc9f0069688d5"
+      "sha256": "12c81f47d92c3ed3a79216a38c6d12538b40951733116da585f529efdc9766d0"
     },
     {
       "bytes": 682,
@@ -237,9 +237,9 @@
       "sha256": "da384ebae04d6f1744d2a2242e90df32ec08a6baf201a152dbcd9dc0f3e23908"
     },
     {
-      "bytes": 6432,
+      "bytes": 6375,
       "path": "payload/setup/MAIOS_SETUP_CONTRACT.md",
-      "sha256": "02e3fee6816a783b67105079c147cbe45d94e434fa08aa4c9e5015299a29aaad"
+      "sha256": "69ac733f6db26d68e258d15288b8b55fb947821af9721fbde14ee71919411b60"
     },
     {
       "bytes": 11554,

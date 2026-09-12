@@ -29,15 +29,9 @@ P1-P5 answers, a Terminal Context Field, or an accepted external case. A Form
 route may later converge on the same situated-project function, but remains a
 different temporal source and builder until independently compared.
 
-In the self-configuring entry, the coder observes the request, target and its
-own already-available capabilities. When that field is sufficient it offers a
-direct project start with a concise effect and recovery preview. An adaptive
-dialogue is discretionary: it expands only when a missing relation changes the
-result, owner, effect or recovery, or when the operator requests exploration.
-In a later
-Form-generated entry, it begins from the accepted Form context and refines only
-what the live project or operator relation has changed. The two entries share
-the situated-context function without sharing temporal state or builder.
+The self-configuring entry acquires context from the present request, project
+and host. The Form-generated entry starts from context already accepted in the
+Form. Both can refine that understanding through later work.
 
 ## Result
 
@@ -55,18 +49,6 @@ The first useful configuration preserves:
   external projection, and provider consent kept separate from project intent;
 - the selected faculty composition and why every faculty changes the movement;
 - exact effect authority, which remains `none` until an effect actually exists.
-
-## Interaction
-
-Read the current request and project files before asking questions. Return what
-is already understood and a correctable useful movement. Ask only when one
-missing relation would materially change meaning, owner, result, proof, safety,
-or next movement. Unknowns that do not block the first useful result remain
-explicit and are revisited during work.
-
-Do not expose internal schemas, faculty names, or architecture when they do not
-help the person's decision. A request to shorten or stop questions changes the
-interaction, not the semantic review of the proposed direction.
 
 ## Completion
 
@@ -114,3 +96,20 @@ without applying it. Application requires the exact current-state digest, create
 receipt, regenerates every projection, and makes no global or external write.
 `recover-configuration` refuses recovery if the canonical state evolved after
 the receipt.
+
+### Runtime field representations
+
+`faculty_composition.last_readback` links configuration to the last committed
+resultant event. It is initially `null`; `apply-resultant` writes an object with
+`event_id` and `receipt` (`.maios/receipts/resultant/<event_id>.json`). Ordinary
+configuration updates preserve this reference. Narrative configuration summaries
+belong in `checkpoint.summary`; they are not event references.
+
+The arrays in `possibility_field` and a resultant's `possibility_impact` accept
+nonempty strings or structured objects, including reasons and source context.
+Merging and elimination compare complete values, so a structured possibility
+keeps its information and is removed by supplying that same value.
+
+Status commands report invalid configuration without applying changes. Recovery
+can restore a valid backup even when an older validator accepted the current
+invalid state, provided the receipt still matches that exact state.

@@ -309,7 +309,7 @@
     "projection_sha256": "4538a667c51c70929b4d4722406bf152b4e9adb6ca48aaece2868669d6e43767",
     "revision_claim": "content_addressed_source_tree",
     "source_manifest_sha256": "272ce22cb34027ac964342ab2b508c09fa4c414628e4e63512ed7b4a3d263eac",
-    "tree_sha256": "d6d0dd35489a687c0e67a5377d60d24a4bf33c7fc6cbe6f6460a5ac9ce4f56bd"
+    "tree_sha256": "57f225a6ab22530619b311c1f2ef73c4c80403883b5ec23f34ea3469632453aa"
   },
   "target_modes": [
     "new_repository",

@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Reject malformed resultant-event references before configuration writes and
+  preserve committed references during ordinary configuration updates.
+- Report legacy invalid configuration through status commands and retain exact
+  receipt-based recovery to a valid backup.
+- Preserve structured possibilities and their reasons through resultant
+  application; validate their containers before readers consume them.
 - Simplify installation entry into package knowledge and technical references;
   remove prescribed conversation flows from the package and EN/IT usage docs.
 - Allow the autonomous entry contract without conversation-policy prose while

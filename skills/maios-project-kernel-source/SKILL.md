@@ -9,6 +9,21 @@ Read `CURRENT_STATE.md` and the selected architecture before changing source
 or build files. Treat another dirty worktree as separately owned material, not
 as an input or cleanup target for the current source.
 
+Keep generation and product composition connected. RepoKernel forms the
+selected method plan; this repository integrates it with the product entry,
+installer and runtime through `release/PROJECTION.json`. The ordinary builder
+consumes `release/GENERATED_KERNEL_SELECTION.json`, checks its plan identity,
+and materializes the selected bodies alongside those product-owned files.
+
+For receiving-host feedback, understand the composed instructions and data
+that the host actually consumed. Follow the correction to the body that owns
+the behavior: a selected method change needs selection renewal, while a
+product runtime or installation-entry change reaches the distribution through
+the ordinary builder. Neither changing a private compiler revision nor fixing
+an installed copy alone updates this delivery. In the production environment,
+RepoKernel's native setup stewardship retains the generative learning; this
+competence carries the product implementation through to the usable package.
+
 Keep one vertical connected:
 
 For a maintained compiler adoption, use

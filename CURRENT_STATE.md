@@ -1,5 +1,37 @@
 # MAIOS Project Kernel current state
 
+## Current movement — configuration repair and package preparation, 2026-09-12
+
+The OpenCode feedback correction now reaches the product runtime and its
+ordinary generated distribution. Malformed `faculty_composition.last_readback`
+is rejected before writes; ordinary configuration updates preserve the last
+committed resultant reference. Status readers diagnose legacy invalid state
+without a traceback. Receipt-bound recovery can restore a valid prior state
+without accepting subsequent unrelated changes.
+
+Structured possibilities retain reasons and nested source context through
+configuration and resultant application. Container validation and equality-based
+merging/removal share that representation. The setup contract documents these
+technical fields and removes residual conversation choreography.
+
+RepoKernel setup stewardship leads the generative return. The product source
+competence now explicitly connects its retained RepoKernel plan to runtime,
+entry and final package composition; no additional orchestrator was needed.
+The selected method bodies and compiler binding are unchanged, so this movement
+uses the ordinary builder without renewal. Product identity remains 4.1.1 on
+main; this is an unreleased updated package, not a new numbered release.
+
+Validation: six discriminating regression tests reproduce the original defects
+and pass after correction. The full suite completes 109 tests without failures,
+with two platform-specific skips. The final ordinary build and inventory
+verification carry the corrected source into the distribution. The operator's
+test installation and the pre-existing staging residue are preserved.
+
+Next: test the updated package in a fresh OpenCode session and destination.
+That receiving-model observation remains separate from these runtime tests.
+The dated entry simplification below records the preceding completed step;
+its then-open runtime defects are resolved by this movement.
+
 ## Installation entry simplification — 2026-09-12
 
 The operator's OpenCode first-use feedback exposed unnecessary conversation

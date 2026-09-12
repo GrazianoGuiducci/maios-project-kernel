@@ -860,7 +860,10 @@ def continuum_status(root: Path) -> dict[str, Any]:
     root = root.resolve()
     pending = configuration_engine.pending_transitions(root)
     errors = ["pending state transition: " + path for path in pending]
-    configuration = configuration_engine.current_configuration(root)
+    try:
+        configuration = configuration_engine.current_configuration(root)
+    except configuration_engine.ConfigurationError as exc:
+        return {"valid": False, "errors": errors + [str(exc)], "pending_journals": pending}
     state = read_operating_state(root)
     relation = configuration.get("faculty_composition", {}).get("last_readback") or {}
     if (relation.get("event_id") != state.get("last_event_id")
@@ -881,8 +884,18 @@ def continuum_status(root: Path) -> dict[str, Any]:
 def operating_status(
     root: Path, circumstance: dict[str, Any] | None = None
 ) -> dict[str, Any]:
-    result = _operating_status(root, circumstance)
     coherence = continuum_status(root)
+    try:
+        result = _operating_status(root, circumstance)
+    except configuration_engine.ConfigurationError as exc:
+        errors = list(coherence["errors"])
+        if str(exc) not in errors:
+            errors.append(str(exc))
+        return {"schema": OPERATING_CONTEXT_SCHEMA, "root": str(root.resolve()),
+                "valid": False, "errors": errors, "context_sha256": None,
+                "eligible_actions": [],
+                "blocked_actions": [{"id": "apply_resultant", "reason": "configuration recovery required"}],
+                "recovery_required": True, "continuum": coherence}
     if not coherence["valid"]:
         result["eligible_actions"] = [x for x in result["eligible_actions"] if x["id"] != "apply_resultant"]
         result["blocked_actions"].append({"id": "apply_resultant", "reason": "continuum recovery required"})
@@ -1123,12 +1136,14 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
     if not isinstance(impact, dict):
         errors.append("possibility_impact must be an object")
         impact = {}
+    valid_impact = True
     for field in ("opened", "preserved", "constrained", "eliminated"):
         item = impact.get(field)
-        if not isinstance(item, list) or not all(_nonempty(entry) for entry in item):
-            errors.append(f"possibility_impact.{field} must be a string list")
-    eliminated = set(impact.get("eliminated", []))
-    if eliminated & (set(impact.get("opened", [])) | set(impact.get("preserved", []))):
+        if not configuration_engine.valid_possibility_list(item):
+            errors.append(f"possibility_impact.{field} must be a list of strings or objects")
+            valid_impact = False
+    if valid_impact and any(item in impact["opened"] + impact["preserved"]
+                            for item in impact["eliminated"]):
         errors.append("one movement cannot both eliminate and open or preserve a possibility")
 
     next_movement = value.get("next_movement")
@@ -1256,8 +1271,8 @@ def validate_resultant_readback(root: Path, value: Any) -> dict[str, Any]:
     }
 
 
-def _merge_unique(existing: Any, additions: list[str]) -> list[Any]:
-    """Preserve open-world entries while appending new string relations once."""
+def _merge_unique(existing: Any, additions: list[Any]) -> list[Any]:
+    """Preserve entries and append distinct values without requiring hashability."""
 
     values = list(existing) if isinstance(existing, list) else []
     for item in additions:
@@ -1298,7 +1313,7 @@ def _configuration_candidate(
 
     possibility = candidate.setdefault("possibility_field", {})
     impact = readback["possibility_impact"]
-    eliminated = set(impact["eliminated"])
+    eliminated = impact["eliminated"]
     for field in ("opened", "preserved", "constrained", "eliminated"):
         possibility[field] = _merge_unique(possibility.get(field, []), impact[field])
     for field in ("candidates", "opened", "preserved"):

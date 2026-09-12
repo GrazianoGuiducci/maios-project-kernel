@@ -75,10 +75,10 @@
       "type": "object",
       "required": ["opened", "preserved", "constrained", "eliminated"],
       "properties": {
-        "opened": {"$ref": "#/$defs/stringList"},
-        "preserved": {"$ref": "#/$defs/stringList"},
-        "constrained": {"$ref": "#/$defs/stringList"},
-        "eliminated": {"$ref": "#/$defs/stringList"}
+        "opened": {"$ref": "#/$defs/possibilityList"},
+        "preserved": {"$ref": "#/$defs/possibilityList"},
+        "constrained": {"$ref": "#/$defs/possibilityList"},
+        "eliminated": {"$ref": "#/$defs/possibilityList"}
       },
       "additionalProperties": true
     },
@@ -146,6 +146,15 @@
     }
   },
   "$defs": {
+    "possibilityList": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {"type": "string", "minLength": 1},
+          {"type": "object", "additionalProperties": true}
+        ]
+      }
+    },
     "stringList": {
       "type": "array",
       "items": {"type": "string", "minLength": 1}
