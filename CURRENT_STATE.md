@@ -1,25 +1,33 @@
 # MAIOS Project Kernel current state
 
-## Release readback — 2026-09-12
+## Current readback — 2026-09-13
 
-The published v4.1.2 package is unchanged. Its GitHub workflows subsequently
-failed one boundary test on Linux and Windows: it expected every linked-organ
-status read to raise, although the repaired status reader can return an explicit
-invalid/recovery response with no eligible actions. The local Windows run had
-skipped this test because symlink creation requires a privilege unavailable here.
+Cleanup starts from source `0bd51e1228760f5d75ae0d746c524b834c7f3154` after
+published 4.1.2. The false-current 4.1.1 reentry is now historical. Public entry
+surfaces reach UPDATE_CONTINUITY and runtime source-contact status without
+owning a literal cadence; the runtime policy and its boundary test are unchanged.
+[4.1.2 evidence](docs/RELEASE_4.1.2_EVIDENCE.md#post-release-verification-follow-up--2026-09-12)
+records the failed tagged run, test correction and successful source follow-up.
 
-The test now accepts either the specific path-confinement exception or that
-structured refusal, checking the link diagnostic and blocked resultant action.
-This is a test-only contract correction; installer, runtime, tag and release
-assets retain their exact 4.1.2 bytes. All 111 tests pass in the follow-up Linux
-job, including real symlink cases. That run then caught the required source-hash
-refresh: the builder fingerprints tests and documentation as well as product
-code. The current source package therefore refreshes only MANIFEST provenance
-and its PACKAGE_INVENTORY hash, preserving every installed payload byte.
-The failed tagged runs remain historical evidence and must not be described
-as passing; the corrected source workflow supplies the follow-up verification.
+Validation: 111 local tests pass with two platform skips; the ordinary build
+and distribution verification pass (62 files, 51 payload files). The generated
+delta refreshes source provenance and inventory only. Version 4.1.2, family
+3.0.0, release/tag, installed payload, installer entry and selected methods are
+unchanged. Hosted CI on this cleanup revision remains the source follow-up.
 
-## Current movement — simpler installation, 4.1.2, 2026-09-12
+## Current next
+
+The next receiving-model observation is fresh use of released 4.1.2 in OpenCode
+when that test is selected. Otherwise resume from a concrete real-use
+observation, informative Evolution Feedback or a newly selected source change.
+Reentry alone selects no release, renewal, migration or documentation cycle.
+
+## Historical chronology
+
+Dated sections below preserve their original scope. Their then-current next
+steps do not reopen completed work.
+
+## Completed release — simpler installation, 4.1.2, 2026-09-12
 
 The operator selected a new testable release with the easiest practical coder
 installation. Preview now selects its filesystem mode automatically from the
@@ -47,10 +55,7 @@ reapplication, conflict preservation and rejection of changes after preview.
 Ordinary build, inventory verification and the immutable commit's Linux/Windows
 workflow establish delivery identity separately from coder understanding.
 
-## Previous work and observations
-
-
-## Current movement — configuration repair and package preparation, 2026-09-12
+## Prior movement — configuration repair and package preparation, 2026-09-12
 
 The OpenCode feedback correction now reaches the product runtime and its
 ordinary generated distribution. Malformed `faculty_composition.last_readback`
@@ -138,17 +143,12 @@ This resolves source/package metadata continuity without another compiler renewa
 The GitHub workflow checks the committed projection and must remain effective;
 its prior failure belongs to the earlier documentation-only revision.
 
-## Current next
+## Historical next at 4.1.1 close
 
 Resume from a concrete observation in real use, informative feedback, or a newly
 selected source change. Compare it with the released 4.1.1 result and follow the
 owning method only where that difference requires work. No renewal, release, site update or installation remains selected by this
 metadata alignment.
-
-## Historical chronology
-
-All dated sections below retain their original scope. Their then-current next
-steps describe past work and do not reopen a completed movement.
 
 ## Documentation refinement — 2026-09-10
 

@@ -55,13 +55,12 @@ credentials, personal data, private logs and hidden runtime state. Use a GitHub
 Issue for observed feedback; use a fork and focused Pull Request for a concrete
 source correction. Do not infer direct write authority over upstream `main`.
 
-The distributed Project Kernel already owns its light upstream cadence in
-`kernel/UPDATE_CONTINUITY.md`: during active use it checks source contact when
-there is no recorded attempt or roughly seven days have elapsed, and sooner
-when a current problem may already have been corrected upstream. Do not add a
-second timer, scheduler or startup ritual here. A source check is read-only;
-new upstream material is a possibility to understand and propose, not an
-automatic update.
+During active use, `source-contact-status` indicates when ordinary upstream
+contact is due; a material current problem can make an earlier check useful.
+The method is owned by [UPDATE_CONTINUITY](kernel/UPDATE_CONTINUITY.md).
+Source contact is read-only and non-blocking, without a background process or
+an implied external effect. New upstream material is a possibility to
+understand and propose, not an automatic update.
 
 These public study/contribution competences are repository-native. They are
 intentionally outside `release/PROJECTION.json`; do not infer that opening the

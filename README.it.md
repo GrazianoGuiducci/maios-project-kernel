@@ -78,12 +78,12 @@ può mostrare un ingresso poco chiaro, latenza evitabile, contesto mancante,
 punti di forza inattesi o una nuova possibilità anche quando non esiste un bug
 tecnico.
 
-Il Project Kernel installato mantiene già un contatto leggero con la sorgente:
-durante l'uso attivo il controllo upstream diventa pertinente quando non è
-registrato alcun tentativo o sono trascorsi circa sette giorni dall'ultimo, e
-prima se il problema corrente potrebbe essere già stato corretto upstream. Il
-controllo è read-only e non blocca il lavoro; una sorgente più nuova è una
-possibilità da comprendere, non un aggiornamento automatico. Vedi
+Durante l'uso attivo, `source-contact-status` indica quando è dovuto il contatto
+ordinario con upstream. Un problema concreto può rendere utile un controllo
+anticipato. Il contatto è in sola lettura (read-only) e non blocca il lavoro,
+senza processi in background o effetti esterni impliciti; una sorgente più nuova
+è una possibilità da comprendere, non un aggiornamento automatico. Il metodo
+di contatto con la sorgente è definito in
 [`kernel/UPDATE_CONTINUITY.md`](kernel/UPDATE_CONTINUITY.md#keep-a-light-source-contact).
 
 Quando l'uso reale produce un'osservazione informativa, chiedi al coder di

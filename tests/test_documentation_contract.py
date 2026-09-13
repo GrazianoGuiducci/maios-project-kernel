@@ -20,6 +20,7 @@ class DocumentationContractTests(unittest.TestCase):
     def test_reader_routes_reach_their_source_documents(self):
         routes = {
             'README.md': [
+                'kernel/UPDATE_CONTINUITY.md',
                 'package/',
                 'docs/USAGE.md',
                 'docs/GENERATED_KERNEL_BUILD.md',
@@ -27,6 +28,7 @@ class DocumentationContractTests(unittest.TestCase):
                 '.github/ISSUE_TEMPLATE/evolution-feedback.md',
             ],
             'README.it.md': [
+                'kernel/UPDATE_CONTINUITY.md',
                 'package/',
                 'docs/USAGE.it.md',
                 'docs/GENERATED_KERNEL_BUILD.md',
@@ -35,7 +37,9 @@ class DocumentationContractTests(unittest.TestCase):
             ],
             'docs/USAGE.md': ['../README.md'],
             'docs/USAGE.it.md': ['../README.it.md'],
+            'AGENTS.md': ['kernel/UPDATE_CONTINUITY.md'],
             'CONTRIBUTING.md': [
+                'kernel/UPDATE_CONTINUITY.md',
                 'docs/GENERATED_KERNEL_BUILD.md',
                 'docs/RENEW_KERNEL_SELECTION.md',
             ],
@@ -60,7 +64,6 @@ class DocumentationContractTests(unittest.TestCase):
         self.assertIn('permission before publishing', contributing)
         self.assertIn('GitHub Issue', contributing)
         self.assertIn('Pull Request', contributing)
-        self.assertIn('seven days', contributing)
         self.assertIn('read-only', contributing)
 
     def test_native_update_continuity_can_return_feedback_without_claiming_submission(self):

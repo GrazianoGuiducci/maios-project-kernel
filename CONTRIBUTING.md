@@ -43,13 +43,13 @@ session into public evidence without consent. Remove credentials, private
 project contents, client material, personal data, private logs and hidden
 runtime state.
 
-Use the light source-contact relation already distributed in
-`kernel/UPDATE_CONTINUITY.md`: during active use, an upstream check becomes
-pertinent with no recorded contact or at roughly seven days since the last
-attempt, and sooner when a current problem may already have been corrected
-upstream. That check is read-only and does not authorize an update. When it
-exposes a material difference, explain it to the operator and let a separately
-selected adoption movement own any effect.
+During active use, `source-contact-status` indicates when ordinary upstream
+contact is due; a material current problem can make an earlier check useful.
+Follow the method in [UPDATE_CONTINUITY](kernel/UPDATE_CONTINUITY.md).
+The check is read-only and non-blocking, without a background process or an
+implied external effect. New upstream material is a possibility to understand,
+not an automatic update. Explain a material difference to the operator; any
+adoption remains a separately selected effect.
 
 Observed feedback belongs in an Issue. A concrete source correction belongs in
 a fork + focused Pull Request. Tester status does not imply direct write access

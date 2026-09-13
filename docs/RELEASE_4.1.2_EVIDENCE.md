@@ -19,3 +19,25 @@ Details are recorded in CURRENT_STATE.md.
 The immutable release commit's workflow checks the same distribution on Linux
 and Windows. Receiving-model behavior and existing-project migration are not
 established by those checks. The user's original installation is unchanged.
+
+## Post-release verification follow-up — 2026-09-12
+
+Release-time validation above describes the local evidence available when
+`8bd762e045cebccffd7139ec8ec12382125b51e6` was published as 4.1.2.
+The [tagged workflow](https://github.com/GrazianoGuiducci/maios-project-kernel/actions/runs/34718109257)
+subsequently failed and remains historical failed evidence. Its linked-organ
+boundary test expected an exception on every status read; the repaired reader
+can instead return a structured invalid/recovery refusal with no eligible
+resultant action. The local Windows run had skipped that symlink case.
+
+Test-only correction `1f70305fd5358c4b8f1bb2488c0fee3f16866268` accepts the
+specific confinement exception or checks that structured refusal, its link
+diagnostic and blocked action. Revision
+`0bd51e1228760f5d75ae0d746c524b834c7f3154` then refreshes source provenance
+and the inventory entry required because the builder fingerprints tests too.
+Its [successful follow-up workflow](https://github.com/GrazianoGuiducci/maios-project-kernel/actions/runs/34718811672)
+verifies the corrected source on Linux and Windows. It does not turn the
+failed tagged run into a passing run.
+
+The release tag, published assets and installed 4.1.2 payload remain unchanged;
+these follow-ups change the test contract and generated source identity only.

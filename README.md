@@ -75,12 +75,11 @@ Real testers are valuable to the Kernel's evolution. A first-use impression can
 show unclear entry, unnecessary latency, missing context, unexpected strengths
 or a new possibility even when no technical bug exists.
 
-The installed Project Kernel already keeps a light source contact: during
-active use, an upstream check becomes pertinent when no attempt is recorded or
-roughly seven days have elapsed since the last attempt, and sooner when a
-current problem may already have been corrected upstream. The check is
-read-only and non-blocking; a newer source is a possibility to understand, not
-an automatic update. See
+During active use, `source-contact-status` indicates when ordinary upstream
+contact is due. A material current problem can make an earlier check useful.
+Source contact is read-only and non-blocking, without a background process or
+an implied external effect; a newer source is a possibility to understand,
+not an automatic update. The source-contact method is owned by
 [`kernel/UPDATE_CONTINUITY.md`](kernel/UPDATE_CONTINUITY.md#keep-a-light-source-contact).
 
 When real use produces an informative observation, ask your coder to prepare an
