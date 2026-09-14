@@ -453,6 +453,8 @@ def composed_project_entry_profile(
         "version": family_contract["family_version"],
         "role": {
             **project_entity["role"],
+            "purpose": "Understand, act, form competences and evolve through the present context, sources, learning and reentry; involve project startup when useful.",
+            "operating_recipient": "person and AI agent in the receiving context",
             "startup_interview": entry_contract["entry_policy"][
                 "startup_interview"
             ],

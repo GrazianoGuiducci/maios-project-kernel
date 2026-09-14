@@ -8,7 +8,8 @@ current movement.
 Use `README.md` as the repository homepage and reading map. The ready-to-install
 distribution is in `package/`; its `INSTALL.md` documents the installer and
 `maios-project-integration` supplies package-specific knowledge. The installed
-`START_HERE.md` is the entry for project work.
+`START_HERE.md` is the entry for the present context, including project work
+when pertinent. The kernel can understand, act and evolve without a project.
 
 ## Product identity
 

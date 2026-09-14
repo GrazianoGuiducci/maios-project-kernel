@@ -2,7 +2,7 @@
 
 [Presentazione del prodotto](../README.it.md) · [English](USAGE.md)
 
-Per usare e installare il pacchetto, segui [l’avvio nel README](../README.it.md#inizia-dal-tuo-progetto)
+Per usare e installare il pacchetto, segui [l’avvio nel README](../README.it.md#inizia-dal-tuo-contesto)
 e apri direttamente `package/`. Apri la radice della repository quando studiare
 sorgenti, evidenze o relazioni di build aiuta a decidere come integrare o contribuire.
 Questa guida è il riferimento approfondito per entrambi i percorsi; leggerla
@@ -20,7 +20,7 @@ Riferimenti per installazione, lavoro nel progetto e studio delle sorgenti:
 
 | Necessità | Riferimenti | Contenuto |
 | --- | --- | --- |
-| Stabilire la verità corrente | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Versione prodotto `4.1.2`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
+| Stabilire la verità corrente | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Versione prodotto `4.5.0`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
 | Comprendere valore e possibilità | [`knowledge/KERNEL.md`](../knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md), [working paper System Semantic Kernel (SSK)](https://github.com/GrazianoGuiducci/maios-ssk-paper) | Cosa cambia il Kernel in un progetto, quali possibilità restano aperte e il relativo contesto accademico; il Paper è facoltativo e non dimostra il comportamento del prodotto |
 | Integrare il pacchetto | [`package/AGENTS.md`](../package/AGENTS.md), [`maios-project-integration`](../package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](../package/INSTALL.md), [`package/MANIFEST.json`](../package/MANIFEST.json) | Target esatto, modalità, proiezione host, percorsi posseduti dal pacchetto, anteprima, recupero e superfici immutate |
 | Configurare e usare il Kernel installato | [`START_HERE.md`](../package/payload/START_HERE.md), [`maios-project-system`](../package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](../package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](../package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | Come contesto, competenze, risultato, apprendimento, rilettura semantica e nuovo rientro restano connessi |
@@ -100,22 +100,28 @@ distinti.
 ## Cosa accade dopo l'installazione
 
 ```text
-operatore e progetto reale
--> boot stabile del Kernel
--> attivazione per progetto nuovo o esistente
+relazione con l’operatore e contesto effettivo
+-> ingresso stabile del Kernel
 -> contesto vivo e orizzonte delle possibilità
 -> le competenze pertinenti agiscono da sole o insieme
 -> primo risultato utile e correggibile
 -> l'apprendimento riusabile ritorna alla competenza più vicina
--> la sessione successiva riparte dal campo del progetto così modificato.
+-> la sessione successiva riparte dal campo così modificato.
 ```
 
 Il Kernel non è una risposta predefinita, un workflow fisso o un catalogo di
-skill. È il sistema di progetto che mantiene collegati intento, fonti,
+skill. È la forma operativa che mantiene collegati intento, fonti,
 contesto, possibilità, competenze, risultati, apprendimento e rientro mentre il
-progetto cambia.
+contesto cambia.
 
-## Due condizioni iniziali
+## Operare dal contesto presente
+
+Un'esplorazione, un dominio o un'attività in corso possono fornire contesto
+senza un progetto. La competenza di sistema parte dalla persona e dalle fonti
+disponibili; contesto e formazione fanno continuare comprensione, lavoro utile
+e apprendimento. L'avvio di progetto diventa pertinente nelle situazioni seguenti.
+
+## Quando si lavora a un progetto
 
 ### Progetto nuovo
 

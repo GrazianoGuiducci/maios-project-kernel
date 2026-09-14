@@ -56,7 +56,8 @@ structures differ from the earlier v2 shapes. Learning relations retain their
 own `maios.learning-relation.v2` identity. This names the new contracts and does
 not introduce a migration for earlier installations.
 
-Interrupted existing-project installations use `maios.pending-installation.v3`.
+Interrupted installations into existing directories, including empty ones,
+use `maios.pending-installation.v3` with the original ready plan's selected mode.
 Its original `install_plan`, digest and package/target identity bind the complete
 `planned_files` and `planned_backup_files` maps. `created_files` separately
 records successful exclusive creations, each with its planned hash and the

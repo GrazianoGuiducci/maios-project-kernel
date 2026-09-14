@@ -1,6 +1,35 @@
 # MAIOS Project Kernel current state
 
-## Current readback — 2026-09-14
+## Current preparation — 4.5.0, 2026-09-14
+
+The operator selects preparation of 4.5.0 for OpenCode use and ChatGPT review.
+The kernel is an autopoietic operating form that can work from the present
+context without a project. This source change reaches the system competence,
+context, formation, installation handoff, START_HERE, AGENTS, initial continuity
+and the generated entry profile. Project startup remains a situated competence.
+IT/EN README and usage guides describe this same relation.
+
+Formation now teaches the concrete relationship through which another context
+can acquire a skill, mini-kernel or kernel carrying practical knowledge, native
+entry, continuity and the ability to form and learn further. This deepens the
+formation already present rather than introducing a second internal generator.
+
+The current candidate still uses the selected production compiler
+`334a9d33c12d61ba826d41b25f604af18441e967` for method renewal. The installed
+generative competence acts through the receiving agent without that compiler.
+The Form currently executes the external compiler in its separate composition.
+The proposal to make MPK the common source for both deliveries has been put to
+the operator; it is not an implemented Form migration. The package candidate
+is being prepared through the working production path in the meantime.
+
+## Current next
+
+Complete the candidate build and verification, retain an installable 4.5.0 ZIP
+for the operator and prepare the matching site descriptions. Record the exact
+candidate revision and checks here before handoff. Resume the Form architecture
+from the current owner and accepted context; preserve its existing functions.
+
+## Earlier first-understanding result — 2026-09-14
 
 The working package now supports first understanding as useful project work.
 The context competence explains a situated example from initial possibility,
@@ -25,7 +54,7 @@ distribution verification pass. Version remains 4.1.2 and family 3.0.0; this
 is the evolved source and working distribution. Release artifacts and existing
 installations retain their own state.
 
-## Current next
+## Then-current next
 
 Continue the new-kernel work from the receiving cycle now made reachable.
 Further use or source knowledge can reveal which generative, learning or

@@ -13,14 +13,21 @@ remain distinguishable.
 
 ## The Kernel is the movement of the system
 
-The Kernel is not middleware placed above the work and it is not a catalogue
-of prompts. It is the connected movement through which a project and its AI
-coder understand the present, make competences pertinent, form a result, learn
+The Kernel is an autopoietic operating form. Its movement produces knowledge
+and can reform the competences and organization through which it continues.
+An AI agent and the person can understand the present, make competences
+pertinent, form a result, learn
 from the causal difference produced by that result, and continue from the
 changed field.
 
+A project is one possible context, alongside inquiry, domain work, ongoing
+activity and the kernel's own evolution. The MAIOS product includes project
+startup competences when they are useful. Initializing a project is not required
+for the kernel to understand, act or learn. This development participates in
+the D-ND research direction toward AGI through autopoietic kernel evolution.
+
 ```text
-operator relation and project sources
+operator relation and qualified sources
 + the whole relevant present and its possibility horizon
 + competences made pertinent by the movement
 -> situated action

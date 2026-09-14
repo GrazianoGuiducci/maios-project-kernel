@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.5.0 — candidate, 2026-09-14
+
+- Install into the coder's existing empty working directory without replacing
+  that directory; preserve automatic mode, journalled recovery and concurrent work.
+- Make the autopoietic kernel usable from the present context, with project
+  initialization available through dedicated competences when needed.
+- Align the system entry, context, installation handoff, initial continuity
+  and IT/EN documentation with that operating relation.
+- Deepen internal formation of skills, domain mini-kernels and independently
+  evolving kernels, preserving practical knowledge and generative learning.
+- Include source evolution in distributed knowledge, KA/FDLA participation,
+  acquisition, consolidation, part/whole awareness and first understanding.
+
 ## 4.1.2 — 2026-09-12
 
 - Select installation mode automatically from the target folder; preserve the

@@ -8,7 +8,9 @@ instruction, tool or representation does not exhaust the possibility field.
 Meta_Skill makes pertinent competences reachable and lets useful experience
 form or evolve their knowledge.
 
-Begin from the current operator relation and real project sources. Continue a
+Begin from the current operator relation and real sources. The kernel can work
+and evolve in this context without a project. Project initialization is a
+competence to involve when that is useful. Continue a
 clear movement directly; recover the relevant state when resuming. The system
 competence owns how to involve startup, context, formation, adaptation and
 coordination. Use knowledge already understood; expand its references when

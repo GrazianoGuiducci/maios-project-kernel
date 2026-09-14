@@ -1,37 +1,45 @@
 # MAIOS Project Kernel
 
-MAIOS Project Kernel gives a project and its AI coding agent a shared operating
-kernel: knowledge and methods for understanding the situation, doing useful
-work, developing competences and continuing as the project changes.
+MAIOS Project Kernel brings an AI agent an evolving operating kernel:
+knowledge and methods for understanding the present, doing useful work,
+forming competences and continuing from what it learns.
 
-The project retains the reasons behind decisions, the sources that support
+The kernel is autopoietic: its activity can reform its knowledge, competences
+and organization. It can work in an inquiry, a domain, an ongoing activity or
+a project. MAIOS includes competences for starting and developing projects;
+they participate when that is the work to do.
+
+It retains the reasons behind decisions, the sources that support
 them and the knowledge acquired through work. A later agent can recover that
 context and continue from it without treating another instance's experience as
 its own personal memory.
 
-Product version: **[4.1.2](VERSION.md)** · Project Kernel family: **3.0.0** ·
+Product version: **[4.5.0](VERSION.md)** · Project Kernel family: **3.0.0** ·
 Python **3.10 or later** · [MIT License](LICENSE)
 
 [Versione italiana](README.it.md)
 
 ## What it makes possible
 
-- Understand a new or existing project through its actual sources, intent,
+- Understand the present context through its actual sources, intent,
   constraints and open possibilities.
 - Bring in, combine or form the competences useful to the work. Intent,
   knowledge, successful results and new possibilities can all change what is
   worth developing; learning does not require a failure first.
 - Keep reasons, decisions and consequences connected, and return reusable
   learning to the methods that should change.
-- Continue across sessions and cooperating agents through knowledge owned by
-  the project, preserving current work and the reasons for its direction.
+- Form skills, domain mini-kernels or another situated kernel through the
+  internal competence-formation faculty, carrying useful knowledge and the
+  ability to learn and form further capacities.
+- Continue across sessions and cooperating agents through locally owned
+  knowledge, preserving current work and the reasons for its direction.
 
 KA keeps the field of possibilities open; FDLA corrects distortions while work
 forms; Meta_Skill recognizes, composes and develops competences. These functions
-act together through the agent and the project's sources. The
+act together through the agent and the actual sources. The
 [Kernel guide](knowledge/KERNEL.md) explains their meaning and operation.
 
-## Start with your project
+## Start from your context
 
 The ready-to-install distribution is in [`package/`](package/). Ask your coder:
 
@@ -43,7 +51,9 @@ Then read the installed START_HERE.md and help me use it.
 
 `install.py` previews and applies the installation. It chooses folder handling
 automatically from the selected target and preserves existing work. The installed
-`START_HERE.md` introduces the kernel and the project's current context.
+`START_HERE.md` introduces the kernel and the present context. Exploration or
+understanding can be the first useful work; a project can be initialized when
+needed.
 
 The installer and local helpers require Python 3.10 or later and no third-party
 Python packages. See [installation and recovery](docs/INSTALLATION.md) for
@@ -52,13 +62,13 @@ preview/apply commands, conflict handling and uninstall; see the
 
 ## Work, learn and return
 
-The installed agent uses the project's context and relevant competences to form
+The installed agent uses the living context and relevant competences to form
 a result. New knowledge, a successful approach, a possibility or a correction
-can then change the methods used next. The project keeps the useful reasons
+can then change the methods used next. The kernel keeps the useful reasons
 and continuation rather than requiring the whole conversation to be replayed.
 
 `START_HERE.md` is the stable entry. Living competence bodies own methods;
-project state and knowledge carry the changing context. Existing local helpers
+local state and knowledge carry the changing context. Existing local helpers
 include `status`, `configuration-status`, `competence-status`, `learning-status`
 and `operating-status`; the [usage guide](docs/USAGE.md#project-local-operation)
 shows how to invoke them.
@@ -106,8 +116,8 @@ use by every host or model.
 Source tests and distribution verification cover package integrity, installer
 and recovery mechanics, routing and local state contracts. They do not prove
 that a receiving model understands, uses or assimilates the methods. See the
-[4.1.2 evidence](docs/RELEASE_4.1.2_EVIDENCE.md) for dated observations and
-[release notes](docs/RELEASE_4.1.2.md) for the version's changes.
+[4.5.0 preparation and checks](docs/RELEASE_4.5.0.md) for the candidate's
+changes, technical verification and entry for receiving-model review.
 
 ## Study, contribute or build
 

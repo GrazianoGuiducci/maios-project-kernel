@@ -1,16 +1,23 @@
 ---
 name: maios-project-system
-description: Operate or resume a project through the permanent MAIOS Project Kernel relation, involving the competences made useful by the real situation; understand and maintain the kernel itself when its knowledge, behavior or structure needs to evolve.
+description: Understand, act, learn and resume through the permanent MAIOS kernel relation in any living context; involve useful competences and evolve the kernel's own knowledge, behavior and organization, including project work when pertinent.
 ---
 
 # MAIOS Project System
+
+The kernel is an autopoietic operating form: through what happens it develops
+the knowledge, competences and organization that make its next movement
+possible. It can work in an open inquiry, a domain, an ongoing activity or a
+project. Project initialization is one competence available to that movement.
+Begin from what is present; no project definition or scaffold is needed merely
+to understand, act or learn. MAIOS Project Kernel is this product incarnation.
 
 KA, FDLA and Meta_Skill constitute the operating logic through which this
 kernel understands, acts, forms competences and learns. Their participation
 is constitutive; the situation determines which concrete competences act and
 which knowledge needs to be deepened.
 
-Understand the actual operator relation, project sources and consequences while
+Understand the actual operator relation, sources and consequences while
 forming the work. KA keeps the present possibility field open; FDLA notices
 and corrects changes of object, meaning or intent introduced by the assistant.
 These relations participate in every competence, including tool choice and
@@ -25,26 +32,27 @@ procedure.
 
 ## Let the situation make the competence pertinent
 
-Understand the contribution this instance can make to the project now: which
+Understand the contribution this instance can make in the present context: which
 knowledge it can connect, which decision it can help form, which action its
 actual harness can perform and where a result must continue. A project role
 does not supply tools, another instance's experience or its authority. Useful
 participation can be understanding or handing off when execution is unavailable.
 Let a new source, successful result or emerging possibility revise this position
-as well as the chosen competence. The project can retain the understanding when
+as well as the chosen competence. The kernel can retain the understanding when
 this instance stops or another takes over; no permanent actor is required.
 
-Begin from the current intent and real project sources. A clear movement can
-continue directly. An unfamiliar project or reentry may need its current
+Begin from the current intent and real sources. A clear movement can
+continue directly. An unfamiliar context or reentry may need its current
 context and `project/CURRENT_STATE.md`; `setup/CONFIGURATION_STATE.json` owns
 the structured configuration. `START_HERE.md` orients the coder at startup and
 reentry, leading here. Once that orientation is understood, continue the work.
 
-The following entries are relative to the project root. Involve each through
+The following entries are relative to the installation root. Involve each through
 its actual contribution, including when a result reveals another useful relation.
 
 | Present need | Operating knowledge |
 | --- | --- |
+| Explore, understand or act in a living context | `skills/maios-project-context/SKILL.md` |
 | Form the first movement in a new project | `skills/maios-start-new-project/SKILL.md` |
 | Join an existing project's work | `skills/maios-start-existing-project/SKILL.md` |
 | Understand context, intent or changed circumstances | `skills/maios-project-context/SKILL.md` |
@@ -58,7 +66,7 @@ when discovery is needed. A known competence can act without another map read
 or a matching label. Ask only for missing information that changes faithful
 work; let the actual result and consequences correct context and method.
 
-Explain the kernel through what it lets the project understand and do now.
+Explain the kernel through what it lets the person and agent understand and do now.
 Connect the relevant knowledge, reason and consequence in the actual work.
 A state transition is one mechanism in that relation; its receipt alone does
 not describe the whole capacity. Choose words from the sources and the result
@@ -67,7 +75,7 @@ claim or use; an imagined external judgment does not determine the project
 method or require an unsolicited experiment. Preserve uncertainty where it
 matters to the meaning or decision.
 
-Keep the project's intent and shared understanding present inside the work of
+Keep the present intent and shared understanding present inside the work of
 each pertinent competence. A local result can expose a connection that changes
 another method, the useful result or the organization. Follow its contribution
 through the sources and receiving work; `.maios/kernel/SYSTEM_KERNEL.md`

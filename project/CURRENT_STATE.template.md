@@ -1,12 +1,12 @@
-# Project current state — installation template
+# Current state — installation template
 
 active_surface: initial situated configuration
-living_intent: form the first useful project movement with the person
+living_intent: continue from the present operator relation and context
 setup_status: pending
 
 ## Verified state
 
-MAIOS Project Kernel 4.1.2 is installed as project-local files. The current
+MAIOS Project Kernel 4.5.0 is installed as local files. The current
 host projection may be installed, but discovery, state use, behavioral
 activation, and maintained reentry remain unverified until observed.
 
@@ -14,18 +14,17 @@ activation, and maintained reentry remain unverified until observed.
 
 - `setup/CONFIGURATION_STATE.json`
 - `.maios/kernel/SYSTEM_KERNEL.md`
-- current operator input and real project sources
+- current operator input and real sources
 
 ## Current next
 
-Use `maios-project-system` as the permanent entry. Let
-`maios-start-new-project` or `maios-start-existing-project` own entry when it is
-material,
-let `maios-project-host-adaptation` connect the current coder when needed, then
-let `maios-project-context` form or refine the living context. Return the first
-correctable useful result and prepare owner-specific competence handoffs. In
-an existing project, let the real work determine reuse, composition or
-formation through `maios-project-competence-formation`.
+Use `maios-project-system` as the permanent entry. Continue from the actual
+context: understanding, exploration, action or kernel evolution can already
+be useful. Let `maios-project-context` deepen understanding and
+`maios-project-competence-formation` reuse, compose or form the capacities that
+serve it. When project work is pertinent, involve the corresponding startup
+competence. Host adaptation connects the current coder when needed. Preserve
+the useful result and the knowledge that changes the next movement.
 
 ## Boundary
 

@@ -25,11 +25,13 @@ folder and preserves the original mode when reapplying the same package and host
 An explicit `--mode new_repository` or `--mode existing_repository` is optional.
 After applying, read `START_HERE.md` in the target folder for kernel use.
 
-`new_repository` requires an absent or empty target and promotes a complete
-adjacent staging directory atomically. `existing_repository` inventories every
+`new_repository` requires an absent or empty target. An absent target receives
+a complete adjacent staging directory atomically. An existing empty directory
+keeps its identity and receives journalled file creation, so a coder can install
+into its active working directory on Windows. `existing_repository` inventories every
 destination, preserves identical files, creates missing files, and refuses
 divergent or unsafe paths. Apply recomputes the target and package identity and
-refuses a stale plan. Existing-project apply exclusively acquires a `PENDING`
+refuses a stale plan. Apply into an existing directory exclusively acquires a `PENDING`
 journal before the first file transition. It preserves the original plan and
 separately records completed exclusive creations, including backups, with the
 file identity obtained from the creating descriptor.

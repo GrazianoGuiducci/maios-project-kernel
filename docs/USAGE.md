@@ -2,7 +2,7 @@
 
 [Product overview](../README.md) · [Versione italiana](USAGE.it.md)
 
-For ordinary use and installation, follow the [product quick start](../README.md#start-with-your-project)
+For ordinary use and installation, follow the [product quick start](../README.md#start-from-your-context)
 and open `package/` directly. Open the repository root when studying source,
 evidence or build relations can help you decide how to integrate or contribute.
 This guide is the detailed reference for both routes; reading all of it is not
@@ -19,7 +19,7 @@ References for installation, project work and source study:
 
 | Need | References | Contents |
 | --- | --- | --- |
-| Establish current truth | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Product version `4.1.2`, family `3.0.0`, current evidence, boundaries, and the selected movement |
+| Establish current truth | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Product version `4.5.0`, family `3.0.0`, current evidence, boundaries, and the selected movement |
 | Understand value and possibility | [`knowledge/KERNEL.md`](../knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md), [System Semantic Kernel (SSK) working paper](https://github.com/GrazianoGuiducci/maios-ssk-paper) | What the Kernel changes for a project, which possibilities remain open, and the related academic context; the Paper is optional and does not prove product behaviour |
 | Integrate the package | [`package/AGENTS.md`](../package/AGENTS.md), [`maios-project-integration`](../package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](../package/INSTALL.md), [`package/MANIFEST.json`](../package/MANIFEST.json) | Exact target, mode, host projection, package-owned paths, preview, recovery, and unchanged surfaces |
 | Configure and operate the installed Kernel | [`START_HERE.md`](../package/payload/START_HERE.md), [`maios-project-system`](../package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](../package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](../package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | How context, competences, result, learning, semantic readback, and fresh reentry stay connected |
@@ -33,7 +33,7 @@ find the relevant knowledge without loading every competence:
 
 | Product relation | Value in the project | Decisive owner sources |
 | --- | --- | --- |
-| Adaptive direct or expanded entry | Begins immediately in a legible project and expands shared understanding only when it changes the movement | [`AUTONOMOUS_ENTRY_CONTRACT.json`](../kernel/AUTONOMOUS_ENTRY_CONTRACT.json), [`maios-project-integration`](../skills/maios-project-integration/SKILL.md) |
+| Adaptive direct or expanded entry | Begins immediately from a legible context and expands shared understanding only when it changes the movement | [`AUTONOMOUS_ENTRY_CONTRACT.json`](../kernel/AUTONOMOUS_ENTRY_CONTRACT.json), [`maios-project-integration`](../skills/maios-project-integration/SKILL.md) |
 | Shared, correctable context | Connects operator intent, actual sources, facts, assumptions, unknowns, and authority without storing the transcript as truth | [`MAIOS_SETUP_CONTRACT.md`](../setup/MAIOS_SETUP_CONTRACT.md), [`maios-project-context`](../package/payload/skills/maios-project-context/SKILL.md) |
 | Open possibility and situated direction | Keeps unrepresented possibilities reachable, gives reasons for useful alternatives, and forms one revisable movement | [`SYSTEM_KERNEL.md`](../kernel/SYSTEM_KERNEL.md), [`FACULTY_FIELD.json`](../kernel/FACULTY_FIELD.json) |
 | Pertinent competence composition | Lets the work select or form the smallest capability that can change the result, without a fixed palette becoming the system limit | [`COMPETENCE_CULTIVATION_PROTOCOL.md`](../kernel/COMPETENCE_CULTIVATION_PROTOCOL.md), [`maios-project-competence-formation`](../package/payload/skills/maios-project-competence-formation/SKILL.md) |
@@ -97,22 +97,28 @@ projection, release, installation, and observed use remain distinct effects.
 ## What happens after installation
 
 ```text
-operator and real project
--> stable Kernel boot
--> new-project or existing-project activation
+operator relation and actual context
+-> stable Kernel entry
 -> living context and possibility horizon
 -> pertinent competences act alone or together
 -> first useful correctable result
 -> reusable learning returns to the closest competence
--> the next session begins from the changed project field.
+-> the next session begins from the changed field.
 ```
 
 The Kernel is not a predefined answer, a fixed workflow, or a catalogue of
-skills. It is the project-level system that keeps intent, sources, context,
+skills. It is the operating form that keeps intent, sources, context,
 possibilities, competences, results, learning, and reentry connected while the
 project changes.
 
-## Two starting conditions
+## Working from the present context
+
+An inquiry, domain or ongoing activity can supply context without a project.
+The system competence begins from the person and available sources; context
+and formation let understanding, useful work and learning continue. Project
+startup becomes pertinent in the following situations.
+
+## When working on a project
 
 ### New project
 

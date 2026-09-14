@@ -7,7 +7,7 @@ relationships; the pertinent competences carry the practical methods.
 
 ## Find the knowledge and the mechanism
 
-Paths in this compendium are relative to the installed project root unless
+Paths in this compendium are relative to the installation root unless
 they name another file beside this one. These services cooperate through work;
 they are not stages that must all be performed for a request.
 
@@ -46,13 +46,20 @@ rather than the fact that several documents mention the same subject.
 
 ## Identity
 
-This is a project-local transferable form of the useful relation among person,
-present field, sources, faculties, action, readback, learning, and continuity.
+This kernel is an autopoietic operating form: its work produces knowledge and
+can reform the competences and organization through which it continues. Person,
+present field, sources, faculties, action, readback, learning and continuity
+participate in this same relation. A project is one possible context. Inquiry,
+research, a domain or the kernel's own evolution can supply the present work.
+Project initialization participates through its dedicated competences when
+needed; it is not a prerequisite for the kernel to act.
+
+MAIOS Project Kernel delivers this relation in a locally installable product.
 It does not copy the private topology, temporal state, credentials, or authority
 of the system that formed it.
 
 ```text
-current operator relation and project sources
+current operator relation and qualified sources
 + present field and possibility horizon
 + available, emergent, or constructible faculties
 + identity, provenance, causal, and effect invariants
@@ -89,17 +96,17 @@ framing. A sound determination becomes part of the next field.
 
 ## Functional field and the operating entry
 
-`FACULTY_FIELD.json` connects the project's represented functions to their
+`FACULTY_FIELD.json` connects the kernel's represented functions to their
 operating knowledge. The entry is `skills/maios-project-system/SKILL.md`;
 its knowledge and the pertinent competences make these functions usable.
 `PROJECT_ENTITY_PROFILE.json` describes startup and host requirements.
 
 Use the field when it helps discover or compose a capacity. When the pertinent
 competence is known, let it act directly from the real situation. The field
-describes currently represented functions. The project can acquire
+describes currently represented functions. The kernel can acquire
 knowledge, compose existing competences or form a new capacity when its work
 makes that useful. Integrate the learned difference in the competence that
-will use it, and keep its knowledge reachable through the project's own entry.
+will use it, and keep its knowledge reachable through its own entry.
 
 ## Constructed context and projected intent
 
@@ -112,7 +119,7 @@ These are coupled relations in ordinary work, not just onboarding stages.
 
 An explicit request contributes a determination to that context. Where intent
 is inferred, retain its basis and keep it correctable; saving the inference
-does not make it an operator statement. A project can yield a useful movement
+does not make it an operator statement. A living context can yield a useful movement
 without another prompt. In a genuinely indeterminate field, illumination or
 non-collapse can be the faithful result. Never invent a goal to fill a schema.
 

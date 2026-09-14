@@ -2,7 +2,7 @@
 
 ## Source owner
 
-The 4.1.2 product source is this `maios-project-kernel` repository. Native
+The 4.5.0 candidate source is this `maios-project-kernel` repository. Native
 methods and retained generated inputs are composed through explicit product
 mappings and source-bound receipts. The generated `package/` projection does
 not import a prepared website payload, Form state, private compiler source,
@@ -10,12 +10,11 @@ production-environment configuration, credentials, runtime state or lifecycle
 hooks. Version history remains in Git and `CHANGELOG.md`, outside the living
 package topology.
 
-The retained Project Meta-Faculty supplies an open functional coverage
-map. Its generated entity profile is translated into the package's open,
-deferred owner-native entry relation; its fixed primary/support palette is not
-copied into the living competence field. The owner-native crosswalk binds all
-18 neutral families to the 15 existing MAIOS faculties and their resolvable
-installed entries.
+The retained Project Meta-Faculty and crosswalk preserve historical formation
+inputs. The current builder translates the entity profile into the product's
+entry relation, including its context-wide purpose and discretionary startup.
+The live faculty field and competence entries are maintained by this repository;
+they do not require the historical map or crosswalk during installed use.
 
 The shared `PROJECT_KERNEL_FAMILY_CONTRACT.json` remains exact at family
 version 3.0.0. The autonomous product's discretionary entry is declared in the

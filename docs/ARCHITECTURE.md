@@ -86,6 +86,12 @@ projection cannot decide meaning, relevance, quality, or authority.
 
 ## Stable boot and living context
 
+The kernel can operate without a project. Context, source understanding,
+formation, learning and continuation participate in an inquiry, domain, ongoing
+activity or project. The product includes project-startup competences for that
+situated contribution. Historical `project/` paths and `maios-project-*` skill
+identifiers are compatible local addresses, not a requirement to create a project.
+
 `AGENTS.md` connects the host to the system competence and its permanent relation.
 `START_HERE.md` orients the coder at startup and reentry; the system skill owns
 operation. The existing `SYSTEM_KERNEL.md` is the coder's operating compendium,

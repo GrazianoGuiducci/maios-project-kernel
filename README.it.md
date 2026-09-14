@@ -1,37 +1,45 @@
 # MAIOS Project Kernel
 
-MAIOS Project Kernel dà a un progetto e al suo agente AI di sviluppo un kernel
-operativo condiviso: conoscenza e metodi per comprendere la situazione, svolgere
-lavoro utile, sviluppare competenze e continuare mentre il progetto cambia.
+MAIOS Project Kernel porta a un agente AI un kernel operativo che evolve:
+conoscenza e metodi per comprendere il presente, svolgere lavoro utile,
+formare competenze e continuare da ciò che apprende.
 
-Il progetto conserva le ragioni delle decisioni, le fonti che le sostengono e
+Il kernel è autopoietico: la sua attività può riformare conoscenza, competenze
+e organizzazione. Può operare in un'esplorazione, un dominio, un'attività in
+corso o un progetto. MAIOS comprende competenze per avviare e sviluppare
+progetti, che partecipano quando questo è il lavoro da svolgere.
+
+Conserva le ragioni delle decisioni, le fonti che le sostengono e
 il sapere acquisito nel lavoro. Un'altra istanza può recuperare quel contesto
 e proseguire senza attribuirsi l'esperienza della precedente come memoria personale.
 
-Versione del prodotto: **[4.1.2](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
+Versione del prodotto: **[4.5.0](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
 Python **3.10 o successivo** · [Licenza MIT](LICENSE)
 
 [English](README.md)
 
 ## Cosa rende possibile
 
-- Comprendere un progetto nuovo o esistente attraverso fonti reali, intento,
+- Comprendere il contesto presente attraverso fonti reali, intento,
   vincoli e possibilità aperte.
 - Raggiungere, comporre o formare le competenze utili al lavoro. Intento,
   conoscenza, risultati riusciti e nuove possibilità possono cambiare ciò che
   vale la pena sviluppare; apprendere non richiede prima un errore.
 - Collegare ragioni, decisioni e conseguenze, riportando l'apprendimento
   riusabile nei metodi che devono cambiare.
-- Continuare fra sessioni e agenti che collaborano attraverso il sapere del
-  progetto, preservando il lavoro corrente e le ragioni della sua direzione.
+- Formare skill, minikernel di dominio o un altro kernel situato attraverso
+  la facoltà interna di formazione, trasferendo sapere utile e capacità di
+  apprendere e formare ancora.
+- Continuare fra sessioni e agenti che collaborano attraverso il sapere locale,
+  preservando il lavoro corrente e le ragioni della sua direzione.
 
 KA mantiene aperto il campo delle possibilità; FDLA corregge le distorsioni
 mentre il lavoro prende forma; Meta_Skill riconosce, compone e sviluppa
 competenze. Queste funzioni agiscono insieme attraverso l'agente e le fonti
-del progetto. Il [compendio del Kernel](knowledge/KERNEL.md) ne spiega
+effettive. Il [compendio del Kernel](knowledge/KERNEL.md) ne spiega
 significato e funzionamento.
 
-## Inizia dal tuo progetto
+## Inizia dal tuo contesto
 
 La distribuzione pronta da installare è in [`package/`](package/). Chiedi al coder:
 
@@ -43,7 +51,8 @@ Poi leggi lo START_HERE.md installato e accompagnami nel primo utilizzo.
 
 `install.py` mostra un'anteprima e applica l'installazione. Riconosce automaticamente
 come gestire la cartella scelta e preserva il lavoro presente. Lo `START_HERE.md` installato
-introduce il kernel e il contesto corrente del progetto.
+introduce il kernel e il contesto presente. Esplorare e comprendere possono già
+essere il primo lavoro utile; un progetto si inizializza quando serve.
 
 Installer e strumenti locali richiedono Python 3.10 o successivo e nessun
 pacchetto Python di terze parti. La guida di
@@ -53,14 +62,14 @@ anteprima/applicazione, conflitti e disinstallazione; la
 
 ## Lavorare, apprendere e rientrare
 
-L'agente installato usa il contesto del progetto e le competenze pertinenti
+L'agente installato usa il contesto vivo e le competenze pertinenti
 per formare un risultato. Nuova conoscenza, un approccio riuscito, una
 possibilità o una correzione possono cambiare i metodi usati in seguito.
-Il progetto conserva le ragioni utili e il punto da cui continuare, senza
+Il kernel conserva le ragioni utili e il punto da cui continuare, senza
 richiedere di rileggere l'intera conversazione.
 
 `START_HERE.md` è l'ingresso stabile. I corpi vivi delle competenze possiedono
-i metodi; stato e conoscenza del progetto portano il contesto che cambia.
+i metodi; stato e conoscenza locale portano il contesto che cambia.
 Gli strumenti locali comprendono `status`, `configuration-status`,
 `competence-status`, `learning-status` e `operating-status`; la
 [guida d'uso](docs/USAGE.it.md#funzionamento-locale-al-progetto) mostra come richiamarli.
@@ -110,9 +119,9 @@ osservato da parte di ogni host o modello.
 Test sorgente e verifica della distribuzione coprono integrità del pacchetto,
 meccaniche di installazione e recupero, instradamento e contratti dello stato
 locale. Non dimostrano che il modello destinatario comprenda, usi o assimili
-i metodi. Le [evidenze della 4.1.2](docs/RELEASE_4.1.2_EVIDENCE.md) conservano
-le osservazioni datate; le [note di release](docs/RELEASE_4.1.2.md) ne spiegano
-le novità.
+i metodi. La [preparazione della 4.5.0](docs/RELEASE_4.5.0.md) conserva
+le novità del candidato, le verifiche tecniche e l'ingresso per la revisione
+con il modello ricevente.
 
 ## Studiare, contribuire o costruire
 

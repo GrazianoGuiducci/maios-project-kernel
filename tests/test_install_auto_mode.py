@@ -3,12 +3,56 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
+from unittest.mock import patch
 
 import test_builder_installer_runtime as base
 from maios_project_kernel import installer
 
 
 class AutomaticInstallationTests(base.DistributionFixture):
+    def test_install_into_the_coders_empty_working_directory(self):
+        target = self.base / 'active-workspace'
+        target.mkdir()
+        identity = target.stat().st_ino
+        plan = self.preview(target, 'active-workspace-plan')
+        result = subprocess.run(
+            [sys.executable, '-X', 'utf8', '-B', str(self.distribution / 'install.py'), 'apply',
+             '--plan', str(self.base / 'active-workspace-plan.json')],
+            cwd=target, capture_output=True, text=True, encoding='utf-8')
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(target.stat().st_ino, identity)
+        receipt = installer.current_receipt(target)
+        self.assertEqual(receipt['mode'], 'new_repository')
+        self.assertTrue(installer.verify_installation(target, receipt)['valid'])
+        repeated = self.preview(target, 'active-workspace-repeated')
+        self.assertEqual(repeated['status'], 'idempotent')
+        self.assertEqual(repeated['mode'], plan['mode'])
+
+    def test_empty_directory_recovers_partial_install_without_losing_new_work(self):
+        target = (self.base / 'interrupted-empty').resolve()
+        target.mkdir()
+        identity = target.stat().st_ino
+        plan = installer.make_plan(self.distribution, target, 'auto', 'opencode')
+        real_copy = installer.copy_entry
+        copied = []
+
+        def interrupted_copy(root, receiving, entry):
+            if copied:
+                (target / 'operator-note.txt').write_bytes(b'Keep this new work')
+                raise OSError('interrupted installation')
+            record = real_copy(root, receiving, entry)
+            copied.append(entry['destination'])
+            return record
+
+        with patch.object(installer, 'copy_entry', side_effect=interrupted_copy):
+            with self.assertRaisesRegex(OSError, 'interrupted installation'):
+                installer.apply_plan(self.distribution, plan)
+        self.assertEqual(target.stat().st_ino, identity)
+        self.assertEqual((target / 'operator-note.txt').read_bytes(), b'Keep this new work')
+        self.assertFalse((target / copied[0]).exists())
+        self.assertFalse((target / '.maios/receipts/install/PENDING.json').exists())
+        self.assertIsNone(installer.current_receipt(target))
+
     def preview(self, target, name):
         path = self.base / (name + '.json')
         result = subprocess.run(

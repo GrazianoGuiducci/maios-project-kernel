@@ -8,9 +8,9 @@ description: Form, compose or evolve the competences a living context calls for,
 This is the portable generative faculty of MAIOS Project Kernel. It knows how
 to turn relevant sources and experience into a capacity that can act and learn.
 It also acts on its own method when formation teaches a reusable difference.
-It carries the functional inheritance of Meta_Skill in this project's form.
+It carries the functional inheritance of Meta_Skill in this receiving kernel.
 
-Keep the concrete work active. Read the current project state, the exact
+Keep the concrete work active. Read the current state, the exact
 sources involved and `.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md` only to
 the depth that changes the present result.
 
@@ -66,7 +66,7 @@ method it now needs. A changed label alone does not provide the capacity.
 ## Give the capacity an operating body
 
 Let the forming competence understand its situated contribution within the
-project's intent and organization: what its work makes possible, which sources
+present intent and organization: what its work makes possible, which sources
 and means it can use, and how its result changes the receiving work. Reach the
 shared project knowledge through `.maios/kernel/KNOWLEDGE_CONTINUUM.md` and
 the distributed relations in `.maios/kernel/SYSTEM_KERNEL.md` when that depth
@@ -90,7 +90,7 @@ receiving purpose changes what the reader selects: it reaches the passages
 that explain how and why, and carries that know-how with its source relation.
 Formation then uses it to make the new capacity operable. Preserve the reading
 lesson in the reader and the formation lesson here when it changes this method.
-The useful result is determined through their contribution to the project;
+The useful result is determined through their contribution to the present work;
 neither a longer extract nor an extra competence is necessarily the change.
 
 Let the useful relation determine its owner and depth. Reuse, composition,
@@ -157,6 +157,44 @@ relations; the creator's directory layout or compiler coverage is not its limit.
 When persistent discovery benefits from an index, connect the body to
 `.maios/competences/INDEX.json` through its supported transition. Learning and
 direct use of a reachable body do not wait for index admission. The host reads the living project-owned body through its native entry. A readable competence does not require Python to be understood or used.
+
+## Form another kernel through this one
+
+When another context benefits from its own operating form, understand what the
+recipient needs to know, do and retain. It may need a neutral nucleus, a domain
+mini-kernel, a skill or a composition of competences. Let that useful relation
+determine the form. A repository, project plan or predetermined domain is not
+required. An already useful competence can deepen before another owner is formed.
+
+Carry the founding relations and the practical knowledge that make them usable:
+how the recipient understands sources and intent, recognizes possibilities,
+corrects its own distortions, acts through available means, and teaches acquired
+knowledge to the competence that will use it. Preserve the reasons and source
+scope of what is inherited. Translate situational assumptions for the receiving
+context; the creator's current task, private state and tools do not become the
+recipient's circumstances. Latent knowledge may remain reachable before use.
+
+Give the recipient an entry its actual agent can read, working knowledge at
+that entry or reachable from it, and a place where meaningful experience can
+continue. For a small inquiry one skill and its guide may carry this relation;
+an independent kernel may need cooperating bodies, shared sources and its own
+continuity. Match helpers and host entries to the receiving means. An external
+compiler is one possible construction tool; the formation knowledge here can
+be exercised directly by the receiving agent.
+
+For example, understanding how a group interprets incoming requests may form
+a small domain kernel. Its entry reaches that group's sources, the methods for
+understanding requests and the shared reasons behind decisions. A later source
+can change those methods or reveal another useful competence. Its own formation
+faculty can make that change and learn from it. Carry the generative method as
+working knowledge, so the recipient can reform the organization it inherited.
+
+Use the resulting body in its context and follow what that use changes. A domain
+lesson belongs to the receiving competence. A lesson about how knowledge was
+selected, translated or made reachable can change this formation method too.
+Keep the original source, its translation and the independently evolving
+recipient distinguishable while their useful learning can return to each other.
+This is how formation applies to itself through the next real movement.
 
 ## Competences as living sources of awareness
 
