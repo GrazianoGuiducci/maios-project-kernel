@@ -45,6 +45,24 @@ in this context while keeping foreign workflow, taxonomy, metrics and provider
 assumptions separate. Acquiring knowledge can itself reveal another intent or
 possibility; it is not a compulsory research phase or limited to fixing failure.
 
+## Recompose and consolidate acquired knowledge
+
+When a body of knowledge needs consolidation, exercise three passages:
+acquire its meaning from qualified sources; recompose the relations in the
+field changed by that acquisition; consolidate what now changes the continuing
+method. Recomposition may reveal a different question, another source or a
+useful capacity that the first reading could not recognize. Consolidation
+integrates that difference, resolves competing active instructions and removes
+duplication while preserving useful knowledge and its reasons. These passages
+serve the work that needs them; they are not three mandatory reviews of every
+action or a request for approval of internal learning.
+
+Let the acquired knowledge improve how this competence finds and understands
+further knowledge. Its source selection, access tools, examples and present
+organization can evolve too. When its object becomes the formation, composition
+or evolution of other competences, develop that meta-competence through the
+method it now needs. A changed label alone does not provide the capacity.
+
 ## Give the capacity an operating body
 
 Let the forming competence understand its situated contribution, including the
@@ -83,6 +101,14 @@ Form enough know-how for the next capable assistant to conduct the work:
 - how it produces a useful result, including important practical distinctions;
 - how it notices distortion, revises its framing and learns from the result;
 - what makes it pertinent again, and where the knowledge and continuation live.
+
+Give each continuing competence a reachable internal guide: accumulated
+knowledge, reasons, useful occurrences, method corrections and open relations
+at the depth its work needs. Its existing method and references may already
+carry this function. Let the system's live continuation reach that depth;
+update meaningful knowledge during work so compact does not leave only a
+status or a list of paths. The project-local
+`.maios/kernel/KNOWLEDGE_CONTINUUM.md` connects these guides and project reentry.
 
 These relations need no fixed template. For a reusable skill, place the body
 under `skills/<situated-name>/SKILL.md` and include a discoverable name and

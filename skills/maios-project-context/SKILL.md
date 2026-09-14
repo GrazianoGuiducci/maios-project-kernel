@@ -53,6 +53,20 @@ and history without treating either as a timeless instruction.
 
 ## Turn information into working knowledge
 
+Reach complementary sources when the loaded context covers only part of the
+system: its founding relations, competence knowledge, logical mechanisms,
+state owners, tools and receiving surfaces may live in different places.
+Follow what each contributes and which relevant relation remains outside its
+coverage. A skill catalogue or one code module cannot stand for that whole.
+Use this understanding to change the question or composition; do not turn it
+into an exhaustive inventory before ordinary work can proceed.
+
+Acquire enough of a source to understand its native meaning. An excerpt,
+truncated output or familiar filename may hide the relation that matters.
+Follow its continuation, deeper reference or actual consumer. When the means
+of access are the limiting factor, improve those means while retaining source
+identity and context; additional copies of the same partial view add no depth.
+
 Include the position from which the present interpretation is formed. Separate
 what this instance observed from what it recovered in a source or inferred from
 another actor's record. Relate that knowledge to the current means and the

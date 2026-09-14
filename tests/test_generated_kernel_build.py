@@ -78,6 +78,20 @@ class GeneratedKernelBuildTests(unittest.TestCase):
         self.assertTrue(any("generated delivery identity" in error
                             for error in builder.verify_distribution(ROOT, output)["errors"]))
 
+    def test_delivered_composition_preserves_a_general_useful_result(self):
+        from maios_project_kernel import operating
+        for relation in ('first_useful_result', 'proof_required'):
+            with self.subTest(relation=relation):
+                result = operating.compose(
+                    ROOT / 'package/payload',
+                    {'requested_result': 'Understand how this project can use its kernel',
+                     'relations': [relation]},
+                    operating_state_override={'learning_relations': []})
+                candidate = next(item for item in result['known_candidates']
+                                 if item['id'] == 'result-formation-and-first-proof')
+                self.assertEqual(candidate['result_contract'], 'SituatedUsefulResult')
+                self.assertIn('When a hypothesis needs an experiment', candidate['proof'])
+
     def test_modified_plan_or_blocked_result_cannot_write_output(self):
         path, digest = self.save()
         self.plan["items"][0]["content"] += "\nchanged"

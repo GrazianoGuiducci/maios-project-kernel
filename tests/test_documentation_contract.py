@@ -2,20 +2,25 @@
 import json
 from pathlib import Path
 import re
+import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 
 
 class DocumentationContractTests(unittest.TestCase):
-    def test_feedback_methods_are_delivered_from_current_native_sources(self):
-        for source, delivered in [
-            ('kernel/UPDATE_CONTINUITY.md', 'package/payload/.maios/kernel/UPDATE_CONTINUITY.md'),
-            ('skills/maios-project-system/SKILL.md', 'package/payload/skills/maios-project-system/SKILL.md'),
-        ]:
-            with self.subTest(source=source):
-                self.assertEqual((ROOT / source).read_text(encoding='utf-8'),
-                                 (ROOT / delivered).read_text(encoding='utf-8'))
+    def test_selected_methods_are_delivered_from_current_native_sources(self):
+        # The retained plan can be internally consistent while carrying old
+        # methods. Compare the delivered bodies with their current owners too.
+        from maios_project_kernel import generated_kernel
+        projection = json.loads((ROOT / 'release/PROJECTION.json').read_text(encoding='utf-8'))
+        for row in projection['files']:
+            if not generated_kernel.owns_source(row):
+                continue
+            with self.subTest(source=row['source']):
+                self.assertEqual((ROOT / row['source']).read_text(encoding='utf-8'),
+                                 (ROOT / 'package' / row['destination']).read_text(encoding='utf-8'))
 
     def test_reader_routes_reach_their_source_documents(self):
         routes = {

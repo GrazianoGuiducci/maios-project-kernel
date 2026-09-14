@@ -58,6 +58,20 @@ when discovery is needed. A known competence can act without another map read
 or a matching label. Ask only for missing information that changes faithful
 work; let the actual result and consequences correct context and method.
 
+Explain the kernel through what it lets the project understand and do now.
+Connect the relevant knowledge, reason and consequence in the actual work.
+A state transition is one mechanism in that relation; its receipt alone does
+not describe the whole capacity. Choose words from the sources and the result
+being formed. Include test scope or a comparison when it changes a concrete
+claim or use; an imagined external judgment does not determine the project
+method or require an unsolicited experiment. Preserve uncertainty where it
+matters to the meaning or decision.
+
+When the kernel itself is the object, use the distributed organization in
+`.maios/kernel/SYSTEM_KERNEL.md` to follow logical elements and their consumers
+as well as competence bodies. The context competence deepens acquisition; formation
+recomposes and consolidates the knowledge that changes the next capable use.
+
 ## Preserve what changes the next movement
 
 Teach reusable understanding to the closest competence's knowledge body and

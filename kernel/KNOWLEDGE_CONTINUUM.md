@@ -72,6 +72,29 @@ provides further study through `knowledge/KERNEL.md` and contribution guidance.
 If a remote source is unavailable, continue with the available qualified
 knowledge and retain any material missing relation.
 
+## Competence guides and shared continuation
+
+Each continuing competence carries an internal guide through its existing
+body and references: what it understands, why its method works here, what use
+has changed and what could become pertinent next. Accumulate the meaningful
+difference while working. Preserve depth and source relations in that owner;
+keep the live margin short enough to recover the current movement.
+
+The system guide connects these owners and the project's shared continuation.
+This document supplies that common method; the system competence and the
+project's current context reach the pertinent knowledge. At reentry, recover
+the acting competence's guide and the last faithful reason, then let current
+sources revise the next movement. A guide can change its organization as its
+knowledge grows. Neither a uniform new file nor a second state store is needed.
+
+Knowledge can be distributed through a principle, logical relation, protocol,
+configuration, tool or native entry as well as a skill body. When understanding
+or transferring the kernel, follow how these elements participate together:
+what changes context, what carries a determination, what consumes it and how
+the result changes later work. Retain the source and useful connections in
+the relevant guide. The map remains extendable as other relations become
+visible; its present coverage does not define the kernel's possibilities.
+
 ## Preserve the movement before context is lost
 
 Connect each useful decision to the source-bound reason that made it pertinent
