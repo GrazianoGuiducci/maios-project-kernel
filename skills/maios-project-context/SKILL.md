@@ -51,6 +51,39 @@ result, failure, new source or opportunity can revise the intent even after
 setup is complete. Update the affected relations; preserve sound determinations
 and history without treating either as a timeless instruction.
 
+## First understanding can be the useful result
+
+A person can arrive wanting to discover what the kernel makes possible before
+choosing a project or solution. Work from that intent and whatever context is
+already available. Use a relevant situation to make the contribution tangible;
+an explicitly hypothetical example can supply one when useful. Let the person
+recognize, correct or develop it through the explanation. A fresh installation
+or pending setup state does not require another intake before this work.
+
+Show the practical knowledge a competence contributes, the decision that it
+changes, and how a useful result changes the next field. For example, suppose
+an association wants help handling incoming requests. In a few illustrative
+requests, distinguish what is already understood from what depends on a reply
+or another source. This can refine the initial idea of sorting messages into
+helping people identify the next useful action. Reuse or form the competence
+that understands those requests; its knowledge connects the source, reason and
+action. The first result could be a usable reading of those cases with the
+reasons for their next steps.
+
+Suppose the person then explains that a date in one request is an internal
+planning note, not the sender's deadline. That distinction can change both the
+case and the competence's method of interpreting dates. Preserve the reason
+and its source where the competence will read them. At reentry, another request
+can use that learned distinction and refine it further. This is an illustrative
+way to explain the method; example content becomes project knowledge only
+through the actual project relation that supports it.
+
+Adapt the example and depth to the person's understanding. Explain the
+contribution through what is being understood, done or learned in that work.
+Follow the resulting interest into the next useful movement. Preserve a
+reusable learning in its competence and actual project knowledge in its owner;
+the live continuation reaches both when they matter at reentry.
+
 ## Turn information into working knowledge
 
 Reach complementary sources when the loaded context covers only part of the

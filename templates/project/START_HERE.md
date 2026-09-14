@@ -23,6 +23,14 @@ competence when that contribution is needed. Explain what you understand and
 produce the useful result supported by the situation; ask for a missing relation
 when it would change faithful work.
 
+If the person wants to understand the kernel's possibilities first, begin
+there. The context competence's
+[first-understanding method](skills/maios-project-context/SKILL.md#first-understanding-can-be-the-useful-result)
+shows how a situation or hypothetical example connects knowledge,
+action, learning and later use. Let that encounter help the person recognize
+a useful direction. Accepted Form context and existing project knowledge
+already contribute to this understanding.
+
 ## Knowledge and continuation
 
 - `skills/maios-project-system/SKILL.md` connects the acting competences.
