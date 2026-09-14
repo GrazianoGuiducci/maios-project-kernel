@@ -67,7 +67,7 @@
       {
         "id": "body-0",
         "path": "payload/.maios/kernel/SYSTEM_KERNEL.md",
-        "sha256": "bba4b95f4c32190a9f7f5b2f32def98a3185ec7c5ea93c2863782b52ccfed11c",
+        "sha256": "1161337ad00468108964b20f9d8104a0914a708f77535c19992bb08a246803e8",
         "source_refs": [
           "source-0"
         ]
@@ -83,7 +83,7 @@
       {
         "id": "body-10",
         "path": "payload/skills/maios-project-competence-formation/SKILL.md",
-        "sha256": "3aea9547f36e1be588e027318c4e862a60c380aebcb2d1a08a17e4349c766d4b",
+        "sha256": "787c29a219af821e92e3b224075630202040a1d089e22cd9149c70f4b4f41cd1",
         "source_refs": [
           "source-10"
         ]
@@ -123,7 +123,7 @@
       {
         "id": "body-3",
         "path": "payload/skills/maios-project-system/SKILL.md",
-        "sha256": "534d0549b70d24fde55ccabb6f8711507bb15063d7d4897103d309e4b40fc97a",
+        "sha256": "e8f34d2e5a0266a10328a093a483e1f8b315c73130a850167ad3765639decbd1",
         "source_refs": [
           "source-3"
         ]
@@ -243,24 +243,24 @@
     "compiler_version": "0.4.0.dev5",
     "identity_scope": "selected generated content; product source identity describes the builder base",
     "input_hashes": {
-      "project_model_hash": "02ba4ee70951092b2c7549a1d7cfee5b5c40b8a652831b53b921cbdd7ad6b119",
-      "seed_spec_hash": "387b905a5c64ccc3414f7682797ce8124113c330714c030dff3d1439bfb78180",
-      "source_manifest_hash": "c41567d11247c942be6ca9ab9a266279b2dfc79ee684f55b8dbf6cbc55c54c0d"
+      "project_model_hash": "0d44481cc8e3bf7cef782025b8d0b171485cf877956be7da1a8225f217dc4c4a",
+      "seed_spec_hash": "d160fd575001e7de6fc7b337ea11dddca0d0263770b9d40460c4499170086b82",
+      "source_manifest_hash": "bcbe9a18ff5c1dc80b49f75bfa030dab486e0f11444ae6d09f07a00739c345f9"
     },
     "model_use_observed": false,
-    "plan_id": "a56c24548d882b893e9342b686f748b9ed04756948a1002e94fabf7d07485ed8",
-    "plan_sha256": "d6b38633bc9b0b63fd17eaed87267f0a9f62107b492ebfc974f740761b8f97ec",
+    "plan_id": "08bf91611863e04e5b37ef9d4739f03e04fc0c667365e0630e084b59a808bf57",
+    "plan_sha256": "fea6873e3c87491591af739754f6792f1088aa526c6fb9c896e65a865872af16",
     "release_selection": {
       "compiler": {
         "source_revision": "334a9d33c12d61ba826d41b25f604af18441e967",
         "version": "0.4.0.dev5"
       },
       "plan": "release/generated/generation-plan.json",
-      "plan_sha256": "d6b38633bc9b0b63fd17eaed87267f0a9f62107b492ebfc974f740761b8f97ec",
+      "plan_sha256": "fea6873e3c87491591af739754f6792f1088aa526c6fb9c896e65a865872af16",
       "schema": "maios.generated-kernel-selection.v1",
       "source_basis": {
-        "commit": "243febf469348fa18761d278e78119e6f6a0c87a",
-        "corpus_identity": "0cee2ca1d85b5c2855061c81fc5a617829fadcb170d6971dab269722a82461d8",
+        "commit": "c0c7633a2a0c204e529dce9ff90db7587b053ad9",
+        "corpus_identity": "10475ce2914d9439e6fa4eaf93e772055f908a1c39e8107938955219be7ddd60",
         "identity_scope": "canonical path and normalized body hashes of selected committed methods",
         "repository": "GrazianoGuiducci/maios-project-kernel"
       }
@@ -309,7 +309,7 @@
     "projection_sha256": "ff047749525c32715fee072140fead38489479d240fe8b6e142fbfe22c4faf7d",
     "revision_claim": "content_addressed_source_tree",
     "source_manifest_sha256": "54ef50c3bf319eb89f30af8b9102da988948c731a48326be9ed7880a59fe9ce6",
-    "tree_sha256": "f8f88e403669818c8976cacd75cde155e54ae7418d039bae4452fa124a3835a9"
+    "tree_sha256": "452224fed9c459a1f8fd2b6a9348d051f03f228d79c4a61e71675f45d9723745"
   },
   "target_modes": [
     "new_repository",

@@ -24,7 +24,7 @@
     {
       "bytes": 11749,
       "path": "MANIFEST.json",
-      "sha256": "5c0f78334ff65ea662255650b769c05512629dc9720045b3658bff9763ae68e8"
+      "sha256": "bc23b05b63990e8d375a8b0d783e1b5e1efea3ce76a030fae8b0f43e4af95700"
     },
     {
       "bytes": 1030,
@@ -117,9 +117,9 @@
       "sha256": "a3e1c1ccd0449c9afc5acb55cbc04f46923254c5b637a9f3cbabdf3fbfcb96db"
     },
     {
-      "bytes": 25929,
+      "bytes": 26477,
       "path": "payload/.maios/kernel/SYSTEM_KERNEL.md",
-      "sha256": "bba4b95f4c32190a9f7f5b2f32def98a3185ec7c5ea93c2863782b52ccfed11c"
+      "sha256": "1161337ad00468108964b20f9d8104a0914a708f77535c19992bb08a246803e8"
     },
     {
       "bytes": 8656,
@@ -242,9 +242,9 @@
       "sha256": "69ac733f6db26d68e258d15288b8b55fb947821af9721fbde14ee71919411b60"
     },
     {
-      "bytes": 13153,
+      "bytes": 14763,
       "path": "payload/skills/maios-project-competence-formation/SKILL.md",
-      "sha256": "3aea9547f36e1be588e027318c4e862a60c380aebcb2d1a08a17e4349c766d4b"
+      "sha256": "787c29a219af821e92e3b224075630202040a1d089e22cd9149c70f4b4f41cd1"
     },
     {
       "bytes": 8818,
@@ -267,9 +267,9 @@
       "sha256": "e59c6ccc4586d7e7c7e451881795c1d958bde3d1173a8e8a7dd23836f0fbfc29"
     },
     {
-      "bytes": 7959,
+      "bytes": 8334,
       "path": "payload/skills/maios-project-system/SKILL.md",
-      "sha256": "534d0549b70d24fde55ccabb6f8711507bb15063d7d4897103d309e4b40fc97a"
+      "sha256": "e8f34d2e5a0266a10328a093a483e1f8b315c73130a850167ad3765639decbd1"
     },
     {
       "bytes": 177,

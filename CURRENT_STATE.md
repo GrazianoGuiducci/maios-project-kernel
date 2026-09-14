@@ -2,6 +2,44 @@
 
 ## Current readback — 2026-09-14
 
+The working package now teaches each competence to understand its contribution
+within the project's intent and organization. Formation carries a practical
+source-reading example: what the receiving capacity needs can change what is
+acquired and where learning continues. The system entry makes this relation
+available in ordinary project work; SYSTEM_KERNEL supplies its shared meaning.
+Competence guides preserve the discovered connection and reasons during work,
+reaching common knowledge as it evolves.
+
+Native corpus `c0c7633a2a0c204e529dce9ff90db7587b053ad9` was renewed through
+compiler `334a9d33c12d61ba826d41b25f604af18441e967`. The plan still carries
+18 bodies and 7 competences; the distribution has 62 files, including 51 payload
+files. Its content delta is exactly the three selected method bodies plus
+generated identity files. Other payload content, installer and runtime retain
+their preceding bytes. The equality check detected all three stale delivered
+bodies before renewal and passes on the rebuilt package.
+
+The local 112-test suite passes with two platform skips, including delivery,
+installation, learning continuity and recovery checks. Build and distribution
+verification pass. Version remains 4.1.2 and family 3.0.0. This result is the
+source and working package; the published artifact and existing installations
+retain their own state.
+
+## Current next
+
+Continue through work that uses the formed method. A local discovery can change
+what the whole needs; deepen or recompose the responsible methods and their
+actual consumers through that consequence, preserving the reason during work.
+The renewal of this corpus is complete. Further source knowledge or receiving
+use can select the next change; repeating the same production movement adds
+nothing to the present result.
+
+## Historical chronology
+
+Dated sections below preserve their original scope. Their then-current next
+steps do not reopen completed work.
+
+## Earlier knowledge and morphology renewal — 2026-09-14
+
 The working distribution now carries deeper knowledge acquisition, distributed
 kernel organization, three-passage consolidation, cumulative competence guides
 and source-led explanation. Context, formation, system and knowledge continuity
@@ -21,18 +59,13 @@ verification passes, and two builds produce identical bytes. Version remains
 4.1.2 and family 3.0.0. This is the evolved source and working package; the
 published release artifact and existing installations retain their own state.
 
-## Current next
+### Then-current next
 
 Continue from the knowledge now incarnated in the receiving methods. When
 further source-kernel relations or receiving use change understanding, deepen
 the responsible method and its actual consumers. The generative continuation
 can carry that knowledge into the two package routes and the selected future
 release; the current source result is not a reason to repeat this renewal.
-
-## Historical chronology
-
-Dated sections below preserve their original scope. Their then-current next
-steps do not reopen completed work.
 
 ## Source cleanup readback — 2026-09-13
 

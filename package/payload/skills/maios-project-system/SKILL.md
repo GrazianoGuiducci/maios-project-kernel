@@ -67,10 +67,15 @@ claim or use; an imagined external judgment does not determine the project
 method or require an unsolicited experiment. Preserve uncertainty where it
 matters to the meaning or decision.
 
-When the kernel itself is the object, use the distributed organization in
-`.maios/kernel/SYSTEM_KERNEL.md` to follow logical elements and their consumers
-as well as competence bodies. The context competence deepens acquisition; formation
-recomposes and consolidates the knowledge that changes the next capable use.
+Keep the project's intent and shared understanding present inside the work of
+each pertinent competence. A local result can expose a connection that changes
+another method, the useful result or the organization. Follow its contribution
+through the sources and receiving work; `.maios/kernel/SYSTEM_KERNEL.md`
+explains the distributed relations, including logical elements and consumers.
+Use the knowledge already understood and reach further depth when the new
+connection calls for it. Context deepens acquisition; formation recomposes
+what must become capable and carries the learned method into its next use.
+This same movement can act on the kernel itself when its organization changes.
 
 ## Preserve what changes the next movement
 

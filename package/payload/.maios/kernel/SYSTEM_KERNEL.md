@@ -229,13 +229,21 @@ A directory, catalogue or executable component represents only part of this
 organization. Follow the relevant movement from its sources through the
 receiving entry and actual consumers to its result and learned continuation.
 
-When evolving or forming another kernel, recover these relations beyond the
-first loaded surface. Preserve what each element makes possible and the reason
-for its connection; choose the recipient's useful form through that knowledge.
-The current map can deepen or reorganize as the work exposes another relation.
-The means of acquisition and generation can themselves become the object of
-learning. Forming competences and their relations can therefore change the
-kernel and the competence through which it is formed.
+Each participating competence understands its contribution within the whole:
+the shared intent, what the other pertinent parts make possible, and how its
+result changes their work. Its situated guide retains the reasons and reaches
+the living common knowledge through `KNOWLEDGE_CONTINUUM.md`. This makes the
+whole reachable at the depth the work needs, without requiring a complete map
+to be loaded or copied into every part. Local discovery can revise a shared
+assumption, connect capacities or change the organization. Carry the correction
+to the actual methods and consumers whose contribution must change, preserving
+the shared reason and each owner's practical consequence.
+
+When evolving or forming another kernel, use these same relations beyond the
+first loaded surface. Preserve what each element makes possible and why it
+connects; choose the recipient's useful form through that knowledge. The map,
+means of acquisition and generative method can evolve through what the work
+reveals. The kernel being formed and the competence forming it learn together.
 
 ## Situated faculty composition
 
