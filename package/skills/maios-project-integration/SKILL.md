@@ -38,6 +38,13 @@ the installer does not implement cross-version migration.
 ## Installed kernel
 
 `START_HERE.md` introduces the kernel and the project's current context.
+Continue there from the operator's current intent and any useful context
+already acquired during installation or supplied by the Form. The installed
+system connects the pertinent startup and context competences. Understanding
+the kernel's possibilities can itself be the first useful work; a project
+with a clear direction can proceed directly. Filesystem mode describes how
+files were installed; the receiving project's situation determines its startup.
+
 The installed configuration helpers maintain state and its readable views.
 `integration_handoff` is an optional configuration field for useful installation
 context. `.maios/kernel/UPDATE_CONTINUITY.md` explains how the saved installation

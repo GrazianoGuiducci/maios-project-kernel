@@ -2,8 +2,8 @@
   "schema": "repokernel.seed-spec.v1",
   "version": "repokernel.seed-spec.v1",
   "seed_id": "autonomous-maintained-methods",
-  "source_manifest_hash": "bcbe9a18ff5c1dc80b49f75bfa030dab486e0f11444ae6d09f07a00739c345f9",
-  "project_model_hash": "0d44481cc8e3bf7cef782025b8d0b171485cf877956be7da1a8225f217dc4c4a",
+  "source_manifest_hash": "eafb9d05caa66b0078cdbec67815cfd49ee1b89ca889077adeaad4a3f560605f",
+  "project_model_hash": "8ef20255877a18a6fb9fe03bf8d3f83cbef930164a8ab239b4376224a4cbb6de",
   "canonical_namespace": ".repokernel",
   "project": {
     "name": "MAIOS Project Kernel",

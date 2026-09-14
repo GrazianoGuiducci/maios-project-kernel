@@ -2,6 +2,45 @@
 
 ## Current readback — 2026-09-14
 
+The working package now supports first understanding as useful project work.
+The context competence explains a situated example from initial possibility,
+through a useful result and operator correction, to learned method and reentry.
+New/existing startup and START_HERE reach that same knowledge. Distribution
+integration continues from the current intent and accepted context after
+installation. Startup descriptions now select from the project's history and
+formation, consistently with the existing filesystem/project distinction.
+
+Native corpus `7ac4fb37e9eef860fb4893eae398212f164e4b8d` was renewed through
+compiler `334a9d33c12d61ba826d41b25f604af18441e967`. The plan carries 18
+bodies and 7 competences. The distribution contains 62 files, with 51 payload
+files. The content changes are context, both startup methods, START_HERE and
+both distribution copies of integration, plus generated identities. Runtime
+and installer code retain their preceding bytes.
+
+The 112-test local suite passes with two platform skips. The native/body
+comparison detects the three changed selected methods before renewal and
+passes on the rebuilt package. The new entry links reach their delivered
+knowledge section and both integration entries match their source. Build and
+distribution verification pass. Version remains 4.1.2 and family 3.0.0; this
+is the evolved source and working distribution. Release artifacts and existing
+installations retain their own state.
+
+## Current next
+
+Continue the new-kernel work from the receiving cycle now made reachable.
+Further use or source knowledge can reveal which generative, learning or
+continuation relation still needs a practical passage supplied by the instance.
+Return that passage to the responsible competence and its consumers. The
+first-understanding renewal is complete; the wider product evolution and its
+later delivery routes continue from this result.
+
+## Historical chronology
+
+Dated sections below preserve their original scope. Their then-current next
+steps do not reopen completed work.
+
+## Earlier part/whole method renewal — 2026-09-14
+
 The working package now teaches each competence to understand its contribution
 within the project's intent and organization. Formation carries a practical
 source-reading example: what the receiving capacity needs can change what is
@@ -24,7 +63,7 @@ verification pass. Version remains 4.1.2 and family 3.0.0. This result is the
 source and working package; the published artifact and existing installations
 retain their own state.
 
-## Current next
+### Then-current next
 
 Continue through work that uses the formed method. A local discovery can change
 what the whole needs; deepen or recompose the responsible methods and their
@@ -32,11 +71,6 @@ actual consumers through that consequence, preserving the reason during work.
 The renewal of this corpus is complete. Further source knowledge or receiving
 use can select the next change; repeating the same production movement adds
 nothing to the present result.
-
-## Historical chronology
-
-Dated sections below preserve their original scope. Their then-current next
-steps do not reopen completed work.
 
 ## Earlier knowledge and morphology renewal — 2026-09-14
 

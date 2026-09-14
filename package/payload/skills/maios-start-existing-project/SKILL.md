@@ -1,6 +1,6 @@
 ---
 name: maios-start-existing-project
-description: Activate MAIOS Project Kernel inside an existing project or operating system by preserving its identity, reconstructing its live context, connecting the present host, and making the competences needed by its real work reachable; use after installation into a non-empty or already operating target.
+description: Activate MAIOS Project Kernel inside an existing project or operating system by preserving its identity, reconstructing its live context, connecting the present host, and making the competences needed by its real work reachable; use when joining a project with its own history, knowledge or ongoing work.
 ---
 
 # Start An Existing Project
@@ -27,6 +27,14 @@ Let `maios-project-host-adaptation` connect the current coder when its native
 form is material. Let `maios-project-context` distinguish accepted facts,
 present work, desired change, unknowns and useful possibilities without
 repeating information already owned by the project.
+
+If the person first wants to understand what the kernel contributes, let that
+understanding be the useful movement. Use the context competence's
+[first-understanding method](../maios-project-context/SKILL.md#first-understanding-can-be-the-useful-result)
+on a relevant project situation, making its actual
+knowledge and existing methods participate. The encounter can reveal a useful
+connection or revise the desired change. Accepted Form context and project
+history remain sources for that understanding as the next movement takes shape.
 
 Do not pre-generate a fixed competence sequence. Exercise the competences and
 learning already reachable; prepare owner-specific handoffs from the context;
