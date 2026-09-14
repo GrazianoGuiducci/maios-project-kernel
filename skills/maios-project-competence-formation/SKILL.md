@@ -65,13 +65,33 @@ method it now needs. A changed label alone does not provide the capacity.
 
 ## Give the capacity an operating body
 
-Let the forming competence understand its situated contribution, including the
-sources and means it can actually use and the owner that receives its result.
+Let the forming competence understand its situated contribution within the
+project's intent and organization: what its work makes possible, which sources
+and means it can use, and how its result changes the receiving work. Reach the
+shared project knowledge through `.maios/kernel/KNOWLEDGE_CONTINUUM.md` and
+the distributed relations in `.maios/kernel/SYSTEM_KERNEL.md` when that depth
+changes understanding. Let the competence retain this relation while acting;
+its initial task or local success criterion need not exhaust its contribution.
 Carry the reason for a method choice into its expected consequences, preserving
 observations, conditional consequences, expectations and open possibilities as
 different knowledge. When later work changes that relation, evolve the method
 and the native entry that must reach it. Use the same understanding to correct
 this formation competence; its current template or framing can also be partial.
+
+A connection discovered in the work can change what another competence needs,
+reveal a useful combination or reshape where a function belongs. Follow that
+connection far enough to understand its consequence and let it change the
+participating methods. Each owner carries the practical knowledge it needs;
+their shared meaning and reasons remain reachable from the common sources.
+
+For example, a source-reading competence may return accurate headings while a
+competence being formed needs the method behind them. Understanding that
+receiving purpose changes what the reader selects: it reaches the passages
+that explain how and why, and carries that know-how with its source relation.
+Formation then uses it to make the new capacity operable. Preserve the reading
+lesson in the reader and the formation lesson here when it changes this method.
+The useful result is determined through their contribution to the project;
+neither a longer extract nor an extra competence is necessarily the change.
 
 Let the useful relation determine its owner and depth. Reuse, composition,
 extension and a new body can participate together. A memory, method, function,
@@ -107,7 +127,10 @@ knowledge, reasons, useful occurrences, method corrections and open relations
 at the depth its work needs. Its existing method and references may already
 carry this function. Let the system's live continuation reach that depth;
 update meaningful knowledge during work so compact does not leave only a
-status or a list of paths. The project-local
+status or a list of paths. Preserve the discovered connection, why it changed
+the method and what the resulting work now makes possible while that knowledge
+forms. Reach the living common sources instead of duplicating the whole system
+map in each guide. The project-local
 `.maios/kernel/KNOWLEDGE_CONTINUUM.md` connects these guides and project reentry.
 
 These relations need no fixed template. For a reusable skill, place the body
