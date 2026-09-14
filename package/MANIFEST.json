@@ -59,7 +59,7 @@
       {
         "id": "body-17",
         "path": "payload/.maios/kernel/KNOWLEDGE_CONTINUUM.md",
-        "sha256": "1266b225765c0ee968941d53eaa8f8f6b042425e2212768af9626f6bb0c3cd0a",
+        "sha256": "9fa67dc5a44de6cc724906da596130cfb70d246eed49ac39dcd928b6b9c1e18d",
         "source_refs": [
           "source-17"
         ]
@@ -67,7 +67,7 @@
       {
         "id": "body-0",
         "path": "payload/.maios/kernel/SYSTEM_KERNEL.md",
-        "sha256": "9839b9cbf7f73e10996fe00e9ce5422d31611dc2ec2286689d170f103707df08",
+        "sha256": "bba4b95f4c32190a9f7f5b2f32def98a3185ec7c5ea93c2863782b52ccfed11c",
         "source_refs": [
           "source-0"
         ]
@@ -83,7 +83,7 @@
       {
         "id": "body-10",
         "path": "payload/skills/maios-project-competence-formation/SKILL.md",
-        "sha256": "c4c58a96132cd9545cd6a56fa2c5b68a0a87bdfd6541f94c4fc5e249ca16913c",
+        "sha256": "3aea9547f36e1be588e027318c4e862a60c380aebcb2d1a08a17e4349c766d4b",
         "source_refs": [
           "source-10"
         ]
@@ -91,7 +91,7 @@
       {
         "id": "body-9",
         "path": "payload/skills/maios-project-context/SKILL.md",
-        "sha256": "86ea3920d8321e9a76b632f285fa52db7bb6a5155bbc0a79f36855cf96b8cc27",
+        "sha256": "24852ab5b8241f0fbd172797967adaff0bef81dfdab075131b9342cc80e714f7",
         "source_refs": [
           "source-9"
         ]
@@ -123,7 +123,7 @@
       {
         "id": "body-3",
         "path": "payload/skills/maios-project-system/SKILL.md",
-        "sha256": "bb3b5dcfd58157b9cbb56d87dc123f7ee23a76385cfc948c1c038865f11f3b7c",
+        "sha256": "534d0549b70d24fde55ccabb6f8711507bb15063d7d4897103d309e4b40fc97a",
         "source_refs": [
           "source-3"
         ]
@@ -243,24 +243,24 @@
     "compiler_version": "0.4.0.dev5",
     "identity_scope": "selected generated content; product source identity describes the builder base",
     "input_hashes": {
-      "project_model_hash": "16ce1fdefe90735d1195c400878408a39e8af3282f2d277b7c80e75d61c2e260",
-      "seed_spec_hash": "f52e174d839fe986e9219fae6ee23c0cc9d665bd5387c8f7c32f64ee6e196e3f",
-      "source_manifest_hash": "67c23e33fcb67ee50be63105d62ff37c666ddf709a13448b422a4c0d10d924da"
+      "project_model_hash": "02ba4ee70951092b2c7549a1d7cfee5b5c40b8a652831b53b921cbdd7ad6b119",
+      "seed_spec_hash": "387b905a5c64ccc3414f7682797ce8124113c330714c030dff3d1439bfb78180",
+      "source_manifest_hash": "c41567d11247c942be6ca9ab9a266279b2dfc79ee684f55b8dbf6cbc55c54c0d"
     },
     "model_use_observed": false,
-    "plan_id": "b3bacb1322a18f49d3bdea0ee899cdabf23e1a2c7e6b62856089d2fd44fbc942",
-    "plan_sha256": "c7abc80bcc8fdf83085ab3a1800818c2545135f791c3508f45fe55d6365f36b4",
+    "plan_id": "a56c24548d882b893e9342b686f748b9ed04756948a1002e94fabf7d07485ed8",
+    "plan_sha256": "d6b38633bc9b0b63fd17eaed87267f0a9f62107b492ebfc974f740761b8f97ec",
     "release_selection": {
       "compiler": {
         "source_revision": "334a9d33c12d61ba826d41b25f604af18441e967",
         "version": "0.4.0.dev5"
       },
       "plan": "release/generated/generation-plan.json",
-      "plan_sha256": "c7abc80bcc8fdf83085ab3a1800818c2545135f791c3508f45fe55d6365f36b4",
+      "plan_sha256": "d6b38633bc9b0b63fd17eaed87267f0a9f62107b492ebfc974f740761b8f97ec",
       "schema": "maios.generated-kernel-selection.v1",
       "source_basis": {
-        "commit": "3ca6ec85e80fbc69838d4a063a81edb079b2803c",
-        "corpus_identity": "5e733499eb40a3b2536e5b85635d9c04ad4cb48d274252198ff3a1927f057a7c",
+        "commit": "243febf469348fa18761d278e78119e6f6a0c87a",
+        "corpus_identity": "0cee2ca1d85b5c2855061c81fc5a617829fadcb170d6971dab269722a82461d8",
         "identity_scope": "canonical path and normalized body hashes of selected committed methods",
         "repository": "GrazianoGuiducci/maios-project-kernel"
       }
@@ -309,7 +309,7 @@
     "projection_sha256": "ff047749525c32715fee072140fead38489479d240fe8b6e142fbfe22c4faf7d",
     "revision_claim": "content_addressed_source_tree",
     "source_manifest_sha256": "54ef50c3bf319eb89f30af8b9102da988948c731a48326be9ed7880a59fe9ce6",
-    "tree_sha256": "79ed88124fcf834444e55a660a4d68a012aee1e42544f5317b4a73c9da94fe60"
+    "tree_sha256": "f8f88e403669818c8976cacd75cde155e54ae7418d039bae4452fa124a3835a9"
   },
   "target_modes": [
     "new_repository",

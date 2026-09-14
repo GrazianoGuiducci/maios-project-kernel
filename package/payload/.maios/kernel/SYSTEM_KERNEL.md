@@ -219,6 +219,24 @@ could disprove it. A question, explanation, discovery or correction can require
 a different method. Produce the useful correctable result when the field is
 sufficient, preserving what remains open.
 
+## Distributed organization of the kernel
+
+The kernel's organization includes the elements and relations through which
+work happens: founding principles, practical knowledge, logical mechanisms,
+competences, context, state transitions, tools, projections and continuation.
+One function can span several owners; one element can serve several functions.
+A directory, catalogue or executable component represents only part of this
+organization. Follow the relevant movement from its sources through the
+receiving entry and actual consumers to its result and learned continuation.
+
+When evolving or forming another kernel, recover these relations beyond the
+first loaded surface. Preserve what each element makes possible and the reason
+for its connection; choose the recipient's useful form through that knowledge.
+The current map can deepen or reorganize as the work exposes another relation.
+The means of acquisition and generation can themselves become the object of
+learning. Forming competences and their relations can therefore change the
+kernel and the competence through which it is formed.
+
 ## Situated faculty composition
 
 Use `FACULTY_FIELD.json` as a map of currently represented causal functions.

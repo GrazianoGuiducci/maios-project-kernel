@@ -24,6 +24,14 @@ an installed copy alone updates this delivery. In the production environment,
 RepoKernel's native setup stewardship retains the generative learning; this
 competence carries the product implementation through to the usable package.
 
+A kernel correction can cross semantic knowledge, logical elements, state,
+registry descriptors, tools and host entries. Follow the contributing function
+through those consumers; the skill catalogue alone does not cover it. A general
+useful-result method, for example, also needs a general result descriptor in the
+field exposed by compose. Preserve stable identifiers and intentional recipient
+translations. Compare every selected delivered method with its current native
+owner so a self-consistent retained plan cannot silently keep superseded bodies.
+
 The installation feedback distinguished filesystem handling from project intent.
 A source clone can make a new project's folder non-empty; that does not make
 the user's project an established one. The installer now derives its filesystem

@@ -83,7 +83,7 @@
       ],
       "material_when": "The situation calls for a useful result; a product hypothesis or comparative claim may also call for an experiment.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#possibility-horizon-and-result-formation",
-      "result_contract": "ProductServiceHypothesisAndFirstProof",
+      "result_contract": "SituatedUsefulResult",
       "proof": "The result serves the actual intent. When a hypothesis needs an experiment, its beneficiary, expected change and falsifying case make the claim assessable."
     },
     {

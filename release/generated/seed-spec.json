@@ -2,8 +2,8 @@
   "schema": "repokernel.seed-spec.v1",
   "version": "repokernel.seed-spec.v1",
   "seed_id": "autonomous-maintained-methods",
-  "source_manifest_hash": "67c23e33fcb67ee50be63105d62ff37c666ddf709a13448b422a4c0d10d924da",
-  "project_model_hash": "16ce1fdefe90735d1195c400878408a39e8af3282f2d277b7c80e75d61c2e260",
+  "source_manifest_hash": "c41567d11247c942be6ca9ab9a266279b2dfc79ee684f55b8dbf6cbc55c54c0d",
+  "project_model_hash": "02ba4ee70951092b2c7549a1d7cfee5b5c40b8a652831b53b921cbdd7ad6b119",
   "canonical_namespace": ".repokernel",
   "project": {
     "name": "MAIOS Project Kernel",
@@ -18,7 +18,7 @@
   "review": {
     "status": "accepted",
     "accepted_by_role": "product-source-maintainer",
-    "accepted_at": "2026-09-11",
+    "accepted_at": "2026-09-14",
     "review_cycle": "maintained-method-renewal"
   },
   "compiler_compatibility": {

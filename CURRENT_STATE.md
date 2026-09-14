@@ -1,6 +1,40 @@
 # MAIOS Project Kernel current state
 
-## Current readback — 2026-09-13
+## Current readback — 2026-09-14
+
+The working distribution now carries deeper knowledge acquisition, distributed
+kernel organization, three-passage consolidation, cumulative competence guides
+and source-led explanation. Context, formation, system and knowledge continuity
+own these methods. The field descriptor returned by compose now preserves a
+SituatedUsefulResult; an experiment remains pertinent to the hypothesis that
+needs it. Existing faculty identifiers and the family translation are preserved.
+
+Native corpus `243febf469348fa18761d278e78119e6f6a0c87a` was consumed through the
+already selected compiler `334a9d33c12d61ba826d41b25f604af18441e967`. The renewed
+plan contains 18 bodies and 7 competences; the ordinary product builder composes
+62 distribution files, including 51 payload files. Current owners and every
+selected delivered method are textually equal. That check caught the five
+changed methods before renewal and passes on the resulting distribution.
+
+Validation: 112 local tests pass with two platform skips, distribution
+verification passes, and two builds produce identical bytes. Version remains
+4.1.2 and family 3.0.0. This is the evolved source and working package; the
+published release artifact and existing installations retain their own state.
+
+## Current next
+
+Continue from the knowledge now incarnated in the receiving methods. When
+further source-kernel relations or receiving use change understanding, deepen
+the responsible method and its actual consumers. The generative continuation
+can carry that knowledge into the two package routes and the selected future
+release; the current source result is not a reason to repeat this renewal.
+
+## Historical chronology
+
+Dated sections below preserve their original scope. Their then-current next
+steps do not reopen completed work.
+
+## Source cleanup readback — 2026-09-13
 
 Cleanup starts from source `0bd51e1228760f5d75ae0d746c524b834c7f3154` after
 published 4.1.2. The false-current 4.1.1 reentry is now historical. Public entry
@@ -15,17 +49,12 @@ delta refreshes source provenance and inventory only. Version 4.1.2, family
 3.0.0, release/tag, installed payload, installer entry and selected methods are
 unchanged. Hosted CI on this cleanup revision remains the source follow-up.
 
-## Current next
+### Then-current next
 
 The next receiving-model observation is fresh use of released 4.1.2 in OpenCode
 when that test is selected. Otherwise resume from a concrete real-use
 observation, informative Evolution Feedback or a newly selected source change.
 Reentry alone selects no release, renewal, migration or documentation cycle.
-
-## Historical chronology
-
-Dated sections below preserve their original scope. Their then-current next
-steps do not reopen completed work.
 
 ## Completed release — simpler installation, 4.1.2, 2026-09-12
 
