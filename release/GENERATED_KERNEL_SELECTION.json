@@ -2,8 +2,8 @@
   "schema": "maios.generated-kernel-selection.v1",
   "source_basis": {
     "repository": "GrazianoGuiducci/maios-project-kernel",
-    "commit": "7ac4fb37e9eef860fb4893eae398212f164e4b8d",
-    "corpus_identity": "b72f4756ae47286faabc382b86bc6aacec8a830afe44f1d2bd5db52f5afafe6f",
+    "commit": "9c369f7d5ff7955e7cef89752851e128a4b09d61",
+    "corpus_identity": "3b83db87d83185d85ca0799722f95a4487550cfaaecbab0287e510846d27e400",
     "identity_scope": "canonical path and normalized body hashes of selected committed methods"
   },
   "compiler": {
@@ -11,5 +11,5 @@
     "source_revision": "334a9d33c12d61ba826d41b25f604af18441e967"
   },
   "plan": "release/generated/generation-plan.json",
-  "plan_sha256": "d68eaa6ed4023a253284eb035c6675b158f0ef17f8e48d98e0e700932c3293ce"
+  "plan_sha256": "36780ed54870799a59239ed8c860520a919f73bf580302d312fc5ffa36fc0d15"
 }

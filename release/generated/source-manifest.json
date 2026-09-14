@@ -7,8 +7,8 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/kernel/SYSTEM_KERNEL.md",
-      "sha256": "1161337ad00468108964b20f9d8104a0914a708f77535c19992bb08a246803e8",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/kernel/SYSTEM_KERNEL.md",
+      "sha256": "2fff48631737003ef5d1771e78b7185468ca6308329ef3e1e481a2481bde0081",
       "used_for": [
         "autonomous-maintained-method-selection"
       ]
@@ -19,7 +19,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/kernel/COMPOSITION_PROTOCOL.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/kernel/COMPOSITION_PROTOCOL.md",
       "sha256": "530085d6cc57303de1657a761115298496ae4aa473483ba60ff97f9c42477492",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -31,7 +31,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
       "sha256": "065e190a5182be7b7e47aa85e6fdc321e3e51a9d435158f69f227440ac7009de",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -43,8 +43,8 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-project-system/SKILL.md",
-      "sha256": "e8f34d2e5a0266a10328a093a483e1f8b315c73130a850167ad3765639decbd1",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-project-system/SKILL.md",
+      "sha256": "bcd84e377f9019959f128d48fcb23f1e8bbcf9bc54c773ab888ddbbc109c776d",
       "used_for": [
         "autonomous-maintained-method-selection"
       ]
@@ -55,7 +55,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-project-system/references/ka-operating-knowledge.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-project-system/references/ka-operating-knowledge.md",
       "sha256": "40b8e02c08c877d61726bab75e86d1a382bd4ee4d86c7c36a76328f740f0c429",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -67,7 +67,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-project-system/references/fdla-operating-knowledge.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-project-system/references/fdla-operating-knowledge.md",
       "sha256": "d152faecd2225c3bfd7c4c6ace8213b1cbafa12e44f0d8adf75c516da110ff9a",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -79,7 +79,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-project-system/references/runtime-recovery.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-project-system/references/runtime-recovery.md",
       "sha256": "4d97b00a874418dbefef77d472eecd53fe51483b017bda60feb783047f32459c",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -91,7 +91,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-start-new-project/SKILL.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-start-new-project/SKILL.md",
       "sha256": "e4489abd14fbb8f8018ccc6ae32f2ce2db45c71955f0729d1cef24e8e2e915b7",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -103,7 +103,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-start-existing-project/SKILL.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-start-existing-project/SKILL.md",
       "sha256": "f9f2be167c7fc3f7b8684764afb2f1ef76030071d328ccaa3ff66573b9f821ee",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -115,8 +115,8 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-project-context/SKILL.md",
-      "sha256": "f75ffcc5c73f04250c414eddc1c04fc6e38633e5ea56e35b3636c46839be76f0",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-project-context/SKILL.md",
+      "sha256": "cc8b8d014724ddf7be72ef79aa1512390522d5f1711ab1e47a892aed2bbafa28",
       "used_for": [
         "autonomous-maintained-method-selection"
       ]
@@ -127,8 +127,8 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-project-competence-formation/SKILL.md",
-      "sha256": "787c29a219af821e92e3b224075630202040a1d089e22cd9149c70f4b4f41cd1",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-project-competence-formation/SKILL.md",
+      "sha256": "1ce1695f6237a98b12d5874c4ed547dda5f3264ca955712d5ea258e6b971b51f",
       "used_for": [
         "autonomous-maintained-method-selection"
       ]
@@ -139,7 +139,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-project-host-adaptation/SKILL.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-project-host-adaptation/SKILL.md",
       "sha256": "452b97891d8157da40a53cfca8ae2fca4369305b537eab6bc5bf18cc99fdf8d7",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -151,7 +151,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-project-host-adaptation/references/shared-project-continuity.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-project-host-adaptation/references/shared-project-continuity.md",
       "sha256": "e59c6ccc4586d7e7c7e451881795c1d958bde3d1173a8e8a7dd23836f0fbfc29",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -163,7 +163,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-project-coordination/SKILL.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-project-coordination/SKILL.md",
       "sha256": "e5fb2722efeaf8cad72f5410ec07fe0083b38315b4c9cd5104b415370bdbc193",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -175,7 +175,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/skills/maios-project-system/adapters/hermes.gitignore",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/skills/maios-project-system/adapters/hermes.gitignore",
       "sha256": "40317baa8eadbce068066d02abcdb685a364fa7c67324c4a3c9561e5e228aac0",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -187,7 +187,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/kernel/FOUNDING_RELATIONS.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/kernel/FOUNDING_RELATIONS.md",
       "sha256": "dec8266608785a4889d4eef17b0d08271cb8d1ffd99f566f5bd7cee34703be27",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -199,7 +199,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/kernel/UPDATE_CONTINUITY.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/kernel/UPDATE_CONTINUITY.md",
       "sha256": "ed9323afb23017898e7a7f9d47173193d5035d2ce09e44239bc4a7b97fc3b609",
       "used_for": [
         "autonomous-maintained-method-selection"
@@ -211,7 +211,7 @@
       "privacy": "public",
       "freshness": "current",
       "instruction_handling": "data_only",
-      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/7ac4fb37e9eef860fb4893eae398212f164e4b8d/kernel/KNOWLEDGE_CONTINUUM.md",
+      "path_or_origin": "https://github.com/GrazianoGuiducci/maios-project-kernel/blob/9c369f7d5ff7955e7cef89752851e128a4b09d61/kernel/KNOWLEDGE_CONTINUUM.md",
       "sha256": "9fa67dc5a44de6cc724906da596130cfb70d246eed49ac39dcd928b6b9c1e18d",
       "used_for": [
         "autonomous-maintained-method-selection"

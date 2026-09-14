@@ -1,6 +1,6 @@
 # MAIOS Project Kernel 4.5.0
 
-Status: candidate in preparation, 2026-09-14.
+Release: 4.5.0, 2026-09-14.
 Previous stable release: 4.1.2. Project Kernel family: 3.0.0.
 
 ## Kernel and entry
@@ -28,14 +28,20 @@ existing workspace. This fixes the Windows `WinError 32` reproduced when the
 coder's working directory is the installation target. Automatic mode selection,
 idempotent reapplication and preservation of concurrent files remain intact.
 
-The current preparation is reconciling the role of the external compiler and
-the Form's package composition. The selected design and artifact identity will
-be recorded here with the completed build. A prepared source is not a release
-tag or a change to an existing installation.
+The package contains 62 files, including 51 payload files. Its 18 selected
+method bodies and 7 competences come from native source corpus
+`9c369f7d5ff7955e7cef89752851e128a4b09d61`. The existing production path
+assembles these sources. The role of RepoKernel and the Form's future package
+composition will be addressed after the operator's use stabilizes this MPK.
+
+The [v4.5.0 release](https://github.com/GrazianoGuiducci/maios-project-kernel/releases/tag/v4.5.0)
+provides `maios-project-kernel-4.5.0.zip` and
+`maios-project-kernel-4.5.0.sha256`. The ZIP contains the installable package
+with `INSTALL.md` and `install.py` at its root.
 
 ## OpenCode use and ChatGPT review
 
-Install the candidate in a selected local folder through `INSTALL.md`, then
+Install the package in a selected local folder through `INSTALL.md`, then
 ask the coder to read `START_HERE.md` and continue from the actual intent.
 An open inquiry can make a useful first encounter without creating a project.
 When useful, follow it into forming a competence or small kernel, learning
@@ -46,7 +52,3 @@ For source review, use `AGENTS.md`, `knowledge/KERNEL.md` and the source bodies
 reached from the system competence. Compare their meaning with the delivered
 entries and methods. Return a concrete source or received passage with each
 useful observation so the next refinement can change the right owner.
-
-## Verification
-
-The candidate's completed checks and artifact reference will be recorded here.

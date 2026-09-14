@@ -37,7 +37,7 @@ when source study is useful.
 [CURRENT_STATE.md](../CURRENT_STATE.md) identifies current source work.
 [CHANGELOG.md](../CHANGELOG.md) and numbered release notes preserve version history;
 their old claims describe their stated versions, not the current product.
-[4.5.0 preparation](RELEASE_4.5.0.md) describes the current candidate.
+[4.5.0 release notes](RELEASE_4.5.0.md) describe the current distribution.
 [4.1.2 notes](RELEASE_4.1.2.md) and [evidence](RELEASE_4.1.2_EVIDENCE.md)
 preserve the previous stable release's explanation and dated observations.
 

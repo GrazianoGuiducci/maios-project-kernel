@@ -12,6 +12,12 @@ or effect authority when saved.
 
 ## Entry modes
 
+The system entry begins from the present context. Inquiry, domain work, an
+ongoing activity or kernel evolution can already supply useful intent. No
+project definition is required. The context competence participates whenever
+understanding must form or change; the project startup competences below
+contribute when project work is actually pertinent.
+
 For a new project, `maios-start-new-project` establishes the first project
 identity, direction and useful result with the operator. For an existing
 project or system, `maios-start-existing-project` first preserves its identity,
@@ -52,7 +58,7 @@ The first useful configuration preserves:
 
 ## Completion
 
-Configuration becomes `configured` when the project has a concrete case,
+Configuration becomes `configured` when the context has a concrete case,
 first useful result, attributable sources, selected
 movement, and recoverable reentry. It does not require every unknown to close.
 An experiment or a reviewer is not a condition for a project to be configured.

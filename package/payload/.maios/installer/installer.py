@@ -661,8 +661,8 @@ def validate_pending_installation(target: Path, pending: Any) -> None:
         expected = install_receipt(plan, "installed")
         require_valid_installation_receipt(expected)
         require_receipt_target(target, expected)
-        if plan["mode"] != "existing_repository" or plan.get("status") != "ready":
-            raise InstallerError("pending journal requires an original ready existing-project plan")
+        if plan.get("status") != "ready":
+            raise InstallerError("pending journal requires an original ready installation plan")
         for key in ("target", "plan_digest", "mode", "host", "package_identity"):
             if pending.get(key) != expected[key]:
                 raise InstallerError("pending journal differs from original plan: " + key)
@@ -734,7 +734,10 @@ def apply_plan(root: Path, plan: dict[str, Any]) -> dict[str, Any]:
         return receipt
 
     receipt_path = target / ".maios" / "receipts" / "install" / "CURRENT.json"
-    if plan["mode"] == "new_repository":
+    # Preserve an existing directory's identity, including a coder's active CWD.
+    # The journalled file path below works for an empty target too and keeps the
+    # selected mode in the receipt. Only an absent target needs a staged root.
+    if plan["mode"] == "new_repository" and not target.exists():
         stage = target.parent / f".{target.name}.maios-stage-{plan['plan_digest'][:12]}"
         if stage.exists():
             raise InstallerError(f"attempt staging path already exists: {stage}")
@@ -763,6 +766,8 @@ def apply_plan(root: Path, plan: dict[str, Any]) -> dict[str, Any]:
             raise
 
     target.mkdir(parents=True, exist_ok=True)
+    if plan["mode"] == "new_repository" and any(target.iterdir()):
+        raise InstallerError("new target became non-empty during apply")
     pending_path = target / ".maios" / "receipts" / "install" / "PENDING.json"
     if has_unsafe_ancestor(target, ".maios/receipts/install/PENDING.json") or pending_path.is_symlink():
         raise InstallerError("unsafe pending receipt path")

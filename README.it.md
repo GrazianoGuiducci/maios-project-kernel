@@ -119,9 +119,8 @@ osservato da parte di ogni host o modello.
 Test sorgente e verifica della distribuzione coprono integrità del pacchetto,
 meccaniche di installazione e recupero, instradamento e contratti dello stato
 locale. Non dimostrano che il modello destinatario comprenda, usi o assimili
-i metodi. La [preparazione della 4.5.0](docs/RELEASE_4.5.0.md) conserva
-le novità del candidato, le verifiche tecniche e l'ingresso per la revisione
-con il modello ricevente.
+i metodi. Le [note della 4.5.0](docs/RELEASE_4.5.0.md) descrivono
+le novità consegnate e l'ingresso per l'uso e la revisione con il modello ricevente.
 
 ## Studiare, contribuire o costruire
 

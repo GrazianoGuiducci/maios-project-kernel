@@ -4,7 +4,9 @@ Status: pending situated configuration.
 
 ## Intent and context
 
-To be formed from the person's current relation and project sources.
+To be formed from the person's current relation and actual sources. This
+continuity view can describe an inquiry, domain or ongoing activity; a project
+identity is included when project work is pertinent.
 
 ## First useful result
 

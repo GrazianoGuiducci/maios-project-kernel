@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.5.0 — candidate, 2026-09-14
+## 4.5.0 — 2026-09-14
 
 - Install into the coder's existing empty working directory without replacing
   that directory; preserve automatic mode, journalled recovery and concurrent work.

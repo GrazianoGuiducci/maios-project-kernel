@@ -1,8 +1,8 @@
 # MAIOS Project Kernel current state
 
-## Current preparation — 4.5.0, 2026-09-14
+## Current result — 4.5.0, 2026-09-14
 
-The operator selects preparation of 4.5.0 for OpenCode use and ChatGPT review.
+The operator selects assembly and publication of 4.5.0 for their own use and review.
 The kernel is an autopoietic operating form that can work from the present
 context without a project. This source change reaches the system competence,
 context, formation, installation handoff, START_HERE, AGENTS, initial continuity
@@ -14,20 +14,25 @@ can acquire a skill, mini-kernel or kernel carrying practical knowledge, native
 entry, continuity and the ability to form and learn further. This deepens the
 formation already present rather than introducing a second internal generator.
 
-The current candidate still uses the selected production compiler
-`334a9d33c12d61ba826d41b25f604af18441e967` for method renewal. The installed
-generative competence acts through the receiving agent without that compiler.
-The Form currently executes the external compiler in its separate composition.
-The proposal to make MPK the common source for both deliveries has been put to
-the operator; it is not an implemented Form migration. The package candidate
-is being prepared through the working production path in the meantime.
+The delivered method corpus is `9c369f7d5ff7955e7cef89752851e128a4b09d61`:
+18 bodies and 7 competences, assembled into 62 distribution files and 51 payload
+files. The production selection retains compiler
+`334a9d33c12d61ba826d41b25f604af18441e967`. The installed generative competence
+acts through the receiving agent. Installation into an existing empty working
+directory preserves that directory, including on Windows.
+
+The operator clarified the present scope after the earlier preparation:
+assemble and publish MPK; receiving tests belong to the operator. RepoKernel
+evolution and the Form's future composition follow a stable 4.5.0. They are
+not prerequisites for this delivery. The release carries the installable ZIP
+and its SHA-256 at `v4.5.0`; family 3.0.0 remains unchanged.
 
 ## Current next
 
-Complete the candidate build and verification, retain an installable 4.5.0 ZIP
-for the operator and prepare the matching site descriptions. Record the exact
-candidate revision and checks here before handoff. Resume the Form architecture
-from the current owner and accepted context; preserve its existing functions.
+Continue from the operator's actual use and review of 4.5.0. Bring useful
+observations back to the native competence or mechanism they concern. The
+RepoKernel question follows stabilization of this MPK; it does not reopen
+assembly as a generator redesign.
 
 ## Earlier first-understanding result — 2026-09-14
 

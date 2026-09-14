@@ -1,4 +1,4 @@
-# Install MAIOS Project Kernel 4.1.2 — repository package
+# Install MAIOS Project Kernel 4.5.0 — repository package
 
 The ready-to-install distribution is in `package/`. Run `install.py` from this
 directory. `preview` creates a plan for a target folder and coding host;
@@ -41,15 +41,18 @@ modes, not questions about the user's project. Reapplying the same package and
 host preserves the original installation mode. An explicit `--mode` remains
 available when a particular filesystem behavior is needed.
 
-`new_repository` builds the complete target in an adjacent attempt-owned
-directory and atomically moves it into place. Reapplying the same artifact to
+For an absent target, `new_repository` builds in an adjacent attempt-owned
+directory and atomically moves it into place. An existing empty directory keeps
+its identity and receives journalled file creation, including when it is the
+coder's active working directory on Windows. Reapplying the same artifact to
 its unchanged installed target is idempotent.
 
 `existing_repository` inventories the existing project, classifies every destination as
 create, preserve-identical, or conflict, and refuses divergent content. It
 backs up pre-existing identical target paths and never performs a semantic
 merge or hidden overwrite. A changed target invalidates the plan. Before its
-first write, apply stores a project-local `PENDING` journal. If the process or
+first write, apply stores a local `PENDING` journal. Installation into an existing
+empty directory uses the same recovery mechanism. If the process or
 machine stops, run `python install.py recover-pending --target <target>` from
 this package directory; recovery removes only unchanged attempt-owned
 bytes and preserves evolved or uncertain files. A planned path alone does not

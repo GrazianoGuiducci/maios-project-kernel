@@ -5,8 +5,9 @@ description: Package knowledge for installing MAIOS Project Kernel: purpose, req
 
 # MAIOS Project Integration
 
-MAIOS Project Kernel gives a project and its AI coding agent shared context,
-competences and knowledge that continues across sessions. The ready-to-install
+MAIOS Project Kernel brings an AI agent a living operating kernel: context,
+competences and knowledge that can evolve and continue across sessions. It can
+work in an open inquiry, a domain or a project. The ready-to-install
 distribution is the repository's `package/` folder.
 
 ## Installation reference
@@ -37,13 +38,14 @@ the installer does not implement cross-version migration.
 
 ## Installed kernel
 
-`START_HERE.md` introduces the kernel and the project's current context.
+`START_HERE.md` introduces the kernel and the present context.
 Continue there from the operator's current intent and any useful context
 already acquired during installation or supplied by the Form. The installed
-system connects the pertinent startup and context competences. Understanding
-the kernel's possibilities can itself be the first useful work; a project
-with a clear direction can proceed directly. Filesystem mode describes how
-files were installed; the receiving project's situation determines its startup.
+system connects the pertinent competences. Understanding the kernel's
+possibilities can itself be the first useful work; a clear direction can
+proceed directly. Use project startup when the person is beginning or joining
+a project. Filesystem mode describes how files were installed and does not
+determine the purpose of the receiving kernel.
 
 The installed configuration helpers maintain state and its readable views.
 `integration_handoff` is an optional configuration field for useful installation

@@ -116,8 +116,8 @@ use by every host or model.
 Source tests and distribution verification cover package integrity, installer
 and recovery mechanics, routing and local state contracts. They do not prove
 that a receiving model understands, uses or assimilates the methods. See the
-[4.5.0 preparation and checks](docs/RELEASE_4.5.0.md) for the candidate's
-changes, technical verification and entry for receiving-model review.
+[4.5.0 release notes](docs/RELEASE_4.5.0.md) for the delivered changes and
+entry for receiving-model use and review.
 
 ## Study, contribute or build
 

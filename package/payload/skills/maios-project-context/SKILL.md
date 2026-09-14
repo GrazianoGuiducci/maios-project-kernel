@@ -5,6 +5,11 @@ description: Build and continually revise the living context, derive a correctab
 
 # MAIOS Project Context
 
+The kernel builds context from the relationship already present. An inquiry,
+domain, conversation, observation or ongoing activity can supply it without
+defining a project. When project work becomes useful, its identity and sources
+enrich this same context through the pertinent startup competence.
+
 This competence builds the context from which the assistant understands what
 can usefully happen. Context includes the operator relation, actual sources,
 existing work and its trajectory, environment, observations, tensions, results
@@ -24,7 +29,7 @@ sources, operator relation, situation, trajectory and observed consequences
 ```
 
 These relations participate throughout the work; they are not interview stages.
-A request is one source of context. A living project can already support intent
+A request is one source of context. A living situation can already support intent
 without a newly supplied task. Preserve explicit operator determinations while
 understanding what they mean in the current field; do not substitute a guessed
 goal for a clear request or make the operator formulate every useful movement.

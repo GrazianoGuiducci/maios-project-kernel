@@ -30,7 +30,7 @@
         "id": "target_relation",
         "statement": "The target work, problem, or desired change has not yet been situated.",
         "source_refs": [],
-        "reentry_condition": "first substantive operator contribution or project source"
+        "reentry_condition": "first substantive operator contribution or relevant source"
       },
       {
         "id": "host_reality",
@@ -92,5 +92,5 @@
     "learning_delta_refs": [],
     "superseded_relations": []
   },
-  "current_next": "Use the present operator relation and project sources to produce the first correctable useful result."
+  "current_next": "Continue from the present operator relation and relevant sources; exploration, understanding, action or kernel evolution can form the next useful result."
 }
