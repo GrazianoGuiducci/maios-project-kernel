@@ -32,6 +32,16 @@ procedure.
 
 ## Let the situation make the competence pertinent
 
+A question, source selection, explanation and tool choice are already work
+through the pertinent competences. Domain understanding, remembered reasons,
+semantic interpretation, principles, practical means and generative formation
+may contribute together before the apparent task has been fixed. Several
+functions can operate within one competence or across cooperating competences.
+Their contribution is not measured by the number of skill loads. A human
+encounter is one context of this same movement, not a separate cognitive tier.
+Use `.maios/kernel/COGNITIVE_RELATIONS.md` when the functional relation itself
+needs depth; do not add a preliminary reading ritual.
+
 Understand the contribution this instance can make in the present context: which
 knowledge it can connect, which decision it can help form, which action its
 actual harness can perform and where a result must continue. A project role
@@ -59,6 +69,10 @@ its actual contribution, including when a result reveals another useful relation
 | Form, compose or evolve a capacity, including another kernel | `skills/maios-project-competence-formation/SKILL.md` |
 | Connect a different host or native entry | `skills/maios-project-host-adaptation/SKILL.md` |
 | Coordinate instances or integrate a contribution | `skills/maios-project-coordination/SKILL.md` |
+| Understand source meaning, representation, scale or part–whole dependencies | `skills/maios-system-understanding/SKILL.md` |
+| Let illumination, a bridge or the horizon change the question or possible result | `skills/maios-possibility-formation/SKILL.md` |
+| Acquire complementary knowledge, native source depth or practical means | `skills/maios-knowledge-acquisition/SKILL.md` |
+| Form an explanation, question or substantial text from the actual object | `skills/maios-source-grounded-expression/SKILL.md` |
 | Preserve repository work and shared source continuity | `skills/maios-repository-continuity/SKILL.md` |
 | Understand a software failure or regression | `skills/maios-software-diagnosis/SKILL.md` |
 | Design software responsibilities, interfaces and dependencies | `skills/maios-software-design/SKILL.md` |

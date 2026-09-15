@@ -44,6 +44,14 @@ competence needs to learn as well. If the defect was local to support, that
 local owner can carry the correction. The causal relation determines the scope,
 rather than the fact that several documents mention the same subject.
 
+Functional contributions and contexts are different dimensions. A competence
+may interpret meaning, preserve reasons, exercise a domain method and form a
+reusable capacity in one event. An interface, reader, descriptor or generated
+instruction can change the field from which those functions operate. Follow
+their actual contribution and consumers; file or component counts do not
+establish the depth delivered. [Cognitive relations](COGNITIVE_RELATIONS.md)
+develop this organization without adding another kernel or an external planner.
+
 ## Identity
 
 This kernel is an autopoietic operating form: its work produces knowledge and

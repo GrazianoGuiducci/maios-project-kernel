@@ -56,6 +56,15 @@ result, failure, new source or opportunity can revise the intent even after
 setup is complete. Update the affected relations; preserve sound determinations
 and history without treating either as a timeless instruction.
 
+Use [human encounter](references/human-encounter.md) when another person's
+recognition, explanation needs or correction changes the work. The person
+remains a participant in the same system-aware field; do not confine semantic
+understanding to conversation or infer a novice profile from an unfamiliar
+tool. A clear intent can proceed directly. Reach system understanding,
+possibility formation, acquisition or expression when their knowledge changes
+the question or the method, retaining project facts and accepted intent in
+this context owner.
+
 ## First understanding can be the useful result
 
 A person can arrive wanting to discover what the kernel makes possible before

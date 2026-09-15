@@ -1,6 +1,6 @@
 # MAIOS Project Kernel current state
 
-## Candidate source — R3.2 technical M1 units, 2026-09-15
+## Candidate source — R3.2 general faculties and technical methods, 2026-09-15
 
 Branch: `codex/mpk-r3.2-source`, from released 4.5.0 commit
 `0f58c76de5866980105dd2f6c36e3eb8c3c8751a`.
@@ -16,17 +16,29 @@ for responsibilities/interfaces/dependencies and for identifying the first
 incorrect transformation behind a failure. These specialized methods act
 when the context needs them; they do not redefine the general kernel method.
 
-All three prepared bodies are adopted without semantic changes: 3/20 bodies
-are integrated. The other seventeen bodies and remaining owner insertions
-are not yet integrated. M1 as a whole remains incomplete.
+The general-faculty unit adds system understanding, possibility formation,
+knowledge acquisition and source-grounded expression, with their references
+and the common `kernel/COGNITIVE_RELATIONS.md`. Their references also require
+human encounter, generative inheritance and practical kernel formation;
+these bodies are included in the same unit so its source links are complete.
+System, compendium, context and formation entries reach the corresponding
+knowledge. Existing operating, recovery and configuration contracts remain.
+
+All fifteen prepared bodies are adopted without semantic changes: 15/20
+bodies are integrated. Five bodies remain: learning from demonstration,
+value/direction, agreement relations, interaction/recognition and shared
+lineage/handoff. Their formation/coordination entries and the remaining
+continuum insertion have not been integrated. M1 as a whole remains incomplete.
 
 These units are limited to source knowledge and their system entries. M2 projection,
 host classification, M3 generation/build and later documentation/release work
 have not started. The generated package and public release retain 4.5.0.
 The new competences are not yet included in that package or installed in a host.
 
-Validation: source/body correspondence, frontmatter/name and system-entry
-target checks, plus the focused diff check. Full suite, build, distribution
+Validation: all fifteen bodies match the prepared source; skill metadata,
+relative Markdown links, system entries and the focused diff check pass.
+No adopted body requires another absent prepared body through a Markdown link.
+Full suite, build, distribution
 and model-use tests have not been run for these source-only units.
 
 Continue M1 on this branch from a coherent next group of prepared bodies and

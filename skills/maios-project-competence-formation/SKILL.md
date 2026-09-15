@@ -160,6 +160,16 @@ direct use of a reachable body do not wait for index admission. The host reads t
 
 ## Form another kernel through this one
 
+Form the knowledge through which the capacity can understand and operate,
+not merely its instruction file. [Kernel formation and evolution](references/kernel-formation-and-evolution.md)
+develops practical formation; [generative inheritance](references/generative-inheritance.md)
+carries the ability to continue it in another kernel. The common
+`.maios/kernel/COGNITIVE_RELATIONS.md` explains the open functional profile.
+The result may change a domain competence and also the criterion through which
+the generator selected its inheritance. Do not substitute complete delivery
+of a selected list for understanding whether that selection fits the intended
+capability.
+
 When another context benefits from its own operating form, understand what the
 recipient needs to know, do and retain. It may need a neutral nucleus, a domain
 mini-kernel, a skill or a composition of competences. Let that useful relation
