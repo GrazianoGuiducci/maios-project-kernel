@@ -59,6 +59,7 @@ its actual contribution, including when a result reveals another useful relation
 | Form, compose or evolve a capacity, including another kernel | `skills/maios-project-competence-formation/SKILL.md` |
 | Connect a different host or native entry | `skills/maios-project-host-adaptation/SKILL.md` |
 | Coordinate instances or integrate a contribution | `skills/maios-project-coordination/SKILL.md` |
+| Preserve repository work and shared source continuity | `skills/maios-repository-continuity/SKILL.md` |
 
 Project-local competences and useful knowledge beyond these entries remain
 reachable. `.maios/kernel/FACULTY_FIELD.json` helps locate represented functions

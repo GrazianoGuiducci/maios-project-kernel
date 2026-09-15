@@ -1,5 +1,34 @@
 # MAIOS Project Kernel current state
 
+## Candidate source — R3.2 first M1 unit, 2026-09-15
+
+Branch: `codex/mpk-r3.2-source`, from released 4.5.0 commit
+`0f58c76de5866980105dd2f6c36e3eb8c3c8751a`.
+R3.2 identifies the implementation design, not a product release number.
+
+The first source unit adds `skills/maios-repository-continuity/SKILL.md`
+and its entry in `maios-project-system`. Its method helps the receiving agent
+preserve concurrent work, distinguish local/committed/shared/deployed state,
+and continue through a coherent source checkpoint under its own authority.
+The prepared body is adopted without semantic changes; this is one of the
+twenty prepared bodies. The other nineteen bodies and remaining owner
+insertions are not yet integrated. M1 as a whole remains incomplete.
+
+This unit is limited to source knowledge and its system entry. M2 projection,
+host classification, M3 generation/build and later documentation/release work
+have not started. The generated package and public release retain 4.5.0.
+The new competence is not yet included in that package or installed in a host.
+
+Validation: source/body correspondence, frontmatter/name and system-entry
+target checks, plus the focused diff check. Full suite, build, distribution
+and model-use tests have not been run for this source-only unit.
+
+Continue M1 on this branch from a coherent next group of prepared bodies and
+their actual owners. Preserve the existing staging directory. A new owner
+change that intersects this unit requires targeted reconciliation.
+Commit and remote publication status are resolved from this branch's Git
+history; a source checkpoint does not publish a new package.
+
 ## Current result — 4.5.0, 2026-09-14
 
 The operator selects assembly and publication of 4.5.0 for their own use and review.
