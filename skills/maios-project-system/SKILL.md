@@ -60,6 +60,8 @@ its actual contribution, including when a result reveals another useful relation
 | Connect a different host or native entry | `skills/maios-project-host-adaptation/SKILL.md` |
 | Coordinate instances or integrate a contribution | `skills/maios-project-coordination/SKILL.md` |
 | Preserve repository work and shared source continuity | `skills/maios-repository-continuity/SKILL.md` |
+| Understand a software failure or regression | `skills/maios-software-diagnosis/SKILL.md` |
+| Design software responsibilities, interfaces and dependencies | `skills/maios-software-design/SKILL.md` |
 
 Project-local competences and useful knowledge beyond these entries remain
 reachable. `.maios/kernel/FACULTY_FIELD.json` helps locate represented functions

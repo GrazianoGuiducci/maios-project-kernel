@@ -1,6 +1,6 @@
 # MAIOS Project Kernel current state
 
-## Candidate source — R3.2 first M1 unit, 2026-09-15
+## Candidate source — R3.2 technical M1 units, 2026-09-15
 
 Branch: `codex/mpk-r3.2-source`, from released 4.5.0 commit
 `0f58c76de5866980105dd2f6c36e3eb8c3c8751a`.
@@ -10,18 +10,24 @@ The first source unit adds `skills/maios-repository-continuity/SKILL.md`
 and its entry in `maios-project-system`. Its method helps the receiving agent
 preserve concurrent work, distinguish local/committed/shared/deployed state,
 and continue through a coherent source checkpoint under its own authority.
-The prepared body is adopted without semantic changes; this is one of the
-twenty prepared bodies. The other nineteen bodies and remaining owner
-insertions are not yet integrated. M1 as a whole remains incomplete.
+The next source unit adds `maios-software-design` and
+`maios-software-diagnosis`, each with its system entry. They provide methods
+for responsibilities/interfaces/dependencies and for identifying the first
+incorrect transformation behind a failure. These specialized methods act
+when the context needs them; they do not redefine the general kernel method.
 
-This unit is limited to source knowledge and its system entry. M2 projection,
+All three prepared bodies are adopted without semantic changes: 3/20 bodies
+are integrated. The other seventeen bodies and remaining owner insertions
+are not yet integrated. M1 as a whole remains incomplete.
+
+These units are limited to source knowledge and their system entries. M2 projection,
 host classification, M3 generation/build and later documentation/release work
 have not started. The generated package and public release retain 4.5.0.
-The new competence is not yet included in that package or installed in a host.
+The new competences are not yet included in that package or installed in a host.
 
 Validation: source/body correspondence, frontmatter/name and system-entry
 target checks, plus the focused diff check. Full suite, build, distribution
-and model-use tests have not been run for this source-only unit.
+and model-use tests have not been run for these source-only units.
 
 Continue M1 on this branch from a coherent next group of prepared bodies and
 their actual owners. Preserve the existing staging directory. A new owner
