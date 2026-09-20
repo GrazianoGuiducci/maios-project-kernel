@@ -97,7 +97,7 @@ preview/apply commands, conflict handling and uninstall; see the
 The installed agent uses the living context and relevant competences to form
 a result. New knowledge, a successful approach, a possibility or a correction
 can then change the methods used next. The kernel keeps the useful reasons
-and continuation rather than requiring the whole conversation to be replayed.
+and continuation rather than requiring the whole interaction history to be replayed.
 
 `START_HERE.md` is the stable entry. Living competence bodies own methods;
 local state and knowledge carry the changing context. Existing local helpers
