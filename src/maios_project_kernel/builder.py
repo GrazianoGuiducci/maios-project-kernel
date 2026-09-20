@@ -1089,10 +1089,6 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         b"MAIOS_CLIENT_SETUP",
         b"project_hook_kernel",
         b"hooks.json",
-        b"C:/PVSC/ANTI_G",
-        b"C:\\PVSC\\ANTI_G",
-        b"C:/Users/User/",
-        b"C:\\Users\\User\\",
     )
     credential_names = {".env", "id_rsa", "id_ed25519", "credentials.json"}
     legacy_prefixes = (
@@ -1116,6 +1112,8 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         if path.name.lower() in credential_names:
             errors.append(f"credential-like file is forbidden: {relative}")
         data = path.read_bytes()
+        if re.search(rb"(?i)[A-Z]:[\\/]Users[\\/][^\s\\/]+|(?:/Users/|/home/)[^\s/]+", data):
+            errors.append(f"private home path is forbidden: {relative}")
         if re.search(rb"gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}", data):
             errors.append(f"credential-like content is forbidden: {relative}")
         for marker in forbidden_markers:

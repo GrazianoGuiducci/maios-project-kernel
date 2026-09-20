@@ -137,6 +137,18 @@ class CompletionProductionTests(unittest.TestCase):
             return {p.relative_to(path).as_posix(): p.read_bytes() for p in path.rglob("*") if p.is_file()}
         self.assertEqual(files(first), files(second))
 
+    def test_public_boundary_does_not_require_private_workspace_names(self):
+        package = self.root / "boundary"
+        builder.render_distribution(base.ROOT, package)
+        document = package / "README.md"
+        for private_path in ("X:/Users/example/private", "Y:\\Users\\example\\private", "/home/example/private"):
+            document.write_text(private_path)
+            result = builder.verify_distribution(base.ROOT, package)
+            self.assertIn("private home path is forbidden: README.md", result["errors"])
+        document.write_text("C:/Projects/MyProject")
+        self.assertNotIn("private home path is forbidden: README.md",
+                         builder.verify_distribution(base.ROOT, package)["errors"])
+
     def test_portable_owners_are_declarative_and_archive_bytes_are_reproducible(self):
         import importlib.util
         import zipfile
