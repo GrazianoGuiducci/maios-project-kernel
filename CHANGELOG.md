@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased — 2026-09-20
+
+- Reorder the EN/IT public first encounter around product identity, why the
+  operating relation is needed, what it offers and what it does in use before
+  installer/package mechanics become the frame.
+- Ground the operating explanation in the existing Kernel relation:
+  present/source/competence participation -> situated result -> causal readback
+  -> reusable learning -> later changed work.
+- Keep product version 4.5.0, package bytes, installer/runtime, release tag and
+  published assets unchanged; this is a public source/documentation resultant,
+  not a new package build or release.
+
 ## 4.5.0 — 2026-09-14
 
 - Install into the coder's existing empty working directory without replacing
