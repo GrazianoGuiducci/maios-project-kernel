@@ -19,7 +19,20 @@ Python **3.10 or later** · [MIT License](LICENSE)
 
 [Versione italiana](README.it.md)
 
-## What it makes possible
+## Why it exists
+
+Long-running AI work accumulates more than answers: sources, reasons behind
+decisions, methods that worked, corrections, open possibilities and knowledge
+about how to act. If those relations remain only in transient model context or
+in disconnected project notes, later work has to reconstruct the operating
+understanding instead of continuing from it.
+
+MAIOS Project Kernel gives that continuity a project-local operating form. The
+workspace can keep the knowledge and competences that matter, let real work
+change them, and make the changed capability available to later work without
+treating one model instance's experience as another instance's personal memory.
+
+## What it offers
 
 - Understand the present context through its actual sources, intent,
   constraints and open possibilities.
@@ -34,10 +47,29 @@ Python **3.10 or later** · [MIT License](LICENSE)
 - Continue across sessions and cooperating agents through locally owned
   knowledge, preserving current work and the reasons for its direction.
 
+## What it does in use
+
 KA keeps the field of possibilities open; FDLA corrects distortions while work
 forms; Meta_Skill recognizes, composes and develops competences. These functions
 act together through the agent and the actual sources. The
 [Kernel guide](knowledge/KERNEL.md) explains their meaning and operation.
+
+```text
+current operator relation + qualified sources
++ the relevant present and its open possibilities
++ competences made pertinent by the work
+-> situated action
+-> useful resultant or genuine non-collapse
+-> causal readback
+-> reusable learning changes the closest competence / owner
+-> later work continues from the changed field
+```
+
+The kernel therefore does not only preserve context. It changes the operating
+knowledge through which later work is understood and carried out. Deterministic
+runtime and installer components preserve state, identity, recovery and package
+integrity where those mechanics are needed; they do not replace the semantic
+judgment of the receiving agent and operator.
 
 ## Start from your context
 
@@ -60,7 +92,7 @@ Python packages. See [installation and recovery](docs/INSTALLATION.md) for
 preview/apply commands, conflict handling and uninstall; see the
 [usage guide](docs/USAGE.md) for integration, competences and daily operation.
 
-## Work, learn and return
+## Continue, learn and maintain
 
 The installed agent uses the living context and relevant competences to form
 a result. New knowledge, a successful approach, a possibility or a correction
