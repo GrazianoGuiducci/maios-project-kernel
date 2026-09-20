@@ -1,5 +1,42 @@
 # MAIOS Project Kernel current state
 
+## Post-release public narrative convergence — 2026-09-20
+
+The 4.5.0 product/release relation is unchanged. The public source README pair
+now exposes the product in causal order before installation mechanics:
+
+```text
+identity:
+  evolving / autopoietic operating kernel for an AI agent
+
+why:
+  long-running work accumulates sources, reasons, methods, corrections and
+  operating knowledge that should not require reconstruction at each reentry
+
+what it offers:
+  present-context understanding
+  + reusable/evolving competences
+  + learning return
+  + locally owned continuity
+  + further competence / kernel formation
+
+what it does:
+  current operator relation + qualified sources + pertinent competences
+  -> situated action / resultant
+  -> causal readback
+  -> reusable learning changes the closest owner
+  -> later work continues from the changed field
+```
+
+Only root `README.md`, `README.it.md`, documentation contract tests and source
+state/changelog participate in this source-documentation resultant. The
+generated `package/`, installer, runtime, release tag `v4.5.0` and published
+release assets are not modified or re-described as newly built evidence.
+
+Reusable narrative method is owner-native in
+`GrazianoGuiducci/Editoriali/skills/editorial-semantic-kernel/references/product-semantic-narrative.md`.
+MPK Definition & Evolution remains truth owner for the product.
+
 ## Current result — 4.5.0, 2026-09-14
 
 The operator selects assembly and publication of 4.5.0 for their own use and review.
