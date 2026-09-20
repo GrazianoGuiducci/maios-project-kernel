@@ -58,6 +58,29 @@ class DocumentationContractTests(unittest.TestCase):
                     self.assertIn(destination, links)
                     self.assertTrue((document.parent / destination).exists())
 
+    def test_public_product_narrative_precedes_installation_mechanics(self):
+        cases = {
+            'README.md': (
+                '## Why it exists',
+                '## What it offers',
+                '## What it does in use',
+                '## Start from your context',
+            ),
+            'README.it.md': (
+                '## Perché esiste',
+                '## Cosa offre',
+                "## Cosa fa nell'uso",
+                '## Inizia dal tuo contesto',
+            ),
+        }
+        for path, headings in cases.items():
+            text = (ROOT / path).read_text(encoding='utf-8')
+            positions = [text.index(heading) for heading in headings]
+            with self.subTest(path=path):
+                self.assertEqual(positions, sorted(positions))
+                self.assertIn('causal readback' if path == 'README.md' else 'rilettura causale', text)
+                self.assertIn('package/', text)
+
     def test_evolution_feedback_keeps_public_submission_owner_gated(self):
         template = (ROOT / '.github/ISSUE_TEMPLATE/evolution-feedback.md').read_text(
             encoding='utf-8'
