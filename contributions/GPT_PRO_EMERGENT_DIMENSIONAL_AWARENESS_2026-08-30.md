@@ -6,8 +6,8 @@
 - contributor: hybrid — Graziano Guiducci operator formulations + GPT-5.6 Sol synthesis
 - model and interaction context, when applicable: ChatGPT/GPT-5.6 Sol, 2026-08-29/30; source-bound work on the ChatGPT host-local Kernel and MAIOS Project Kernel 3.0.1
 - repository revision observed: `GrazianoGuiducci/maios-project-kernel@8162fbee8935f7665fcb33baf02acf5d01f89de2`
-- additional incarnation revision observed: `GrazianoGuiducci/tm7@3a53ab64ec9808e93634eeb49d0804923bf59498`
-- canonical Meta_Skill revision referenced by the observed ChatGPT incarnation: `GrazianoGuiducci/Meta_Skill@c30d2c6b64a661395b15eed95866ebc2b909569d`
+- additional incarnation observed: source-bound private host-local Kernel context; exact private repository identity and revision omitted from the public contribution
+- Meta_Skill source relation: private source referenced by that incarnation; exact repository identity and revision omitted from the public contribution
 - contribution type: research | method | competence evolution | formalization candidate
 
 ## Source relation
@@ -38,13 +38,13 @@ At the observed MAIOS Project Kernel revision:
 
 ### Observed host-local incarnation
 
-At `GrazianoGuiducci/tm7@3a53ab64ec9808e93634eeb49d0804923bf59498`, the ChatGPT host-local incarnation represents several further relations in operating form:
+A source-bound private host-local incarnation represents several further relations in operating form. Exact private repository paths and revision identities are intentionally omitted from this public contribution:
 
-1. `chatgpt/competences/emergent-dimensional-meta-kernel/COMPETENCE.md` distinguishes possibility **solidity** from **transformative potential**, recognizes a material semantic dimension when the current representation cannot carry a result-changing relation without loss, and forms a minimal event-local meta-kernel combo.
-2. The same source represents the dual/non-dual relation `mobile zero / open potential <-> situated resultant / formed field` and the explanatory sequence `F_n -> M_n -> R_n -> ΔC_n -> F_n+1`.
-3. `chatgpt/KERNEL_EVOLUTION.md` represents reciprocal owner-local cultivation: the competence that acts is the first owner of the learning produced by its action.
-4. The same evolution contract distinguishes competence-local evolution from host-wide constitutional Kernel changes.
-5. `chatgpt/CHATGPT_KERNEL.md` represents context-first activation: a project may continue from identity, sources, history, constraints and active pressure without first being converted into a new task prompt.
+1. its emergent-dimensional competence distinguishes possibility **solidity** from **transformative potential**, recognizes a material semantic dimension when the current representation cannot carry a result-changing relation without loss, and forms a minimal event-local meta-kernel combo;
+2. the same source represents the dual/non-dual relation `mobile zero / open potential <-> situated resultant / formed field` and the explanatory sequence `F_n -> M_n -> R_n -> ΔC_n -> F_n+1`;
+3. its evolution relation represents reciprocal owner-local cultivation: the competence that acts is the first owner of the learning produced by its action;
+4. the same evolution contract distinguishes competence-local evolution from host-wide constitutional Kernel changes;
+5. its host-local kernel represents context-first activation: a project may continue from identity, sources, history, constraints and active pressure without first being converted into a new task prompt.
 
 These are represented and implemented as repository relations in that host-local Kernel. Their general behavioral value remains separately testable.
 
@@ -82,7 +82,7 @@ Secondary possible owner after research reconciliation:
 
 Only the subset that is accepted as a constitutive public Kernel relation should later enter the knowledge source. This contribution does **not** propose changing `kernel/`, `package/`, host adapters, release projection or installed product behavior.
 
-Editorial form owner remains external to this repository's canonical meaning: `GrazianoGuiducci/Editoriali/programs/maios/papers/` may later consume the accepted research field for one or more academic papers.
+Editorial form ownership remains external to this repository's canonical meaning. A separately owned editorial workspace may later consume the accepted research field for one or more academic papers.
 
 ## Contribution body
 
@@ -371,11 +371,11 @@ This contribution does not establish:
 ## Resultant
 
 - expected change: extend the public AI Kernel Paper field with a source-bound research programme connecting possibility quality, emergent-dimensional activation, event-local meta-kernel composition, reciprocal competence evolution, context-first distributed intent and an operational construct of situated artificial awareness.
-- evidence or test: exact source representation exists in the observed MAIOS Project Kernel and ChatGPT host-local revisions; behavioral/general scientific support remains to be produced by the proposed experiments and later non-identical use.
+- evidence or test: exact source representation was observed in the public MAIOS Project Kernel revision and a source-bound private host-local incarnation; behavioral/general scientific support remains to be produced by the proposed experiments and later non-identical use.
 - claim state:
   - `operator_source` — competence-as-possibility-quality, continuum/resultant relation, possibility traversal and D-ND autological framing;
   - `represented` — emergent-dimensional meta-kernel, possibility gradient, owner-local cultivation, context-first activation in `tm7/chatgpt@3a53ab64...`;
-  - `implemented` — host-local repository files instantiate those operating relations for ChatGPT routing/maintenance;
+  - `implemented` — private host-local source files instantiate those operating relations for receiver routing/maintenance;
   - `structurally_verified` — only to the extent exact source identities and repository structure are inspectable; no independent behavioral benchmark is claimed here;
   - `hypothesis` — general cross-host invariance, measurable advantage, and the proposed operational science of situated artificial awareness;
   - `retained_unknown` — whether these relations form one useful scientific construct or several narrower mechanisms better studied separately.
@@ -445,9 +445,9 @@ A second integration may later add the `S(p|F_n)` / `T(p|F_n)` distinction and `
   - `package/`
   - `release/PROJECTION.json`
   - `skills/maios-kernel-paper/SKILL.md`
-  - `GrazianoGuiducci/Meta_Skill`
-  - `GrazianoGuiducci/tm7`
-  - `GrazianoGuiducci/Editoriali`
+  - private Meta_Skill source
+  - private host-local Kernel source
+  - private editorial workspace
   - `GrazianoGuiducci/kernel_chat`
 - package disposition: `no_change`
 - release, installation or publication effect: none
