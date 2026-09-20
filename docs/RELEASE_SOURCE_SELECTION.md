@@ -1,11 +1,15 @@
-# Source basis for the next generated release
+# Historical source-selection genealogy
 
-## Maintained renewal from 4.1.0
+The normal build is now [direct from current owners](GENERATED_KERNEL_BUILD.md).
+The dated descriptions below preserve their former selection context and do not
+authorize the current build or select a new release.
+
+## Historical renewal from 4.1.0
 
 Use [RENEW_KERNEL_SELECTION.md](RENEW_KERNEL_SELECTION.md) and the exact current
 `release/GENERATED_KERNEL_SELECTION.json`. The renewal reads committed product
 bodies and invokes the pinned compiler; its selected-corpus identity is distinct
-from the current builder's whole-source digest. The current compiler adoption is
+from the current builder's whole-source digest. That historical compiler adoption is
 334a9d33c12d61ba826d41b25f604af18441e967. The previous consolidation below retains
 its historical identity and does not select the current release input.
 

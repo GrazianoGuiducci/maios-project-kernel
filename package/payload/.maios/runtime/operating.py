@@ -150,7 +150,32 @@ def _validate_open_fronts(
     return seen
 
 
-def read_operating_state(root: Path) -> dict[str, Any]:
+def current_learning_relations(state: dict[str, Any]) -> list[dict[str, Any]]:
+    """Current learning and the lineage it explicitly claims, without cold recall."""
+    relations = state.get("learning_relations", [])
+    if not all(isinstance(item, dict) for item in relations):
+        raise OperatingStateError("invalid learning relation")
+    by_id = {item.get("relation_id"): item for item in relations}
+    selected = {item.get("relation_id") for item in relations if item.get("status") == "reachable"}
+    selected.update(item.get("relation_id") for item in state.get("last_learning_relations", []) if isinstance(item, dict))
+    pending = list(selected)
+    while pending:
+        item = by_id.get(pending.pop(), {})
+        for related in item.get("supersedes", []) + item.get("superseded_by", []):
+            if related not in selected:
+                selected.add(related)
+                pending.append(related)
+    return [item for item in relations if item.get("relation_id") in selected]
+
+
+def learning_validation_view(state: dict[str, Any]) -> dict[str, Any]:
+    relations = current_learning_relations(state)
+    refs = configuration_engine.receipt_references(relations)
+    return dict(state, learning_relations=relations, history=[event for event in state.get("history", [])
+        if isinstance(event, dict) and (event.get("receipt") in refs or event.get("event_id") == state.get("last_event_id"))])
+
+
+def read_operating_state(root: Path, *, deep: bool = False) -> dict[str, Any]:
     root = root.resolve()
     path = operating_state_path(root)
     ensure_project_local(root, path)
@@ -175,7 +200,7 @@ def read_operating_state(root: Path) -> dict[str, Any]:
     )
     if not isinstance(value.get("last_learning_relations"), list):
         state_errors.append("last_learning_relations must be a list")
-    _validate_learning_state(value, state_errors)
+    _validate_learning_state(value if deep else learning_validation_view(value), state_errors)
     _validate_knowledge_refs(value.get("active_knowledge_refs"))
     if state_errors:
         raise OperatingStateError("invalid operating state: " + "; ".join(state_errors))
@@ -856,7 +881,8 @@ def _operating_status(
     return result
 
 
-def continuum_status(root: Path) -> dict[str, Any]:
+def continuum_status(root: Path, *, deep: bool = False,
+                     circumstance: dict[str, Any] | None = None) -> dict[str, Any]:
     root = root.resolve()
     pending = configuration_engine.pending_transitions(root)
     errors = ["pending state transition: " + path for path in pending]
@@ -864,27 +890,80 @@ def continuum_status(root: Path) -> dict[str, Any]:
         configuration = configuration_engine.current_configuration(root)
     except configuration_engine.ConfigurationError as exc:
         return {"valid": False, "errors": errors + [str(exc)], "pending_journals": pending}
-    state = read_operating_state(root)
+    try:
+        state = read_operating_state(root)
+    except OperatingStateError as exc:
+        return {"valid": False, "errors": errors + [str(exc)], "pending_journals": pending,
+                "integrity_scope": "current_frontier", "operational_valid": False}
     relation = configuration.get("faculty_composition", {}).get("last_readback") or {}
     if (relation.get("event_id") != state.get("last_event_id")
             or relation.get("receipt") != state.get("last_resultant_receipt")):
         errors.append("configuration and operating state disagree on the current resultant")
-    errors.extend(configuration_engine.history_receipt_errors(root, "resultant", state.get("history", [])))
+    # The cumulative learning_delta_refs list is a historical index. Current
+    # learning bodies, live context and explicit receipt references determine
+    # dependency, not mere residence in that index.
+    current_configuration = {k: v for k, v in configuration.items() if k != "evolution"}
+    current_configuration["evolution"] = {k: v for k, v in configuration.get("evolution", {}).items()
+        if k not in {"learning_delta_refs", "accepted_delta_refs", "superseded_relations"}}
+    current_state = {k: state.get(k) for k in ("causal_margin", "open_fronts", "active_movement", "active_knowledge_refs")}
+    refs = configuration_engine.receipt_references([current_configuration, current_state,
+        current_learning_relations(state), circumstance or {}])
     if state.get("last_event_id") and (not state.get("history")
             or state["history"][-1].get("event_id") != state["last_event_id"]
             or state["history"][-1].get("receipt") != state.get("last_resultant_receipt")):
         errors.append("current resultant differs from the terminal history event")
     host_state = host_engine.read_host_state(root)
-    errors.extend(configuration_engine.owner_state_receipt_errors(root, "host", host_state))
     index = _competence_index(root)
-    errors.extend(configuration_engine.owner_state_receipt_errors(root, "competence", index))
-    return {"valid": not errors, "errors": errors, "pending_journals": pending}
+    refs.update(configuration_engine.receipt_references({k: v for k, v in host_state.items() if k != "attestation_history"}))
+    refs.update(configuration_engine.receipt_references({k: v for k, v in index.items() if k != "history"}))
+    owners = (("resultant", state), ("host", host_state), ("competence", index))
+    # Follow only explicit dependencies of selected event bodies. A current
+    # resultant can cite another owner's receipt, which may in turn cite one
+    # more dependency. Historical before-state hashes are not traversal edges.
+    visited: set[tuple[str, str]] = set()
+    while True:
+        discovered = False
+        for owner, value in owners:
+            for event in configuration_engine.current_history_entries(owner, value, refs):
+                if not isinstance(event, dict):
+                    continue  # The owner validator reports malformed history.
+                event_id = event.get("event_id")
+                key = (owner, event_id)
+                if key in visited:
+                    continue
+                visited.add(key)
+                discovered = True
+                refs.update(configuration_engine.receipt_references(event))
+                if configuration_engine.valid_event_id(event_id):
+                    try:
+                        receipt_path = root / f".maios/receipts/{owner}/{event_id}.json"
+                        receipt = read_json(configuration_engine.project_local_file(root, receipt_path))
+                        if isinstance(receipt, dict):
+                            refs.update(configuration_engine.receipt_references(receipt.get("readback", {})))
+                    except (ValueError, RuntimeError, OSError):
+                        pass  # The owner validator reports this missing/corrupt dependency.
+        if not discovered:
+            break
+    for owner, value in owners:
+        errors.extend(configuration_engine.owner_state_receipt_errors(root, owner, value, referenced=refs))
+    result = {"valid": not errors, "errors": errors, "pending_journals": pending,
+              "integrity_scope": "current_frontier", "operational_valid": not errors}
+    if deep:
+        genealogy: list[str] = []
+        for owner, value in owners:
+            history = value.get("attestation_history" if owner == "host" else "history", [])
+            genealogy.extend(configuration_engine.history_receipt_errors(root, owner, history))
+        _validate_learning_state(state, genealogy)
+        result.update(integrity_scope="current_and_deep_genealogy", genealogical_valid=not genealogy,
+                      genealogical_errors=genealogy, valid=not errors and not genealogy)
+        result["errors"] = list(dict.fromkeys(errors + genealogy))
+    return result
 
 
 def operating_status(
     root: Path, circumstance: dict[str, Any] | None = None
 ) -> dict[str, Any]:
-    coherence = continuum_status(root)
+    coherence = continuum_status(root, circumstance=circumstance)
     try:
         result = _operating_status(root, circumstance)
     except configuration_engine.ConfigurationError as exc:
@@ -907,7 +986,7 @@ def operating_status(
 
 
 def learning_status(root: Path, *, include_cold: bool = False) -> dict[str, Any]:
-    operating_state = read_operating_state(root.resolve())
+    operating_state = read_operating_state(root.resolve(), deep=include_cold)
     all_relations = operating_state.get("learning_relations", [])
     relations = copy.deepcopy([item for item in all_relations
                                if include_cold or item.get("status") == "reachable"])
@@ -1294,10 +1373,7 @@ def _configuration_candidate(
     candidate["current_next"] = readback["next_movement"]["current_next"]
     movement = readback["movement"]
     composition = candidate.setdefault("faculty_composition", {})
-    next_relations = readback["next_movement"].get("relations", [])
-    composition["circumstance_relations"] = list(
-        next_relations or movement["circumstance"].get("relations", [])
-    )
+    composition["circumstance_relations"] = list(readback["next_movement"]["relations"])
     composition["selected"] = copy.deepcopy(movement.get("selected_faculties", []))
     composition["emergent_extensions"] = [
         copy.deepcopy(item)
@@ -1316,6 +1392,8 @@ def _configuration_candidate(
     eliminated = impact["eliminated"]
     for field in ("opened", "preserved", "constrained", "eliminated"):
         possibility[field] = _merge_unique(possibility.get(field, []), impact[field])
+    reopened = impact["opened"] + impact["preserved"]
+    possibility["eliminated"] = [item for item in possibility["eliminated"] if item not in reopened]
     for field in ("candidates", "opened", "preserved"):
         possibility[field] = [
             item for item in possibility.get(field, []) if item not in eliminated
@@ -1482,7 +1560,7 @@ def apply_resultant_readback(
     configuration_engine.require_no_pending_transition(root)
     if not isinstance(readback, dict) or not configuration_engine.valid_event_id(readback.get("event_id")):
         raise OperatingStateError("event_id is unsafe or reserved for transaction control")
-    coherence = continuum_status(root)
+    coherence = continuum_status(root, circumstance=readback)
     if not coherence["valid"]:
         raise OperatingStateError("continuum recovery required: " + "; ".join(coherence["errors"]))
     current_operating = read_operating_state(root)
@@ -1490,6 +1568,9 @@ def apply_resultant_readback(
     event_digest = digest(readback)
     for prior in current_operating.get("history", []):
         if prior.get("event_id") == event_id:
+            replay_errors = configuration_engine.terminal_receipt_errors(root, "resultant", prior)
+            if replay_errors:
+                raise OperatingStateError("; ".join(replay_errors))
             if prior.get("event_digest") != event_digest:
                 raise OperatingStateError("event_id already exists with different content")
             return {

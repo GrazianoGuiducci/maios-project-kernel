@@ -143,41 +143,34 @@ class GeneratedKernelBuildTests(unittest.TestCase):
             builder.render_distribution(ROOT, self.root/"package", kernel_plan=path)
         self.assertFalse((self.root/"package").exists())
 
-    def test_default_build_uses_maintained_release_input_and_source_only_is_explicit(self):
-        output = self.root / "default"
-        builder.render_distribution(ROOT, output)
+    def test_default_build_is_direct_and_source_only_remains_an_alias(self):
+        from unittest.mock import patch
+        output, alias = self.root / "default", self.root / "alias"
+        with patch.object(generated, "selected_plan", side_effect=AssertionError("hidden authority")):
+            builder.render_distribution(ROOT, output)
+            builder.render_distribution(ROOT, alias, source_only=True)
+            self.assertTrue(builder.verify_distribution(ROOT, output)["valid"])
         manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
-        plan, selection = generated.selected_plan(ROOT)
-        self.assertEqual(manifest["generated_kernel"]["release_selection"], selection)
-        bodies, _ = generated.load(plan, selection["plan_sha256"])
-        for path, body in bodies.items():
-            self.assertEqual((output / path).read_bytes(), body.encode("utf-8"))
-        self.assertTrue(builder.verify_distribution(ROOT, output)["valid"])
-        compatibility = self.root / "source-only"
-        builder.render_distribution(ROOT, compatibility, source_only=True)
-        manifest = json.loads((compatibility / "MANIFEST.json").read_text(encoding="utf-8"))
         self.assertNotIn("generated_kernel", manifest)
-        self.assertTrue(builder.verify_distribution(ROOT, compatibility)["valid"])
+        self.assertEqual((output / "PACKAGE_INVENTORY.json").read_bytes(),
+                         (alias / "PACKAGE_INVENTORY.json").read_bytes())
 
-    def test_missing_selection_stops_complete_checkout_build_and_preserves_package(self):
+    def test_complete_checkout_build_does_not_need_old_selection_or_compiler(self):
         checkout = self.root / "complete-checkout"
         shutil.copytree(ROOT, checkout, ignore=shutil.ignore_patterns(
             ".git", "__pycache__", ".pytest_cache", ".package.*"))
         (checkout / generated.SELECTION).unlink()
-        package = checkout / "package"
-        before = {p.relative_to(package).as_posix(): p.read_bytes()
-                  for p in package.rglob("*") if p.is_file()}
-        command = [sys.executable, "-B", str(checkout / "tools/build_release.py")]
-        result = subprocess.run(command, cwd=checkout, capture_output=True, text=True)
-        self.assertNotEqual(result.returncode, 0)
-        self.assertIn("Missing generated kernel selection", result.stderr)
-        self.assertEqual(before, {p.relative_to(package).as_posix(): p.read_bytes()
-                                 for p in package.rglob("*") if p.is_file()})
-        self.assertFalse((checkout / ".package.staging").exists())
-        result = subprocess.run(command + ["--source-only"], cwd=checkout,
-                                capture_output=True, text=True)
+        # Remove compatibility code and historical production inputs altogether.
+        for name in ("generated_kernel.py", "selection.py"):
+            (checkout / "src/maios_project_kernel" / name).unlink()
+        for directory in (checkout / "release/repokernel", checkout / "release/generated"):
+            if directory.exists():
+                shutil.rmtree(directory)
+        result = subprocess.run([sys.executable, "-B", str(checkout / "tools/build_release.py")],
+                                cwd=checkout, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertNotIn("generated_kernel", json.loads((package / "MANIFEST.json").read_text()))
+        self.assertTrue(json.loads(result.stdout)["verification"]["valid"])
+        self.assertNotIn("generated_kernel", json.loads((checkout / "package/MANIFEST.json").read_text()))
 
 
 if __name__ == "__main__":

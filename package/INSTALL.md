@@ -1,4 +1,7 @@
-# Install MAIOS Project Kernel 4.5.0 — repository package
+# Install MAIOS Project Kernel 4.6.0 — repository package
+
+This 4.6.0 candidate awaits final release review. Installation is a separate
+local effect and does not establish receiving-model assimilation.
 
 The ready-to-install distribution is in `package/`. Run `install.py` from this
 directory. `preview` creates a plan for a target folder and coding host;

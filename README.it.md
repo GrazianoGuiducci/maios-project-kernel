@@ -9,11 +9,15 @@ e organizzazione. Può operare in un'esplorazione, un dominio, un'attività in
 corso o un progetto. MAIOS comprende competenze per avviare e sviluppare
 progetti, che partecipano quando questo è il lavoro da svolgere.
 
-Conserva le ragioni delle decisioni, le fonti che le sostengono e
+Quando il lavoro attraversa sessioni o cambia direzione, una risposta utile da
+sola non conserva le ragioni necessarie per proseguire. Il kernel conserva le
+ragioni delle decisioni, le fonti che le sostengono e
 il sapere acquisito nel lavoro. Un'altra istanza può recuperare quel contesto
 e proseguire senza attribuirsi l'esperienza della precedente come memoria personale.
 
-Versione del prodotto: **[4.5.0](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
+Candidato in attesa della review finale; la release 4.6.0 non è pubblicata.
+
+Versione del prodotto: **[4.6.0](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
 Python **3.10 o successivo** · [Licenza MIT](LICENSE)
 
 [English](README.md)
@@ -119,7 +123,7 @@ osservato da parte di ogni host o modello.
 Test sorgente e verifica della distribuzione coprono integrità del pacchetto,
 meccaniche di installazione e recupero, instradamento e contratti dello stato
 locale. Non dimostrano che il modello destinatario comprenda, usi o assimili
-i metodi. Le [note della 4.5.0](docs/RELEASE_4.5.0.md) descrivono
+i metodi. Le [note della 4.6.0](docs/RELEASE_4.6.0.md) descrivono
 le novità consegnate e l'ingresso per l'uso e la revisione con il modello ricevente.
 
 ## Studiare, contribuire o costruire

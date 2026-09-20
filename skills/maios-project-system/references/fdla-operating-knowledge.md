@@ -40,6 +40,23 @@ connection. The appropriate readback may be reading the affected passage,
 observing the result or inspecting a failing mechanism. Its purpose comes from
 the actual difference; a fixed review sequence does not supply that purpose.
 
+## Recompose when a consequence changes understanding
+
+Returning to the last faithful relation preserves the operator's object and
+source meaning; it does not freeze what could be understood then. An actual
+consequence or new evidence can make another relation intelligible now.
+Distinguish what happened, the understanding available at that time and the
+current understanding. Reconstitute the earlier field in light of the
+consequence and continue from the corrected present, without narrating the new
+relation as knowledge that was already available in the past.
+
+For example, a method chosen from then-available evidence can have been faithful
+even though a later result reveals a missing condition. Preserve that choice
+and its reason as history; teach the condition to the method now. Do not call
+the earlier actor knowingly wrong, or repeat the earlier method merely because
+its original reasoning was sound. The existing `last_faithful_resultant` can
+remain a reference without renaming state fields or rewriting receipts.
+
 ## Let the correction improve the competence
 
 When the difference is reusable, Meta_Skill carries it into the competence

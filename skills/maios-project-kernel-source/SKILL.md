@@ -9,20 +9,16 @@ Read `CURRENT_STATE.md` and the selected architecture before changing source
 or build files. Treat another dirty worktree as separately owned material, not
 as an input or cleanup target for the current source.
 
-Keep generation and product composition connected. RepoKernel forms the
-selected method plan; this repository integrates it with the product entry,
-installer and runtime through `release/PROJECTION.json`. The ordinary builder
-consumes `release/GENERATED_KERNEL_SELECTION.json`, checks its plan identity,
-and materializes the selected bodies alongside those product-owned files.
+Keep meaning, product composition and delivery connected. Current native
+owners reach the distribution through `release/PROJECTION.json`; the ordinary
+builder composes them with current contracts, templates, adapters and runtime.
+No old generated selection silently decides what a current source change means.
 
-For receiving-host feedback, understand the composed instructions and data
-that the host actually consumed. Follow the correction to the body that owns
-the behavior: a selected method change needs selection renewal, while a
-product runtime or installation-entry change reaches the distribution through
-the ordinary builder. Neither changing a private compiler revision nor fixing
-an installed copy alone updates this delivery. In the production environment,
-RepoKernel's native setup stewardship retains the generative learning; this
-competence carries the product implementation through to the usable package.
+For receiving feedback, understand the instructions and data the host actually
+consumed. Return a change to the owner that should act differently, then follow
+the affected entries, consumers, state and proof until they agree on the new
+resultant. Bind proof to the identity exercised; independent-looking checks
+that share one wrong assumption do not supply independent evidence.
 
 A kernel correction can cross semantic knowledge, logical elements, state,
 registry descriptors, tools and host entries. Follow the contributing function
@@ -42,14 +38,14 @@ operating entry without requiring the coder to turn flags into a questionnaire.
 
 Keep one vertical connected:
 
-For a maintained compiler adoption, use
-[the source-selection renewal method](../../docs/RENEW_KERNEL_SELECTION.md).
-Acquire useful knowledge in the native bodies first, consolidate the source,
-then form the selected plan from the exact corpus and compiler commits. The
-ordinary builder consumes that plan. Preserve the separately retained entity
-profile provenance and its current product translation; a new method compiler
-does not relabel every historical input. Later installed-project updates remain
-owned by the existing UPDATE_CONTINUITY method and preserve local learning.
+Current catalogue/profile identity and declared portable discovery belong to
+this product. Historical compiler and seed records preserve formation context;
+they do not define today's catalogue freshness. Use
+[the source build method](../../docs/GENERATED_KERNEL_BUILD.md) for ordinary
+production. [Selection renewal](../../docs/RENEW_KERNEL_SELECTION.md) remains
+available only for an explicitly selected legacy producer relation.
+Installed-project updates remain governed by UPDATE_CONTINUITY and preserve
+local learning. A compatible new package is not an automatic migration.
 
 ```text
 living source -> generated package inventory -> install plan -> target receipt

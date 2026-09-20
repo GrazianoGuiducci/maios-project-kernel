@@ -23,14 +23,14 @@ organ: it binds the family-required deferred context to a discretionary direct
 entry policy. Builder, packaged profile, runtime and family synchronizer check
 this owner split; the Form lane is not rewritten by an autonomous patch.
 
-## Generated inputs and product composition
+## Current owners and historical formation
 
-The source archive retains the neutral generation used to form this product.
-The builder translates its Project Entity relation for autonomous startup.
-The installed functional field is maintained directly with its competences:
+The source archive retains the neutral generation used to form this product as
+genealogy. The normal builder reads current product owners directly. The
+installed profile and functional field derive from the same living declarations:
 
 ```text
-Retained neutral generation
+MAIOS contracts + PROJECTION + current catalogue identity
 -> PROJECT_ENTITY_PROFILE.json: open deferred direct-package entry
 MAIOS living source
 -> FACULTY_FIELD.json: represented functions and knowledge entries
@@ -209,8 +209,9 @@ verification distinguishes file presence and evolution from baseline integrity.
 All receipt consumers also bind ownership and backup maps to that plan through
 one validator. A corrupt current receipt cannot authorize idempotent reuse or
 uninstall. General `status` uses the canonical configuration and operating
-readers, so invalid provenance, source contact or genealogy cannot appear
-valid through a weaker diagnostic path. Configuration, operating state and
+readers, so invalid provenance, source contact or current receipt dependencies cannot appear
+valid through a weaker diagnostic path. Cold genealogy has a separate explicit
+audit, without invalidating an independent current frontier. Configuration, operating state and
 installation receipt use v3 contracts; learning relation remains v2.
 
 Pending installation v3 preserves the plan and expected maps separately from

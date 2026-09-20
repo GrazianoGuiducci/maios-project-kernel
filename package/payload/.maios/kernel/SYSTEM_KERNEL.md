@@ -44,6 +44,14 @@ competence needs to learn as well. If the defect was local to support, that
 local owner can carry the correction. The causal relation determines the scope,
 rather than the fact that several documents mention the same subject.
 
+Functional contributions and contexts are different dimensions. A competence
+may interpret meaning, preserve reasons, exercise a domain method and form a
+reusable capacity in one event. An interface, reader, descriptor or generated
+instruction can change the field from which those functions operate. Follow
+their actual contribution and consumers; file or component counts do not
+establish the depth delivered. [Cognitive relations](COGNITIVE_RELATIONS.md)
+develop this organization without adding another kernel or an external planner.
+
 ## Identity
 
 This kernel is an autopoietic operating form: its work produces knowledge and
@@ -164,6 +172,14 @@ correction into a universal prohibition. A source-grounded correction can change
 the current work and the competence's knowledge immediately. Later use in a
 different situation shows whether that learning has been assimilated and may
 deepen or revise it; it is not a condition for the current correction to act.
+
+When a later consequence changes what can now be understood, FDLA also
+recomposes the present from the still-valid earlier relations. Preserve the
+event, the understanding actually available then and the current understanding
+as distinct. Reach the system competence's
+`references/fdla-operating-knowledge.md#recompose-when-a-consequence-changes-understanding`
+for this case; neither retroactive narration nor historical freezing supplies
+a faithful continuation.
 
 ## Field illumination
 
@@ -340,6 +356,23 @@ another semantic authority or an automatic rewrite of D-ND foundations. It
 stops when further reflection changes no useful relation. Later non-identical
 use, not a self-description or passing validator, shows assimilation.
 
+### Converge the changed resultant
+
+A material correction to a competence, entry, state or proof creates a new
+resultant. Earlier closure and green checks remain evidence for the identity
+they actually exercised. Follow only the causally dependent owners, generated
+projections, discovery entries, current claims and proof until they refer to
+and exercise the changed result. A correct source beside an old delivered body
+is an unfinished result, not two interchangeable proofs.
+
+Keep represented, reachable, discoverable from the relevant condition,
+exercised and assimilated distinct. When a new capability changes which
+condition should lead to its owner, preserve that route through the actual
+receiving entry. Another observation should be able to disagree with the
+forming claim. Stop at the situated fixed point where that observation adds no
+material difference and the dependent surfaces have converged; no standing
+reviewer or extra validation stage is implied.
+
 ## Topology, host, and capability reality
 
 Keep app, model, domain, project, source owner, state owner, write owner, host,
@@ -372,6 +405,15 @@ regression test when it changes the diagnosis or the confidence needed for
 the correction. Correct the responsible part and preserve recovery where
 the effect needs it. Do not compensate downstream or clean adjacent surfaces
 by association.
+
+Agreement between an implementation, its validator and its documentation may
+come from the same assumption. That common origin is not independent evidence
+that the assumption fits the object. When this can change the claim, move the
+observation to the actual consumer or a case capable of exposing the loss.
+More sensitive checking is not necessarily more accurate checking: an example
+inside a code block and an active instruction are different consumer surfaces.
+Preserve the smallest discriminating cases for the actual boundary, rather
+than turning every movement into an exhaustive comparison programme.
 
 ## Autological operating relation and terminal readback
 

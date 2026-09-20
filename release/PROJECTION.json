@@ -1,65 +1,300 @@
 {
   "schema": "maios.release-projection.v2",
   "product": "MAIOS Project Kernel",
-  "version": "4.5.0",
+  "version": "4.6.0",
   "files": [
-    {"source": "templates/distribution/AGENTS.md", "destination": "AGENTS.md"},
-    {"source": "templates/distribution/install.py", "destination": "install.py"},
-    {"source": "templates/distribution/README.md", "destination": "README.md"},
-    {"source": "templates/distribution/INSTALL.md", "destination": "INSTALL.md"},
-    {"source": "skills/maios-project-integration/SKILL.md", "destination": "skills/maios-project-integration/SKILL.md"},
-    {"source": "skills/maios-project-integration/SKILL.md", "destination": ".agents/skills/maios-project-integration/SKILL.md"},
-    {"source": "LICENSE", "destination": "LICENSE"},
-    {"source": "THIRD_PARTY_NOTICES.md", "destination": "THIRD_PARTY_NOTICES.md"},
-    {"source": "templates/project/START_HERE.md", "destination": "payload/START_HERE.md"},
-    {"source": "templates/project/AGENTS.md", "destination": "payload/AGENTS.md"},
-    {"source": "templates/project/CLAUDE.md", "destination": "payload/CLAUDE.md"},
-    {"source": "templates/project/HOSTS.md", "destination": "payload/HOSTS.md"},
-    {"source": "templates/project/maios.py", "destination": "payload/maios.py"},
-    {"source": "LICENSE", "destination": "payload/LICENSE"},
-    {"source": "THIRD_PARTY_NOTICES.md", "destination": "payload/THIRD_PARTY_NOTICES.md"},
-    {"source": "src/maios_project_kernel/filesystem.py", "destination": "payload/.maios/installer/maios_filesystem.py"},
-    {"source": "src/maios_project_kernel/filesystem.py", "destination": "payload/.maios/runtime/maios_filesystem.py"},
-    {"source": "src/maios_project_kernel/installer.py", "destination": "payload/.maios/installer/installer.py"},
-    {"source": "src/maios_project_kernel/runtime.py", "destination": "payload/.maios/runtime/kernel.py"},
-    {"source": "src/maios_project_kernel/configuration.py", "destination": "payload/.maios/runtime/configuration.py"},
-    {"source": "src/maios_project_kernel/host.py", "destination": "payload/.maios/runtime/host.py"},
-    {"source": "src/maios_project_kernel/operating.py", "destination": "payload/.maios/runtime/operating.py"},
-    {"source": "kernel/SYSTEM_KERNEL.md", "destination": "payload/.maios/kernel/SYSTEM_KERNEL.md"},
-    {"source": "kernel/COMPOSITION_PROTOCOL.md", "destination": "payload/.maios/kernel/COMPOSITION_PROTOCOL.md"},
-    {"source": "kernel/COMPETENCE_CULTIVATION_PROTOCOL.md", "destination": "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md"},
-    {"source": "kernel/FACULTY_FIELD.json", "destination": "payload/.maios/kernel/FACULTY_FIELD.json"},
-    {"source": "kernel/EVOLUTION_CONTRACT.json", "destination": "payload/.maios/kernel/EVOLUTION_CONTRACT.json"},
-    {"source": "kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json", "destination": "payload/.maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json"},
-    {"source": "kernel/AUTONOMOUS_ENTRY_CONTRACT.json", "destination": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json"},
-    {"source": "sources/SOURCE_MANIFEST.json", "destination": "payload/.maios/SOURCE_MANIFEST.json"},
-    {"source": "state/HOST_STATE.template.json", "destination": "payload/.maios/state/HOST_STATE.json"},
-    {"source": "state/OPERATING_STATE.template.json", "destination": "payload/.maios/state/OPERATING_STATE.json"},
-    {"source": "competences/INDEX.template.json", "destination": "payload/.maios/competences/INDEX.json"},
-    {"source": "schemas/COMPETENCE_DELTA.schema.json", "destination": "payload/.maios/schemas/COMPETENCE_DELTA.schema.json"},
-    {"source": "schemas/RESULTANT_READBACK.schema.json", "destination": "payload/.maios/schemas/RESULTANT_READBACK.schema.json"},
-    {"source": "docs/RECEIPTS.md", "destination": "payload/.maios/receipts/README.md"},
-    {"source": "setup/MAIOS_SETUP_CONTRACT.md", "destination": "payload/setup/MAIOS_SETUP_CONTRACT.md"},
-    {"source": "setup/CONFIGURATION_STATE.template.json", "destination": "payload/setup/CONFIGURATION_STATE.json"},
-    {"source": "project/CURRENT_STATE.template.md", "destination": "payload/project/CURRENT_STATE.md"},
-    {"source": "project/PROJECT_BRIEF.template.md", "destination": "payload/project/PROJECT_BRIEF.md"},
-    {"source": "skills/maios-project-system/SKILL.md", "destination": "payload/skills/maios-project-system/SKILL.md"},
-    {"source": "skills/maios-project-system/references/ka-operating-knowledge.md", "destination": "payload/skills/maios-project-system/references/ka-operating-knowledge.md"},
-    {"source": "skills/maios-project-system/references/fdla-operating-knowledge.md", "destination": "payload/skills/maios-project-system/references/fdla-operating-knowledge.md"},
-    {"source": "skills/maios-project-system/references/runtime-recovery.md", "destination": "payload/skills/maios-project-system/references/runtime-recovery.md"},
-    {"source": "skills/maios-start-new-project/SKILL.md", "destination": "payload/skills/maios-start-new-project/SKILL.md"},
-    {"source": "skills/maios-start-existing-project/SKILL.md", "destination": "payload/skills/maios-start-existing-project/SKILL.md"},
-    {"source": "skills/maios-project-context/SKILL.md", "destination": "payload/skills/maios-project-context/SKILL.md"},
-    {"source": "skills/maios-project-competence-formation/SKILL.md", "destination": "payload/skills/maios-project-competence-formation/SKILL.md"},
-    {"source": "skills/maios-project-host-adaptation/SKILL.md", "destination": "payload/skills/maios-project-host-adaptation/SKILL.md"},
-    {"source": "skills/maios-project-host-adaptation/references/shared-project-continuity.md", "destination": "payload/skills/maios-project-host-adaptation/references/shared-project-continuity.md"},
-    {"source": "skills/maios-project-coordination/SKILL.md", "destination": "payload/skills/maios-project-coordination/SKILL.md"},
-    {"source": "skills/maios-project-system/adapters/hermes.gitignore", "destination": "payload/skills/maios-project-system/adapters/hermes.gitignore"},
-    {"source": "domains/README.md", "destination": "payload/domains/README.md"},
-    {"source": "faculties/README.md", "destination": "payload/faculties/README.md"},
-    {"source": "kernel/FOUNDING_RELATIONS.md", "destination": "payload/.maios/kernel/FOUNDING_RELATIONS.md"},
-    {"source": "kernel/UPDATE_CONTINUITY.md", "destination": "payload/.maios/kernel/UPDATE_CONTINUITY.md"},
-    {"source": "kernel/KNOWLEDGE_CONTINUUM.md", "destination": "payload/.maios/kernel/KNOWLEDGE_CONTINUUM.md"}
+    {
+      "source": "templates/distribution/AGENTS.md",
+      "destination": "AGENTS.md"
+    },
+    {
+      "source": "templates/distribution/install.py",
+      "destination": "install.py"
+    },
+    {
+      "source": "templates/distribution/README.md",
+      "destination": "README.md"
+    },
+    {
+      "source": "templates/distribution/INSTALL.md",
+      "destination": "INSTALL.md"
+    },
+    {
+      "source": "skills/maios-project-integration/SKILL.md",
+      "destination": "skills/maios-project-integration/SKILL.md"
+    },
+    {
+      "source": "skills/maios-project-integration/SKILL.md",
+      "destination": ".agents/skills/maios-project-integration/SKILL.md"
+    },
+    {
+      "source": "LICENSE",
+      "destination": "LICENSE"
+    },
+    {
+      "source": "THIRD_PARTY_NOTICES.md",
+      "destination": "THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "source": "templates/project/START_HERE.md",
+      "destination": "payload/START_HERE.md"
+    },
+    {
+      "source": "templates/project/AGENTS.md",
+      "destination": "payload/AGENTS.md"
+    },
+    {
+      "source": "templates/project/CLAUDE.md",
+      "destination": "payload/CLAUDE.md"
+    },
+    {
+      "source": "templates/project/HOSTS.md",
+      "destination": "payload/HOSTS.md"
+    },
+    {
+      "source": "templates/project/maios.py",
+      "destination": "payload/maios.py"
+    },
+    {
+      "source": "LICENSE",
+      "destination": "payload/LICENSE"
+    },
+    {
+      "source": "THIRD_PARTY_NOTICES.md",
+      "destination": "payload/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "source": "src/maios_project_kernel/filesystem.py",
+      "destination": "payload/.maios/installer/maios_filesystem.py"
+    },
+    {
+      "source": "src/maios_project_kernel/filesystem.py",
+      "destination": "payload/.maios/runtime/maios_filesystem.py"
+    },
+    {
+      "source": "src/maios_project_kernel/installer.py",
+      "destination": "payload/.maios/installer/installer.py"
+    },
+    {
+      "source": "src/maios_project_kernel/runtime.py",
+      "destination": "payload/.maios/runtime/kernel.py"
+    },
+    {
+      "source": "src/maios_project_kernel/configuration.py",
+      "destination": "payload/.maios/runtime/configuration.py"
+    },
+    {
+      "source": "src/maios_project_kernel/host.py",
+      "destination": "payload/.maios/runtime/host.py"
+    },
+    {
+      "source": "src/maios_project_kernel/operating.py",
+      "destination": "payload/.maios/runtime/operating.py"
+    },
+    {
+      "source": "kernel/SYSTEM_KERNEL.md",
+      "destination": "payload/.maios/kernel/SYSTEM_KERNEL.md"
+    },
+    {
+      "source": "kernel/COMPOSITION_PROTOCOL.md",
+      "destination": "payload/.maios/kernel/COMPOSITION_PROTOCOL.md"
+    },
+    {
+      "source": "kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
+      "destination": "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md"
+    },
+    {
+      "source": "kernel/FACULTY_FIELD.json",
+      "destination": "payload/.maios/kernel/FACULTY_FIELD.json"
+    },
+    {
+      "source": "kernel/EVOLUTION_CONTRACT.json",
+      "destination": "payload/.maios/kernel/EVOLUTION_CONTRACT.json"
+    },
+    {
+      "source": "kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json",
+      "destination": "payload/.maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json"
+    },
+    {
+      "source": "kernel/AUTONOMOUS_ENTRY_CONTRACT.json",
+      "destination": "payload/.maios/kernel/AUTONOMOUS_ENTRY_CONTRACT.json"
+    },
+    {
+      "source": "sources/SOURCE_MANIFEST.json",
+      "destination": "payload/.maios/SOURCE_MANIFEST.json"
+    },
+    {
+      "source": "state/HOST_STATE.template.json",
+      "destination": "payload/.maios/state/HOST_STATE.json"
+    },
+    {
+      "source": "state/OPERATING_STATE.template.json",
+      "destination": "payload/.maios/state/OPERATING_STATE.json"
+    },
+    {
+      "source": "competences/INDEX.template.json",
+      "destination": "payload/.maios/competences/INDEX.json"
+    },
+    {
+      "source": "schemas/COMPETENCE_DELTA.schema.json",
+      "destination": "payload/.maios/schemas/COMPETENCE_DELTA.schema.json"
+    },
+    {
+      "source": "schemas/RESULTANT_READBACK.schema.json",
+      "destination": "payload/.maios/schemas/RESULTANT_READBACK.schema.json"
+    },
+    {
+      "source": "docs/RECEIPTS.md",
+      "destination": "payload/.maios/receipts/README.md"
+    },
+    {
+      "source": "setup/MAIOS_SETUP_CONTRACT.md",
+      "destination": "payload/setup/MAIOS_SETUP_CONTRACT.md"
+    },
+    {
+      "source": "setup/CONFIGURATION_STATE.template.json",
+      "destination": "payload/setup/CONFIGURATION_STATE.json"
+    },
+    {
+      "source": "project/CURRENT_STATE.template.md",
+      "destination": "payload/project/CURRENT_STATE.md"
+    },
+    {
+      "source": "project/PROJECT_BRIEF.template.md",
+      "destination": "payload/project/PROJECT_BRIEF.md"
+    },
+    {
+      "source": "skills/maios-project-system/SKILL.md",
+      "destination": "payload/skills/maios-project-system/SKILL.md"
+    },
+    {
+      "source": "skills/maios-project-system/references/ka-operating-knowledge.md",
+      "destination": "payload/skills/maios-project-system/references/ka-operating-knowledge.md"
+    },
+    {
+      "source": "skills/maios-project-system/references/fdla-operating-knowledge.md",
+      "destination": "payload/skills/maios-project-system/references/fdla-operating-knowledge.md"
+    },
+    {
+      "source": "skills/maios-project-system/references/runtime-recovery.md",
+      "destination": "payload/skills/maios-project-system/references/runtime-recovery.md"
+    },
+    {
+      "source": "skills/maios-start-new-project/SKILL.md",
+      "destination": "payload/skills/maios-start-new-project/SKILL.md"
+    },
+    {
+      "source": "skills/maios-start-existing-project/SKILL.md",
+      "destination": "payload/skills/maios-start-existing-project/SKILL.md"
+    },
+    {
+      "source": "skills/maios-project-context/SKILL.md",
+      "destination": "payload/skills/maios-project-context/SKILL.md"
+    },
+    {
+      "source": "skills/maios-project-competence-formation/SKILL.md",
+      "destination": "payload/skills/maios-project-competence-formation/SKILL.md"
+    },
+    {
+      "source": "skills/maios-project-host-adaptation/SKILL.md",
+      "destination": "payload/skills/maios-project-host-adaptation/SKILL.md"
+    },
+    {
+      "source": "skills/maios-project-host-adaptation/references/shared-project-continuity.md",
+      "destination": "payload/skills/maios-project-host-adaptation/references/shared-project-continuity.md"
+    },
+    {
+      "source": "skills/maios-project-coordination/SKILL.md",
+      "destination": "payload/skills/maios-project-coordination/SKILL.md"
+    },
+    {
+      "source": "skills/maios-project-system/adapters/hermes.gitignore",
+      "destination": "payload/skills/maios-project-system/adapters/hermes.gitignore"
+    },
+    {
+      "source": "domains/README.md",
+      "destination": "payload/domains/README.md"
+    },
+    {
+      "source": "faculties/README.md",
+      "destination": "payload/faculties/README.md"
+    },
+    {
+      "source": "kernel/FOUNDING_RELATIONS.md",
+      "destination": "payload/.maios/kernel/FOUNDING_RELATIONS.md"
+    },
+    {
+      "source": "kernel/UPDATE_CONTINUITY.md",
+      "destination": "payload/.maios/kernel/UPDATE_CONTINUITY.md"
+    },
+    {
+      "source": "kernel/KNOWLEDGE_CONTINUUM.md",
+      "destination": "payload/.maios/kernel/KNOWLEDGE_CONTINUUM.md"
+    },
+    {
+      "source": "kernel/COGNITIVE_RELATIONS.md",
+      "destination": "payload/.maios/kernel/COGNITIVE_RELATIONS.md"
+    },
+    {
+      "source": "skills/maios-knowledge-acquisition/SKILL.md",
+      "destination": "payload/skills/maios-knowledge-acquisition/SKILL.md"
+    },
+    {
+      "source": "skills/maios-knowledge-acquisition/references/acquiring-capabilities-and-means.md",
+      "destination": "payload/skills/maios-knowledge-acquisition/references/acquiring-capabilities-and-means.md"
+    },
+    {
+      "source": "skills/maios-knowledge-acquisition/references/source-acquisition-and-synthesis.md",
+      "destination": "payload/skills/maios-knowledge-acquisition/references/source-acquisition-and-synthesis.md"
+    },
+    {
+      "source": "skills/maios-possibility-formation/SKILL.md",
+      "destination": "payload/skills/maios-possibility-formation/SKILL.md"
+    },
+    {
+      "source": "skills/maios-project-competence-formation/references/generative-inheritance.md",
+      "destination": "payload/skills/maios-project-competence-formation/references/generative-inheritance.md"
+    },
+    {
+      "source": "skills/maios-project-competence-formation/references/kernel-formation-and-evolution.md",
+      "destination": "payload/skills/maios-project-competence-formation/references/kernel-formation-and-evolution.md"
+    },
+    {
+      "source": "skills/maios-project-context/references/human-encounter.md",
+      "destination": "payload/skills/maios-project-context/references/human-encounter.md"
+    },
+    {
+      "source": "skills/maios-repository-continuity/SKILL.md",
+      "destination": "payload/skills/maios-repository-continuity/SKILL.md"
+    },
+    {
+      "source": "skills/maios-software-design/SKILL.md",
+      "destination": "payload/skills/maios-software-design/SKILL.md"
+    },
+    {
+      "source": "skills/maios-software-diagnosis/SKILL.md",
+      "destination": "payload/skills/maios-software-diagnosis/SKILL.md"
+    },
+    {
+      "source": "skills/maios-source-grounded-expression/SKILL.md",
+      "destination": "payload/skills/maios-source-grounded-expression/SKILL.md"
+    },
+    {
+      "source": "skills/maios-source-grounded-expression/references/source-grounded-expression.md",
+      "destination": "payload/skills/maios-source-grounded-expression/references/source-grounded-expression.md"
+    },
+    {
+      "source": "skills/maios-system-understanding/SKILL.md",
+      "destination": "payload/skills/maios-system-understanding/SKILL.md"
+    },
+    {
+      "source": "skills/maios-system-understanding/references/semantic-and-generative-comprehension.md",
+      "destination": "payload/skills/maios-system-understanding/references/semantic-and-generative-comprehension.md"
+    },
+    {
+      "source": "skills/maios-project-competence-formation/references/learning-from-demonstration.md",
+      "destination": "payload/skills/maios-project-competence-formation/references/learning-from-demonstration.md"
+    }
   ],
   "generated": [
     "adapters/ADAPTERS.json",

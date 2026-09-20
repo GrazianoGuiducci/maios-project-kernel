@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.6.0 — release candidate
+
+- Reachable general owners and consequence-aware FDLA; existing semantic owners
+  carry resultant-bound proof and continuity.
+- Explicit empty relations, current possibility reconciliation, terminal state
+  binding and separate current/deep integrity diagnostics.
+- Direct owner-native production, current catalogue identity, declarative native
+  discovery, shared portable paths and invocation-owned build recovery.
+- Compatible existing state/receipt/family contracts; final publication pending.
+  See [candidate notes](docs/RELEASE_4.6.0.md).
+
 ## 4.5.0 — 2026-09-14
 
 - Install into the coder's existing empty working directory without replacing

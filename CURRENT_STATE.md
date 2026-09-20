@@ -1,5 +1,30 @@
 # MAIOS Project Kernel current state
 
+## Current movement — 4.6.0 release candidate
+
+The selected completion is based on public 4.5.0 main
+`0f58c76de5866980105dd2f6c36e3eb8c3c8751a`. It selectively reconciles the earlier
+partial corpus with current owners; that partial branch is not the build base.
+Unrelated worktrees and the frozen narrative PR remain untouched.
+
+Current native sources now directly determine production. Semantic owners,
+runtime integrity, portable discovery, profile identity and failure recovery
+carry the reviewed completion; [candidate notes](docs/RELEASE_4.6.0.md) explain
+the compatibility and proof contracts. C01 is `NO_CHANGE` after receiver
+discriminants: resolved inputs and existing intent source are sufficient.
+
+The source/package resultant must be committed and proved on that exact commit
+by the native suite, two deterministic builds, archive/checksum and GitHub CI.
+The external handoff return records the final identities and observed results
+without inserting a self-referential commit identity into package source.
+
+Stop for final release review. No protected version tag, immutable release,
+Form or site continuation is authorized by this candidate work. Existing
+installations retain owner-governed updates; package proof is not behavioral
+assimilation. The sections below preserve historical results with their dates.
+
+## Earlier states
+
 ## Current result — 4.5.0, 2026-09-14
 
 The operator selects assembly and publication of 4.5.0 for their own use and review.

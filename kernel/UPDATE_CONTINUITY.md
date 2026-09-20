@@ -66,6 +66,14 @@ This standard begins with the release that carries it; no migration adapter
 for earlier installations is presumed. There is no updater, scheduler, remote
 write or background execution implied by source contact or this method.
 
+A material update creates a new resultant whose proof belongs to that exact
+identity. Reconcile the affected source, packaged or installed projection,
+entry, current state and proof; do not transfer closure from the previous
+artifact by description alone. Test the surface the receiver actually consumes.
+Matching outputs that inherit the same assumption do not establish independent
+support for that assumption. Stop when dependent surfaces converge and a
+pertinent observation capable of disagreeing adds no material difference.
+
 ## Keep a light source contact
 
 At an ordinary active reentry, use `maios.py source-contact-status` when the

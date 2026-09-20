@@ -7,8 +7,10 @@ import json
 import os
 import re
 import shutil
+import tempfile
 from pathlib import Path, PurePosixPath
 from typing import Any
+from . import filesystem as filesystem_engine
 
 
 PROJECTION_SCHEMA = "maios.release-projection.v2"
@@ -62,7 +64,7 @@ def project_source_file(source: Path, destination: Path) -> None:
     destination.write_bytes(source_identity_bytes(source))
 
 
-def project_recipient_file(root: Path, source_rel: str, destination: Path) -> None:
+def recipient_source_bytes(root: Path, source_rel: str) -> bytes:
     """Deliver the recipient's contracts, leaving build genealogy at source."""
     source = native(root, source_rel)
     if source_rel == "sources/SOURCE_MANIFEST.json":
@@ -86,9 +88,13 @@ def project_recipient_file(root: Path, source_rel: str, destination: Path) -> No
         value.pop("transfer_rule", None)
         value["purpose"] = "Describe this project's functional coverage, entry and evolution."
     else:
-        project_source_file(source, destination)
-        return
-    write_json(destination, value)
+        return source_identity_bytes(source)
+    return formatted_json_bytes(value)
+
+
+def project_recipient_file(root: Path, source_rel: str, destination: Path) -> None:
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_bytes(recipient_source_bytes(root, source_rel))
 
 
 def read_json(path: Path) -> Any:
@@ -148,8 +154,7 @@ def autonomous_entry_contract(
         != family_contract.get("family_version")
         or family_relation.get("configuration_state")
         != family_lane.get("configuration_state")
-        or family_relation.get("startup_context_requirement")
-        != family_lane.get("startup_interview")
+        or family_relation.get("startup_context_requirement") != "required"
     ):
         raise BuildError("autonomous entry contract lost its family relation")
 
@@ -160,17 +165,10 @@ def autonomous_entry_contract(
 
 
 def safe_relative(value: str) -> PurePosixPath:
-    path = PurePosixPath(value)
-    if (
-        path.is_absolute()
-        or not path.parts
-        or ".." in path.parts
-        or "\\" in value
-        or ":" in value
-        or "\x00" in value
-    ):
-        raise BuildError(f"unsafe projection path: {value}")
-    return path
+    try:
+        return PurePosixPath(filesystem_engine.portable_path(value))
+    except ValueError as exc:
+        raise BuildError(f"unsafe delivery path: {value}: {exc}") from exc
 
 
 def native(root: Path, relative: str) -> Path:
@@ -359,7 +357,9 @@ def repokernel_projection_inputs(
     ).get("baseline_revision"):
         raise BuildError("RepoKernel source revision is not bound to its reviewed baseline")
     source_owner_manifest = read_json(root / "sources" / "SOURCE_MANIFEST.json")
-    if source_owner_manifest.get("repokernel_plan_id") != receipt.get(
+    historical_plan = source_owner_manifest.get("historical_formation", {}).get(
+        "plan_id", source_owner_manifest.get("repokernel_plan_id"))
+    if historical_plan != receipt.get(
         "repokernel", {}
     ).get("plan_id"):
         raise BuildError("MAIOS source manifest is not bound to the RepoKernel plan")
@@ -416,13 +416,11 @@ def repokernel_projection_inputs(
 
 
 def composed_project_entry_profile(
-    project_entity: dict[str, Any],
-    receipt: dict[str, Any],
     family_contract: dict[str, Any],
     entry_contract: dict[str, Any],
     root: Path,
 ) -> dict[str, Any]:
-    """Translate RepoKernel's generated entity into the open MAIOS entry relation."""
+    """Compose the open entry from current product owners and declared delivery."""
 
     capabilities = [
         {
@@ -434,25 +432,20 @@ def composed_project_entry_profile(
         if item["destination"].startswith("payload/skills/")
         and item["destination"].endswith("/SKILL.md")
     ]
-    source_catalogs: list[dict[str, Any]] = []
-    for source_catalog in project_entity.get("source_catalogs", []):
-        if not isinstance(source_catalog, dict):
-            raise BuildError("Project Entity source catalog entry must be an object")
-        translated = json.loads(json.dumps(source_catalog))
-        registry_path = translated.pop("registry_path", None)
-        if registry_path == "kernel/FACULTY_FIELD.json":
-            translated["installed_registry_path"] = (
-                ".maios/kernel/FACULTY_FIELD.json"
-            )
-        elif registry_path is not None:
-            raise BuildError(f"untranslated Project Entity registry path: {registry_path}")
-        source_catalogs.append(translated)
+    source_catalogs = [{
+        "id": "maios-project-kernel-faculties",
+        "source_ref": "maios-faculty-field",
+        "installed_registry_path": ".maios/kernel/FACULTY_FIELD.json",
+        "revision": family_contract["family_version"],
+        "sha256": source_file_digest(root / "kernel/FACULTY_FIELD.json"),
+        "adoption": "pinned", "freshness": "current",
+    }]
     return {
         "schema": family_contract["entry_profile"]["schema"],
         "product": "MAIOS Project Kernel",
         "version": family_contract["family_version"],
         "role": {
-            **project_entity["role"],
+            "id": "maios-project-system",
             "purpose": "Understand, act, form competences and evolve through the present context, sources, learning and reentry; involve project startup when useful.",
             "operating_recipient": "person and AI agent in the receiving context",
             "startup_interview": entry_contract["entry_policy"][
@@ -541,25 +534,19 @@ def render_distribution(root: Path, package_dir: Path, *,
                         kernel_plan_sha256: str | None = None,
                         source_only: bool = False) -> dict[str, Any]:
     root = root.resolve()
-    from . import generated_kernel
     generated, generated_receipt = {}, None
     if (kernel_plan is None) != (kernel_plan_sha256 is None):
         raise BuildError("Select both kernel_plan and its canonical kernel_plan_sha256")
     if source_only and kernel_plan is not None:
         raise BuildError("source_only and an explicit generated plan are mutually exclusive")
     selection = None
-    if kernel_plan is None and not source_only:
-        try:
-            kernel_plan, selection = generated_kernel.selected_plan(root)
-            kernel_plan_sha256 = selection["plan_sha256"]
-        except (ValueError, KeyError, TypeError, OSError) as exc:
-            raise BuildError(f"invalid kernel selection: {exc}") from exc
     if kernel_plan is not None:
+        from . import generated_kernel
         try:
             generated, generated_receipt = generated_kernel.load(kernel_plan, kernel_plan_sha256)
         except (ValueError, KeyError, TypeError) as exc:
             raise BuildError(f"invalid generated kernel: {exc}") from exc
-    if package_dir.expanduser().is_symlink():
+    if filesystem_engine.is_link(package_dir.expanduser()):
         raise BuildError("distribution target must not be a symlink")
     package_dir = package_dir.resolve()
     if package_dir.exists() and any(package_dir.iterdir()):
@@ -582,6 +569,14 @@ def render_distribution(root: Path, package_dir: Path, *,
         root, family_contract, project_version
     )
 
+    reserved_outputs = {"MANIFEST.json", "PACKAGE_INVENTORY.json", "adapters/ADAPTERS.json",
+                        "payload/.maios/config/HOST_ADAPTERS.json",
+                        "payload/.maios/kernel/PROJECT_ENTITY_PROFILE.json"}
+    try:
+        filesystem_engine.distinct_paths(
+            [item["destination"] for item in projection.get("files", [])] + sorted(reserved_outputs))
+    except (ValueError, KeyError, TypeError) as exc:
+        raise BuildError(f"invalid projection paths: {exc}") from exc
     destinations: set[str] = set()
     for item in projection.get("files", []):
         if generated_receipt is not None and generated_kernel.owns_source(item):
@@ -596,6 +591,10 @@ def render_distribution(root: Path, package_dir: Path, *,
             raise BuildError(f"duplicate projection destination: {destination_rel}")
         destinations.add(destination_rel)
         source = native(root, source_rel)
+        try:
+            filesystem_engine.ensure_local(root, source)
+        except ValueError as exc:
+            raise BuildError(f"unsafe projection source: {source_rel}") from exc
         if not source.is_file() or source.is_symlink():
             raise BuildError(f"projection source is missing or unsafe: {source_rel}")
         destination = native(package_dir, destination_rel)
@@ -618,13 +617,10 @@ def render_distribution(root: Path, package_dir: Path, *,
         entry.write_text(entry.read_text(encoding="utf-8") + generated_kernel.discovery(generated_receipt),
                          encoding="utf-8", newline="\n")
 
-    _, project_entity, repokernel_receipt = repokernel_projection_inputs(
-        root
-    )
     write_json(
         package_dir / "payload" / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json",
         composed_project_entry_profile(
-            project_entity, repokernel_receipt, family_contract, entry_contract, root
+            family_contract, entry_contract, root
         ),
     )
 
@@ -681,13 +677,7 @@ def render_distribution(root: Path, package_dir: Path, *,
         "competence_cultivation": {
             "state_owner": "payload/.maios/competences/INDEX.json",
             "protocol": "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
-            "represented_owners": [
-                "payload/skills/maios-start-new-project/SKILL.md",
-                "payload/skills/maios-start-existing-project/SKILL.md",
-                "payload/skills/maios-project-context/SKILL.md",
-                "payload/skills/maios-project-competence-formation/SKILL.md",
-                "payload/skills/maios-project-host-adaptation/SKILL.md",
-            ],
+            "represented_owners": transformed_adapters(root)["portable_competence_owners"],
             "producer_self_approval": False,
             "behavioral_proof_separate": True,
         },
@@ -703,10 +693,9 @@ def render_distribution(root: Path, package_dir: Path, *,
         },
         "contains_private_generator_source": False,
         "entity_profile_provenance": {
-            "source_revision": repokernel_receipt["repokernel"]["source_revision"],
-            "compiler_version": repokernel_receipt["repokernel"]["compiler_version"],
-            "plan_id": repokernel_receipt["repokernel"]["plan_id"],
-            "translation": "historical entity inputs combined with current product entry and family contracts",
+            "owner": "current product sources",
+            "catalogue_sha256": source_file_digest(root / "kernel/FACULTY_FIELD.json"),
+            "translation": "current projection, family and autonomous entry contracts",
             "method_selection_is_separate": True,
         },
         "contains_form_state": False,
@@ -761,6 +750,10 @@ def inventory_errors(package_dir: Path) -> list[str]:
         item.get("path"): {"sha256": item.get("sha256"), "bytes": item.get("bytes")}
         for item in declared_rows
     }
+    try:
+        filesystem_engine.distinct_paths([row["path"] for row in declared_rows])
+    except (ValueError, KeyError, TypeError) as exc:
+        errors.append(str(exc))
     if len(declared) != len(declared_rows):
         errors.append("package inventory contains duplicate paths")
     if declared != actual:
@@ -843,11 +836,10 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         ):
             if manifest.get(flag) is not False:
                 errors.append(f"manifest must set {flag} false")
-    except BuildError as exc:
+    except (BuildError, ValueError, KeyError, TypeError) as exc:
         errors.append(str(exc))
 
     try:
-        _, source_entity, source_receipt = repokernel_projection_inputs(root)
         packaged_entity = read_json(
             package_dir / "payload" / ".maios" / "kernel" / "PROJECT_ENTITY_PROFILE.json"
         )
@@ -862,7 +854,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             package_dir / "payload" / ".maios" / "kernel" / "FACULTY_FIELD.json"
         )
         expected_entity = composed_project_entry_profile(
-            source_entity, source_receipt, family_contract, entry_contract, root
+            family_contract, entry_contract, root
         )
         if packaged_entity != expected_entity:
             errors.append("packaged Project Entity Profile is not the owner-native translation")
@@ -955,11 +947,20 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         semantic_owner = adapters.get("semantic_owner")
         host_adaptation_owner = adapters.get("host_adaptation_owner")
         portable_owners = adapters.get("portable_competence_owners", [])
-        if len(portable_owners) != 5 or not all(
+        if not portable_owners or len(set(portable_owners)) != len(portable_owners) or not all(
             isinstance(item, str) and item.startswith("payload/skills/")
             for item in portable_owners
         ):
             errors.append("portable competence owners are missing or malformed")
+        if adapters != transformed_adapters(root):
+            errors.append("portable adapter declarations drifted from source")
+        if manifest.get("competence_cultivation", {}).get("represented_owners") != portable_owners:
+            errors.append("manifest portable owners drifted from declarations")
+        for owner in portable_owners:
+            if not native(package_dir, owner).is_file():
+                errors.append(f"missing portable competence owner: {owner}")
+        for adapter in adapters.get("adapters", []):
+            filesystem_engine.distinct_paths([item["destination"] for item in adapter.get("projections", [])])
         if host_adaptation_owner not in portable_owners:
             errors.append("host-adaptation owner is not a portable competence owner")
         for adapter in adapters.get("adapters", []):
@@ -1004,7 +1005,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
                         errors.append(
                             f"Codex adapter must project {owner_name!r} exactly once"
                         )
-    except BuildError as exc:
+    except (BuildError, ValueError, KeyError, TypeError) as exc:
         errors.append(str(exc))
     try:
         faculty_field = read_json(
@@ -1018,7 +1019,7 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             errors.append("packaged faculty field must remain open_world")
         if len(families) < 12 or len(permanent) != 2:
             errors.append("packaged faculty field lost functional coverage or silent invariants")
-    except BuildError as exc:
+    except (BuildError, ValueError, KeyError, TypeError) as exc:
         errors.append(str(exc))
     try:
         configuration = read_json(
@@ -1064,8 +1065,15 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
             or operating_state.get("learning_relations") != []
         ):
             errors.append("initial operating state must not contain inherited project state")
-    except BuildError as exc:
+    except (BuildError, ValueError, KeyError, TypeError) as exc:
         errors.append(str(exc))
+
+    if manifest and manifest.get("generated_kernel") is None:
+        for row in projection.get("files", []):
+            source = native(root, row["source"])
+            target = native(package_dir, row["destination"])
+            if not target.is_file() or target.read_bytes() != recipient_source_bytes(root, row["source"]):
+                errors.append(f"projected consumer differs from current source: {row['destination']}")
 
     integration_source = package_dir / "skills" / "maios-project-integration" / "SKILL.md"
     integration_codex = (
@@ -1081,6 +1089,10 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         b"MAIOS_CLIENT_SETUP",
         b"project_hook_kernel",
         b"hooks.json",
+        b"C:/PVSC/ANTI_G",
+        b"C:\\PVSC\\ANTI_G",
+        b"C:/Users/User/",
+        b"C:\\Users\\User\\",
     )
     credential_names = {".env", "id_rsa", "id_ed25519", "credentials.json"}
     legacy_prefixes = (
@@ -1104,6 +1116,8 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
         if path.name.lower() in credential_names:
             errors.append(f"credential-like file is forbidden: {relative}")
         data = path.read_bytes()
+        if re.search(rb"gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}", data):
+            errors.append(f"credential-like content is forbidden: {relative}")
         for marker in forbidden_markers:
             if marker in data:
                 errors.append(f"private or contaminated marker in {relative}: {marker!r}")
@@ -1121,23 +1135,107 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     }
 
 
-def promote_directory(staging: Path, target: Path) -> None:
-    if staging.expanduser().is_symlink() or target.expanduser().is_symlink():
-        raise BuildError("promotion paths must not be symlinks")
-    staging = staging.resolve()
-    target = target.resolve()
-    if staging.parent != target.parent:
+def directory_snapshot(path: Path) -> dict | None:
+    """Identity and bytes of a local tree, without following foreign links."""
+    if filesystem_engine.is_link(path):
+        raise BuildError(f"directory must not be a symlink or junction: {path}")
+    if not path.exists():
+        return None
+    if not path.is_dir():
+        raise BuildError(f"not a directory: {path}")
+    identity = path.stat()
+    rows = []
+    for item in sorted(path.rglob("*")):
+        if filesystem_engine.is_link(item):
+            raise BuildError(f"tree contains a symlink or junction: {item}")
+        st = item.stat()
+        rows.append((item.relative_to(path).as_posix(), st.st_dev, st.st_ino,
+                     digest_file(item) if item.is_file() else None))
+    return {"identity": (identity.st_dev, identity.st_ino), "files": rows}
+
+
+class OwnedDirectory:
+    """An exclusive invocation directory; uncertain content is never cleaned."""
+    def __init__(self, parent: Path, prefix: str):
+        self.parent = parent.resolve()
+        self.path = Path(tempfile.mkdtemp(dir=self.parent, prefix=prefix))
+        self.identity = directory_snapshot(self.path)["identity"]
+        self.sealed = None
+
+    def seal(self) -> None:
+        current = directory_snapshot(self.path)
+        if current is None or current["identity"] != self.identity:
+            raise BuildError("invocation directory changed ownership")
+        self.sealed = current
+
+    def cleanup(self) -> None:
+        if not self.path.exists():
+            return
+        # Verify absolute containment and both identity and sealed content before
+        # recursive removal. A failed renderer may leave unsealed data for recovery.
+        if self.path.parent.resolve() != self.parent or self.sealed is None:
+            return
+        try:
+            matches = directory_snapshot(self.path) == self.sealed
+        except (OSError, BuildError):
+            return
+        if matches:
+            shutil.rmtree(self.path)
+
+
+def promote_directory(staging: Path, target: Path, *, expected_target=None,
+                      expected_staging=None) -> None:
+    if filesystem_engine.is_link(staging) or filesystem_engine.is_link(target):
+        raise BuildError("promotion paths must not be symlinks or junctions")
+    staging, target = staging.absolute(), target.absolute()
+    if staging.parent.resolve() != target.parent.resolve():
         raise BuildError("staging and target must share a parent for atomic promotion")
-    backup = target.with_name(f".{target.name}.previous-{os.getpid()}")
-    if backup.exists():
-        raise BuildError(f"promotion backup already exists: {backup}")
-    if target.exists():
+    before = directory_snapshot(target)
+    staged = directory_snapshot(staging)
+    if expected_target is not None and before != expected_target[0]:
+        raise BuildError("target changed during build; preserve concurrent package")
+    if expected_staging is not None and staged != expected_staging:
+        raise BuildError("staging changed after verification; preserve uncertain content")
+    if staged is None:
+        raise BuildError("staging directory is missing")
+    holder = OwnedDirectory(target.parent, f".{target.name}.previous-")
+    backup = holder.path / "previous"
+    if before is not None:
         os.replace(target, backup)
     try:
         os.replace(staging, target)
     except Exception:
-        if backup.exists() and not target.exists():
+        if before is not None and not target.exists() and directory_snapshot(backup) == before:
             os.replace(backup, target)
+        holder.seal()
+        # Never clean a previous package if rollback could not restore it.
+        if not backup.exists():
+            holder.cleanup()
         raise
-    if backup.exists():
-        shutil.rmtree(backup)
+    # The renamed tree must still be ours before the previous package is removed.
+    if directory_snapshot(target) != staged or directory_snapshot(backup) != before:
+        raise BuildError(f"promotion ownership changed; previous package preserved at {backup}")
+    holder.seal()
+    holder.cleanup()
+
+
+def build_distribution(root: Path, target: Path, **options) -> dict:
+    """Render and verify an exclusive candidate before replacing the old package."""
+    if filesystem_engine.is_link(target):
+        raise BuildError("package target must not be a symlink or junction")
+    target = target.absolute()
+    target.parent.mkdir(parents=True, exist_ok=True)
+    previous = directory_snapshot(target)
+    staging = OwnedDirectory(target.parent, f".{target.name}.staging-")
+    try:
+        build = render_distribution(root, staging.path, **options)
+        staging.seal()
+        verification = verify_distribution(root, staging.path)
+        if not verification["valid"]:
+            raise BuildError("; ".join(verification["errors"]))
+        promote_directory(staging.path, target, expected_target=(previous,),
+                          expected_staging=staging.sealed)
+        return {"schema": "maios.package-build-receipt.v3", **build,
+                "verification": verification}
+    finally:
+        staging.cleanup()

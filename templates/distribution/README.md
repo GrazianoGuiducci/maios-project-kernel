@@ -1,11 +1,12 @@
-# MAIOS Project Kernel 4.5.0 — installable package projection
+# MAIOS Project Kernel 4.6.0 — installable package projection
 
 MAIOS Project Kernel brings an AI agent living context, evolving competences
 and knowledge that carries work across sessions. Its activity can reform its
 own knowledge and organization. Inquiry, domain work and projects can all
 supply the context; project initialization is a competence to use when needed.
 
-This `package/` folder is ready to install. `INSTALL.md` documents `install.py`;
+This is the 4.6.0 release candidate, pending final release review.
+This `package/` folder is ready for candidate installation. `INSTALL.md` documents `install.py`;
 `maios-project-integration` provides the package reference for the coder.
 `payload/` contains the project files installed by `install.py`. `MANIFEST.json`
 and `PACKAGE_INVENTORY.json` identify their source and integrity. The installer

@@ -94,17 +94,13 @@ hidden runtime state. The first GPT Pro packet is available at
 Public knowledge, research, and contribution competences are repository-native
 and are not mapped into the current installable package. A pull request must
 state `no_change`, `candidate`, or `selected` for package disposition. The
-source projection in `release/PROJECTION.json` and the retained generated
-selection determine what is delivered. Change the appropriate source owner;
-never hand-edit `package/`.
+source projection in `release/PROJECTION.json` directly determines ordinary
+delivery. Change the appropriate source owner; never hand-edit `package/`.
 
-For method bodies supplied by the retained selection, editing the public native
-source does not replace the exported body consumed by the ordinary build.
-Maintainers renew that selection through the [production renewal method](docs/RENEW_KERNEL_SELECTION.md).
-You can study, edit, test and propose public source changes without the private
-compiler. The [build guide](docs/GENERATED_KERNEL_BUILD.md) explains which source
-changes the ordinary build consumes and when an explicit source-only candidate
-is useful for checking a native method change.
+The [build guide](docs/GENERATED_KERNEL_BUILD.md) explains deterministic public
+production. Native method edits reach that build directly. The optional
+[historical selection renewal](docs/RENEW_KERNEL_SELECTION.md) requires a
+separately selected producer; it is not a contribution prerequisite.
 
 Contributions should preserve the distinction between a file being included,
 discovered, configured, and actually active.

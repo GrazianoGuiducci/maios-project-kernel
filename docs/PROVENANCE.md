@@ -2,17 +2,17 @@
 
 ## Source owner
 
-The 4.5.0 product source is this `maios-project-kernel` repository. Native
-methods and retained generated inputs are composed through explicit product
-mappings and source-bound receipts. The generated `package/` projection does
+The 4.6.0 candidate product source is this `maios-project-kernel` repository. Current native
+methods and product contracts are composed through the explicit source mapping.
+Retained generated inputs preserve historical formation only. The generated `package/` projection does
 not import a prepared website payload, Form state, private compiler source,
 production-environment configuration, credentials, runtime state or lifecycle
 hooks. Version history remains in Git and `CHANGELOG.md`, outside the living
 package topology.
 
 The retained Project Meta-Faculty and crosswalk preserve historical formation
-inputs. The current builder translates the entity profile into the product's
-entry relation, including its context-wide purpose and discretionary startup.
+inputs. The current builder derives the entity profile from current product declarations,
+including its context-wide purpose, catalogue digest and discretionary startup.
 The live faculty field and competence entries are maintained by this repository;
 they do not require the historical map or crosswalk during installed use.
 

@@ -34,6 +34,22 @@
         {
           "destination": ".agents/skills/maios-project-host-adaptation/SKILL.md",
           "source": "payload/skills/maios-project-host-adaptation/SKILL.md"
+        },
+        {
+          "destination": ".agents/skills/maios-system-understanding/SKILL.md",
+          "source": "payload/skills/maios-system-understanding/SKILL.md"
+        },
+        {
+          "destination": ".agents/skills/maios-possibility-formation/SKILL.md",
+          "source": "payload/skills/maios-possibility-formation/SKILL.md"
+        },
+        {
+          "destination": ".agents/skills/maios-knowledge-acquisition/SKILL.md",
+          "source": "payload/skills/maios-knowledge-acquisition/SKILL.md"
+        },
+        {
+          "destination": ".agents/skills/maios-source-grounded-expression/SKILL.md",
+          "source": "payload/skills/maios-source-grounded-expression/SKILL.md"
         }
       ]
     },
@@ -138,7 +154,11 @@
     "payload/skills/maios-start-existing-project/SKILL.md",
     "payload/skills/maios-project-context/SKILL.md",
     "payload/skills/maios-project-competence-formation/SKILL.md",
-    "payload/skills/maios-project-host-adaptation/SKILL.md"
+    "payload/skills/maios-project-host-adaptation/SKILL.md",
+    "payload/skills/maios-system-understanding/SKILL.md",
+    "payload/skills/maios-possibility-formation/SKILL.md",
+    "payload/skills/maios-knowledge-acquisition/SKILL.md",
+    "payload/skills/maios-source-grounded-expression/SKILL.md"
   ],
   "rule": "Every native profile projects the permanent semantic owner and the host-adaptation competence. Codex projects every portable owner immediately. Any capable coder may translate the neutral sources into its current harness conventions without forking Kernel meaning or treating a path as activation proof.",
   "schema": "maios.host-adapters.v2",

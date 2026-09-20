@@ -165,3 +165,23 @@ Receipt and pending-journal readers retain the supplied root/path pair until
 the common confinement helper derives its relative path. Equivalent spellings
 of the selected root are valid; resolving only that root beforehand can lose
 their relation. Child traversal, symlinks and junctions remain rejected.
+
+## Current frontier and deep genealogy
+
+Ordinary status validates each owner's terminal receipt, current state binding,
+active admissions/host observations, reachable learning lineage and explicitly
+referenced receipt dependencies, including cross-owner references. It does not
+open every cold receipt merely because it remains in history. The current
+operating state is bound to `after_operating_state_sha256`; living semantic
+bodies retain their separate ownership and can evolve.
+
+`audit-continuum` also checks cold receipt history and learning genealogy. It
+reports operational and genealogical validity separately and changes no bytes.
+Missing cold evidence is a genealogical problem; current or referenced evidence
+is operationally required. Replaying an old event still validates its own
+receipt. No compaction or new state schema is introduced. Current owner state
+still retains and hashes its complete history; this change bounds receipt
+validation work, not all serialized-state processing.
+
+An explicit empty next-relation list remains empty. Reopening or preserving a
+possibility removes its current elimination; earlier receipt meaning is intact.

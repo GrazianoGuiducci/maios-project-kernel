@@ -16,11 +16,7 @@ from urllib.parse import quote
 RECORD = ".repokernel/knowledge/COMPETENCE_MATERIALIZATION.json"
 SCHEMA = "maios.generated-kernel-delivery.v1"
 SELECTION = "release/GENERATED_KERNEL_SELECTION.json"
-RESERVED_WINDOWS_NAMES = {
-    "CON", "PRN", "AUX", "NUL", "CONIN$", "CONOUT$",
-    *(f"COM{n}" for n in "123456789¹²³"),
-    *(f"LPT{n}" for n in "123456789¹²³"),
-}
+from .filesystem import portable_path
 
 
 def identity(value: object) -> str:
@@ -35,7 +31,7 @@ def text_hash(text: str) -> str:
 def selected_plan(root: Path) -> tuple[Path, dict]:
     path = root / SELECTION
     if not path.is_file():
-        raise ValueError("Missing generated kernel selection; use --source-only for an explicit compatibility build")
+        raise ValueError("Missing historical generated kernel selection")
     selection = json.loads(path.read_text(encoding="utf-8"))
     if selection.get("schema") != "maios.generated-kernel-selection.v1":
         raise ValueError("Unsupported generated kernel selection")
@@ -48,16 +44,7 @@ def selected_plan(root: Path) -> tuple[Path, dict]:
 
 
 def safe_path(value: str) -> str:
-    if not isinstance(value, str) or not value or PurePosixPath(value).as_posix() != value:
-        raise ValueError("Delivery requires a canonical relative path")
-    if PurePosixPath(value).is_absolute() or any(p in (".", "..") for p in value.split("/")):
-        raise ValueError("Delivery path must stay inside its product root")
-    for part in value.split("/"):
-        if (not part or part.endswith((".", " ")) or part.casefold() == ".git"
-                or re.search(r'[<>:"\\|?*\x00-\x1f\x7f]', part)
-                or part.split(".", 1)[0].rstrip(" ").upper() in RESERVED_WINDOWS_NAMES):
-            raise ValueError("Delivery path is not portable")
-    return value
+    return portable_path(value)
 
 
 def destination(path: str) -> str:

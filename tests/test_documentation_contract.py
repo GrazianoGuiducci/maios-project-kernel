@@ -10,6 +10,18 @@ sys.path.insert(0, str(ROOT / "src"))
 
 
 class DocumentationContractTests(unittest.TestCase):
+    def test_direct_production_and_deep_audit_have_current_public_entries(self):
+        build = (ROOT / 'docs/GENERATED_KERNEL_BUILD.md').read_text(encoding='utf-8')
+        self.assertIn('normal build reads the living owners', build)
+        self.assertIn('not read by default', build)
+        self.assertIn('explicitly', build)
+        for path in ['docs/USAGE.md', 'docs/USAGE.it.md', 'docs/RECEIPTS.md']:
+            self.assertIn('audit-continuum', (ROOT / path).read_text(encoding='utf-8'))
+        for field, path in [('version', 'codemeta.json'), ('version', 'sources/SOURCE_MANIFEST.json'),
+                            ('product_version', 'kernel/AUTONOMOUS_ENTRY_CONTRACT.json')]:
+            self.assertEqual(json.loads((ROOT / path).read_text())[field],
+                             json.loads((ROOT / 'release/PROJECTION.json').read_text())['version'])
+
     def test_selected_methods_are_delivered_from_current_native_sources(self):
         # The retained plan can be internally consistent while carrying old
         # methods. Compare the delivered bodies with their current owners too.

@@ -22,9 +22,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python }}
       - name: Validate living source behavior
@@ -39,3 +39,12 @@ jobs:
         run: git diff --exit-code -- package/
       - name: Validate generated public boundary
         run: python -B tools/verify_distribution.py
+      - name: Prepare candidate archive
+        run: python -B tools/archive_candidate.py --output-dir "${{ runner.temp }}/mpk-candidate"
+      - name: Retain exact candidate for release review
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: mpk-candidate-${{ matrix.os }}-python-${{ matrix.python }}
+          path: ${{ runner.temp }}/mpk-candidate/*
+          if-no-files-found: error
+          retention-days: 30

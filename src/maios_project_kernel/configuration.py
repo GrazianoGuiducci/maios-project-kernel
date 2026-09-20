@@ -157,7 +157,67 @@ def history_receipt_errors(root: Path, owner: str, history: Any) -> list[str]:
     return [error for prior in history for error in terminal_receipt_errors(root, owner, prior)]
 
 
-def owner_state_receipt_errors(root: Path, owner: str, state: dict[str, Any]) -> list[str]:
+def receipt_references(value: Any) -> set[str]:
+    """Find explicit receipt dependencies in a current semantic relation."""
+    if isinstance(value, str):
+        path = value.partition("#")[0]
+        return {path} if re.fullmatch(r"\.maios/receipts/(resultant|host|competence)/[A-Za-z0-9._-]+\.json", path) else set()
+    if isinstance(value, dict):
+        return set().union(*(receipt_references(v) for v in value.values()))
+    if isinstance(value, list):
+        return set().union(*(receipt_references(v) for v in value))
+    return set()
+
+
+def current_history_entries(owner: str, state: dict[str, Any], referenced: Any = ()) -> list[Any]:
+    """Select receipt bodies needed by this owner now; keep cold bytes in place."""
+    history = state.get("attestation_history" if owner == "host" else "history", [])
+    if not isinstance(history, list):
+        return [None]
+    by_id = {e.get("event_id"): e for e in history if isinstance(e, dict)}
+    selected = {state.get("last_event_id")}
+    refs = set(referenced)
+    if owner == "competence":
+        selected.update(x.get("event_id") for x in state.get("active", {}).values() if isinstance(x, dict))
+    elif owner == "host":
+        # The most recent observation of each represented stage and live
+        # capability remains evidence even if another stage changed later.
+        stages, capabilities = set(), set(state.get("observed_capabilities", []))
+        for event in reversed(history):
+            if not isinstance(event, dict):
+                continue
+            stage = event.get("stage")
+            supplied = capabilities.intersection(event.get("observed_capabilities", []))
+            if stage not in stages or supplied:
+                selected.add(event.get("event_id"))
+                stages.add(stage)
+                capabilities.difference_update(supplied)
+    for path in refs:
+        prefix = f".maios/receipts/{owner}/"
+        if path.startswith(prefix):
+            selected.add(path[len(prefix):-5])
+    # An explicit supersession claim in a current index admission keeps its
+    # ancestor evidence reachable. Omitted/cold history is not traversed.
+    pending = list(selected - {None})
+    seen: set[str] = set()
+    while pending:
+        event_id = pending.pop()
+        if event_id in seen:
+            continue
+        seen.add(event_id)
+        event = by_id.get(event_id, {})
+        parent = event.get("supersedes_event_id")
+        if parent:
+            pending.append(parent)
+        for path in receipt_references(event):
+            prefix = f".maios/receipts/{owner}/"
+            if path.startswith(prefix):
+                pending.append(path[len(prefix):-5])
+    return [by_id.get(event_id, {"event_id": event_id}) for event_id in sorted(seen)]
+
+
+def owner_state_receipt_errors(root: Path, owner: str, state: dict[str, Any], *,
+                               deep: bool = False, referenced: Any = ()) -> list[str]:
     """Bind only the latest host/index transition to its current managed state.
 
     Historical receipts retain their own context. Competence knowledge bodies
@@ -166,9 +226,11 @@ def owner_state_receipt_errors(root: Path, owner: str, state: dict[str, Any]) ->
     history_field, after_field = {
         "host": ("attestation_history", "after_state_sha256"),
         "competence": ("history", "after_index_sha256"),
+        "resultant": ("history", "after_operating_state_sha256"),
     }[owner]
     history = state.get(history_field, [])
-    errors = history_receipt_errors(root, owner, history)
+    entries = history if deep else current_history_entries(owner, state, referenced)
+    errors = history_receipt_errors(root, owner, entries)
     if errors:
         return errors
     try:
@@ -188,12 +250,15 @@ def owner_state_receipt_errors(root: Path, owner: str, state: dict[str, Any]) ->
                 for field in ("observed_capabilities", "evidence"):
                     if state.get(field, []) != []:
                         raise ValueError(f"initial {field} has no recorded attestation")
-            elif state.get("active", {}) != {}:
+            elif owner == "competence" and state.get("active", {}) != {}:
                 raise ValueError("initial active competences have no recorded admission")
+            elif owner == "resultant" and state.get("last_resultant_receipt") is not None:
+                raise ValueError("initial resultant has a receipt without a transition")
             return []
         latest = history[-1]
-        if (revision != len(history) or type(latest.get("sequence")) is not int
-                or revision != latest["sequence"] or state.get("last_event_id") != latest["event_id"]):
+        if (revision != len(history) or state.get("last_event_id") != latest["event_id"]
+                or (owner != "resultant" and (type(latest.get("sequence")) is not int
+                                             or revision != latest["sequence"]))):
             raise ValueError("current revision or event differs from the latest transition")
         relative = f".maios/receipts/{owner}/{latest['event_id']}.json"
         receipt = read_json(project_local_file(root, root / relative))

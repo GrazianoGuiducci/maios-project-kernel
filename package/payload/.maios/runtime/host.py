@@ -203,6 +203,9 @@ def admit_host_attestation(
     history = list(state.get("attestation_history", []))
     for prior in history:
         if prior.get("event_id") == attestation["event_id"]:
+            replay_errors = configuration_engine.terminal_receipt_errors(root, "host", prior)
+            if replay_errors:
+                raise HostAttestationError("; ".join(replay_errors))
             if prior.get("event_digest") != validation["event_digest"]:
                 raise HostAttestationError("event_id already exists with different content")
             return {

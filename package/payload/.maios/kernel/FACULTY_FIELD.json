@@ -18,7 +18,7 @@
       "id": "preprojection-self-correction",
       "presence": "permanent_silent",
       "activation_relations": [],
-      "material_when": "The assistant may have changed object, status, source, or possibility before projection.",
+      "material_when": "The assistant may have changed object, status, source, or possibility before projection. A later consequence or evidence changes what can now be understood about an earlier relation.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#pre-projection-self-correction",
       "result_contract": "CorrectedResultant",
       "proof": "A later non-identical case changes before the same operator correction is required."
@@ -33,7 +33,7 @@
         "plane_change_material"
       ],
       "material_when": "Changing cognitive plane can expose a relation that alters the result.",
-      "entry": ".maios/kernel/SYSTEM_KERNEL.md#field-illumination",
+      "entry": "skills/maios-possibility-formation/SKILL.md",
       "result_contract": "IlluminatedFieldOrNonCollapse",
       "proof": "A latent relation changes the provisional model without fabricated context."
     },
@@ -67,7 +67,7 @@
         "apparent_solution_reductive"
       ],
       "material_when": "Uncertainty or another level changes a useful preparation or movement now.",
-      "entry": ".maios/kernel/SYSTEM_KERNEL.md#possibility-horizon-and-result-formation",
+      "entry": "skills/maios-possibility-formation/SKILL.md",
       "result_contract": "PossibilityField",
       "proof": "A useful relation, preparation, or explicit non-collapse appears without possibility being promoted to fact."
     },
@@ -178,12 +178,16 @@
         "quality_claim",
         "improvement_claim",
         "acceptance",
-        "behavioral_readback"
+        "behavioral_readback",
+        "material_correction",
+        "candidate_identity_changed",
+        "consumer_projection_changed",
+        "proof_identity_changed"
       ],
       "material_when": "A result or improvement claim must be compared with intent in its actual medium.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#result-evaluation-and-failure-localization",
       "result_contract": "ResultantEvaluation",
-      "proof": "The verdict distinguishes artifact, test, install, discovery, behavior, and human acceptance evidence."
+      "proof": "The verdict distinguishes artifact, test, install, discovery, behavior, and human acceptance evidence. Proof remains bound to its resultant; dependent owner, consumer and discovery surfaces converge without treating common-mode agreement as independent evidence."
     },
     {
       "id": "failure-localization",
@@ -193,12 +197,16 @@
         "regression",
         "drift",
         "conflict",
-        "unexpected_result"
+        "unexpected_result",
+        "material_correction",
+        "candidate_identity_changed",
+        "consumer_projection_changed",
+        "proof_identity_changed"
       ],
       "material_when": "The first incorrect owning seam must be found before repair.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#result-evaluation-and-failure-localization",
       "result_contract": "FailureLocalization",
-      "proof": "The observed failure and the evidence pertinent to its cause identify where the correction must act and what recovery is needed."
+      "proof": "The observed failure and the evidence pertinent to its cause identify where the correction must act and what recovery is needed. Proof remains bound to its resultant; dependent owner, consumer and discovery surfaces converge without treating common-mode agreement as independent evidence."
     },
     {
       "id": "attention-learning-and-reentry",
@@ -210,12 +218,16 @@
         "state_changed",
         "compact_risk",
         "noise",
-        "repeated_work"
+        "repeated_work",
+        "material_correction",
+        "candidate_identity_changed",
+        "consumer_projection_changed",
+        "proof_identity_changed"
       ],
       "material_when": "A causal delta changes future behavior, proof, recovery, or reentry.",
       "entry": ".maios/kernel/SYSTEM_KERNEL.md#attention-learning-and-reentry",
       "result_contract": "MemoryOrCompetenceDelta",
-      "proof": "A later session recovers the movement from compact state and a non-identical case uses or revises the causal relation."
+      "proof": "A later session recovers the movement from compact state and a non-identical case uses or revises the causal relation. Proof remains bound to its resultant; dependent owner, consumer and discovery surfaces converge without treating common-mode agreement as independent evidence."
     },
     {
       "id": "intent-preserving-delegation",
@@ -233,6 +245,45 @@
       "entry": "skills/maios-project-coordination/SKILL.md",
       "result_contract": "DelegationPacket",
       "proof": "The contribution preserves intent and source/effect distinctions, changes the useful result and returns reusable learning to the competence that must act differently."
+    },
+    {
+      "id": "system-understanding",
+      "presence": "situated",
+      "activation_relations": [
+        "system_relation_unclear",
+        "representation_changes_meaning",
+        "kernel_self_maintenance"
+      ],
+      "material_when": "Sources, scales, owners or representations can change what the system understands.",
+      "entry": "skills/maios-system-understanding/SKILL.md",
+      "result_contract": "SituatedUsefulResult",
+      "proof": "Source, representation and receiving function remain distinguishable."
+    },
+    {
+      "id": "knowledge-acquisition",
+      "presence": "situated",
+      "activation_relations": [
+        "knowledge_acquisition",
+        "source_access_partial",
+        "capability_means_needed"
+      ],
+      "material_when": "Complementary source knowledge or practical means can change understanding or action.",
+      "entry": "skills/maios-knowledge-acquisition/SKILL.md",
+      "result_contract": "SituatedUsefulResult",
+      "proof": "The acquired depth changes its receiving method and preserves source conditions."
+    },
+    {
+      "id": "source-grounded-expression",
+      "presence": "situated",
+      "activation_relations": [
+        "explanation_needed",
+        "source_expression",
+        "human_encounter"
+      ],
+      "material_when": "Expression changes comprehension, choice or continuation.",
+      "entry": "skills/maios-source-grounded-expression/SKILL.md",
+      "result_contract": "SituatedUsefulResult",
+      "proof": "The intended reader can recover the consequential source relation."
     }
   ]
 }

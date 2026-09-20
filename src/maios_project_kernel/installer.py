@@ -64,17 +64,10 @@ def rendered_host_state(root: Path, host: str) -> bytes:
 
 
 def safe_relative(value: str) -> PurePosixPath:
-    path = PurePosixPath(value)
-    if (
-        path.is_absolute()
-        or not path.parts
-        or ".." in path.parts
-        or "\\" in value
-        or ":" in value
-        or "\x00" in value
-    ):
-        raise InstallerError(f"unsafe package path: {value}")
-    return path
+    try:
+        return PurePosixPath(filesystem_engine.portable_path(value))
+    except ValueError as exc:
+        raise InstallerError(f"unsafe delivery path: {value}: {exc}") from exc
 
 
 def native(root: Path, relative: str) -> Path:
@@ -129,6 +122,10 @@ def verified_inventory_rows(root: Path) -> list[dict[str, Any]]:
             raise InstallerError(f"package inventory metadata is invalid: {relative}")
         declared[relative] = row
 
+    try:
+        filesystem_engine.distinct_paths(declared)
+    except ValueError as exc:
+        raise InstallerError(str(exc)) from exc
     actual: dict[str, Path] = {}
     for path in sorted(
         root.rglob("*"), key=lambda item: item.relative_to(root).as_posix()
@@ -245,6 +242,10 @@ def source_entries(root: Path, host: str) -> list[dict[str, Any]]:
         if existing and existing["sha256"] != candidate["sha256"]:
             raise InstallerError(f"adapter destination collision: {destination}")
         entries[destination] = candidate
+    try:
+        filesystem_engine.distinct_paths(entries)
+    except ValueError as exc:
+        raise InstallerError(str(exc)) from exc
     return [entries[key] for key in sorted(entries)]
 
 

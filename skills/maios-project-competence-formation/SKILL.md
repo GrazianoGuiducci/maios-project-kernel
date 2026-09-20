@@ -45,6 +45,13 @@ in this context while keeping foreign workflow, taxonomy, metrics and provider
 assumptions separate. Acquiring knowledge can itself reveal another intent or
 possibility; it is not a compulsory research phase or limited to fixing failure.
 
+When an operator example, corrected output or observed demonstration teaches a
+decision that prose alone did not carry, use
+[learning from demonstration](references/learning-from-demonstration.md).
+Recover the consequential distinction and the help actually supplied, then let
+the existing competence carry that method into a different case. This depth is
+on demand; it is not a required replay or evaluation stage.
+
 ## Recompose and consolidate acquired knowledge
 
 When a body of knowledge needs consolidation, exercise three passages:
@@ -159,6 +166,16 @@ When persistent discovery benefits from an index, connect the body to
 direct use of a reachable body do not wait for index admission. The host reads the living project-owned body through its native entry. A readable competence does not require Python to be understood or used.
 
 ## Form another kernel through this one
+
+Form the knowledge through which the capacity can understand and operate,
+not merely its instruction file. [Kernel formation and evolution](references/kernel-formation-and-evolution.md)
+develops practical formation; [generative inheritance](references/generative-inheritance.md)
+carries the ability to continue it in another kernel. The common
+`.maios/kernel/COGNITIVE_RELATIONS.md` explains the open functional profile.
+The result may change a domain competence and also the criterion through which
+the generator selected its inheritance. Do not substitute complete delivery
+of a selected list for understanding whether that selection fits the intended
+capability.
 
 When another context benefits from its own operating form, understand what the
 recipient needs to know, do and retain. It may need a neutral nucleus, a domain

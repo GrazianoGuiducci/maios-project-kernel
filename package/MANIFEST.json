@@ -8,7 +8,11 @@
       "payload/skills/maios-start-existing-project/SKILL.md",
       "payload/skills/maios-project-context/SKILL.md",
       "payload/skills/maios-project-competence-formation/SKILL.md",
-      "payload/skills/maios-project-host-adaptation/SKILL.md"
+      "payload/skills/maios-project-host-adaptation/SKILL.md",
+      "payload/skills/maios-system-understanding/SKILL.md",
+      "payload/skills/maios-possibility-formation/SKILL.md",
+      "payload/skills/maios-knowledge-acquisition/SKILL.md",
+      "payload/skills/maios-source-grounded-expression/SKILL.md"
     ],
     "state_owner": "payload/.maios/competences/INDEX.json"
   },
@@ -21,252 +25,14 @@
     "instructions": "AGENTS.md",
     "neutral_competence": "skills/maios-project-integration/SKILL.md"
   },
-  "distribution_file_count": 62,
+  "distribution_file_count": 78,
   "entity_profile_provenance": {
-    "compiler_version": "0.4.0.dev0",
+    "catalogue_sha256": "d2d9f05670d94d5c004ae48c73b5edfe945330289d9b74cc4014bf9503e0be9d",
     "method_selection_is_separate": true,
-    "plan_id": "5d3291f1d7bc088a0f5e34a083dc1260504c751c81f70d43ce1f4b757b726b6a",
-    "source_revision": "9192fe64035cc67207eb289b5677173d1df8ac82",
-    "translation": "historical entity inputs combined with current product entry and family contracts"
+    "owner": "current product sources",
+    "translation": "current projection, family and autonomous entry contracts"
   },
   "entrypoint": "install.py",
-  "generated_kernel": {
-    "artifacts": [
-      {
-        "id": "body-2",
-        "path": "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
-        "sha256": "065e190a5182be7b7e47aa85e6fdc321e3e51a9d435158f69f227440ac7009de",
-        "source_refs": [
-          "source-2"
-        ]
-      },
-      {
-        "id": "body-1",
-        "path": "payload/.maios/kernel/COMPOSITION_PROTOCOL.md",
-        "sha256": "530085d6cc57303de1657a761115298496ae4aa473483ba60ff97f9c42477492",
-        "source_refs": [
-          "source-1"
-        ]
-      },
-      {
-        "id": "body-15",
-        "path": "payload/.maios/kernel/FOUNDING_RELATIONS.md",
-        "sha256": "dec8266608785a4889d4eef17b0d08271cb8d1ffd99f566f5bd7cee34703be27",
-        "source_refs": [
-          "source-15"
-        ]
-      },
-      {
-        "id": "body-17",
-        "path": "payload/.maios/kernel/KNOWLEDGE_CONTINUUM.md",
-        "sha256": "9fa67dc5a44de6cc724906da596130cfb70d246eed49ac39dcd928b6b9c1e18d",
-        "source_refs": [
-          "source-17"
-        ]
-      },
-      {
-        "id": "body-0",
-        "path": "payload/.maios/kernel/SYSTEM_KERNEL.md",
-        "sha256": "2fff48631737003ef5d1771e78b7185468ca6308329ef3e1e481a2481bde0081",
-        "source_refs": [
-          "source-0"
-        ]
-      },
-      {
-        "id": "body-16",
-        "path": "payload/.maios/kernel/UPDATE_CONTINUITY.md",
-        "sha256": "ed9323afb23017898e7a7f9d47173193d5035d2ce09e44239bc4a7b97fc3b609",
-        "source_refs": [
-          "source-16"
-        ]
-      },
-      {
-        "id": "body-10",
-        "path": "payload/skills/maios-project-competence-formation/SKILL.md",
-        "sha256": "1ce1695f6237a98b12d5874c4ed547dda5f3264ca955712d5ea258e6b971b51f",
-        "source_refs": [
-          "source-10"
-        ]
-      },
-      {
-        "id": "body-9",
-        "path": "payload/skills/maios-project-context/SKILL.md",
-        "sha256": "cc8b8d014724ddf7be72ef79aa1512390522d5f1711ab1e47a892aed2bbafa28",
-        "source_refs": [
-          "source-9"
-        ]
-      },
-      {
-        "id": "body-13",
-        "path": "payload/skills/maios-project-coordination/SKILL.md",
-        "sha256": "e5fb2722efeaf8cad72f5410ec07fe0083b38315b4c9cd5104b415370bdbc193",
-        "source_refs": [
-          "source-13"
-        ]
-      },
-      {
-        "id": "body-11",
-        "path": "payload/skills/maios-project-host-adaptation/SKILL.md",
-        "sha256": "452b97891d8157da40a53cfca8ae2fca4369305b537eab6bc5bf18cc99fdf8d7",
-        "source_refs": [
-          "source-11"
-        ]
-      },
-      {
-        "id": "body-12",
-        "path": "payload/skills/maios-project-host-adaptation/references/shared-project-continuity.md",
-        "sha256": "e59c6ccc4586d7e7c7e451881795c1d958bde3d1173a8e8a7dd23836f0fbfc29",
-        "source_refs": [
-          "source-12"
-        ]
-      },
-      {
-        "id": "body-3",
-        "path": "payload/skills/maios-project-system/SKILL.md",
-        "sha256": "bcd84e377f9019959f128d48fcb23f1e8bbcf9bc54c773ab888ddbbc109c776d",
-        "source_refs": [
-          "source-3"
-        ]
-      },
-      {
-        "id": "body-14",
-        "path": "payload/skills/maios-project-system/adapters/hermes.gitignore",
-        "sha256": "40317baa8eadbce068066d02abcdb685a364fa7c67324c4a3c9561e5e228aac0",
-        "source_refs": [
-          "source-14"
-        ]
-      },
-      {
-        "id": "body-5",
-        "path": "payload/skills/maios-project-system/references/fdla-operating-knowledge.md",
-        "sha256": "d152faecd2225c3bfd7c4c6ace8213b1cbafa12e44f0d8adf75c516da110ff9a",
-        "source_refs": [
-          "source-5"
-        ]
-      },
-      {
-        "id": "body-4",
-        "path": "payload/skills/maios-project-system/references/ka-operating-knowledge.md",
-        "sha256": "40b8e02c08c877d61726bab75e86d1a382bd4ee4d86c7c36a76328f740f0c429",
-        "source_refs": [
-          "source-4"
-        ]
-      },
-      {
-        "id": "body-6",
-        "path": "payload/skills/maios-project-system/references/runtime-recovery.md",
-        "sha256": "4d97b00a874418dbefef77d472eecd53fe51483b017bda60feb783047f32459c",
-        "source_refs": [
-          "source-6"
-        ]
-      },
-      {
-        "id": "body-8",
-        "path": "payload/skills/maios-start-existing-project/SKILL.md",
-        "sha256": "f9f2be167c7fc3f7b8684764afb2f1ef76030071d328ccaa3ff66573b9f821ee",
-        "source_refs": [
-          "source-8"
-        ]
-      },
-      {
-        "id": "body-7",
-        "path": "payload/skills/maios-start-new-project/SKILL.md",
-        "sha256": "e4489abd14fbb8f8018ccc6ae32f2ce2db45c71955f0729d1cef24e8e2e915b7",
-        "source_refs": [
-          "source-7"
-        ]
-      }
-    ],
-    "authority": "product build selection, not authority inherited from a generation plan",
-    "competences": [
-      {
-        "entry": "payload/skills/maios-project-competence-formation/SKILL.md",
-        "id": "maios-project-competence-formation",
-        "resources": [
-          "payload/skills/maios-project-competence-formation/SKILL.md"
-        ]
-      },
-      {
-        "entry": "payload/skills/maios-project-context/SKILL.md",
-        "id": "maios-project-context",
-        "resources": [
-          "payload/skills/maios-project-context/SKILL.md"
-        ]
-      },
-      {
-        "entry": "payload/skills/maios-project-coordination/SKILL.md",
-        "id": "maios-project-coordination",
-        "resources": [
-          "payload/skills/maios-project-coordination/SKILL.md"
-        ]
-      },
-      {
-        "entry": "payload/skills/maios-project-host-adaptation/SKILL.md",
-        "id": "maios-project-host-adaptation",
-        "resources": [
-          "payload/skills/maios-project-host-adaptation/SKILL.md",
-          "payload/skills/maios-project-host-adaptation/references/shared-project-continuity.md"
-        ]
-      },
-      {
-        "entry": "payload/skills/maios-project-system/SKILL.md",
-        "id": "maios-project-system",
-        "resources": [
-          "payload/.maios/kernel/SYSTEM_KERNEL.md",
-          "payload/.maios/kernel/COMPOSITION_PROTOCOL.md",
-          "payload/.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md",
-          "payload/skills/maios-project-system/SKILL.md",
-          "payload/skills/maios-project-system/references/ka-operating-knowledge.md",
-          "payload/skills/maios-project-system/references/fdla-operating-knowledge.md",
-          "payload/skills/maios-project-system/references/runtime-recovery.md",
-          "payload/skills/maios-project-system/adapters/hermes.gitignore",
-          "payload/.maios/kernel/FOUNDING_RELATIONS.md",
-          "payload/.maios/kernel/UPDATE_CONTINUITY.md",
-          "payload/.maios/kernel/KNOWLEDGE_CONTINUUM.md"
-        ]
-      },
-      {
-        "entry": "payload/skills/maios-start-existing-project/SKILL.md",
-        "id": "maios-start-existing-project",
-        "resources": [
-          "payload/skills/maios-start-existing-project/SKILL.md"
-        ]
-      },
-      {
-        "entry": "payload/skills/maios-start-new-project/SKILL.md",
-        "id": "maios-start-new-project",
-        "resources": [
-          "payload/skills/maios-start-new-project/SKILL.md"
-        ]
-      }
-    ],
-    "compiler_version": "0.4.0.dev5",
-    "identity_scope": "selected generated content; product source identity describes the builder base",
-    "input_hashes": {
-      "project_model_hash": "ff3c9ad8319608be98dcfb37cfa7de1b48ebd3035bf5e1238aefa6c14a239fc0",
-      "seed_spec_hash": "84ce588f5bcfe39067cb9e982d32a3ab5b935c69c534bb2669b0ef642746088d",
-      "source_manifest_hash": "669cb36e9946a6845f2ef517723e16a2383301ef15d2a9ea4c7ed324abefc771"
-    },
-    "model_use_observed": false,
-    "plan_id": "b4b54cd11f7f6abdcb8f5d9c956cf7610eeb74d5057f65e2857f5af3276b80e3",
-    "plan_sha256": "36780ed54870799a59239ed8c860520a919f73bf580302d312fc5ffa36fc0d15",
-    "release_selection": {
-      "compiler": {
-        "source_revision": "334a9d33c12d61ba826d41b25f604af18441e967",
-        "version": "0.4.0.dev5"
-      },
-      "plan": "release/generated/generation-plan.json",
-      "plan_sha256": "36780ed54870799a59239ed8c860520a919f73bf580302d312fc5ffa36fc0d15",
-      "schema": "maios.generated-kernel-selection.v1",
-      "source_basis": {
-        "commit": "9c369f7d5ff7955e7cef89752851e128a4b09d61",
-        "corpus_identity": "3b83db87d83185d85ca0799722f95a4487550cfaaecbab0287e510846d27e400",
-        "identity_scope": "canonical path and normalized body hashes of selected committed methods",
-        "repository": "GrazianoGuiducci/maios-project-kernel"
-      }
-    },
-    "schema": "maios.generated-kernel-delivery.v1"
-  },
   "global_writes": [],
   "host_adapters": [
     "generic",
@@ -278,7 +44,7 @@
     "pi",
     "dsh"
   ],
-  "payload_file_count": 51,
+  "payload_file_count": 67,
   "product": "MAIOS Project Kernel",
   "project_entrypoint": "payload/START_HERE.md",
   "project_kernel": {
@@ -304,16 +70,16 @@
     "recovery": "remove_only_unchanged_installer_owned_bytes"
   },
   "source_identity": {
-    "autonomous_entry_contract_sha256": "6be79ba7e7d9296fd892774f064665c8c57fa78af1abf3dd5ac40c2930ec76b3",
+    "autonomous_entry_contract_sha256": "a019dfe572ce264bb564cced26c4030cb4259ef1b071db8b0e79eaa682f04a32",
     "owner": "maios-project-kernel repository",
-    "projection_sha256": "c3b0cc9757c91dde504a4fbcfd387403f7de0f46180115ee72e051493e398cad",
+    "projection_sha256": "21d6e63ab077d202a0342a06d81d99d0a5ed52828af0e8d404876badf6a42f56",
     "revision_claim": "content_addressed_source_tree",
-    "source_manifest_sha256": "543befca5882a58705930423f02d6dbb0155cde491f4de60df0fd3e5485430e0",
-    "tree_sha256": "058e286748ba09f3dd9113da41670c96a76cead6fda5f708bc2c45ccae1b9ac3"
+    "source_manifest_sha256": "edb091e6ff09feacfe1f0f558f5ed430418082133d2c73930c80f619a0562713",
+    "tree_sha256": "efcaced305a1e8b4649862575451618291614b696d7f3202b8e21d0f27a546de"
   },
   "target_modes": [
     "new_repository",
     "existing_repository"
   ],
-  "version": "4.5.0"
+  "version": "4.6.0"
 }

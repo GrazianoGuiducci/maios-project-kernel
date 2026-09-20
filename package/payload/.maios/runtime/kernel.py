@@ -242,6 +242,11 @@ def validate_project(root: Path) -> dict[str, Any]:
                 or not root.joinpath(*PurePosixPath(installed_path).parts).is_file()
             ):
                 errors.append("Project Entity Profile contains an unresolved installed catalog")
+            else:
+                data = project_local_file(root, root / installed_path).read_bytes()
+                normalized = data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+                if hashlib.sha256(normalized).hexdigest() != catalog.get("sha256"):
+                    errors.append("Project Entity Profile catalog identity is stale")
     except Exception as exc:
         errors.append(f"invalid Project Entity Profile: {exc}")
     try:
@@ -510,6 +515,9 @@ def admit_competence_delta(
     event_digest = validation["event_digest"]
     for prior in history:
         if prior.get("event_id") == event_id:
+            replay_errors = configuration_engine.terminal_receipt_errors(root, "competence", prior)
+            if replay_errors:
+                raise ValueError("; ".join(replay_errors))
             if prior.get("event_digest") != event_digest:
                 raise ValueError("event_id already exists with different content")
             return {
@@ -603,6 +611,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--project-root", type=Path)
     sub = result.add_subparsers(dest="command", required=True)
     sub.add_parser("status")
+    sub.add_parser("audit-continuum", help="Explicitly validate current integrity and cold genealogy")
     contact_status = sub.add_parser("source-contact-status")
     contact_status.add_argument("--at")
     contact_record = sub.add_parser("record-source-contact")
@@ -656,6 +665,8 @@ def main(argv: Iterable[str] | None = None) -> int:
         root = project_root(args.project_root)
         if args.command == "status":
             result = validate_project(root)
+        elif args.command == "audit-continuum":
+            result = operating_engine.continuum_status(root, deep=True)
         elif args.command == "source-contact-status":
             result = configuration_engine.source_contact_status(root, args.at)
         elif args.command == "record-source-contact":

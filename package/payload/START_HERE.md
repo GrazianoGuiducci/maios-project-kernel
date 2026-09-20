@@ -1,6 +1,6 @@
 # Start here — coder startup and reentry
 
-This environment contains MAIOS Project Kernel 4.5.0. This entry orients the
+This environment contains MAIOS Project Kernel 4.6.0. This entry orients the
 coder to the kernel and the present context; the person can read it too.
 
 The kernel develops its knowledge, competences and organization through use.

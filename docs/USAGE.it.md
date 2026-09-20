@@ -20,7 +20,7 @@ Riferimenti per installazione, lavoro nel progetto e studio delle sorgenti:
 
 | Necessità | Riferimenti | Contenuto |
 | --- | --- | --- |
-| Stabilire la verità corrente | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Versione prodotto `4.5.0`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
+| Stabilire la verità corrente | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Versione prodotto `4.6.0`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
 | Comprendere valore e possibilità | [`knowledge/KERNEL.md`](../knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md), [working paper System Semantic Kernel (SSK)](https://github.com/GrazianoGuiducci/maios-ssk-paper) | Cosa cambia il Kernel in un progetto, quali possibilità restano aperte e il relativo contesto accademico; il Paper è facoltativo e non dimostra il comportamento del prodotto |
 | Integrare il pacchetto | [`package/AGENTS.md`](../package/AGENTS.md), [`maios-project-integration`](../package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](../package/INSTALL.md), [`package/MANIFEST.json`](../package/MANIFEST.json) | Target esatto, modalità, proiezione host, percorsi posseduti dal pacchetto, anteprima, recupero e superfici immutate |
 | Configurare e usare il Kernel installato | [`START_HERE.md`](../package/payload/START_HERE.md), [`maios-project-system`](../package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](../package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](../package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | Come contesto, competenze, risultato, apprendimento, rilettura semantica e nuovo rientro restano connessi |
@@ -287,3 +287,15 @@ L'applicazione del risultante sostituisce atomicamente ogni singolo file JSON e
 recupera gli errori che raggiungono il runtime. Al momento non dichiara una
 transazione multi-file resistente all'arresto improvviso né serializzazione tra
 processi runtime concorrenti.
+
+Quando una conseguenza cambia il significato di una situazione precedente,
+conserva ciò che è accaduto e ciò che allora era compreso, ricostituendo la
+relazione attraverso le evidenze presenti. Il riferimento FDLA porta questa
+distinzione nel lavoro. Comprensione del sistema, formazione delle possibilità,
+acquisizione del sapere ed espressione fondata sulle fonti hanno ora owner vivi
+raggiungibili nel pacchetto.
+
+`python maios.py operating-status` verifica il fronte corrente e le dipendenze
+richiamate. `python maios.py audit-continuum` controlla anche la genealogia
+raffreddata e distingue `operational_valid` da `genealogical_valid`, senza
+cancellare o riparare ricevute storiche.

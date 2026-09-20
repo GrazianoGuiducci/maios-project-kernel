@@ -9,12 +9,16 @@ and organization. It can work in an inquiry, a domain, an ongoing activity or
 a project. MAIOS includes competences for starting and developing projects;
 they participate when that is the work to do.
 
-It retains the reasons behind decisions, the sources that support
+When work crosses sessions or changes direction, a useful answer alone does
+not carry the reasons needed to continue. The kernel retains the reasons behind
+decisions, the sources that support
 them and the knowledge acquired through work. A later agent can recover that
 context and continue from it without treating another instance's experience as
 its own personal memory.
 
-Product version: **[4.5.0](VERSION.md)** · Project Kernel family: **3.0.0** ·
+Candidate awaiting final release review; no 4.6.0 release has been published.
+
+Product version: **[4.6.0](VERSION.md)** · Project Kernel family: **3.0.0** ·
 Python **3.10 or later** · [MIT License](LICENSE)
 
 [Versione italiana](README.it.md)
@@ -116,7 +120,7 @@ use by every host or model.
 Source tests and distribution verification cover package integrity, installer
 and recovery mechanics, routing and local state contracts. They do not prove
 that a receiving model understands, uses or assimilates the methods. See the
-[4.5.0 release notes](docs/RELEASE_4.5.0.md) for the delivered changes and
+[4.6.0 candidate notes](docs/RELEASE_4.6.0.md) for the delivered changes and
 entry for receiving-model use and review.
 
 ## Study, contribute or build

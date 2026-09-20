@@ -28,7 +28,7 @@ when source study is useful.
   installed state.
 - [Contributing](../CONTRIBUTING.md) and [competence contributions](../contributions/README.md).
 - [Build](GENERATED_KERNEL_BUILD.md): reproduce the included distribution from
-  public source and its retained selection; no private compiler access is needed.
+  current public source directly; no private compiler or selection is needed.
 - [Provenance](PROVENANCE.md): content identity, retained inputs and evidence limits.
 
 ## Current product and history
@@ -37,7 +37,8 @@ when source study is useful.
 [CURRENT_STATE.md](../CURRENT_STATE.md) identifies current source work.
 [CHANGELOG.md](../CHANGELOG.md) and numbered release notes preserve version history;
 their old claims describe their stated versions, not the current product.
-[4.5.0 release notes](RELEASE_4.5.0.md) describe the current distribution.
+[4.6.0 candidate notes](RELEASE_4.6.0.md) describe the current candidate.
+[4.5.0 release notes](RELEASE_4.5.0.md) describe the last published version.
 [4.1.2 notes](RELEASE_4.1.2.md) and [evidence](RELEASE_4.1.2_EVIDENCE.md)
 preserve the previous stable release's explanation and dated observations.
 
@@ -46,15 +47,14 @@ They are not required reading for installation or ordinary use.
 
 ## Maintainer production
 
-[Selection renewal](RENEW_KERNEL_SELECTION.md) requires access to a private
-production compiler. The public repository includes the exported inputs, plan
+Optional [historical selection renewal](RENEW_KERNEL_SELECTION.md) requires
+access to its separately selected producer; normal production does not. The public repository includes the exported inputs, plan
 and product-side consumer. Schema identifiers, compiler identities and historical
 receipts retain their literal provenance; they are technical records, not user
 requirements or additional products to acquire.
 
 `templates/` owns generated entry text; `skills/` and `kernel/` own native
-methods; `release/PROJECTION.json` maps the source distribution and the retained
-selection supplies selected bodies. Never edit `package/` by hand.
+methods; `release/PROJECTION.json` maps those current owners directly. Never edit `package/` by hand.
 
 ## Source ownership map
 

@@ -125,6 +125,11 @@ reachable. One live margin can point to deeper knowledge. Refresh it when a
 material relation changes, not after every operation. At reentry, reconcile
 that margin with the current operator signal and materially changed sources,
 then resume from the last faithful result without repeating completed work.
+A later consequence can change what the earlier relation means for work now.
+Preserve the event and the understanding actually available then separately
+from the current understanding; the live margin carries the corrected present,
+while history remains attributable. An unchanged source identity does not close
+an unfinished integration, and a new identity does not itself select an update.
 When the task ends, retire its active margin while retaining knowledge and
 unresolved relations that still matter.
 

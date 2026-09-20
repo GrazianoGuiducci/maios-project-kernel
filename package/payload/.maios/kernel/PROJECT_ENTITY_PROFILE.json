@@ -34,6 +34,41 @@
       "availability": "packaged_knowledge",
       "id": "maios-project-coordination",
       "knowledge_entry": "skills/maios-project-coordination/SKILL.md"
+    },
+    {
+      "availability": "packaged_knowledge",
+      "id": "maios-knowledge-acquisition",
+      "knowledge_entry": "skills/maios-knowledge-acquisition/SKILL.md"
+    },
+    {
+      "availability": "packaged_knowledge",
+      "id": "maios-possibility-formation",
+      "knowledge_entry": "skills/maios-possibility-formation/SKILL.md"
+    },
+    {
+      "availability": "packaged_knowledge",
+      "id": "maios-repository-continuity",
+      "knowledge_entry": "skills/maios-repository-continuity/SKILL.md"
+    },
+    {
+      "availability": "packaged_knowledge",
+      "id": "maios-software-design",
+      "knowledge_entry": "skills/maios-software-design/SKILL.md"
+    },
+    {
+      "availability": "packaged_knowledge",
+      "id": "maios-software-diagnosis",
+      "knowledge_entry": "skills/maios-software-diagnosis/SKILL.md"
+    },
+    {
+      "availability": "packaged_knowledge",
+      "id": "maios-source-grounded-expression",
+      "knowledge_entry": "skills/maios-source-grounded-expression/SKILL.md"
+    },
+    {
+      "availability": "packaged_knowledge",
+      "id": "maios-system-understanding",
+      "knowledge_entry": "skills/maios-system-understanding/SKILL.md"
     }
   ],
   "competence_field": {
@@ -46,7 +81,14 @@
       "maios-project-context",
       "maios-project-competence-formation",
       "maios-project-host-adaptation",
-      "maios-project-coordination"
+      "maios-project-coordination",
+      "maios-knowledge-acquisition",
+      "maios-possibility-formation",
+      "maios-repository-continuity",
+      "maios-software-design",
+      "maios-software-diagnosis",
+      "maios-source-grounded-expression",
+      "maios-system-understanding"
     ],
     "selection_model": "material_relation_and_observed_delta"
   },
@@ -109,7 +151,7 @@
       "id": "maios-project-kernel-faculties",
       "installed_registry_path": ".maios/kernel/FACULTY_FIELD.json",
       "revision": "3.0.0",
-      "sha256": "31b27b04189e1aa9ab038917e0e944b9ac62bbc81fc1987bee5cf84e92e08148",
+      "sha256": "d2d9f05670d94d5c004ae48c73b5edfe945330289d9b74cc4014bf9503e0be9d",
       "source_ref": "maios-faculty-field"
     }
   ],

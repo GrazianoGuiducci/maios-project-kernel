@@ -102,6 +102,14 @@ Do not infer completion from silence or elapsed time. If a host supplies a
 bounded task-status or wait facility, use it when needed instead of inventing
 background monitoring or assuming control over indirect descendants.
 
+Compare claims in their actual revision, context and scale. Agreement between
+receivers using the same incomplete source is not independent confirmation.
+An unchanged source can coexist with unfinished integration; a newer commit
+can change only metadata. Follow the remaining usable relation rather than
+letting version order settle semantic meaning. For a faithful copy, bytes can
+prove delivery; for contextual translation, compare preserved function and
+conditions instead.
+
 Return reusable learning to the competence that must act differently. Improve
 this competence when intent was distorted, local identities were fused, work
 was duplicated or the return lost its causal margin. Another non-identical use

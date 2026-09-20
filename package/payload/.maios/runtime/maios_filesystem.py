@@ -3,7 +3,8 @@ from __future__ import annotations
 
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+import re
 import stat
 import tempfile
 from typing import Any
@@ -87,3 +88,33 @@ def write_text_atomic(path: Path, text: str) -> None:
 
 def write_json_atomic(path: Path, value: Any) -> None:
     write_text_atomic(path, json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
+
+RESERVED_WINDOWS_NAMES = {
+    "CON", "PRN", "AUX", "NUL", "CONIN$", "CONOUT$",
+    *(f"COM{n}" for n in "123456789¹²³"),
+    *(f"LPT{n}" for n in "123456789¹²³"),
+}
+
+
+def portable_path(value: str) -> str:
+    """One portable path contract for production, installation and compatibility."""
+    if not isinstance(value, str) or not value or PurePosixPath(value).as_posix() != value:
+        raise ValueError("Delivery requires a canonical relative path")
+    if PurePosixPath(value).is_absolute() or any(p in (".", "..") for p in value.split("/")):
+        raise ValueError("Delivery path must stay inside its product root")
+    for part in value.split("/"):
+        if (not part or part.endswith((".", " ")) or part.casefold() == ".git"
+                or re.search(r'[<>:"\\|?*\x00-\x1f\x7f]', part)
+                or part.split(".", 1)[0].rstrip(" ").upper() in RESERVED_WINDOWS_NAMES):
+            raise ValueError("Delivery path is not portable")
+    return value
+
+
+def distinct_paths(values) -> None:
+    """Reject file aliases and file/directory collisions on every supported host."""
+    seen = set()
+    for value in values:
+        key = portable_path(value).casefold()
+        if any(key == old or key.startswith(old + "/") or old.startswith(key + "/") for old in seen):
+            raise ValueError(f"Delivery path collision: {value}")
+        seen.add(key)
