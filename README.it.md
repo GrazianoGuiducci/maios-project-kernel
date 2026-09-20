@@ -99,7 +99,7 @@ L'agente installato usa il contesto vivo e le competenze pertinenti
 per formare un risultato. Nuova conoscenza, un approccio riuscito, una
 possibilità o una correzione possono cambiare i metodi usati in seguito.
 Il kernel conserva le ragioni utili e il punto da cui continuare, senza
-richiedere di rileggere l'intera conversazione.
+richiedere di rileggere l'intera cronologia delle interazioni.
 
 `START_HERE.md` è l'ingresso stabile. I corpi vivi delle competenze possiedono
 i metodi; stato e conoscenza locale portano il contesto che cambia.
