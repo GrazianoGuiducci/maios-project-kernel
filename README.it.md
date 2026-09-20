@@ -18,7 +18,21 @@ Python **3.10 o successivo** · [Licenza MIT](LICENSE)
 
 [English](README.md)
 
-## Cosa rende possibile
+## Perché esiste
+
+Il lavoro AI di lunga durata accumula più di risposte: fonti, ragioni delle
+decisioni, metodi riusciti, correzioni, possibilità aperte e sapere su come
+agire. Se queste relazioni restano soltanto nel contesto transitorio del modello
+o in note di progetto scollegate, il lavoro successivo deve ricostruire la
+comprensione operativa invece di continuare da essa.
+
+MAIOS Project Kernel dà a questa continuità una forma operativa locale al
+progetto/workspace. Lo spazio di lavoro può conservare conoscenze e competenze
+che contano, lasciare che il lavoro reale le modifichi e rendere la capacità
+cambiata disponibile al lavoro successivo, senza attribuire a un'istanza
+l'esperienza personale di un'altra.
+
+## Cosa offre
 
 - Comprendere il contesto presente attraverso fonti reali, intento,
   vincoli e possibilità aperte.
@@ -33,11 +47,30 @@ Python **3.10 o successivo** · [Licenza MIT](LICENSE)
 - Continuare fra sessioni e agenti che collaborano attraverso il sapere locale,
   preservando il lavoro corrente e le ragioni della sua direzione.
 
+## Cosa fa nell'uso
+
 KA mantiene aperto il campo delle possibilità; FDLA corregge le distorsioni
 mentre il lavoro prende forma; Meta_Skill riconosce, compone e sviluppa
 competenze. Queste funzioni agiscono insieme attraverso l'agente e le fonti
 effettive. Il [compendio del Kernel](knowledge/KERNEL.md) ne spiega
 significato e funzionamento.
+
+```text
+relazione corrente con l'operatore + fonti qualificate
++ il presente pertinente e le sue possibilità aperte
++ competenze rese pertinenti dal lavoro
+-> azione situata
+-> risultante utile o non-collasso genuino
+-> rilettura causale
+-> l'apprendimento riusabile cambia la competenza / owner più vicino
+-> il lavoro successivo continua dal campo cambiato
+```
+
+Il kernel quindi non conserva soltanto contesto. Cambia il sapere operativo
+attraverso cui il lavoro successivo viene compreso e svolto. Runtime
+deterministico e installer preservano stato, identità, recupero e integrità del
+pacchetto quando queste meccaniche servono; non sostituiscono il giudizio
+semantico dell'agente ricevente e dell'operatore.
 
 ## Inizia dal tuo contesto
 
@@ -60,7 +93,7 @@ pacchetto Python di terze parti. La guida di
 anteprima/applicazione, conflitti e disinstallazione; la
 [guida d'uso](docs/USAGE.it.md) approfondisce integrazione, competenze e lavoro quotidiano.
 
-## Lavorare, apprendere e rientrare
+## Continuare, apprendere e mantenere
 
 L'agente installato usa il contesto vivo e le competenze pertinenti
 per formare un risultato. Nuova conoscenza, un approccio riuscito, una
