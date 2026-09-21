@@ -6,7 +6,7 @@
       "native_skill_root": null
     },
     {
-      "display_name": "ChatGPT / Codex coding agent",
+      "display_name": "Codex",
       "id": "codex",
       "native_skill_root": ".agents/skills"
     },

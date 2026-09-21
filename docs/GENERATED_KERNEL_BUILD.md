@@ -3,13 +3,15 @@
 The normal build reads the living owners declared in
 [PROJECTION.json](../release/PROJECTION.json), the current family and autonomous
 entry contracts, templates, adapters, installer and runtime. A public checkout
-and Python 3.10 or later are sufficient. No private compiler, generated plan or
+and Python >=3.11 (qualified: 3.11–3.14 on Linux, Windows and macOS) are sufficient. No private compiler, generated plan or
 historical selection chooses the delivered method bodies.
 
 ```powershell
 python -B tools/build_release.py
 python -B tools/verify_distribution.py
+python -m pip install -r requirements-test.txt
 python -B -m unittest discover -s tests -v
+python -B tools/check_active_links.py
 ```
 
 Edit the source owner, then rebuild `package/`; never edit its projection by
@@ -68,7 +70,7 @@ alias for the normal direct build. Old retained selections are not read by defau
 [Selection renewal](RENEW_KERNEL_SELECTION.md) remains an optional historical
 producer workflow, not a public contribution or release prerequisite.
 
-## Release candidate
+## Distribution archive
 
 After final source and documentation changes, build and verify again, then use:
 
@@ -76,8 +78,23 @@ After final source and documentation changes, build and verify again, then use:
 python -B tools/archive_candidate.py --output-dir /outside/source/candidate
 ```
 
-This prepares a deterministic ZIP and SHA-256 file without a tag or Release.
+This prepares `maios-project-kernel-5.0.0.zip` and
+`maios-project-kernel-5.0.0.sha256` without a tag or Release.
 CI uploads the same candidate archive from its checked commit. Source, package,
 archive, CI and any later release retain separate exact identities. Publication
 requires the selected final release review; package tests do not establish a
 receiving model's semantic understanding or maintained behavioral assimilation.
+
+## Active document links
+
+`tools/check_active_links.py` checks the declared active document set: root
+entries, current changelog/state sections, active documentation, and generated
+package/installed entry documents. It parses CommonMark (including reference
+links, images and HTML links) with markdown-it-py and computes GitHub-style
+heading anchors from parsed visible text, including duplicate headings. Local paths and fragments must resolve;
+external URL availability and historical outbound links are outside this check.
+Directory links resolve to their README when an anchor is present.
+
+Install `requirements-test.txt` only for source tests and this checker. These
+MIT-licensed test dependencies are not copied into the package. The installer,
+runtime and deterministic builder remain standard-library-only.

@@ -18,7 +18,7 @@ coordination function; it is orthogonal to that plane and to the host identity.
 | Intent-preserving delegation | Faculty declared; entry led to the generic composition protocol | Existing faculty now reaches `maios-project-coordination`, which teaches handoff, direct responsibility and integration |
 | N0 overview and return | Open fronts and causal margin exist; generic delegation entry omits the method | Recover useful fronts, retain sources and uncertainty, delegate the object with cognitive freedom, reconcile effects and learning |
 | Another harness uses shared competences | Adapter instructions and host adaptation exist | Reach the actual living bodies, distinguish native discovery from reading, preserve local identity and form the needed connection |
-| Per-instance capability state and simultaneous writes | One selected adapter; no general concurrent-writer lock | Competence recognizes this boundary and can evolve the affected owners from a real case; no runtime or synchronization change in this candidate |
+| Per-instance capability state and simultaneous writes | One selected adapter; no general concurrent-writer lock | Competence recognizes this boundary and can evolve the affected owners from a real case; no runtime or synchronization change in this product |
 
 The private MMK/N0 controller, historical schemas and node topology are not
 transferred wholesale. Their useful functions become project-native knowledge;

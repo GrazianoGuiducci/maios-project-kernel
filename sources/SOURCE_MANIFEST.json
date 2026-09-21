@@ -1,7 +1,7 @@
 {
   "schema": "maios.source-manifest.v2",
   "product": "MAIOS Project Kernel",
-  "version": "4.6.0",
+  "version": "5.0.0",
   "source_owner": "maios-project-kernel repository",
   "construction": "direct deterministic projection of current product-owned knowledge, contracts, templates, adapters and runtime",
   "sources": [

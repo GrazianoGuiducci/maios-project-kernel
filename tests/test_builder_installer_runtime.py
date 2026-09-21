@@ -70,7 +70,7 @@ class BuilderTests(DistributionFixture):
             manifest["source_identity"]["tree_sha256"],
             builder.source_tree_digest(ROOT),
         )
-        self.assertEqual(manifest["runtime_requirements"]["python"], ">=3.10")
+        self.assertEqual(manifest["runtime_requirements"]["python"], ">=3.11")
         self.assertEqual(
             manifest["runtime_requirements"]["third_party_python_packages"], []
         )
@@ -454,13 +454,8 @@ class InstallerTests(DistributionFixture):
                         installer.rendered_skill_entry(self.distribution, "payload/skills/maios-project-host-adaptation/SKILL.md"),
                     )
                 if host_id == "hermes":
-                    ignore = (target / ".hermes" / ".gitignore").read_text(
-                        encoding="utf-8"
-                    )
-                    self.assertIn("!skills/maios-project-system/SKILL.md", ignore)
-                    self.assertIn(
-                        "!skills/maios-project-host-adaptation/SKILL.md", ignore
-                    )
+                    self.assertFalse((target / ".hermes" / ".gitignore").exists())
+                    self.assertFalse((target / ".hermes" / "config.yaml").exists())
                 project_validation = runtime.validate_project(target)
                 self.assertTrue(project_validation["valid"])
                 self.assertEqual(

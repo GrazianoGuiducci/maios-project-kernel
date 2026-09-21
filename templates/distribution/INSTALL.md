@@ -1,7 +1,6 @@
-# Install MAIOS Project Kernel 4.6.0 — repository package
+# Install MAIOS Project Kernel 5.0.0 — repository package
 
-This 4.6.0 candidate awaits final release review. Installation is a separate
-local effect and does not establish receiving-model assimilation.
+Installation is a local effect and does not establish receiving-model assimilation.
 
 The ready-to-install distribution is in `package/`. Run `install.py` from this
 directory. `preview` creates a plan for a target folder and coding host;
@@ -9,7 +8,7 @@ directory. `preview` creates a plan for a target folder and coding host;
 
 ## Requirement
 
-The installer and the installed `maios.py` helper require Python 3.10 or later.
+The installer and the installed `maios.py` helper require Python >=3.11 (qualified: 3.11–3.14 on Linux, Windows and macOS).
 They use only the Python standard library.
 
 Keep plans and CLI output receipts outside this package, the source repository

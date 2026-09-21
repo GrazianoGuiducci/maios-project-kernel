@@ -133,7 +133,7 @@ terminal evidence, even when the request is an exact duplicate.
 All JSON, text, bytes and rollback outputs use exclusively acquired temporary
 files, written through the original descriptor and cleaned only while their
 qualified identity remains. Installer and runtime use the same path helper;
-Windows junction checks use reparse metadata available in Python 3.10.
+Windows junction checks use reparse metadata available in Python 3.11.
 Installer verify declares `verification_scope: installer_owned_files`; this
 never transfers a pre-existing file to uninstall ownership.
 

@@ -6,7 +6,7 @@ setup_status: pending
 
 ## Verified state
 
-MAIOS Project Kernel 4.6.0 is installed as local files. The current
+MAIOS Project Kernel 5.0.0 is installed as local files. The current
 host projection may be installed, but discovery, state use, behavioral
 activation, and maintained reentry remain unverified until observed.
 

@@ -1,6 +1,18 @@
 # Changelog
 
-## 4.6.0 — release candidate
+## 5.0.0
+
+- Preserve family 3.0.0 and deliver the generative competence startup seed.
+- Raise the runtime minimum to Python 3.11; qualify 3.11–3.14 on Linux, Windows
+  and macOS through the 12-job build and test matrix.
+- Use Hermes project-native skill discovery with explicit trust and identify
+  the Codex adapter as Codex.
+- Align public documentation, product metadata and generated installation entries;
+  check local links and anchors across active release documents.
+- Produce deterministic ZIPs with the public `.sha256` checksum filename.
+- See [5.0.0 release content](docs/RELEASE_5.0.0.md) for compatibility and evidence.
+
+## 4.6.0 — superseded development candidate
 
 - Reachable general owners and consequence-aware FDLA; existing semantic owners
   carry resultant-bound proof and continuity.

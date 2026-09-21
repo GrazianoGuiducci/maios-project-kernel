@@ -6,7 +6,7 @@ Clone the repository and open its tracked `package/` directory with
 the coder. `PACKAGE_INVENTORY.json` binds every generated package path, byte
 count and SHA-256 before the installer plans a target transition.
 
-The installer and the installed `maios.py` helper require Python 3.10 or later
+The installer and the installed `maios.py` helper require Python >=3.11 (qualified: 3.11–3.14 on Linux, Windows and macOS)
 and use only the Python standard library.
 
 ## Preview and apply
@@ -69,18 +69,21 @@ reconciliation, effect, and recovery relation.
 Supported host ids are `generic`, `codex`, `claude`, `opencode`, `hermes`,
 `openclaw`, `pi`, and `dsh`.
 
-For Hermes, run the installed project with its adapter-owned project-local
-home so the host can discover the semantic skill without changing global
-Hermes state:
+Hermes discovers project `.hermes/skills/` and `.agents/skills/` in a Git
+checkout. This adapter installs the system and host-adaptation entries in
+`.hermes/skills/`. After reviewing the project, the operator can explicitly
+trust it from that checkout:
 
 ```powershell
-Set-Location C:\Projects\MyProject
-$env:HERMES_HOME=(Resolve-Path .\.hermes).Path
+hermes skills trust
 hermes
 ```
 
-Use a user-selected provider credential mechanism; do not copy a global Hermes
-profile or `.env` into the project.
+Trust is a separate host action: Hermes records trusted project directories in
+the user's configuration. The installer does not grant trust or modify that
+configuration. No project-local profile override is needed. Provider credentials,
+sessions and other host settings remain user-owned; do not copy them into the
+project. A fresh target must be a Git checkout for this native discovery route.
 
 ## Verify and uninstall
 

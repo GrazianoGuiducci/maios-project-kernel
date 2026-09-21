@@ -485,7 +485,7 @@ def composed_project_entry_profile(
                 {
                     "id": "python-runtime",
                     "required": True,
-                    "relation": "Python 3.10 or later can run installation and deterministic helpers.",
+                    "relation": "Python >=3.11 runs installation and deterministic helpers; qualified versions are 3.11–3.14 on Linux, Windows and macOS.",
                 },
                 {
                     "id": "version-control-and-repository",
@@ -641,7 +641,9 @@ def render_distribution(root: Path, package_dir: Path, *,
         "project_kernel_family_version": family_contract["family_version"],
         "entrypoint": "install.py",
         "runtime_requirements": {
-            "python": ">=3.10",
+            "python": ">=3.11",
+            "qualified_python_versions": ["3.11", "3.12", "3.13", "3.14"],
+            "qualified_operating_systems": ["Linux", "Windows", "macOS"],
             "third_party_python_packages": [],
         },
         "distribution_entry": {
@@ -1086,7 +1088,6 @@ def verify_distribution(root: Path, package_dir: Path) -> dict[str, Any]:
     forbidden_markers = (
         b".codex\\worktrees",
         b".codex/worktrees",
-        b"MAIOS_CLIENT_SETUP",
         b"project_hook_kernel",
         b"hooks.json",
     )

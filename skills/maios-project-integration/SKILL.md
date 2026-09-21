@@ -16,7 +16,7 @@ distribution is the repository's `package/` folder.
 - `MANIFEST.json` identifies the product and requirements;
   `PACKAGE_INVENTORY.json` is the file inventory verified by the installer.
 - `adapters/ADAPTERS.json` lists coding hosts and their native entry paths.
-- Python 3.10 or later runs the installer and installed helpers, using only
+- Python >=3.11 (qualified: 3.11–3.14 on Linux, Windows and macOS) runs the installer and installed helpers, using only
   the standard library.
 
 The installer takes a target folder and host. Its default `--mode auto` derives

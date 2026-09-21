@@ -175,6 +175,9 @@ class CompletionProductionTests(unittest.TestCase):
         one = tool.archive_candidate(base.ROOT, package, self.root / "one")
         two = tool.archive_candidate(base.ROOT, package, self.root / "two")
         self.assertEqual(one["sha256"], two["sha256"])
+        self.assertEqual(Path(one["checksum"]).name, "maios-project-kernel-5.0.0.sha256")
+        self.assertEqual(Path(one["checksum"]).read_text(),
+                         one["sha256"] + "  maios-project-kernel-5.0.0.zip\n")
         with zipfile.ZipFile(one["archive"]) as archive:
             members = {name.split("/", 1)[1]: archive.read(name) for name in archive.namelist()}
         self.assertEqual(members, {p.relative_to(package).as_posix(): p.read_bytes()

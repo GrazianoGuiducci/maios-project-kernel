@@ -14,7 +14,7 @@ automatically established by installing an initial host profile.
 
 | Host | Initial native projection |
 | --- | --- |
-| ChatGPT / Codex coding agent | `.agents/skills/` contains the system entry and all portable competence owners |
+| Codex | `.agents/skills/` contains the system entry and all portable competence owners |
 | Claude Code | `.claude/skills/` contains the system entry and host-adaptation competence |
 | OpenCode | `.opencode/skills/` contains the system entry and host-adaptation competence; OpenCode can also discover `.agents/skills/` |
 | OpenClaw | `.agents/skills/` contains the system entry and host-adaptation competence inside the workspace |
@@ -31,12 +31,12 @@ ambiguous or likely to have changed:
 
 | Host | Current owner source | Boundary to retain |
 | --- | --- | --- |
-| Codex | [OpenAI: Build skills](https://developers.openai.com/codex/skills) | `.agents/skills` is repository-scoped; discovery is still observed separately |
+| Codex | [OpenAI: Build skills](https://learn.chatgpt.com/docs/build-skills) | `.agents/skills` is repository-scoped; discovery is still observed separately |
 | Claude Code | [Anthropic: Extend Claude with skills](https://code.claude.com/docs/en/skills) | `.claude/skills` is project-scoped |
 | OpenCode | [OpenCode: Agent Skills](https://opencode.ai/docs/skills) | `.opencode/skills` is native and `.agents/skills` is compatible |
 | OpenClaw | [OpenClaw: Skills](https://docs.openclaw.ai/tools/skills) | `.agents/skills` is a project-agent root inside the selected workspace |
 | Pi | [Pi coding agent: skills](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/skills.md) | Project skill discovery follows trust of the project |
-| Hermes | [Hermes: Skills System](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) | The active `HERMES_HOME` owns the whole profile, not only skills |
+| Hermes | [Hermes: Skills System](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) | Project `.hermes/skills` and `.agents/skills` require explicit project trust |
 | DSH | No owner-qualified public convention source is bound by this package | Treat `.agents/skills` as a readable portable projection until native discovery is observed |
 | Generic | [Agent Skills specification](https://agentskills.io) | Direct reading remains sufficient when the host has no native skill mechanism |
 
@@ -46,22 +46,21 @@ form when that changes discovery or use. A capable coder can also read those
 sources directly. The profile therefore provides an immediate entry without
 pretending that one static table knows every current harness convention.
 
-Hermes discovers skills from its active `HERMES_HOME`, not from an arbitrary
-project `skills/` directory. Start it from the project with a project-local
-home so discovery uses an isolated profile and does not change the user's
-global Hermes profile:
+Hermes discovers project `.hermes/skills/` and `.agents/skills/` in a Git
+checkout. This adapter installs the system and host-adaptation entries in
+`.hermes/skills/`. After reviewing the project, the operator can explicitly
+trust it from that checkout:
 
 ```powershell
-$env:HERMES_HOME=(Resolve-Path .\.hermes).Path
+hermes skills trust
 hermes
 ```
 
-That environment variable selects the complete Hermes profile root, including
-configuration, sessions, caches and skills. The adapter-installed
-`.hermes/.gitignore` keeps Hermes-created or sensitive state outside repository
-tracking while retaining the installer-owned semantic and adaptation skills.
-Do not copy a global Hermes `.env` or profile into the project. Provider and
-credential selection remain a separate user-owned host decision.
+Trust is a separate host action: Hermes records trusted project directories in
+the user's configuration. The installer does not grant trust or modify that
+configuration. No project-local profile override is needed. Provider credentials,
+sessions and other host settings remain user-owned; do not copy them into the
+project. A fresh target must be a Git checkout for this native discovery route.
 
 Projection establishes which files were installed. When it matters whether a
 host discovered, read, used or resumed from them, retain the actual observation

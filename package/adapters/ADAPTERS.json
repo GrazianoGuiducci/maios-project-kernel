@@ -7,7 +7,7 @@
       "projections": []
     },
     {
-      "display_name": "ChatGPT / Codex coding agent",
+      "display_name": "Codex",
       "id": "codex",
       "native_skill_root": ".agents/skills",
       "projections": [
@@ -95,10 +95,6 @@
         {
           "destination": ".hermes/skills/maios-project-host-adaptation/SKILL.md",
           "source": "payload/skills/maios-project-host-adaptation/SKILL.md"
-        },
-        {
-          "destination": ".hermes/.gitignore",
-          "source": "payload/skills/maios-project-system/adapters/hermes.gitignore"
         }
       ]
     },

@@ -36,7 +36,7 @@ def archive_candidate(root: Path, package: Path, output: Path) -> dict:
             info.external_attr = 0o100644 << 16
             stream.writestr(info, path.read_bytes())
     checksum = hashlib.sha256(archive.read_bytes()).hexdigest()
-    checksum_path = output / (archive.name + ".sha256")
+    checksum_path = output / (name + ".sha256")
     with checksum_path.open("x", encoding="utf-8", newline="\n") as stream:
         stream.write(f"{checksum}  {archive.name}\n")
     return {"archive": str(archive), "sha256": checksum, "checksum": str(checksum_path),

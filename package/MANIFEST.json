@@ -25,7 +25,7 @@
     "instructions": "AGENTS.md",
     "neutral_competence": "skills/maios-project-integration/SKILL.md"
   },
-  "distribution_file_count": 79,
+  "distribution_file_count": 78,
   "entity_profile_provenance": {
     "catalogue_sha256": "d2d9f05670d94d5c004ae48c73b5edfe945330289d9b74cc4014bf9503e0be9d",
     "method_selection_is_separate": true,
@@ -44,7 +44,7 @@
     "pi",
     "dsh"
   ],
-  "payload_file_count": 68,
+  "payload_file_count": 67,
   "product": "MAIOS Project Kernel",
   "project_entrypoint": "payload/START_HERE.md",
   "project_kernel": {
@@ -57,7 +57,18 @@
   },
   "project_kernel_family_version": "3.0.0",
   "runtime_requirements": {
-    "python": ">=3.10",
+    "python": ">=3.11",
+    "qualified_operating_systems": [
+      "Linux",
+      "Windows",
+      "macOS"
+    ],
+    "qualified_python_versions": [
+      "3.11",
+      "3.12",
+      "3.13",
+      "3.14"
+    ],
     "third_party_python_packages": []
   },
   "schema": "maios.project-kernel-distribution.v2",
@@ -70,16 +81,16 @@
     "recovery": "remove_only_unchanged_installer_owned_bytes"
   },
   "source_identity": {
-    "autonomous_entry_contract_sha256": "a019dfe572ce264bb564cced26c4030cb4259ef1b071db8b0e79eaa682f04a32",
+    "autonomous_entry_contract_sha256": "ed905a8739726449e829e3703ee24bcc0c9e2ef1afc229d810acf8801079efae",
     "owner": "maios-project-kernel repository",
-    "projection_sha256": "17f07b4cd81b9bcc67da971b02c31d117ee9e5844adff9310601eb5c511728ef",
+    "projection_sha256": "7da83c9b1c2764e76f3a6bd81a0f5ec61e87d167ead7dc188400f4c6539968f5",
     "revision_claim": "content_addressed_source_tree",
-    "source_manifest_sha256": "edb091e6ff09feacfe1f0f558f5ed430418082133d2c73930c80f619a0562713",
-    "tree_sha256": "8f159754f72253ca2d2109704945f5fb3358e50cea92ed6b4027183c7e360a57"
+    "source_manifest_sha256": "0037d061ba092af53e56efca823cad2e3a3bbe83637b74f4fcd51aa8ddcc7ee5",
+    "tree_sha256": "a69c98c66687d7f57c45ad49dac9baa8d57d55e5616a6febe508b631a63ad90b"
   },
   "target_modes": [
     "new_repository",
     "existing_repository"
   ],
-  "version": "4.6.0"
+  "version": "5.0.0"
 }

@@ -16,10 +16,8 @@ them and the knowledge acquired through work. A later agent can recover that
 context and continue from it without treating another instance's experience as
 its own personal memory.
 
-Candidate awaiting final release review; no 4.6.0 release has been published.
-
-Product version: **[4.6.0](VERSION.md)** · Project Kernel family: **3.0.0** ·
-Python **3.10 or later** · [MIT License](LICENSE)
+Product version: **[5.0.0](VERSION.md)** · Project Kernel family: **3.0.0** ·
+Python **>=3.11**; qualified **3.11–3.14**, Linux / Windows / macOS · [MIT License](LICENSE)
 
 [Versione italiana](README.it.md)
 
@@ -43,27 +41,6 @@ forms; Meta_Skill recognizes, composes and develops competences. These functions
 act together through the agent and the actual sources. The
 [Kernel guide](knowledge/KERNEL.md) explains their meaning and operation.
 
-## Start from your context
-
-The ready-to-install distribution is in [`package/`](package/). Ask your coder:
-
-```text
-Help me install MAIOS Project Kernel in [target folder].
-The package and installation instructions are in package/.
-Then read the installed START_HERE.md and help me use it.
-```
-
-`install.py` previews and applies the installation. It chooses folder handling
-automatically from the selected target and preserves existing work. The installed
-`START_HERE.md` introduces the kernel and the present context. Exploration or
-understanding can be the first useful work; a project can be initialized when
-needed.
-
-The installer and local helpers require Python 3.10 or later and no third-party
-Python packages. See [installation and recovery](docs/INSTALLATION.md) for
-preview/apply commands, conflict handling and uninstall; see the
-[usage guide](docs/USAGE.md) for integration, competences and daily operation.
-
 ## Work, learn and return
 
 The installed agent uses the living context and relevant competences to form
@@ -82,6 +59,60 @@ the exact artifact to an unchanged installation is idempotent; a different
 version is not an automatic migration. The
 [update-continuity method](kernel/UPDATE_CONTINUITY.md) relates the installation
 baseline, local evolution and a proposed update.
+
+## A decision that improves the next task
+
+Suppose an agent is helping a team choose a data import strategy. It reads the
+actual data and constraints, brings together the relevant technical and domain
+competences, and compares feasible approaches. The chosen approach and its
+reasons become current project knowledge.
+
+If the work also reveals a reusable way to detect incomplete records, that
+method belongs in the competence that will handle later imports. The current
+decision and the new ability have different owners: preserving both lets a
+later session recover why the choice was made and do the next task better.
+The competence that forms methods can learn from this result too, improving how
+it recognizes useful learning without turning every event into another skill.
+
+This is an example of the intended operating relation, not a measured outcome
+from every receiving model. The [generative startup seed](skills/maios-project-competence-formation/references/generative-startup-seed.md)
+and [competence formation owner](skills/maios-project-competence-formation/SKILL.md)
+make the method available for inspection and use.
+
+## Coding hosts and evidence
+
+The package provides profiles for `codex`, `claude`, `opencode`, `hermes`,
+`openclaw`, `pi`, `dsh` and `generic`. The
+[compatibility guide](docs/COMPATIBILITY.md) identifies their installed paths
+and discovery conditions. An available profile does not establish observed
+use by every host or model.
+
+Source tests and distribution verification cover package integrity, installer
+and recovery mechanics, routing and local state contracts. They do not prove
+that a receiving model understands, uses or assimilates the methods. See the
+[5.0.0 release content](docs/RELEASE_5.0.0.md) for the delivered changes and
+entry for receiving-model use and review.
+
+## Start from your context
+
+The ready-to-install distribution is in [`package/`](package/). Ask your coder:
+
+```text
+Help me install MAIOS Project Kernel in [target folder].
+The package and installation instructions are in package/.
+Then read the installed START_HERE.md and help me use it.
+```
+
+`install.py` previews and applies the installation. It chooses folder handling
+automatically from the selected target and preserves existing work. The installed
+`START_HERE.md` introduces the kernel and the present context. Exploration or
+understanding can be the first useful work; a project can be initialized when
+needed.
+
+The installer and local helpers require Python >=3.11 (qualified: 3.11–3.14) and no third-party
+Python packages. See [installation and recovery](docs/INSTALLATION.md) for
+preview/apply commands, conflict handling and uninstall; see the
+[usage guide](docs/USAGE.md) for integration, competences and daily operation.
 
 ## Test, feedback and updates
 
@@ -108,20 +139,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and the
 [GitHub Evolution Feedback template](.github/ISSUE_TEMPLATE/evolution-feedback.md).
 Feedback is evidence for maintainers, not automatic authority to change the
 Kernel or the tester's project.
-
-## Coding hosts and evidence
-
-The package provides profiles for `codex`, `claude`, `opencode`, `hermes`,
-`openclaw`, `pi`, `dsh` and `generic`. The
-[compatibility guide](docs/COMPATIBILITY.md) identifies their installed paths
-and discovery conditions. An available profile does not establish observed
-use by every host or model.
-
-Source tests and distribution verification cover package integrity, installer
-and recovery mechanics, routing and local state contracts. They do not prove
-that a receiving model understands, uses or assimilates the methods. See the
-[4.6.0 candidate notes](docs/RELEASE_4.6.0.md) for the delivered changes and
-entry for receiving-model use and review.
 
 ## Study, contribute or build
 

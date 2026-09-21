@@ -2,7 +2,7 @@
 
 ## Living source and generated delivery
 
-The autonomous local candidate uses one implementation owner. Product
+The autonomous local product uses one implementation owner. Product
 identity and the shared Project Kernel family contract are recorded separately:
 
 ```text

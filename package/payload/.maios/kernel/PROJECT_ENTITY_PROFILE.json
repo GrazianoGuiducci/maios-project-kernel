@@ -118,7 +118,7 @@
       },
       {
         "id": "python-runtime",
-        "relation": "Python 3.10 or later can run installation and deterministic helpers.",
+        "relation": "Python >=3.11 runs installation and deterministic helpers; qualified versions are 3.11–3.14 on Linux, Windows and macOS.",
         "required": true
       },
       {

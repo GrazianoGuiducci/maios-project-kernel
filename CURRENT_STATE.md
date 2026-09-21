@@ -1,27 +1,26 @@
 # MAIOS Project Kernel current state
 
-## Current movement — 4.6.0 release candidate
+## Current product — 5.0.0
 
-The selected completion is based on public 4.5.0 main
-`0f58c76de5866980105dd2f6c36e3eb8c3c8751a`. It selectively reconciles the earlier
-partial corpus with current owners; that partial branch is not the build base.
-Unrelated worktrees and the frozen narrative PR remain untouched.
+The living repository directly supplies the autonomous operating kernel and its
+deterministic installation package. The generative competence startup seed joins
+task, competence composition, result and reusable learning, including learning
+that improves competence formation itself. Family 3.0.0 remains unchanged.
 
-Current native sources now directly determine production. Semantic owners,
-runtime integrity, portable discovery, profile identity and failure recovery
-carry the reviewed completion; [candidate notes](docs/RELEASE_4.6.0.md) explain
-the compatibility and proof contracts. C01 is `NO_CHANGE` after receiver
-discriminants: resolved inputs and existing intent source are sufficient.
+Python >=3.11 is the technical minimum. Qualified support is Python 3.11–3.14
+on Linux, Windows and macOS. Hermes uses project-native skills and explicit
+project trust; Codex uses repository-scoped `.agents/skills` discovery.
+[Release content](docs/RELEASE_5.0.0.md) describes the complete product delta.
 
-The source/package resultant must be committed and proved on that exact commit
-by the native suite, two deterministic builds, archive/checksum and GitHub CI.
-The external handoff return records the final identities and observed results
-without inserting a self-referential commit identity into package source.
+The source proof contract is the full suite, active document link check, two
+identical builds, a clean tracked package, distribution verification and the
+12-job OS/Python matrix. Archives and checksums bind the exercised bytes. Exact
+run identities belong to CI and the external readback, avoiding a self-referential
+commit inside the generated source identity.
 
-Stop for final release review. No protected version tag, immutable release,
-Form or site continuation is authorized by this candidate work. Existing
-installations retain owner-governed updates; package proof is not behavioral
-assimilation. The sections below preserve historical results with their dates.
+Installation, host discovery and receiving-model assimilation remain distinct
+claims. Project-evolved knowledge stays target-owned across product updates.
+The following dated sections preserve historical results.
 
 ## Earlier states
 
@@ -502,7 +501,7 @@ below belong to the previous change and do not validate this work.
    Distribution entry reads documents by their current purpose, and integration
    uses the selected host rather than always prescribing the Codex profile.
 2. Use that result to update the Form package and revisit its generator.
-3. Use the package to update tm7/chatgpt if needed and its kernel_chat port.
+3. Use the package to update the receiving assistant workspace if needed and its kernel_chat port.
 
 Current work grants local source/package changes and competence continuity.
 No publication, deployment or remote host update has been performed.

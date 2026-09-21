@@ -28,13 +28,13 @@ prove installation, discovery, behavioral use, or maintained reentry.
 ## Current owner boundaries
 
 - This repository owns the autonomous self-configuring package and its builder.
-- `MAIOS_CLIENT_SETUP` owns the later Form-generated route. It will preconfigure
+- The downstream configuration form owns the later preconfigured route. It will preconfigure
   the same Kernel family but is not an input to this autonomous build.
 - Current product sources directly supply the ordinary distribution through
   `release/PROJECTION.json`. Exported generation plans remain explicit
   compatibility inputs only. No private compiler or hidden selection is
   required. See docs/GENERATED_KERNEL_BUILD.md.
-- `maios_it` is a later distribution surface. Source work here grants no push,
+- The public product site is a downstream distribution surface. Source work here grants no push,
   release, publication, runtime, or public-site authority.
 
 ## Public knowledge, testing and contribution field

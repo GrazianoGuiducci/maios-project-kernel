@@ -20,7 +20,7 @@ Riferimenti per installazione, lavoro nel progetto e studio delle sorgenti:
 
 | Necessità | Riferimenti | Contenuto |
 | --- | --- | --- |
-| Stabilire la verità corrente | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Versione prodotto `4.6.0`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
+| Stabilire la verità corrente | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Versione prodotto `5.0.0`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
 | Comprendere valore e possibilità | [`knowledge/KERNEL.md`](../knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md), [working paper System Semantic Kernel (SSK)](https://github.com/GrazianoGuiducci/maios-ssk-paper) | Cosa cambia il Kernel in un progetto, quali possibilità restano aperte e il relativo contesto accademico; il Paper è facoltativo e non dimostra il comportamento del prodotto |
 | Integrare il pacchetto | [`package/AGENTS.md`](../package/AGENTS.md), [`maios-project-integration`](../package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](../package/INSTALL.md), [`package/MANIFEST.json`](../package/MANIFEST.json) | Target esatto, modalità, proiezione host, percorsi posseduti dal pacchetto, anteprima, recupero e superfici immutate |
 | Configurare e usare il Kernel installato | [`START_HERE.md`](../package/payload/START_HERE.md), [`maios-project-system`](../package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](../package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](../package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | Come contesto, competenze, risultato, apprendimento, rilettura semantica e nuovo rientro restano connessi |
@@ -213,7 +213,7 @@ adattamento traduce la meccanica restante senza creare un Kernel diverso.
 
 | Host id | Coder o harness | Proiezione locale iniziale |
 | --- | --- | --- |
-| `codex` | ChatGPT / Codex coding agent | `.agents/skills/` con tutti i proprietari portabili |
+| `codex` | Codex | `.agents/skills/` con tutti i proprietari portabili |
 | `claude` | Claude Code | `.claude/skills/` con sistema e adattamento host |
 | `opencode` | OpenCode | `.opencode/skills/` con sistema e adattamento host |
 | `hermes` | Hermes | `.hermes/skills/` con sistema e adattamento host |

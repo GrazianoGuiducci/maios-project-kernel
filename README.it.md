@@ -15,10 +15,8 @@ ragioni delle decisioni, le fonti che le sostengono e
 il sapere acquisito nel lavoro. Un'altra istanza può recuperare quel contesto
 e proseguire senza attribuirsi l'esperienza della precedente come memoria personale.
 
-Candidato in attesa della review finale; la release 4.6.0 non è pubblicata.
-
-Versione del prodotto: **[4.6.0](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
-Python **3.10 o successivo** · [Licenza MIT](LICENSE)
+Versione del prodotto: **[5.0.0](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
+Python **>=3.11**; supporto qualificato **3.11–3.14**, Linux / Windows / macOS · [Licenza MIT](LICENSE)
 
 [English](README.md)
 
@@ -43,27 +41,6 @@ competenze. Queste funzioni agiscono insieme attraverso l'agente e le fonti
 effettive. Il [compendio del Kernel](knowledge/KERNEL.md) ne spiega
 significato e funzionamento.
 
-## Inizia dal tuo contesto
-
-La distribuzione pronta da installare è in [`package/`](package/). Chiedi al coder:
-
-```text
-Aiutami a installare MAIOS Project Kernel in [cartella destinazione].
-Il pacchetto e le istruzioni di installazione sono in package/.
-Poi leggi lo START_HERE.md installato e accompagnami nel primo utilizzo.
-```
-
-`install.py` mostra un'anteprima e applica l'installazione. Riconosce automaticamente
-come gestire la cartella scelta e preserva il lavoro presente. Lo `START_HERE.md` installato
-introduce il kernel e il contesto presente. Esplorare e comprendere possono già
-essere il primo lavoro utile; un progetto si inizializza quando serve.
-
-Installer e strumenti locali richiedono Python 3.10 o successivo e nessun
-pacchetto Python di terze parti. La guida di
-[installazione e recupero](docs/INSTALLATION.md) descrive comandi di
-anteprima/applicazione, conflitti e disinstallazione; la
-[guida d'uso](docs/USAGE.it.md) approfondisce integrazione, competenze e lavoro quotidiano.
-
 ## Lavorare, apprendere e rientrare
 
 L'agente installato usa il contesto vivo e le competenze pertinenti
@@ -83,6 +60,61 @@ Riapplicare lo stesso artefatto a un'installazione invariata è idempotente;
 una versione diversa non produce una migrazione automatica. Il
 [metodo di continuità degli aggiornamenti](kernel/UPDATE_CONTINUITY.md)
 collega la base d'installazione, l'evoluzione locale e una proposta di aggiornamento.
+
+## Una decisione che migliora il lavoro successivo
+
+Un agente sta aiutando un gruppo a scegliere una strategia di importazione dei
+dati. Legge dati e vincoli effettivi, compone le competenze tecniche e di dominio
+pertinenti e confronta le possibilità praticabili. La scelta e le sue ragioni
+diventano conoscenza corrente del progetto.
+
+Se il lavoro fa emergere anche un modo riusabile di riconoscere record incompleti,
+quel metodo appartiene alla competenza che affronterà le importazioni successive.
+La decisione corrente e la nuova capacità hanno proprietari diversi: conservarle
+entrambe permette a una sessione successiva di recuperare le ragioni della scelta
+e svolgere meglio il prossimo compito. Anche la competenza che forma i metodi può
+apprendere da questo risultato, migliorando come riconosce il sapere utile senza
+trasformare ogni evento in un'altra skill.
+
+È un esempio della relazione operativa prevista, non un risultato misurato su
+ogni modello destinatario. Il [seed generativo di avvio](skills/maios-project-competence-formation/references/generative-startup-seed.md)
+e la [competenza di formazione](skills/maios-project-competence-formation/SKILL.md)
+rendono il metodo disponibile per comprenderlo e usarlo.
+
+## Host ed evidenze
+
+Il pacchetto offre profili per `codex`, `claude`, `opencode`, `hermes`,
+`openclaw`, `pi`, `dsh` e `generic`. La
+[guida di compatibilità](docs/COMPATIBILITY.md) identifica percorsi installati
+e condizioni di riconoscimento. La presenza di un profilo non dimostra l'uso
+osservato da parte di ogni host o modello.
+
+Test sorgente e verifica della distribuzione coprono integrità del pacchetto,
+meccaniche di installazione e recupero, instradamento e contratti dello stato
+locale. Non dimostrano che il modello destinatario comprenda, usi o assimili
+i metodi. Le [note della 5.0.0](docs/RELEASE_5.0.0.md) descrivono
+le novità consegnate e l'ingresso per l'uso e la revisione con il modello ricevente.
+
+## Inizia dal tuo contesto
+
+La distribuzione pronta da installare è in [`package/`](package/). Chiedi al coder:
+
+```text
+Aiutami a installare MAIOS Project Kernel in [cartella destinazione].
+Il pacchetto e le istruzioni di installazione sono in package/.
+Poi leggi lo START_HERE.md installato e accompagnami nel primo utilizzo.
+```
+
+`install.py` mostra un'anteprima e applica l'installazione. Riconosce automaticamente
+come gestire la cartella scelta e preserva il lavoro presente. Lo `START_HERE.md` installato
+introduce il kernel e il contesto presente. Esplorare e comprendere possono già
+essere il primo lavoro utile; un progetto si inizializza quando serve.
+
+Installer e strumenti locali richiedono Python >=3.11 (supporto qualificato: 3.11–3.14) e nessun
+pacchetto Python di terze parti. La guida di
+[installazione e recupero](docs/INSTALLATION.md) descrive comandi di
+anteprima/applicazione, conflitti e disinstallazione; la
+[guida d'uso](docs/USAGE.it.md) approfondisce integrazione, competenze e lavoro quotidiano.
 
 ## Test, feedback e aggiornamenti
 
@@ -111,20 +143,6 @@ Vedi [CONTRIBUTING.md](CONTRIBUTING.md) e il
 [template GitHub Evolution Feedback](.github/ISSUE_TEMPLATE/evolution-feedback.md).
 Il feedback è evidenza per i maintainer, non autorità automatica per modificare
 il Kernel o il progetto del tester.
-
-## Host ed evidenze
-
-Il pacchetto offre profili per `codex`, `claude`, `opencode`, `hermes`,
-`openclaw`, `pi`, `dsh` e `generic`. La
-[guida di compatibilità](docs/COMPATIBILITY.md) identifica percorsi installati
-e condizioni di riconoscimento. La presenza di un profilo non dimostra l'uso
-osservato da parte di ogni host o modello.
-
-Test sorgente e verifica della distribuzione coprono integrità del pacchetto,
-meccaniche di installazione e recupero, instradamento e contratti dello stato
-locale. Non dimostrano che il modello destinatario comprenda, usi o assimili
-i metodi. Le [note della 4.6.0](docs/RELEASE_4.6.0.md) descrivono
-le novità consegnate e l'ingresso per l'uso e la revisione con il modello ricevente.
 
 ## Studiare, contribuire o costruire
 

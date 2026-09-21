@@ -12,13 +12,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - os: ubuntu-latest
-            python: "3.10"
-          - os: windows-latest
-            python: "3.13"
-          - os: windows-latest
-            python: "3.10"
+        os: [ubuntu-latest, windows-latest, macos-15-intel]
+        python: ["3.11", "3.12", "3.13", "3.14"]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out repository
@@ -27,6 +22,8 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python }}
+      - name: Install source-test dependencies
+        run: python -m pip install -r requirements-test.txt
       - name: Validate living source behavior
         run: python -B -m unittest discover -s tests -v
       - name: Build tracked package projection twice
@@ -37,6 +34,8 @@ jobs:
           git diff --exit-code -- package/
       - name: Require the committed package projection to match living source
         run: git diff --exit-code -- package/
+      - name: Check active document links and anchors
+        run: python -B tools/check_active_links.py
       - name: Validate generated public boundary
         run: python -B tools/verify_distribution.py
       - name: Prepare candidate archive

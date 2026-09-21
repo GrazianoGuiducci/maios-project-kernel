@@ -140,15 +140,16 @@ class DocumentationContractTests(unittest.TestCase):
         self.assertEqual(version, manifest['version'])
         self.assertEqual(family['family_version'], manifest['project_kernel_family_version'])
         python_min = manifest['runtime_requirements']['python'].removeprefix('>=')
-        for path, product_label, family_label, python_suffix in [
-            ('README.md', 'Product version', 'Project Kernel family', 'or later'),
-            ('README.it.md', 'Versione del prodotto', 'Famiglia Project Kernel', 'o successivo'),
+        for path, product_label, family_label in [
+            ('README.md', 'Product version', 'Project Kernel family'),
+            ('README.it.md', 'Versione del prodotto', 'Famiglia Project Kernel'),
         ]:
             with self.subTest(path=path):
                 text = (ROOT / path).read_text(encoding='utf-8')
                 self.assertEqual(re.findall(re.escape(product_label) + r': \*\*\[([^\]]+)\]', text), [version])
                 self.assertEqual(re.findall(re.escape(family_label) + r': \*\*([^*]+)\*\*', text), [family['family_version']])
-                self.assertIn(f'Python **{python_min} {python_suffix}**', text)
+                self.assertIn(f'Python **>={python_min}**', text)
+                self.assertIn('3.11–3.14', text)
         for path in ['templates/distribution/README.md', 'package/README.md']:
             text = (ROOT / path).read_text(encoding='utf-8')
             self.assertEqual(re.search(r'^# MAIOS Project Kernel ([0-9.]+)', text).group(1), version)

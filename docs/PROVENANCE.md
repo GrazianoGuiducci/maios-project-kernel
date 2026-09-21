@@ -2,7 +2,7 @@
 
 ## Source owner
 
-The 4.6.0 candidate product source is this `maios-project-kernel` repository. Current native
+The 5.0.0 product source is this `maios-project-kernel` repository. Current native
 methods and product contracts are composed through the explicit source mapping.
 Retained generated inputs preserve historical formation only. The generated `package/` projection does
 not import a prepared website payload, Form state, private compiler source,

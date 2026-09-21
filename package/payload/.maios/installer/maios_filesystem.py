@@ -15,7 +15,7 @@ def is_link(path: Path) -> bool:
         value = path.lstat()
     except FileNotFoundError:
         return False
-    # st_reparse_tag is available on Windows in Python 3.10. Do not depend on
+    # st_reparse_tag is available on Windows in Python 3.11. Do not depend on
     # Path.is_junction (added in 3.12), or follow the entry to classify it.
     return stat.S_ISLNK(value.st_mode) or getattr(value, "st_reparse_tag", 0) in {
         getattr(stat, "IO_REPARSE_TAG_MOUNT_POINT", 0xA0000003),

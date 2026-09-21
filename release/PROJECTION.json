@@ -1,7 +1,7 @@
 {
   "schema": "maios.release-projection.v2",
   "product": "MAIOS Project Kernel",
-  "version": "4.6.0",
+  "version": "5.0.0",
   "files": [
     {
       "source": "templates/distribution/AGENTS.md",
@@ -206,10 +206,6 @@
     {
       "source": "skills/maios-project-coordination/SKILL.md",
       "destination": "payload/skills/maios-project-coordination/SKILL.md"
-    },
-    {
-      "source": "skills/maios-project-system/adapters/hermes.gitignore",
-      "destination": "payload/skills/maios-project-system/adapters/hermes.gitignore"
     },
     {
       "source": "domains/README.md",
