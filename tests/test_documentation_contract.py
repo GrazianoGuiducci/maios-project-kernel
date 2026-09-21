@@ -70,6 +70,39 @@ class DocumentationContractTests(unittest.TestCase):
                     self.assertIn(destination, links)
                     self.assertTrue((document.parent / destination).exists())
 
+    def test_generative_competence_seed_is_reachable_from_first_entry(self):
+        seed = ROOT / "skills/maios-project-competence-formation/references/generative-startup-seed.md"
+        self.assertTrue(seed.is_file())
+        seed_text = seed.read_text(encoding="utf-8")
+        for marker in (
+            "The task already happens inside the competence field",
+            "Distinguish state from durable capability",
+            "Preserve operational awareness inside each competence",
+            "Compose before multiplying structure",
+            "Let the system learn how to learn",
+        ):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, seed_text)
+
+        for relative in ("templates/project/START_HERE.md", "templates/project/AGENTS.md"):
+            text = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertIn(
+                "skills/maios-project-competence-formation/references/generative-startup-seed.md",
+                text,
+            )
+
+        system_text = (ROOT / "skills/maios-project-system/SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("generative-startup-seed.md", system_text)
+
+        projection = json.loads((ROOT / "release/PROJECTION.json").read_text(encoding="utf-8"))
+        self.assertIn(
+            {
+                "source": "skills/maios-project-competence-formation/references/generative-startup-seed.md",
+                "destination": "payload/skills/maios-project-competence-formation/references/generative-startup-seed.md",
+            },
+            projection["files"],
+        )
+
     def test_evolution_feedback_keeps_public_submission_owner_gated(self):
         template = (ROOT / '.github/ISSUE_TEMPLATE/evolution-feedback.md').read_text(
             encoding='utf-8'

@@ -256,6 +256,10 @@
       "destination": "payload/skills/maios-project-competence-formation/references/generative-inheritance.md"
     },
     {
+      "source": "skills/maios-project-competence-formation/references/generative-startup-seed.md",
+      "destination": "payload/skills/maios-project-competence-formation/references/generative-startup-seed.md"
+    },
+    {
       "source": "skills/maios-project-competence-formation/references/kernel-formation-and-evolution.md",
       "destination": "payload/skills/maios-project-competence-formation/references/kernel-formation-and-evolution.md"
     },

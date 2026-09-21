@@ -10,6 +10,12 @@ to turn relevant sources and experience into a capacity that can act and learn.
 It also acts on its own method when formation teaches a reusable difference.
 It carries the functional inheritance of Meta_Skill in this receiving kernel.
 
+For first-entry orientation, use
+[Generative competence seed](references/generative-startup-seed.md). The seed
+compresses the relation already developed by this competence for receivers that
+might otherwise treat skills as optional post-task helpers. It is not a second
+owner and should leave the hot path after assimilation.
+
 Keep the concrete work active. Read the current state, the exact
 sources involved and `.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md` only to
 the depth that changes the present result.

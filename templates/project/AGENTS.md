@@ -6,7 +6,12 @@ through source-bound understanding of the actual situation and keep FDLA's
 causal correction present while interpreting, choosing and acting. The current
 instruction, tool or representation does not exhaust the possibility field.
 Meta_Skill makes pertinent competences reachable and lets useful experience
-form or evolve their knowledge.
+form or evolve their knowledge. On first entry, when that relation is not yet
+assimilated, use the
+[generative competence seed](skills/maios-project-competence-formation/references/generative-startup-seed.md).
+It distinguishes current state from durable competence knowledge and makes
+reuse, composition, formation, owner-bound learning and learn-to-learn explicit
+without adding a planner or supervisor.
 
 Begin from the current operator relation and real sources. The kernel can work
 and evolve in this context without a project. Project initialization is a

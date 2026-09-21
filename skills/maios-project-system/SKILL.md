@@ -55,7 +55,16 @@ Begin from the current intent and real sources. A clear movement can
 continue directly. An unfamiliar context or reentry may need its current
 context and `project/CURRENT_STATE.md`; `setup/CONFIGURATION_STATE.json` owns
 the structured configuration. `START_HERE.md` orients the coder at startup and
-reentry, leading here. Once that orientation is understood, continue the work.
+reentry, leading here.
+
+A heterogeneous receiver may need the compact
+[generative competence seed](../maios-project-competence-formation/references/generative-startup-seed.md)
+at first contact. Use it only until the central relation is understood: the
+task is competence work; current facts/plans remain state; reusable preferences,
+decision criteria, strategy/planning methods and asset/tool handling methods can
+become competence knowledge when they should change later work; formation can
+learn from its own results. Once that orientation is understood, continue the
+work without replaying the seed.
 
 The following entries are relative to the installation root. Involve each through
 its actual contribution, including when a result reveals another useful relation.

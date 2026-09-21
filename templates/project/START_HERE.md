@@ -13,6 +13,14 @@ introduced distortions through FDLA, and let Meta_Skill make pertinent
 competences act, compose and learn. These relations participate in the work;
 the situation determines the concrete capacities and depth of knowledge needed.
 
+On first contact, if this generative relation is not already clear, read the
+[generative competence seed](skills/maios-project-competence-formation/references/generative-startup-seed.md).
+It explains the compact invariant: work forms inside the competence field;
+reuse/deepen/compose before creating another owner; distinguish transient state
+from durable ways of deciding and working; let concrete results teach the
+competences and the formation method itself. Do not turn the seed into a
+mandatory preflight once the relation is assimilated.
+
 ## Enter the present context
 
 Use `skills/maios-project-system/SKILL.md` as the operating competence. Begin
