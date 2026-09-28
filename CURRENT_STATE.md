@@ -1,5 +1,37 @@
 # MAIOS Project Kernel current state
 
+## Current product — 5.1.0
+
+The living source supplies the autonomous operating kernel and its deterministic
+installation package. The permanent system entry now carries a compact,
+correctable receiver-local competence trace and an explicit relation for
+qualifying the receiver through existing competence formation. When a durable
+capacity or continuation is missing, reuse, deepen, compose or form the smallest
+useful native relation without assuming the creator's topology or means.
+
+The autonomous family source distinguishes required startup context from a
+discretionary interview, matching the already delivered policy. The Form lane
+remains preconfigured from accepted context with its interview complete.
+[Release content](docs/RELEASE_5.1.0.md) describes the product delta and limits.
+
+Family 3.0.0, Python >=3.11 and qualified support for Python 3.11–3.14 on Linux,
+Windows and macOS remain unchanged. Runtime, installer/recovery, state schemas
+and host contracts retain their compatibility. Adapter paths and trust boundaries
+are unchanged; no existing installation is migrated by changing this source.
+
+The source proof contract is the full suite, active document links, two identical
+builds, a clean tracked package, distribution verification and the 12-job
+OS/Python matrix. Candidate archives and checksums bind the exercised bytes.
+Exact commit, CI and publication identities belong to their external readbacks;
+this source state does not claim that a tag or release has been published.
+
+Installed, discovered, exercised and assimilated remain distinct. Delivered
+instructions and executable-contract tests do not prove LLM assimilation.
+Locally evolved knowledge stays target-owned across product updates. Dated
+sections below retain their original identities and evidence scopes.
+
+## Earlier states
+
 ## Current product — 5.0.0
 
 The living repository directly supplies the autonomous operating kernel and its
@@ -21,8 +53,6 @@ commit inside the generated source identity.
 Installation, host discovery and receiving-model assimilation remain distinct
 claims. Project-evolved knowledge stays target-owned across product updates.
 The following dated sections preserve historical results.
-
-## Earlier states
 
 ## Current result — 4.5.0, 2026-09-14
 

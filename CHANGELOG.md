@@ -1,5 +1,20 @@
 # Changelog
 
+## 5.1.0
+
+- Close substantive responses with a compact receiver-local competence trace:
+  situated, correctable self-attribution, without claiming hidden reasoning
+  proof or prescribing a fixed competence stack.
+- Make endogenous receiver qualification explicit at the permanent system
+  entry. Use existing competence formation to reuse, deepen, compose or form
+  the smallest useful capacity and continuation in the actual context.
+- Align the autonomous family source with the already delivered distinction:
+  startup context is required; an interview is discretionary. Preserve the
+  preconfigured Form lane and its completed interview.
+- Retain family 3.0.0, Python >=3.11, qualified Python 3.11–3.14 on Linux,
+  Windows and macOS, and existing runtime, installer, state and host contracts.
+- See [5.1.0 release content](docs/RELEASE_5.1.0.md) for the changes and proof scope.
+
 ## 5.0.0
 
 - Preserve family 3.0.0 and deliver the generative competence startup seed.

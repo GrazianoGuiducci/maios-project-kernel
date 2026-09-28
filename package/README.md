@@ -1,4 +1,4 @@
-# MAIOS Project Kernel 5.0.0 — installable package projection
+# MAIOS Project Kernel 5.1.0 — installable package projection
 
 MAIOS Project Kernel brings an AI agent living context, evolving competences
 and knowledge that carries work across sessions. Its activity can reform its

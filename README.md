@@ -16,7 +16,7 @@ them and the knowledge acquired through work. A later agent can recover that
 context and continue from it without treating another instance's experience as
 its own personal memory.
 
-Product version: **[5.0.0](VERSION.md)** · Project Kernel family: **3.0.0** ·
+Product version: **[5.1.0](VERSION.md)** · Project Kernel family: **3.0.0** ·
 Python **>=3.11**; qualified **3.11–3.14**, Linux / Windows / macOS · [MIT License](LICENSE)
 
 [Versione italiana](README.it.md)
@@ -47,6 +47,18 @@ The installed agent uses the living context and relevant competences to form
 a result. New knowledge, a successful approach, a possibility or a correction
 can then change the methods used next. The kernel keeps the useful reasons
 and continuation rather than requiring the whole conversation to be replayed.
+
+Version 5.1.0 instructs the agent to close substantive responses with a compact,
+correctable attribution of the competences it understands as having contributed.
+This trace makes participation legible; it does not expose hidden reasoning or
+prescribe a fixed stack for the next turn.
+
+An autonomous receiver starts from its own context and available means. When a
+durable capacity or its continuation is missing, it uses existing competence
+formation to reuse, deepen, compose or form the smallest useful relation.
+Startup context is required; the interview remains discretionary, guided by
+what is actually missing. [Release content](docs/RELEASE_5.1.0.md) explains the
+changes and their limits.
 
 `START_HERE.md` is the stable entry. Living competence bodies own methods;
 local state and knowledge carry the changing context. Existing local helpers
@@ -90,7 +102,7 @@ use by every host or model.
 Source tests and distribution verification cover package integrity, installer
 and recovery mechanics, routing and local state contracts. They do not prove
 that a receiving model understands, uses or assimilates the methods. See the
-[5.0.0 release content](docs/RELEASE_5.0.0.md) for the delivered changes and
+[5.1.0 release content](docs/RELEASE_5.1.0.md) for the delivered changes and
 entry for receiving-model use and review.
 
 ## Start from your context

@@ -1,4 +1,4 @@
-# Install MAIOS Project Kernel 5.0.0 — repository package
+# Install MAIOS Project Kernel 5.1.0 — repository package
 
 Installation is a local effect and does not establish receiving-model assimilation.
 

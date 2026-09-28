@@ -1,7 +1,7 @@
 # MAIOS Project Kernel 4.6.0 — superseded development candidate
 
 Historical development record. The current product is described in
-[5.0.0 release content](RELEASE_5.0.0.md); statements below describe the earlier
+[current version](../VERSION.md); statements below describe the earlier
 4.6.0 candidate and its proof scope.
 
 Status: prepared for final release review, not published.

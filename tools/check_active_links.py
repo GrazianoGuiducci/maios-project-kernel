@@ -19,7 +19,7 @@ ACTIVE_DOCUMENTS = (
     "README.md", "README.it.md", "VERSION.md", "CURRENT_STATE.md", "CHANGELOG.md",
     "AGENTS.md", "CONTRIBUTING.md", "THIRD_PARTY_NOTICES.md", "TRADEMARKS.md",
     "docs/README.md", "docs/INSTALLATION.md", "docs/USAGE.md", "docs/USAGE.it.md",
-    "docs/COMPATIBILITY.md", "docs/GENERATED_KERNEL_BUILD.md", "docs/RELEASE_5.0.0.md",
+    "docs/COMPATIBILITY.md", "docs/GENERATED_KERNEL_BUILD.md", "docs/RELEASE_5.1.0.md",
     "docs/PROVENANCE.md", "docs/ARCHITECTURE.md", "docs/RECEIPTS.md",
     "docs/INSTANCE_COORDINATION.md", "kernel/UPDATE_CONTINUITY.md",
     "package/README.md", "package/INSTALL.md", "package/AGENTS.md",

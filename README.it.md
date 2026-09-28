@@ -15,7 +15,7 @@ ragioni delle decisioni, le fonti che le sostengono e
 il sapere acquisito nel lavoro. Un'altra istanza può recuperare quel contesto
 e proseguire senza attribuirsi l'esperienza della precedente come memoria personale.
 
-Versione del prodotto: **[5.0.0](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
+Versione del prodotto: **[5.1.0](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
 Python **>=3.11**; supporto qualificato **3.11–3.14**, Linux / Windows / macOS · [Licenza MIT](LICENSE)
 
 [English](README.md)
@@ -48,6 +48,18 @@ per formare un risultato. Nuova conoscenza, un approccio riuscito, una
 possibilità o una correzione possono cambiare i metodi usati in seguito.
 Il kernel conserva le ragioni utili e il punto da cui continuare, senza
 richiedere di rileggere l'intera conversazione.
+
+La 5.1.0 istruisce l'agente a chiudere le risposte sostanziali con un'attribuzione
+compatta e correggibile delle competenze che comprende abbiano contribuito.
+La traccia rende leggibile la partecipazione; non espone il ragionamento interno
+né prescrive una composizione fissa per il turno seguente.
+
+Un ricevente autonomo parte dal proprio contesto e dai mezzi disponibili. Quando
+manca una capacità durevole o la sua continuazione, usa la formazione esistente
+per riusare, approfondire, comporre o formare la minima relazione utile.
+Il contesto iniziale è richiesto; l'intervista resta discrezionale, guidata da
+ciò che manca effettivamente. Le [note della versione](docs/RELEASE_5.1.0.md)
+spiegano le novità e i loro limiti.
 
 `START_HERE.md` è l'ingresso stabile. I corpi vivi delle competenze possiedono
 i metodi; stato e conoscenza locale portano il contesto che cambia.
@@ -92,7 +104,7 @@ osservato da parte di ogni host o modello.
 Test sorgente e verifica della distribuzione coprono integrità del pacchetto,
 meccaniche di installazione e recupero, instradamento e contratti dello stato
 locale. Non dimostrano che il modello destinatario comprenda, usi o assimili
-i metodi. Le [note della 5.0.0](docs/RELEASE_5.0.0.md) descrivono
+i metodi. Le [note della 5.1.0](docs/RELEASE_5.1.0.md) descrivono
 le novità consegnate e l'ingresso per l'uso e la revisione con il modello ricevente.
 
 ## Inizia dal tuo contesto

@@ -78,8 +78,8 @@ After final source and documentation changes, build and verify again, then use:
 python -B tools/archive_candidate.py --output-dir /outside/source/candidate
 ```
 
-This prepares `maios-project-kernel-5.0.0.zip` and
-`maios-project-kernel-5.0.0.sha256` without a tag or Release.
+This prepares `maios-project-kernel-5.1.0.zip` and
+`maios-project-kernel-5.1.0.sha256` without a tag or Release.
 CI uploads the same candidate archive from its checked commit. Source, package,
 archive, CI and any later release retain separate exact identities. Publication
 requires the selected final release review; package tests do not establish a
