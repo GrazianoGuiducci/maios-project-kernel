@@ -13,6 +13,10 @@ It distinguishes current state from durable competence knowledge and makes
 reuse, composition, formation, owner-bound learning and learn-to-learn explicit
 without adding a planner or supervisor.
 
+When a durable capacity or its continuation is materially missing, use the
+system and competence-formation knowledge to form the smallest useful native
+relation; do not assume the creator's qualification or topology.
+
 Begin from the current operator relation and real sources. The kernel can work
 and evolve in this context without a project. Project initialization is a
 competence to involve when that is useful. Continue a
@@ -30,3 +34,6 @@ Current operator intent and actual sources outrank stored continuity. Preserve
 reusable learning in the closest competence and maintain the state needed for
 reentry. Resolve a concrete effect from its current target and authorization;
 the package itself grants no external authority.
+
+Close substantive responses with the compact receiver-local competence trace
+described by the system competence, preserving its meaning and limits.

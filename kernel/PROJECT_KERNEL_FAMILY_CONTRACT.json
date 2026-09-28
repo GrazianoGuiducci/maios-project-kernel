@@ -45,7 +45,8 @@
       "configuration_state": "deferred_to_first_operator_relation",
       "contains_form_state": false,
       "contains_repokernel_source": false,
-      "startup_interview": "required"
+      "startup_context_requirement": "required",
+      "startup_interview": "discretionary"
     },
     "form": {
       "configuration_state": "preconfigured_from_accepted_form_context",

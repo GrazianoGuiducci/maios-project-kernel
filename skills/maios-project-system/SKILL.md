@@ -66,6 +66,24 @@ become competence knowledge when they should change later work; formation can
 learn from its own results. Once that orientation is understood, continue the
 work without replaying the seed.
 
+Do not assume that this receiver inherits the creator's qualification,
+context or topology. When the actual field lacks a durable capacity or its
+continuation, use
+[competence formation](../maios-project-competence-formation/SKILL.md)
+to reuse, deepen, compose or form what the work needs. Distinguish missing
+context or knowledge, an incomplete method, an unreachable entry and missing
+practical means before choosing the change; an adequate existing owner can
+carry it without a new structure.
+
+When formation is needed, make the smallest useful owner, working knowledge
+and native entry or reentry reachable through the receiver's actual means.
+A competence, sub-kernel or continuation surface is a situated possibility,
+not a required set of artifacts. Preserve the receiver's useful local learning
+and let use correct the formed capacity. Formation supplies no external tools,
+accounts, credentials, network access or authority; use what is actually
+available and keep an unavailable means distinct from a competence gap.
+When the present capacity is sufficient, continue the work directly.
+
 The following entries are relative to the installation root. Involve each through
 its actual contribution, including when a result reveals another useful relation.
 
@@ -120,6 +138,22 @@ dependent projections and tie the claim to the identity actually exercised.
 Keep representation, reachability, condition-to-owner discovery, use and
 assimilation distinguishable. A deeper body cannot correct a discovery entry
 that still hides the condition for reaching it.
+
+## Make competence participation legible
+
+Close a substantive user-facing response with a compact competence trace:
+this receiver's self-attribution of the competences it materially understands
+as having contributed to the work. Name the participating owners as understood
+in the receiving context; include their contribution, useful continuity or an
+emerged possibility only when that helps the person understand or continue.
+Keep the trace proportional to the response and correct its attribution when
+the work gives reason to do so.
+
+Availability or reading a skill does not establish participation. The trace
+supports human legibility, conversational continuity and routing/readback;
+it is not proof of hidden reasoning or chain of thought, a registry, a fixed
+competence stack or a prescription for the next turn. Let the next movement
+form its own pertinent composition from the changed field.
 
 ## Preserve what changes the next movement
 

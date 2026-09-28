@@ -130,6 +130,29 @@ class DocumentationContractTests(unittest.TestCase):
         self.assertIn('ask for consent before any external submission', system)
         self.assertIn('Source contact, feedback preparation and public submission remain distinct effects', system)
 
+    def test_source_family_separates_context_from_interview_and_preserves_form(self):
+        family = json.loads((ROOT / 'kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json').read_text(encoding='utf-8'))
+        entry = json.loads((ROOT / 'kernel/AUTONOMOUS_ENTRY_CONTRACT.json').read_text(encoding='utf-8'))
+        delivered = json.loads((ROOT / 'package/payload/.maios/kernel/PROJECT_KERNEL_FAMILY_CONTRACT.json').read_text(encoding='utf-8'))
+        # Projection normalizes these fields; checking only the payload can
+        # hide a source contract that still conflates context and interview.
+        source_policy = tuple(family['lanes']['autonomous'][key] for key in
+                              ('startup_context_requirement', 'startup_interview'))
+        self.assertEqual(source_policy, ('required', 'discretionary'))
+        self.assertEqual(source_policy, (
+            entry['family_relation']['startup_context_requirement'],
+            entry['entry_policy']['startup_interview'],
+        ))
+        self.assertEqual(source_policy, tuple(delivered['lanes']['autonomous'][key] for key in
+                                             ('startup_context_requirement', 'startup_interview')))
+        self.assertEqual(family['lanes']['form'], {
+            'configuration_state': 'preconfigured_from_accepted_form_context',
+            'contains_autonomous_package': False,
+            'contains_repokernel_source': False,
+            'startup_interview': 'complete',
+            'state_owner': 'setup/CONFIGURATION_STATE.json',
+        })
+
     def test_current_entry_facts_match_distribution(self):
         manifest = json.loads((ROOT / 'package/MANIFEST.json').read_text(encoding='utf-8'))
         projection = json.loads((ROOT / 'release/PROJECTION.json').read_text(encoding='utf-8'))
