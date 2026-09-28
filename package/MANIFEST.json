@@ -85,8 +85,8 @@
     "owner": "maios-project-kernel repository",
     "projection_sha256": "0d1bc342e13516294a80cd76eecfce5d1f5bbc817aa9999ee1fcd4fa93e5ea5b",
     "revision_claim": "content_addressed_source_tree",
-    "source_manifest_sha256": "51a71de09d0959078865e5b106fdd3544383993dc94b5ece3b3c88d0ca89e68b",
-    "tree_sha256": "02b8f060b11eaea138de71cd08ae302e46bcb020f8a11b960abf1a43680810c0"
+    "source_manifest_sha256": "5920cc504bb5c18c6a50f6c6d387571fb1c1a23a974f5c54be4c6896dec0b26e",
+    "tree_sha256": "43db8cf05fe44171adbd3dfa689f754d720528e9d7a57915e97f97d3cc544217"
   },
   "target_modes": [
     "new_repository",
