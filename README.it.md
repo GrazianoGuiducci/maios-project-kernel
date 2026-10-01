@@ -1,13 +1,15 @@
 # MAIOS Project Kernel
 
-MAIOS Project Kernel porta a un agente AI un kernel operativo che evolve:
-conoscenza e metodi per comprendere il presente, svolgere lavoro utile,
-formare competenze e continuare da ciò che apprende.
+MAIOS Project Kernel porta a un agente AI un kernel semantico operativo che evolve.
+Mantiene collegate fonti, intento, competenze e conseguenze perché l'agente
+possa conservare l'orientamento mentre il lavoro cambia, formare capacità utili
+e lasciare che ciò che apprende cambi il modo con cui opererà in seguito.
 
 Il kernel è autopoietico: la sua attività può riformare conoscenza, competenze
-e organizzazione. Può operare in un'esplorazione, un dominio, un'attività in
-corso o un progetto. MAIOS comprende competenze per avviare e sviluppare
-progetti, che partecipano quando questo è il lavoro da svolgere.
+e organizzazione, compresi i metodi attraverso cui forma e combina ulteriori
+capacità. Può operare in un'esplorazione, un dominio, un'attività in corso o
+un progetto. MAIOS comprende competenze per avviare e sviluppare progetti,
+che partecipano quando questo è il lavoro da svolgere.
 
 Quando il lavoro attraversa sessioni o cambia direzione, una risposta utile da
 sola non conserva le ragioni necessarie per proseguire. Il kernel conserva le
@@ -110,6 +112,17 @@ meccaniche di installazione e recupero, instradamento e contratti dello stato
 locale. Non dimostrano che il modello destinatario comprenda, usi o assimili
 i metodi. Le [note della 5.1.0](docs/RELEASE_5.1.0.md) descrivono
 le novità consegnate e l'ingresso per l'uso e la revisione con il modello ricevente.
+
+## Ricerca e direzione
+
+MAIOS Project Kernel è un'incarnazione software del programma di ricerca D-ND/MAIOS.
+Il [System Semantic Kernel working paper](https://github.com/GrazianoGuiducci/maios-ssk-paper)
+sviluppa la relazione fra significato, competenza, operazione e conseguenza,
+compreso come un sistema possa cambiare i metodi attraverso cui forma capacità.
+Il [manifesto D-ND](https://maios-it.moodnd.chatgpt.site/manifesto)
+esprime la traiettoria più ampia, dai kernel cognitivi attuali alla ricerca su
+modelli formati nativamente attraverso queste relazioni. Un LLM-D-ND formato
+nativamente resta una direzione di ricerca.
 
 ## Inizia dal tuo contesto
 

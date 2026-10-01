@@ -1,12 +1,14 @@
 # MAIOS Project Kernel
 
-MAIOS Project Kernel brings an AI agent an evolving operating kernel:
-knowledge and methods for understanding the present, doing useful work,
-forming competences and continuing from what it learns.
+MAIOS Project Kernel brings an AI agent an evolving semantic operating kernel.
+It keeps sources, intent, competences and consequences connected so the agent
+can maintain orientation as its work changes, form useful capacities and let
+what it learns change how it works next.
 
 The kernel is autopoietic: its activity can reform its knowledge, competences
-and organization. It can work in an inquiry, a domain, an ongoing activity or
-a project. MAIOS includes competences for starting and developing projects;
+and organization, including the methods through which it forms and combines
+further capacities. It can work in an inquiry, a domain, an ongoing activity
+or a project. MAIOS includes competences for starting and developing projects;
 they participate when that is the work to do.
 
 When work crosses sessions or changes direction, a useful answer alone does
@@ -108,6 +110,17 @@ and recovery mechanics, routing and local state contracts. They do not prove
 that a receiving model understands, uses or assimilates the methods. See the
 [5.1.0 release content](docs/RELEASE_5.1.0.md) for the delivered changes and
 entry for receiving-model use and review.
+
+## Research and direction
+
+MAIOS Project Kernel is a software incarnation of the D-ND/MAIOS research
+programme. The [System Semantic Kernel working paper](https://github.com/GrazianoGuiducci/maios-ssk-paper)
+develops the relation among meaning, competence, operation and consequence,
+including how a system can change the methods through which it forms capacities.
+The [D-ND manifesto](https://maios-it.moodnd.chatgpt.site/manifesto-en)
+sets out the wider trajectory, from today's cognitive kernels to research on
+models formed natively through these relations. A natively formed LLM-D-ND
+remains a research direction.
 
 ## Start from your context
 
