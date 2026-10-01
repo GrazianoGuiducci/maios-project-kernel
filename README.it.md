@@ -177,10 +177,11 @@ il Kernel o il progetto del tester.
 
 Puoi studiare e migliorare la sorgente pubblica senza installare il pacchetto.
 Apri la radice della repository con il coder e chiedigli di leggere `AGENTS.md`
-e usare `maios-kernel-study`:
+e usare il metodo in [`skills/maios-kernel-study/SKILL.md`](skills/maios-kernel-study/SKILL.md):
 
 ```text
-Leggi AGENTS.md e usa maios-kernel-study per aiutarmi a comprendere il Kernel.
+Leggi AGENTS.md e skills/maios-kernel-study/SKILL.md.
+Usa quella competenza per aiutarmi a comprendere il Kernel.
 Segui un esempio concreto nelle sorgenti correnti: come il lavoro cambia
 il sapere o la competenza che sarà usata in seguito?
 ```

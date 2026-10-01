@@ -173,10 +173,11 @@ Kernel or the tester's project.
 
 You can study and improve the public source without installing the package.
 Open the repository root with your agent and ask it to read `AGENTS.md` and use
-`maios-kernel-study`:
+the method in [`skills/maios-kernel-study/SKILL.md`](skills/maios-kernel-study/SKILL.md):
 
 ```text
-Read AGENTS.md and use maios-kernel-study to help me understand the Kernel.
+Read AGENTS.md and skills/maios-kernel-study/SKILL.md.
+Use that competence to help me understand the Kernel.
 Follow one concrete example from the current sources: how does work change
 the knowledge or competence used next?
 ```
