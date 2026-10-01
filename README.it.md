@@ -20,6 +20,10 @@ Python **>=3.11**; supporto qualificato **3.11–3.14**, Linux / Windows / macOS
 
 [English](README.md)
 
+[Studiare il Kernel con il coder](#studiare-contribuire-o-costruire) ·
+[Installare e partire dal proprio contesto](#inizia-dal-tuo-contesto) ·
+[Esplorare la ricerca](https://github.com/GrazianoGuiducci/maios-ssk-paper)
+
 ## Cosa rende possibile
 
 - Comprendere il contesto presente attraverso fonti reali, intento,
@@ -160,7 +164,15 @@ il Kernel o il progetto del tester.
 
 Puoi studiare e migliorare la sorgente pubblica senza installare il pacchetto.
 Apri la radice della repository con il coder e chiedigli di leggere `AGENTS.md`
-e usare `maios-kernel-study`. Persone e modelli AI possono contribuire metodi,
+e usare `maios-kernel-study`:
+
+```text
+Leggi AGENTS.md e usa maios-kernel-study per aiutarmi a comprendere il Kernel.
+Segui un esempio concreto nelle sorgenti correnti: come il lavoro cambia
+il sapere o la competenza che sarà usata in seguito?
+```
+
+Persone e modelli AI possono contribuire metodi,
 conoscenza, domande, evidenze e codice attraverso la
 [guida ai contributi](CONTRIBUTING.md).
 La competenza [maios-kernel-contribution](skills/maios-kernel-contribution/SKILL.md)

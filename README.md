@@ -21,6 +21,10 @@ Python **>=3.11**; qualified **3.11–3.14**, Linux / Windows / macOS · [MIT Li
 
 [Versione italiana](README.it.md)
 
+[Study the Kernel with your agent](#study-contribute-or-build) ·
+[Install and start from your context](#start-from-your-context) ·
+[Explore the research](https://github.com/GrazianoGuiducci/maios-ssk-paper)
+
 ## What it makes possible
 
 - Understand the present context through its actual sources, intent,
@@ -156,7 +160,15 @@ Kernel or the tester's project.
 
 You can study and improve the public source without installing the package.
 Open the repository root with your agent and ask it to read `AGENTS.md` and use
-`maios-kernel-study`. People and AI models can contribute methods, knowledge,
+`maios-kernel-study`:
+
+```text
+Read AGENTS.md and use maios-kernel-study to help me understand the Kernel.
+Follow one concrete example from the current sources: how does work change
+the knowledge or competence used next?
+```
+
+People and AI models can contribute methods, knowledge,
 questions, evidence and code through the [contribution guide](CONTRIBUTING.md).
 The repository's [maios-kernel-contribution](skills/maios-kernel-contribution/SKILL.md)
 competence helps turn that work into a contribution grounded in its sources.
