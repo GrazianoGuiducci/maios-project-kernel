@@ -21,7 +21,7 @@ ACTIVE_DOCUMENTS = (
     "docs/README.md", "docs/INSTALLATION.md", "docs/USAGE.md", "docs/USAGE.it.md",
     "docs/COMPATIBILITY.md", "docs/GENERATED_KERNEL_BUILD.md", "docs/RELEASE_5.1.0.md",
     "docs/PROVENANCE.md", "docs/ARCHITECTURE.md", "docs/RECEIPTS.md",
-    "docs/INSTANCE_COORDINATION.md", "docs/LEARNING_WORKED_EXAMPLE.md", "kernel/UPDATE_CONTINUITY.md",
+    "docs/INSTANCE_COORDINATION.md", "kernel/UPDATE_CONTINUITY.md",
     "package/README.md", "package/INSTALL.md", "package/AGENTS.md",
     "package/payload/START_HERE.md", "package/payload/HOSTS.md", "package/payload/AGENTS.md",
 )

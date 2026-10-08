@@ -22,9 +22,6 @@ when source study is useful.
 
 ## Understand or contribute
 
-- [Learning worked example](LEARNING_WORKED_EXAMPLE.md): one import correction,
-  its later counterexample, evidence, source timing and competence lifecycle,
-  with a runnable local contract walkthrough.
 - [Kernel knowledge](../knowledge/KERNEL.md): meaning, operating relations and
   the sources through which competences act.
 - [Architecture](ARCHITECTURE.md): source owners, generated distribution and

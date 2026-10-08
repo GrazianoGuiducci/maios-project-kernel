@@ -36,8 +36,6 @@ jobs:
         run: git diff --exit-code -- package/
       - name: Check active document links and anchors
         run: python -B tools/check_active_links.py
-      - name: Exercise the learning documentation walkthrough
-        run: python -B docs/examples/learning_walkthrough.py
       - name: Validate generated public boundary
         run: python -B tools/verify_distribution.py
       - name: Prepare candidate archive

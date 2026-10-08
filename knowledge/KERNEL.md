@@ -235,13 +235,6 @@ mistake, the formation competence becomes pertinent too. If the error was only
 in the support method, changing the entire kernel would spread a local problem
 into unrelated work. Understanding where the cause belongs determines the scope.
 
-The [learning worked example](../docs/LEARNING_WORKED_EXAMPLE.md) makes these
-relations inspectable through three data imports: a method correction, a later
-counterexample and a use of the successor. It distinguishes the living body,
-available learning, attributed participation, recorded evidence and recall
-lifecycle. Use it when a reader needs to recognize how learning could change
-later work; its local walkthrough does not establish receiving-model learning.
-
 ## Understanding before structural simplification
 
 For a proposed move or removal, explain the service the part supplies and where

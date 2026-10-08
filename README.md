@@ -97,11 +97,6 @@ from every receiving model. The [generative startup seed](skills/maios-project-c
 and [competence formation owner](skills/maios-project-competence-formation/SKILL.md)
 make the method available for inspection and use.
 
-The [learning worked example](docs/LEARNING_WORKED_EXAMPLE.md) follows an import
-correction through a later counterexample, successor method and recall
-lifecycle. Its runnable walkthrough exercises the existing local contracts;
-receiving-model learning remains a separate observation.
-
 ## Coding hosts and evidence
 
 The package provides profiles for `codex`, `claude`, `opencode`, `hermes`,
