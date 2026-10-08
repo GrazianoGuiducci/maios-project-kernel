@@ -93,9 +93,7 @@ The competence that forms methods can learn from this result too, improving how
 it recognizes useful learning without turning every event into another skill.
 
 This is an example of the intended operating relation, not a measured outcome
-from every receiving model.
-The [worked example of competence evidence](docs/COMPETENCE_EVIDENCE_WALKTHROUGH.md) connects a source correction, a receiver's competence trace,
-local receipts, later use and possible supersession without claiming a model trial. The [generative startup seed](skills/maios-project-competence-formation/references/generative-startup-seed.md)
+from every receiving model. The [generative startup seed](skills/maios-project-competence-formation/references/generative-startup-seed.md)
 and [competence formation owner](skills/maios-project-competence-formation/SKILL.md)
 make the method available for inspection and use.
 

@@ -30,7 +30,6 @@ when source study is useful.
 - [Build](GENERATED_KERNEL_BUILD.md): reproduce the included distribution from
   current public source directly; no private compiler or selection is needed.
 - [Provenance](PROVENANCE.md): content identity, retained inputs and evidence limits.
-- [Worked example: competence evidence and learning](COMPETENCE_EVIDENCE_WALKTHROUGH.md): a hypothetical case grounded in current source contracts, showing availability, participation, learning, evidence, and revision.
 
 ## Current product and history
 
