@@ -99,6 +99,12 @@ ogni modello destinatario. Il [seed generativo di avvio](skills/maios-project-co
 e la [competenza di formazione](skills/maios-project-competence-formation/SKILL.md)
 rendono il metodo disponibile per comprenderlo e usarlo.
 
+L'[esempio operativo sull'apprendimento](docs/LEARNING_WORKED_EXAMPLE.md)
+segue la correzione di un'importazione, un controesempio successivo, il metodo
+rivisto e il suo ciclo di richiamo. Il walkthrough eseguibile esercita i
+contratti locali esistenti; l'apprendimento di un modello ricevente resta
+un'osservazione distinta. L'approfondimento è in inglese.
+
 ## Host ed evidenze
 
 Il pacchetto offre profili per `codex`, `claude`, `opencode`, `hermes`,

@@ -30,6 +30,27 @@ instructions and executable-contract tests do not prove LLM assimilation.
 Locally evolved knowledge stays target-owned across product updates. Dated
 sections below retain their original identities and evidence scopes.
 
+## Learning documentation — 8 October 2026
+
+The [worked example](docs/LEARNING_WORKED_EXAMPLE.md) connects an import
+correction, a later counterexample, successor learning and recall lifecycle to
+the existing 5.1.0 contracts. Public discussion questions inform its reading
+path; they are not receiving-model test reports. A standalone documentation
+walkthrough exercises sample validators and local transitions in a temporary
+installation, with learning claims explicitly unverified.
+
+This is a source documentation resultant. Runtime, schemas, operating methods,
+projection selection and product version remain unchanged. The ordinary build
+refreshes package source identity and inventory; it does not add this example
+to the installed payload. Release and existing installations retain their own
+identities. Later agent use and improved reader comprehension remain separate
+observations.
+
+Local validation on Linux / Python 3.12.14: the 143-test source suite passes
+with one Windows-only skip; the documentation walkthrough and active links
+pass. The workflow now runs that walkthrough in its existing OS/Python matrix.
+Remote CI and receiving-agent use retain their own evidence.
+
 ## Earlier states
 
 ## Current product — 5.0.0
