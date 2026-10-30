@@ -1,7 +1,7 @@
 {
   "schema": "maios.source-manifest.v2",
   "product": "MAIOS Project Kernel",
-  "version": "5.1.0",
+  "version": "5.5.0",
   "source_owner": "maios-project-kernel repository",
   "construction": "direct deterministic projection of current product-owned knowledge, contracts, templates, adapters and runtime",
   "sources": [
@@ -13,14 +13,22 @@
         "generative formation",
         "revisable context and intent",
         "sustainable reentry",
-        "explicit learning succession"
+        "explicit learning succession",
+        "possibility maturation with source and reason",
+        "situated method and focus",
+        "practical source/effect continuation",
+        "local/upstream reconciliation knowledge"
       ],
       "public_incarnation": [
         "kernel/KNOWLEDGE_CONTINUUM.md",
         "kernel/FOUNDING_RELATIONS.md",
-        "kernel/UPDATE_CONTINUITY.md"
+        "kernel/UPDATE_CONTINUITY.md",
+        "skills/maios-project-competence-formation/SKILL.md",
+        "skills/maios-project-competence-formation/references/continuing-activities.md",
+        "skills/maios-project-competence-formation/references/source-transformation-and-effect.md",
+        "skills/maios-project-competence-formation/references/learning-from-demonstration.md"
       ],
-      "claim_boundary": "source-informed local incarnation; later host use and assimilation remain unobserved"
+      "claim_boundary": "portable source-informed methods; bounded precursor use with a scoped file adapter and native compact is documented separately; no universal host use or assimilation claim"
     },
     {
       "id": "operator-direction",

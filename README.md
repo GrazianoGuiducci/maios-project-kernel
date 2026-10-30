@@ -18,7 +18,7 @@ them and the knowledge acquired through work. A later agent can recover that
 context and continue from it without treating another instance's experience as
 its own personal memory.
 
-Product version: **[5.1.0](VERSION.md)** · Project Kernel family: **3.0.0** ·
+Product version: **[5.5.0](VERSION.md)** · Project Kernel family: **3.0.0** ·
 Python **>=3.11**; qualified **3.11–3.14**, Linux / Windows / macOS · [MIT License](LICENSE)
 
 [Versione italiana](README.it.md)
@@ -54,17 +54,24 @@ a result. New knowledge, a successful approach, a possibility or a correction
 can then change the methods used next. The kernel keeps the useful reasons
 and continuation rather than requiring the whole conversation to be replayed.
 
-Version 5.1.0 instructs the agent to close substantive responses with a compact,
-correctable attribution of the competences it understands as having contributed.
-This trace makes participation legible; it does not expose hidden reasoning or
-prescribe a fixed stack for the next turn.
+Version 5.5.0 deepens the practical methods through which that knowledge
+continues. A useful possibility can retain its source and reason before its
+form or return time is known. A changed situation can reopen understanding,
+resolve one uncertainty and leave another direction open.
 
-An autonomous receiver starts from its own context and available means. When a
-durable capacity or its continuation is missing, it uses existing competence
-formation to reuse, deepen, compose or form the smallest useful relation.
-Startup context is required; the interview remains discretionary, guided by
-what is actually missing. [Release content](docs/RELEASE_5.1.0.md) explains the
-changes and their limits.
+The agent can compose or form a local competence, preserve the reasons needed
+after interruption, and let subsequent work improve that method. Continuing
+activities, complementary contributions, human understanding and source-to-effect
+transformations have concrete methods in the existing competence owners.
+Substantive responses carry a compact, correctable competence trace; naming a
+competence or storing its text does not prove that it was used.
+
+An autonomous receiver starts from its own context and available means.
+Startup context is required; an interview remains discretionary. The
+[5.5.0 release content](docs/RELEASE_5.5.0.md) connects the delivered methods,
+compatibility and evidence. A [bounded use observation](docs/USE_OBSERVATION_5.5.0.md)
+records a local method formed from work and reused after native compaction,
+with the actual filesystem adapter and limits made explicit.
 
 `START_HERE.md` is the stable entry. Living competence bodies own methods;
 local state and knowledge carry the changing context. Existing local helpers
@@ -76,7 +83,8 @@ Updating a package is distinct from evolving a project's knowledge. Reapplying
 the exact artifact to an unchanged installation is idempotent; a different
 version is not an automatic migration. The
 [update-continuity method](kernel/UPDATE_CONTINUITY.md) relates the installation
-baseline, local evolution and a proposed update.
+baseline, local evolution and a proposed update. The [updating guide](docs/UPDATING.md)
+explains how to preserve a project that has already learned.
 
 ## A decision that improves the next task
 
@@ -108,7 +116,7 @@ use by every host or model.
 Source tests and distribution verification cover package integrity, installer
 and recovery mechanics, routing and local state contracts. They do not prove
 that a receiving model understands, uses or assimilates the methods. See the
-[5.1.0 release content](docs/RELEASE_5.1.0.md) for the delivered changes and
+[5.5.0 release content](docs/RELEASE_5.5.0.md) for the delivered changes and
 entry for receiving-model use and review.
 
 ## Research and direction

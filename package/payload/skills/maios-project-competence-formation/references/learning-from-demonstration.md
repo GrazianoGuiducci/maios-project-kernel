@@ -18,6 +18,20 @@ Attribute who supplied the key distinction or workaround. A successful continuat
 
 A trace that reports success without the relevant intermediate evidence may support only that reported result. A source can still reveal a useful method even when its causal explanation is imprecise. Separate what happened, the proposed explanation and the proposed remedy before choosing an integration.
 
+When actual receiver use or reentry is the question, follow the knowledge
+reached through its real entry and the help supplied. Installed bytes do not
+prove model exposure; a process restart, a new chat and a native compact are
+different observations. Missing visibility leaves that point uncertain.
+
+Choose a situation or nearby variant that can distinguish the useful decision
+when that changes what can be learned. If discovery is being observed, do not
+supply the answer and call its repetition independent discovery. A supplied
+deep reference can instead help study use; attribute that assistance. Observe
+the choice and consequence rather than requiring a recital of the method.
+A successful episode can teach now. Stronger claims about continued transfer
+or benefit caused by added knowledge need evidence suited to that particular
+claim, not an acceptance procedure for ordinary competence learning.
+
 ## Form the reusable knowledge
 
 Teach the owning competence the distinction, its source, why it changes the work and how to recognize its next relevant use. Include an example or counterexample when it prevents mechanical replay. A one-off event can remain a contextual fact; repeated occurrence is not required when the source already establishes a reusable relation.

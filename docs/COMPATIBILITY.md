@@ -64,3 +64,20 @@ the user's configuration. The installer does not grant trust or modify that
 configuration. No project-local profile override is needed. Provider credentials,
 sessions and other host settings remain user-owned; do not copy them into the
 project. A fresh target must be a Git checkout for this native discovery route.
+
+## 5.5.0 continuity and evidence
+
+This version changes delivered knowledge and its source/entry relations while
+retaining family 3.0.0, runtime, installer/recovery, configuration/operating
+schemas, host contracts and the declared Python/OS support matrix.
+The initial managed host state still selects one adapter; the deeper method
+for qualifying observations does not install a receiver-scoped state store.
+Shared project knowledge and an actor's actual access/use remain distinct.
+
+The [bounded precursor observation](USE_OBSERVATION_5.5.0.md) used a supplied
+filesystem adapter with Codex App Server. Native compact and continuation were
+observed there; terminal execution, other hosts and general assimilation were
+not established by that case. The adapter is not shipped as a new runtime.
+For already evolved installations, the [updating guide](UPDATING.md) preserves
+local methods and historical receipts; no automatic cross-version migration
+or multi-instance synchronization is introduced.

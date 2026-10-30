@@ -18,6 +18,42 @@ Locate the first transformation that changes the intended meaning. Correct that 
 
 A readable method and an executable mechanism supply different things. The method knows why and when to act; a helper performs a defined operation. Introduce or adapt a helper when the available means cannot carry the selected work. Preserve the possibility of working through another adequate host mechanism.
 
+## Let a possibility mature through work
+
+A competence may encounter a relation that could change what it understands or
+makes possible before its place in the method or organization is determined.
+Keep enough source, reason and reachable depth for that relationship to remain
+usable. A recognizable condition can help it return to attention; an unresolved
+condition can remain an explicit uncertainty where the source-bound reason
+still makes preserving the possibility useful.
+
+Returning to attention is not a decision to execute an earlier conclusion.
+Understand the relation with current intent, sources, consequences and actual
+means. Separately accurate memories can belong to conditions that never
+coexisted. The present encounter may change the question, the relation itself,
+its owner or the contribution it can make.
+
+Maturation concerns what the competence can now understand, choose or form.
+It is not inferred from elapsed time, repeated mention or the amount recorded.
+Useful work and participating competences can already change the generative
+method while the possibility takes shape. Its relation may enter an existing
+method, reveal a distinct continuing capacity, remain latent or cease to help.
+These outcomes are not states that must be traversed in sequence.
+
+Keep depth in the owning knowledge and a light connection where it changes
+pertinence. No new file, mandatory section, timer or registry is required by
+this relation. The kernel's constitutive coherence continues through the work;
+a weak cue concerns the situated possibility, not whether that coherence applies.
+When the field has made a sufficient determination, carry it into useful work.
+Independent work need not wait for every retained possibility to acquire a form.
+
+For example, a competence may retain a source-reading method because it could
+preserve access in another environment. When that environment becomes current,
+understand its actual reader: adapting the existing means may be sufficient,
+or a helper may now be useful. The retained source does not prescribe which
+implementation must follow. If it supplies no continuing contribution, its
+current route can cool without making rare use a reason for deletion.
+
 ## Choose the organization from its contribution
 
 A competence can carry several related functions. One function may also need several cooperating owners. Reuse an existing body when its knowledge and entry remain appropriate; deepen its references when the practical method needs more detail; create a distinct body when the new capacity needs its own knowledge, invocation or continuing development.
@@ -67,3 +103,63 @@ The current organization is one means. Preserve the relations and useful recipie
 The kernel's common `COGNITIVE_RELATIONS.md` explains why context and functional contribution are different dimensions. Form the situated competence with the understanding it needs to interpret sources, keep reasons, incarnate principles, do its work and learn from the consequence. Several functions may cooperate in one body. Do not reduce a competence to an executor that receives decisions already made outside its method.
 
 Use the richer methods of system understanding, possibility formation and knowledge acquisition when they change what the new capacity can attain. The generative faculty must also learn how its own selection criterion included or excluded useful heritage. A good output under an impoverished criterion is not enough to establish that the criterion fits the intended kernel.
+
+## Connect the operating focus
+
+A substantial assignment can already make domain knowledge and competence
+formation pertinent before the first output fixes the method. The generative
+startup seed carries that relation; use it rather than creating another seed.
+When the missing relation is operational placement, connect the actual object,
+its reason, responsible owner, useful sources and competences, present means,
+consequence and continuation through the owner's existing guide or live margin.
+Do not create a field merely to demonstrate that this connection exists.
+An inquiry can supply that focus while the capacity's form or future owner
+remains open. Let participating competences change the question and method;
+the focus connects what is presently understood rather than assigning every
+retained possibility.
+
+A known sufficient competence acts directly. If its knowledge did not
+participate, repair the entry or receiving connection. If the practical method
+is insufficient, deepen or form the capacity. If a tool is unavailable, preserve
+that particular effect and continue independent work. These losses have
+different remedies.
+
+A receiver using managed operating state can retain material front changes
+through its supported resultant transition, including existing open fronts
+and focus. Do not hand-edit validated state or create a second focus registry.
+A receiver without that runtime can use an adequate owner-native guide. A
+shared file is not a notification, a lock or evidence that another host read it.
+
+## Let a principle change a situated ability
+
+Keep the operator's original words, observed occurrence and your interpretation
+distinguishable. When a generalizable relation emerges, preserve its scope,
+reason and the concrete consumer whose decision or method should change.
+An indeterminate source need not become a finished principle. A useful
+principle does not automatically become a founding axiom.
+
+A competence owns continuing knowledge and method. A situated ability is what
+one or more competences can make exercisable through an actual receiver,
+context and means. A source principle can improve that ability without
+creating new effect authority or proving a hidden change to model weights.
+Teach the consumer how and why to choose differently, rather than keeping the
+only lesson in a detached list of principles. Use the acquired understanding
+now; a later non-identical use has its own scope of observation.
+
+## Return a part to the movement it serves
+
+A useful patch, experiment or handoff can finish while the formation it serves
+remains open. Preserve what the part made possible, what that changes in the
+whole and which question is still live. Do not let the latest completed part
+choose the next task by recency alone.
+
+A temporary composition owns the relation among contributions; each competence
+retains its own knowledge and object. Distinguish a material dependency from a
+precedence selected by the operator and keep its reason. Recompose only what
+changes; independent work and valid determinations can continue. When the
+composition ends, return useful learning to the owners that should act
+differently rather than maintaining another permanent coordinator.
+
+When independent kernels contribute, use [situated coordination](../../maios-project-coordination/SKILL.md#compose-independent-kernels)
+to retain their sources, identity, continuing state and learning owners. A
+kernel that is already sufficient need not acquire another general kernel.

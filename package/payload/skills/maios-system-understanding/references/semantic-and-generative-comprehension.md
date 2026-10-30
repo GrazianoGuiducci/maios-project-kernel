@@ -39,3 +39,18 @@ Carry enough meaning and reason for the next method to act, not a transcript of 
 Domain learning continues in its domain competence. A lesson about understanding representations changes this method. A lesson about how a competence was formed also reaches the formation faculty. Keep the relevant native entry able to reach that knowledge; a generic context label must not hide the distinct semantic work.
 
 [Source acquisition](../../maios-knowledge-acquisition/references/source-acquisition-and-synthesis.md) supplies access and fragment distinctions. [The encounter method](../../maios-project-context/references/human-encounter.md) concerns how another participant can perceive and contribute to the work. They can cooperate without being interchangeable. KA keeps the partial interpretation open; FDLA corrects an introduced substitution while the method forms.
+
+## Preserve causal origin and useful continuation
+
+Narrative order can differ from the relation that gives work its meaning. A
+person may first mention a trigger and a report format, then explain the
+purpose those means should serve. Recover that purpose and its valid
+determinations without making the first-mentioned tool the owner of the work.
+The useful continuation is what must remain capable, not necessarily the last
+artifact named.
+
+Let acquired understanding enter the present choice while preserving valid
+results. Change the consequential viewpoint when it can expose a material
+relation; repeating the same question over copied evidence is not an
+independent observation. Once the relation is sufficient, proceed without
+reopening a determination merely to keep inquiry active.

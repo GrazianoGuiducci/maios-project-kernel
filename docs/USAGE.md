@@ -19,7 +19,7 @@ References for installation, project work and source study:
 
 | Need | References | Contents |
 | --- | --- | --- |
-| Establish current truth | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Product version `5.1.0`, family `3.0.0`, current evidence, boundaries, and the selected movement |
+| Establish current truth | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Product version `5.5.0`, family `3.0.0`, current evidence, boundaries, and the selected movement |
 | Understand value and possibility | [`knowledge/KERNEL.md`](../knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md), [System Semantic Kernel (SSK) working paper](https://github.com/GrazianoGuiducci/maios-ssk-paper) | What the Kernel changes for a project, which possibilities remain open, and the related academic context; the Paper is optional and does not prove product behaviour |
 | Integrate the package | [`package/AGENTS.md`](../package/AGENTS.md), [`maios-project-integration`](../package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](../package/INSTALL.md), [`package/MANIFEST.json`](../package/MANIFEST.json) | Exact target, mode, host projection, package-owned paths, preview, recovery, and unchanged surfaces |
 | Configure and operate the installed Kernel | [`START_HERE.md`](../package/payload/START_HERE.md), [`maios-project-system`](../package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](../package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](../package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | How context, competences, result, learning, semantic readback, and fresh reentry stay connected |
@@ -68,6 +68,20 @@ python install.py apply --plan $maiosPlan
 
 For a project that already exists, use `--mode existing_repository`. Replace
 `codex` with the selected host id described below.
+
+### Continue and update without losing local knowledge
+
+Keep the reason, source and current interpretation with the work. A possibility
+may mature before its form or time is known; a new observation may resolve one
+question without choosing the whole next project. The acting competence keeps
+the reusable method and the task guide its dated facts. At reentry, recover
+those reasons and the changed source rather than replaying an old conclusion.
+
+For an existing installation, use the [updating guide](UPDATING.md). It relates
+distributed base, local evolution and selected upstream knowledge, including
+dependencies and recovery. The [bounded use observation](USE_OBSERVATION_5.5.0.md)
+illustrates actual work and continuation after a native compact, with its means
+and limits. It is not an installation prerequisite or a universal acceptance test.
 
 ## Study and contribute
 

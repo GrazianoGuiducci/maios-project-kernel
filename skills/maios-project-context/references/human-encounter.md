@@ -39,3 +39,19 @@ The number of alternatives, questions or explanation steps is not a property of 
 If a question introduced a false premise, correct the question and any work based on it. If a name repeatedly hides a component's real role, preserve the distinction in the responsible knowledge and entry. If the problem was local to one explanation, do not create a permanent user profile or global communication rule.
 
 Keep source meaning, current interpretation and effect state intelligible. Explain what was proposed, what was actually changed and what remains unavailable when that distinction affects the person's decision. The public-facing simplicity should come from understanding the system, not from concealing a gap.
+
+## Make correction and attention part of the work
+
+Expose the smallest relation that lets the person orient, correct, stop or
+continue: the choice it changes, its reason and material consequence. Depth
+may be a short cue or a fuller explanation. Brevity alone is not the goal;
+keep consequential uncertainty and effect state at their point of use.
+
+A legitimate doubt can reveal a missing condition or change the question.
+Let that understanding return to the domain or explanatory method that should
+improve. Do not infer a permanent personal profile, failed adoption or consent
+from one encounter. A clear instruction does not require another tutorial.
+
+When representation of a kernel or product itself becomes material, use
+[representing a kernel](representing-a-kernel.md). Its smallest useful presence
+need not be a persona, an Entity or a new delegated actor.

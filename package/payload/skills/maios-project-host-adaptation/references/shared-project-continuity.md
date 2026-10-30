@@ -77,6 +77,24 @@ structured state support is insufficient. A readable method is immediately
 available; an unsupported structured transition is still unperformed. A later
 capable instance reconciles that relation without repeating completed effects.
 
+## Qualify what an observation can support
+
+Understand the assertion and conditions that make its evidence applicable.
+A fact about the same delivered artifact may remain useful to several
+receivers; it does not show that each discovered or used it. Access depends
+on the pertinent environment, and a behavioral episode belongs to the
+receiver and knowledge actually involved. A new session does not erase valid
+common facts or inherit another actor's experience. A material change within
+one session can also change which conclusions remain supported.
+
+The current host-state contract aggregates stages and capabilities for the
+selected adapter. A coherent record describes that represented relation;
+it does not alone qualify every capability for a different caller. Use the
+actual observation and the pending continuation taught above where structured
+support is insufficient. If distinct current views are needed, follow their
+applicability through admission, receipt selection, status and derived context.
+An identifier does not authenticate the observation or coordinate writers.
+
 ## Form A Larger Capability When The Case Requires It
 
 If actual continued or simultaneous use needs per-instance state, let this

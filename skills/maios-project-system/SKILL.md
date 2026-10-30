@@ -84,6 +84,13 @@ accounts, credentials, network access or authority; use what is actually
 available and keep an unavailable means distinct from a competence gap.
 When the present capacity is sufficient, continue the work directly.
 
+When a substantial movement needs several owners or sources, connect its
+operating focus through [formation knowledge](../maios-project-competence-formation/references/kernel-formation-and-evolution.md#connect-the-operating-focus).
+Reuse the existing guide, margin and supported state rather than creating a
+second registry. Acquired understanding changes the present choice; a chain
+of possible deductions does not choose the next act by itself. Clear work
+continues directly.
+
 The following entries are relative to the installation root. Involve each through
 its actual contribution, including when a result reveals another useful relation.
 
@@ -94,6 +101,9 @@ its actual contribution, including when a result reveals another useful relation
 | Join an existing project's work | `skills/maios-start-existing-project/SKILL.md` |
 | Understand context, intent or changed circumstances | `skills/maios-project-context/SKILL.md` |
 | Form, compose or evolve a capacity, including another kernel | `skills/maios-project-competence-formation/SKILL.md` |
+| Form or evolve continuing work or an event-driven activity | `skills/maios-project-competence-formation/references/continuing-activities.md` |
+| Understand a source transformation that can change a directive, authority or effect | `skills/maios-project-competence-formation/references/source-transformation-and-effect.md` |
+| Represent a kernel or product truthfully in an encounter | `skills/maios-project-context/references/representing-a-kernel.md` |
 | Connect a different host or native entry | `skills/maios-project-host-adaptation/SKILL.md` |
 | Coordinate instances or integrate a contribution | `skills/maios-project-coordination/SKILL.md` |
 | Understand source meaning, representation, scale or part–whole dependencies | `skills/maios-system-understanding/SKILL.md` |
@@ -179,6 +189,11 @@ views must not be the only place carrying what the next instance needs to know.
 Resolve a material effect from the actual target, controller and current
 authorization. The package does not grant external authority or cancel what
 the operator has already authorized.
+
+When reentry continues determined operations or must resolve an uncertain
+outcome, use [effect continuation](../maios-project-competence-formation/references/source-transformation-and-effect.md#continue-a-determined-effect-set).
+Keep the decided work, actual receipts and unresolved operations reachable
+through their existing owner.
 
 ## Understand and maintain this kernel
 

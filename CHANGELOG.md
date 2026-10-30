@@ -1,5 +1,25 @@
 # Changelog
 
+## 5.5.0
+
+- Deepen competence formation, practical focus, owner-bound learning and
+  continuation so useful experience changes the method that will act next.
+- Let a possibility retain its source and reason before its form or return
+  time is determined; returning relevance reopens understanding in the present.
+- Deliver concrete methods for continuing activities, complementary
+  contributions and situated choices through the existing competence owners.
+- Preserve meaning and authority through source transformations, interrupted
+  effect sets, human encounters and the representation of a kernel.
+- Qualify shared knowledge, receiver-specific observations and learning from
+  actual use; keep historical installation provenance distinct from later
+  selective integration and locally evolved knowledge.
+- Document a bounded precursor use with a real native compact and subsequent
+  continuation, including the supplied file adapter and limits of the claim.
+- Retain family 3.0.0, Python >=3.11, qualified Python 3.11–3.14 on Linux,
+  Windows and macOS, and the existing runtime, installer, state and host contracts.
+- See [5.5.0 release content](docs/RELEASE_5.5.0.md) and the
+  [updating guide](docs/UPDATING.md) for delivered behavior, compatibility and proof scope.
+
 ## 5.1.0
 
 - Close substantive responses with a compact receiver-local competence trace:

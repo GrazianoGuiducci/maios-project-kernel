@@ -1,20 +1,24 @@
 # Product version
 
-Product version: `5.1.0`.
+Product version: `5.5.0`.
 Project Kernel family: `3.0.0` (unchanged).
-Previous public product version: `5.0.0`.
+Previous public product version: `5.1.0`.
 
-This minor version adds a receiver-local competence trace and makes endogenous
-receiver qualification explicit through existing competence formation. The
-autonomous family source now distinguishes required context from a discretionary
-interview, matching the semantics already delivered in 5.0.0.
+This minor version consolidates a substantial compatible evolution of practical
+knowledge: competence formation/composition, possibility maturation, continuing
+activities, source transformations, situated observation and causal reentry.
+It retains existing runtime, installer/recovery, state and host contracts.
+The version marks that delivered result; it does not require an invented
+incompatibility or a new generator. Product and family have separate identities.
 
-Installation and local helpers require Python >=3.11; qualified support covers Python 3.11–3.14
-on Linux, Windows and macOS. Newer Python versions and other architectures are
-not implicitly qualified by this matrix.
+Installation and local helpers require Python >=3.11; qualified support covers
+Python 3.11–3.14 on Linux, Windows and macOS. Newer versions and every possible
+architecture are not implicitly qualified by this matrix.
 
-Family 3.0.0, runtime, installer/recovery, state schemas, host contracts and the
-support matrix retain their compatibility. Reapplying the
-same artifact is idempotent; this does not supply automatic migration between
-product versions. See [release content](docs/RELEASE_5.1.0.md) and
-[installation and recovery](docs/INSTALLATION.md).
+Same-artifact reapplication is idempotent. There is no automatic cross-version
+upgrade or semantic overwrite of locally learned knowledge. See
+[release content](docs/RELEASE_5.5.0.md), [updating an evolved project](docs/UPDATING.md)
+and [installation/recovery](docs/INSTALLATION.md).
+
+This identifies the source and built package; it does not assert a published
+tag, Release, installed update or receiving-model assimilation.

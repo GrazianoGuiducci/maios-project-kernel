@@ -52,6 +52,20 @@ establish it through the current host's normal mechanisms.
 This preparation is part of adaptation; credentials and global configuration
 remain operator-controlled effects.
 
+## Connect a real continuing-work controller
+
+When a native event or scheduling controller is part of the selected work,
+use [continuing activities](../maios-project-competence-formation/references/continuing-activities.md).
+Resolve the real job, receiving context, exposed fields and entrusted change.
+Preserve recoverable configuration and read back the installed effect when
+that object changes. A source file or time-based reentry check need not have
+a native job; domain learning need not change its executable prompt.
+
+When configuration activates a loader or a tool resolves a consequential
+target, use [source transformation and effect](../maios-project-competence-formation/references/source-transformation-and-effect.md).
+The execution owner supplies any required technical guarantee through the
+actual means. Semantic instructions do not install isolation, trust or a lock.
+
 ## Let Adaptation Become Competence
 
 Preserve a host-specific relation only when it changes later discovery, use,
@@ -66,6 +80,16 @@ states separately. A native path is useful mechanics, not evidence that the
 host used the Kernel. Global profile, provider, credential and network changes
 remain outside this project-owned adaptation unless the operator separately
 selects their exact effect.
+
+When actual discovery, use or reentry needs to be understood, use
+[learning from observed work](../maios-project-competence-formation/references/learning-from-demonstration.md#understand-assistance-and-omissions).
+Keep reached knowledge, supplied help, choice and consequence attributable;
+the work can teach without a separate activation trial.
+
+When a recorded capability is used across receivers or materially changed
+conditions, use [observation applicability](references/shared-project-continuity.md#qualify-what-an-observation-can-support).
+Preserve useful shared facts, situated observations and the limits of the
+current state consumer without making every new session restart all evidence.
 
 ## Keep the consumed knowledge current
 
@@ -98,3 +122,10 @@ unverified and no aggregate observation evidence has been recorded. A later
 attestation cannot supply the missing origin of a pre-existing claim by simply
 hashing the whole state. Recover the incoherent owner relation before recording
 another transition; preserve unknown capabilities and independently useful work.
+
+A source release and the body exposed by an active instance can differ.
+For a consequential freshness question, follow the actual receiving entry and
+living body with the host's available means. A published version alone does
+not prove refresh, reading or use in that instance. Preserve independently
+evolved local knowledge; source contact is a possibility to understand rather
+than an instruction to replace the installed kernel.

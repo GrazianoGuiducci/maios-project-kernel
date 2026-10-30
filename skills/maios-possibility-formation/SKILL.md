@@ -31,6 +31,15 @@ Consider what the proposed movement opens, preserves, constrains or eliminates f
 
 For example, a source reader with configurable native entry names can preserve access to future competence forms without forcing a new file convention. Its value may justify delivery before a failure, while its invocation remains optional. A current unavailable tool may limit one effect without withdrawing the possibility or independent work.
 
+When a determination is genuinely needed now and materially informed
+alternatives remain equivalent, prefer the choice with the least unnecessary
+irreversible loss. Make a material sacrifice visible and keep the source and
+reason of a discarded alternative when they can still change a later choice.
+This fallback does not replace an operator's valid criterion or the conditions
+of an actual effect. Missing distinguishing knowledge is not established
+equivalence. Preserving a useful reason need not determine its reentry form
+or timing; it does not require keeping every alternative active.
+
 ## Make the result usable
 
 Recompose the newly understood relation with the original sources and still-valid decisions. Return the appropriate result: a clearer question, a chosen design, a useful action, a set of materially different directions, a changed method or an explicit unresolved relation. Do not generate alternatives just to display creativity, and do not rank uncertain possibilities with fabricated precision.

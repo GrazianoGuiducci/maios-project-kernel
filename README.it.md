@@ -17,7 +17,7 @@ ragioni delle decisioni, le fonti che le sostengono e
 il sapere acquisito nel lavoro. Un'altra istanza può recuperare quel contesto
 e proseguire senza attribuirsi l'esperienza della precedente come memoria personale.
 
-Versione del prodotto: **[5.1.0](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
+Versione del prodotto: **[5.5.0](VERSION.md)** · Famiglia Project Kernel: **3.0.0** ·
 Python **>=3.11**; supporto qualificato **3.11–3.14**, Linux / Windows / macOS · [Licenza MIT](LICENSE)
 
 [English](README.md)
@@ -55,17 +55,24 @@ possibilità o una correzione possono cambiare i metodi usati in seguito.
 Il kernel conserva le ragioni utili e il punto da cui continuare, senza
 richiedere di rileggere l'intera conversazione.
 
-La 5.1.0 istruisce l'agente a chiudere le risposte sostanziali con un'attribuzione
-compatta e correggibile delle competenze che comprende abbiano contribuito.
-La traccia rende leggibile la partecipazione; non espone il ragionamento interno
-né prescrive una composizione fissa per il turno seguente.
+La 5.5.0 approfondisce i metodi pratici attraverso cui il sapere continua.
+Una possibilità utile può conservare fonte e ragione prima di conoscere forma
+o momento del ritorno. Una situazione cambiata può riaprire la comprensione,
+risolvere un'incertezza e lasciare aperta un'altra direzione.
 
-Un ricevente autonomo parte dal proprio contesto e dai mezzi disponibili. Quando
-manca una capacità durevole o la sua continuazione, usa la formazione esistente
-per riusare, approfondire, comporre o formare la minima relazione utile.
-Il contesto iniziale è richiesto; l'intervista resta discrezionale, guidata da
-ciò che manca effettivamente. Le [note della versione](docs/RELEASE_5.1.0.md)
-spiegano le novità e i loro limiti.
+L'agente può comporre o formare una competenza locale, conservare le ragioni
+necessarie dopo un'interruzione e lasciare che il lavoro successivo ne migliori
+il metodo. Attività continuative, contributi complementari, comprensione umana
+e trasformazioni dalle fonti agli effetti hanno metodi concreti negli owner
+esistenti. Le risposte sostanziali portano una traccia compatta e correggibile
+delle competenze; nomi e testi salvati non provano da soli il loro uso.
+
+Il ricevente parte dal proprio contesto e dai mezzi disponibili. Il contesto
+iniziale è necessario; l'intervista rimane discrezionale. Le
+[note 5.5.0](docs/RELEASE_5.5.0.md) collegano metodi consegnati, compatibilità
+ed evidenze. Un [caso d'uso circoscritto](docs/USE_OBSERVATION_5.5.0.md) documenta
+un metodo formato nel lavoro e riutilizzato dopo compact nativo, precisando
+l'adattatore di file effettivo e i limiti della prova.
 
 `START_HERE.md` è l'ingresso stabile. I corpi vivi delle competenze possiedono
 i metodi; stato e conoscenza locale portano il contesto che cambia.
@@ -78,6 +85,9 @@ Riapplicare lo stesso artefatto a un'installazione invariata è idempotente;
 una versione diversa non produce una migrazione automatica. Il
 [metodo di continuità degli aggiornamenti](kernel/UPDATE_CONTINUITY.md)
 collega la base d'installazione, l'evoluzione locale e una proposta di aggiornamento.
+
+Per un progetto che ha già imparato, la [guida all’aggiornamento](docs/UPDATING.it.md)
+collega base distribuita, sapere locale e nuova fonte senza sovrascrivere il lavoro.
 
 ## Una decisione che migliora il lavoro successivo
 
@@ -110,7 +120,7 @@ osservato da parte di ogni host o modello.
 Test sorgente e verifica della distribuzione coprono integrità del pacchetto,
 meccaniche di installazione e recupero, instradamento e contratti dello stato
 locale. Non dimostrano che il modello destinatario comprenda, usi o assimili
-i metodi. Le [note della 5.1.0](docs/RELEASE_5.1.0.md) descrivono
+i metodi. Le [note della 5.5.0](docs/RELEASE_5.5.0.md) descrivono
 le novità consegnate e l'ingresso per l'uso e la revisione con il modello ricevente.
 
 ## Ricerca e direzione

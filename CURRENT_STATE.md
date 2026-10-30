@@ -1,5 +1,32 @@
 # MAIOS Project Kernel current state
 
+## Current product source — 5.5.0
+
+The living source and deterministic package deliver deeper practical methods
+for competence formation/composition, possibility maturation, continuing work,
+source-to-effect integrity and receiver-aware continuation. Existing owners
+carry the methods; no private kernel, compiler, controller or workspace is a
+runtime dependency. [Release content](docs/RELEASE_5.5.0.md) connects the delta.
+
+Family 3.0.0, Python >=3.11 and qualified Python 3.11–3.14 on Linux, Windows
+and macOS remain unchanged. Runtime, installer/recovery, state schemas and host
+contracts retain their compatibility. No existing installation is migrated by
+changing this source. The [updating guide](docs/UPDATING.md) preserves local learning.
+
+A [bounded precursor use](docs/USE_OBSERVATION_5.5.0.md) observed method use,
+native compact and continuation with new evidence through a supplied scoped
+file adapter. Its result remains on that receiver and method content. It does
+not establish terminal execution, every host, managed state transitions,
+benefit caused by the kernel or general assimilation.
+
+The final source proof contract is the full suite, active document links, two
+identical builds, a clean tracked package, distribution verification and the
+12-job OS/Python matrix. Archives/checksums bind the exercised bytes. Exact
+source, CI and publication identities belong to external readbacks; this
+source state does not assert a tag/Release publication or deployment.
+
+## Earlier states
+
 ## Current product — 5.1.0
 
 The living source supplies the autonomous operating kernel and its deterministic
@@ -30,7 +57,6 @@ instructions and executable-contract tests do not prove LLM assimilation.
 Locally evolved knowledge stays target-owned across product updates. Dated
 sections below retain their original identities and evidence scopes.
 
-## Earlier states
 
 ## Current product — 5.0.0
 

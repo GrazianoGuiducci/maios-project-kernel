@@ -46,6 +46,14 @@ the proposed upstream source. Preserve local additions and still-useful
 learnings; a newer date is not supersession. A changed context may warrant an
 adaptation or selective knowledge transfer instead of a whole-package update.
 
+Preserving a local contribution protects its source, reasons and recoverability;
+it does not make a superseded method permanent. Understand which local and
+proposed relations remain useful in the present project. Follow required
+knowledge, guides and native entries into the body the receiver will actually
+consume; a single-file merge can leave a necessary reference unavailable.
+If the exact base cannot be recovered, qualify the limited comparison instead
+of inventing that origin. Use the understanding that remains sufficient.
+
 For the selected local effect, prepare the concrete path and semantic changes
 through the owning competences. Resolve changed state contracts before applying
 a structural update. Preserve before-images for affected files and the current
@@ -59,6 +67,16 @@ consumers, including native entries and references. Verify the affected
 mechanics and useful continuation, and retain the applied source identity,
 local adaptation, new baseline and recovery relation. If the result is partial,
 preserve that distinction rather than advancing the whole baseline.
+
+Keep the original installation receipt attributable to the installation that
+occurred. Its current update_baseline is derived from the original install_plan;
+the verifier does not provide an operation to advance only part of that base.
+A selected integration can remain local evolution, with its applied source,
+adaptation, affected paths and recovery relation in the existing owner guide.
+When another structured reference is needed for the next comparison, form its
+contract without rewriting the historical receipt as a new installation. A
+reconciled local body is not automatically byte-identical to the proposed
+upstream artifact. A partially integrated kernel keeps that distinction.
 
 The installer still handles fresh installation, exact-artifact reapplication
 and conflict-preserving recovery. It is not a cross-version merge engine.

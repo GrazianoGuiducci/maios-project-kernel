@@ -41,6 +41,26 @@ That competence forms the required native connection from the actual environment
 Do not preconfigure hypothetical hosts or make configuration a condition for
 independent work already possible through readable sources.
 
+## Compose independent kernels
+
+Independent kernels can contribute through the same harness without becoming
+one product or sharing all state. Understand the function each should carry,
+then distinguish overlap, complement and remaining gap. One sufficient kernel,
+a useful composition, a deepened owner or another kernel left cold are all
+possible results. Availability alone does not select a stack.
+
+Keep each kernel's identity, native entry, canonical source, continuing state
+and learning owner recoverable. The harness supplies actual access and means;
+it is not automatically the semantic owner. An information source or its
+arrival channel does not by itself own the subsequent domain work.
+
+Return domain learning to the domain kernel, integration learning to its
+actual owner and tool failures to the receiving mechanism. Shared source
+knowledge does not merge host observations or transfer effect authority.
+Before a concurrent write, read the current object and reconcile only your
+contribution; a revision check protects a particular write, not a semantic
+merge or general writer serialization. Use existing project continuity.
+
 ## Coordination Is A Situated Role
 
 The N0 function is a contextual coordinator acting within the operator's
@@ -71,6 +91,14 @@ or another continuation route when a capability is missing. A model name or
 availability alone does not make delegation useful or authorize a provider
 call, task creation or message. Exercise those effects only when selected.
 
+Choose a complementary contribution for the understanding or result it can
+improve, the receiver's actual knowledge and means, the context it needs and
+the cost of transfer and return. When source knowledge is already usable here,
+composing it locally may be sufficient; when another means is needed, select
+a genuinely capable receiver. A clear local next action can coexist with useful
+complementary work. These are situated reasons, not a model hierarchy, fixed
+score or requirement to delegate.
+
 When several instances act together, make responsibility for intersecting
 changes explicit. Use separate worktrees or coordinate the affected writes
 when that preserves ongoing work; choose according to the actual project.
@@ -80,6 +108,12 @@ contributions and returns their outcome; avoid duplicating another instance's
 supervision or copying its working state into a central overview.
 
 ## Return, Reconcile And Continue
+
+When a bounded contribution serves a larger selected movement, use
+[return to the containing movement](../maios-project-competence-formation/references/kernel-formation-and-evolution.md#return-a-part-to-the-movement-it-serves).
+Preserve what the contribution served and what its result changes there.
+Resume from that changed field; recency alone does not choose a new object.
+A current operator choice or material resultant can change the relationship.
 
 Read the returned result against current sources, the intended outcome and the
 actual effects. A report of completion is evidence to understand, not authority

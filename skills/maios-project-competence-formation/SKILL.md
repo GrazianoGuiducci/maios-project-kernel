@@ -20,6 +20,23 @@ Keep the concrete work active. Read the current state, the exact
 sources involved and `.maios/kernel/COMPETENCE_CULTIVATION_PROTOCOL.md` only to
 the depth that changes the present result.
 
+When forming or deepening work that continues across reentries, events or
+scheduled wakes, use [continuing activities](references/continuing-activities.md).
+It connects originating purpose, domain knowledge and a real controller when
+one exists; learning does not require rewriting a job at every trigger.
+
+When the useful difference concerns how sources, memory, delegation or executable
+configuration can change meaning or authority, use
+[source transformation and effect](references/source-transformation-and-effect.md).
+Teach the distinction in the domain method; a reference does not install a
+technical guarantee or create a separate admission stage.
+
+When a source distinction can become a general principle, or a completed part
+must return to a broader formation, use
+[formation and continuation knowledge](references/kernel-formation-and-evolution.md#let-a-principle-change-a-situated-ability).
+Keep the principle's concrete consumer and the still-open whole reachable;
+these relations also apply to an ordinary competence, not only a new kernel.
+
 ## Understand what should become capable
 
 Begin from the context built from sources and work, the intent derived there,
@@ -50,6 +67,11 @@ demonstrations to understand that difference. Assimilate the useful know-how
 in this context while keeping foreign workflow, taxonomy, metrics and provider
 assumptions separate. Acquiring knowledge can itself reveal another intent or
 possibility; it is not a compulsory research phase or limited to fixing failure.
+
+When a useful relation has no determined form yet, or becomes pertinent again,
+use [possibilities maturing through work](references/kernel-formation-and-evolution.md#let-a-possibility-mature-through-work).
+Keep its source and reason reachable, and let current understanding determine
+what it can contribute and whether an action is now useful.
 
 When an operator example, corrected output or observed demonstration teaches a
 decision that prose alone did not carry, use

@@ -20,7 +20,7 @@ Riferimenti per installazione, lavoro nel progetto e studio delle sorgenti:
 
 | Necessità | Riferimenti | Contenuto |
 | --- | --- | --- |
-| Stabilire la verità corrente | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Versione prodotto `5.1.0`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
+| Stabilire la verità corrente | [`AGENTS.md`](../AGENTS.md), [`CURRENT_STATE.md`](../CURRENT_STATE.md), [`VERSION.md`](../VERSION.md), [`CHANGELOG.md`](../CHANGELOG.md) | Versione prodotto `5.5.0`, famiglia `3.0.0`, evidenze correnti, confini e movimento selezionato |
 | Comprendere valore e possibilità | [`knowledge/KERNEL.md`](../knowledge/KERNEL.md), [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md), [working paper System Semantic Kernel (SSK)](https://github.com/GrazianoGuiducci/maios-ssk-paper) | Cosa cambia il Kernel in un progetto, quali possibilità restano aperte e il relativo contesto accademico; il Paper è facoltativo e non dimostra il comportamento del prodotto |
 | Integrare il pacchetto | [`package/AGENTS.md`](../package/AGENTS.md), [`maios-project-integration`](../package/skills/maios-project-integration/SKILL.md), [`package/INSTALL.md`](../package/INSTALL.md), [`package/MANIFEST.json`](../package/MANIFEST.json) | Target esatto, modalità, proiezione host, percorsi posseduti dal pacchetto, anteprima, recupero e superfici immutate |
 | Configurare e usare il Kernel installato | [`START_HERE.md`](../package/payload/START_HERE.md), [`maios-project-system`](../package/payload/skills/maios-project-system/SKILL.md), [`MAIOS_SETUP_CONTRACT.md`](../package/payload/setup/MAIOS_SETUP_CONTRACT.md), [`RESULTANT_READBACK.schema.json`](../package/payload/.maios/schemas/RESULTANT_READBACK.schema.json) | Come contesto, competenze, risultato, apprendimento, rilettura semantica e nuovo rientro restano connessi |
@@ -70,6 +70,19 @@ python install.py apply --plan $maiosPlan
 
 Per un progetto già esistente usa `--mode existing_repository`. Sostituisci
 `codex` con l'identificativo dell'host scelto, descritto più avanti.
+
+### Ripresa e aggiornamento del sapere locale
+
+Conservare fonte, ragione e interpretazione corrente nel lavoro; il metodo
+riusabile appartiene alla competenza, i fatti datati alla guida del compito.
+Una possibilità può maturare prima di conoscere forma o momento; una fonte
+nuova può risolvere una questione senza determinare tutto il seguito.
+Al rientro recuperare quelle ragioni e ciò che è cambiato.
+
+La [guida all’aggiornamento](UPDATING.it.md) collega base distribuita, evoluzione
+locale e nuova fonte, con dipendenze e recupero. Il [caso d’uso](USE_OBSERVATION_5.5.0.md)
+illustra lavoro e ripresa dopo compact nativo con mezzi e limiti dichiarati;
+non introduce un test obbligatorio per imparare o installare.
 
 ## Studia e contribuisci
 

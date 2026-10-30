@@ -172,3 +172,11 @@ with timezone, `status` (`observed` or `unavailable`), `source_identity` (exact
 revision for success, null for failure), and `summary`, including no-change
 results. State lives under `source_contact` in the canonical configuration.
 These local commands perform no network or background work.
+
+## Moving from another product version
+
+Same-artifact reapplication is not a cross-version migration. Preserve the
+existing target and its local learning, then follow the
+[updating guide](UPDATING.md) ([italiano](UPDATING.it.md)). An installer preview
+is a filesystem plan, not a semantic merge or evidence that an evolved project
+has received the new methods.
